@@ -1,0 +1,11 @@
+/htapps/common is a shared web space configured as the default Apache
+DocumentRoot. Beacuse it is shared, you should create subdirectories
+of web to partition your static web content based on some scheme.
+
+There is already one scheme for the mdp-related shared content for the
+HathiTrust apps (pt, ptsearch, ls, mb, wayf, feedback):
+
+/htapps/common/web/mdp
+
+Other apps may use the files under mdp or create their own
+subdirectories of /htapps/common/web/
