@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:cc="http://creativecommons.org/ns#"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      >
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link about="[_:MyLifeAsADog]" rel="foaf:isPrimaryTopicOf"
+          href="http://babel.hathitrust.org/common/mdp/sample-RDFa.html" />
+    <title>Creative Commons Example copyright statements using RDFa</title>
+  </head>
+  <body>
+    <h1><i>My Life as a Dog</i> by Phillip Farber</h1>
+        <h2>Chapter One - I Was Born</h2>
+        <p>It was a dark and stormy night at 10:45 p.m. on March, 31<sup>st</sup> ...
+<hr/>
+    <h2>Creative Commons Example copyright statements using RDFa</h2>
+    <p>
+      The following version of the statement is derived from the example given at the <a href="http://wiki.creativecommons.org/RDFa#How_does_CC_use_RDFa.3F">CC web site</a> using their wizard.  It includes two links to the CC web site for this license type (cc-sa, Share-Alike) -- one on the image and one on the text.</p>
+    <p>
+      <blockquote style="width:190px">
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/">
+          <img alt="Creative Commons License" style="border-width:0" 
+               src="http://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a>
+        <span  href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type">My Life as a Dog</span>
+        
+        <span style="display:none" href="http://babel.hathitrust.org/common/mdp/sample-RDFa.html" property="cc:attributionName" rel="cc:attributionURL">Phillip Farber</span>
+        by <span about="[_:MyLifeAsADog]" property="dc:creator">Phillip Farber</span>
+        - This work is licensed under a <a rel="license" 
+                                           href="http://creativecommons.org/licenses/by-sa/3.0/us/">Creative Commons 
+          Attribution Share-Alike 3.0 United States License</a>.
+      </blockquote>
+    </p>
+    <p>
+      In pageturner, we would probably render this something like:
+      
+      <blockquote style="width:190px;background-color:#F6F6F6">
+        <span  href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type">My Life as a Dog</span>
+        
+        <span style="display:none" href="http://babel.hathitrust.org/common/mdp/sample-RDFa.html" property="cc:attributionName" rel="cc:attributionURL">Phillip Farber</span>
+        &nbsp;/&nbsp;<span about="[_:MyLifeAsADog]" property="dc:creator">Phillip Farber</span><br/><br/>
+        <a href="http://example.com">View full catalog record</a><br/><br/>
+        Access & Use: <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/">
+          <img alt="Creative Commons License" style="border-width:0" 
+               src="http://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/">Creative Commons Attribution-ShareAlike</a>
+      </blockquote>
+      
+      
+    </p>
+    <p>
+      Or, without the image, like:
+      
+      <blockquote style="width:190px;background-color:#F6F6F6">
+        <span  href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type">My Life as a Dog</span>
+        
+        <span style="display:none" href="http://babel.hathitrust.org/common/mdp/sample-RDFa.html" property="cc:attributionName" rel="cc:attributionURL">Phillip Farber</span>
+        &nbsp;/&nbsp;<span about="[_:MyLifeAsADog]" property="dc:creator">Phillip Farber</span><br/><br/>
+        <a href="http://example.com">View full catalog record</a><br/><br/>
+        Access & Use: <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/">Creative Commons Attribution-ShareAlike</a>
+      </blockquote>
+      
+    </p>
+    <h2>CreativeCommons.org scraping mechanism for Attribution</h2>
+    <p>This is slick. If you click through to creativecommons.org from any of the image or text links above, you reach a page that offers HTML for use when attributing the work in other web content.</p>
+    <p> Here is that HTML, rendered:
+      <div xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/" about="http://babel.hathitrust.org/common/mdp/sample-RDFa.html"><span property="dct:title">My Life as a Dog</span> (<a rel="cc:attributionURL" property="cc:attributionName" href="http://babel.hathitrust.org/common/mdp/sample-RDFa.html">Phillip Farber</a>) / <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/">CC BY-SA 3.0</a></div>
+    </p>
+    <p> and here as raw HTML:
+      <pre style="font-size:10pt">
+&lt;div xmlns:cc="http://creativecommons.org/ns#" 
+     xmlns:dct="http://purl.org/dc/terms/" 
+     about="http://babel.hathitrust.org/common/mdp/sample-RDFa.html">
+  &lt;span property="dct:title">My Life as a Dog&lt;/span> 
+  (&lt;a rel="cc:attributionURL" property="cc:attributionName" 
+      href="http://babel.hathitrust.org/common/mdp/sample-RDFa.html">Phillip Farber&lt;/a>) 
+   / 
+   &lt;a rel="license" 
+      href="http://creativecommons.org/licenses/by-sa/3.0/us/">CC BY-SA 3.0&lt;/a>
+&lt;/div></pre>
+    </p>
+    <p>
+      This HTML was generated by CC scraping the <b>cc:attributionName</b> and <b>cc:attributionURL</b> attributes on the hidden span that wraps the author's name (Phillip Farber).  CC will not generate this sample HTML if either of these attributes are missing. </p>
+        <p>You may notice a CC icon at the far right end of the Firefox address line.  Click on that to see this same attribution information.</p>
+    <p>
+      Here's the raw HTML of that hidden span that lives in our (not CC's) HTML:
+      <pre style="font-size:10pt">
+&lt;span style="display:none" 
+      href="http://babel.hathitrust.org/common/mdp/sample-RDFa.html" 
+      property="cc:attributionName" 
+      rel="cc:attributionURL">Phillip Farber
+&lt;/span> </pre>
+      The attribution URL is to the page itself.  For purposes of attribution, if the author had a URL to his or her work, that would be specified but, in our case, I'm just re-iterating the page itself.
+    </p>
+    <h2>The RDF triples as seen by a machine</h2>
+    <p>
+      The <a href="http://www.w3.org/RDF/Validator/ARPServlet?PARSE=Parse+URI%3A+&TRIPLES_AND_GRAPH=PRINT_TRIPLES&FORMAT=PNG_EMBED&URI=http://www.w3.org/2007/08/pyRdfa/extract?uri=http%3A//babel.hathitrust.org/common/mdp/sample-RDFa.html">W3C RDF Validation Service</a> can parse the RDFa in this example page. Its outputs are:
+      
+      <ul>
+        <li>The Subject-Predicate-Object triples it finds</li>
+        <li>The corresponding RDF version of the page's RDFa</li>
+      </ul>
+      
+      <h2> A Note on the use of FOAF in these copyright statements</h2>
+      The web page containing RDFa metadata is the default <b>Subject</b> in the Subject-Predicate-Object RDF triple. This is a bit weird in pageturner.  The pageturner page is not the Subject of the CC license, the work displayed within the page is.  Here the FOAF ontology is helpful.</p>
+    <p>I'm using the <b>foaf:isPrimaryTopicOf</b> relation to say the author is licensing the "primary topic of the pageturner page", namely the work it displays. <a href="http://www.w3.org/MarkUp/2009/rdfa-for-html-authors#Talking1">This appears to be a W3C recommended Best Practice</a>.  The following two snippets of HTML implement this relation.
+<pre style="font-size:10pt">
+&lt;link about="[_:MyLifeAsADog]" 
+      rel="foaf:isPrimaryTopicOf"
+      href="http://babel.hathitrust.org/common/mdp/sample-RDFa.html"/> 
+&lt;span about="[_:MyLifeAsADog]" 
+      property="dc:creator">Phillip Farber&lt;/span>
+</pre>
+    </p>
+    <p>
+      The strange syntax <b>"[_:MyLifeAsADog]"</b> is RDF for a "blank node".  What is says is "There is something (which we shall call 'MyLifeAsADog') which is the primary topic (presumably named by the dc:title element) of the page at http://babel.hathitrust.org/common/mdp/sample-RDFa.html." We can now refer to this node as the creation that Phillip Farber is licensing.
+    </p>
+    
+  </body>
+</html>
