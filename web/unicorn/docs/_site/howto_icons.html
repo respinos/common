@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>Icon Fonts | Project Unicorn Developer Guide</title>
+
+<!--[if lt IE 9]>
+<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="../common/unicorn/vendors/js/selectivizr.js" type="text/javascript"></script>
+<![endif]-->
+
+	<script type="text/javascript" src="/common/unicorn/vendors/headjs/dist/head.min.js"></script>
+	<script type="text/javascript" src="/common/unicorn/js/common.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/common/unicorn/css/common.css" />
+
+	
+
+
+<!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="/common/unicorn/css/ie7.css" />
+<![endif]-->
+
+	<!-- FOR DOCUMENTATION -->
+	<link rel="stylesheet" type="text/css" href="css/docs.css" />
+
+</head>
+<body>
+	<h1 class="offscreen">Icon Fonts | Project Unicorn Developer Guide</h1>
+
+		<!-- NAVBAR -->
+	<div class="navbar navbar-static-top navbar-inverse">
+		<div class="navbar-inner">
+			<ul id="nav" class="nav">
+				<li ><a href="http://www.hathitrust.org">Home</a></li>
+				<li><a href="http://www.hathitrust.org/about">About</a>
+					<ul>
+					<li><a href="http://www.hathitrust.org/partnership">Our Partnership</a></li>
+					<li><a href="http://www.hathitrust.org/digital_library">Our Digital Library</a></li>
+					<li><a href="http://www.hathitrust.org/htrc">Our Research Center</a></li>
+					<li><a href="http://www.hathitrust.org/news_publications">News &amp; Publications</a></li>
+					</ul></li>
+				<li><a href="http://babel.hathitrust.org/cgi/mb">Collections</a></li>
+				<li class="divider-vertical"></li>
+				<li class="help"><a href="http://www.hathitrust.org/help">Help</a></li>
+				<li><a href="#" data-m="ht" data-id="HathiTrust Project Unicorn Guide" data-toggle="feedback">Feedback</a></li>
+								<li class="divider-vertical"></li>
+				<li class="guidelines">
+					<a href="index.html">Guide/Examples</a>
+					<ul>
+						<li class="topic"><a href="overview.html">Techical Overview</a></li>
+						<li><a href="overview_sass.html">Developing with Sass</a></li>
+						<li><a href="overview_css.html">Developing with CSS</a></li>
+
+						<li class="topic"><span>Components</span></li>
+
+						<li><a href="howto_js.html">Javascript</a></li>
+						<li><a href="howto_feedback.html">Javascript: Feedback</a></li>
+						<li><a href="howto_icons.html">Icon Fonts</a></li>
+						<li><a href="howto_forms.html">Forms</a></li>
+						<li><a href="howto_grid.html">Grid/Layout</a></li>
+
+						<li class="topic"><span>Examples</span></li>
+
+						<li><a href="logged_in.html">Logged In Example</a></li>
+						<li><a href="no_header_search.html">Hiding Header Search</a></li>
+						<li><a href="sidebar.html">Sidebar Example</a></li>
+						<li><a href="search_results.html">Search Results Example</a></li>
+						<li><a href="sidebar_long.html">Long Sidebar Example</a></li>
+						<li><a href="mb.html">Collection Builder Results Example</a></li>
+						<li><a href="mb_detail.html">Collection Builder Detail Example</a></li>
+
+
+					</ul>
+				</li>
+
+			</ul>
+			
+		</div>
+	</div>
+	
+
+		<!-- HEADER -->
+	<div class="container centered header clearfix">
+		<div class="logo">
+			<a href="http://www.hathitrust.org"><span class="offscreen">HathiTrust Digital Library</span></a>
+		</div>
+		<div class="search-form">
+
+			<form action="/cgi/ls/one" method="GET">
+				<div class="search-tabs">
+					<input name="target" type="radio" id="option-full-text-search" value="ls" checked="checked" />
+					<label for="option-full-text-search" class="search-label-full-text">Full-text</label>
+					<input name="target" type="radio" id="option-catalog-search" value="catalog" />
+					<label for="option-catalog-search" class="search-label-catalog">Catalog</label>
+				</div>
+				<fieldset>
+					<input name="q1" type="text" class="search-input-text" placeholder="Search words about or within the items" value="" />
+					<div class="search-input-options">
+						<select size="1" class="search-input-select" name="searchtype">
+							<option value="all">Everything</option>
+							<option value="title">Title</option>
+							<option value="author">Author</option>
+							<option value="subject">Subject</option>
+							<option value="isbn">ISBN/ISSN</option>
+							<option value="publisher">Publisher</option>
+							<option value="seriestitle">Series Title</option>
+							<option value="pubyear">Publication Year</option>
+						</select>
+					</div>
+					<button class="button"><span class="offscreen">Search</span></button>
+				</fieldset>
+				<div class="search-extra-options">
+					<ul class="search-links">
+						<li class="search-advanced-link"><a href="#">Advanced full-text search</a></li>
+						<li class="search-catalog-link"><a href="#">Advanced catalog search</a></li>
+						<li><a href="#">Search tips</a></li>
+					</ul>
+					<label>
+						<input type="checkbox" value="ft" />
+						Full view only
+					</label>
+				</div>
+			</form>
+
+		</div>
+		<div class="login">
+			
+			<a href="#" id="login-button" class="button log-in">LOG IN</a>
+			
+		</div>
+	</div>
+
+	<div class="container page centered">
+    <div class="main">
+        <h2>Icon Fonts</h2>
+        <p>
+            The Unicorn Design has defined some glyphs in a custom icon font
+            (<a href="/common/unicorn/vendors/icomoon/index.html">browse the set</a>).
+            The <a href="/common/unicorn/vendors/icommon/session.json">set</a> is managed with the <a href="http://icomoon.io/app/">IcoMoon App</a>. 
+        </p>
+        <style>
+            .box1 {
+                display: inline-block;
+                width: 15em;
+                padding: .25em .5em;
+                background: #eee;
+                margin: .5em 1em .5em 0;
+            }
+
+            .glyph {
+                float: left;
+                text-align: center;
+                background: #eee;
+                padding: .75em;
+                margin: .75em 1.5em .75em 0;
+                width: 7em;
+                border-radius: .25em;
+                box-shadow: inset 0 0 0 1px #f8f8f8, 0 0 0 1px #CCC;
+            }
+            .glyph input {
+                width: 100%;
+                text-align: center;
+                font-family: consolas, monospace;
+            }
+            .glyph input, .mtm {
+                margin-top: .75em;
+            }
+
+        </style>
+
+        <section class="mtm clearfix" id="glyphs">
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-first"></span>
+                &nbsp;icomoon-first
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-last"></span>
+                &nbsp;icomoon-last
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-play"></span>
+                &nbsp;icomoon-play
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-fullscreen-exit"></span>
+                &nbsp;icomoon-fullscreen-exit
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-fullscreen"></span>
+                &nbsp;icomoon-fullscreen
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-iconmonstr-magnifier-6-icon"></span>
+                &nbsp;icomoon-iconmonstr-magnifier-6-icon
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-iconmonstr-magnifier-7-icon"></span>
+                &nbsp;icomoon-iconmonstr-magnifier-7-icon
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-document"></span>
+                &nbsp;icomoon-document
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-documents"></span>
+                &nbsp;icomoon-documents
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-reload-CW"></span>
+                &nbsp;icomoon-reload-CW
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-reload-CCW"></span>
+                &nbsp;icomoon-reload-CCW
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-list"></span>
+                &nbsp;icomoon-list
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-article"></span>
+                &nbsp;icomoon-article
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-book-alt2"></span>
+                &nbsp;icomoon-book-alt2
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-document-alt-stroke"></span>
+                &nbsp;icomoon-document-alt-stroke
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-zoom-in"></span>
+                &nbsp;icomoon-zoom-in
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-zoom-out"></span>
+                &nbsp;icomoon-zoom-out
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-triangle"></span>
+                &nbsp;icomoon-triangle
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-triangle-2"></span>
+                &nbsp;icomoon-triangle-2
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-grid"></span>
+                &nbsp;icomoon-grid
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-grid-view"></span>
+                &nbsp;icomoon-grid-view
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-scroll"></span>
+                &nbsp;icomoon-scroll
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-twitter"></span>
+                &nbsp;icomoon-twitter
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-pinterest"></span>
+                &nbsp;icomoon-pinterest
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-facebook"></span>
+                &nbsp;icomoon-facebook
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-bookmark"></span>
+                &nbsp;icomoon-bookmark
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-upload"></span>
+                &nbsp;icomoon-upload
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-download"></span>
+                &nbsp;icomoon-download
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-email"></span>
+                &nbsp;icomoon-email
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-feed"></span>
+                &nbsp;icomoon-feed
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-info-circle"></span>
+                &nbsp;icomoon-info-circle
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-locked"></span>
+                &nbsp;icomoon-locked
+            </span>
+            <span class="box1">
+                <span aria-hidden="true" class="icomoon-document-2"></span>
+                &nbsp;icomoon-document-2
+            </span>
+        </section>
+
+        <p>
+            This glyph set can be extended as necessary.
+        </p>
+
+        <h3>Adding an icon to a link</h3>
+        <p>
+            There are several ways to use the icon glyphs.
+            The core defines a Sass module that manages all the details of using one of the glyphs:
+        </p>
+        <pre class="example">
+    .endnotelink{
+      @include link-icon(";");
+      margin-right: 1em;
+      padding:.5em;
+    }
+        </pre>
+        <p>
+            Or, you can add the class supplied by IcoMoon:
+        </p>
+        <pre class="example">
+&lt;a class="endnotelink icomoon-download" href="..."&gt;Export EndNote&lt;/a&gt;
+        </pre>
+        <p>
+            Without using the Sass module and/or extending the element's classes, you'd
+            have to duplicate the full CSS with every element:
+        </p>
+        <pre class="example">
+    .endnotelink {
+        content: "; ";
+        font-family: 'icomoon';
+        font-style: normal;
+        speak: none;
+        font-weight: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        margin-right: 2px;
+        color: #666;
+        display: inline-block;
+        font-size: 110%;
+    }
+        </pre>
+
+    </div>
+</div>
+
+
+		<div class="navbar navbar-static-bottom navbar-inverse footer">
+		<div class="navbar-inner">
+			
+			<ul class="nav pull-right">
+				<li><a href="http://www.hathitrust.org/">Home</a></li>
+				<li><a href="http://www.hathitrust.org/about">About</a></li>
+				<li><a href="http://babel.hathitrust.org/cgi/mb">Collections</a></li>
+				<li><a href="http://www.hathitrust.org/help">Help</a></li>
+				<li><a href="#" data-m="ht" data-id="HathiTrust Project Unicorn Guide" data-toggle="feedback">Feedback</a></li>
+				<li><a href="http://m.hathitrust.org">Mobile</a></li>
+				<li><a href="http://www.hathitrust.org/take_down_policy">Take-Down Policy</a></li>
+				<li><a href="http://www.hathitrust.org/privacy">Privacy</a></li>
+				<li><a href="http://www.hathitrust.org/contact">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+</body>
+</html>

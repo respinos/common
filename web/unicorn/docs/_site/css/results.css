@@ -1,0 +1,152 @@
+.sidebar h3 {
+	border-bottom: 1px solid #ddd;
+}
+
+.sidebar label {
+	font-size: 13px;
+}
+
+#facetlist dt {
+	font-weight: bold;
+	margin-bottom: 3px;
+	margin-top: 16px;
+}
+
+#facetlist dt:first-child {
+	margin-top: 0;
+}
+
+#facetlist dd, #facetlist dt {
+	margin-left: 0;
+	margin-bottom: 4px;
+	line-height: 18px;
+}
+
+#facetlist dd {
+	color: #999;
+	margin-left: 16px;
+}
+
+.row.result {
+	position: relative;
+	margin-bottom: 16px;
+	padding-bottom: 8px;
+	padding-top: 8px;
+}
+
+.row.result h4 {
+	margin-left: 7.96813%;
+	margin-top: 0;
+	margin-bottom: 5px;
+	margin-bottom: 0.5rem;	
+	font-size: 16px;
+	font-weight: normal;
+	width: 60%;
+}
+
+.row.result h5 {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	font-size: 13px;
+}
+
+.row.result .cover, .row.result .select {
+  position: absolute;
+  top: 8px;
+  left: -15px;
+  left: -1.5rem;
+  text-align: right;
+}
+
+.select label {
+	display: inline-block;
+}
+
+/* line 27, ../sass/results2.scss */
+.row.result .in-collections {
+  font-size: 90%;
+  /*padding-left: 16px;
+  border-left: 1px solid #eee;*/
+  margin-top: -25px;
+}
+/* line 30, ../sass/results2.scss */
+.row.result .in-collections ul {
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-top: 0;
+  list-style: none;
+}
+
+.row.result .in-collections li {
+	margin-bottom: 4px;
+}
+
+/* line 37, ../sass/results2.scss */
+.row.result [class*="result-metadata-"] {
+  display: block;
+  font-size: 95%;
+  color: #666;
+}
+/* line 43, ../sass/results2.scss */
+.row.result .result-access-link {
+  margin-top: 10px;
+  margin-top: 1rem;
+}
+/* line 47, ../sass/results2.scss */
+.row.result .result-access-link ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 52, ../sass/results2.scss */
+.row.result .result-access-link ul li {
+  display: inline;
+  float: left;
+  margin-right: 20px;
+  margin-right: 2rem;
+}
+
+.result.alt {
+  background-color:#f6f4f1; /*#eee;*/
+}
+
+/* line 62, ../sass/results2.scss */
+.result [class*="span"] + [class*="pull-"] {
+  float: left;
+}
+
+/* line 82, ../sass/results2.scss */
+.push-1 {
+  margin-left: 8.36653%;
+}
+
+icomoon-info-circle:before {
+content: "?";
+}
+
+[class^="icomoon-"]:before, [class*=" icomoon-"]:before {
+font-family: 'icomoon';
+font-style: normal;
+speak: none;
+font-weight: normal;
+line-height: 1;
+-webkit-font-smoothing: antialiased;
+margin-right: 2px;
+    color: #666;
+    display: inline-block;
+    font-size: 110%;
+}
+
+dl.collection dd, dl.collection dt {
+	margin-left: 0;
+}
+
+dl.collection dd {
+	margin-bottom: 1.2em;
+}
+
+.col-featured img {
+	border: 2px solid #eee;
+	padding: 2px;
+	max-width: 100%;
+}

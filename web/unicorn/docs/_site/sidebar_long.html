@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>Long Sidebar Example | Project Unicorn Developer Guide</title>
+
+<!--[if lt IE 9]>
+<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="../common/unicorn/vendors/js/selectivizr.js" type="text/javascript"></script>
+<![endif]-->
+
+	<script type="text/javascript" src="/common/unicorn/vendors/headjs/dist/head.min.js"></script>
+	<script type="text/javascript" src="/common/unicorn/js/common.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/common/unicorn/css/common.css" />
+
+	
+
+
+<!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="/common/unicorn/css/ie7.css" />
+<![endif]-->
+
+	<!-- FOR DOCUMENTATION -->
+	<link rel="stylesheet" type="text/css" href="css/docs.css" />
+
+</head>
+<body>
+	<h1 class="offscreen">Long Sidebar Example | Project Unicorn Developer Guide</h1>
+
+		<!-- NAVBAR -->
+	<div class="navbar navbar-static-top navbar-inverse">
+		<div class="navbar-inner">
+			<ul id="nav" class="nav">
+				<li ><a href="http://www.hathitrust.org">Home</a></li>
+				<li><a href="http://www.hathitrust.org/about">About</a>
+					<ul>
+					<li><a href="http://www.hathitrust.org/partnership">Our Partnership</a></li>
+					<li><a href="http://www.hathitrust.org/digital_library">Our Digital Library</a></li>
+					<li><a href="http://www.hathitrust.org/htrc">Our Research Center</a></li>
+					<li><a href="http://www.hathitrust.org/news_publications">News &amp; Publications</a></li>
+					</ul></li>
+				<li><a href="http://babel.hathitrust.org/cgi/mb">Collections</a></li>
+				<li class="divider-vertical"></li>
+				<li class="help"><a href="http://www.hathitrust.org/help">Help</a></li>
+				<li><a href="#" data-m="ht" data-id="HathiTrust Project Unicorn Guide" data-toggle="feedback">Feedback</a></li>
+								<li class="divider-vertical"></li>
+				<li class="guidelines">
+					<a href="index.html">Guide/Examples</a>
+					<ul>
+						<li class="topic"><a href="overview.html">Techical Overview</a></li>
+						<li><a href="overview_sass.html">Developing with Sass</a></li>
+						<li><a href="overview_css.html">Developing with CSS</a></li>
+
+						<li class="topic"><span>Components</span></li>
+
+						<li><a href="howto_js.html">Javascript</a></li>
+						<li><a href="howto_feedback.html">Javascript: Feedback</a></li>
+						<li><a href="howto_icons.html">Icon Fonts</a></li>
+						<li><a href="howto_forms.html">Forms</a></li>
+						<li><a href="howto_grid.html">Grid/Layout</a></li>
+
+						<li class="topic"><span>Examples</span></li>
+
+						<li><a href="logged_in.html">Logged In Example</a></li>
+						<li><a href="no_header_search.html">Hiding Header Search</a></li>
+						<li><a href="sidebar.html">Sidebar Example</a></li>
+						<li><a href="search_results.html">Search Results Example</a></li>
+						<li><a href="sidebar_long.html">Long Sidebar Example</a></li>
+						<li><a href="mb.html">Collection Builder Results Example</a></li>
+						<li><a href="mb_detail.html">Collection Builder Detail Example</a></li>
+
+
+					</ul>
+				</li>
+
+			</ul>
+			
+		</div>
+	</div>
+	
+
+		<!-- HEADER -->
+	<div class="container centered header clearfix">
+		<div class="logo">
+			<a href="http://www.hathitrust.org"><span class="offscreen">HathiTrust Digital Library</span></a>
+		</div>
+		<div class="search-form">
+
+			<form action="/cgi/ls/one" method="GET">
+				<div class="search-tabs">
+					<input name="target" type="radio" id="option-full-text-search" value="ls" checked="checked" />
+					<label for="option-full-text-search" class="search-label-full-text">Full-text</label>
+					<input name="target" type="radio" id="option-catalog-search" value="catalog" />
+					<label for="option-catalog-search" class="search-label-catalog">Catalog</label>
+				</div>
+				<fieldset>
+					<input name="q1" type="text" class="search-input-text" placeholder="Search words about or within the items" value="" />
+					<div class="search-input-options">
+						<select size="1" class="search-input-select" name="searchtype">
+							<option value="all">Everything</option>
+							<option value="title">Title</option>
+							<option value="author">Author</option>
+							<option value="subject">Subject</option>
+							<option value="isbn">ISBN/ISSN</option>
+							<option value="publisher">Publisher</option>
+							<option value="seriestitle">Series Title</option>
+							<option value="pubyear">Publication Year</option>
+						</select>
+					</div>
+					<button class="button"><span class="offscreen">Search</span></button>
+				</fieldset>
+				<div class="search-extra-options">
+					<ul class="search-links">
+						<li class="search-advanced-link"><a href="#">Advanced full-text search</a></li>
+						<li class="search-catalog-link"><a href="#">Advanced catalog search</a></li>
+						<li><a href="#">Search tips</a></li>
+					</ul>
+					<label>
+						<input type="checkbox" value="ft" />
+						Full view only
+					</label>
+				</div>
+			</form>
+
+		</div>
+		<div class="login">
+			
+			<a href="#" id="login-button" class="button log-in">LOG IN</a>
+			
+		</div>
+	</div>
+
+	<div class="container page centered">
+	<div class="sidebar">
+		      <div class="narrowList navmenu" id="narrowList">
+      <h2>Refine Search</h2>
+        <div class="narrowList navmenu narrow_begin" id="facet_begin_Viewability">
+    <h3>Viewability</h3>
+    <ul>
+                <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=ht_availability%3ASearch%20only&amp;use_dismax=1">Limited (search-only)</a> <span dir="ltr">(14)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=ht_availability%3AFull%20text&amp;use_dismax=1">Full view</a> <span dir="ltr">(1)</span></li>
+          </ul>
+</div>
+<div class="narrowList navmenu narrow_begin" id="facet_begin_Subject">
+    <h3>Subject</h3>
+    <ul>
+                <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AWombats&amp;use_dismax=1">Wombats</a> <span dir="ltr">(5)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AEngland&amp;use_dismax=1">England</a> <span dir="ltr">(2)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AEngland%20Civilization%2019th%20century&amp;use_dismax=1">England Civilization 19th century</a> <span dir="ltr">(2)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AAnimals&amp;use_dismax=1">Animals</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AAnimals%20Anecdotes&amp;use_dismax=1">Animals Anecdotes</a> <span dir="ltr">(1)</span></li>
+                        <li id="more_topicStr"><a href="" onclick="showThese('topicStr'); return false;"><em>more...</em></a></li>
+        </ul></div>
+        <div class="narrowList navmenu narrow_end" id="facet_end_topicStr">
+          <ul>
+            <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AAustralia&amp;use_dismax=1">Australia</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AAustralia%20Fiction&amp;use_dismax=1">Australia Fiction</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3ADroughts&amp;use_dismax=1">Droughts</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3ADroughts%20Australia&amp;use_dismax=1">Droughts Australia</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AEnglish%20fiction&amp;use_dismax=1">English fiction</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AExotic%20animal%20owners&amp;use_dismax=1">Exotic animal owners</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AExotic%20animal%20owners%20England%20London%20History%2019th%20century&amp;use_dismax=1">Exotic animal owners England London History 19th century</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AHerbivores&amp;use_dismax=1">Herbivores</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AHerbivores%20Nutrition&amp;use_dismax=1">Herbivores Nutrition</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AKangaroos&amp;use_dismax=1">Kangaroos</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AKangaroos%20Food&amp;use_dismax=1">Kangaroos Food</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AMarsupials&amp;use_dismax=1">Marsupials</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AMarsupials%20Australia&amp;use_dismax=1">Marsupials Australia</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3APlants%2C%20Effect%20of%20drought%20on&amp;use_dismax=1">Plants, Effect of drought on</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3ARabbits&amp;use_dismax=1">Rabbits</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3ARabbits%20Food&amp;use_dismax=1">Rabbits Food</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3ARossetti%2C%20Dante%20Gabriel&amp;use_dismax=1">Rossetti, Dante Gabriel</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3ARossetti%2C%20Dante%20Gabriel%2C%201828-1882%20Friends%20and%20associates&amp;use_dismax=1">Rossetti, Dante Gabriel, 1828-1882 Friends and associates</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AVertebrate%20pests&amp;use_dismax=1">Vertebrate pests</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AVertebrate%20pests%20Australia%20Abstracts&amp;use_dismax=1">Vertebrate pests Australia Abstracts</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AVertebrate%20pests%20Australia%20Bibliography&amp;use_dismax=1">Vertebrate pests Australia Bibliography</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AVertebrate%20pests%20Control%20Australia%20Abstracts&amp;use_dismax=1">Vertebrate pests Control Australia Abstracts</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AVertebrate%20pests%20Control%20Australia%20Bibliography&amp;use_dismax=1">Vertebrate pests Control Australia Bibliography</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AVeterinary%20medicine&amp;use_dismax=1">Veterinary medicine</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=topicStr%3AVeterinary%20medicine%20Australia%20Congresses&amp;use_dismax=1">Veterinary medicine Australia Congresses</a> <span dir="ltr">(1)</span></li>
+                <li><a href="#" onclick="hideThese('topicStr'); return false;"><em>less...</em></a></li>
+          </ul>
+</div>
+<div class="narrowList navmenu narrow_begin" id="facet_begin_Author">
+    <h3>Author</h3>
+    <ul>
+                <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3ARoberts%2C%20Charles%20George%20Douglas%2C%20Sir%2C%201860-1943&amp;use_dismax=1">Roberts, Charles George Douglas, Sir, 1860-1943</a> <span dir="ltr">(2)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3AWatson%2C%20Francis%2C%201907-&amp;use_dismax=1">Watson, Francis, 1907-</a> <span dir="ltr">(2)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3AAdams%2C%20Graham&amp;use_dismax=1">Adams, Graham</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3ACuppy%2C%20Will%2C%201884-1949&amp;use_dismax=1">Cuppy, Will, 1884-1949</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3ADierenfeld%2C%20Ellen%20Sue%2C%201956-&amp;use_dismax=1">Dierenfeld, Ellen Sue, 1956-</a> <span dir="ltr">(1)</span></li>
+                        <li id="more_authorStr"><a href="" onclick="showThese('authorStr'); return false;"><em>more...</em></a></li>
+        </ul></div>
+        <div class="narrowList navmenu narrow_end" id="facet_end_authorStr">
+          <ul>
+            <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3AGiordano%2C%20Ralph%2C%201923-&amp;use_dismax=1">Giordano, Ralph, 1923-</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3ALindeman%2C%20Michael&amp;use_dismax=1">Lindeman, Michael</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3ALindsay%2C%20Norman%2C%201879-1969&amp;use_dismax=1">Lindsay, Norman, 1879-1969</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3AOrchard%2C%20Fiona&amp;use_dismax=1">Orchard, Fiona</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3APacey%2C%20Desmond%2C%201917-1975&amp;use_dismax=1">Pacey, Desmond, 1917-1975</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3APaterson%2C%20A.%20B.%201864-1941&amp;use_dismax=1">Paterson, A. B. 1864-1941</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3APridmore%2C%20P.%20A.%201947-&amp;use_dismax=1">Pridmore, P. A. 1947-</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3APrimary%20Industries%20Research%20Victoria&amp;use_dismax=1">Primary Industries Research Victoria</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3APugh%2C%20Clifton%20Ernest%2C%201924-&amp;use_dismax=1">Pugh, Clifton Ernest, 1924-</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3ASimons%2C%20John%2C%201955-&amp;use_dismax=1">Simons, John, 1955-</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3ASmith%2C%20Ivan&amp;use_dismax=1">Smith, Ivan</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3ATriggs%2C%20Barbara&amp;use_dismax=1">Triggs, Barbara</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3AVictoria.%20Vertebrate%20Pest%20Research%20Unit&amp;use_dismax=1">Victoria. Vertebrate Pest Research Unit</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3AWalker%2C%20William%20Sylvester&amp;use_dismax=1">Walker, William Sylvester</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=authorStr%3AWells%2C%20R.%20T.%201941-&amp;use_dismax=1">Wells, R. T. 1941-</a> <span dir="ltr">(1)</span></li>
+                <li><a href="#" onclick="hideThese('authorStr'); return false;"><em>less...</em></a></li>
+          </ul>
+</div>
+<div class="narrowList navmenu narrow_begin" id="facet_begin_Language">
+    <h3>Language</h3>
+    <ul>
+                <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=language%3AEnglish&amp;use_dismax=1">English</a> <span dir="ltr">(14)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=language%3AGerman&amp;use_dismax=1">German</a> <span dir="ltr">(1)</span></li>
+          </ul>
+</div>
+<div class="narrowList navmenu narrow_begin" id="facet_begin_Place_of_Publication">
+    <h3>Place of Publication</h3>
+    <ul>
+                <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=countryOfPubStr%3AAustralia&amp;use_dismax=1">Australia</a> <span dir="ltr">(4)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=countryOfPubStr%3AEngland&amp;use_dismax=1">England</a> <span dir="ltr">(4)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=countryOfPubStr%3AUnited%20Kingdom&amp;use_dismax=1">United Kingdom</a> <span dir="ltr">(4)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=countryOfPubStr%3ACanada&amp;use_dismax=1">Canada</a> <span dir="ltr">(2)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=countryOfPubStr%3ANo%20place%2C%20unknown%2C%20or%20undetermined&amp;use_dismax=1">No place, unknown, or undetermined</a> <span dir="ltr">(2)</span></li>
+                        <li id="more_countryOfPubStr"><a href="" onclick="showThese('countryOfPubStr'); return false;"><em>more...</em></a></li>
+        </ul></div>
+        <div class="narrowList navmenu narrow_end" id="facet_end_countryOfPubStr">
+          <ul>
+            <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=countryOfPubStr%3AUnited%20States&amp;use_dismax=1">United States</a> <span dir="ltr">(2)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=countryOfPubStr%3AGermany&amp;use_dismax=1">Germany</a> <span dir="ltr">(1)</span></li>
+                <li><a href="#" onclick="hideThese('countryOfPubStr'); return false;"><em>less...</em></a></li>
+          </ul>
+</div>
+<div class="narrowList navmenu narrow_begin" id="facet_begin_Date_of_Publication">
+    <h3>Date of Publication</h3>
+    <ul>
+                <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1970-1979&amp;use_dismax=1">1970-1979</a> <span dir="ltr">(4)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1980-1989&amp;use_dismax=1">1980-1989</a> <span dir="ltr">(4)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1990-1999&amp;use_dismax=1">1990-1999</a> <span dir="ltr">(3)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1974&amp;use_dismax=1">1974</a> <span dir="ltr">(2)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1985&amp;use_dismax=1">1985</a> <span dir="ltr">(2)</span></li>
+                        <li id="more_publishDateRange"><a href="" onclick="showThese('publishDateRange'); return false;"><em>more...</em></a></li>
+        </ul></div>
+        <div class="narrowList navmenu narrow_end" id="facet_end_publishDateRange">
+          <ul>
+            <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A2000-2009&amp;use_dismax=1">2000-2009</a> <span dir="ltr">(2)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1890-1899&amp;use_dismax=1">1890-1899</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1899&amp;use_dismax=1">1899</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1940-1949&amp;use_dismax=1">1940-1949</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1949&amp;use_dismax=1">1949</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1971&amp;use_dismax=1">1971</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1972&amp;use_dismax=1">1972</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1984&amp;use_dismax=1">1984</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1988&amp;use_dismax=1">1988</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1997&amp;use_dismax=1">1997</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1998&amp;use_dismax=1">1998</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A1999&amp;use_dismax=1">1999</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A2004&amp;use_dismax=1">2004</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=publishDateRange%3A2008&amp;use_dismax=1">2008</a> <span dir="ltr">(1)</span></li>
+                <li><a href="#" onclick="hideThese('publishDateRange'); return false;"><em>less...</em></a></li>
+          </ul>
+</div>
+<div class="narrowList navmenu narrow_begin" id="facet_begin_Original_Format">
+    <h3>Original Format</h3>
+    <ul>
+                <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=format%3ABook&amp;use_dismax=1">Book</a> <span dir="ltr">(15)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=format%3AConference&amp;use_dismax=1">Conference</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=format%3AVideo%20%28DVD%29&amp;use_dismax=1">Video (DVD)</a> <span dir="ltr">(1)</span></li>
+          </ul>
+</div>
+<div class="narrowList navmenu narrow_begin" id="facet_begin_Original_Location">
+    <h3>Original Location</h3>
+    <ul>
+                <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=htsource%3AUniversity%20of%20Michigan&amp;use_dismax=1">University of Michigan</a> <span dir="ltr">(6)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=htsource%3ACornell%20University&amp;use_dismax=1">Cornell University</a> <span dir="ltr">(4)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=htsource%3AUniversity%20of%20California&amp;use_dismax=1">University of California</a> <span dir="ltr">(2)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=htsource%3AIndiana%20University&amp;use_dismax=1">Indiana University</a> <span dir="ltr">(1)</span></li>
+                      <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=htsource%3ANew%20York%20Public%20Library&amp;use_dismax=1">New York Public Library</a> <span dir="ltr">(1)</span></li>
+                        <li id="more_htsource"><a href="" onclick="showThese('htsource'); return false;"><em>more...</em></a></li>
+        </ul></div>
+        <div class="narrowList navmenu narrow_end" id="facet_end_htsource">
+          <ul>
+            <li><a href="http://catalog.hathitrust.org/Search/Home?type%5B%5D=all&amp;lookfor%5B%5D=wombat&amp;filter%5B%5D=htsource%3AUniversity%20of%20Wisconsin&amp;use_dismax=1">University of Wisconsin</a> <span dir="ltr">(1)</span></li>
+                <li><a href="#" onclick="hideThese('htsource'); return false;"><em>less...</em></a></li>
+          </ul>
+</div>
+      </div>
+	</div>
+	<div class="main">
+		<h2>Sidebar Example</h2>
+		<p>
+			The border is defined on the <tt>sidebar</tt> element. Because the blocks have
+			<tt>display: table-cell</tt> the sidebar is always as tall as the containing 
+			<tt>div</tt>, and the border always stretches the full height.
+		</p>
+		<p>
+			This particular sidebar is the HTML copied from the current HathiTrust catalog.
+		</p>
+	</div>
+</div>
+
+
+		<div class="navbar navbar-static-bottom navbar-inverse footer">
+		<div class="navbar-inner">
+			
+			<ul class="nav pull-right">
+				<li><a href="http://www.hathitrust.org/">Home</a></li>
+				<li><a href="http://www.hathitrust.org/about">About</a></li>
+				<li><a href="http://babel.hathitrust.org/cgi/mb">Collections</a></li>
+				<li><a href="http://www.hathitrust.org/help">Help</a></li>
+				<li><a href="#" data-m="ht" data-id="HathiTrust Project Unicorn Guide" data-toggle="feedback">Feedback</a></li>
+				<li><a href="http://m.hathitrust.org">Mobile</a></li>
+				<li><a href="http://www.hathitrust.org/take_down_policy">Take-Down Policy</a></li>
+				<li><a href="http://www.hathitrust.org/privacy">Privacy</a></li>
+				<li><a href="http://www.hathitrust.org/contact">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+</body>
+</html>

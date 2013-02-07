@@ -1,0 +1,169 @@
+---
+layout: default
+title: Homepage (Logged In)
+body_class: no-search
+extra_css: /common/unicorn/css/homepage.css
+is_home: true
+logged_in: true
+---
+    <!-- HOME PAGE CENTER CONTENT -->
+
+    <div id="search-login" class="clearfix container centered">
+        <div class="search-form">
+            <div id="search" class="page">
+
+              <form action="/cgi/ls/one" method="GET" class="clearfix">
+                <div class="search-tabs">
+                    <h2>Search HathiTrust’s digital library</h2>
+                  <input name="target" type="radio" id="option-full-text-search" value="ls" checked="checked" />
+                  <label for="option-full-text-search" class="search-label-full-text">Full-text</label>
+                  <input name="target" type="radio" id="option-catalog-search" value="catalog" />
+                  <label for="option-catalog-search" class="search-label-catalog">Catalog</label>
+                </div>
+                <fieldset>
+                  <input type="text" class="search-input-text" placeholder="Search words about or within the items" value="" />
+                  <div class="search-input-options">
+                    <select size="1" class="search-input-select">
+                      <option value="all">Everything</option>
+                      <option value="title">Title</option>
+                      <option value="author">Author</option>
+                      <option value="subject">Subject</option>
+                      <option value="isbn">ISBN/ISSN</option>
+                      <option value="publisher">Publisher</option>
+                      <option value="seriestitle">Series Title</option>
+                      <option value="pubyear">Publication Year</option>
+                    </select>
+                  </div>
+                  <button class="button search"><span>Search</span></button>
+                </fieldset>
+                <div class="search-extra-options">
+                  <ul class="search-links">
+                    <li class="search-advanced-link"><a href="#">Advanced full-text search</a></li>
+                    <li class="search-catalog-link"><a href="#">Advanced catalog search</a></li>
+                    <li><a href="#">Search tips</a></li>
+                  </ul>
+                  <label style="float: right; margin-right: 2%">
+                    <input type="checkbox" value="ft" checked="checked" />
+                    Full view only
+                  </label>
+                </div>
+              </form>
+
+              <p class="what-to-search-hint">
+                <a href="#">Should I search catalog or full-text?</a>
+              </p>
+
+            </div>
+        </div>
+        <div class="login-banner logged-in">
+            <div>
+                <h2>Hello, <span class="username">zoe.olivia.conchita.marguarita.conseulo.juniper.may!</span></h2>
+                <p>You are logged in, which ensures you get the most out of HathiTrust.</p>
+                <p><a href="/">More info&nbsp;&raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="options" class="container centered clearfix">
+        <div class="blurb">
+            <p>
+                HathiTrust is a shared <a href="#">digital library</a>
+                containing millions of titles from<br />
+                over 60 <a href="#">academic &amp;
+                <br />public institutions.</a>
+            </p>
+            <p class="challenge">
+                What can you do with HathiTrust?
+            </p>
+        </div>
+        <div id="stripes">
+            <div id="arrow">
+            </div>
+            <div class="feature">
+                <div>
+                    <a href="#" class="browse">Browse collections</a>
+                    <p>Browse the library by exploring its <a href="#">featured collections</a>.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div>
+                    <a href="#" class="online">Read books online</a>
+                    <p>Read millions of titles online &mdash; <a href="#">like this one</a>!</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div>
+                    <a href="#" class="mobile">Read books on the go</a>
+                    <p>Take the library&rsquo;s books anywhere with our <a href="#">mobile interface</a>.</p>
+                </div>
+            </div>
+            <div class="feature download">
+                <div>
+                    <span class="task">Download books* &amp; create collections</span>
+                    <span class="footnote">*requires institutional login</span>
+                    <br clear="both"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEWS FOOTER -->
+
+    <div id="news-projects">
+        <h2 class="offscreen">News and Projects</h2>
+        <div class="news-inner">
+            <div class="left">
+                <h3 class="headline">There's even more you can do with HathiTrust</h3>
+                <div class="row">
+                    <div class="span5">
+                        <p class="bold">
+                            HathiTrust can help with specialized research
+                        </p>
+                        <p>The <a href="#">HathiTrust Research Center</a>
+                            helps researchers meet the 
+                            technical challenges of dealing
+                            with massive amounts of digital
+                            text.
+                        </p>
+                    </div>
+                    <div class="span6">
+                        <p class="bold">
+                            Another item here
+                        </p>
+                        <p>
+                            Talk about this other project or initiative.
+                        </p>
+                    </div>
+                </div>
+                <br clear="both" />
+                <p style="float: right; width: 25%; text-align: right; margin-right: 48px" class="clearfix">
+                    <a href="#">More Projects &amp; Initiatives &raquo;</a>
+                </p>
+            </div>
+            <div class="right">
+                <div class="row">
+                    <h3 class="headline">Latest tweets from HathiTrust</h3>
+                    <div class="latest-tweet span7">
+                        <p>
+                            <a href="#">@brevtruba</a> HathiTrust volume statistics are back!
+                            <span class="timestamp">12 Nov</span>
+                        </p>
+                        <a href="#">more from @HathiTrust on Twitter &raquo;</a>
+                    </div>
+                    <div class="social span3">
+                        <p class="buttons">
+                            <a href="http://twitter.com/HathiTrust/" class="twitter-link icomoon-twitter"><span>Twitter</span></a>&nbsp;
+                            <a href="http://pinterest.com/hathitrust/" class="pinterest-link icomoon-pinterest"><span>Pinterest</span></a>&nbsp;
+                            <a href="http://www.facebook.com/hathitrust" class="facebook-link icomoon-facebook"><span>Facebook</span></a>&nbsp;
+                        </p>
+                        <p>
+                            Want to know what else is new with HathiTrust?
+                        </p>
+                        <p>
+                            <a href="#">Read more in News &amp; Publications &raquo;</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

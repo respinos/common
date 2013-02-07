@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>Techical Overview | Project Unicorn Developer Guide</title>
+
+<!--[if lt IE 9]>
+<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="../common/unicorn/vendors/js/selectivizr.js" type="text/javascript"></script>
+<![endif]-->
+
+	<script type="text/javascript" src="/common/unicorn/vendors/headjs/dist/head.min.js"></script>
+	<script type="text/javascript" src="/common/unicorn/js/common.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/common/unicorn/css/common.css" />
+
+	
+
+
+<!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="/common/unicorn/css/ie7.css" />
+<![endif]-->
+
+	<!-- FOR DOCUMENTATION -->
+	<link rel="stylesheet" type="text/css" href="css/docs.css" />
+
+</head>
+<body>
+	<h1 class="offscreen">Techical Overview | Project Unicorn Developer Guide</h1>
+
+		<!-- NAVBAR -->
+	<div class="navbar navbar-static-top navbar-inverse">
+		<div class="navbar-inner">
+			<ul id="nav" class="nav">
+				<li ><a href="http://www.hathitrust.org">Home</a></li>
+				<li><a href="http://www.hathitrust.org/about">About</a>
+					<ul>
+					<li><a href="http://www.hathitrust.org/partnership">Our Partnership</a></li>
+					<li><a href="http://www.hathitrust.org/digital_library">Our Digital Library</a></li>
+					<li><a href="http://www.hathitrust.org/htrc">Our Research Center</a></li>
+					<li><a href="http://www.hathitrust.org/news_publications">News &amp; Publications</a></li>
+					</ul></li>
+				<li><a href="http://babel.hathitrust.org/cgi/mb">Collections</a></li>
+				<li class="divider-vertical"></li>
+				<li class="help"><a href="http://www.hathitrust.org/help">Help</a></li>
+				<li><a href="#" data-m="ht" data-id="HathiTrust Project Unicorn Guide" data-toggle="feedback">Feedback</a></li>
+								<li class="divider-vertical"></li>
+				<li class="guidelines">
+					<a href="index.html">Guide/Examples</a>
+					<ul>
+						<li class="topic"><a href="overview.html">Techical Overview</a></li>
+						<li><a href="overview_sass.html">Developing with Sass</a></li>
+						<li><a href="overview_css.html">Developing with CSS</a></li>
+
+						<li class="topic"><span>Components</span></li>
+
+						<li><a href="howto_js.html">Javascript</a></li>
+						<li><a href="howto_feedback.html">Javascript: Feedback</a></li>
+						<li><a href="howto_icons.html">Icon Fonts</a></li>
+						<li><a href="howto_forms.html">Forms</a></li>
+						<li><a href="howto_grid.html">Grid/Layout</a></li>
+
+						<li class="topic"><span>Examples</span></li>
+
+						<li><a href="logged_in.html">Logged In Example</a></li>
+						<li><a href="no_header_search.html">Hiding Header Search</a></li>
+						<li><a href="sidebar.html">Sidebar Example</a></li>
+						<li><a href="search_results.html">Search Results Example</a></li>
+						<li><a href="sidebar_long.html">Long Sidebar Example</a></li>
+						<li><a href="mb.html">Collection Builder Results Example</a></li>
+						<li><a href="mb_detail.html">Collection Builder Detail Example</a></li>
+
+
+					</ul>
+				</li>
+
+			</ul>
+			
+		</div>
+	</div>
+	
+
+		<!-- HEADER -->
+	<div class="container centered header clearfix">
+		<div class="logo">
+			<a href="http://www.hathitrust.org"><span class="offscreen">HathiTrust Digital Library</span></a>
+		</div>
+		<div class="search-form">
+
+			<form action="/cgi/ls/one" method="GET">
+				<div class="search-tabs">
+					<input name="target" type="radio" id="option-full-text-search" value="ls" checked="checked" />
+					<label for="option-full-text-search" class="search-label-full-text">Full-text</label>
+					<input name="target" type="radio" id="option-catalog-search" value="catalog" />
+					<label for="option-catalog-search" class="search-label-catalog">Catalog</label>
+				</div>
+				<fieldset>
+					<input name="q1" type="text" class="search-input-text" placeholder="Search words about or within the items" value="" />
+					<div class="search-input-options">
+						<select size="1" class="search-input-select" name="searchtype">
+							<option value="all">Everything</option>
+							<option value="title">Title</option>
+							<option value="author">Author</option>
+							<option value="subject">Subject</option>
+							<option value="isbn">ISBN/ISSN</option>
+							<option value="publisher">Publisher</option>
+							<option value="seriestitle">Series Title</option>
+							<option value="pubyear">Publication Year</option>
+						</select>
+					</div>
+					<button class="button"><span class="offscreen">Search</span></button>
+				</fieldset>
+				<div class="search-extra-options">
+					<ul class="search-links">
+						<li class="search-advanced-link"><a href="#">Advanced full-text search</a></li>
+						<li class="search-catalog-link"><a href="#">Advanced catalog search</a></li>
+						<li><a href="#">Search tips</a></li>
+					</ul>
+					<label>
+						<input type="checkbox" value="ft" />
+						Full view only
+					</label>
+				</div>
+			</form>
+
+		</div>
+		<div class="login">
+			
+			<a href="#" id="login-button" class="button log-in">LOG IN</a>
+			
+		</div>
+	</div>
+
+	<div class="container page centered">
+    <div class="main">
+        <h2>Techical Overview</h2>
+        <p>
+            The Unicorn Design is a set of stylesheets, fonts, and Javascript to 
+            define the common elements across HathiTrust properties.
+            These are maintained in the Git repo <tt>/htapps/repos/common.git</tt>, 
+            under the path <tt>common/web/unicorn</tt>.
+        </p>
+        <p>
+            When deployed, these elements can be linked with URLs like:
+            <tt>//babel.hathitrust.org/common/unicorn/css/common.css</tt> 
+            (protocol-less to simplify http vs. https handling).
+        </p>
+        <div class="note">
+            <p>Does anyone think linking to the common stylesheet from 
+                <tt>babel.hathitrust.org</tt> introduce any issues?
+            </p>
+        </div>
+        <dl>
+            <dt><a href="overview_sass.html">Developing with Sass</a></dt>
+            <dd>
+                <p>
+                    The stylesheets are being managed with the a combination of 
+                    <a href="http://sass-lang.com/">Sass</a>, 
+                    <a href="http://compass-style.org">Compass</a>,
+                    and <a href="http://susy.oddbird.net">Susy</a>. Sass sets up 
+                    a number of conveniences that make it easier to develop/extend
+                    complex designs and then generating compact, production-ready 
+                    CSS.
+                </p>
+            </dd>
+            <dt><a href="overview_css.html">Developing with CSS</a></dt>
+            <dd>
+                <p>
+                    In environments were its simpler to modify CSS, developers
+                    can link to the generated CSS and simply add/extend classes
+                    as necessary.
+                </p>
+            </dd>
+            <dt><a href="howto_icons.html">Icon Fonts</a></dt>
+            <dd>
+                <p>
+                    Small graphic files have been replaced with using glyphs from a custom icon font. Icon fonts have a number of advantages over graphic files chiefly in how they can be
+                    styled and respond to the user scaling the browser text.
+                </p>
+            </dd>
+            <dt><a href="howto_js.html">Javascript</a></dt>
+            <dd>
+                <p>
+                    A small number of common Javascript widgets are provided by the Unicorn Design. Most have been borrowed from Bootstrap, with HathiTrust styling.
+                </p>
+            </dd>
+            <dt><a href="howto_grid.html">Grid/Layout</a></dt>
+            <dd>
+                <p>
+                    The core Unicorn style will define a grid layout.
+                </p>
+            </dd>
+        </dl>
+
+        <h2>Vendors</h2>
+        <p>
+            External resources are being maintained in <tt>common/web/unicorn/vendors</tt> to 
+            keep them isolated from any local development.
+            These are <em>not</em> submodules; most of the external resources are actually 
+            generated byproducts, not source.
+        </p>
+    </div>
+</div>
+
+
+		<div class="navbar navbar-static-bottom navbar-inverse footer">
+		<div class="navbar-inner">
+			
+			<ul class="nav pull-right">
+				<li><a href="http://www.hathitrust.org/">Home</a></li>
+				<li><a href="http://www.hathitrust.org/about">About</a></li>
+				<li><a href="http://babel.hathitrust.org/cgi/mb">Collections</a></li>
+				<li><a href="http://www.hathitrust.org/help">Help</a></li>
+				<li><a href="#" data-m="ht" data-id="HathiTrust Project Unicorn Guide" data-toggle="feedback">Feedback</a></li>
+				<li><a href="http://m.hathitrust.org">Mobile</a></li>
+				<li><a href="http://www.hathitrust.org/take_down_policy">Take-Down Policy</a></li>
+				<li><a href="http://www.hathitrust.org/privacy">Privacy</a></li>
+				<li><a href="http://www.hathitrust.org/contact">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+</body>
+</html>

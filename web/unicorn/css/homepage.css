@@ -1,0 +1,586 @@
+/* lets me easily translate font-sizes from mockup */
+/* Fixed layout for home page */
+/* line 9, ../sass/homepage.scss */
+div.wrapper {
+  margin: 20px auto;
+  padding: 20px;
+  min-width: 920px;
+  width: 90%;
+}
+
+/* line 16, ../sass/homepage.scss */
+.navbar-inner {
+  width: 950px ;
+  width: 95rem ;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 23, ../sass/homepage.scss */
+.container.centered {
+  width: 950px ;
+  width: 95rem ;
+  min-width: auto;
+}
+
+/* line 28, ../sass/homepage.scss */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 33, ../sass/homepage.scss */
+.container.header {
+  padding-bottom: 0;
+}
+
+/* line 39, ../sass/homepage.scss */
+.navbar-inner {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 44, ../sass/homepage.scss */
+#search-login {
+  margin-bottom: -20px ;
+  margin-bottom: -2rem ;
+  padding: 0;
+  padding-top: 10px ;
+  padding-top: 1rem ;
+}
+/* line 50, ../sass/homepage.scss */
+#search-login .search-form {
+  padding-left: 0;
+}
+/* line 55, ../sass/homepage.scss */
+#search-login #search {
+  margin: 0;
+  padding: 40px ;
+  padding: 4rem ;
+  line-height: 25px ;
+  line-height: 2.5rem ;
+  width: 98%;
+}
+/* line 63, ../sass/homepage.scss */
+#search-login #search h1 {
+  font-size: 22px ;
+  font-size: 2.2rem ;
+  font-weight: bold;
+}
+/* line 68, ../sass/homepage.scss */
+#search-login #search h2 {
+  font-size: 20px ;
+  font-size: 2rem ;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: -25.5px ;
+  top: -2.55rem ;
+  display: inline-block;
+  float: left;
+  color: #4F4F4F;
+}
+/* line 79, ../sass/homepage.scss */
+#search-login #search p {
+  margin-bottom: 5px ;
+  margin-bottom: 0.5rem ;
+  font-size: 14px ;
+  font-size: 1.4rem ;
+  line-height: 15px ;
+  line-height: 1.5rem ;
+}
+/* line 85, ../sass/homepage.scss */
+#search-login #search .search-tabs {
+  width: 82%;
+  margin-bottom: -4px;
+}
+/* line 90, ../sass/homepage.scss */
+#search-login #search form {
+  position: relative;
+}
+/* line 94, ../sass/homepage.scss */
+#search-login #search .what-to-search-hint {
+  color: #6d6d6d;
+  text-align: right;
+  font-style: italic;
+  margin-top: 25px ;
+  margin-top: 2.5rem ;
+  font-size: 12px ;
+  font-size: 1.2rem ;
+}
+/* line 101, ../sass/homepage.scss */
+#search-login #search .what-to-search-hint a {
+  padding-left: 18px;
+  background: url("../img/homepage/hint.png") no-repeat 0% center;
+}
+/* line 107, ../sass/homepage.scss */
+#search-login #search fieldset {
+  width: 83%;
+  background: #fff;
+  z-index: 10;
+}
+/* line 112, ../sass/homepage.scss */
+#search-login #search fieldset button.button {
+  position: absolute;
+  top: -6px;
+  right: -131px ;
+  right: -13.1rem ;
+  bottom: 0;
+  display: inline-block;
+  height: 40px ;
+  height: 4rem ;
+  width: 125px ;
+  width: 12.5rem ;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: 16px;
+  background: dimgrey url("../img/search.png") no-repeat 95% center;
+  /*png24*/
+  z-index: 0;
+}
+/* line 133, ../sass/homepage.scss */
+#search-login #search fieldset button.button:hover {
+  background-color: #848383;
+}
+/* line 141, ../sass/homepage.scss */
+#search-login #search .search-extra-options {
+  width: 100%;
+}
+/* line 147, ../sass/homepage.scss */
+#search-login .login-banner {
+  display: table-cell;
+  vertical-align: top;
+  width: 140px ;
+  width: 14rem ;
+  background: rgba(253, 209, 22, 0.2);
+  border-top: none;
+  position: relative !important;
+}
+/* line 157, ../sass/homepage.scss */
+#search-login .login-banner div {
+  padding: 10px 20px;
+  min-height: 260px ;
+  min-height: 26rem ;
+  width: 140px ;
+  width: 14rem ;
+}
+/* line 163, ../sass/homepage.scss */
+#search-login .login-banner h2 {
+  margin-bottom: 5px;
+  color: #3a3938;
+  font-size: 1.4em;
+  font-weight: bold;
+  line-height: 1.3em;
+}
+/* line 170, ../sass/homepage.scss */
+#search-login .login-banner h2 .username {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+/* line 179, ../sass/homepage.scss */
+#search-login .login-banner p {
+  margin-bottom: 5px;
+  color: #525152;
+  font-size: 1.2em;
+  line-height: 1.4em;
+}
+/* line 185, ../sass/homepage.scss */
+#search-login .login-banner p a {
+  color: #924a0b;
+  /* different link color on yellow for contrast */
+}
+/* line 188, ../sass/homepage.scss */
+#search-login .login-banner p a:hover {
+  color: #d56d11;
+  border: none;
+}
+/* line 200, ../sass/homepage.scss */
+#search-login .not-logged-in:before {
+  content: "";
+  display: block;
+  position: absolute;
+  padding: 0;
+  width: 0;
+  height: 0;
+  left: 0;
+  bottom: 100%;
+  border-bottom: 34px solid rgba(253, 209, 22, 0.2);
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+}
+
+/* line 216, ../sass/homepage.scss */
+#options {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+}
+/* line 222, ../sass/homepage.scss */
+#options .blurb {
+  font-size: 16px ;
+  font-size: 1.6rem ;
+  z-index: 1000;
+  width: 29%;
+  padding-left: 20px ;
+  padding-left: 2rem ;
+  display: table-cell;
+  vertical-align: top;
+}
+/* line 232, ../sass/homepage.scss */
+#options .blurb p {
+  margin-top: 4px ;
+  margin-top: 0.4rem ;
+}
+/* line 236, ../sass/homepage.scss */
+#options .blurb p:first-child {
+  margin-top: 0;
+  margin-bototm: 10px ;
+  margin-bototm: 1rem ;
+}
+/* line 241, ../sass/homepage.scss */
+#options .blurb .challenge {
+  font-size: 12px ;
+  font-size: 1.2rem ;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: bold;
+  color: #4F4F4F;
+}
+/* line 251, ../sass/homepage.scss */
+#options #stripes {
+  display: table-cell;
+  vertical-align: top;
+  margin-top: 0;
+  padding: 0;
+  background: #f9f8f5 url("../img/homepage/stripes.png");
+}
+/* line 260, ../sass/homepage.scss */
+#options #stripes .feature {
+  width: 18.63636%;
+  float: left;
+  margin-right: 2.27273%;
+  display: inline;
+  min-height: 90px;
+  height: 75px;
+  padding: 18px 0;
+  margin-right: 1.1%;
+}
+/* line 267, ../sass/homepage.scss */
+#options #stripes .feature div {
+  width: 140px;
+}
+/* line 271, ../sass/homepage.scss */
+#options #stripes .feature p {
+  padding: 5px 3px;
+  font-size: 1.2em;
+  color: #424242;
+  line-height: 1.2em;
+  text-align: center;
+  width: 110px ;
+  width: 11rem ;
+  margin-top: 0;
+}
+/* line 283, ../sass/homepage.scss */
+#options #stripes .feature a.browse,
+#options #stripes .feature a.online,
+#options #stripes .feature a.mobile {
+  /* images-button things */
+  display: inline-block;
+  padding-top: 75px ;
+  padding-top: 7.5rem ;
+  padding-right: 8px ;
+  padding-right: 0.8rem ;
+  padding-left: 8px ;
+  padding-left: 0.8rem ;
+  padding-bottom: 5px ;
+  padding-bottom: 0.5rem ;
+  height: 110px ;
+  height: 11rem ;
+  width: 110px ;
+  width: 11rem ;
+  color: #b15a0d;
+  line-height: 12px ;
+  line-height: 1.2rem ;
+  font-size: 11px ;
+  font-size: 1.1rem ;
+  letter-spacing: 1px ;
+  letter-spacing: 0.1rem ;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: #fffefb url("../img/homepage/browse.png") no-repeat 50% 15px;
+  /*png24*/
+  background: rgba(255, 254, 251, 0.3) url("../img/homepage/browse.png") no-repeat 50% 15px;
+  /*png24*/
+  border: 1px solid #e8e4e4;
+  border-radius: 6px;
+}
+/* line 307, ../sass/homepage.scss */
+#options #stripes .feature a.browse:hover,
+#options #stripes .feature a.online:hover,
+#options #stripes .feature a.mobile:hover {
+  /* images-button things hover */
+  background-color: #fffefb;
+  color: #d56d11;
+}
+/* line 312, ../sass/homepage.scss */
+#options #stripes .feature a.online {
+  background: rgba(255, 254, 251, 0.3) url("../img/homepage/read-online.png") no-repeat 50% 15px;
+  /*png24*/
+}
+/* line 316, ../sass/homepage.scss */
+#options #stripes .feature a.mobile {
+  background: rgba(255, 254, 251, 0.3) url("../img/homepage/read-mobile.png") no-repeat 50% 15px;
+  /*png24*/
+}
+/* line 322, ../sass/homepage.scss */
+#options #stripes .download {
+  float: right;
+  margin-right: 0;
+  #margin-left: -1em;
+  display: inline;
+  width: 140px;
+  height: 200px ;
+  height: 20rem ;
+  text-align: center;
+  background: rgba(253, 209, 22, 0.2);
+  margin-right: 1px;
+}
+/* line 335, ../sass/homepage.scss */
+#options #stripes .download div {
+  background: url("../img/homepage/download.png") no-repeat 50% 15px;
+  /*png24*/
+}
+/* line 339, ../sass/homepage.scss */
+#options #stripes .download .task {
+  display: block;
+  padding: 75px 15px 0;
+  color: #696969;
+  line-height: 1.2em;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+/* line 352, ../sass/homepage.scss */
+#options #stripes .download .footnote {
+  /* asterisked text */
+  display: block;
+  margin: 10px 15px;
+  color: #333234;
+  font-style: italic;
+  font-weight: normal;
+  text-align: left;
+  text-transform: none;
+  font-size: 11px ;
+  font-size: 1.1rem ;
+}
+
+/* line 370, ../sass/homepage.scss */
+#arrow {
+  /* div creating the "arrow" over the stripes */
+  float: left;
+  margin: 0;
+  padding: 0 0 0 3px;
+  width: 0;
+  background: transparent;
+  border-bottom: 100px solid #f9f8f5;
+  border-top: 100px solid #f9f8f5;
+  border-right: 100px solid transparent;
+}
+
+/* YELLOW ARROW TEST */
+/* line 383, ../sass/homepage.scss */
+#top-arrow {
+  padding: 0;
+  width: 0;
+  border-bottom: 40px solid #fcf5d9;
+  border-left: 70px solid #fffefb;
+  border-right: 75px solid #fffefb;
+}
+
+/* END YELLOW ARROW TEST */
+/* NEWS/PROJECTS AREA */
+/* line 393, ../sass/homepage.scss */
+#news-projects {
+  background: #f0f0ef;
+  font-size: 13px ;
+  font-size: 1.3rem ;
+  width: 100%;
+}
+/* line 398, ../sass/homepage.scss */
+#news-projects ul li {
+  display: inline;
+  float: left;
+  width: 230px;
+}
+/* line 404, ../sass/homepage.scss */
+#news-projects .news-inner {
+  display: table;
+  padding: 0;
+  padding-top: 20px ;
+  padding-top: 2rem ;
+  padding-bottom: 20px ;
+  padding-bottom: 2rem ;
+  padding-left: 0;
+  width: 950px ;
+  width: 95rem ;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 414, ../sass/homepage.scss */
+#news-projects .news-inner h3 {
+  font-size: 12px ;
+  font-size: 1.2rem ;
+}
+/* line 418, ../sass/homepage.scss */
+#news-projects .news-inner h1 {
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #6b6a6b;
+  text-transform: uppercase;
+}
+/* line 426, ../sass/homepage.scss */
+#news-projects .news-inner h2 {
+  margin-bottom: 8px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #39383a;
+  line-height: 1.2em;
+}
+/* line 434, ../sass/homepage.scss */
+#news-projects .news-inner p {
+  font-size: 12px ;
+  font-size: 1.2rem ;
+  line-height: 16px;
+  color: #39383a;
+}
+/* line 440, ../sass/homepage.scss */
+#news-projects .news-inner .headline {
+  color: #6b6a6b;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+/* line 448, ../sass/homepage.scss */
+#news-projects .news-inner .left {
+  display: table-cell;
+  vertical-align: top;
+  width: 45%;
+  border-right: 1px solid #dddddd;
+}
+/* line 456, ../sass/homepage.scss */
+#news-projects .news-inner .left > div {
+  padding-left: 0;
+}
+/* line 460, ../sass/homepage.scss */
+#news-projects .news-inner .right {
+  display: table-cell;
+  vertical-align: top;
+  width: 55%;
+}
+/* line 466, ../sass/homepage.scss */
+#news-projects .news-inner .right > div {
+  padding-left: 20px ;
+  padding-left: 2rem ;
+  padding-right: 0;
+}
+/* line 471, ../sass/homepage.scss */
+#news-projects .news-inner .right .latest-tweet {
+  background: #fff;
+  padding: 16px;
+  position: relative;
+  border: 5px solid white;
+}
+/* line 479, ../sass/homepage.scss */
+#news-projects .news-inner .right .latest-tweet p {
+  color: #39383a;
+  font-weight: bold;
+  margin-top: 0;
+}
+/* line 485, ../sass/homepage.scss */
+#news-projects .news-inner .right .latest-tweet p .timestamp {
+  text-transform: uppercase;
+  color: #7f7e7f;
+}
+/* line 492, ../sass/homepage.scss */
+#news-projects .news-inner .right .latest-tweet > a {
+  text-align: right;
+  display: block;
+}
+/* line 497, ../sass/homepage.scss */
+#news-projects .news-inner .right .latest-tweet::before {
+  top: -20px;
+  bottom: auto;
+  left: auto;
+  right: 40px;
+  border-width: 0 20px 20px;
+  content: "";
+  position: absolute;
+  border-style: solid;
+  border-color: white transparent;
+  display: block;
+  width: 0;
+}
+/* line 516, ../sass/homepage.scss */
+#news-projects .news-inner .right .social .buttons a {
+  font-size: 18px ;
+  font-size: 1.8rem ;
+  text-decoration: none;
+  border-bottom: none;
+  width: 16px ;
+  width: 1.6rem ;
+  height: 16px ;
+  height: 1.6rem ;
+  padding: 8px ;
+  padding: 0.8rem ;
+  padding-left: 0;
+  display: inline-block;
+}
+/* line 528, ../sass/homepage.scss */
+#news-projects .news-inner .right .social .buttons a span {
+  text-indent: -9000px;
+  clip: rect(0, 0, 0, 0);
+  display: inline-block;
+}
+/* line 536, ../sass/homepage.scss */
+#news-projects .news-inner .right .social .buttons .twitter-link {
+  color: #4099ff;
+}
+/* line 538, ../sass/homepage.scss */
+#news-projects .news-inner .right .social .buttons .twitter-link:hover {
+  color: #60a9fe;
+}
+/* line 543, ../sass/homepage.scss */
+#news-projects .news-inner .right .social .buttons .pinterest-link {
+  color: #e00002;
+}
+/* line 545, ../sass/homepage.scss */
+#news-projects .news-inner .right .social .buttons .pinterest-link:hover {
+  color: #f20103;
+}
+/* line 550, ../sass/homepage.scss */
+#news-projects .news-inner .right .social .buttons .facebook-link {
+  color: #3b5998;
+}
+/* line 552, ../sass/homepage.scss */
+#news-projects .news-inner .right .social .buttons .facebook-link:hover {
+  color: #4265ad;
+}
+
+/* END NEWS/PROJECTS AREA */
+/* line 569, ../sass/homepage.scss */
+.bold {
+  font-weight: bold;
+}
+
+/* line 573, ../sass/homepage.scss */
+.footer.navbar {
+  margin-top: 0;
+}

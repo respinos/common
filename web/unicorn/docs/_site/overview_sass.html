@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>Developing with Sass | Project Unicorn Developer Guide</title>
+
+<!--[if lt IE 9]>
+<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="../common/unicorn/vendors/js/selectivizr.js" type="text/javascript"></script>
+<![endif]-->
+
+	<script type="text/javascript" src="/common/unicorn/vendors/headjs/dist/head.min.js"></script>
+	<script type="text/javascript" src="/common/unicorn/js/common.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/common/unicorn/css/common.css" />
+
+	
+
+
+<!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="/common/unicorn/css/ie7.css" />
+<![endif]-->
+
+	<!-- FOR DOCUMENTATION -->
+	<link rel="stylesheet" type="text/css" href="css/docs.css" />
+
+</head>
+<body>
+	<h1 class="offscreen">Developing with Sass | Project Unicorn Developer Guide</h1>
+
+		<!-- NAVBAR -->
+	<div class="navbar navbar-static-top navbar-inverse">
+		<div class="navbar-inner">
+			<ul id="nav" class="nav">
+				<li ><a href="http://www.hathitrust.org">Home</a></li>
+				<li><a href="http://www.hathitrust.org/about">About</a>
+					<ul>
+					<li><a href="http://www.hathitrust.org/partnership">Our Partnership</a></li>
+					<li><a href="http://www.hathitrust.org/digital_library">Our Digital Library</a></li>
+					<li><a href="http://www.hathitrust.org/htrc">Our Research Center</a></li>
+					<li><a href="http://www.hathitrust.org/news_publications">News &amp; Publications</a></li>
+					</ul></li>
+				<li><a href="http://babel.hathitrust.org/cgi/mb">Collections</a></li>
+				<li class="divider-vertical"></li>
+				<li class="help"><a href="http://www.hathitrust.org/help">Help</a></li>
+				<li><a href="#" data-m="ht" data-id="HathiTrust Project Unicorn Guide" data-toggle="feedback">Feedback</a></li>
+								<li class="divider-vertical"></li>
+				<li class="guidelines">
+					<a href="index.html">Guide/Examples</a>
+					<ul>
+						<li class="topic"><a href="overview.html">Techical Overview</a></li>
+						<li><a href="overview_sass.html">Developing with Sass</a></li>
+						<li><a href="overview_css.html">Developing with CSS</a></li>
+
+						<li class="topic"><span>Components</span></li>
+
+						<li><a href="howto_js.html">Javascript</a></li>
+						<li><a href="howto_feedback.html">Javascript: Feedback</a></li>
+						<li><a href="howto_icons.html">Icon Fonts</a></li>
+						<li><a href="howto_forms.html">Forms</a></li>
+						<li><a href="howto_grid.html">Grid/Layout</a></li>
+
+						<li class="topic"><span>Examples</span></li>
+
+						<li><a href="logged_in.html">Logged In Example</a></li>
+						<li><a href="no_header_search.html">Hiding Header Search</a></li>
+						<li><a href="sidebar.html">Sidebar Example</a></li>
+						<li><a href="search_results.html">Search Results Example</a></li>
+						<li><a href="sidebar_long.html">Long Sidebar Example</a></li>
+						<li><a href="mb.html">Collection Builder Results Example</a></li>
+						<li><a href="mb_detail.html">Collection Builder Detail Example</a></li>
+
+
+					</ul>
+				</li>
+
+			</ul>
+			
+		</div>
+	</div>
+	
+
+		<!-- HEADER -->
+	<div class="container centered header clearfix">
+		<div class="logo">
+			<a href="http://www.hathitrust.org"><span class="offscreen">HathiTrust Digital Library</span></a>
+		</div>
+		<div class="search-form">
+
+			<form action="/cgi/ls/one" method="GET">
+				<div class="search-tabs">
+					<input name="target" type="radio" id="option-full-text-search" value="ls" checked="checked" />
+					<label for="option-full-text-search" class="search-label-full-text">Full-text</label>
+					<input name="target" type="radio" id="option-catalog-search" value="catalog" />
+					<label for="option-catalog-search" class="search-label-catalog">Catalog</label>
+				</div>
+				<fieldset>
+					<input name="q1" type="text" class="search-input-text" placeholder="Search words about or within the items" value="" />
+					<div class="search-input-options">
+						<select size="1" class="search-input-select" name="searchtype">
+							<option value="all">Everything</option>
+							<option value="title">Title</option>
+							<option value="author">Author</option>
+							<option value="subject">Subject</option>
+							<option value="isbn">ISBN/ISSN</option>
+							<option value="publisher">Publisher</option>
+							<option value="seriestitle">Series Title</option>
+							<option value="pubyear">Publication Year</option>
+						</select>
+					</div>
+					<button class="button"><span class="offscreen">Search</span></button>
+				</fieldset>
+				<div class="search-extra-options">
+					<ul class="search-links">
+						<li class="search-advanced-link"><a href="#">Advanced full-text search</a></li>
+						<li class="search-catalog-link"><a href="#">Advanced catalog search</a></li>
+						<li><a href="#">Search tips</a></li>
+					</ul>
+					<label>
+						<input type="checkbox" value="ft" />
+						Full view only
+					</label>
+				</div>
+			</form>
+
+		</div>
+		<div class="login">
+			
+			<a href="#" id="login-button" class="button log-in">LOG IN</a>
+			
+		</div>
+	</div>
+
+	<div class="container page centered">
+    <div class="main">
+        <h2>Developing with Sass</h2>
+        Several approaches exist:
+        <ul>
+            <li>
+                <p>
+                    The simplest option is to use Sass to manage a local stylesheet (e.g. <tt>pt.sass</tt>), assuming that the application links to the processed common stylesheet (e.g. <tt>//babel.hathitrust.org/.../common.css</tt>).
+                </p>
+            </li>
+            <li>
+                <p>
+                    <tt>pt.sass</tt> can import <tt>common.sass</tt>: this makes all the classes/modules defined in the common stylesheet available to rules defined in <tt>pt.sass</tt>, and all the rules are compiled into a single <tt>pt.css</tt>. <em>For stylesheet rules</em> this mimics existing HTDEV practices of building a single CSS file.
+                </p>
+            </li>
+        </ul>
+
+        <h3>Example: HathiTrust Catalog</h3>
+
+        <p>
+            Working with the catalog:
+            <ul>
+                <li><tt>common.git</tt> is checked out at <tt>$SDRROOT/common</tt></li>
+                <li>local Sass work happens in <tt>$SDRROOT/web/static/unicorn</tt>
+                    <ul>
+                        <li><tt>sass</tt> contains the Sass sources</li>
+                        <li><tt>css</tt> contains the generated CSS files</li>
+                    </ul>
+                </li>
+                <li>
+                    <tt>web/static/unicorn/sass/catalog.sass</tt> starts with <tt>@import "../../../../common/sass/common";</tt>
+                </li>
+                <li>
+                    A local rule (e.g. styling <tt>#bd</tt>) can now borrow rules and functions from the common stylesheet:
+                    <pre class="example">
+    #bd {
+        @extend .row;
+        @include rem(font-size, 14);
+    }
+                    </pre>
+                </li>
+            </ul>
+        </p>
+
+
+        <h2>Working with Sass</h2>
+
+        <p>
+            Set up the working space: <tt>compass create web -r susy -u susy --css-dir=css --javascripts=js -s expanded --relative-assets</tt>
+        </p>
+
+        <p>
+            To compile to CSS, execute <tt>compass compile</tt> inside the <tt>web</tt> directory.
+        </p>
+        <p>
+            You can run <tt>compass watch</tt> to compile to CSS when the Sass files are updated.
+        </p>
+
+        <h3>References</h3>
+        <dl>
+            <dt><a href="http://sass-lang.com/">Sass Reference</a></dt>
+            <dd>Sass technically has two syntaxes; we're adopting the <strong>SCSS</strong> version</dd>
+
+            <dt><a href="http://blog.teamtreehouse.com/the-absolute-beginners-guide-to-sass">The Absolute Beginner’s Guide to Sass</a></dt>
+
+            <dt><a href="http://compass-style.org/">Compass Documentation</a></dt>
+            <dd>Compass is built on top of Sass, and provides some extra tooling (such as the <tt>compass</tt> utility above).</dd>
+            <dd>(We're not really using much of Compass, in the end, but the tooling is nice.)</dd>
+
+            <dt><a href="http://susy.oddbird.net">Susy Responsive Grids</a></dt>
+        </dl>
+
+    </div>
+</div>
+
+
+		<div class="navbar navbar-static-bottom navbar-inverse footer">
+		<div class="navbar-inner">
+			
+			<ul class="nav pull-right">
+				<li><a href="http://www.hathitrust.org/">Home</a></li>
+				<li><a href="http://www.hathitrust.org/about">About</a></li>
+				<li><a href="http://babel.hathitrust.org/cgi/mb">Collections</a></li>
+				<li><a href="http://www.hathitrust.org/help">Help</a></li>
+				<li><a href="#" data-m="ht" data-id="HathiTrust Project Unicorn Guide" data-toggle="feedback">Feedback</a></li>
+				<li><a href="http://m.hathitrust.org">Mobile</a></li>
+				<li><a href="http://www.hathitrust.org/take_down_policy">Take-Down Policy</a></li>
+				<li><a href="http://www.hathitrust.org/privacy">Privacy</a></li>
+				<li><a href="http://www.hathitrust.org/contact">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+</body>
+</html>
