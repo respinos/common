@@ -448,7 +448,6 @@ div.wrapper {
         }
 
         .left {
-            // @include span-columns(5.8,12);
             display: table-cell;
             vertical-align: top;
             width: 45%;
@@ -466,7 +465,6 @@ div.wrapper {
         }
 
         .right {
-            // @include span-columns(6 omega,12);
             display: table-cell;
             vertical-align: top;
             width: 55%;
