@@ -247,13 +247,19 @@ form {
 	margin-top: 2em;
 }
 
-.footer.navbar .nav > li > a {
-	margin-top: 5px;
-	margin-bottom: 5px;
+.footer.navbar .nav > li {
+
+	> a {
+		margin-top: 5px;
+		margin-bottom: 5px;
+		&:hover {
+			color: #fff;
+			text-decoration: underline;
+		}
+	}
+
 	&:hover {
-		background: transparent;
-		color: #fff;
-		text-decoration: underline;
+		background: transparent !important;
 	}
 }
 
@@ -389,7 +395,8 @@ ul.nav {
 }
 
 .search-extra-options {
-	@include rem(margin-top, 5);
+	@include rem(margin-top, -10);
+	line-height: 1;
 	color: #6D6D6D;
 	width: 99%;
 }
@@ -403,6 +410,7 @@ ul.nav {
 
 ul.search-links {
 	list-style: none;
+	margin-top: 0;
 	padding: 0;
 }
 
@@ -481,7 +489,7 @@ ul.search-links li:last-child {
 	// width: 25em;
 	width: 70%;
 	position: absolute;
-	@include rem(font-size, 12);
+	@include rem(font-size, 14);
 	@include rem(padding, 6);
 	@include rem(margin-right, 10);
 	left: 0;
@@ -502,7 +510,7 @@ ul.search-links li:last-child {
 }
 
 .search-tabs label {
-	@include rem(padding, 1);
+	@include rem(padding, 5);
 	@include rem(padding-right, 10);
 	@include rem(padding-left, 10);
 	@include rem(margin-right, 1);
