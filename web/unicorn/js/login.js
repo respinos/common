@@ -13,7 +13,7 @@ head.ready(function() {
             var $block = $(
                 '<form>' + 
                     '<div class="headline">' + 
-                        '<p>Log in with your partner institution &mdash; no signup is necessary.</p>' +
+                        '<p>Log in with your partner institution<br />&mdash; no signup is necessary.</p>' +
                     '</div>' +
                     '<div class="wayf-list">' + 
                         '<label for="idp" class="offscreen">Select your institution</label>' + 

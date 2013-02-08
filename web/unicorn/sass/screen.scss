@@ -963,11 +963,12 @@ a.button.log-in.active:after {
 .modal.login-modal {
 
 	// background-color: #fcf5d9;
-	background: #f9f8f5 url('../img/homepage/stripes.png');
+	// background: #f9f8f5 url('../img/homepage/stripes.png');
+	background-color: #f9f8f5;
 	width: 340px;
-	padding: 6px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding: 0px;
+	// padding-left: 20px;
+	// padding-right: 20px;
 
 	&.in {
 		position: absolute;
@@ -979,13 +980,19 @@ a.button.log-in.active:after {
 	}
 
 	.modal-body {
-		// background-color: #fcf5d9;
 		background: transparent;
-		padding: 8px;
+		padding: 0;
+
+		div {
+			padding: 32px;
+			padding-top: 0;
+			padding-bottom: 8px;
+		}
 
 		.headline p {
 			font-size: 16px;
-			font-weight: bold;
+			margin-bottom: 8px;
+			// font-weight: bold;
 		}
 
 		select {
@@ -993,7 +1000,10 @@ a.button.log-in.active:after {
 		}
 
 		.questions {
-			@include rem(margin-top, 32);
+			@include rem(margin-top, 16);
+			padding-top: 8px;
+			padding-bottom: 16px;
+			background: #f9f8f5 url('../img/homepage/stripes.png');
 
 			text-align: right;
 			ul {

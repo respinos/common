@@ -1055,13 +1055,11 @@ a.button.log-in.active:after {
 
 /* line 963, ../sass/screen.scss */
 .modal.login-modal {
-  background: #f9f8f5 url("../img/homepage/stripes.png");
+  background-color: #f9f8f5;
   width: 340px;
-  padding: 6px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0px;
 }
-/* line 972, ../sass/screen.scss */
+/* line 973, ../sass/screen.scss */
 .modal.login-modal.in {
   position: absolute;
   margin: 0;
@@ -1069,42 +1067,51 @@ a.button.log-in.active:after {
   left: auto;
   right: 85px;
 }
-/* line 981, ../sass/screen.scss */
+/* line 982, ../sass/screen.scss */
 .modal.login-modal .modal-body {
   background: transparent;
-  padding: 8px;
+  padding: 0;
 }
 /* line 986, ../sass/screen.scss */
+.modal.login-modal .modal-body div {
+  padding: 32px;
+  padding-top: 0;
+  padding-bottom: 8px;
+}
+/* line 992, ../sass/screen.scss */
 .modal.login-modal .modal-body .headline p {
   font-size: 16px;
-  font-weight: bold;
+  margin-bottom: 8px;
 }
-/* line 991, ../sass/screen.scss */
+/* line 998, ../sass/screen.scss */
 .modal.login-modal .modal-body select {
   width: 100%;
 }
-/* line 995, ../sass/screen.scss */
+/* line 1002, ../sass/screen.scss */
 .modal.login-modal .modal-body .questions {
-  margin-top: 32px ;
-  margin-top: 3.2rem ;
+  margin-top: 16px ;
+  margin-top: 1.6rem ;
+  padding-top: 8px;
+  padding-bottom: 16px;
+  background: #f9f8f5 url("../img/homepage/stripes.png");
   text-align: right;
 }
-/* line 999, ../sass/screen.scss */
+/* line 1009, ../sass/screen.scss */
 .modal.login-modal .modal-body .questions ul {
   list-style: none;
 }
-/* line 1002, ../sass/screen.scss */
+/* line 1012, ../sass/screen.scss */
 .modal.login-modal .modal-body .questions ul li {
   font-size: 12px ;
   font-size: 1.2rem ;
   margin-bottom: 10px ;
   margin-bottom: 1rem ;
 }
-/* line 1011, ../sass/screen.scss */
+/* line 1021, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions {
   text-align: right;
 }
-/* line 1014, ../sass/screen.scss */
+/* line 1024, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions .btn-cancel {
   text-transform: uppercase;
   font-size: 10px ;
@@ -1115,12 +1122,12 @@ a.button.log-in.active:after {
   vertical-align: middle;
   margin-right: 24px;
 }
-/* line 1025, ../sass/screen.scss */
+/* line 1035, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions .btn-cancel:hover {
   color: #393839;
   background: #f1d3d0;
 }
-/* line 1030, ../sass/screen.scss */
+/* line 1040, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions .btn-cancel:after {
   content: "\43";
   font-family: 'icomoon';
@@ -1136,7 +1143,7 @@ a.button.log-in.active:after {
   top: 1rem ;
   color: red;
 }
-/* line 1047, ../sass/screen.scss */
+/* line 1057, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions .continue {
   padding: 4px 12px;
   padding-right: 32px;
