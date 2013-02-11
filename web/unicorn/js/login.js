@@ -8,7 +8,8 @@ head.ready(function() {
 
     // this needs tuning
     $.get("/sandbox/institutions.html", function(data) {
-        $button.click(function() {
+        $button.click(function(e) {
+            e.preventDefault();
             $button.addClass("active");
             var $block = $(
                 '<form>' + 
