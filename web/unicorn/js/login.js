@@ -1,4 +1,7 @@
+var HT = HT || {};
 head.ready(function() {
+
+    var WAYF_URL = '//roger-full.babel.hathitrust.org/sandbox/cgi/wayffish';
 
     var $button = $("#login-button");
     if ( ! $button.length ) {
@@ -6,8 +9,7 @@ head.ready(function() {
         return;
     }
 
-    // this needs tuning
-    $.get("/sandbox/institutions.html", function(data) {
+    HT.login_callback = function(data) {
         $button.click(function(e) {
             e.preventDefault();
             $button.addClass("active");
@@ -18,7 +20,7 @@ head.ready(function() {
                     '</div>' +
                     '<div class="wayf-list">' + 
                         '<label for="idp" class="offscreen">Select your institution</label>' + 
-                        data +
+                        '<select id="mdp" name="mdp" aria-labelledby="Selectyourinstitution-ariaLabel"></select>' +
                     '</div>' +
                     '<div class="actions">' + 
                         '<button class="btn btn-link btn-cancel">Cancel</button>' + 
@@ -35,6 +37,15 @@ head.ready(function() {
                     '</div>' +
                 '</form>'
             );
+
+            var $select = $block.find("select[name=mdp]");
+    
+            $.each(data, function() {
+                var $option = $("<option></option>").appendTo($select);
+                $option.val(data.value);
+                $option.text(data.label);
+            })
+
             var $dialog = bootbox.dialog(
                 $block,
                 [],
@@ -49,7 +60,16 @@ head.ready(function() {
                 $button.removeClass("active");
                 $dialog.modal("hide");
             })
-        })        
+        })                
+    }
+
+    $.ajax({
+        type : "GET",
+        url : WAYF_URL,
+        async : true,
+        jsonp : 'callback',
+        dataType : 'jsonp',
+        jsonpCallback : 'HT.login_callback'
     })
 
 
