@@ -42,8 +42,8 @@ head.ready(function() {
     
             $.each(data, function() {
                 var $option = $("<option></option>").appendTo($select);
-                $option.val(data.value);
-                $option.text(data.label);
+                $option.val(this.value);
+                $option.text(this.label);
             })
 
             var $dialog = bootbox.dialog(
