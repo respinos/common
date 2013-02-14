@@ -757,7 +757,14 @@ button.button {
 
   .end, [class*="span"]:last-child, .last {
   	// @include omega;
-  	clear:both;
+
+  	&:after {
+  		content: "";
+  		display: table;
+  		visibility: hidden;
+  		height: 1;
+	  	clear:both;	
+  	}
   	margin-right: 0;
   }
 
