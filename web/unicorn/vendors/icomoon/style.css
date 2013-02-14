@@ -1,8 +1,9 @@
 @font-face {
 	font-family: 'icomoon';
 	src:url('fonts/icomoon.eot');
-	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+	src:
 		url('fonts/icomoon.woff') format('woff'),
+    url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
 		url('fonts/icomoon.ttf') format('truetype'),
 		url('fonts/icomoon.svg#icomoon') format('svg');
 	font-weight: normal;
@@ -25,7 +26,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icomoon-"]:before {
 */
-.icomoon-first:before, .icomoon-last:before, .icomoon-play:before, .icomoon-fullscreen-exit:before, .icomoon-fullscreen:before, .icomoon-iconmonstr-magnifier-6-icon:before, .icomoon-iconmonstr-magnifier-7-icon:before, .icomoon-document:before, .icomoon-documents:before, .icomoon-reload-CW:before, .icomoon-reload-CCW:before, .icomoon-list:before, .icomoon-article:before, .icomoon-book-alt2:before, .icomoon-document-alt-stroke:before, .icomoon-zoom-in:before, .icomoon-zoom-out:before, .icomoon-triangle:before, .icomoon-triangle-2:before, .icomoon-grid:before, .icomoon-grid-view:before, .icomoon-scroll:before, .icomoon-twitter:before, .icomoon-pinterest:before, .icomoon-facebook:before, .icomoon-bookmark:before, .icomoon-upload:before, .icomoon-download:before, .icomoon-email:before, .icomoon-feed:before, .icomoon-info-circle:before, .icomoon-locked:before, .icomoon-document-2:before, .icomoon-arrow-right:before, .icomoon-cancel:before {
+.icomoon-first:before, .icomoon-last:before, .icomoon-play:before, .icomoon-fullscreen-exit:before, .icomoon-fullscreen:before, .icomoon-iconmonstr-magnifier-6-icon:before, .icomoon-iconmonstr-magnifier-7-icon:before, .icomoon-document:before, .icomoon-documents:before, .icomoon-reload-CW:before, .icomoon-reload-CCW:before, .icomoon-list:before, .icomoon-article:before, .icomoon-book-alt2:before, .icomoon-document-alt-stroke:before, .icomoon-zoom-in:before, .icomoon-zoom-out:before, .icomoon-triangle:before, .icomoon-triangle-2:before, .icomoon-grid:before, .icomoon-grid-view:before, .icomoon-scroll:before, .icomoon-twitter:before, .icomoon-pinterest:before, .icomoon-facebook:before, .icomoon-bookmark:before, .icomoon-upload:before, .icomoon-download:before, .icomoon-email:before, .icomoon-feed:before, .icomoon-info-circle:before, .icomoon-locked:before, .icomoon-document-2:before, .icomoon-arrow-right:before, .icomoon-cancel:before, .icomoon-arrow-left:before, .icomoon-enter:before {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -137,4 +138,10 @@ you can use the generic selector below, but it's slower:
 }
 .icomoon-cancel:before {
 	content: "\43";
+}
+.icomoon-arrow-left:before {
+	content: "\44";
+}
+.icomoon-enter:before {
+	content: "\45";
 }

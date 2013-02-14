@@ -40,7 +40,9 @@ window.onload = function() {
 			'icomoon-locked' : '&#x40;',
 			'icomoon-document-2' : '&#x41;',
 			'icomoon-arrow-right' : '&#x42;',
-			'icomoon-cancel' : '&#x43;'
+			'icomoon-cancel' : '&#x43;',
+			'icomoon-arrow-left' : '&#x44;',
+			'icomoon-enter' : '&#x45;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;

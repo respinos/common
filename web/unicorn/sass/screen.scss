@@ -44,7 +44,7 @@ a {
 
 }
 
-.offscreen, .SkipLink {
+.offscreen, .SkipLink, .hidden {
 	position: absolute !important;
   	height: 1px; width: 1px; 
   	overflow: hidden;
@@ -395,7 +395,7 @@ ul.nav {
 }
 
 .search-extra-options {
-	@include rem(margin-top, -10);
+	@include rem(margin-top, -5);
 	line-height: 1;
 	color: #6D6D6D;
 	width: 99%;
@@ -551,11 +551,11 @@ ul.search-links li:last-child {
 }
 
 #option-full-text-search {
-	@include rem(right, 165);
+	@include rem(right, 125);
 }
 
 #option-catalog-search {
-	@include rem(right, 40);
+	@include rem(right, 4);
 }
 
 .search-input-options {
@@ -756,7 +756,13 @@ button.button {
   }
 
   .end, [class*="span"]:last-child, .last {
-  	@include omega;
+  	// @include omega;
+  	clear:both;
+  	margin-right: 0;
+  }
+
+  [class*="span"] + [class*="pull"] {
+  	clear: none;
   }
 
  //  [class*="span"] + [class*="pull"] {
@@ -765,10 +771,36 @@ button.button {
 
   .pull1 {
   	@include pull(1);
+  	clear: none;
+  }
+
+  .pull2 {
+  	@include pull(2);
+  	clear: none;
   }
 
   .pull3 {
   	@include pull(3);
+  }
+
+  .pull4 {
+  	@include pull(4);
+  }
+
+  .pull5 {
+  	@include pull(5);
+  }
+
+  .pull6 {
+  	@include pull(6);
+  }
+
+  .pull7 {
+  	@include pull(7);
+  }
+
+  .pull8 {
+  	@include pull(8);
   }
 
   .pull9 {
@@ -803,6 +835,7 @@ button.button {
   	@include push(4);
   }
 
+
 }
 
 .container {
@@ -825,6 +858,15 @@ button.button {
  	@include rem(font-size, $sidebar-font-size);
  	border-right: 1px solid #e1dfdf;
  	@include rem(padding-right, 20);
+
+ 	h3 {
+ 		border-bottom: 1px solid #ddd;
+ 		@include rem(padding-bottom, 8);
+ 	}
+
+ 	label {
+ 		@include rem(font-size, 13);
+ 	}
  }
 
  .sidebar.sidebar-right {
@@ -853,13 +895,13 @@ button.button {
  	@include rem(padding-left, 20);
  	// @include rem(min-width, 630);
  	color: $search-tab-color;
+ 	vertical-align: top;
  }
 
  .login {
  	@include rem(width, 125);
  	@include rem(height, 72);
  	display: table-cell;
- 	@include rem(width, 125);
  	vertical-align: middle;
  	// position: relative;
  }
@@ -878,7 +920,6 @@ body.no-search .header .search-form {
 	// margin-top: -15%;
 	// bottom: 5px;
 	right: 0;
-	top: -15%;
 
 	// margin-top: -21px;
 	position: relative;
@@ -1062,4 +1103,10 @@ a.button.log-in.active:after {
 		}
 
 	}
+}
+
+/* FORMS */
+
+input[type=text] {
+	@include box-sizing(content-box);
 }
