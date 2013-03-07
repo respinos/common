@@ -1037,6 +1037,10 @@ a.button.log-in.active:after {
 			padding-bottom: 8px;
 		}
 
+		.headline {
+			padding-top: 32px;
+		}
+
 		.headline p {
 			font-size: 16px;
 			margin-bottom: 8px;
@@ -1118,9 +1122,9 @@ input[type=text] {
 	@include box-sizing(content-box);
 }
 
-.nav-tabs {
-  margin-bottom:1.5em;
-  margin-left: 10px;
+ul.nav-tabs {
+  @include rem(margin-bottom, 5);
+  @include rem(margin-left, 10);
   border-bottom: 1px solid #AAA;
   width: 96%;
   color: #333;
@@ -1185,4 +1189,12 @@ input[type=text] {
 
 .nav-tabs li.active a {
   color: #4f4f4f;
+}
+
+div > p:first-child {
+	margin-top: 0;
+}
+
+.debug { 
+	display: none;
 }

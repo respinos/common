@@ -1120,15 +1120,19 @@ a.button.log-in.active:after {
   padding-bottom: 8px;
 }
 /* line 1040, ../sass/screen.scss */
+.modal.login-modal .modal-body .headline {
+  padding-top: 32px;
+}
+/* line 1044, ../sass/screen.scss */
 .modal.login-modal .modal-body .headline p {
   font-size: 16px;
   margin-bottom: 8px;
 }
-/* line 1046, ../sass/screen.scss */
+/* line 1050, ../sass/screen.scss */
 .modal.login-modal .modal-body select {
   width: 100%;
 }
-/* line 1050, ../sass/screen.scss */
+/* line 1054, ../sass/screen.scss */
 .modal.login-modal .modal-body .questions {
   margin-top: 16px ;
   margin-top: 1.6rem ;
@@ -1137,22 +1141,22 @@ a.button.log-in.active:after {
   background: #f9f8f5 url("../img/homepage/stripes.png");
   text-align: right;
 }
-/* line 1057, ../sass/screen.scss */
+/* line 1061, ../sass/screen.scss */
 .modal.login-modal .modal-body .questions ul {
   list-style: none;
 }
-/* line 1060, ../sass/screen.scss */
+/* line 1064, ../sass/screen.scss */
 .modal.login-modal .modal-body .questions ul li {
   font-size: 12px ;
   font-size: 1.2rem ;
   margin-bottom: 10px ;
   margin-bottom: 1rem ;
 }
-/* line 1069, ../sass/screen.scss */
+/* line 1073, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions {
   text-align: right;
 }
-/* line 1072, ../sass/screen.scss */
+/* line 1076, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions .btn-cancel {
   text-transform: uppercase;
   font-size: 10px ;
@@ -1163,12 +1167,12 @@ a.button.log-in.active:after {
   vertical-align: middle;
   margin-right: 24px;
 }
-/* line 1083, ../sass/screen.scss */
+/* line 1087, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions .btn-cancel:hover {
   color: #393839;
   background: #f1d3d0;
 }
-/* line 1088, ../sass/screen.scss */
+/* line 1092, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions .btn-cancel:after {
   content: "\43";
   font-family: 'icomoon';
@@ -1184,7 +1188,7 @@ a.button.log-in.active:after {
   top: 1rem ;
   color: red;
 }
-/* line 1105, ../sass/screen.scss */
+/* line 1109, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions .continue {
   padding: 4px 12px;
   padding-right: 32px;
@@ -1192,37 +1196,39 @@ a.button.log-in.active:after {
 }
 
 /* FORMS */
-/* line 1117, ../sass/screen.scss */
+/* line 1121, ../sass/screen.scss */
 input[type=text] {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
 
-/* line 1121, ../sass/screen.scss */
-.nav-tabs {
-  margin-bottom: 1.5em;
-  margin-left: 10px;
+/* line 1125, ../sass/screen.scss */
+ul.nav-tabs {
+  margin-bottom: 5px ;
+  margin-bottom: 0.5rem ;
+  margin-left: 10px ;
+  margin-left: 1rem ;
   border-bottom: 1px solid #aaaaaa;
   width: 96%;
   color: #333;
 }
 
-/* line 1129, ../sass/screen.scss */
+/* line 1133, ../sass/screen.scss */
 .nav-tabs a {
   font-weight: bold;
   color: #5e5e5e;
   text-decoration: none;
 }
 
-/* line 1135, ../sass/screen.scss */
+/* line 1139, ../sass/screen.scss */
 .nav-tabs a:hover {
   text-decoration: none;
   border-bottom: none;
   color: #b15a0d;
 }
 
-/* line 1141, ../sass/screen.scss */
+/* line 1145, ../sass/screen.scss */
 .nav-tabs {
   text-align: left;
   list-style: none;
@@ -1231,19 +1237,19 @@ input[type=text] {
   line-height: 24px;
 }
 
-/* line 1149, ../sass/screen.scss */
+/* line 1153, ../sass/screen.scss */
 .nav-tabs:after, .nav-tabs:before {
   display: table;
   line-height: 0;
   content: "";
 }
 
-/* line 1155, ../sass/screen.scss */
+/* line 1159, ../sass/screen.scss */
 .nav-tabs:after {
   clear: both;
 }
 
-/* line 1159, ../sass/screen.scss */
+/* line 1163, ../sass/screen.scss */
 .nav-tabs li {
   float: left;
   margin: 0 0px;
@@ -1260,19 +1266,29 @@ input[type=text] {
   /*text-shadow: 0 1px 1px rgba(255, 255, 255, 1);*/
 }
 
-/* line 1176, ../sass/screen.scss */
+/* line 1180, ../sass/screen.scss */
 .nav-tabs li:first-child {
   margin-left: 0;
 }
 
-/* line 1180, ../sass/screen.scss */
+/* line 1184, ../sass/screen.scss */
 .nav-tabs li.active {
   border: 1px solid #aaaaaa;
   border-bottom: 1px solid transparent;
   background: #fff;
 }
 
-/* line 1186, ../sass/screen.scss */
+/* line 1190, ../sass/screen.scss */
 .nav-tabs li.active a {
   color: #4f4f4f;
+}
+
+/* line 1194, ../sass/screen.scss */
+div > p:first-child {
+  margin-top: 0;
+}
+
+/* line 1198, ../sass/screen.scss */
+.debug {
+  display: none;
 }
