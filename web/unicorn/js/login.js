@@ -11,22 +11,10 @@ head.ready(function() {
         PING_DOMAIN = window.location.hostname;
     }
 
+    var is_babel = (window.location.href.indexOf("babel.hathitrust") > -1);
     var $button = $("#login-button");
-    if ( ! $button.length ) {
-        // nothing to see here
-        var $logout_link = $("#logout-link");
-        if ( window.location.href.indexOf("/shcgi/") > -1 ) {
-            $logout_link.click(function(e) {
-                e.preventDefault();
-                bootbox.alert("<p>Please quit your browser to logout.</p>");
-                return false;
-            })
-        }
-        return;
-    }
 
-    HT.login_callback = function(data) {
-
+    function setup_login_link(status) {
         $button.click(function(e) {
             e.preventDefault();
             $button.addClass("active");
@@ -65,8 +53,8 @@ head.ready(function() {
             }
 
             $block.find("input[name=target]").val(encodeURI(target));
-    
-            $.each(data.idp_list, function() {
+        
+            $.each(status.idp_list, function() {
                 var $option = $("<option></option>").appendTo($select);
                 $option.val(this.idp_url);
                 $option.text(this.name);
@@ -97,13 +85,61 @@ head.ready(function() {
                 if ( href == '___TARGET___' ) {
                     href = target.replace("http:", "https:");
                 } else {
-                    target = target.replace('/cgi/', '/shcgi/').replace('http://', 'https://');
-                    href = href.replace('___TARGET___', encodeURI(target));
+                    target = target.replace('/cgi/', '/shcgi/');
+                    if ( target.substr(0,5) == 'http:' ) {
+                        target = target.replace('http://', 'https://');
+                    }
+                    href = href.replace('___TARGET___', encodeURIComponent(target));
                 }
                 window.location.href = href;
             })
 
         })                
+
+    }
+
+    function setup_logged_in_state(status) {
+        if ( $button.length ) {
+            // rewrite the header so we appear to be logged in!
+            $button.remove();
+            var $navbar = $(".navbar-static-top .navbar-inner");
+            var coll_url = 'https://babel.hathitrust.org/cgi/mb?colltype=priv';
+            if ( status.authType == 'shibboleth' ) {
+                coll_url = coll_url.replace("/cgi/", "/shcgi/");
+            }
+            var html = 
+                '<ul id="person-nav" class="nav pull-right">' + 
+                    '<li><span>Hi ' + status.displayName + '!</span></li>' + 
+                    '<li><a href="' + coll_url + '">My Collections</a></li>' + 
+                    '<li><a id="logout-link" href="https://babel.hathitrust.org/cgi/logout?' + window.location.href.replace('https://', 'http://') + '">Logout</a></li>' + 
+                '</ul>';
+            $(html).appendTo($navbar);
+
+            var $footer = $(".navbar.footer .navbar-inner");
+            html = 
+                '<ul class="nav">' + 
+                    '<li><span>' + status.affiliation + '<br />Member, HathiTrust</span></li>' + 
+                '</ul>';
+            $(html).prependTo($footer);
+        }
+        var $logout_link = $("#logout-link");
+        if ( status.authType == 'shibboleth' ) {
+            $logout_link.click(function(e) {
+                e.preventDefault();
+                bootbox.alert("<p>Please quit your browser to logout.</p>");
+                return false;
+            })
+        }
+    }
+
+
+    HT.login_callback = function(status) {
+
+        if ( status.logged_in ) {
+            setup_logged_in_state(status);
+        } else {
+            setup_login_link(status);
+        }
     }
 
     $.ajax({
