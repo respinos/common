@@ -5,7 +5,7 @@ head.ready(function() {
     var PING_URL; var PING_DOMAIN;
     if ( SCRIPT_URL.indexOf("//") >= 0 ) {
         PING_DOMAIN = SCRIPT_URL.split('/')[2];
-        PING_DOMAIN = 'roger-full.babel.hathitrust.org';
+        // PING_DOMAIN = 'roger-full.babel.hathitrust.org';
         PING_URL = 'https://' + PING_DOMAIN + '/cgi/ping';
     } else {
         PING_URL = '/cgi/ping';
