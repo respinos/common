@@ -51,6 +51,8 @@ head.ready(function() {
             if ( target.indexOf("babel.hathitrust") < 0 ) {
                 // not a babel app, need to route through ping/pong
                 target = HT.get_pong_target(target);
+            } else {
+                target = target.replace("http://", "https://");
             }
 
             $block.find("input[name=target]").val(encodeURI(target));
@@ -84,12 +86,12 @@ head.ready(function() {
                 e.preventDefault();
                 var href = $select.val();
                 if ( href == '___TARGET___' ) {
-                    href = target.replace("http:", "https:");
+                    // href = target.replace("http:", "https:");
                 } else {
-                    target = target.replace('/cgi/', '/shcgi/');
-                    if ( target.substr(0,5) == 'http:' ) {
-                        target = target.replace('http://', 'https://');
-                    }
+                    target = target.replace('babel.hathitrust.org/cgi/', 'babel.hathitrust.org/shcgi/');
+                    // if ( target.substr(0,5) == 'http:' ) {
+                    //     target = target.replace('http://', 'https://');
+                    // }
                     href = href.replace('___TARGET___', encodeURIComponent(target));
                 }
                 window.location.href = href;
