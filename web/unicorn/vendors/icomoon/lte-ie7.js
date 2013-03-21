@@ -1,4 +1,4 @@
-/* Use this script if you need to support IE 7 and IE 6. */
+/* Load this script using conditional IE comments if you need to support IE 7 and IE 6. */
 
 window.onload = function() {
 	function addIcon(el, entity) {
@@ -8,9 +8,9 @@ window.onload = function() {
 	var icons = {
 			'icomoon-first' : '&#x30;',
 			'icomoon-last' : '&#x31;',
-			'icomoon-play' : '&#x32;',
-			'icomoon-fullscreen-exit' : '&#x33;',
-			'icomoon-fullscreen' : '&#x34;',
+			'icomoon-go-previous' : '&#x32;',
+			'icomoon-go-next' : '&#x33;',
+			'icomoon-stack' : '&#x34;',
 			'icomoon-iconmonstr-magnifier-6-icon' : '&#x21;',
 			'icomoon-iconmonstr-magnifier-7-icon' : '&#x22;',
 			'icomoon-document' : '&#x23;',
@@ -42,7 +42,12 @@ window.onload = function() {
 			'icomoon-arrow-right' : '&#x42;',
 			'icomoon-cancel' : '&#x43;',
 			'icomoon-arrow-left' : '&#x44;',
-			'icomoon-enter' : '&#x45;'
+			'icomoon-enter' : '&#x45;',
+			'icomoon-help' : '&#x46;',
+			'icomoon-share' : '&#x47;',
+			'icomoon-share-2' : '&#x48;',
+			'icomoon-fullscreen' : '&#x49;',
+			'icomoon-fullscreen-exit' : '&#x4a;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;
