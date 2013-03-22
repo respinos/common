@@ -5,8 +5,9 @@
         prefix = '//test.babel.hathitrust.org/';
     }
 
+    head.js(prefix + 'common/unicorn/vendors/js/modernizr.custom.77754.js');
+
     var toload = [
-        prefix + 'common/unicorn/vendors/js/modernizr.custom.79639.js',
         '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
 
         // '//code.jquery.com/jquery-1.9.1.min.js',
