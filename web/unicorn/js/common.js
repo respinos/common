@@ -18,6 +18,7 @@
         prefix + 'common/unicorn/vendors/bootstrap/js/bootstrap-modal.js',
         prefix + 'common/unicorn/vendors/bootstrap/js/bootstrap-button.js',
         prefix + 'common/unicorn/vendors/bootstrap/js/bootstrap-dropdown.js',
+        prefix + 'common/unicorn/vendors/bootstrap/js/bootstrap-tooltip.js',
         prefix + 'common/unicorn/vendors/bootstrap/js/bootbox.min.js',
         prefix + 'common/unicorn/js/feedback.js',
         prefix + 'common/unicorn/js/login.js',

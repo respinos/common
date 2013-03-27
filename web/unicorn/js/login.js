@@ -154,5 +154,14 @@ head.ready(function() {
         jsonpCallback : 'HT.login_callback'
     })
 
+    $("body").on('click', '.trigger-login', function(e) {
+        e.preventDefault();
+        var target = $(this).data('close-target');
+        if ( target ) {
+            $(target).modal('hide');
+        }
+        $("#login-button").click();
+    })
+
 
 });
