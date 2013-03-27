@@ -1001,6 +1001,26 @@ a.btn {
     }
 }
 
+.modal {
+    fieldset {
+        legend {
+            @include rem(font-size, 16);
+            @include rem(margin-bottom, 10);
+            line-height: 1.5;
+        }
+
+        @include rem(margin-bottom, 20);
+    }
+
+    textarea {
+        width: 95%;
+    }
+
+    label[for=email] {
+        font-style: italic;
+    }
+}
+
 .btn.btn-loading {
     padding-right: 26px;
     background-image: url(../img/throbber.gif);
@@ -1139,6 +1159,17 @@ a.button.log-in.active:after {
 	}
 }
 
+.modal.login-modal.login-centered {
+    &.in {
+        position: fixed;
+        margin: 0;
+        left: 35%;
+        top: 35%;
+        right: auto;
+    }
+
+}
+
 /* FORMS */
 
 input[type=text] {
@@ -1220,4 +1251,12 @@ div > p:first-child {
 
 .debug { 
 	display: none;
+}
+
+.alert {
+    @include rem(font-size, 13);
+}
+
+.required textarea[required], .required input[type=text][required], .required input[value][required] {
+    border: 2px solid red;
 }

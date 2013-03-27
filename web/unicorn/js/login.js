@@ -71,14 +71,18 @@ head.ready(function() {
                 }
             })
 
+            var classes = 'login-modal';
+            if ( $button.hasClass("centered") ) {
+                classes += ' login-centered';
+            }
             var $dialog = bootbox.dialog(
                 $block,
                 [],
-                { classes : 'login-modal' }
+                { classes : classes }
             );
             $dialog.find(".btn-cancel").click(function(e) {
                 e.preventDefault();
-                $button.removeClass("active");
+                $button.removeClass("active").removeClass("centered");
                 $dialog.modal("hide");
             })
 
@@ -160,7 +164,7 @@ head.ready(function() {
         if ( target ) {
             $(target).modal('hide');
         }
-        $("#login-button").click();
+        $("#login-button").addClass("centered").click();
     })
 
 
