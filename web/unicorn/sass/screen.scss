@@ -1012,8 +1012,10 @@ a.btn {
         @include rem(margin-bottom, 20);
     }
 
-    textarea {
-        width: 95%;
+    p {
+        textarea {
+            width: 95%;
+        }        
     }
 
     label[for=email] {
@@ -1022,10 +1024,10 @@ a.btn {
 }
 
 .btn.btn-loading {
-    padding-right: 26px;
+    padding-right: 34px;
     background-image: url(../img/throbber.gif);
     background-repeat: no-repeat;
-    background-position: 95% 50%;
+    background-position: 90% 50%;
 }
 
 /* END MODAL OVERRIDES */
@@ -1259,4 +1261,8 @@ div > p:first-child {
 
 .required textarea[required], .required input[type=text][required], .required input[value][required] {
     border: 2px solid red;
+}
+
+.hide {
+    display: none;
 }

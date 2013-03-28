@@ -2592,7 +2592,7 @@ button.close {
 
 .btn-primary {
   background: #b75d0f; }
-  .btn-primary:hover {
+  .btn-primary:hover, .btn-primary.disabled, .btn-primary[disabled] {
     background: #d56d11; }
 
 .modal * {
