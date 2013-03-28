@@ -1,6 +1,6 @@
-@import url(../vendors/css/normalize.css);
-@import url(../vendors/icomoon/style.css);
-@import url(../vendors/css/bootstrap-forms.css);
+@import url(../vendor/css/normalize.css);
+@import url(../vendor/icomoon/style.css);
+@import url(../vendor/css/bootstrap-forms.css);
 /* lets me easily translate font-sizes from mockup */
 /* -------------------------------------------------------------------------*/
 /* Setup */
