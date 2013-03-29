@@ -66,7 +66,7 @@ head.ready(function() {
                                         bootbox.alert("<p>Thank you for your feedback!</p>");
                                     })
                             } else if ( ! is_valid) {
-                                $("<div class='alert alert-error'>You must answer required fields.</div>").insertBefore($dialog.find(".btn-dismiss"));
+                                $("<div class='alert alert-error'>Please fill in required fields.</div>").insertBefore($dialog.find(".btn-dismiss"));
                                 $dialog.addClass("required");
                             } else {
                                 $("<div class='alert alert-error'>You cannot submit an empty form.</div>").insertBefore($dialog.find(".btn-dismiss"));
