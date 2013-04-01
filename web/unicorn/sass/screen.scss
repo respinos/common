@@ -1266,3 +1266,11 @@ div > p:first-child {
 .hide {
     display: none;
 }
+
+.debug-messages {
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 1em;
+    border-bottom: 8px solid black;
+    @include rem(font-size, 14);
+}

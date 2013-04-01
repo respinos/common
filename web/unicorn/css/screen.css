@@ -1353,3 +1353,13 @@ div > p:first-child {
 .hide {
   display: none;
 }
+
+/* line 1270, ../sass/screen.scss */
+.debug-messages {
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 1em;
+  border-bottom: 8px solid black;
+  font-size: 14px ;
+  font-size: 1.4rem ;
+}
