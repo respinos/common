@@ -22,6 +22,7 @@
         prefix + 'common/unicorn/vendor/bootstrap/js/bootbox.min.js',
         prefix + 'common/unicorn/js/feedback.js',
         prefix + 'common/unicorn/js/login.js',
+        prefix + 'common/unicorn/js/search.js',
     ]
 
     if ( location.hostname != 'www.hathitrust.org' && 
