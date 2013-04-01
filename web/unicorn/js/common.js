@@ -2,7 +2,7 @@
     var prefix = '/';
 
     if ( location.hostname.indexOf("babel.hathitrust.org") < 0 ) {
-        prefix = '//test.babel.hathitrust.org/';
+        prefix = '//beta-3.babel.hathitrust.org/';
     }
 
     head.js(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js');
@@ -23,6 +23,13 @@
         prefix + 'common/unicorn/js/feedback.js',
         prefix + 'common/unicorn/js/login.js',
     ]
+
+    if ( location.hostname != 'www.hathitrust.org' && 
+         location.hostname != 'catalog.hathitrust.org' && 
+         location.hostname != 'babel.hathitrust.org ') {
+        toload.push(prefix + 'common/unicorn/js/staging.js');
+    }
+
 
     head.js.apply(this, toload);
 
