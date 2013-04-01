@@ -25,9 +25,9 @@
 /*
 Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
-[class*="icomoon-"]:before {
+[class*="icomoon-"] {
 */
-.icomoon-first:before, .icomoon-last:before, .icomoon-go-previous:before, .icomoon-go-next:before, .icomoon-stack:before, .icomoon-iconmonstr-magnifier-6-icon:before, .icomoon-iconmonstr-magnifier-7-icon:before, .icomoon-document:before, .icomoon-documents:before, .icomoon-reload-CW:before, .icomoon-reload-CCW:before, .icomoon-list:before, .icomoon-article:before, .icomoon-book-alt2:before, .icomoon-document-alt-stroke:before, .icomoon-zoom-in:before, .icomoon-zoom-out:before, .icomoon-triangle:before, .icomoon-triangle-2:before, .icomoon-grid:before, .icomoon-grid-view:before, .icomoon-scroll:before, .icomoon-twitter:before, .icomoon-pinterest:before, .icomoon-facebook:before, .icomoon-bookmark:before, .icomoon-upload:before, .icomoon-download:before, .icomoon-email:before, .icomoon-feed:before, .icomoon-info-circle:before, .icomoon-locked:before, .icomoon-document-2:before, .icomoon-arrow-right:before, .icomoon-cancel:before, .icomoon-arrow-left:before, .icomoon-enter:before, .icomoon-help:before, .icomoon-share:before, .icomoon-share-2:before, .icomoon-fullscreen:before, .icomoon-fullscreen-exit:before {
+.icomoon-first, .icomoon-last, .icomoon-go-previous, .icomoon-go-next, .icomoon-stack, .icomoon-iconmonstr-magnifier-6-icon, .icomoon-iconmonstr-magnifier-7-icon, .icomoon-document, .icomoon-documents, .icomoon-reload-CW, .icomoon-reload-CCW, .icomoon-list, .icomoon-article, .icomoon-book-alt2, .icomoon-document-alt-stroke, .icomoon-zoom-in, .icomoon-zoom-out, .icomoon-triangle, .icomoon-triangle-2, .icomoon-grid, .icomoon-grid-view, .icomoon-scroll, .icomoon-twitter, .icomoon-pinterest, .icomoon-facebook, .icomoon-bookmark, .icomoon-upload, .icomoon-download, .icomoon-email, .icomoon-feed, .icomoon-info-circle, .icomoon-locked, .icomoon-document-2, .icomoon-arrow-right, .icomoon-cancel, .icomoon-arrow-left, .icomoon-enter, .icomoon-help, .icomoon-share, .icomoon-share-2, .icomoon-fullscreen, .icomoon-fullscreen-exit, .icomoon-checkmark {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -162,4 +162,7 @@ you can use the generic selector below, but it's slower:
 }
 .icomoon-fullscreen-exit:before {
 	content: "\4a";
+}
+.icomoon-checkmark:before {
+	content: "\4b";
 }

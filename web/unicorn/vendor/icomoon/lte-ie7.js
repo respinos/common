@@ -47,7 +47,8 @@ window.onload = function() {
 			'icomoon-share' : '&#x47;',
 			'icomoon-share-2' : '&#x48;',
 			'icomoon-fullscreen' : '&#x49;',
-			'icomoon-fullscreen-exit' : '&#x4a;'
+			'icomoon-fullscreen-exit' : '&#x4a;',
+			'icomoon-checkmark' : '&#x4b;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;

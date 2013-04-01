@@ -1281,3 +1281,39 @@ div > p:first-child {
     border-bottom: 8px solid black;
     @include rem(font-size, 14);
 }
+
+/* ALERTS */
+
+.alert {
+    position: relative;
+}
+
+@mixin alert-badge($icon) {
+    content: $icon;
+    font-family: 'icomoon';
+    font-style: normal;
+    speak: none;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    @include rem(top, 12);
+    @include rem(left, 6);
+    @include rem(font-size, 18);
+}
+
+.alert-warning, .alert-error, .alert-success {
+    @include rem(padding-left, 32);
+}
+
+.alert-warning:before {
+    @include alert-badge("?");
+}
+
+.alert-error:before {
+    @include alert-badge("C");
+}
+
+.alert-success:before {
+    @include alert-badge("K");
+}
