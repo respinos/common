@@ -32,9 +32,11 @@
         toload.push(prefix + 'common/unicorn/js/staging.js');
     }
 
-    head.js.apply(this, toload);
-    head.ready(function() {
+    head.js.apply(this, toload, function() {
         $(":input[placeholder]").placeholder();
-    })
+    });
+    // head.ready(function() {
+        
+    // })
 
 })();

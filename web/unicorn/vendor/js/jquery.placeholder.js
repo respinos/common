@@ -60,7 +60,6 @@
 
       if (el.hasClass($.placeholder.settings.activeClass) && currentValue === lastvalue) {
         el.plVal(value);
-        return value;
       }
 
     } else {
@@ -68,6 +67,8 @@
       el.plAttr(attr, value);
 
     }
+
+    return el;
   };
 
   // Clear placeholder values upon page reload
