@@ -20,6 +20,7 @@
         prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-dropdown.js',
         prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-tooltip.js',
         prefix + 'common/unicorn/vendor/bootstrap/js/bootbox.min.js',
+        prefix + 'common/unicorn/vendor/js/jquery.placeholder.js',
         prefix + 'common/unicorn/js/feedback.js',
         prefix + 'common/unicorn/js/login.js',
         prefix + 'common/unicorn/js/search.js'
@@ -32,5 +33,8 @@
     }
 
     head.js.apply(this, toload);
+    head.ready(function() {
+        $(":input[placeholder]").placeholder();
+    })
 
 })();

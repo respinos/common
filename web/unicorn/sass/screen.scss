@@ -514,6 +514,7 @@ ul.search-links li:last-child {
 :-ms-input-placeholder { color:#aaa; } /* ie */
 input:-moz-placeholder { color:#aaa; }
 .placeholder { color: #aaa; }
+.placeholderFocus { color: #555; }
 
 .search-tabs {
 	text-align: right;
@@ -1317,3 +1318,4 @@ div > p:first-child {
 .alert-success:before {
     @include alert-badge("K");
 }
+
