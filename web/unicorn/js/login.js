@@ -91,6 +91,7 @@ head.ready(function() {
                 var href = $select.val();
                 if ( href == '___TARGET___' ) {
                     // href = target.replace("http:", "https:");
+                    href = target;
                 } else {
                     target = target.replace('babel.hathitrust.org/cgi/', 'babel.hathitrust.org/shcgi/');
                     // if ( target.substr(0,5) == 'http:' ) {
