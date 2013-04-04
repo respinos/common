@@ -24,7 +24,7 @@ div.wrapper {
 
 .container.centered {
     @include rem(width, $fixed-width);
-    min-width: auto;
+    min-width: inherit;
 }
 
 .container {

@@ -20,7 +20,7 @@ div.wrapper {
 .container.centered {
   width: 950px ;
   width: 95rem ;
-  min-width: auto;
+  min-width: inherit;
 }
 
 /* line 30, ../sass/homepage.scss */
