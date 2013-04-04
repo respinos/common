@@ -1,6 +1,7 @@
 @import "base";
 
 /* Fixed layout for home page */
+/* Layout based on blocks + floats, vs. tables, to allow for login arrow */
 
 // $fixed-width: 1050;
 $fixed-width: 950;
@@ -19,23 +20,45 @@ div.wrapper {
     @include rem(width, $fixed-width);
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .container.centered {
     @include rem(width, $fixed-width);
     min-width: inherit;
+    display: block;
 }
 
 .container {
     margin-left: auto;
     margin-right: auto;
+
+    .logo {
+        display: block;
+        float: left;
+    }
+
+    .login {
+        display: block;
+        float: left;
+        text-align: center;
+
+        #login-button {
+            margin-top: 25%;
+        }
+    }
+
 }
 
 .container.header {
     // @include rem(padding-left, 40);
     // @include rem(padding-right, 20);
     padding-bottom: 0;
+
+    .search-form {
+        @include rem(width, 590);
+        display: block;
+        float: left;
+    }
 }
 
 .navbar-inner {
@@ -51,8 +74,10 @@ div.wrapper {
 
     .search-form {
         padding-left: 0;
+        @include rem(width, 810);
+        display: block;
+        float: left;
     }
-
 
     #search {
 
@@ -149,10 +174,18 @@ div.wrapper {
             }
         }
 
+        &:after {
+            content: "";
+            display: table;
+            clear: both;
+            height: 0;
+        }
+
     }
 
     .login-banner {
-        display: table-cell;
+        display: block;
+        float: left;
         vertical-align: top;
         @include rem(width, 140);
 
@@ -227,14 +260,17 @@ div.wrapper {
     padding-right: 0;
     @include rem(margin-bottom, 30);
 
+    display: block;
+
     .blurb {
         @include rem(font-size, 16);
         z-index: 1000;
 
-        width: 29%;
+        @include rem(width, 275);
         @include rem(padding-left, 20);
 
-        display: table-cell;
+        display: block;
+        float: left;
         vertical-align: top;
 
         p {
@@ -258,7 +294,9 @@ div.wrapper {
 
     #stripes {
 
-        display: table-cell;
+        display: block;
+        float: left;
+        @include rem(width, 675);
         vertical-align: top;
 
         margin-top: 0;
