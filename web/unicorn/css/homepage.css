@@ -2,6 +2,11 @@
 /* Fixed layout for home page */
 /* Layout based on blocks + floats, vs. tables, to allow for login arrow */
 /* line 12, ../sass/homepage.scss */
+body {
+  min-width: inherit;
+}
+
+/* line 16, ../sass/homepage.scss */
 div.wrapper {
   margin: 20px auto;
   padding: 20px;
@@ -9,7 +14,7 @@ div.wrapper {
   width: 90%;
 }
 
-/* line 19, ../sass/homepage.scss */
+/* line 23, ../sass/homepage.scss */
 .navbar-inner {
   width: 950px ;
   width: 95rem ;
@@ -17,7 +22,7 @@ div.wrapper {
   margin-right: auto;
 }
 
-/* line 25, ../sass/homepage.scss */
+/* line 29, ../sass/homepage.scss */
 .container.centered {
   width: 950px ;
   width: 95rem ;
@@ -25,32 +30,32 @@ div.wrapper {
   display: block;
 }
 
-/* line 31, ../sass/homepage.scss */
+/* line 35, ../sass/homepage.scss */
 .container {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 35, ../sass/homepage.scss */
+/* line 39, ../sass/homepage.scss */
 .container .logo {
   display: block;
   float: left;
 }
-/* line 40, ../sass/homepage.scss */
+/* line 44, ../sass/homepage.scss */
 .container .login {
   display: block;
   float: left;
   text-align: center;
 }
-/* line 45, ../sass/homepage.scss */
+/* line 49, ../sass/homepage.scss */
 .container .login #login-button {
   margin-top: 25%;
 }
 
-/* line 52, ../sass/homepage.scss */
+/* line 56, ../sass/homepage.scss */
 .container.header {
   padding-bottom: 0;
 }
-/* line 57, ../sass/homepage.scss */
+/* line 61, ../sass/homepage.scss */
 .container.header .search-form {
   width: 590px ;
   width: 59rem ;
@@ -59,13 +64,13 @@ div.wrapper {
   padding-left: 0;
 }
 
-/* line 65, ../sass/homepage.scss */
+/* line 69, ../sass/homepage.scss */
 .navbar-inner {
   padding-left: 0;
   padding-right: 0;
 }
 
-/* line 70, ../sass/homepage.scss */
+/* line 74, ../sass/homepage.scss */
 #search-login {
   margin-bottom: -20px ;
   margin-bottom: -2rem ;
@@ -73,7 +78,7 @@ div.wrapper {
   padding-top: 10px ;
   padding-top: 1rem ;
 }
-/* line 76, ../sass/homepage.scss */
+/* line 80, ../sass/homepage.scss */
 #search-login .search-form {
   padding-left: 0;
   width: 810px ;
@@ -81,7 +86,7 @@ div.wrapper {
   display: block;
   float: left;
 }
-/* line 83, ../sass/homepage.scss */
+/* line 87, ../sass/homepage.scss */
 #search-login #search {
   margin: 0;
   padding: 50px ;
@@ -90,13 +95,13 @@ div.wrapper {
   line-height: 2.5rem ;
   width: 98%;
 }
-/* line 91, ../sass/homepage.scss */
+/* line 95, ../sass/homepage.scss */
 #search-login #search h1 {
   font-size: 22px ;
   font-size: 2.2rem ;
   font-weight: bold;
 }
-/* line 96, ../sass/homepage.scss */
+/* line 100, ../sass/homepage.scss */
 #search-login #search h2 {
   font-size: 20px ;
   font-size: 2rem ;
@@ -109,7 +114,7 @@ div.wrapper {
   float: left;
   color: #4F4F4F;
 }
-/* line 107, ../sass/homepage.scss */
+/* line 111, ../sass/homepage.scss */
 #search-login #search p {
   margin-bottom: 5px ;
   margin-bottom: 0.5rem ;
@@ -118,16 +123,16 @@ div.wrapper {
   line-height: 15px ;
   line-height: 1.5rem ;
 }
-/* line 113, ../sass/homepage.scss */
+/* line 117, ../sass/homepage.scss */
 #search-login #search .search-tabs {
   width: 82%;
   margin-bottom: -4px;
 }
-/* line 118, ../sass/homepage.scss */
+/* line 122, ../sass/homepage.scss */
 #search-login #search form {
   position: relative;
 }
-/* line 122, ../sass/homepage.scss */
+/* line 126, ../sass/homepage.scss */
 #search-login #search .what-to-search-hint {
   color: #6d6d6d;
   text-align: right;
@@ -137,18 +142,18 @@ div.wrapper {
   font-size: 12px ;
   font-size: 1.2rem ;
 }
-/* line 129, ../sass/homepage.scss */
+/* line 133, ../sass/homepage.scss */
 #search-login #search .what-to-search-hint a {
   padding-left: 18px;
   background: url("../img/homepage/hint.png") no-repeat 0% center;
 }
-/* line 135, ../sass/homepage.scss */
+/* line 139, ../sass/homepage.scss */
 #search-login #search fieldset {
   width: 83%;
   background: #fff;
   z-index: 10;
 }
-/* line 140, ../sass/homepage.scss */
+/* line 144, ../sass/homepage.scss */
 #search-login #search fieldset button.button {
   position: absolute;
   top: -6px;
@@ -170,27 +175,27 @@ div.wrapper {
   /*png24*/
   z-index: 0;
 }
-/* line 161, ../sass/homepage.scss */
+/* line 165, ../sass/homepage.scss */
 #search-login #search fieldset button.button:hover {
   background-color: #848383;
 }
-/* line 169, ../sass/homepage.scss */
+/* line 173, ../sass/homepage.scss */
 #search-login #search .search-extra-options {
   width: 100%;
 }
-/* line 172, ../sass/homepage.scss */
+/* line 176, ../sass/homepage.scss */
 #search-login #search .search-extra-options label {
   float: right;
   margin-right: 2%;
 }
-/* line 178, ../sass/homepage.scss */
+/* line 182, ../sass/homepage.scss */
 #search-login #search:after {
   content: "";
   display: table;
   clear: both;
   height: 0;
 }
-/* line 187, ../sass/homepage.scss */
+/* line 191, ../sass/homepage.scss */
 #search-login .login-banner {
   display: block;
   float: left;
@@ -201,7 +206,7 @@ div.wrapper {
   border-top: none;
   position: relative !important;
 }
-/* line 198, ../sass/homepage.scss */
+/* line 202, ../sass/homepage.scss */
 #search-login .login-banner div {
   padding: 10px 20px;
   min-height: 260px ;
@@ -209,7 +214,7 @@ div.wrapper {
   width: 140px ;
   width: 14rem ;
 }
-/* line 204, ../sass/homepage.scss */
+/* line 208, ../sass/homepage.scss */
 #search-login .login-banner h2 {
   margin-bottom: 5px;
   color: #3a3938;
@@ -217,30 +222,30 @@ div.wrapper {
   font-weight: bold;
   line-height: 1.3em;
 }
-/* line 211, ../sass/homepage.scss */
+/* line 215, ../sass/homepage.scss */
 #search-login .login-banner h2 .username {
   -ms-word-break: break-all;
   word-break: break-all;
   word-wrap: break-word;
 }
-/* line 220, ../sass/homepage.scss */
+/* line 224, ../sass/homepage.scss */
 #search-login .login-banner p {
   margin-bottom: 5px;
   color: #525152;
   font-size: 1.2em;
   line-height: 1.4em;
 }
-/* line 226, ../sass/homepage.scss */
+/* line 230, ../sass/homepage.scss */
 #search-login .login-banner p a {
   color: #924a0b;
   /* different link color on yellow for contrast */
 }
-/* line 229, ../sass/homepage.scss */
+/* line 233, ../sass/homepage.scss */
 #search-login .login-banner p a:hover {
   color: #d56d11;
   border: none;
 }
-/* line 241, ../sass/homepage.scss */
+/* line 245, ../sass/homepage.scss */
 #search-login .not-logged-in:before {
   content: "";
   display: block;
@@ -255,7 +260,7 @@ div.wrapper {
   border-right: 70px solid transparent;
 }
 
-/* line 257, ../sass/homepage.scss */
+/* line 261, ../sass/homepage.scss */
 #options {
   position: relative;
   padding-left: 0;
@@ -264,7 +269,7 @@ div.wrapper {
   margin-bottom: 3rem ;
   display: block;
 }
-/* line 266, ../sass/homepage.scss */
+/* line 270, ../sass/homepage.scss */
 #options .blurb {
   font-size: 16px ;
   font-size: 1.6rem ;
@@ -277,18 +282,18 @@ div.wrapper {
   float: left;
   vertical-align: top;
 }
-/* line 277, ../sass/homepage.scss */
+/* line 281, ../sass/homepage.scss */
 #options .blurb p {
   margin-top: 4px ;
   margin-top: 0.4rem ;
 }
-/* line 281, ../sass/homepage.scss */
+/* line 285, ../sass/homepage.scss */
 #options .blurb p:first-child {
   margin-top: 0;
   margin-bototm: 10px ;
   margin-bototm: 1rem ;
 }
-/* line 286, ../sass/homepage.scss */
+/* line 290, ../sass/homepage.scss */
 #options .blurb .challenge {
   font-size: 12px ;
   font-size: 1.2rem ;
@@ -297,7 +302,7 @@ div.wrapper {
   font-weight: bold;
   color: #4F4F4F;
 }
-/* line 296, ../sass/homepage.scss */
+/* line 300, ../sass/homepage.scss */
 #options #stripes {
   display: block;
   float: left;
@@ -308,7 +313,7 @@ div.wrapper {
   padding: 0;
   background: #f9f8f5 url("../img/homepage/stripes.png");
 }
-/* line 307, ../sass/homepage.scss */
+/* line 311, ../sass/homepage.scss */
 #options #stripes .feature {
   width: 18.63636%;
   float: left;
@@ -319,11 +324,11 @@ div.wrapper {
   padding: 18px 0;
   margin-right: 2.5%;
 }
-/* line 314, ../sass/homepage.scss */
+/* line 318, ../sass/homepage.scss */
 #options #stripes .feature div {
   width: 140px;
 }
-/* line 318, ../sass/homepage.scss */
+/* line 322, ../sass/homepage.scss */
 #options #stripes .feature p {
   padding: 5px 3px;
   font-size: 1.2em;
@@ -334,7 +339,7 @@ div.wrapper {
   width: 11rem ;
   margin-top: 0;
 }
-/* line 330, ../sass/homepage.scss */
+/* line 334, ../sass/homepage.scss */
 #options #stripes .feature a.browse,
 #options #stripes .feature a.online,
 #options #stripes .feature a.mobile {
@@ -370,7 +375,7 @@ div.wrapper {
   border: 1px solid #e8e4e4;
   border-radius: 6px;
 }
-/* line 354, ../sass/homepage.scss */
+/* line 358, ../sass/homepage.scss */
 #options #stripes .feature a.browse:hover,
 #options #stripes .feature a.online:hover,
 #options #stripes .feature a.mobile:hover {
@@ -378,17 +383,17 @@ div.wrapper {
   background-color: #fffefb;
   color: #d56d11;
 }
-/* line 359, ../sass/homepage.scss */
+/* line 363, ../sass/homepage.scss */
 #options #stripes .feature a.online {
   background: rgba(255, 254, 251, 0.5) url("../img/homepage/read-online.png") no-repeat 50% 15px;
   /*png24*/
 }
-/* line 363, ../sass/homepage.scss */
+/* line 367, ../sass/homepage.scss */
 #options #stripes .feature a.mobile {
   background: rgba(255, 254, 251, 0.5) url("../img/homepage/read-mobile.png") no-repeat 50% 15px;
   /*png24*/
 }
-/* line 369, ../sass/homepage.scss */
+/* line 373, ../sass/homepage.scss */
 #options #stripes .download {
   float: right;
   margin-right: 0;
@@ -401,12 +406,12 @@ div.wrapper {
   background: rgba(253, 209, 22, 0.2);
   margin-right: 1px;
 }
-/* line 382, ../sass/homepage.scss */
+/* line 386, ../sass/homepage.scss */
 #options #stripes .download div {
   background: url("../img/homepage/download.png") no-repeat 50% 15px;
   /*png24*/
 }
-/* line 386, ../sass/homepage.scss */
+/* line 390, ../sass/homepage.scss */
 #options #stripes .download .task {
   display: block;
   padding: 75px 15px 0;
@@ -417,7 +422,7 @@ div.wrapper {
   text-transform: uppercase;
   letter-spacing: .1em;
 }
-/* line 399, ../sass/homepage.scss */
+/* line 403, ../sass/homepage.scss */
 #options #stripes .download .footnote {
   /* asterisked text */
   display: block;
@@ -432,7 +437,7 @@ div.wrapper {
   font-size: 1.1rem ;
 }
 
-/* line 418, ../sass/homepage.scss */
+/* line 422, ../sass/homepage.scss */
 #arrow {
   /* div creating the "arrow" over the stripes */
   float: left;
@@ -446,7 +451,7 @@ div.wrapper {
 }
 
 /* YELLOW ARROW TEST */
-/* line 431, ../sass/homepage.scss */
+/* line 435, ../sass/homepage.scss */
 #top-arrow {
   padding: 0;
   width: 0;
@@ -457,20 +462,20 @@ div.wrapper {
 
 /* END YELLOW ARROW TEST */
 /* NEWS/PROJECTS AREA */
-/* line 441, ../sass/homepage.scss */
+/* line 445, ../sass/homepage.scss */
 #news-projects {
   background: #f0f0ef;
   font-size: 13px ;
   font-size: 1.3rem ;
   width: 100%;
 }
-/* line 446, ../sass/homepage.scss */
+/* line 450, ../sass/homepage.scss */
 #news-projects ul li {
   display: inline;
   float: left;
   width: 230px;
 }
-/* line 452, ../sass/homepage.scss */
+/* line 456, ../sass/homepage.scss */
 #news-projects .news-inner {
   display: table;
   padding: 0;
@@ -484,12 +489,12 @@ div.wrapper {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 462, ../sass/homepage.scss */
+/* line 466, ../sass/homepage.scss */
 #news-projects .news-inner h3 {
   font-size: 12px ;
   font-size: 1.2rem ;
 }
-/* line 466, ../sass/homepage.scss */
+/* line 470, ../sass/homepage.scss */
 #news-projects .news-inner h1 {
   margin-bottom: 15px;
   font-size: 1.2em;
@@ -497,7 +502,7 @@ div.wrapper {
   color: #6b6a6b;
   text-transform: uppercase;
 }
-/* line 474, ../sass/homepage.scss */
+/* line 478, ../sass/homepage.scss */
 #news-projects .news-inner h2 {
   margin-bottom: 8px;
   font-size: 1.2em;
@@ -505,32 +510,32 @@ div.wrapper {
   color: #39383a;
   line-height: 1.2em;
 }
-/* line 482, ../sass/homepage.scss */
+/* line 486, ../sass/homepage.scss */
 #news-projects .news-inner p {
   font-size: 12px ;
   font-size: 1.2rem ;
   line-height: 16px;
   color: #39383a;
 }
-/* line 488, ../sass/homepage.scss */
+/* line 492, ../sass/homepage.scss */
 #news-projects .news-inner .headline {
   color: #6b6a6b;
   font-weight: bold;
   text-transform: uppercase;
   margin-top: 0;
 }
-/* line 496, ../sass/homepage.scss */
+/* line 500, ../sass/homepage.scss */
 #news-projects .news-inner .left {
   display: table-cell;
   vertical-align: top;
   width: 45%;
   border-right: 1px solid #dddddd;
 }
-/* line 503, ../sass/homepage.scss */
+/* line 507, ../sass/homepage.scss */
 #news-projects .news-inner .left > div {
   padding-left: 0;
 }
-/* line 505, ../sass/homepage.scss */
+/* line 509, ../sass/homepage.scss */
 #news-projects .news-inner .left p.more {
   float: right;
   width: 25%;
@@ -540,19 +545,19 @@ div.wrapper {
   margin-top: -20px ;
   margin-top: -2rem ;
 }
-/* line 513, ../sass/homepage.scss */
+/* line 517, ../sass/homepage.scss */
 #news-projects .news-inner .right {
   display: table-cell;
   vertical-align: top;
   width: 55%;
 }
-/* line 518, ../sass/homepage.scss */
+/* line 522, ../sass/homepage.scss */
 #news-projects .news-inner .right > div {
   padding-left: 20px ;
   padding-left: 2rem ;
   padding-right: 0;
 }
-/* line 523, ../sass/homepage.scss */
+/* line 527, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet {
   background: #fff;
   padding: 16px;
@@ -560,22 +565,22 @@ div.wrapper {
   border: 5px solid white;
   box-shadow: rgba(0, 0, 0, 0.1) 0 1px 10px;
 }
-/* line 533, ../sass/homepage.scss */
+/* line 537, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet p {
   color: #39383a;
   margin-top: 0;
 }
-/* line 538, ../sass/homepage.scss */
+/* line 542, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet p .timestamp {
   text-transform: uppercase;
   color: #7f7e7f;
 }
-/* line 545, ../sass/homepage.scss */
+/* line 549, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet > a {
   text-align: right;
   display: block;
 }
-/* line 550, ../sass/homepage.scss */
+/* line 554, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet::before {
   top: -20px;
   bottom: auto;
@@ -589,13 +594,13 @@ div.wrapper {
   display: block;
   width: 0;
 }
-/* line 569, ../sass/homepage.scss */
+/* line 573, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons {
   margin-top: 0;
   margin-bottom: 30px ;
   margin-bottom: 3rem ;
 }
-/* line 572, ../sass/homepage.scss */
+/* line 576, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons a {
   font-size: 18px ;
   font-size: 1.8rem ;
@@ -613,44 +618,44 @@ div.wrapper {
   padding-top: 0;
   display: inline-block;
 }
-/* line 586, ../sass/homepage.scss */
+/* line 590, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons a span {
   text-indent: -9000px;
   clip: rect(0, 0, 0, 0);
   display: inline-block;
 }
-/* line 594, ../sass/homepage.scss */
+/* line 598, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .twitter-link {
   color: #4099ff;
 }
-/* line 596, ../sass/homepage.scss */
+/* line 600, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .twitter-link:hover {
   color: #60a9fe;
 }
-/* line 601, ../sass/homepage.scss */
+/* line 605, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .pinterest-link {
   color: #e00002;
 }
-/* line 603, ../sass/homepage.scss */
+/* line 607, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .pinterest-link:hover {
   color: #f20103;
 }
-/* line 608, ../sass/homepage.scss */
+/* line 612, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .facebook-link {
   color: #3b5998;
 }
-/* line 610, ../sass/homepage.scss */
+/* line 614, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .facebook-link:hover {
   color: #4265ad;
 }
 
 /* END NEWS/PROJECTS AREA */
-/* line 627, ../sass/homepage.scss */
+/* line 631, ../sass/homepage.scss */
 .bold {
   font-weight: bold;
 }
 
-/* line 631, ../sass/homepage.scss */
+/* line 635, ../sass/homepage.scss */
 .footer.navbar {
   margin-top: 0;
 }

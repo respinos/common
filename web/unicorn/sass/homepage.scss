@@ -9,6 +9,10 @@ $feature-button-slice: 1.8;
 
 $strip-button-opacity: 0.5;
 
+body {
+  min-width: inherit;
+}
+
 div.wrapper {
     margin: 20px auto;
     padding: 20px;
