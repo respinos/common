@@ -23,7 +23,8 @@
         prefix + 'common/unicorn/vendor/js/jquery.placeholder.js',
         prefix + 'common/unicorn/js/feedback.js',
         prefix + 'common/unicorn/js/login.js',
-        prefix + 'common/unicorn/js/search.js'
+        prefix + 'common/unicorn/js/search.js',
+        prefix + 'common/unicorn/js/google_analytics.js'
     ]
 
     if ( location.hostname != 'www.hathitrust.org' && 
