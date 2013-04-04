@@ -1,0 +1,5 @@
+.download, .login-banner {
+    background:transparent;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FDD116,endColorstr=#33FDD116); 
+    zoom: 1;
+}
