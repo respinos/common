@@ -58,6 +58,7 @@ div.wrapper {
         @include rem(width, 590);
         display: block;
         float: left;
+        padding-left: 0;
     }
 }
 
