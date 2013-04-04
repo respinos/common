@@ -63,12 +63,15 @@
       }
 
     } else {
-      el = $(this[0]);
-      el.plAttr(attr, value);
+
+      for(var i = 0; i < this.length; i++) {
+        var el = $(this[i]);
+        el.plAttr(attr, value);
+      }
 
     }
 
-    return el;
+    return this;
   };
 
   // Clear placeholder values upon page reload
