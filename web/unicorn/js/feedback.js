@@ -24,7 +24,7 @@ head.ready(function() {
         return html;
     }
 
-    $(document).on('click.feedback.data-api', '[data-toggle="feedback"]', function(e) {
+    $(document).on('click.feedback.data-api', '[data-toggle^=feedback]', function(e) {
             e.preventDefault();
             var id = $(this).data('id');
             var m = $(this).data('m') || 'ht';

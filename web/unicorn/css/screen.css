@@ -1101,23 +1101,23 @@ a.btn {
 
 /* END LAYOUT */
 /* MODAL OVERRIDES */
-/* line 1004, ../sass/screen.scss */
-.modal p {
+/* line 1006, ../sass/screen.scss */
+.modal .modal-body {
   font-size: 13px ;
   font-size: 1.3rem ;
 }
-/* line 1007, ../sass/screen.scss */
-.modal p.larger {
+/* line 1011, ../sass/screen.scss */
+.modal .larger {
   font-size: 15px ;
   font-size: 1.5rem ;
 }
 
-/* line 1013, ../sass/screen.scss */
+/* line 1017, ../sass/screen.scss */
 .modal fieldset {
   margin-bottom: 20px ;
   margin-bottom: 2rem ;
 }
-/* line 1014, ../sass/screen.scss */
+/* line 1018, ../sass/screen.scss */
 .modal fieldset legend {
   font-size: 16px ;
   font-size: 1.6rem ;
@@ -1125,16 +1125,16 @@ a.btn {
   margin-bottom: 1rem ;
   line-height: 1.5;
 }
-/* line 1024, ../sass/screen.scss */
+/* line 1028, ../sass/screen.scss */
 .modal p textarea {
   width: 95%;
 }
-/* line 1029, ../sass/screen.scss */
+/* line 1033, ../sass/screen.scss */
 .modal label[for=email] {
   font-style: italic;
 }
 
-/* line 1034, ../sass/screen.scss */
+/* line 1038, ../sass/screen.scss */
 .btn.btn-loading {
   padding-right: 34px;
   background-image: url(../img/throbber.gif);
@@ -1143,33 +1143,33 @@ a.btn {
 }
 
 /* END MODAL OVERRIDES */
-/* line 1044, ../sass/screen.scss */
+/* line 1048, ../sass/screen.scss */
 h2 + p, h3 + p, h4 + p {
   margin-top: 0;
 }
 
 /* LOGIN MODAL */
-/* line 1050, ../sass/screen.scss */
+/* line 1054, ../sass/screen.scss */
 a.button.log-in.active:after {
   content: "\2e" !important;
 }
 
-/* line 1054, ../sass/screen.scss */
+/* line 1058, ../sass/screen.scss */
 .modal.login {
   background-color: #fcf5d9;
 }
-/* line 1057, ../sass/screen.scss */
+/* line 1061, ../sass/screen.scss */
 .modal.login .modal-footer {
   background-color: #FAF0C6;
 }
 
-/* line 1063, ../sass/screen.scss */
+/* line 1067, ../sass/screen.scss */
 .modal.login-modal {
   background-color: #f9f8f5;
   width: 340px;
   padding: 0px;
 }
-/* line 1073, ../sass/screen.scss */
+/* line 1077, ../sass/screen.scss */
 .modal.login-modal.in {
   position: absolute;
   position: fixed;
@@ -1178,31 +1178,31 @@ a.button.log-in.active:after {
   left: auto;
   right: 85px;
 }
-/* line 1083, ../sass/screen.scss */
+/* line 1087, ../sass/screen.scss */
 .modal.login-modal .modal-body {
   background: transparent;
   padding: 0;
 }
-/* line 1087, ../sass/screen.scss */
+/* line 1091, ../sass/screen.scss */
 .modal.login-modal .modal-body div {
   padding: 32px;
   padding-top: 0;
   padding-bottom: 8px;
 }
-/* line 1093, ../sass/screen.scss */
+/* line 1097, ../sass/screen.scss */
 .modal.login-modal .modal-body .headline {
   padding-top: 32px;
 }
-/* line 1097, ../sass/screen.scss */
+/* line 1101, ../sass/screen.scss */
 .modal.login-modal .modal-body .headline p {
   font-size: 16px;
   margin-bottom: 8px;
 }
-/* line 1103, ../sass/screen.scss */
+/* line 1107, ../sass/screen.scss */
 .modal.login-modal .modal-body select {
   width: 100%;
 }
-/* line 1107, ../sass/screen.scss */
+/* line 1111, ../sass/screen.scss */
 .modal.login-modal .modal-body .questions {
   margin-top: 16px ;
   margin-top: 1.6rem ;
@@ -1211,22 +1211,22 @@ a.button.log-in.active:after {
   background: #f9f8f5 url("../img/homepage/stripes.png");
   text-align: right;
 }
-/* line 1114, ../sass/screen.scss */
+/* line 1118, ../sass/screen.scss */
 .modal.login-modal .modal-body .questions ul {
   list-style: none;
 }
-/* line 1117, ../sass/screen.scss */
+/* line 1121, ../sass/screen.scss */
 .modal.login-modal .modal-body .questions ul li {
   font-size: 12px ;
   font-size: 1.2rem ;
   margin-bottom: 10px ;
   margin-bottom: 1rem ;
 }
-/* line 1126, ../sass/screen.scss */
+/* line 1130, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions {
   text-align: right;
 }
-/* line 1129, ../sass/screen.scss */
+/* line 1133, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions .btn-cancel {
   text-transform: uppercase;
   font-size: 10px ;
@@ -1237,12 +1237,12 @@ a.button.log-in.active:after {
   vertical-align: middle;
   margin-right: 24px;
 }
-/* line 1140, ../sass/screen.scss */
+/* line 1144, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions .btn-cancel:hover {
   color: #393839;
   background: #f1d3d0;
 }
-/* line 1145, ../sass/screen.scss */
+/* line 1149, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions .btn-cancel:after {
   content: "\43";
   font-family: 'icomoon';
@@ -1258,14 +1258,14 @@ a.button.log-in.active:after {
   top: 1rem ;
   color: red;
 }
-/* line 1162, ../sass/screen.scss */
+/* line 1166, ../sass/screen.scss */
 .modal.login-modal .modal-body .actions .continue {
   padding: 4px 12px;
   padding-right: 32px;
   margin: auto;
 }
 
-/* line 1173, ../sass/screen.scss */
+/* line 1177, ../sass/screen.scss */
 .modal.login-modal.login-centered.in {
   position: fixed;
   margin: 0;
@@ -1275,14 +1275,14 @@ a.button.log-in.active:after {
 }
 
 /* FORMS */
-/* line 1185, ../sass/screen.scss */
+/* line 1189, ../sass/screen.scss */
 input[type=text] {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
 
-/* line 1189, ../sass/screen.scss */
+/* line 1193, ../sass/screen.scss */
 ul.nav-tabs {
   margin-bottom: 5px ;
   margin-bottom: 0.5rem ;
@@ -1293,21 +1293,21 @@ ul.nav-tabs {
   color: #333;
 }
 
-/* line 1197, ../sass/screen.scss */
+/* line 1201, ../sass/screen.scss */
 .nav-tabs a {
   font-weight: bold;
   color: #5e5e5e;
   text-decoration: none;
 }
 
-/* line 1203, ../sass/screen.scss */
+/* line 1207, ../sass/screen.scss */
 .nav-tabs a:hover {
   text-decoration: none;
   border-bottom: none;
   color: #b15a0d;
 }
 
-/* line 1209, ../sass/screen.scss */
+/* line 1213, ../sass/screen.scss */
 .nav-tabs {
   text-align: left;
   list-style: none;
@@ -1316,19 +1316,19 @@ ul.nav-tabs {
   line-height: 24px;
 }
 
-/* line 1217, ../sass/screen.scss */
+/* line 1221, ../sass/screen.scss */
 .nav-tabs:after, .nav-tabs:before {
   display: table;
   line-height: 0;
   content: "";
 }
 
-/* line 1223, ../sass/screen.scss */
+/* line 1227, ../sass/screen.scss */
 .nav-tabs:after {
   clear: both;
 }
 
-/* line 1227, ../sass/screen.scss */
+/* line 1231, ../sass/screen.scss */
 .nav-tabs li {
   float: left;
   margin: 0 0px;
@@ -1345,50 +1345,50 @@ ul.nav-tabs {
   /*text-shadow: 0 1px 1px rgba(255, 255, 255, 1);*/
 }
 
-/* line 1244, ../sass/screen.scss */
+/* line 1248, ../sass/screen.scss */
 .nav-tabs li:first-child {
   margin-left: 0;
 }
 
-/* line 1248, ../sass/screen.scss */
+/* line 1252, ../sass/screen.scss */
 .nav-tabs li.active {
   border: 1px solid #aaaaaa;
   border-bottom: 1px solid transparent;
   background: #fff;
 }
 
-/* line 1254, ../sass/screen.scss */
+/* line 1258, ../sass/screen.scss */
 .nav-tabs li.active a {
   color: #4f4f4f;
 }
 
-/* line 1258, ../sass/screen.scss */
+/* line 1262, ../sass/screen.scss */
 div > p:first-child {
   margin-top: 0;
 }
 
-/* line 1262, ../sass/screen.scss */
+/* line 1266, ../sass/screen.scss */
 .debug {
   display: none;
 }
 
-/* line 1266, ../sass/screen.scss */
+/* line 1270, ../sass/screen.scss */
 .alert {
   font-size: 13px ;
   font-size: 1.3rem ;
 }
 
-/* line 1270, ../sass/screen.scss */
+/* line 1274, ../sass/screen.scss */
 .required textarea[required], .required input[type=text][required], .required input[value][required] {
   border: 2px solid red;
 }
 
-/* line 1274, ../sass/screen.scss */
+/* line 1278, ../sass/screen.scss */
 .hide {
   display: none;
 }
 
-/* line 1278, ../sass/screen.scss */
+/* line 1282, ../sass/screen.scss */
 .debug-messages {
   margin-left: 1em;
   margin-right: 1em;
@@ -1399,18 +1399,18 @@ div > p:first-child {
 }
 
 /* ALERTS */
-/* line 1288, ../sass/screen.scss */
+/* line 1292, ../sass/screen.scss */
 .alert {
   position: relative;
 }
 
-/* line 1306, ../sass/screen.scss */
+/* line 1310, ../sass/screen.scss */
 .alert-warning, .alert-error, .alert-success {
   padding-left: 32px ;
   padding-left: 3.2rem ;
 }
 
-/* line 1310, ../sass/screen.scss */
+/* line 1314, ../sass/screen.scss */
 .alert-warning:before {
   content: "?";
   font-family: 'icomoon';
@@ -1428,7 +1428,7 @@ div > p:first-child {
   font-size: 1.8rem ;
 }
 
-/* line 1314, ../sass/screen.scss */
+/* line 1318, ../sass/screen.scss */
 .alert-error:before {
   content: "C";
   font-family: 'icomoon';
@@ -1446,7 +1446,7 @@ div > p:first-child {
   font-size: 1.8rem ;
 }
 
-/* line 1318, ../sass/screen.scss */
+/* line 1322, ../sass/screen.scss */
 .alert-success:before {
   content: "K";
   font-family: 'icomoon';

@@ -1001,10 +1001,14 @@ a.btn {
 /* END LAYOUT */
 
 /* MODAL OVERRIDES */
-.modal p {
-    @include rem(font-size, 13);
+.modal {
 
-    &.larger {
+    .modal-body {
+        @include rem(font-size, 13);        
+    }
+
+
+    .larger {
         @include rem(font-size, 15);
     }
 }
