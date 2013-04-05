@@ -1,7 +1,7 @@
 var HT = HT || {};
 head.ready(function() {
 
-    var SCRIPT_URL = $('script[src$="login.js"]').attr('src');
+    var SCRIPT_URL = $('script[src$="common.js"]').attr('src');
     var PING_URL; var PING_DOMAIN;
     if ( SCRIPT_URL.indexOf("//") >= 0 ) {
         PING_DOMAIN = SCRIPT_URL.split('/')[2];
