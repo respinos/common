@@ -138,7 +138,7 @@ head.ready(function() {
                 return false;
             })
         }
-        $(".not-logged-in").removeClass("not-logged-in");
+        $("html").trigger("action.login");
     }
 
 
