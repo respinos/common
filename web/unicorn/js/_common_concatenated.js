@@ -3048,7 +3048,8 @@ head.ready(function() {
 
     var SCRIPT_URL = $('script[src*="common.js"]').attr('src');
     var PING_URL; var PING_DOMAIN;
-    if ( SCRIPT_URL.indexOf("//") >= 0 ) {
+
+    if ( window.location.hostname.indexOf("babel.hathitrust.org") < 0 ) {
         PING_DOMAIN = SCRIPT_URL.split('/')[2];
         // PING_DOMAIN = 'roger-full.babel.hathitrust.org';
         // PING_URL = 'https://' + PING_DOMAIN + '/cgi/ping';
