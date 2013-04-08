@@ -12,7 +12,8 @@
         window.location.protocol + '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
     ];
 
-    if ( HT.dev ) {
+    var common_re = new RegExp(/debug=.*common.*/);
+    if ( common_re.test(window.location.href) ) {
         var dev = [
 
             // '//code.jquery.com/jquery-1.9.1.min.js',
