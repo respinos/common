@@ -1,6 +1,7 @@
 @import url(../vendor/css/normalize.css);
 @import url(../vendor/icomoon/style.css);
 @import url(../vendor/css/bootstrap-forms.css);
+@import url(../vendor/fancyBox/jquery.fancybox.css);
 /* lets me easily translate font-sizes from mockup */
 /* -------------------------------------------------------------------------*/
 /* Setup */
