@@ -52,6 +52,13 @@ a {
   	clip: rect(1px, 1px, 1px, 1px);
 }
 
+.skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    clip: auto;
+}
+
 form {
 	margin: 0;
 }
