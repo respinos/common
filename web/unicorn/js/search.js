@@ -1,5 +1,5 @@
 head.ready(function() {
-    
+
     var $form = $(".search-form");
     var $tabs = $form.find(".search-tabs input[type=radio]");
     var $input = $form.find("input.search-input-text");
@@ -26,5 +26,31 @@ head.ready(function() {
     var selected = $tabs.filter(":checked").val();
     setup[selected]();
 
+
+  // add event handler for submit to check for empty query or asterisk
+    $(".search-form").submit(function(event) 
+         {
+           //check for blank or single asterisk
+           var query = $("#q1-input").val();
+           query = $.trim(query);
+           if (query === '')
+           {
+             bootbox.alert("Please enter a search term.");
+           }
+           /**  Bill says go ahead and forward a query with an asterisk   ######
+           else if (query === '*')
+           {
+             change q1 to blank
+             $("#q1-input").val("")
+             $(".search-form").submit(); 
+           }
+           ##################################################################**/
+           else
+           {
+             $(".search-form").submit(); 
+           }
+
+           event.preventDefault();
+     } );
 
 })
