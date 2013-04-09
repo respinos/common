@@ -3253,8 +3253,6 @@ head.ready(function() {
     $form.submit(function(event) 
          {
 
-           event.preventDefault();
-
            //check for blank or single asterisk
            var query = $(this).find("input[name=q1]").val();
            query = $.trim(query);
