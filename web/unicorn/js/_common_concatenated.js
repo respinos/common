@@ -3250,10 +3250,10 @@ head.ready(function() {
 
 
   // add event handler for submit to check for empty query or asterisk
-    $(".search-form").submit(function(event) 
+    $form.submit(function(event) 
          {
            //check for blank or single asterisk
-           var query = $("#q1-input").val();
+           var query = $input.val();
            query = $.trim(query);
            if (query === '')
            {
