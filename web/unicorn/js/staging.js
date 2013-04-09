@@ -5,7 +5,9 @@ head.ready(function() {
     $("a").each(function() {
         var $link = $(this);
         var href = $link.attr("href");
-        if ( href.indexOf("http://www.hathitrust.org") > -1 ) {
+        if ( ! href ) {
+            // no op
+        } else if ( href.indexOf("http://www.hathitrust.org") > -1 ) {
             $link.attr("href", href.replace("http://www.hathitrust.org", "http://test.www.hathitrust.org"));
         } else if ( href.indexOf("/babel.hathitrust.org") > -1 ) {
             $link.attr("href", href.replace("/babel.hathitrust.org", "/beta-3.babel.hathitrust.org"));
