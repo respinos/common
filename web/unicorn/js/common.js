@@ -60,4 +60,19 @@ if ( window.console === undefined ) {
         $(":input[placeholder]").placeholder();
     });
 
+    // head.js(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js',
+    //         window.location.protocol + '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+    //         function() {
+    //             var do_unload = location.hostname.indexOf("www.hathitrust.org") > -1;
+    //             console.log("UNLOADING", do_unload);
+    //             window.$jQ = jQuery.noConflict(do_unload);
+    //             if ( ! do_unload ) { window.$ = window.$jQ; }
+    //             (function($) {
+    //                 head.js.apply(this, toload, function() {
+    //                     $(":input[placeholder]").placeholder();
+    //                 })
+    //             })($jQ);
+    //         }
+    //     );    
+
 })();
