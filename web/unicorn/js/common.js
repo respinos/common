@@ -1,3 +1,9 @@
+if ( window.console === undefined ) {
+    window.console = {
+        log : function() { }
+    }
+}
+
 (function() {
     var prefix = '/';
     window.HT = window.HT || {};
