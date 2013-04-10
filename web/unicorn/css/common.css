@@ -3,6 +3,7 @@
 @import url(../vendor/css/bootstrap-forms.css);
 @import url(../vendor/fancyBox/jquery.fancybox.css);
 /* lets me easily translate font-sizes from mockup */
+/* #b15a0d; for WCAG AA on stripes */
 /* -------------------------------------------------------------------------*/
 /* Setup */
 /* line 9, ../sass/screen.scss */
@@ -43,7 +44,7 @@ body.maxed {
 
 /* line 35, ../sass/screen.scss */
 a {
-  color: #b15a0d;
+  color: #924a0b;
   text-decoration: underline;
 }
 /* line 40, ../sass/screen.scss */

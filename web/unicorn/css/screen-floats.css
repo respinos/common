@@ -1,4 +1,5 @@
 /* lets me easily translate font-sizes from mockup */
+/* #b15a0d; for WCAG AA on stripes */
 /* -------------------------------------------------------------------------*/
 /* Setup */
 /* line 9, ../sass/screen-floats.scss */
@@ -29,7 +30,7 @@ body.fixed {
 
 /* line 28, ../sass/screen-floats.scss */
 a {
-  color: #b15a0d;
+  color: #924a0b;
   text-decoration: underline;
 }
 /* line 33, ../sass/screen-floats.scss */
