@@ -34,7 +34,7 @@ if ( window.console === undefined ) {
             prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-button.js',
             prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-dropdown.js',
             prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-tooltip.js',
-            prefix + 'common/unicorn/vendor/bootstrap/js/bootbox.min.js',
+            prefix + 'common/unicorn/vendor/bootstrap/js/bootbox.js',
             prefix + 'common/unicorn/vendor/js/jquery.placeholder.js',
             prefix + 'common/unicorn/js/feedback.js',
             prefix + 'common/unicorn/js/login.js',
