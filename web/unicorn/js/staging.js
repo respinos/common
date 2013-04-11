@@ -16,6 +16,7 @@ head.ready(function() {
         } else if ( href.indexOf("/hdl.handle.net") > -1 ) {
             var tmp = href.split("/");
             href = "http://beta-3.babel.hathitrust.org/cgi/pt?id=" + tmp.pop();
+            $link.attr("href", href);
         }
     })
 })
