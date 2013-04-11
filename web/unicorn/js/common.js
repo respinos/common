@@ -30,6 +30,7 @@ if ( window.console === undefined ) {
             prefix + 'common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js',
             prefix + 'common/unicorn/vendor/js/underscore-min.js',
             prefix + 'common/unicorn/vendor/fancyBox/jquery.fancybox.js',
+            prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-transition.js',
             prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-modal.js',
             prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-button.js',
             prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-dropdown.js',

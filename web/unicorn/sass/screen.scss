@@ -1070,6 +1070,15 @@ a.button.log-in.active:after {
     }
 }
 
+.modal.error {
+    background-color: #f2dede;
+
+    .modal-footer {
+        background-color: #e1b1b1;
+    }
+
+}
+
 
 .modal.login-modal {
 
