@@ -1,18 +1,19 @@
 var HT = HT || {};
 head.ready(function() {
 
-    var SCRIPT_URL = $('script[src*="common.js"]').attr('src');
     var PING_URL; var PING_DOMAIN;
 
-    if ( window.location.hostname.indexOf("babel.hathitrust.org") < 0 ) {
-        PING_DOMAIN = SCRIPT_URL.split('/')[2];
-        // PING_DOMAIN = 'roger-full.babel.hathitrust.org';
-        // PING_URL = 'https://' + PING_DOMAIN + '/cgi/ping';
-        PING_URL = 'https://beta-3.babel.hathitrust.org/cgi/ping';
-    } else {
-        PING_URL = '/cgi/ping';
-        PING_DOMAIN = window.location.hostname;
-    }
+    PING_URL = 'https://' + HT.service_domain + '/cgi/ping';
+
+    // if ( window.location.hostname.indexOf("babel.hathitrust.org") < 0 ) {
+    //     PING_DOMAIN = SCRIPT_URL.split('/')[2];
+    //     // PING_DOMAIN = 'roger-full.babel.hathitrust.org';
+    //     // PING_URL = 'https://' + PING_DOMAIN + '/cgi/ping';
+    //     PING_URL = 'https://beta-3.babel.hathitrust.org/cgi/ping';
+    // } else {
+    //     PING_URL = '/cgi/ping';
+    //     PING_DOMAIN = window.location.hostname;
+    // }
 
     var is_babel = (window.location.href.indexOf("babel.hathitrust") > -1);
     var $button = $("#login-button");
@@ -36,11 +37,11 @@ head.ready(function() {
                     '</div>' +
                     '<div class="questions">' +
                         '<ul>' +
-                            '<li><a href="#">Don\'t see your institution listed? &raquo;</a></li>' +
+                            '<li><a target="_blank" href="http://www.hathitrust.org/help_digital_library#LoginNotListed">Don\'t see your institution listed? &raquo;</a></li>' +
                             '<li>' +
                                 '<span>Not with a partner institution?</span><br />' +
-                                '<a href="#">Create a "Friend" account to create collections. &raquo;</a></li>' +
-                            '<li><a href="#">What are the benefits of logging in? &raquo;</a></li>' +
+                                '<a id="friend-login-link" href="#">Create or log in with a "Friend" account to create collections. &raquo;</a></li>' +
+                            '<li><a href="wayf">What are the benefits of logging in? &raquo;</a></li>' +
                         '</ul>' +
                     '</div>' +
                     '<input type="hidden" name="target" value="" />' + 
@@ -66,12 +67,21 @@ head.ready(function() {
                 if ( this.selected ) {
                     $option.attr('selected', 'selected');
                 }
-                if ( this.sdrinst == 'uom' ) {
+                if ( this.sdrinst == 'uom' && HT.is_dev ) {
                     $option = $("<option></option>").appendTo($select);
                     $option.val('https://test.babel.hathitrust.org/Shibboleth.sso/' + this.sdrinst + '?target=___TARGET___');
                     $option.text(this.name + ' DEV');                
                 }
             })
+
+            // update the friend account link
+            var $friend_link = $block.find("#friend-login-link");
+            if ( 0 && HT.is_babel ) {
+                $friend_link.attr("href", location.href.replace("http://", "https://"));
+            } else {
+                $friend_link.attr("href", HT.get_pong_target(location.href));
+            }
+            $block.find("a[href=wayf]").attr("href", 'http://' + HT.service_domain + "/cgi/wayf");
 
             var classes = 'login-modal';
             if ( $button.hasClass("centered") ) {
