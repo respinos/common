@@ -1,0 +1,220 @@
+---
+layout: default
+title: Javascript
+---
+<!-- fancybox -->
+<link rel="stylesheet" type="text/css" href="/common/unicorn/vendor/fancyBox/source/jquery.fancybox.css" />
+<!-- <script type="text/javascript" src="/common/unicorn/vendor/fancyBox/source/jquery.fancybox.js"></script> -->
+
+<!-- dialog -->
+<!-- <script type="text/javascript" src="/common/unicorn/vendor/bootstrap/js/bootstrap-modal.js"></script>
+<script type="text/javascript" src="/common/unicorn/vendor/bootstrap/js/bootbox.min.js"></script> -->
+
+<div class="container page centered">
+    <div class="main" role="main">
+        <h2>{{ page.title }}</h2>
+        <p>
+            Unicorn will maintain the Bootstrap javascript, as well as a few extra widgets.
+            <em>Should these be minimized/packed into a single common file? Or left </em>
+        </p>
+
+        <h3>Dialog/Modal</h3>
+        <p>
+            We're borrowing Bootstrap's modal functionality (<a href="http://twitter.github.com/bootstrap/javascript.html#modals">documentation</a>), as well as using <a href="http://bootboxjs.com">Bootbox</a> to programatically create various kinds of modal dialogs.
+        </p>
+        <textarea class="example">
+$(".bootbox-example").click(function() {
+    bootbox.confirm("<p>Truly cancel PDF download?</p><p><small>We did spend a long time working on it...</small></p>", function(result) {
+        if ( result ) {
+            bootbox.alert("PDF canceled");
+        }
+    });
+    return false;
+})
+        </textarea>
+        <p>
+            <button class="btn bootbox-example">Modal Confirmation Demo</button>
+            <button class="btn progress-example">Modal Progress Demo</button>            
+        </p>
+        <script>
+        head.ready(function() {
+            $(".bootbox-example").click(function() {
+                bootbox.confirm("<p>Truly cancel PDF download?</p><p><small>We did spend a long time working on it...</small></p>", function(result) {
+                    if ( result ) {
+                        bootbox.alert("PDF canceled");
+                    }
+                });
+                return false;
+            })
+
+            $(".progress-example").click(function() {
+
+                /* LIMIT SCRIPT TO THIS CLOSURE */
+                var $a; var timer;
+                function update_progress() {
+                    var $body = $a.find(".modal-body");
+                    var $div = $a.find(".bar");
+                    var total = $div.data("total");
+                    if ( total == 100 ) {
+                        clearInterval(timer);
+                        $div.parent().hide().parent().find(".done").show();
+                        $a.find(".download-pdf").show();
+                        return;
+                    }
+                    total += 10;
+                    $div.data('total', total);
+                    $div.css('width', total + '%');
+                }
+
+                $a = bootbox.dialog("<p>Building your PDF:</p><div class='progress'><div class='bar' data-total='0' style='width: 0%'></div></div><div class='done hide'><p>All done!</p></div>",
+                    [{
+                        label : "Download PDF",
+                        "class" : "btn-primary hide download-pdf",
+                        callback : function() {
+                            bootbox.alert("Downloading PDF...");
+                        }
+                    },
+                    {
+                        label : "Cancel",
+                        "class" : "btn",
+                        callback : function() {
+                            clearInterval(timer);
+                        }
+                    }]
+                );
+                setInterval(update_progress, 1000);
+            })            
+        })
+        </script>
+        <p>
+            You can also use Bootstrap's declarative approach:
+        </p>
+        <textarea class="example">
+<div id="feedback-dialog" class="modal hide fade">
+    <div class="modal-header">
+        <h2>Feedback</h2>
+    </div>
+    <div class="modal-body">
+        <form>
+            <fieldset>
+                <legend>Overall page readability and quality</legend>
+                <label class="radio">
+                    <input type="radio" name="r1" />
+                    Few problems, entire page is readable
+                </label>
+                <label class="radio">
+                    <input type="radio" name="r1" />
+                    Some problems, but still readable
+                </label>
+                <label class="radio">
+                    <input type="radio" name="r1" />
+                    Significant problems, difficult or impossible to read
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Specific page image problems?</legend>
+                <label class="checkbox">
+                    <input type="checkbox" name="r1" />
+                    Missing parts of the page
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" name="r1" />
+                    Blurry text
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" name="r1" />
+                    Curved or distorted text
+                </label>
+                <label>Other problem <input type="text" type="text" class="input-medium" /></label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Problems with access rights?</legend>
+                <p style="font-weight: bold; margin-top: 0">
+                    (See also: <a href="#">take-down policy</a>)
+                </p>
+                <label class="radio">
+                    <input type="radio" name="r2" />
+                    This item is in the public domain, but I don't have access to it.
+                </label>
+                <label class="radio">
+                    <input type="radio" name="r2" />
+                    I have access to this item, but should not.
+                </label>
+            </fieldset>
+
+            <p>
+                <label>Other problems or comments?</label>
+                &lt;textarea rows="3">&lt;/textarea>
+            </p>
+
+            <p>
+                <em>To request a reply, enter your email address below. 
+                    (We will make every effort to address copyright issues by the next business day 
+                    after notification.)</em>
+                <input type="text" class="input-large" placeholder="[Your email address]" />
+            </p>
+
+
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn btn-primary" data-dismiss="modal">OK</a>
+        <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+    </div>
+</div>
+        </textarea>
+
+
+        
+        <h3><a href="http://fancyapps.com/fancybox/">fancyBox</a></h3>
+        <p>
+            fancyBox is a modal "lightbox" for highlighting content on top of the current page.
+            This is not strictly a <em>dialog box</em> --- the main reason to use fancyBox is 
+            to highlight content of variable dimensions (such as larger images). fancyBox will 
+            scale these to best fit the available viewing area.
+        </p>
+        <p>
+            Include the fancyBox support resources in <tt>head</tt>:
+        </p>
+        <textarea class="example">
+<link rel="stylesheet" type="text/css" href="//babel.hathitrust.org/common/unicorn/vendor/fancyBox/source/jquery.fancybox.css" />
+<script type="text/javascript" src="//babel.hathitrust.org/common/unicorn/vendor/fancybox/source/jquery.fancyBox.js"></script>
+        </textarea>
+
+        <p>
+            fancyBox can be used declaratively:
+        </p>
+        <textarea class="example">
+<a class="fancybox" href="fancybox_popup.html">Open Popup</a>
+        </textarea>
+
+        <p>
+            ...or via a scripted event:
+        </p>
+        <textarea class="example">
+$(".open").click(function() {
+    var $this = $(this);
+    $.fancybox.open([ { href : $this.attr('href'), type : 'image' } ]);
+})
+        </textarea>
+        <p>
+            <a href="http://images.nationalgeographic.com/wpf/media-live/photos/000/629/custom/62974_1600x1200-wallpaper-cb1357835854.jpg" class="demo-image btn">Open Picture</a>
+        </p>
+        <script>
+        head.ready(function() {
+            $(".demo-image").click(function() {
+                var $this = $(this);
+                $.fancybox.open([ { href : $this.attr('href'), type : 'image' } ]);
+                return false;
+            })
+        })
+        </script>
+
+
+
+    </div>
+</div>
+<script src="../js/examples.js"></script>

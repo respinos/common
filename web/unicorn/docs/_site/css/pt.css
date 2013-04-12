@@ -1,0 +1,30 @@
+.sidebar h3 {
+	border-bottom: 1px solid #ddd;
+}
+
+.sidebar .collectionLinks select {
+	font-size: 13px;
+}
+
+.versionContainer {
+	font-size: 85%;
+	margin-top: 40px;
+}
+
+#versionIcon {
+display: inline-block;
+position: relative;
+height: 18px;
+width: 18px;
+margin-left: 5px;
+background-image: url(/pt/common-web/graphics/harmony/icon_question.png);
+background-repeat: no-repeat;
+text-indent: -10000px;
+text-transform: capitalize;
+clip: rect(0,0,0,0);
+cursor: pointer;
+}
+
+.sidebar label {
+	font-size: 13px;
+}

@@ -1,0 +1,78 @@
+---
+layout: default
+title: Developing with Sass
+---
+<div class="container page centered">
+    <div class="main" role="main">
+        <h2>{{ page.title }}</h2>
+        Several approaches exist:
+        <ul>
+            <li>
+                <p>
+                    The simplest option is to use Sass to manage a local stylesheet (e.g. <tt>pt.sass</tt>), assuming that the application links to the processed common stylesheet (e.g. <tt>//babel.hathitrust.org/.../common.css</tt>).
+                </p>
+            </li>
+            <li>
+                <p>
+                    <tt>pt.sass</tt> can import <tt>common.sass</tt>: this makes all the classes/modules defined in the common stylesheet available to rules defined in <tt>pt.sass</tt>, and all the rules are compiled into a single <tt>pt.css</tt>. <em>For stylesheet rules</em> this mimics existing HTDEV practices of building a single CSS file.
+                </p>
+            </li>
+        </ul>
+
+        <h3>Example: HathiTrust Catalog</h3>
+
+        <p>
+            Working with the catalog:
+            <ul>
+                <li><tt>common.git</tt> is checked out at <tt>$SDRROOT/common</tt></li>
+                <li>local Sass work happens in <tt>$SDRROOT/web/static/unicorn</tt>
+                    <ul>
+                        <li><tt>sass</tt> contains the Sass sources</li>
+                        <li><tt>css</tt> contains the generated CSS files</li>
+                    </ul>
+                </li>
+                <li>
+                    <tt>web/static/unicorn/sass/catalog.sass</tt> starts with <tt>@import "../../../../common/sass/common";</tt>
+                </li>
+                <li>
+                    A local rule (e.g. styling <tt>#bd</tt>) can now borrow rules and functions from the common stylesheet:
+                    <pre class="example">
+    #bd {
+        @extend .row;
+        @include rem(font-size, 14);
+    }
+                    </pre>
+                </li>
+            </ul>
+        </p>
+
+
+        <h2>Working with Sass</h2>
+
+        <p>
+            Set up the working space: <tt>compass create web -r susy -u susy --css-dir=css --javascripts=js -s expanded --relative-assets</tt>
+        </p>
+
+        <p>
+            To compile to CSS, execute <tt>compass compile</tt> inside the <tt>web</tt> directory.
+        </p>
+        <p>
+            You can run <tt>compass watch</tt> to compile to CSS when the Sass files are updated.
+        </p>
+
+        <h3>References</h3>
+        <dl>
+            <dt><a href="http://sass-lang.com/">Sass Reference</a></dt>
+            <dd>Sass technically has two syntaxes; we're adopting the <strong>SCSS</strong> version</dd>
+
+            <dt><a href="http://blog.teamtreehouse.com/the-absolute-beginners-guide-to-sass">The Absolute Beginner’s Guide to Sass</a></dt>
+
+            <dt><a href="http://compass-style.org/">Compass Documentation</a></dt>
+            <dd>Compass is built on top of Sass, and provides some extra tooling (such as the <tt>compass</tt> utility above).</dd>
+            <dd>(We're not really using much of Compass, in the end, but the tooling is nice.)</dd>
+
+            <dt><a href="http://susy.oddbird.net">Susy Responsive Grids</a></dt>
+        </dl>
+
+    </div>
+</div>

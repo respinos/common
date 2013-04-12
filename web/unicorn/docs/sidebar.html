@@ -1,0 +1,86 @@
+---
+layout: default
+extra_css: css/pt.css
+title: Sidebar Example
+---
+<div class="container page centered">
+	<h2 class="offscreen">Results</h2>
+	<div class="sidebar" role="complementary">
+		<p>
+			<a href="#">&laquo; Back to Results</a>
+		</p>
+		<h3>About this Book</h3>
+		<p>
+			Beautiful Detroit illustrated : where to go, how ... 
+		</p>
+		<p>
+			<a href="#">View full catalog record</a>
+		</p>
+		<p>
+			<strong>Copyright:</strong> 
+			<a href="http://www.hathitrust.org/access_use#pd-google">Public Domain, Google-digitized.</a>
+		</p>
+
+		<h3>Get this Book</h3>
+		<ul class="unstyled">
+			<li><a href="#">Buy a copy</a></li>
+			<li><a href="#">Download this page (PDF)</a></li>
+			<li><a href="#">Download whole book (PDF)</a></li>
+		</ul>
+
+		<div class="collectionLinks">
+			<h3>Add to Collection</h3>
+			<p>
+				<a href="#">Login</a> to make your personal collections permanent.
+			</p>
+			<div class="ptSelectBox">
+				<label for="PTaddItemSelect" class="SkipLink">Add to your collection:</label>
+				<select name="c2" id="PTaddItemSelect" class="mdpColSelectMenu input-large">
+					<option value="a">Select Collection</option>
+					<option value="b">[CREATE NEW COLLECTION]</option>
+				</select>
+				<br />
+				<button id="PTaddItemBtn" class="btn btn-small">Add</button>
+			</div>
+		</div>
+
+		<h3>Share</h3>
+		<form action="" name="urlForm" id="urlForm">
+			<label class="smaller" for="permURL">Permanent link to this book</label>
+			<input type="text" name="permURL_link" id="permURL" class="tracked input-large" onclick="document.urlForm.permURL_link.select();" data-tracking-category="PT" data-tracking-action="PT Link to this Book" data-tracking-label="http://hdl.handle.net/2027/mdp.39015071312634" readonly="readonly" value="http://hdl.handle.net/2027/mdp.39015071312634">
+			<br>
+			<label class="smaller" for="pageURL">Link to this page</label>
+			<input type="text" name="pageURL_link" id="pageURL" class="tracked input-large" onclick="document.urlForm.pageURL_link.select();" data-tracking-category="PT" data-tracking-action="PT Link to this Page" readonly="readonly" data-tracking-label="http://hdl.handle.net/2027/mdp.39015071312634?urlappend=%3Bseq=1" value="http://hdl.handle.net/2027/mdp.39015071312634?urlappend=%3Bseq=1">
+		</form>
+
+		<div class="versionContainer"><strong>Version: </strong>2010-07-05 06:47 UTC<a id="versionIcon" href=" ">version label for this item</a></div>
+	</div>
+	<div class="main" role="main">
+		<h3>Sidebar Example</h3>
+		<p>
+			The border is defined on the <tt>sidebar</tt> element. Because the blocks have
+			<tt>display: table-cell</tt> the sidebar is always as tall as the containing 
+			<tt>div</tt>, and the border always stretches the full height.
+		</p>
+		<p>
+			This page demonstrates the sidebar in <tt>pt</tt>.
+		</p>
+		<h4>Examples</h4>
+		<dl>
+			<dt><a href="search_results.html">Search Results Example</a></dt>
+			<dd>Styling facets and search results.</dd>
+
+			<dt><a href="sidebar_long.html">Long Sidebar Example</a></dt>
+			<dd>Demonstration of when the sidebar contents are greater than the main content.</dd>
+
+			<dt><a href="mb_detail.html">Collection Builder Detail Example</a></dt>
+			<dd>Yet another rendition of sidebar content.</dd>
+
+		</dl>
+
+		<h3>Random Padding</h3>
+
+		{% include random_padding.html %}
+
+	</div>
+</div>

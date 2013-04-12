@@ -1,0 +1,51 @@
+	<!-- HEADER -->
+	<div class="container centered header clearfix">
+		<div class="logo">
+			<a href="http://www.hathitrust.org"><span class="offscreen">HathiTrust Digital Library</span></a>
+		</div>
+		<div class="search-form" role="search">
+
+			<form action="/cgi/ls/one" method="GET">
+				<div class="search-tabs">
+					<input name="target" type="radio" id="option-full-text-search" value="ls" checked="checked" />
+					<label for="option-full-text-search" class="search-label-full-text">Full-text</label>
+					<input name="target" type="radio" id="option-catalog-search" value="catalog" />
+					<label for="option-catalog-search" class="search-label-catalog">Catalog</label>
+				</div>
+				<fieldset>
+					<input name="q1" type="text" class="search-input-text" placeholder="Search words about or within the items" value="" />
+					<div class="search-input-options">
+						<select size="1" class="search-input-select" name="searchtype">
+							<option value="all">Everything</option>
+							<option value="title">Title</option>
+							<option value="author">Author</option>
+							<option value="subject">Subject</option>
+							<option value="isbn">ISBN/ISSN</option>
+							<option value="publisher">Publisher</option>
+							<option value="seriestitle">Series Title</option>
+							<option value="pubyear">Publication Year</option>
+						</select>
+					</div>
+					<button class="button"><span class="offscreen">Search</span></button>
+				</fieldset>
+				<div class="search-extra-options">
+					<ul class="search-links">
+						<li class="search-advanced-link"><a href="http://babel.hathitrust.org/cgi/ls?a=page;page=advanced">Advanced full-text search</a></li>
+						<li class="search-catalog-link"><a href="http://catalog.hathitrust.org/Search/Advanced">Advanced catalog search</a></li>
+						<li><a href="http://www.hathitrust.org/help_digital_library#SearchTips">Search tips</a></li>
+					</ul>
+					<label>
+						<input type="checkbox" value="ft" />
+						Full view only
+					</label>
+				</div>
+			</form>
+
+		</div>
+		<div class="login">
+			{% if page.logged_in %}
+			{% else %}
+			<a href="http://babel.hathitrust.org/cgi/wayf" id="login-button" class="button log-in">LOG IN</a>
+			{% endif %}
+		</div>
+	</div>

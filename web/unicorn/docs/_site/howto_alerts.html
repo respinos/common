@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>Using Alerts | Project Unicorn Developer Guide</title>
+
+<!--[if lt IE 9]>
+<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="../common/unicorn/vendor/js/selectivizr.js" type="text/javascript"></script>
+<![endif]-->
+
+	<script type="text/javascript" src="/common/unicorn/vendor/headjs/dist/head.min.js"></script>
+	<script type="text/javascript" src="/common/unicorn/js/common.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/common/unicorn/css/common.css" />
+
+	
+
+
+<!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="/common/unicorn/css/ie7.css" />
+<![endif]-->
+
+	<!-- FOR DOCUMENTATION -->
+	<link rel="stylesheet" type="text/css" href="css/docs.css" />
+
+</head>
+<body>
+	<h1 class="offscreen">Using Alerts | Project Unicorn Developer Guide</h1>
+
+		<!-- NAVBAR -->
+	<h2 class="offscreen">Navigation</h2>
+	<div class="navbar navbar-static-top navbar-inverse" role="navigation">
+		<div class="navbar-inner">
+			<ul id="nav" class="nav">
+				<li ><a href="http://www.hathitrust.org">Home</a></li>
+				<li><a href="http://www.hathitrust.org/about">About</a>
+					<ul>
+					<li><a href="http://www.hathitrust.org/partnership">Our Partnership</a></li>
+					<li><a href="http://www.hathitrust.org/digital_library">Our Digital Library</a></li>
+					<li><a href="http://www.hathitrust.org/htrc">Our Research Center</a></li>
+					<li><a href="http://www.hathitrust.org/news_publications">News &amp; Publications</a></li>
+					</ul></li>
+				<li><a href="http://babel.hathitrust.org/cgi/mb">Collections</a></li>
+				<li class="divider-vertical"></li>
+				<li class="help"><a href="http://www.hathitrust.org/help">Help</a></li>
+				<li><a href="http://babel.hathitrust.org/cgi/feedback?page=form" data-m="ht" data-id="HathiTrust Project Unicorn Guide" data-toggle="feedback">Feedback</a></li>
+								<li class="divider-vertical"></li>
+				<li class="guidelines">
+					<a href="index.html">Guide/Examples</a>
+					<ul>
+						<li class="topic"><a href="overview.html">Techical Overview</a></li>
+						<li><a href="overview_sass.html">Developing with Sass</a></li>
+						<li><a href="overview_css.html">Developing with CSS</a></li>
+
+						<li class="topic"><span>Components</span></li>
+
+						<li><a href="howto_js.html">Javascript</a></li>
+						<li><a href="howto_feedback.html">Javascript: Feedback</a></li>
+						<li><a href="howto_icons.html">Icon Fonts</a></li>
+						<li><a href="howto_forms.html">Forms</a></li>
+						<li><a href="howto_grid.html">Grid/Layout</a></li>
+
+						<li class="topic"><span>Examples</span></li>
+
+						<li><a href="logged_in.html">Logged In Example</a></li>
+						<li><a href="no_header_search.html">Hiding Header Search</a></li>
+						<li><a href="sidebar.html">Sidebar Example</a></li>
+						<li><a href="search_results.html">Search Results Example</a></li>
+						<li><a href="sidebar_long.html">Long Sidebar Example</a></li>
+						<li><a href="mb.html">Collection Builder Results Example</a></li>
+						<li><a href="mb_detail.html">Collection Builder Detail Example</a></li>
+						<li><a href="homepage.html">Home Page</a></li>
+						<li><a href="homepage_login.html">Home Page (Logged In)</a></li>
+
+
+					</ul>
+				</li>
+
+			</ul>
+			
+		</div>
+	</div>
+	
+
+		<!-- HEADER -->
+	<div class="container centered header clearfix">
+		<div class="logo">
+			<a href="http://www.hathitrust.org"><span class="offscreen">HathiTrust Digital Library</span></a>
+		</div>
+		<div class="search-form" role="search">
+
+			<form action="/cgi/ls/one" method="GET">
+				<div class="search-tabs">
+					<input name="target" type="radio" id="option-full-text-search" value="ls" checked="checked" />
+					<label for="option-full-text-search" class="search-label-full-text">Full-text</label>
+					<input name="target" type="radio" id="option-catalog-search" value="catalog" />
+					<label for="option-catalog-search" class="search-label-catalog">Catalog</label>
+				</div>
+				<fieldset>
+					<input name="q1" type="text" class="search-input-text" placeholder="Search words about or within the items" value="" />
+					<div class="search-input-options">
+						<select size="1" class="search-input-select" name="searchtype">
+							<option value="all">Everything</option>
+							<option value="title">Title</option>
+							<option value="author">Author</option>
+							<option value="subject">Subject</option>
+							<option value="isbn">ISBN/ISSN</option>
+							<option value="publisher">Publisher</option>
+							<option value="seriestitle">Series Title</option>
+							<option value="pubyear">Publication Year</option>
+						</select>
+					</div>
+					<button class="button"><span class="offscreen">Search</span></button>
+				</fieldset>
+				<div class="search-extra-options">
+					<ul class="search-links">
+						<li class="search-advanced-link"><a href="http://babel.hathitrust.org/cgi/ls?a=page;page=advanced">Advanced full-text search</a></li>
+						<li class="search-catalog-link"><a href="http://catalog.hathitrust.org/Search/Advanced">Advanced catalog search</a></li>
+						<li><a href="http://www.hathitrust.org/help_digital_library#SearchTips">Search tips</a></li>
+					</ul>
+					<label>
+						<input type="checkbox" value="ft" />
+						Full view only
+					</label>
+				</div>
+			</form>
+
+		</div>
+		<div class="login">
+			
+			<a href="http://babel.hathitrust.org/cgi/wayf" id="login-button" class="button log-in">LOG IN</a>
+			
+		</div>
+	</div>
+
+	<div class="container page centered">
+    <div class="main" role="main">
+        <h2>Using Alerts</h2>
+
+
+        <div class="alert alert-block alert-warning">
+            <p>This is a warning.</p>
+        </div>
+
+        <div class="alert alert-block alert-error">
+            <p>This is an error.</p>
+            <p>This is an error.</p>
+            <p>This is an error.</p>
+            <p>This is an error.</p>
+        </div>
+
+        <div class="alert alert-block alert-success">
+            <p>'What IS a Caucus-race?' said Alice; not that she wanted much to know,  but the Dodo had paused as if it thought that SOMEBODY ought to speak,  and no one else seemed inclined to say anything.</p>
+
+            <p>'Why,' said the Dodo, 'the best way to explain it is to do it.' (And, as  you might like to try the thing yourself, some winter day, I will tell  you how the Dodo managed it.)</p>
+        </div>
+
+    </div>
+</div>
+
+
+		<div class="navbar navbar-static-bottom navbar-inverse footer" role="contentinfo">
+		<div class="navbar-inner">
+			
+			<ul class="nav pull-right">
+				<li><a href="http://www.hathitrust.org/">Home</a></li>
+				<li><a href="http://www.hathitrust.org/about">About</a></li>
+				<li><a href="http://babel.hathitrust.org/cgi/mb">Collections</a></li>
+				<li><a href="http://www.hathitrust.org/help">Help</a></li>
+				<li><a href="#" data-m="ht" data-id="HathiTrust Project Unicorn Guide" data-toggle="feedback">Feedback</a></li>
+				<li><a href="http://m.hathitrust.org">Mobile</a></li>
+				<li><a href="http://www.hathitrust.org/take_down_policy">Take-Down Policy</a></li>
+				<li><a href="http://www.hathitrust.org/privacy">Privacy</a></li>
+				<li><a href="http://www.hathitrust.org/contact">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+</body>
+</html>

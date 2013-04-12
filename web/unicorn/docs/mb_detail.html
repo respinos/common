@@ -1,0 +1,146 @@
+---
+layout: default
+extra_css: css/results.css
+title: Collection Builder Detail Example
+---
+<div class="container page centered">
+	<div class="sidebar" role="complementary">
+		<div class="col-featured">
+			<img src="http://placekitten.com/200/150" />
+		</div>
+		<h3>
+			<span class="offscreen">Details for </span>
+			Variety of Useful Books
+		</h3>
+		<dl class="collection">
+			<dt>Owner</dt>
+			<dd>roger</dd>
+			<dt>Description</dt>
+			<dd>
+				<p>A collection of selected books that range from quick-to-download to
+					pathologically-ridiculous-go-bake-some-muffins.</p>
+			</dd>
+			<dt>More Information</dt>
+			<dd><a href="http://estc.bl.uk/">Visit English Short Title Catalogue website</a></dd>
+
+			<dt>Status</dt>
+			<dd>Public</dd>
+		</dl>
+		<p>
+			<a href="#" class="btn btn-small">Edit</a>
+		</p>
+	</div>
+	<div class="main" role="main">
+		<h2>{{ page.title }}</h2>
+
+		<p>
+			The border is defined on the <tt>sidebar</tt> element. Because the blocks have
+			<tt>display: table-cell</tt> the sidebar is always as tall as the containing 
+			<tt>div</tt>, and the border always stretches the full height.
+		</p>
+		<p>
+			This page demonstrates the sidebar in <tt>mb</tt> when viewing a collection. 
+			See the <a href="mb.html">results page</a> for the HTML of a result row.
+		</p>
+
+        <div class="row result">
+            <h4>The wombat : common wombats in Australia / Barbara Triggs ; illustrated by Ross Goldingay.</h4>
+            <div class="span1 select">
+                <label><input type="checkbox" /><span class="offscreen">Select item 1</span></label>
+            </div>
+            <div class="span8 push-1">
+                <div class="result-metadata-author">
+                    by
+                       Triggs, Barbara.
+                </div>
+                <div class="result-metadata-published">
+                    Published 1988
+                </div>
+                <div class="result-access-link">
+                    <ul>
+                        <li>
+                            <a href="/Record/005655916" class="cataloglinkhref icomoon-info-circle">Catalog Record</a>
+                        </li>
+
+                        <li>
+                            <a href="http://babel.hathitrust.org/cgi/pt?id=coo.31924052400748;q1=wombat" class="limited-access icomoon-locked">Limited (search-only)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span3 in-collections">
+                <h5>In your collection</h5>
+                <ul>
+                    <li><a href="#">wombats and other marsupials</a></li>
+                    <li><a href="#">charismatic megafauna</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row result alt">
+            <h4>The death of a wombat. Drawings by Clifton Pugh</h4>
+            <div class="span1 select">
+                <input type="checkbox" />
+            </div>
+            <div class="span8 push-1">
+                <div class="result-metadata-author">
+                    by
+                       Smith, Ivan.
+                </div>
+                <div class="result-metadata-published">
+                    Published 1972
+                </div>
+                <div class="result-access-link">
+                    <ul>
+                        <li>
+                            <a href="/Record/005655916" class="cataloglinkhref icomoon-info-circle">Catalog Record</a>
+                        </li>
+
+                        <li>
+                            <a href="http://babel.hathitrust.org/cgi/pt?id=coo.31924052400748;q1=wombat" class="limited-access icomoon-locked">Limited (search-only)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span3 in-collections">
+                <h5>In your collection</h5>
+                <ul>
+                    <li>---</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row result">
+            <h4>The careless kangaroo, story and pictures by Earle Goodenow.</h4>
+            <div class="span1 select">
+                <input type="checkbox" />
+            </div>
+            <div class="span8 push-1">
+                <div class="result-metadata-author">
+                    by
+                       Goodenow, Earle, 1913-
+                </div>
+                <div class="result-metadata-published">
+                    Published 1959
+                </div>
+                <div class="result-access-link">
+                    <ul>
+                        <li>
+                            <a href="/Record/005655916" class="cataloglinkhref icomoon-info-circle">Catalog Record</a>
+                        </li>
+
+                        <li>
+                            <a href="http://babel.hathitrust.org/cgi/pt?id=coo.31924052400748;q1=wombat" class="full-view icomoon-document-2">Full View</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span3 in-collections">
+                <h5>In your collection</h5>
+                <ul>
+                    <li><a href="#">charismatic megafauna</a></li>
+                </ul>
+            </div>
+        </div>
+	</div>
+</div>

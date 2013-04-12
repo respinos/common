@@ -1,0 +1,38 @@
+---
+layout: default
+title: Feedback
+---
+
+<div class="container page centered">
+    <div class="main" role="main">
+        <h2>{{ page.title }}</h2>
+        <p>
+            The basic feedback dialog is included as part of loading the common script file:
+        </p>
+        <textarea class="example">
+<script type="text/javascript" src="/common/unicorn/vendor/headjs/dist/head.min.js"></script>
+<script type="text/javascript" src="/common/unicorn/js/common.js"></script>
+        </textarea>
+
+        <p>
+            The feedback dialog binds itself to buttons/links with the attribute <em>data-toggle</em>
+            set to <tt>feedback</tt>; the feedback links in the navbar and footer are defined 
+            this way.
+        </p>
+        <p>
+            Your site/application will need to also specify 
+            <tt>data-id</tt> and (optionally) <tt>data-m</tt> (default: "ht"). For example:
+        </p>
+
+        <textarea class="example">
+<a href="#" data-toggle="feedback" data-m="ht" data-id="HathiTrust.org">Feedback</a>
+        </textarea>
+
+        <p>
+            <button class="btn btn-large" data-toggle="feedback" data-m="ht" data-id="Feedback Test">Try Submitting Feedback</button>
+        </p>
+
+
+    </div>
+</div>
+<script src="../js/examples.js"></script>

@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>Search Results Example | Project Unicorn Developer Guide</title>
+
+<!--[if lt IE 9]>
+<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="../common/unicorn/vendor/js/selectivizr.js" type="text/javascript"></script>
+<![endif]-->
+
+	<script type="text/javascript" src="/common/unicorn/vendor/headjs/dist/head.min.js"></script>
+	<script type="text/javascript" src="/common/unicorn/js/common.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/common/unicorn/css/common.css" />
+
+	
+	<link rel="stylesheet" type="text/css" href="css/results.css" />
+	
+
+
+<!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="/common/unicorn/css/ie7.css" />
+<![endif]-->
+
+	<!-- FOR DOCUMENTATION -->
+	<link rel="stylesheet" type="text/css" href="css/docs.css" />
+
+</head>
+<body>
+	<h1 class="offscreen">Search Results Example | Project Unicorn Developer Guide</h1>
+
+		<!-- NAVBAR -->
+	<h2 class="offscreen">Navigation</h2>
+	<div class="navbar navbar-static-top navbar-inverse" role="navigation">
+		<div class="navbar-inner">
+			<ul id="nav" class="nav">
+				<li ><a href="http://www.hathitrust.org">Home</a></li>
+				<li><a href="http://www.hathitrust.org/about">About</a>
+					<ul>
+					<li><a href="http://www.hathitrust.org/partnership">Our Partnership</a></li>
+					<li><a href="http://www.hathitrust.org/digital_library">Our Digital Library</a></li>
+					<li><a href="http://www.hathitrust.org/htrc">Our Research Center</a></li>
+					<li><a href="http://www.hathitrust.org/news_publications">News &amp; Publications</a></li>
+					</ul></li>
+				<li><a href="http://babel.hathitrust.org/cgi/mb">Collections</a></li>
+				<li class="divider-vertical"></li>
+				<li class="help"><a href="http://www.hathitrust.org/help">Help</a></li>
+				<li><a href="http://babel.hathitrust.org/cgi/feedback?page=form" data-m="ht" data-id="HathiTrust Project Unicorn Guide" data-toggle="feedback">Feedback</a></li>
+								<li class="divider-vertical"></li>
+				<li class="guidelines">
+					<a href="index.html">Guide/Examples</a>
+					<ul>
+						<li class="topic"><a href="overview.html">Techical Overview</a></li>
+						<li><a href="overview_sass.html">Developing with Sass</a></li>
+						<li><a href="overview_css.html">Developing with CSS</a></li>
+
+						<li class="topic"><span>Components</span></li>
+
+						<li><a href="howto_js.html">Javascript</a></li>
+						<li><a href="howto_feedback.html">Javascript: Feedback</a></li>
+						<li><a href="howto_icons.html">Icon Fonts</a></li>
+						<li><a href="howto_forms.html">Forms</a></li>
+						<li><a href="howto_grid.html">Grid/Layout</a></li>
+
+						<li class="topic"><span>Examples</span></li>
+
+						<li><a href="logged_in.html">Logged In Example</a></li>
+						<li><a href="no_header_search.html">Hiding Header Search</a></li>
+						<li><a href="sidebar.html">Sidebar Example</a></li>
+						<li><a href="search_results.html">Search Results Example</a></li>
+						<li><a href="sidebar_long.html">Long Sidebar Example</a></li>
+						<li><a href="mb.html">Collection Builder Results Example</a></li>
+						<li><a href="mb_detail.html">Collection Builder Detail Example</a></li>
+						<li><a href="homepage.html">Home Page</a></li>
+						<li><a href="homepage_login.html">Home Page (Logged In)</a></li>
+
+
+					</ul>
+				</li>
+
+			</ul>
+			
+		</div>
+	</div>
+	
+
+		<!-- HEADER -->
+	<div class="container centered header clearfix">
+		<div class="logo">
+			<a href="http://www.hathitrust.org"><span class="offscreen">HathiTrust Digital Library</span></a>
+		</div>
+		<div class="search-form" role="search">
+
+			<form action="/cgi/ls/one" method="GET">
+				<div class="search-tabs">
+					<input name="target" type="radio" id="option-full-text-search" value="ls" checked="checked" />
+					<label for="option-full-text-search" class="search-label-full-text">Full-text</label>
+					<input name="target" type="radio" id="option-catalog-search" value="catalog" />
+					<label for="option-catalog-search" class="search-label-catalog">Catalog</label>
+				</div>
+				<fieldset>
+					<input name="q1" type="text" class="search-input-text" placeholder="Search words about or within the items" value="" />
+					<div class="search-input-options">
+						<select size="1" class="search-input-select" name="searchtype">
+							<option value="all">Everything</option>
+							<option value="title">Title</option>
+							<option value="author">Author</option>
+							<option value="subject">Subject</option>
+							<option value="isbn">ISBN/ISSN</option>
+							<option value="publisher">Publisher</option>
+							<option value="seriestitle">Series Title</option>
+							<option value="pubyear">Publication Year</option>
+						</select>
+					</div>
+					<button class="button"><span class="offscreen">Search</span></button>
+				</fieldset>
+				<div class="search-extra-options">
+					<ul class="search-links">
+						<li class="search-advanced-link"><a href="http://babel.hathitrust.org/cgi/ls?a=page;page=advanced">Advanced full-text search</a></li>
+						<li class="search-catalog-link"><a href="http://catalog.hathitrust.org/Search/Advanced">Advanced catalog search</a></li>
+						<li><a href="http://www.hathitrust.org/help_digital_library#SearchTips">Search tips</a></li>
+					</ul>
+					<label>
+						<input type="checkbox" value="ft" />
+						Full view only
+					</label>
+				</div>
+			</form>
+
+		</div>
+		<div class="login">
+			
+			<a href="http://babel.hathitrust.org/cgi/wayf" id="login-button" class="button log-in">LOG IN</a>
+			
+		</div>
+	</div>
+
+	<div class="container page centered">
+    <h2 class="offscreen">Results</h2>
+    <div class="sidebar" role="complementary">
+        <div class="facets">
+            <h3>Refine Results</h3>
+
+            <div id="facetlist">
+
+                				<dl>
+					<dt class="facetField">Viewability</dt>                
+					   <dd>
+					<a href="http://babel.hathitrust.org/cgi/ls?q1=wombat;a=srchls;a=srchls;lmt=so" class="">Limited (search only) </a> (18,775) </dd> <dd>
+					<a href="http://babel.hathitrust.org/cgi/ls?q1=wombat;a=srchls;a=srchls;lmt=ft" class="">Full View </a> (11,362) </dd>    
+					            <dt class="facetField">Subject</dt>                
+					          
+					      
+					        <dd class="showfacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Science%22">Science</a><span dir="ltr"> (1,745) </span>
+					</dd>
+					        <dd class="showfacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Zoology%22">Zoology</a><span dir="ltr"> (1,298) </span>
+					</dd>
+					        <dd class="showfacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22English%20language%22">English language</a><span dir="ltr"> (1,183) </span>
+					</dd>
+					        <dd class="showfacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Natural%20history%22">Natural history</a><span dir="ltr"> (978) </span>
+					</dd>
+					        <dd class="showfacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Encyclopedias%20and%20dictionaries.%22">Encyclopedias and dictionaries.</a><span dir="ltr"> (946) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Australia%22">Australia</a><span dir="ltr"> (943) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Science%20Periodicals.%22">Science Periodicals.</a><span dir="ltr"> (881) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Zoology%20Periodicals.%22">Zoology Periodicals.</a><span dir="ltr"> (590) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Geology%22">Geology</a><span dir="ltr"> (503) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Natural%20history%20Periodicals.%22">Natural history Periodicals.</a><span dir="ltr"> (452) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Children%27s%20literature%22">Children's literature</a><span dir="ltr"> (417) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Biology%22">Biology</a><span dir="ltr"> (403) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Science%20Periodicals%22">Science Periodicals</a><span dir="ltr"> (403) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Great%20Britain%22">Great Britain</a><span dir="ltr"> (335) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Geography%22">Geography</a><span dir="ltr"> (312) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22English%20literature%22">English literature</a><span dir="ltr"> (306) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Ethnology%22">Ethnology</a><span dir="ltr"> (294) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Zoology.%22">Zoology.</a><span dir="ltr"> (293) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Medicine%22">Medicine</a><span dir="ltr"> (273) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Mammals%22">Mammals</a><span dir="ltr"> (269) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Motion%20pictures%22">Motion pictures</a><span dir="ltr"> (261) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Books%22">Books</a><span dir="ltr"> (234) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Botany%22">Botany</a><span dir="ltr"> (231) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Paleontology%22">Paleontology</a><span dir="ltr"> (222) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22German%20language%22">German language</a><span dir="ltr"> (220) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Agriculture%22">Agriculture</a><span dir="ltr"> (217) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Australian%20literature%22">Australian literature</a><span dir="ltr"> (214) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Aboriginal%20Australians%22">Aboriginal Australians</a><span dir="ltr"> (205) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Science%20Societies%2C%20etc.%22">Science Societies, etc.</a><span dir="ltr"> (205) </span>
+					</dd>
+					        <dd class="hidefacet Subject">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=topicStr:%22Technology%22">Technology</a><span dir="ltr"> (198) </span>
+					</dd>
+					<dd>
+					<a href="" class="Subject morefacets"><span class="SearchLabel">Subject: show </span><span class="moreless">more...</span></a><a href="" class="Subject lessfacets" style="display: none;"><span class="SearchLabel">Subject: show </span><span class="moreless">less...</span></a>
+					</dd>    
+					            <dt class="facetField">Author</dt>                
+					          
+					      
+					        <dd class="showfacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22JSTOR%20%28Organization%29%22">JSTOR (Organization)</a><span dir="ltr"> (353) </span>
+					</dd>
+					        <dd class="showfacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Commonwealth%20Scientific%20and%20Industrial%20Research%20Organization%20%28Australia%29%22">Commonwealth Scientific and Industrial Research Organization (Australia)</a><span dir="ltr"> (250) </span>
+					</dd>
+					        <dd class="showfacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22ScienceDirect%20%28Online%20service%29%22">ScienceDirect (Online service)</a><span dir="ltr"> (216) </span>
+					</dd>
+					        <dd class="showfacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Wiley%20online%20library.%22">Wiley online library.</a><span dir="ltr"> (192) </span>
+					</dd>
+					        <dd class="showfacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Smithsonian%20Institution.%22">Smithsonian Institution.</a><span dir="ltr"> (189) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Royal%20Society%20%28Great%20Britain%29%22">Royal Society (Great Britain)</a><span dir="ltr"> (177) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22CSIRO%20%28Australia%29%22">CSIRO (Australia)</a><span dir="ltr"> (169) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Smithsonian%20Institution.%20Board%20of%20Regents.%22">Smithsonian Institution. Board of Regents.</a><span dir="ltr"> (169) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22R.R.%20Bowker%20Company.%22">R.R. Bowker Company.</a><span dir="ltr"> (162) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22United%20States%20National%20Museum.%22">United States National Museum.</a><span dir="ltr"> (161) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Australian%20National%20Research%20Council.%22">Australian National Research Council.</a><span dir="ltr"> (156) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Royal%20Society%20of%20Victoria%20%28Melbourne%2C%20Vic.%29%22">Royal Society of Victoria (Melbourne, Vic.)</a><span dir="ltr"> (142) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Gale%20Research%20Company.%22">Gale Research Company.</a><span dir="ltr"> (140) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22National%20Zoological%20Park%20%28U.S.%29%22">National Zoological Park (U.S.)</a><span dir="ltr"> (133) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Australian%20Academy%20of%20Science.%22">Australian Academy of Science.</a><span dir="ltr"> (116) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Nature%20Publishing%20Group.%22">Nature Publishing Group.</a><span dir="ltr"> (109) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Ovid%20Technologies%2C%20Inc.%22">Ovid Technologies, Inc.</a><span dir="ltr"> (108) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Deutsche%20Zoologische%20Gesellschaft.%22">Deutsche Zoologische Gesellschaft.</a><span dir="ltr"> (103) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Royal%20Society%20of%20South%20Australia.%22">Royal Society of South Australia.</a><span dir="ltr"> (90) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Zoological%20Society%20of%20London.%22">Zoological Society of London.</a><span dir="ltr"> (88) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22National%20Quotation%20Bureau%20%28U.S.%29%22">National Quotation Bureau (U.S.)</a><span dir="ltr"> (87) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Encyclopaedia%20Britannica%2C%20inc.%22">Encyclopaedia Britannica, inc.</a><span dir="ltr"> (84) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22H.W.%20Wilson%20Company.%22">H.W. Wilson Company.</a><span dir="ltr"> (83) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Lockyer%2C%20Norman%2C%20Sir%2C%201836-1920.%22">Lockyer, Norman, Sir, 1836-1920.</a><span dir="ltr"> (79) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Australian%20Museum.%22">Australian Museum.</a><span dir="ltr"> (74) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22National%20Library%20of%20Australia.%22">National Library of Australia.</a><span dir="ltr"> (73) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Dan%20Golenpaul%20Associates.%22">Dan Golenpaul Associates.</a><span dir="ltr"> (72) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Golenpaul%2C%20Dan.%22">Golenpaul, Dan.</a><span dir="ltr"> (72) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22American%20Library%20Association.%22">American Library Association.</a><span dir="ltr"> (68) </span>
+					</dd>
+					        <dd class="hidefacet Author">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=authorStr:%22Royal%20Society%20of%20Tasmania.%22">Royal Society of Tasmania.</a><span dir="ltr"> (68) </span>
+					</dd>
+					<dd>
+					<a href="" class="Author morefacets"><span class="SearchLabel">Author: show </span><span class="moreless">more...</span></a><a href="" class="Author lessfacets" style="display: none;"><span class="SearchLabel">Author: show </span><span class="moreless">less...</span></a>
+					</dd>    
+					            <dt class="facetField">Language</dt>                
+					          
+					      
+					        <dd class="showfacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22English%22">English</a><span dir="ltr"> (25,079) </span>
+					</dd>
+					        <dd class="showfacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22German%22">German</a><span dir="ltr"> (2,909) </span>
+					</dd>
+					        <dd class="showfacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22French%22">French</a><span dir="ltr"> (1,639) </span>
+					</dd>
+					        <dd class="showfacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Undetermined%22">Undetermined</a><span dir="ltr"> (677) </span>
+					</dd>
+					        <dd class="showfacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Italian%22">Italian</a><span dir="ltr"> (276) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Spanish%22">Spanish</a><span dir="ltr"> (244) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Dutch%22">Dutch</a><span dir="ltr"> (213) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Multiple%22">Multiple</a><span dir="ltr"> (157) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Polish%22">Polish</a><span dir="ltr"> (98) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Latin%22">Latin</a><span dir="ltr"> (88) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Unknown%22">Unknown</a><span dir="ltr"> (80) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Chinese%22">Chinese</a><span dir="ltr"> (59) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Japanese%22">Japanese</a><span dir="ltr"> (58) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Danish%22">Danish</a><span dir="ltr"> (53) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Swedish%22">Swedish</a><span dir="ltr"> (38) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Indonesian%22">Indonesian</a><span dir="ltr"> (37) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Czech%22">Czech</a><span dir="ltr"> (35) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Russian%22">Russian</a><span dir="ltr"> (32) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Portuguese%22">Portuguese</a><span dir="ltr"> (31) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Norwegian%22">Norwegian</a><span dir="ltr"> (30) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Hungarian%22">Hungarian</a><span dir="ltr"> (27) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Korean%22">Korean</a><span dir="ltr"> (15) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Croatian%22">Croatian</a><span dir="ltr"> (11) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Afrikaans%22">Afrikaans</a><span dir="ltr"> (10) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Finnish%22">Finnish</a><span dir="ltr"> (9) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Turkish%22">Turkish</a><span dir="ltr"> (8) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Malay%22">Malay</a><span dir="ltr"> (7) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Welsh%22">Welsh</a><span dir="ltr"> (6) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Arabic%22">Arabic</a><span dir="ltr"> (5) </span>
+					</dd>
+					        <dd class="hidefacet Language">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=language:%22Vietnamese%22">Vietnamese</a><span dir="ltr"> (5) </span>
+					</dd>
+					<dd>
+					<a href="" class="Language morefacets"><span class="SearchLabel">Language: show </span><span class="moreless">more...</span></a><a href="" class="Language lessfacets" style="display: none;"><span class="SearchLabel">Language: show </span><span class="moreless">less...</span></a>
+					</dd>    
+					            <dt class="facetField">Place of Publication</dt>                
+					          
+					      
+					        <dd class="showfacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22United%20States%22">United States</a><span dir="ltr"> (11,162) </span>
+					</dd>
+					        <dd class="showfacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22United%20Kingdom%22">United Kingdom</a><span dir="ltr"> (6,256) </span>
+					</dd>
+					        <dd class="showfacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22England%22">England</a><span dir="ltr"> (5,891) </span>
+					</dd>
+					        <dd class="showfacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Australia%22">Australia</a><span dir="ltr"> (4,656) </span>
+					</dd>
+					        <dd class="showfacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Germany%22">Germany</a><span dir="ltr"> (2,167) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22No%20place%2C%20unknown%2C%20or%20undetermined%22">No place, unknown, or undetermined</a><span dir="ltr"> (1,429) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22France%22">France</a><span dir="ltr"> (994) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Netherlands%22">Netherlands</a><span dir="ltr"> (358) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Scotland%22">Scotland</a><span dir="ltr"> (323) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Canada%22">Canada</a><span dir="ltr"> (290) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Germany%20%28East%29%22">Germany (East)</a><span dir="ltr"> (203) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Italy%22">Italy</a><span dir="ltr"> (180) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Switzerland%22">Switzerland</a><span dir="ltr"> (167) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22India%22">India</a><span dir="ltr"> (150) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22New%20Zealand%22">New Zealand</a><span dir="ltr"> (143) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Austria%22">Austria</a><span dir="ltr"> (142) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Australia%20New%20South%20Wales%22">Australia New South Wales</a><span dir="ltr"> (124) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22West%20Berlin%22">West Berlin</a><span dir="ltr"> (120) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Poland%22">Poland</a><span dir="ltr"> (99) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Belgium%22">Belgium</a><span dir="ltr"> (96) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Spain%22">Spain</a><span dir="ltr"> (94) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Denmark%22">Denmark</a><span dir="ltr"> (64) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Japan%22">Japan</a><span dir="ltr"> (60) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Great%20Britain%20England%22">Great Britain England</a><span dir="ltr"> (57) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22China%22">China</a><span dir="ltr"> (55) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22United%20States%20New%20York%22">United States New York</a><span dir="ltr"> (55) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Victoria%22">Victoria</a><span dir="ltr"> (54) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Sweden%22">Sweden</a><span dir="ltr"> (52) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22South%20Africa%22">South Africa</a><span dir="ltr"> (47) </span>
+					</dd>
+					        <dd class="hidefacet Place_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=countryOfPubStr:%22Various%20places%22">Various places</a><span dir="ltr"> (45) </span>
+					</dd>
+					<dd>
+					<a href="" class="Place_of_Publication morefacets"><span class="SearchLabel">Place of Publication: show </span><span class="moreless">more...</span></a><a href="" class="Place_of_Publication lessfacets" style="display: none;"><span class="SearchLabel">Place of Publication: show </span><span class="moreless">less...</span></a>
+					</dd>    
+					            <dt class="facetField">Date of Publication</dt>                
+					          
+					      
+					        <dd class="showfacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221970-1979%22">1970-1979</a><span dir="ltr"> (2,747) </span>
+					</dd>
+					        <dd class="showfacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221980-1989%22">1980-1989</a><span dir="ltr"> (2,577) </span>
+					</dd>
+					        <dd class="showfacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221960-1969%22">1960-1969</a><span dir="ltr"> (2,541) </span>
+					</dd>
+					        <dd class="showfacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221990-1999%22">1990-1999</a><span dir="ltr"> (2,023) </span>
+					</dd>
+					        <dd class="showfacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221900-1909%22">1900-1909</a><span dir="ltr"> (1,864) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221950-1959%22">1950-1959</a><span dir="ltr"> (1,711) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221880-1889%22">1880-1889</a><span dir="ltr"> (1,594) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221890-1899%22">1890-1899</a><span dir="ltr"> (1,551) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221920-1929%22">1920-1929</a><span dir="ltr"> (1,259) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221870-1879%22">1870-1879</a><span dir="ltr"> (1,223) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221910-1919%22">1910-1919</a><span dir="ltr"> (1,199) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%222000-2009%22">2000-2009</a><span dir="ltr"> (1,136) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221860-1869%22">1860-1869</a><span dir="ltr"> (1,098) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221840-1849%22">1840-1849</a><span dir="ltr"> (1,011) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221940-1949%22">1940-1949</a><span dir="ltr"> (984) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221930-1939%22">1930-1939</a><span dir="ltr"> (949) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221850-1859%22">1850-1859</a><span dir="ltr"> (931) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221830-1839%22">1830-1839</a><span dir="ltr"> (808) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221900%22">1900</a><span dir="ltr"> (556) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221820-1829%22">1820-1829</a><span dir="ltr"> (360) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221990%22">1990</a><span dir="ltr"> (346) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221975%22">1975</a><span dir="ltr"> (341) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221953%22">1953</a><span dir="ltr"> (327) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221981%22">1981</a><span dir="ltr"> (312) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221973%22">1973</a><span dir="ltr"> (309) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221888%22">1888</a><span dir="ltr"> (308) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221965%22">1965</a><span dir="ltr"> (307) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221971%22">1971</a><span dir="ltr"> (306) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221967%22">1967</a><span dir="ltr"> (305) </span>
+					</dd>
+					        <dd class="hidefacet Date_of_Publication">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=publishDateRange:%221983%22">1983</a><span dir="ltr"> (300) </span>
+					</dd>
+					<dd>
+					<a href="" class="Date_of_Publication morefacets"><span class="SearchLabel">Date of Publication: show </span><span class="moreless">more...</span></a><a href="" class="Date_of_Publication lessfacets" style="display: none;"><span class="SearchLabel">Date of Publication: show </span><span class="moreless">less...</span></a>
+					</dd>    
+					            <dt class="facetField">Original Format</dt>                
+					          
+					      
+					        <dd class="showfacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Book%22">Book</a><span dir="ltr"> (15,702) </span>
+					</dd>
+					        <dd class="showfacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Serial%22">Serial</a><span dir="ltr"> (14,402) </span>
+					</dd>
+					        <dd class="showfacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Journal%22">Journal</a><span dir="ltr"> (12,765) </span>
+					</dd>
+					        <dd class="showfacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Dictionaries%22">Dictionaries</a><span dir="ltr"> (1,908) </span>
+					</dd>
+					        <dd class="showfacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Biography%22">Biography</a><span dir="ltr"> (805) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Conference%22">Conference</a><span dir="ltr"> (659) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Encyclopedias%22">Encyclopedias</a><span dir="ltr"> (445) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Directories%22">Directories</a><span dir="ltr"> (443) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Statistics%22">Statistics</a><span dir="ltr"> (191) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Microform%22">Microform</a><span dir="ltr"> (92) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22CDROM%22">CDROM</a><span dir="ltr"> (41) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Manuscript%22">Manuscript</a><span dir="ltr"> (22) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Music%22">Music</a><span dir="ltr"> (20) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Musical%20Score%22">Musical Score</a><span dir="ltr"> (19) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Newspaper%22">Newspaper</a><span dir="ltr"> (18) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Map%22">Map</a><span dir="ltr"> (14) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Maps-Atlas%22">Maps-Atlas</a><span dir="ltr"> (14) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Photographs%20%26%20Pictorial%20Works%22">Photographs &amp; Pictorial Works</a><span dir="ltr"> (13) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Video%20%28DVD%29%22">Video (DVD)</a><span dir="ltr"> (2) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Audio%22">Audio</a><span dir="ltr"> (1) </span>
+					</dd>
+					        <dd class="hidefacet Original_Format">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=format:%22Audio%20%28spoken%20word%29%22">Audio (spoken word)</a><span dir="ltr"> (1) </span>
+					</dd>
+					<dd>
+					<a href="" class="Original_Format morefacets"><span class="SearchLabel">Original Format: show </span><span class="moreless">more...</span></a><a href="" class="Original_Format lessfacets" style="display: none;"><span class="SearchLabel">Original Format: show </span><span class="moreless">less...</span></a>
+					</dd>    
+					            <dt class="facetField">Original Location</dt>                
+					          
+					      
+					        <dd class="showfacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22University%20of%20Michigan%22">University of Michigan</a><span dir="ltr"> (12,933) </span>
+					</dd>
+					        <dd class="showfacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22University%20of%20California%22">University of California</a><span dir="ltr"> (9,993) </span>
+					</dd>
+					        <dd class="showfacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Cornell%20University%22">Cornell University</a><span dir="ltr"> (1,614) </span>
+					</dd>
+					        <dd class="showfacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22New%20York%20Public%20Library%22">New York Public Library</a><span dir="ltr"> (1,140) </span>
+					</dd>
+					        <dd class="showfacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Princeton%20University%22">Princeton University</a><span dir="ltr"> (957) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22University%20of%20Wisconsin%22">University of Wisconsin</a><span dir="ltr"> (858) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Indiana%20University%22">Indiana University</a><span dir="ltr"> (645) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Harvard%20University%22">Harvard University</a><span dir="ltr"> (637) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22University%20of%20Chicago%22">University of Chicago</a><span dir="ltr"> (242) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22University%20of%20Virginia%22">University of Virginia</a><span dir="ltr"> (212) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Universidad%20Complutense%20de%20Madrid%22">Universidad Complutense de Madrid</a><span dir="ltr"> (166) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22University%20of%20Minnesota%22">University of Minnesota</a><span dir="ltr"> (164) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Columbia%20University%22">Columbia University</a><span dir="ltr"> (141) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22University%20of%20Illinois%22">University of Illinois</a><span dir="ltr"> (126) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Penn%20State%20University%22">Penn State University</a><span dir="ltr"> (65) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22North%20Carolina%20State%20University%22">North Carolina State University</a><span dir="ltr"> (62) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Library%20of%20Congress%22">Library of Congress</a><span dir="ltr"> (60) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Northwestern%20University%22">Northwestern University</a><span dir="ltr"> (53) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Yale%20University%22">Yale University</a><span dir="ltr"> (41) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Purdue%20University%22">Purdue University</a><span dir="ltr"> (11) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Boston%20College%22">Boston College</a><span dir="ltr"> (8) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22University%20of%20North%20Carolina%22">University of North Carolina</a><span dir="ltr"> (7) </span>
+					</dd>
+					        <dd class="hidefacet Original_Location">
+					<a href="ls?q1=wombat;a=srchls;a=srchls;lmt=all&amp;facet=htsource:%22Duke%20University%22">Duke University</a><span dir="ltr"> (2) </span>
+					</dd>
+					<dd>
+					<a href="" class="Original_Location morefacets"><span class="SearchLabel">Original Location: show </span><span class="moreless">more...</span></a><a href="" class="Original_Location lessfacets" style="display: none;"><span class="SearchLabel">Original Location: show </span><span class="moreless">less...</span></a>
+					</dd>
+			</dl>
+
+
+            </div> <!-- facets -->
+
+        </div>
+
+    </div>
+    <div class="main" role="main">
+        <h3>Search Results Example</h3>
+        <p>
+            The border is defined on the <tt>sidebar</tt> element. Because the blocks have
+            <tt>display: table-cell</tt> the sidebar is always as tall as the containing 
+            <tt>div</tt>, and the border always stretches the full height.
+        </p>
+        <p>
+            This page demonstrates search results as generated by <tt>ls</tt>. The structure of the search results is designed so that the item title is "encountered" before the checkbox.
+        </p>
+        <pre class="example">
+&lt;div class=&quot;row result&quot;&gt;
+    &lt;h4&gt;The wombat : common wombats in Australia...&lt;/h4&gt;
+    &lt;div class=&quot;span1 select&quot;&gt;
+        &lt;label&gt;&lt;input type=&quot;checkbox&quot; /&gt;&lt;span class=&quot;offscreen&quot;&gt;Select item 1&lt;/span&gt;&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;span11 push-1&quot;&gt;
+        &lt;div class=&quot;result-metadata-author&quot;&gt;
+            by Triggs, Barbara.
+        &lt;/div&gt;
+        &lt;div class=&quot;result-metadata-published&quot;&gt;
+            Published 1988
+        &lt;/div&gt;
+        &lt;div class=&quot;result-access-link&quot;&gt;
+            &lt;ul&gt;
+                &lt;li&gt;
+                    &lt;a href=&quot;/Record/005655916&quot; class=&quot;cataloglinkhref&quot;&gt;Catalog Record&lt;/a&gt;
+                &lt;/li&gt;
+
+                &lt;li&gt;
+                    &lt;a href=&quot;http://babel.hathitrust.org/cgi/pt?id=coo.31924052400748;q1=wombat&quot; class=&quot;limited-access&quot;&gt;Limited (search-only)&lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+        </pre>
+
+        <p>
+            Note in the examples below that link icons are presented using CSS icon fonts.
+        </p>
+
+        <h3 class="offscreen">List of Results</h3>
+        <div class="row result">
+            <h4>The wombat : common wombats in Australia / Barbara Triggs ; illustrated by Ross Goldingay.</h4>
+            <div class="span1 select">
+                <label><input type="checkbox" /><span class="offscreen">Select item 1</span></label>
+            </div>
+            <div class="span11 push-1">
+                <div class="result-metadata-author">
+                    by
+                       Triggs, Barbara.
+                </div>
+                <div class="result-metadata-published">
+                    Published 1988
+                </div>
+                <div class="result-access-link">
+                    <ul>
+                        <li>
+                            <a href="/Record/005655916" class="cataloglinkhref icomoon-info-circle">Catalog Record</a>
+                        </li>
+
+                        <li>
+                            <a href="http://babel.hathitrust.org/cgi/pt?id=coo.31924052400748;q1=wombat" class="limited-access icomoon-locked">Limited (search-only)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row result alt">
+            <h4>The death of a wombat. Drawings by Clifton Pugh</h4>
+            <div class="span1 select">
+                <input type="checkbox" />
+            </div>
+            <div class="span11 push-1">
+                <div class="result-metadata-author">
+                    by
+                       Smith, Ivan.
+                </div>
+                <div class="result-metadata-published">
+                    Published 1972
+                </div>
+                <div class="result-access-link">
+                    <ul>
+                        <li>
+                            <a href="/Record/005655916" class="cataloglinkhref icomoon-info-circle">Catalog Record</a>
+                        </li>
+
+                        <li>
+                            <a href="http://babel.hathitrust.org/cgi/pt?id=coo.31924052400748;q1=wombat" class="limited-access icomoon-locked">Limited (search-only)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row result">
+            <h4>The careless kangaroo, story and pictures by Earle Goodenow.</h4>
+            <div class="span1 select">
+                <input type="checkbox" />
+            </div>
+            <div class="span11 push-1">
+                <div class="result-metadata-author">
+                    by
+                       Goodenow, Earle, 1913-
+                </div>
+                <div class="result-metadata-published">
+                    Published 1959
+                </div>
+                <div class="result-access-link">
+                    <ul>
+                        <li>
+                            <a href="/Record/005655916" class="cataloglinkhref icomoon-info-circle">Catalog Record</a>
+                        </li>
+
+                        <li>
+                            <a href="http://babel.hathitrust.org/cgi/pt?id=coo.31924052400748;q1=wombat" class="full-view icomoon-document-2">Full View</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+		<div class="navbar navbar-static-bottom navbar-inverse footer" role="contentinfo">
+		<div class="navbar-inner">
+			
+			<ul class="nav pull-right">
+				<li><a href="http://www.hathitrust.org/">Home</a></li>
+				<li><a href="http://www.hathitrust.org/about">About</a></li>
+				<li><a href="http://babel.hathitrust.org/cgi/mb">Collections</a></li>
+				<li><a href="http://www.hathitrust.org/help">Help</a></li>
+				<li><a href="#" data-m="ht" data-id="HathiTrust Project Unicorn Guide" data-toggle="feedback">Feedback</a></li>
+				<li><a href="http://m.hathitrust.org">Mobile</a></li>
+				<li><a href="http://www.hathitrust.org/take_down_policy">Take-Down Policy</a></li>
+				<li><a href="http://www.hathitrust.org/privacy">Privacy</a></li>
+				<li><a href="http://www.hathitrust.org/contact">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+BODY {behavior: url(/cgi/sandbox/htc/common/unicorn/vendor/js/display-table.htc); }
+
+.container { -dt-display: table; -dt-width: 90%; }
+.sidebar, .logo { -dt-display: table-cell; -dt-width: 225px; }
+.login { -dt-display: table-cell; -dt-width: 125px; }
+.main, .search-form { -dt-display: table-cell; }
+.main { -dt-width: 800px; width: 70% !important; }
