@@ -13,9 +13,20 @@ if ( window.console === undefined ) {
         window.old_jQuery = window.jQuery;
     }
 
-    if ( location.hostname.indexOf("babel.hathitrust.org") < 0 ) {
-        prefix = '//beta-3.babel.hathitrust.org/';
-    }
+    // figure out if we're in dev or not
+    var hostname = location.hostname;
+    HT.is_dev = ( hostname != 'www.hathitrust.org' ) && ( hostname != 'catalog.hathitrust.org' ) && ( hostname != 'babel.hathitrust.org' );
+
+    // are we babel or not?
+    HT.is_babel = ( hostname.indexOf("babel.hathitrust.org") > -1 );
+
+    // service_url is either the babel dev, beta-3, or babel
+    HT.service_domain = ( HT.is_babel ? hostname : ( HT.is_dev ? 'beta-3.babel.hathitrust.org' : 'babel.hathitrust.org' ) );
+
+    //// apache conf so we don't need to do this anymore.
+    // if ( location.hostname.indexOf("babel.hathitrust.org") < 0 ) {
+    //     prefix = '//beta-3.babel.hathitrust.org/';
+    // }
 
     head.js(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js');
 
