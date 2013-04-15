@@ -899,8 +899,10 @@ button.button {
 
  	h3 {
  		border-bottom: 1px solid #ddd;
- 		@include rem(padding-bottom, 8);
+        @include rem(margin-top, 18);
+ 		@include rem(padding-bottom, 4);
  		@include rem(font-size, 16);
+
  	}
 
  	label {
