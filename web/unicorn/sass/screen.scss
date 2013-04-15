@@ -42,6 +42,10 @@ a {
 		text-decoration: none;
 	}
 
+    &:visited {
+        color: $link-visited-color;
+    }
+
 }
 
 .offscreen, .SkipLink, .hidden {
@@ -156,6 +160,11 @@ form {
   // color: $navbar-text-color;
   text-decoration: none;
   display: block;
+
+  &:hover {
+    background: $navbar-bgcolor;
+    color: $navbar-color;
+  }
 
 }
 

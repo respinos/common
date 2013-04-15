@@ -39,24 +39,22 @@ if ( window.console === undefined ) {
         '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
     ];
 
-    if ( do_load_uncompressed ) {
-        to_load.push(prefix + 'common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js');
-        to_load.push(prefix + 'common/unicorn/vendor/js/underscore-min.js');
-        to_load.push(prefix + 'common/unicorn/vendor/fancyBox/jquery.fancybox.js');
-        to_load.push(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-transition.js');
-        to_load.push(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-modal.js');
-        to_load.push(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-button.js');
-        to_load.push(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-dropdown.js');
-        to_load.push(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-tooltip.js');
-        to_load.push(prefix + 'common/unicorn/vendor/bootstrap/js/bootbox.js');
-        to_load.push(prefix + 'common/unicorn/vendor/js/jquery.placeholder.js');
-        to_load.push(prefix + 'common/unicorn/js/feedback.js');
-        to_load.push(prefix + 'common/unicorn/js/login.js');
-        to_load.push(prefix + 'common/unicorn/js/search.js');
-        to_load.push(prefix + 'common/unicorn/js/google_analytics.js');
-    } else {
-        to_load.push(prefix + 'common/unicorn/js/common.js-to_load-min.js');
-    }
+    //--BEGIN LOCAL--//
+    // common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js
+    // common/unicorn/vendor/js/underscore-min.js
+    // common/unicorn/vendor/fancyBox/jquery.fancybox.js
+    // common/unicorn/vendor/bootstrap/js/bootstrap-transition.js
+    // common/unicorn/vendor/bootstrap/js/bootstrap-modal.js
+    // common/unicorn/vendor/bootstrap/js/bootstrap-button.js
+    // common/unicorn/vendor/bootstrap/js/bootstrap-dropdown.js
+    // common/unicorn/vendor/bootstrap/js/bootstrap-tooltip.js
+    // common/unicorn/vendor/bootstrap/js/bootbox.js
+    // common/unicorn/vendor/js/jquery.placeholder.js
+    // common/unicorn/js/feedback.js
+    // common/unicorn/js/login.js
+    // common/unicorn/js/search.js
+    // common/unicorn/js/google_analytics.js
+    //--END LOCAL--//
 
 
     if ( location.hostname != 'www.hathitrust.org' && 
