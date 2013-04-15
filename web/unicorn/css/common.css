@@ -1432,13 +1432,13 @@ div > p:first-child {
   position: relative;
 }
 
-/* line 1341, ../sass/screen.scss */
+/* line 1342, ../sass/screen.scss */
 .alert-warning, .alert-error, .alert-success {
   padding-left: 32px ;
   padding-left: 3.2rem ;
 }
 
-/* line 1345, ../sass/screen.scss */
+/* line 1346, ../sass/screen.scss */
 .alert-warning:before {
   content: "?";
   font-family: 'icomoon';
@@ -1448,15 +1448,14 @@ div > p:first-child {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   position: absolute;
-  top: 12px ;
-  top: 1.2rem ;
+  top: "25%";
   left: 6px ;
   left: 0.6rem ;
   font-size: 18px ;
   font-size: 1.8rem ;
 }
 
-/* line 1349, ../sass/screen.scss */
+/* line 1350, ../sass/screen.scss */
 .alert-error:before {
   content: "C";
   font-family: 'icomoon';
@@ -1466,15 +1465,31 @@ div > p:first-child {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   position: absolute;
-  top: 12px ;
-  top: 1.2rem ;
+  top: "25%";
   left: 6px ;
   left: 0.6rem ;
   font-size: 18px ;
   font-size: 1.8rem ;
 }
 
-/* line 1353, ../sass/screen.scss */
+/* line 1354, ../sass/screen.scss */
+.alert-error.alert-block:before {
+  content: "C";
+  font-family: 'icomoon';
+  font-style: normal;
+  speak: none;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  position: absolute;
+  top: "15%";
+  left: 6px ;
+  left: 0.6rem ;
+  font-size: 18px ;
+  font-size: 1.8rem ;
+}
+
+/* line 1358, ../sass/screen.scss */
 .alert-success:before {
   content: "K";
   font-family: 'icomoon';
@@ -1484,8 +1499,7 @@ div > p:first-child {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   position: absolute;
-  top: 12px ;
-  top: 1.2rem ;
+  top: "25%";
   left: 6px ;
   left: 0.6rem ;
   font-size: 18px ;

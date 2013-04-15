@@ -1324,7 +1324,7 @@ div > p:first-child {
     position: relative;
 }
 
-@mixin alert-badge($icon) {
+@mixin alert-badge($icon, $top:25) {
     content: $icon;
     font-family: 'icomoon';
     font-style: normal;
@@ -1333,7 +1333,8 @@ div > p:first-child {
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     position: absolute;
-    @include rem(top, 12);
+    // @include rem(top, 12);
+    top: $top + '%';
     @include rem(left, 6);
     @include rem(font-size, 18);
 }
@@ -1348,6 +1349,10 @@ div > p:first-child {
 
 .alert-error:before {
     @include alert-badge("C");
+}
+
+.alert-error.alert-block:before {
+    @include alert-badge("C", 15);
 }
 
 .alert-success:before {
