@@ -5739,7 +5739,7 @@ var bootbox = window.bootbox || (function(document, $) {
 
         _animate       = false,
 
-        _backdrop      = 'static',
+        _backdrop      = true, // 'static',
 
         _defaultHref   = 'javascript:;',
 

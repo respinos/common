@@ -95,15 +95,18 @@ form {
 	// width: 89%;
 	// margin-left: auto;
 	// margin-right: auto;
-	@include rem(max-width, 1200);
-	@include rem(min-width, 800);
+	// @include rem(max-width, 1200);
+	// @include rem(min-width, 800);
+
+    min-width: 90%; // $container-width;
+    width: 90%;
 
 	// margin-left: 5%;
 	// margin-right: 5%;
 
     margin-right: auto;
     margin-left: auto;
-    width: 90%;
+    //width: 90%;
 }
 
 .navbar-static-top {
@@ -1139,7 +1142,8 @@ a.button.log-in.active:after {
 			@include rem(margin-top, 16);
 			padding-top: 8px;
 			padding-bottom: 16px;
-			background: #f9f8f5 url('../img/homepage/stripes.png');
+			// background: #f9f8f5 url('../img/homepage/stripes.png');
+            background: #f0f0ef;
 
 			text-align: right;
 			ul {
