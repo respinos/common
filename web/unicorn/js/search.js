@@ -1,6 +1,8 @@
 head.ready(function() {
 
-    var $form = $(".search-form");
+    var $form = $(".search-form").filter(function() {
+      return !($(this).css('visibility') == 'hidden' || $(this).css('display') == 'none');
+    })
     if ( $form.length == 0 ) {
       // punt!
       return;
@@ -8,19 +10,25 @@ head.ready(function() {
 
     var $tabs = $form.find(".search-tabs input[type=radio]");
     var $input = $form.find("input.search-input-text");
+    var $select = $form.find("select");
 
     var setup = {}
     setup.ls = function() {
         $(".search-catalog-link").hide();
         $(".search-advanced-link").show();
-        $form.find("option[data-target=ls]").attr({ disabled : null });
+        $select.find("option[data-target=ls]").attr({ disabled : null });
         $input.attr("placeholder", 'Search words about or within the items');
     };
 
     setup.catalog = function() {
         $(".search-catalog-link").show();
         $(".search-advanced-link").hide();
-        $form.find("option[data-target=ls]").attr({ disabled : 'disabled' });
+        $select.find("option[data-target=ls]").attr({ disabled : 'disabled' });
+        var $check = $select.find("option:selected[disabled]");
+        if ( $check.length ) {
+          $check.attr("selected", null);
+          $select.find("option[value=all]").attr('selected', 'selected');
+        }
         $input.attr("placeholder", 'Search words about the items');
     }
 
