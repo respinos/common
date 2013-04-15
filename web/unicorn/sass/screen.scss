@@ -581,6 +581,9 @@ input:-moz-placeholder { color:#aaa; }
 .search-tabs input:checked + label {
 	background-color: $search-tab-color;
 	color: #4f4f4f;
+    @include rem(font-size, 14);
+    @include rem(width, 105);
+    @inlucde rem(height, 55);
 }
 
 #option-full-text-search {
