@@ -1,6 +1,11 @@
 head.ready(function() {
 
     var $form = $(".search-form");
+    if ( $form.length == 0 ) {
+      // punt!
+      return;
+    }
+    
     var $tabs = $form.find(".search-tabs input[type=radio]");
     var $input = $form.find("input.search-input-text");
 

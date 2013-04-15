@@ -7032,27 +7032,33 @@ window.bootbox = bootbox;
 
     } else if ( attr == 'placeholder') {
 
-      el = $(this[0]);
+
+
+      for(var i = 0; i < this.length; i++) {
+
+        el = $(this[i]);
+
+        // update the placeholder
+
+        var lastvalue = el.plAttr(attr);
+
+        var currentValue = el.plVal();
 
 
 
-      // update the placeholder
-
-      var lastvalue = el.plAttr(attr);
-
-      var currentValue = el.plVal();
+        el.plAttr(attr, value);
 
 
 
-      el.plAttr(attr, value);
+        if (el.hasClass($.placeholder.settings.activeClass) && currentValue === lastvalue) {
 
+          el.plVal(value);
 
-
-      if (el.hasClass($.placeholder.settings.activeClass) && currentValue === lastvalue) {
-
-        el.plVal(value);
+        }
 
       }
+
+
 
 
 
@@ -7762,6 +7768,16 @@ head.ready(function() {
 
 
     var $form = $(".search-form");
+
+    if ( $form.length == 0 ) {
+
+      // punt!
+
+      return;
+
+    }
+
+    
 
     var $tabs = $form.find(".search-tabs input[type=radio]");
 

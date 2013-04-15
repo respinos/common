@@ -50,17 +50,20 @@
       return $.fn.plAttr.call(this, ( attr ));
 
     } else if ( attr == 'placeholder') {
-      el = $(this[0]);
 
-      // update the placeholder
-      var lastvalue = el.plAttr(attr);
-      var currentValue = el.plVal();
+      for(var i = 0; i < this.length; i++) {
+        el = $(this[i]);
+        // update the placeholder
+        var lastvalue = el.plAttr(attr);
+        var currentValue = el.plVal();
 
-      el.plAttr(attr, value);
+        el.plAttr(attr, value);
 
-      if (el.hasClass($.placeholder.settings.activeClass) && currentValue === lastvalue) {
-        el.plVal(value);
+        if (el.hasClass($.placeholder.settings.activeClass) && currentValue === lastvalue) {
+          el.plVal(value);
+        }
       }
+
 
     } else {
 
