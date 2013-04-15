@@ -605,6 +605,7 @@ input:-moz-placeholder { color:#aaa; }
 	top: 0;
 	bottom: 0;
 	overflow: hidden;
+
 }
 
 select.search-input-select {
@@ -623,6 +624,11 @@ select.search-input-select {
 	overflow: hidden;
 	line-height: normal;
 	padding: 0;
+
+    option[disabled] {
+        display: none;
+    }
+
 }
 
 .search-input-options a {

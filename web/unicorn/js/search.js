@@ -5,7 +5,7 @@ head.ready(function() {
       // punt!
       return;
     }
-    
+
     var $tabs = $form.find(".search-tabs input[type=radio]");
     var $input = $form.find("input.search-input-text");
 
@@ -13,12 +13,14 @@ head.ready(function() {
     setup.ls = function() {
         $(".search-catalog-link").hide();
         $(".search-advanced-link").show();
+        $form.find("option[data-target=ls]").attr({ disabled : null });
         $input.attr("placeholder", 'Search words about or within the items');
     };
 
     setup.catalog = function() {
         $(".search-catalog-link").show();
         $(".search-advanced-link").hide();
+        $form.find("option[data-target=ls]").attr({ disabled : 'disabled' });
         $input.attr("placeholder", 'Search words about the items');
     }
 
