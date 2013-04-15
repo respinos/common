@@ -119,8 +119,8 @@ div.wrapper {
   margin-bottom: 0.5rem ;
   font-size: 14px ;
   font-size: 1.4rem ;
-  line-height: 15px ;
-  line-height: 1.5rem ;
+  line-height: 20px ;
+  line-height: 2rem ;
 }
 /* line 117, ../sass/homepage.scss */
 #search-login #search .search-tabs {
