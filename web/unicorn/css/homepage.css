@@ -144,7 +144,7 @@ div.wrapper {
 /* line 133, ../sass/homepage.scss */
 #search-login #search .what-to-search-hint a {
   padding-left: 18px;
-  background: url("../img/homepage/hint.png") no-repeat 0% center;
+  background: url("../img/icon_question.png") no-repeat 0% center;
 }
 /* line 139, ../sass/homepage.scss */
 #search-login #search fieldset {
