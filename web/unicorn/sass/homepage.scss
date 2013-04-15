@@ -316,7 +316,15 @@ div.wrapper {
             margin-right: 2.5%;
 
             div {
-                width: 140px;
+                // width: 140px;
+                background: #FFFEFB;
+                background: rgba(255,254,251,$strip-button-opacity);
+                border: 1px solid #e8e4e4;
+                border-radius: 6px; 
+
+                &:hover {
+                    background-color: #fffefb;
+                }
             }
 
             p {
@@ -326,13 +334,19 @@ div.wrapper {
                 line-height: 1.2em;
                 text-align: center;
                 @include rem(width, 110);
-                margin-top: 0;
+                margin-top: -8px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 4px;
+                min-height: 65px;
             }
 
             a.browse,
             a.online,
             a.mobile { /* images-button things */
-                display: inline-block;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
                 @include rem(padding-top, 75);
                 @include rem(padding-right, 8);
                 @include rem(padding-left, 8);
@@ -347,10 +361,13 @@ div.wrapper {
                 text-align: center;
                 text-decoration: none;
                 text-transform: uppercase;
-                background: #FFFEFB url('../img/homepage/browse.png') no-repeat 50% 15px; /*png24*/;
-                background: rgba(255,254,251,$strip-button-opacity) url('../img/homepage/browse.png') no-repeat 50% 15px; /*png24*/
-                border: 1px solid #e8e4e4;
-                border-radius: 6px; 
+                background-image: url('../img/homepage/browse.png');
+                background-repeat: no-repeat;
+                background-position: 50% 15px;
+                // background: #FFFEFB url('../img/homepage/browse.png') no-repeat 50% 15px; /*png24*/;
+                // background: rgba(255,254,251,$strip-button-opacity) url('../img/homepage/browse.png') no-repeat 50% 15px; /*png24*/
+                // border: 1px solid #e8e4e4;
+                // border-radius: 6px; 
                 }
 
             a.browse:hover,
@@ -361,11 +378,13 @@ div.wrapper {
                 }
                 
             a.online { 
-                background: rgba(255,254,251,$strip-button-opacity) url('../img/homepage/read-online.png') no-repeat 50% 15px; /*png24*/
+                background-image: url('../img/homepage/read-online.png')
+                // background: rgba(255,254,251,$strip-button-opacity) url('../img/homepage/read-online.png') no-repeat 50% 15px; /*png24*/
                 }
 
             a.mobile {
-                background: rgba(255,254,251,$strip-button-opacity) url('../img/homepage/read-mobile.png') no-repeat 50% 15px; /*png24*/
+                background-image: url('../img/homepage/read-mobile.png')
+                // background: rgba(255,254,251,$strip-button-opacity) url('../img/homepage/read-mobile.png') no-repeat 50% 15px; /*png24*/
                 }           
 
         }
@@ -385,6 +404,9 @@ div.wrapper {
 
             div {
                 background: url('../img/homepage/download.png') no-repeat 50% 15px; /*png24*/;
+                height: 141px;
+
+                br { display: none; }
             }
 
             .task {
@@ -636,3 +658,6 @@ div.wrapper {
     margin-top: 0;
 }
     
+.modal.login-modal {
+    right: 250px;
+}
