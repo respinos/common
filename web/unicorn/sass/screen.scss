@@ -1077,7 +1077,7 @@ a.button.log-in.active:after {
 }
 
 .modal.login {
-    background-color: #fcf5d9; // matches the button
+    background-color: $login-bgcolor; // matches the button
 
     .modal-footer {
         background-color: #FAF0C6;
