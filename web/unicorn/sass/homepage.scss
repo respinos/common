@@ -410,6 +410,12 @@ div.wrapper {
                 height: 141px;
 
                 br { display: none; }
+
+                &:hover {
+                    // LAME
+                    background: url('../img/homepage/download.png') no-repeat 50% 15px; /*png24*/;
+                }
+
             }
 
             .task {
