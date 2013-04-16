@@ -7656,7 +7656,7 @@ head.ready(function() {
 
                     '<li><a href="' + coll_url + '">My Collections</a></li>' + 
 
-                    '<li><a id="logout-link" href="https://babel.hathitrust.org/cgi/logout?' + window.location.href.replace('https://', 'http://') + '">Logout</a></li>' + 
+                    '<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href.replace('https://', 'http://') + '">Logout</a></li>' + 
 
                 '</ul>';
 
