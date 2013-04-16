@@ -1,8 +1,17 @@
 head.ready(function() {
 
-    var $form = $(".search-form").filter(function() {
-      return !($(this).css('visibility') == 'hidden' || $(this).css('display') == 'none');
+    // var $form = $(".search-form").filter(function() {
+    //   return !($(this).css('visibility') == 'hidden' || $(this).css('display') == 'none');
+    // })
+    var $form = $(".search-form");
+    var $hidden = $form.filter(function() {
+      return ($(this).css('visibility') == 'hidden');
     })
+    if ( $hidden.length ) {
+      $hidden.css({ height : $hidden.height() }).children().remove();
+      $form = $form.not($hidden);
+    }
+
     if ( $form.length == 0 ) {
       // punt!
       return;
