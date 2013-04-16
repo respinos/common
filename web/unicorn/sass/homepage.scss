@@ -403,7 +403,7 @@ div.wrapper {
             text-align: center;
 
             background: rgba(253, 209, 22, 0.2);
-            border: 1px solid transparent;
+            border-color: transparent;
 
 
             margin-right: 1px;
@@ -412,6 +412,7 @@ div.wrapper {
             div {
                 background: url('../img/homepage/download.png') no-repeat 50% 15px; /*png24*/;
                 height: 141px;
+                border-color: transparent;
 
                 br { display: none; }
 
