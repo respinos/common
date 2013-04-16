@@ -1242,6 +1242,13 @@ ul.nav-tabs {
   font-weight: bold;
   color: #5e5e5e;
   text-decoration: none;
+  display: block;
+  padding: 0 10px;
+}
+
+.nav-tabs span {
+    display: block;
+    padding: 0 10px;
 }
 
 .nav-tabs a:hover {
@@ -1271,7 +1278,7 @@ ul.nav-tabs {
 .nav-tabs li {
   float: left;
   margin: 0 0px;
-  padding: 0 10px;
+  padding: 0;
   border: 1px solid #d3d3d3;
   border-bottom: 1px solid #aaa;
   background: #e3e3e3;
