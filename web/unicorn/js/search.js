@@ -47,6 +47,8 @@ head.ready(function() {
     })
 
     // what's the initial state?
+    // --- if we need to switch the default: if $input.val() == '', 
+    // --- find the "catalog" radio button and select it.
     var selected = $tabs.filter(":checked").val();
     setup[selected]();
 

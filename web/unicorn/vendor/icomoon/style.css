@@ -1,3 +1,4 @@
+/* WHY? */
 @font-face {
 	font-family: 'icomoon';
 	src:url('fonts/icomoon.eot');
@@ -27,7 +28,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icomoon-"] {
 */
-.icomoon-first:before, .icomoon-last:before, .icomoon-go-previous:before, .icomoon-go-next:before, .icomoon-stack:before, .icomoon-iconmonstr-magnifier-6-icon:before, .icomoon-iconmonstr-magnifier-7-icon:before, .icomoon-document:before, .icomoon-documents:before, .icomoon-reload-CW:before, .icomoon-reload-CCW:before, .icomoon-list:before, .icomoon-article:before, .icomoon-book-alt2:before, .icomoon-document-alt-stroke:before, .icomoon-zoom-in:before, .icomoon-zoom-out:before, .icomoon-triangle:before, .icomoon-triangle-2:before, .icomoon-grid:before, .icomoon-grid-view:before, .icomoon-scroll:before, .icomoon-twitter:before, .icomoon-pinterest:before, .icomoon-facebook:before, .icomoon-bookmark:before, .icomoon-upload:before, .icomoon-download:before, .icomoon-email:before, .icomoon-feed:before, .icomoon-info-circle:before, .icomoon-locked:before, .icomoon-document-2:before, .icomoon-arrow-right:before, .icomoon-cancel:before, .icomoon-arrow-left:before, .icomoon-enter:before, .icomoon-help:before, .icomoon-share:before, .icomoon-share-2:before, .icomoon-fullscreen:before, .icomoon-fullscreen-exit:before, .icomoon-checkmark:before {
+.icomoon-first:before, .icomoon-last:before, .icomoon-go-previous:before, .icomoon-go-next:before, .icomoon-stack:before, .icomoon-iconmonstr-magnifier-6-icon:before, .icomoon-iconmonstr-magnifier-7-icon:before, .icomoon-document:before, .icomoon-documents:before, .icomoon-reload-CW:before, .icomoon-reload-CCW:before, .icomoon-list:before, .icomoon-article:before, .icomoon-book-alt2:before, .icomoon-document-alt-stroke:before, .icomoon-zoom-in:before, .icomoon-zoom-out:before, .icomoon-triangle:before, .icomoon-triangle-2:before, .icomoon-grid:before, .icomoon-grid-view:before, .icomoon-scroll:before, .icomoon-twitter:before, .icomoon-pinterest:before, .icomoon-facebook:before, .icomoon-bookmark:before, .icomoon-upload:before, .icomoon-download:before, .icomoon-email:before, .icomoon-feed:before, .icomoon-info-circle:before, .icomoon-locked:before, .icomoon-document-2:before, .icomoon-arrow-right:before, .icomoon-cancel:before, .icomoon-arrow-left:before, .icomoon-enter:before, .icomoon-help:before, .icomoon-share:before, .icomoon-share-2:before, .icomoon-fullscreen:before, .icomoon-fullscreen-exit:before, .icomoon-checkmark:before, .icomoon-eye:before, .icomoon-list-2:before, .icomoon-flash:before, .icomoon-arrow-up:before, .icomoon-arrow-down:before, .icomoon-reorder:before {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -165,4 +166,22 @@ you can use the generic selector below, but it's slower:
 }
 .icomoon-checkmark:before {
 	content: "\4b";
+}
+.icomoon-eye:before {
+	content: "\4c";
+}
+.icomoon-list-2:before {
+	content: "\4d";
+}
+.icomoon-flash:before {
+	content: "\4e";
+}
+.icomoon-arrow-up:before {
+	content: "\4f";
+}
+.icomoon-arrow-down:before {
+	content: "\50";
+}
+.icomoon-reorder:before {
+	content: "\f0c9";
 }

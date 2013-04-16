@@ -48,12 +48,21 @@ window.onload = function() {
 			'icomoon-share-2' : '&#x48;',
 			'icomoon-fullscreen' : '&#x49;',
 			'icomoon-fullscreen-exit' : '&#x4a;',
-			'icomoon-checkmark' : '&#x4b;'
+			'icomoon-checkmark' : '&#x4b;',
+			'icomoon-eye' : '&#x4c;',
+			'icomoon-list-2' : '&#x4d;',
+			'icomoon-flash' : '&#x4e;',
+			'icomoon-arrow-up' : '&#x4f;',
+			'icomoon-arrow-down' : '&#x50;',
+			'icomoon-reorder' : '&#xf0c9;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;
-	for (i = 0; i < els.length; i += 1) {
+	for (i = 0; ; i += 1) {
 		el = els[i];
+		if(!el) {
+			break;
+		}
 		attr = el.getAttribute('data-icon');
 		if (attr) {
 			addIcon(el, attr);
