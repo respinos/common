@@ -131,7 +131,7 @@ head.ready(function() {
                 '<ul id="person-nav" class="nav pull-right">' + 
                     '<li><span>Hi ' + status.displayName + '!</span></li>' + 
                     '<li><a href="' + coll_url + '">My Collections</a></li>' + 
-                    '<li><a id="logout-link" href="https://babel.hathitrust.org/cgi/logout?' + window.location.href.replace('https://', 'http://') + '">Logout</a></li>' + 
+                    '<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href.replace('https://', 'http://') + '">Logout</a></li>' + 
                 '</ul>';
             $(html).appendTo($navbar);
 
