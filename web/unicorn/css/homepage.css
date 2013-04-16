@@ -425,7 +425,12 @@ div.wrapper {
 #options #stripes .download div br {
   display: none;
 }
-/* line 415, ../sass/homepage.scss */
+/* line 414, ../sass/homepage.scss */
+#options #stripes .download div:hover {
+  background: url("../img/homepage/download.png") no-repeat 50% 15px;
+  /*png24*/
+}
+/* line 421, ../sass/homepage.scss */
 #options #stripes .download .task {
   display: block;
   padding: 75px 15px 0;
@@ -436,7 +441,7 @@ div.wrapper {
   text-transform: uppercase;
   letter-spacing: .1em;
 }
-/* line 428, ../sass/homepage.scss */
+/* line 434, ../sass/homepage.scss */
 #options #stripes .download .footnote {
   /* asterisked text */
   display: block;
@@ -451,7 +456,7 @@ div.wrapper {
   font-size: 1.1rem ;
 }
 
-/* line 447, ../sass/homepage.scss */
+/* line 453, ../sass/homepage.scss */
 #arrow {
   /* div creating the "arrow" over the stripes */
   float: left;
@@ -465,7 +470,7 @@ div.wrapper {
 }
 
 /* YELLOW ARROW TEST */
-/* line 460, ../sass/homepage.scss */
+/* line 466, ../sass/homepage.scss */
 #top-arrow {
   padding: 0;
   width: 0;
@@ -476,20 +481,20 @@ div.wrapper {
 
 /* END YELLOW ARROW TEST */
 /* NEWS/PROJECTS AREA */
-/* line 470, ../sass/homepage.scss */
+/* line 476, ../sass/homepage.scss */
 #news-projects {
   background: #f0f0ef;
   font-size: 13px ;
   font-size: 1.3rem ;
   width: 100%;
 }
-/* line 475, ../sass/homepage.scss */
+/* line 481, ../sass/homepage.scss */
 #news-projects ul li {
   display: inline;
   float: left;
   width: 230px;
 }
-/* line 481, ../sass/homepage.scss */
+/* line 487, ../sass/homepage.scss */
 #news-projects .news-inner {
   display: table;
   padding: 0;
@@ -503,12 +508,12 @@ div.wrapper {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 491, ../sass/homepage.scss */
+/* line 497, ../sass/homepage.scss */
 #news-projects .news-inner h3 {
   font-size: 12px ;
   font-size: 1.2rem ;
 }
-/* line 495, ../sass/homepage.scss */
+/* line 501, ../sass/homepage.scss */
 #news-projects .news-inner h1 {
   margin-bottom: 15px;
   font-size: 1.2em;
@@ -516,7 +521,7 @@ div.wrapper {
   color: #6b6a6b;
   text-transform: uppercase;
 }
-/* line 503, ../sass/homepage.scss */
+/* line 509, ../sass/homepage.scss */
 #news-projects .news-inner h2 {
   margin-bottom: 8px;
   font-size: 1.2em;
@@ -524,32 +529,32 @@ div.wrapper {
   color: #39383a;
   line-height: 1.2em;
 }
-/* line 511, ../sass/homepage.scss */
+/* line 517, ../sass/homepage.scss */
 #news-projects .news-inner p {
   font-size: 12px ;
   font-size: 1.2rem ;
   line-height: 16px;
   color: #39383a;
 }
-/* line 517, ../sass/homepage.scss */
+/* line 523, ../sass/homepage.scss */
 #news-projects .news-inner .headline {
   color: #6b6a6b;
   font-weight: bold;
   text-transform: uppercase;
   margin-top: 0;
 }
-/* line 525, ../sass/homepage.scss */
+/* line 531, ../sass/homepage.scss */
 #news-projects .news-inner .left {
   display: table-cell;
   vertical-align: top;
   width: 45%;
   border-right: 1px solid #dddddd;
 }
-/* line 532, ../sass/homepage.scss */
+/* line 538, ../sass/homepage.scss */
 #news-projects .news-inner .left > div {
   padding-left: 0;
 }
-/* line 534, ../sass/homepage.scss */
+/* line 540, ../sass/homepage.scss */
 #news-projects .news-inner .left p.more {
   float: right;
   width: 25%;
@@ -559,19 +564,19 @@ div.wrapper {
   margin-top: -20px ;
   margin-top: -2rem ;
 }
-/* line 542, ../sass/homepage.scss */
+/* line 548, ../sass/homepage.scss */
 #news-projects .news-inner .right {
   display: table-cell;
   vertical-align: top;
   width: 55%;
 }
-/* line 547, ../sass/homepage.scss */
+/* line 553, ../sass/homepage.scss */
 #news-projects .news-inner .right > div {
   padding-left: 20px ;
   padding-left: 2rem ;
   padding-right: 0;
 }
-/* line 552, ../sass/homepage.scss */
+/* line 558, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet {
   background: #fff;
   padding: 16px;
@@ -579,22 +584,22 @@ div.wrapper {
   border: 5px solid white;
   box-shadow: rgba(0, 0, 0, 0.1) 0 1px 10px;
 }
-/* line 562, ../sass/homepage.scss */
+/* line 568, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet p {
   color: #39383a;
   margin-top: 0;
 }
-/* line 567, ../sass/homepage.scss */
+/* line 573, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet p .timestamp {
   text-transform: uppercase;
   color: #7f7e7f;
 }
-/* line 574, ../sass/homepage.scss */
+/* line 580, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet > a {
   text-align: right;
   display: block;
 }
-/* line 579, ../sass/homepage.scss */
+/* line 585, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet::before {
   top: -20px;
   bottom: auto;
@@ -608,13 +613,13 @@ div.wrapper {
   display: block;
   width: 0;
 }
-/* line 598, ../sass/homepage.scss */
+/* line 604, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons {
   margin-top: 0;
   margin-bottom: 30px ;
   margin-bottom: 3rem ;
 }
-/* line 601, ../sass/homepage.scss */
+/* line 607, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons a {
   font-size: 18px ;
   font-size: 1.8rem ;
@@ -632,49 +637,49 @@ div.wrapper {
   padding-top: 0;
   display: inline-block;
 }
-/* line 615, ../sass/homepage.scss */
+/* line 621, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons a span {
   text-indent: -9000px;
   clip: rect(0, 0, 0, 0);
   display: inline-block;
 }
-/* line 623, ../sass/homepage.scss */
+/* line 629, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .twitter-link {
   color: #4099ff;
 }
-/* line 625, ../sass/homepage.scss */
+/* line 631, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .twitter-link:hover {
   color: #60a9fe;
 }
-/* line 630, ../sass/homepage.scss */
+/* line 636, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .pinterest-link {
   color: #e00002;
 }
-/* line 632, ../sass/homepage.scss */
+/* line 638, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .pinterest-link:hover {
   color: #f20103;
 }
-/* line 637, ../sass/homepage.scss */
+/* line 643, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .facebook-link {
   color: #3b5998;
 }
-/* line 639, ../sass/homepage.scss */
+/* line 645, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .facebook-link:hover {
   color: #4265ad;
 }
 
 /* END NEWS/PROJECTS AREA */
-/* line 656, ../sass/homepage.scss */
+/* line 662, ../sass/homepage.scss */
 .bold {
   font-weight: bold;
 }
 
-/* line 660, ../sass/homepage.scss */
+/* line 666, ../sass/homepage.scss */
 .footer.navbar {
   margin-top: 0;
 }
 
-/* line 664, ../sass/homepage.scss */
+/* line 670, ../sass/homepage.scss */
 .modal.login-modal {
   right: 250px;
 }
