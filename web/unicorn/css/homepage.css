@@ -419,24 +419,25 @@ div.wrapper {
   height: 20rem ;
   text-align: center;
   background: rgba(253, 209, 22, 0.2);
+  border: 1px solid transparent;
   margin-right: 1px;
 }
-/* line 410, ../sass/homepage.scss */
+/* line 412, ../sass/homepage.scss */
 #options #stripes .download div {
   background: url("../img/homepage/download.png") no-repeat 50% 15px;
   /*png24*/
   height: 141px;
 }
-/* line 414, ../sass/homepage.scss */
+/* line 416, ../sass/homepage.scss */
 #options #stripes .download div br {
   display: none;
 }
-/* line 416, ../sass/homepage.scss */
+/* line 418, ../sass/homepage.scss */
 #options #stripes .download div:hover {
   background: url("../img/homepage/download.png") no-repeat 50% 15px;
   /*png24*/
 }
-/* line 423, ../sass/homepage.scss */
+/* line 425, ../sass/homepage.scss */
 #options #stripes .download .task {
   display: block;
   padding: 75px 15px 0;
@@ -447,7 +448,7 @@ div.wrapper {
   text-transform: uppercase;
   letter-spacing: .1em;
 }
-/* line 436, ../sass/homepage.scss */
+/* line 438, ../sass/homepage.scss */
 #options #stripes .download .footnote {
   /* asterisked text */
   display: block;
@@ -462,7 +463,7 @@ div.wrapper {
   font-size: 1.1rem ;
 }
 
-/* line 455, ../sass/homepage.scss */
+/* line 457, ../sass/homepage.scss */
 #arrow {
   /* div creating the "arrow" over the stripes */
   float: left;
@@ -476,7 +477,7 @@ div.wrapper {
 }
 
 /* YELLOW ARROW TEST */
-/* line 468, ../sass/homepage.scss */
+/* line 470, ../sass/homepage.scss */
 #top-arrow {
   padding: 0;
   width: 0;
@@ -487,20 +488,20 @@ div.wrapper {
 
 /* END YELLOW ARROW TEST */
 /* NEWS/PROJECTS AREA */
-/* line 478, ../sass/homepage.scss */
+/* line 480, ../sass/homepage.scss */
 #news-projects {
   background: #f0f0ef;
   font-size: 13px ;
   font-size: 1.3rem ;
   width: 100%;
 }
-/* line 483, ../sass/homepage.scss */
+/* line 485, ../sass/homepage.scss */
 #news-projects ul li {
   display: inline;
   float: left;
   width: 230px;
 }
-/* line 489, ../sass/homepage.scss */
+/* line 491, ../sass/homepage.scss */
 #news-projects .news-inner {
   display: table;
   padding: 0;
@@ -514,12 +515,12 @@ div.wrapper {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 499, ../sass/homepage.scss */
+/* line 501, ../sass/homepage.scss */
 #news-projects .news-inner h3 {
   font-size: 12px ;
   font-size: 1.2rem ;
 }
-/* line 503, ../sass/homepage.scss */
+/* line 505, ../sass/homepage.scss */
 #news-projects .news-inner h1 {
   margin-bottom: 15px;
   font-size: 1.2em;
@@ -527,7 +528,7 @@ div.wrapper {
   color: #6b6a6b;
   text-transform: uppercase;
 }
-/* line 511, ../sass/homepage.scss */
+/* line 513, ../sass/homepage.scss */
 #news-projects .news-inner h2 {
   margin-bottom: 8px;
   font-size: 1.2em;
@@ -535,32 +536,32 @@ div.wrapper {
   color: #39383a;
   line-height: 1.2em;
 }
-/* line 519, ../sass/homepage.scss */
+/* line 521, ../sass/homepage.scss */
 #news-projects .news-inner p {
   font-size: 12px ;
   font-size: 1.2rem ;
   line-height: 16px;
   color: #39383a;
 }
-/* line 525, ../sass/homepage.scss */
+/* line 527, ../sass/homepage.scss */
 #news-projects .news-inner .headline {
   color: #6b6a6b;
   font-weight: bold;
   text-transform: uppercase;
   margin-top: 0;
 }
-/* line 533, ../sass/homepage.scss */
+/* line 535, ../sass/homepage.scss */
 #news-projects .news-inner .left {
   display: table-cell;
   vertical-align: top;
   width: 45%;
   border-right: 1px solid #dddddd;
 }
-/* line 540, ../sass/homepage.scss */
+/* line 542, ../sass/homepage.scss */
 #news-projects .news-inner .left > div {
   padding-left: 0;
 }
-/* line 542, ../sass/homepage.scss */
+/* line 544, ../sass/homepage.scss */
 #news-projects .news-inner .left p.more {
   float: right;
   width: 25%;
@@ -570,19 +571,19 @@ div.wrapper {
   margin-top: -20px ;
   margin-top: -2rem ;
 }
-/* line 550, ../sass/homepage.scss */
+/* line 552, ../sass/homepage.scss */
 #news-projects .news-inner .right {
   display: table-cell;
   vertical-align: top;
   width: 55%;
 }
-/* line 555, ../sass/homepage.scss */
+/* line 557, ../sass/homepage.scss */
 #news-projects .news-inner .right > div {
   padding-left: 20px ;
   padding-left: 2rem ;
   padding-right: 0;
 }
-/* line 560, ../sass/homepage.scss */
+/* line 562, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet {
   background: #fff;
   padding: 16px;
@@ -590,22 +591,22 @@ div.wrapper {
   border: 5px solid white;
   box-shadow: rgba(0, 0, 0, 0.1) 0 1px 10px;
 }
-/* line 570, ../sass/homepage.scss */
+/* line 572, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet p {
   color: #39383a;
   margin-top: 0;
 }
-/* line 575, ../sass/homepage.scss */
+/* line 577, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet p .timestamp {
   text-transform: uppercase;
   color: #7f7e7f;
 }
-/* line 582, ../sass/homepage.scss */
+/* line 584, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet > a {
   text-align: right;
   display: block;
 }
-/* line 587, ../sass/homepage.scss */
+/* line 589, ../sass/homepage.scss */
 #news-projects .news-inner .right .latest-tweet::before {
   top: -20px;
   bottom: auto;
@@ -619,13 +620,13 @@ div.wrapper {
   display: block;
   width: 0;
 }
-/* line 606, ../sass/homepage.scss */
+/* line 608, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons {
   margin-top: 0;
   margin-bottom: 30px ;
   margin-bottom: 3rem ;
 }
-/* line 609, ../sass/homepage.scss */
+/* line 611, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons a {
   font-size: 18px ;
   font-size: 1.8rem ;
@@ -643,49 +644,49 @@ div.wrapper {
   padding-top: 0;
   display: inline-block;
 }
-/* line 623, ../sass/homepage.scss */
+/* line 625, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons a span {
   text-indent: -9000px;
   clip: rect(0, 0, 0, 0);
   display: inline-block;
 }
-/* line 631, ../sass/homepage.scss */
+/* line 633, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .twitter-link {
   color: #4099ff;
 }
-/* line 633, ../sass/homepage.scss */
+/* line 635, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .twitter-link:hover {
   color: #60a9fe;
 }
-/* line 638, ../sass/homepage.scss */
+/* line 640, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .pinterest-link {
   color: #e00002;
 }
-/* line 640, ../sass/homepage.scss */
+/* line 642, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .pinterest-link:hover {
   color: #f20103;
 }
-/* line 645, ../sass/homepage.scss */
+/* line 647, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .facebook-link {
   color: #3b5998;
 }
-/* line 647, ../sass/homepage.scss */
+/* line 649, ../sass/homepage.scss */
 #news-projects .news-inner .right .social .buttons .facebook-link:hover {
   color: #4265ad;
 }
 
 /* END NEWS/PROJECTS AREA */
-/* line 664, ../sass/homepage.scss */
+/* line 666, ../sass/homepage.scss */
 .bold {
   font-weight: bold;
 }
 
-/* line 668, ../sass/homepage.scss */
+/* line 670, ../sass/homepage.scss */
 .footer.navbar {
   margin-top: 0;
 }
 
-/* line 672, ../sass/homepage.scss */
+/* line 674, ../sass/homepage.scss */
 .modal.login-modal {
   right: 250px;
 }
