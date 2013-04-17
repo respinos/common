@@ -42,10 +42,6 @@ a {
 		text-decoration: none;
 	}
 
-    &:visited {
-        color: $link-visited-color;
-    }
-
 }
 
 .offscreen, .SkipLink, .hidden {
@@ -1375,3 +1371,8 @@ div > p:first-child {
     @include alert-badge("K");
 }
 
+.track-visited-links {
+     a:visited {
+        color: $link-visited-color;
+    }
+}
