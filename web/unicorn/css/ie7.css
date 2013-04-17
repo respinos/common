@@ -1,4 +1,4 @@
-BODY {behavior: url(/cgi/sandbox/htc/common/unicorn/vendor/js/display-table.htc); }
+BODY {behavior: url(/common/unicorn/vendor/js/display-table.htc); }
 
 .container { -dt-display: table; -dt-width: 90%; }
 .sidebar, .logo { -dt-display: table-cell; -dt-width: 225px; }
