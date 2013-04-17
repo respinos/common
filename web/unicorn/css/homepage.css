@@ -690,6 +690,7 @@ div.wrapper {
 }
 
 /* line 676, ../sass/homepage.scss */
-.modal.login-modal {
-  right: 250px;
+.modal.login-modal.in {
+  right: auto !important;
+  left: 60% !important;
 }
