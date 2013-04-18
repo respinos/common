@@ -850,12 +850,24 @@ button.button {
   	@include pull(6);
   }
 
+  .pull6_5 {
+    @include pull(6.5);
+  }
+
   .pull7 {
   	@include pull(7);
   }
 
+  .pull7_5 {
+    @include pull(7.5);
+  }
+
   .pull8 {
   	@include pull(8);
+  }
+
+  .pull8_5 {
+    @include pull(8.5);
   }
 
   .pull9 {
@@ -876,6 +888,10 @@ button.button {
 
   .push1 {
   	@include push(1);
+  }
+
+  .push1_5 {
+    @include push(1.5);
   }
 
   .push2 {

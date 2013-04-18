@@ -21,18 +21,22 @@ head.ready(function() {
     var $input = $form.find("input.search-input-text");
     var $select = $form.find("select");
 
+    $select.find("option[data-target=ls]").remove();
+
     var setup = {}
     setup.ls = function() {
         $(".search-catalog-link").hide();
         $(".search-advanced-link").show();
-        $select.find("option[data-target=ls]").attr({ disabled : null });
+        // $select.find("option[data-target=ls]").attr({ disabled : null });
+        $select.hide();
         $input.attr("placeholder", 'Search words about or within the items');
     };
 
     setup.catalog = function() {
         $(".search-catalog-link").show();
         $(".search-advanced-link").hide();
-        $select.find("option[data-target=ls]").attr({ disabled : 'disabled' });
+        // $select.find("option[data-target=ls]").attr({ disabled : 'disabled' });
+        $select.show();
         var $check = $select.find("option:selected[disabled]");
         if ( $check.length ) {
           $check.attr("selected", null);
