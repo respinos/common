@@ -35,38 +35,36 @@ if ( window.console === undefined ) {
     head.js(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js');
 
     //--REQUIRED--//
-    var to_load = [
-        // '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
-        prefix + 'common/unicorn/vendor/js/jquery-1.9.1.min.js'
-    ];
+    HT.scripts = HT.scripts || [];
 
     if ( do_load_uncompressed ) {
-        to_load.push(prefix + 'common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js');
-        to_load.push(prefix + 'common/unicorn/vendor/js/underscore-min.js');
-        to_load.push(prefix + 'common/unicorn/vendor/fancyBox/jquery.fancybox.js');
-        to_load.push(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-transition.js');
-        to_load.push(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-modal.js');
-        to_load.push(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-button.js');
-        to_load.push(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-dropdown.js');
-        to_load.push(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-tooltip.js');
-        to_load.push(prefix + 'common/unicorn/vendor/bootstrap/js/bootbox.js');
-        to_load.push(prefix + 'common/unicorn/vendor/js/jquery.placeholder.js');
-        to_load.push(prefix + 'common/unicorn/js/feedback.js');
-        to_load.push(prefix + 'common/unicorn/js/login.js');
-        to_load.push(prefix + 'common/unicorn/js/search.js');
-        to_load.push(prefix + 'common/unicorn/js/google_analytics.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/js/google_analytics.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/js/search.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/js/login.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/js/feedback.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery.placeholder.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootbox.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-tooltip.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-dropdown.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-button.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-modal.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-transition.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/fancyBox/jquery.fancybox.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/underscore-min.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js');
     } else {
-        to_load.push(prefix + 'common/unicorn/js/common.js-to_load-min.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/js/common.js-to_load-min.js');
     }
-
 
     if ( location.hostname != 'www.hathitrust.org' && 
          location.hostname != 'catalog.hathitrust.org' && 
          location.hostname != 'babel.hathitrust.org ') {
-        to_load.push(prefix + 'common/unicorn/js/staging.js');
+        HT.scripts.push(prefix + 'common/unicorn/js/staging.js');
     }
 
-    head.js.apply(this, to_load, function() {
+    HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-1.9.1.min.js');
+
+    head.js.apply(this, HT.scripts, function() {
         $(":input[placeholder]").placeholder();
     });
 

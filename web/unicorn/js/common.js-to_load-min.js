@@ -7226,7 +7226,7 @@ head.ready(function() {
 
 
 
-    var FEEDBACK_URL = HT.FEEDBACK_URL || '//roger-full.babel.hathitrust.org/cgi/feedback';
+    var FEEDBACK_URL = '//' + HT.service_domain + '/cgi/feedback';
 
 
 
