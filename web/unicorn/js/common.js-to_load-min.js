@@ -7556,7 +7556,9 @@ head.ready(function() {
 
             }
 
-            $block.find("a[href=wayf]").attr("href", 'http://' + HT.service_domain + "/cgi/wayf");
+
+
+            $block.find("a[href=wayf]").attr("href", 'http://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target));
 
 
 
@@ -7598,19 +7600,11 @@ head.ready(function() {
 
                 if ( href == '___TARGET___' ) {
 
-                    // href = target.replace("http:", "https:");
-
                     href = target;
 
                 } else {
 
                     target = target.replace('babel.hathitrust.org/cgi/', 'babel.hathitrust.org/shcgi/');
-
-                    // if ( target.substr(0,5) == 'http:' ) {
-
-                    //     target = target.replace('http://', 'https://');
-
-                    // }
 
                     href = href.replace('___TARGET___', encodeURIComponent(target));
 

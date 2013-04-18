@@ -81,7 +81,8 @@ head.ready(function() {
             } else {
                 $friend_link.attr("href", HT.get_pong_target(location.href));
             }
-            $block.find("a[href=wayf]").attr("href", 'http://' + HT.service_domain + "/cgi/wayf");
+
+            $block.find("a[href=wayf]").attr("href", 'http://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target));
 
             var classes = 'login-modal';
             if ( $button.hasClass("centered") ) {
