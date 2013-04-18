@@ -933,7 +933,7 @@ button.button {
  	display: table-cell;
  	vertical-align: top;
  	@include rem(padding-left, 20);
-    // @include rem(padding-right, 20);
+    @include rem(padding-right, 20);
  }
 
  .search-form {
