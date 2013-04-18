@@ -20,6 +20,7 @@ head.ready(function() {
     var $tabs = $form.find(".search-tabs input[type=radio]");
     var $input = $form.find("input.search-input-text");
     var $select = $form.find("select");
+    var $select_div = $form.find(".search-input-options");
 
     $select.find("option[data-target=ls]").remove();
 
@@ -28,7 +29,7 @@ head.ready(function() {
         $(".search-catalog-link").hide();
         $(".search-advanced-link").show();
         // $select.find("option[data-target=ls]").attr({ disabled : null });
-        $select.hide();
+        $select_div.hide();
         $input.attr("placeholder", 'Search words about or within the items');
     };
 
@@ -36,12 +37,12 @@ head.ready(function() {
         $(".search-catalog-link").show();
         $(".search-advanced-link").hide();
         // $select.find("option[data-target=ls]").attr({ disabled : 'disabled' });
-        $select.show();
         var $check = $select.find("option:selected[disabled]");
         if ( $check.length ) {
           $check.attr("selected", null);
           $select.find("option[value=all]").attr('selected', 'selected');
         }
+        $select_div.show();
         $input.attr("placeholder", 'Search words about the items');
     }
 
