@@ -754,8 +754,16 @@ button.button {
   	@include span-columns(3,12);
   }
 
+  .span3_5 {
+    @include span-columns(3.5, 12);
+  }
+
   .span4 {
   	@include span-columns(4,12);
+  }
+
+  .span4_5 {
+    @include span-columns(4.5, 12);
   }
 
   .span5 {
@@ -768,6 +776,10 @@ button.button {
 
   .span7 {
   	@include span-columns(7,12);
+  }
+
+  .span7_5 {
+    @include span-columns(7.5,12);
   }
 
   .span8 {
