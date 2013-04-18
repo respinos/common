@@ -2,7 +2,7 @@ var HT = HT || {};
 
 head.ready(function() {
 
-    var FEEDBACK_URL = HT.FEEDBACK_URL || '//roger-full.babel.hathitrust.org/cgi/feedback';
+    var FEEDBACK_URL = '//' + HT.service_domain + '/cgi/feedback';
 
     function default_dialog() {
         var html = 
