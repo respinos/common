@@ -36,7 +36,8 @@ if ( window.console === undefined ) {
 
     //--REQUIRED--//
     var to_load = [
-        '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
+        // '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
+        prefix + 'common/unicorn/vendor/js/jquery-1.9.1.min.js'
     ];
 
     if ( do_load_uncompressed ) {
