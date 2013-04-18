@@ -26,9 +26,11 @@ head.ready(function() {
 
     $(document).on('click.feedback.data-api', '[data-toggle^=feedback]', function(e) {
             e.preventDefault();
+            bootbox.hideAll();
+
             var id = $(this).data('id');
             var m = $(this).data('m') || 'ht';
-            var html = HT.feedback ? HT.feedback.dialog() : default_dialog();
+            var html = $(this).data('default-form') ? default_dialog() : ( HT.feedback ? HT.feedback.dialog() : default_dialog() );
             var $dialog = bootbox.dialog(
                 html,
                 [
