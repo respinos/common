@@ -7801,6 +7801,8 @@ head.ready(function() {
 
     var $select = $form.find("select");
 
+    var $select_div = $form.find(".search-input-options");
+
 
 
     $select.find("option[data-target=ls]").remove();
@@ -7817,7 +7819,7 @@ head.ready(function() {
 
         // $select.find("option[data-target=ls]").attr({ disabled : null });
 
-        $select.hide();
+        $select_div.hide();
 
         $input.attr("placeholder", 'Search words about or within the items');
 
@@ -7833,8 +7835,6 @@ head.ready(function() {
 
         // $select.find("option[data-target=ls]").attr({ disabled : 'disabled' });
 
-        $select.show();
-
         var $check = $select.find("option:selected[disabled]");
 
         if ( $check.length ) {
@@ -7844,6 +7844,8 @@ head.ready(function() {
           $select.find("option[value=all]").attr('selected', 'selected');
 
         }
+
+        $select_div.show();
 
         $input.attr("placeholder", 'Search words about the items');
 
