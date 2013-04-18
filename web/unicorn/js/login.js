@@ -102,13 +102,9 @@ head.ready(function() {
                 e.preventDefault();
                 var href = $select.val();
                 if ( href == '___TARGET___' ) {
-                    // href = target.replace("http:", "https:");
                     href = target;
                 } else {
                     target = target.replace('babel.hathitrust.org/cgi/', 'babel.hathitrust.org/shcgi/');
-                    // if ( target.substr(0,5) == 'http:' ) {
-                    //     target = target.replace('http://', 'https://');
-                    // }
                     href = href.replace('___TARGET___', encodeURIComponent(target));
                 }
                 window.location.href = href;
