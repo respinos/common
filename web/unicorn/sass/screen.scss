@@ -447,6 +447,20 @@ ul.search-links li {
 	margin-bottom: -1px;
 	border-right: 1px solid #d0cfcd;
 	@include rem(padding-right, 10);
+
+    &.search-catalog-link {
+        display: none;
+    }
+}
+
+html[id] ul.search-links li {
+    &.search-advanced-link {
+        display: none;
+    }
+
+    &.search-catalog-link {
+        display: list-item;
+    }
 }
 
 ul.search-links li:last-child {
