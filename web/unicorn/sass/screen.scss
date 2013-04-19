@@ -453,7 +453,7 @@ ul.search-links li {
     }
 }
 
-html[id] ul.search-links li {
+html[id] ul.search-links li, html.search-target-catalog ul.search-links li {
     &.search-advanced-link {
         display: none;
     }

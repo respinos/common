@@ -437,11 +437,11 @@ ul.search-links li.search-catalog-link {
 }
 
 /* line 457, ../sass/screen.scss */
-html[id] ul.search-links li.search-advanced-link {
+html[id] ul.search-links li.search-advanced-link, html.search-target-catalog ul.search-links li.search-advanced-link {
   display: none;
 }
 /* line 461, ../sass/screen.scss */
-html[id] ul.search-links li.search-catalog-link {
+html[id] ul.search-links li.search-catalog-link, html.search-target-catalog ul.search-links li.search-catalog-link {
   display: list-item;
 }
 
