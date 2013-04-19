@@ -628,7 +628,7 @@ div.wrapper {
                     @include rem(right, 40);
                     // border-width: 0 20px 20px;
                     @include rem(border-width, 20);
-                    border-width-top: 0;
+                    border-top-width: 0;
 
 
                     content: "";

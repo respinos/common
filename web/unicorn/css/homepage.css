@@ -691,7 +691,7 @@ div.wrapper {
   right: 4rem ;
   border-width: 20px ;
   border-width: 2rem ;
-  border-width-top: 0;
+  border-top-width: 0;
   content: "";
   position: absolute;
   border-style: solid;
