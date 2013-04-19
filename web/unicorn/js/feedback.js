@@ -62,12 +62,31 @@ head.ready(function() {
                             if ( is_valid && ! is_empty) {
                                 $dialog.find(".btn").attr("disabled", "disabled");
                                 $dialog.find(".btn-primary").addClass("btn-loading");
-                                $.post(FEEDBACK_URL, 
-                                    data, 
-                                    function() {
-                                        $dialog.modal('hide');
-                                        bootbox.alert("<p>Thank you for your feedback!</p>");
+
+                                if ( location.hostname == HT.service_domain ) {
+                                    // we can do this with ajax
+                                    $.post(FEEDBACK_URL, 
+                                        data, 
+                                        function() {
+                                            $dialog.modal('hide');
+                                            bootbox.alert("<p>Thank you for your feedback!</p>");
+                                    });
+                                } else {
+                                    // have to post the form
+                                    var $form = $("<form method='POST'></form>");
+                                    $form.attr("action", FEEDBACK_URL);
+                                    _.each(_.keys(data), function(name) {
+                                        var values = data[name];
+                                        values = $.isArray(values) ? values : [ values ];
+                                        _.each(values, function(value) {
+                                            $("<input type='hidden' />").attr({ name : name }).val(value).appendTo($form);
+                                        })
                                     })
+                                    $dialog.modal('hide');
+                                    $form.submit();
+                                }
+
+
                             } else if ( ! is_valid) {
                                 $("<div class='alert alert-error'>Please fill in required fields.</div>").insertBefore($dialog.find(".btn-dismiss"));
                                 $dialog.addClass("required");
