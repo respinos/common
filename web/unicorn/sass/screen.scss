@@ -127,20 +127,32 @@ form {
 .navbar .nav > li {
 	float: left;
 
+    // &:hover {
+    //  background: $navbar-bgcolor-hover;
+    //  color: $navbar-link-hover-color;
+    // }
+
+    > a {
+
+        &:hover {
+            background: $navbar-bgcolor-hover; // #F9F8F5;
+            color: $navbar-link-hover-color; // #39383A;
+        }
+
+    }
+
+
 	&.active {
 		background-color: #F9F8F5;
 
-		a {
+		> a {
 			color: #39383A;
 
-			&:hover {
-				background: #F9F8F5;
-				color: #39383A;
-			}
 
-			&:active {
-				background: #F9F8F5;
-				color: #39383A;
+
+			&:hover {
+				background: #F9F8F5 !important;
+				color: #39383A !important;
 			}
 
 		}
@@ -169,15 +181,15 @@ form {
 
 .navbar .nav > li {
 
-	&:hover {
-		background: $navbar-bgcolor-hover;
-		color: $navbar-link-hover-color;
-	}
+	// &:hover {
+	// 	background: $navbar-bgcolor-hover;
+	// 	color: $navbar-link-hover-color;
+	// }
 
-	&:active {
-		background: $navbar-link-color;
-		color: $navbar-link-active-color;
-	}
+	// &:active > a {
+	// 	background: $navbar-link-color;
+	// 	color: $navbar-link-active-color;
+	// }
 
 
 	> ul {
@@ -208,7 +220,7 @@ form {
 
 		li {
 			border-bottom: 1px solid #39383a;
-		padding-right: 0;
+		    padding-right: 0;
 
 			a {
 				// display: block;
