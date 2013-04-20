@@ -33,7 +33,7 @@ var HT = HT || {};
     // }
 
     //--STARTUP--//
-    head.js(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js');
+    // head.js(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js');
 
     //--REQUIRED--//
     HT.scripts = HT.scripts || [];
@@ -64,6 +64,7 @@ var HT = HT || {};
     }
 
     HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-1.9.1.min.js');
+    HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js');
 
     head.js.apply(this, HT.scripts, function() {
         $(":input[placeholder]").placeholder();
