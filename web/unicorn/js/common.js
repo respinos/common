@@ -4,9 +4,10 @@ if ( window.console === undefined ) {
     }
 }
 
+var HT = HT || {};
+
 (function() {
     var prefix = '/';
-    window.HT = window.HT || {};
 
     if ( window.jQuery ) {
         window.old_jQuery = window.jQuery;
