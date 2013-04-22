@@ -59,7 +59,7 @@ var HT = HT || {};
 
     if ( location.hostname != 'www.hathitrust.org' && 
          location.hostname != 'catalog.hathitrust.org' && 
-         location.hostname != 'babel.hathitrust.org ') {
+         location.hostname != 'babel.hathitrust.org' ) {
         HT.scripts.push(prefix + 'common/unicorn/js/staging.js');
     }
 
