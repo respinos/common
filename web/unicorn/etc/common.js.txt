@@ -20,7 +20,7 @@ if ( window.console === undefined ) {
     HT.is_babel = ( hostname.indexOf("babel.hathitrust.org") > -1 );
 
     // service_url is either the babel dev, beta-3, or babel
-    HT.service_domain = ( HT.is_babel ? hostname : ( HT.is_dev ? 'beta-3.babel.hathitrust.org' : 'babel.hathitrust.org' ) );
+    HT.service_domain = ( HT.is_babel ? hostname : ( HT.is_dev ? 'test.babel.hathitrust.org' : 'babel.hathitrust.org' ) );
 
     // check for whether to load common concatenated or unconcenated
     var common_re = new RegExp(/debug=.*common.*/);
