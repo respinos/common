@@ -100,7 +100,7 @@ head.ready(function() {
                 {
                     header : 'Feedback'
                 }
-            )
+            );
         }
     );
 

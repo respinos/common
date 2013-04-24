@@ -244,6 +244,7 @@ var bootbox = window.bootbox || (function(document, $) {
         // @see https://github.com/makeusabrew/bootbox/issues/69
 
         div.on("shown", function() {
+            $(this).trap();
             form.find("input[type=text]").focus();
 
             // ensure that submitting the form (e.g. with the enter key)
@@ -398,6 +399,7 @@ var bootbox = window.bootbox || (function(document, $) {
 
         // well, *if* we have a primary - give the first dom element focus
         div.on('shown', function() {
+            $(this).trap();
             div.find("a.btn-primary:first").focus();
         });
 
@@ -450,6 +452,7 @@ var bootbox = window.bootbox || (function(document, $) {
         // ...caused by...
         // @see https://github.com/twitter/bootstrap/issues/4781
         div.on("show", function(e) {
+            $(this).trap();
             $(document).off("focusin.modal");
         });
 

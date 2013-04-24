@@ -41,6 +41,7 @@ if ( window.console === undefined ) {
     // common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js
     // common/unicorn/vendor/js/underscore-min.js
     // common/unicorn/vendor/fancyBox/jquery.fancybox.js
+    // common/unicorn/vendor/js/jquery.trap.js
     // common/unicorn/vendor/bootstrap/js/bootstrap-transition.js
     // common/unicorn/vendor/bootstrap/js/bootstrap-modal.js
     // common/unicorn/vendor/bootstrap/js/bootstrap-button.js

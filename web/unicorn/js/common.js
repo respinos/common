@@ -49,6 +49,7 @@ if ( window.console === undefined ) {
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-button.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-modal.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-transition.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery.trap.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/fancyBox/jquery.fancybox.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/underscore-min.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js');
