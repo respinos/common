@@ -35,7 +35,11 @@ IS" AND ANY EXPRESS OR IMPLIED WARRANTIES ARE DISCLAIMED.
                 e.stopPropagation();
             }
         } else if ( arrow.indexOf(e.keyCode) > -1 ) {
-            e.stopPropagation();
+            if ( e.target.nodeName == 'INPUT' || e.target.nodeName == 'TEXTAREA' ) {
+                e.stopPropagation();
+            } else {
+                e.preventDefault();
+            }
         }
     }
     
