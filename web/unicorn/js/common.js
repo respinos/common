@@ -21,7 +21,7 @@ var HT = HT || {};
     HT.is_babel = ( hostname.indexOf("babel.hathitrust.org") > -1 );
 
     // service_url is either the babel dev, beta-3, or babel
-    HT.service_domain = ( HT.is_babel ? hostname : ( HT.is_dev ? 'beta-3.babel.hathitrust.org' : 'babel.hathitrust.org' ) );
+    HT.service_domain = ( HT.is_babel ? hostname : ( HT.is_dev ? 'test.babel.hathitrust.org' : 'babel.hathitrust.org' ) );
 
     // check for whether to load common concatenated or unconcenated
     var common_re = new RegExp(/debug=.*common.*/);
@@ -31,9 +31,6 @@ var HT = HT || {};
     // if ( location.hostname.indexOf("babel.hathitrust.org") < 0 ) {
     //     prefix = '//beta-3.babel.hathitrust.org/';
     // }
-
-    //--STARTUP--//
-    // head.js(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js');
 
     //--REQUIRED--//
     HT.scripts = HT.scripts || [];
@@ -50,6 +47,7 @@ var HT = HT || {};
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-button.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-modal.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-transition.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery.trap.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/fancyBox/jquery.fancybox.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/underscore-min.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js');
@@ -59,12 +57,12 @@ var HT = HT || {};
 
     if ( location.hostname != 'www.hathitrust.org' && 
          location.hostname != 'catalog.hathitrust.org' && 
-         location.hostname != 'babel.hathitrust.org' ) {
+         location.hostname != 'babel.hathitrust.org') {
         HT.scripts.push(prefix + 'common/unicorn/js/staging.js');
     }
 
-    HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-1.9.1.min.js');
     HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js');
+    HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-1.9.1.min.js');
 
     head.js.apply(this, HT.scripts, function() {
         $(":input[placeholder]").placeholder();

@@ -93,6 +93,7 @@ head.ready(function() {
                 [],
                 { classes : classes }
             );
+
             $dialog.find(".btn-cancel").click(function(e) {
                 e.preventDefault();
                 $button.removeClass("active").removeClass("centered");
@@ -171,10 +172,11 @@ head.ready(function() {
 
     $("body").on('click', '.trigger-login', function(e) {
         e.preventDefault();
-        var target = $(this).data('close-target');
-        if ( target ) {
-            $(target).modal('hide');
-        }
+        // var target = $(this).data('close-target');
+        // if ( target ) {
+        //     $(target).modal('hide');
+        // }
+        bootbox.hideAll();
         $("#login-button").addClass("centered").click();
     })
 
