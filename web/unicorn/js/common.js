@@ -4,9 +4,10 @@ if ( window.console === undefined ) {
     }
 }
 
+var HT = HT || {};
+
 (function() {
     var prefix = '/';
-    window.HT = window.HT || {};
 
     if ( window.jQuery ) {
         window.old_jQuery = window.jQuery;
@@ -30,9 +31,6 @@ if ( window.console === undefined ) {
     // if ( location.hostname.indexOf("babel.hathitrust.org") < 0 ) {
     //     prefix = '//beta-3.babel.hathitrust.org/';
     // }
-
-    //--STARTUP--//
-    head.js(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js');
 
     //--REQUIRED--//
     HT.scripts = HT.scripts || [];
@@ -63,6 +61,7 @@ if ( window.console === undefined ) {
         HT.scripts.push(prefix + 'common/unicorn/js/staging.js');
     }
 
+    HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js');
     HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-1.9.1.min.js');
 
     head.js.apply(this, HT.scripts, function() {
