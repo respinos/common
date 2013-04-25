@@ -38,6 +38,7 @@ IS" AND ANY EXPRESS OR IMPLIED WARRANTIES ARE DISCLAIMED.
             if ( e.target.nodeName == 'INPUT' || e.target.nodeName == 'TEXTAREA' ) {
                 e.stopPropagation();
             } else {
+                e.stopPropagation();
                 e.preventDefault();
             }
         }
