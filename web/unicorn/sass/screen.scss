@@ -1097,7 +1097,7 @@ a.btn {
             line-height: 1.5;
         }
 
-        @include rem(margin-bottom, 20);
+        @include rem(margin-bottom, 12);
     }
 
     p {
@@ -1108,6 +1108,10 @@ a.btn {
 
     label[for=email] {
         font-style: italic;
+    }
+
+    .modal-body > form {
+        @include rem(margin-top, -5);
     }
 }
 
