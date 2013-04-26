@@ -121,8 +121,12 @@
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
-          .insertAfter(this.$element)
-
+          // this is what was the default
+          //.insertAfter(this.$element)
+/*        container = this.options.container === '' ? '' : $(this.options.container)
+         container.length ? $tip.appendTo(container) : $tip.insertAfter(this.$element)
+        */
+        this.options.container && $tip.appendTo(this.options.container).length || $tip.insertAfter(this.$element)
         pos = this.getPosition(inside)
 
         actualWidth = $tip[0].offsetWidth
@@ -273,6 +277,7 @@
   , title: ''
   , delay: 0
   , html: false
+  , container: ''
   }
 
 
@@ -285,3 +290,4 @@
   }
 
 }(window.jQuery);
+    
