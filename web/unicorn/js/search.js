@@ -17,6 +17,8 @@ head.ready(function() {
       return;
     }
 
+    $form = $form.find("form");
+
     var $tabs = $form.find(".search-tabs input[type=radio]");
     var $input = $form.find("input.search-input-text");
     var $select = $form.find("select");
@@ -57,10 +59,16 @@ head.ready(function() {
     var selected = $tabs.filter(":checked").val();
     setup[selected]();
 
+    // check the action
+    if ( window.location.href.indexOf("/shcgi/") > -1 ) {
+        var action = $form.attr("action");
+        $form.attr("action", action.replace("/cgi/", "/shcgi/"));
+    }
 
-  // add event handler for submit to check for empty query or asterisk
+    // add event handler for submit to check for empty query or asterisk
     $form.submit(function(event) 
          {
+
 
            //check for blank or single asterisk
            var query = $(this).find("input[name=q1]").val();
