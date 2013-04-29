@@ -61,9 +61,15 @@ head.ready(function() {
             $block.find("input[name=target]").val(encodeURI(target));
         
             $.each(status.idp_list, function() {
+
                 var $option = $("<option></option>").appendTo($select);
                 $option.val(this.idp_url);
-                $option.text(this.name);
+                var name = this.name.replace("&amp;", "&");
+                if ( this.enabled == 1 ) {
+                    $option.text(name);
+                } else if ( HT.is_dev ) {
+                    $option.text(name + " DEV");
+                }
                 if ( this.selected ) {
                     $option.attr('selected', 'selected');
                 }
@@ -76,11 +82,7 @@ head.ready(function() {
 
             // update the friend account link
             var $friend_link = $block.find("#friend-login-link");
-            if ( 0 && HT.is_babel ) {
-                $friend_link.attr("href", location.href.replace("http://", "https://"));
-            } else {
-                $friend_link.attr("href", HT.get_pong_target(location.href));
-            }
+            $friend_link.attr("href", HT.get_pong_target(location.href));
 
             $block.find("a[href=wayf]").attr("href", 'http://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target));
 
