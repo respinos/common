@@ -4,6 +4,7 @@ HT.analytics.enabled = false;
 HT.analytics.trackPageview = function(href) { /* no op */ };
 HT.analytics.trackEvent = function(params) { /* no op */ };
 HT.analytics.getTrackingLabel = function(arg) { return "-"; }
+HT.analytics.post_setup = [];
 
 head.ready(function() {
     var $html = $("html");
@@ -11,6 +12,17 @@ head.ready(function() {
     HT.analytics.profile_id = $.trim($html.data('analytics-code'));
     var is_enabled = ($.trim($html.data("analytics-enabled")) == 'true');
     if ( is_enabled ) {
+        var profiles = [ HT.analytics.profile_id ];
+
+        function _get_prefix(profile_id) {
+            var idx = profiles.indexOf(profile_id);
+            if ( idx < 0 ) {
+                profiles.push(profile_id);
+                idx = profiles.length - 1;
+            }
+            return ( "ht" + idx + "." );
+        }
+
         head.js((("https:" == document.location.protocol) ? "https://ssl." : "http://www.") + "google-analytics.com/ga.js",
             function() {
                 if ( ! window._gaq ) { return; }
@@ -25,18 +37,20 @@ head.ready(function() {
 
                 HT.analytics.trackPageview = function(href, profile_id) {
                     // allow for passing alternative profile for analytics experiments
+                    var prefix = profile_id ? _get_prefix(profile_id) : '';
                     _gaq.push(
-                        ['_setAccount', profile_id ? profile_id : HT.analytics.profile_id],
-                        ['_setDomainName', 'hathitrust.org'],
-                        ['_trackPageview', href]
+                        [prefix + '_setAccount', profile_id ? profile_id : HT.analytics.profile_id],
+                        [prefix + '_setDomainName', 'hathitrust.org'],
+                        [prefix + '_trackPageview', href]
                     );
                 }
 
                 HT.analytics.trackEvent = function(params, profile_id) {
+                    var prefix = profile_id ? _get_prefix(profile_id) : '';
                     _gaq.push(
-                        ['_setAccount', profile_id ? profile_id : HT.analytics.profile_id],
-                        ['_setDomainName', 'hathitrust.org'],
-                        ['_trackEvent', params.category, params.action, params.label]
+                        [prefix + '_setAccount', profile_id ? profile_id : HT.analytics.profile_id],
+                        [prefix + '_setDomainName', 'hathitrust.org'],
+                        [prefix + '_trackEvent', params.category, params.action, params.label]
                     );
                 }
 
@@ -81,6 +95,10 @@ head.ready(function() {
                     return retval;
 
                 })
+
+                for(var i = 0; i < HT.analytics.post_setup; i++) {
+                    HT.analytics.post_setup[i]();
+                }
 
                 if ( $.trim($html.data('analytics-skip')) == 'true' ) {
                     return;
