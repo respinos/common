@@ -51,6 +51,7 @@ head.ready(function() {
     $tabs.click(function() {
         var selected = $(this).val();
         setup[selected]();
+        HT.analytics.trackEvent({ label : "-", category : "HT Search", action : selected });
     })
 
     // what's the initial state?
