@@ -80,7 +80,7 @@ var HT = HT || {};
 
     HT.prefs.set = function(params) {
         var prefs = HT.prefs.get();
-        prefs = $.extend({}, params, prefs);
+        prefs = $.extend({}, prefs, params);
         try {
             $.cookie('HT.prefs', prefs, { json : true, domain : '.hathitrust.org', path : '/', expires : 90 });
         } catch (e) {
