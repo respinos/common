@@ -58,6 +58,20 @@ head.ready(function() {
     // --- if we need to switch the default: if $input.val() == '', 
     // --- find the "catalog" radio button and select it.
     var selected = $tabs.filter(":checked").val();
+    if ( window.location.href.indexOf("cgi/ls") < 0 || window.location.hostname != 'catalog.hathitrust.org' ) {
+      if ( $input.val() == '' || $input.val() == $input.attr('placeholder') ) {
+        var prefs = HT.prefs.get();
+        if ( prefs.search && prefs.search.target ) {
+          if ( selected != prefs.search.target ) {
+            $tabs.filter("[value=" + prefs.search.target + "]").click();
+          }
+          selected = prefs.search.target;
+        }
+        if ( prefs.search && prefs.search.ft != null ) {
+          $("input[name=ft]").attr('checked', prefs.search.ft);
+        }
+      }
+    }
     setup[selected]();
 
     // check the action
@@ -89,7 +103,11 @@ head.ready(function() {
            ##################################################################**/
            else
            {
-             return true;
+
+            // save last settings
+            HT.prefs.set({ search : { ft : $("input[name=ft]:checked").length > 0, target : $tabs.filter(":checked").val() }})
+
+            return true;
            }
 
      } );

@@ -47,6 +47,7 @@ var HT = HT || {};
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-button.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-modal.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/bootstrap/js/bootstrap-transition.js');
+        HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery.cookie.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery.trap.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/fancyBox/jquery.fancybox.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/underscore-min.js');
@@ -63,6 +64,29 @@ var HT = HT || {};
 
     HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js');
     HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-1.9.1.min.js');
+
+    HT.prefs = {};
+    HT.prefs.get = function() { 
+        var prefs = {};
+        try {
+            prefs = $.cookie('HT.prefs', undefined, { json : true }) || {};
+        } catch (e) {
+            // just null the prefs
+            $.removeCookie("HT.prefs");
+            prefs = {};
+        }
+        return prefs;
+    };
+
+    HT.prefs.set = function(params) {
+        var prefs = HT.prefs.get();
+        prefs = $.extend({}, prefs, params);
+        try {
+            $.cookie('HT.prefs', prefs, { json : true, domain : '.hathitrust.org', path : '/', expires : 90 });
+        } catch (e) {
+            // noop
+        }
+    };
 
     head.js.apply(this, HT.scripts, function() {
         $(":input[placeholder]").placeholder();
