@@ -18,6 +18,8 @@ head.ready(function() {
     var is_babel = (window.location.href.indexOf("babel.hathitrust") > -1);
     var $button = $("#login-button");
 
+    var prefs = HT.prefs.get();
+
     function setup_login_link(status) {
         $button.click(function(e) {
             e.preventDefault();
@@ -63,20 +65,26 @@ head.ready(function() {
             $.each(status.idp_list, function() {
 
                 var $option = $("<option></option>").appendTo($select);
-                $option.val(this.idp_url);
+                $option.val(this.idp_url).data('sdrinst', this.sdrinst);
                 var name = this.name.replace("&amp;", "&");
                 if ( this.enabled == 1 ) {
                     $option.text(name);
                 } else if ( HT.is_dev ) {
                     $option.text(name + " DEV");
                 }
-                if ( this.selected ) {
+                if ( prefs.sdrinst == this.sdrinst ) {
+                    $option.attr("selected", "selected");
+                } else if ( this.selected ) {
                     $option.attr('selected', 'selected');
                 }
                 if ( this.sdrinst == 'uom' && HT.is_dev ) {
                     $option = $("<option></option>").appendTo($select);
                     $option.val('https://test.babel.hathitrust.org/Shibboleth.sso/' + this.sdrinst + '?target=___TARGET___');
-                    $option.text(this.name + ' DEV');                
+                    $option.text(this.name + ' DEV');
+                    $option.data('sdrinst', 'uom.dev');
+                    if ( prefs.sdrinst == 'uom.dev' ) {
+                        $option.attr("selected", "selected");
+                    }
                 }
             })
 
@@ -105,6 +113,8 @@ head.ready(function() {
             $dialog.find("button.continue").click(function(e) {
                 e.preventDefault();
                 var href = $select.val();
+                var sdrinst = $select.find("option:selected").data('sdrinst');
+                HT.prefs.set({ sdrinst : sdrinst });
                 if ( href == '___TARGET___' ) {
                     href = target;
                 } else {
