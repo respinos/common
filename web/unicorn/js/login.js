@@ -61,7 +61,24 @@ head.ready(function() {
             }
 
             $block.find("input[name=target]").val(encodeURI(target));
-        
+
+            // find the default sdrinst first
+            var selected_sdrinst = prefs.sdrinst;
+            var default_sdrinst;
+            var found_sdrinst = false;
+
+            $.each(status.idp_list, function() {
+                if ( this.selected ) { 
+                    default_sdrinst = this.sdrinst;
+                }
+                if ( this.sdrinst == selected_sdrinst ) {
+                    found_sdrinst = true;
+                }
+            })
+            if ( ! found_sdrinst && selected_sdrinst != 'uom.dev' ) {
+                selected_sdrinst = default_sdrinst;
+            }
+
             $.each(status.idp_list, function() {
 
                 var $option = $("<option></option>").appendTo($select);
@@ -72,17 +89,18 @@ head.ready(function() {
                 } else if ( HT.is_dev ) {
                     $option.text(name + " DEV");
                 }
-                if ( prefs.sdrinst == this.sdrinst ) {
+
+                // if ( this.selected ) { default_sdrinst = this.sdrinst; }
+                if ( this.sdrinst == selected_sdrinst ) {
                     $option.attr("selected", "selected");
-                } else if ( this.selected ) {
-                    $option.attr('selected', 'selected');
                 }
+
                 if ( this.sdrinst == 'uom' && HT.is_dev ) {
                     $option = $("<option></option>").appendTo($select);
                     $option.val('https://test.babel.hathitrust.org/Shibboleth.sso/' + this.sdrinst + '?target=___TARGET___');
                     $option.text(this.name + ' DEV');
                     $option.data('sdrinst', 'uom.dev');
-                    if ( prefs.sdrinst == 'uom.dev' ) {
+                    if ( selected_sdrinst == 'uom.dev' ) {
                         $option.attr("selected", "selected");
                     }
                 }
