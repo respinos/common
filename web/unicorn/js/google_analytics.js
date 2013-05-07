@@ -41,7 +41,7 @@ head.ready(function() {
                     _gaq.push(
                         [prefix + '_setAccount', profile_id ? profile_id : HT.analytics.profile_id],
                         [prefix + '_setDomainName', 'hathitrust.org'],
-                        [prefix + '_trackPageview', href]
+                        [prefix + '_trackPageview', _munge_href(href)]
                     );
                 }
 
