@@ -32,7 +32,7 @@ head.ready(function() {
                     if ( href.indexOf(";") > -1 ) {
                         href = href.replace(/;/g, "&");
                     }
-                    return href;
+                    return href.replace(window.location.protocol + "//" + window.location.hostname, '');
                 }
 
                 HT.analytics.trackPageview = function(href, profile_id) {
