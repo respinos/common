@@ -83,6 +83,7 @@ head.ready(function() {
                                         })
                                     })
                                     $dialog.modal('hide');
+                                    $form.hide().appendTo("body");
                                     $form.submit();
                                 }
 
