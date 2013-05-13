@@ -53,7 +53,7 @@ var HT = HT || {};
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/underscore-min.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js');
     } else {
-        HT.scripts.unshift(prefix + 'common/unicorn/js/common.js-to_load-min.js?_=1368019850');
+        HT.scripts.unshift(prefix + 'common/unicorn/js/common.js-to_load-min.js?_=1368456794');
     }
 
     if ( location.hostname != 'www.hathitrust.org' && 
