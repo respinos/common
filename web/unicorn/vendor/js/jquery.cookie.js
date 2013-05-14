@@ -65,7 +65,8 @@
 		// read
 		var decode = config.raw ? raw : decoded;
 		var cookies = document.cookie.split('; ');
-		var result = key ? undefined : {};
+		// var result = key ? undefined : {};
+		var result = key ? null : {};
 		for (var i = 0, l = cookies.length; i < l; i++) {
 			var parts = cookies[i].split('=');
 			var name = decode(parts.shift());
