@@ -2,7 +2,17 @@ var HT = HT || {};
 
 head.ready(function() {
 
-    var FEEDBACK_URL = '//' + HT.service_domain + '/cgi/feedback';
+
+    function get_feedback_url() {
+        var login_status = HT.login_status || {};
+        if ( ! login_status.authType ) {
+            if ( window.location.href.indexOf("/shcgi/") > -1 ) {
+                login_status.authType = 'shibboleth';
+            }
+        }
+        var FEEDBACK_URL = '//' + HT.service_domain + (login_status.authType == 'shibboleth' ? '/shcgi' : '/cgi') + '/feedback';
+        return FEEDBACK_URL;
+    }
 
     function default_dialog() {
         var html = 
@@ -65,7 +75,7 @@ head.ready(function() {
 
                                 if ( location.hostname == HT.service_domain ) {
                                     // we can do this with ajax
-                                    $.post(FEEDBACK_URL, 
+                                    $.post(get_feedback_url(), 
                                         data, 
                                         function() {
                                             $dialog.modal('hide');
@@ -74,7 +84,7 @@ head.ready(function() {
                                 } else {
                                     // have to post the form
                                     var $form = $("<form method='POST'></form>");
-                                    $form.attr("action", FEEDBACK_URL);
+                                    $form.attr("action", get_feedback_url());
                                     _.each(_.keys(data), function(name) {
                                         var values = data[name];
                                         values = $.isArray(values) ? values : [ values ];
