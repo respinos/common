@@ -1405,7 +1405,7 @@ div > p:first-child {
     @include rem(font-size, 18);
 }
 
-.alert-warning, .alert-error, .alert-success {
+.alert-warning, .alert-error, .alert-success, .alert-notice {
     @include rem(padding-left, 32);
 }
 
@@ -1423,6 +1423,10 @@ div > p:first-child {
 
 .alert-success:before {
     @include alert-badge("K");
+}
+
+.alert-block.alert-notice:before {
+	@include alert-badge("\e02f");
 }
 
 .track-visited-links {
