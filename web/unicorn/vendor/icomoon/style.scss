@@ -29,7 +29,7 @@ you can use the generic selector below, but it's slower:
 [class*="icomoon-"] {
 */
 // .icomoon-first, .icomoon-last, .icomoon-go-previous, .icomoon-go-next, .icomoon-iconmonstr-magnifier-6-icon, .icomoon-iconmonstr-magnifier-7-icon, .icomoon-document, .icomoon-documents, .icomoon-reload-CW, .icomoon-reload-CCW, .icomoon-list, .icomoon-article, .icomoon-book-alt2, .icomoon-document-alt-stroke, .icomoon-zoom-in, .icomoon-zoom-out, .icomoon-triangle, .icomoon-triangle-2, .icomoon-grid-view, .icomoon-scroll, .icomoon-twitter, .icomoon-pinterest, .icomoon-facebook, .icomoon-bookmark, .icomoon-upload, .icomoon-download, .icomoon-email, .icomoon-feed, .icomoon-info-circle, .icomoon-locked, .icomoon-document-2, .icomoon-arrow-right, .icomoon-cancel, .icomoon-arrow-left, .icomoon-enter, .icomoon-help, .icomoon-share, .icomoon-share-2, .icomoon-fullscreen, .icomoon-fullscreen-exit, .icomoon-checkmark, .icomoon-eye, .icomoon-flash, .icomoon-arrow-up, .icomoon-arrow-down, .icomoon-reorder, .icomoon-signup {
-[class*="icomoon-"] {
+[class*="icomoon-"]:before {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
