@@ -1429,6 +1429,17 @@ div > p:first-child {
 	@include alert-badge("\e02f");
 }
 
+.alert[dir='rtl'] {
+
+	padding-left: 0;
+	@include rem(padding-right, 32);
+
+	&:before {
+		left: auto;
+		@include rem(right, 6);
+	}
+}
+
 .track-visited-links {
      a:visited {
         color: $link-visited-color;
