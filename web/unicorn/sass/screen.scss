@@ -1426,7 +1426,7 @@ div > p:first-child {
 }
 
 .alert-block.alert-notice:before {
-	@include alert-badge("\4f");
+	@include alert-badge("\e000");
 }
 
 .alert[dir='rtl'] {
