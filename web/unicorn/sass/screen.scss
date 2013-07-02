@@ -1440,6 +1440,60 @@ div > p:first-child {
 	}
 }
 
+.alert.alert-block.alert-notice {
+	animation-name: highlight;
+	animation-duration: 4s;
+	-webkit-animation-name: puff;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: 2;
+	-webkit-animation-delay: 1s;
+}
+
+@-webkit-keyframes puff {
+	0% { box-shadow: 0 0 0 #ccc; }
+	10% { box-shadow: 0 0 2px #ccc; }
+	25% { box-shadow: 0 0 8px #ccc; }
+	50% { box-shadow: 0 0 24px #ccc; }
+	90% { box-shadow: 0 0 48px #ccc; }
+	99% { box-shadow: 0 0 60px #ddd; }
+	100% { box-shadow: none; }
+}
+
+@-webkit-keyframes shadow2 {
+	0%, 50%, 100% {
+		box-shadow: 0px 0px 0px #ddd;
+	}	
+	25%, 75% { 
+		box-shadow: 0px 0px 20px #ddd;
+	 }
+}
+
+@-webkit-keyframes shadow {
+	0%, 50%, 100% {
+		box-shadow: 0px 0px 20px #ddd;
+	}	
+	25%, 75% { box-shadow: 0px 0px 0px #ddd; }
+}
+
+@-webkit-keyframes flash {
+	0%, 50%, 100% {opacity: 1;}	
+	25%, 75% {opacity: 0.4;}
+}
+
+@-webkit-keyframes pulse {
+    0% { -webkit-transform: scale(1); }	
+	50% { -webkit-transform: scale(1.1); }
+    100% { -webkit-transform: scale(1); }
+}
+
+@-webkit-keyframes tada {
+	0% {-webkit-transform: scale(1);}	
+	10%, 20% {-webkit-transform: scale(0.9) rotate(-3deg);}
+	30%, 50%, 70%, 90% {-webkit-transform: scale(1.1) rotate(3deg);}
+	40%, 60%, 80% {-webkit-transform: scale(1.1) rotate(-3deg);}
+	100% {-webkit-transform: scale(1) rotate(0);}
+}
+
 .track-visited-links {
      a:visited {
         color: $link-visited-color;
