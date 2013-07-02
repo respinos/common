@@ -1440,14 +1440,14 @@ div > p:first-child {
 	}
 }
 
-// .alert.alert-block.alert-notice {
-// 	animation-name: highlight;
-// 	animation-duration: 4s;
-// 	-webkit-animation-name: puff;
-// 	-webkit-animation-duration: 1s;
-// 	-webkit-animation-iteration-count: 2;
-// 	-webkit-animation-delay: 1s;
-// }
+.alert.alert-block.alert-notice {
+	animation-name: highlight;
+	animation-duration: 4s;
+	-webkit-animation-name: puff;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: 2;
+	-webkit-animation-delay: 1s;
+}
 
 @-webkit-keyframes puff {
 	0% { box-shadow: 0 0 0 #ccc; }
