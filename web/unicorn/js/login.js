@@ -139,7 +139,13 @@ head.ready(function() {
                     target = target.replace('babel.hathitrust.org/cgi/', 'babel.hathitrust.org/shcgi/');
                     href = href.replace('___TARGET___', encodeURIComponent(target));
                 }
-                window.location.href = href;
+
+                setTimeout(function() {
+                    window.location.href = href;
+                }, 500);
+
+                // track a fake pageview to the wayf
+                HT.analytics.trackPageview("/cgi/wayf?via=" + sdrinst + "&target=" + target);
             })
 
         })                
