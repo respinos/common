@@ -187,6 +187,18 @@ head.ready(function() {
         $("html").trigger("action.login");
     }
 
+    function track_event(status) {
+        var action = "visitor";
+        var label = "visitor";
+        if ( status.logged_in ) {
+            action = "member";
+            label = status.authType;
+            if ( status.authType == 'cosign' && status.displayName.indexOf('@') > -1 ) {
+                label = 'friend';
+            }
+        }
+        HT.analytics.trackEvent({ category : "userType", action : action, label : label });
+    }
 
     HT.login_callback = function(status) {
 
@@ -195,6 +207,7 @@ head.ready(function() {
         } else {
             setup_login_link(status);
         }
+        track_event(status);
     }
 
     $.ajax({
