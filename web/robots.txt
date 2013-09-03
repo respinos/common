@@ -1,2 +1,18 @@
+# We know these support <meta name="robots" content="noarchive"/>
+User-agent: googlebot
+User-agent: slurp
+User-agent: msnbot
+User-agent: bingbot
+User-agent: teoma
+User-agent: askjeeves
+User-agent: yandex
+User-agent: baiduspider
+Crawl-delay: 1
+Allow: /cgi/pt
+Allow: /cgi/mb
+Disallow: /cgi/
+
 User-agent: *
-Disallow: /cgi
+Crawl-delay: 1
+Disallow: /cgi/
+
