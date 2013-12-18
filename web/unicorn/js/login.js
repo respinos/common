@@ -185,6 +185,15 @@ head.ready(function() {
             })
         }
         $("html").trigger("action.login");
+
+        // rewrite /cgi/ links to /shcgi/
+        if ( status.authType == 'shibboleth' ) {
+            $("a[href*='/cgi/']").map(function() {
+                var $this = $(this);
+                $this.attr("href", $this.attr("href").replace("/cgi/", "/shcgi/"));
+            })
+
+        }
     }
 
     function track_event(status) {
