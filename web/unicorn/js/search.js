@@ -74,12 +74,6 @@ head.ready(function() {
     }
     setup[selected]();
 
-    // check the action
-    if ( window.location.href.indexOf("/shcgi/") > -1 ) {
-        var action = $form.attr("action");
-        $form.attr("action", action.replace("/cgi/", "/shcgi/"));
-    }
-
     // add event handler for submit to check for empty query or asterisk
     $form.submit(function(event) 
          {

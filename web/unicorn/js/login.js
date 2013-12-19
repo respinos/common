@@ -190,8 +190,15 @@ head.ready(function() {
         if ( status.authType == 'shibboleth' ) {
             $("a[href*='/cgi/']").map(function() {
                 var $this = $(this);
-                $this.attr("href", $this.attr("href").replace("/cgi/", "/shcgi/"));
+                $this.attr("href", $this.attr("href").replace("/cgi/", "/shcgi/").replace("http://", "https://"));
             })
+
+            // check the action
+            var $form = $("#search form");
+            if ( $form.length ) {
+                var action = $form.attr("action");
+                $form.attr("action", action.replace("/cgi/", "/shcgi/").replace("http://", "https://"));
+            }
 
         }
     }
