@@ -11,6 +11,9 @@ head.ready(function() {
             }
         }
         var FEEDBACK_URL = '//' + HT.service_domain + (login_status.authType == 'shibboleth' ? '/shcgi' : '/cgi') + '/feedback';
+        if ( login_status.authType ) {
+            FEEDBACK_URL = 'https:' + FEEDBACK_URL;
+        }
         return FEEDBACK_URL;
     }
 
