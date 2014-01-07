@@ -194,7 +194,7 @@ head.ready(function() {
             })
 
             // check the action
-            var $form = $("#search form");
+            var $form = $("#search form, .search-form form");
             if ( $form.length ) {
                 var action = $form.attr("action");
                 $form.attr("action", action.replace("/cgi/", "/shcgi/").replace("http://", "https://"));
