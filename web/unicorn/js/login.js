@@ -95,7 +95,7 @@ head.ready(function() {
                     $option.attr("selected", "selected");
                 }
 
-                if ( this.sdrinst == 'uom' && HT.is_dev ) {
+                if ( this.sdrinst == 'uom' && ( HT.is_dev || window.location.hash == '#shibboleth' ) ) {
                     $option = $("<option></option>").appendTo($select);
                     $option.val('https://test.babel.hathitrust.org/Shibboleth.sso/' + this.sdrinst + '?target=___TARGET___');
                     $option.text(this.name + ' DEV');
