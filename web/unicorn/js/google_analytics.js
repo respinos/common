@@ -8,6 +8,7 @@ HT.analytics.post_setup = [];
 
 head.ready(function() {
     var $html = $("html");
+    var $window = $(window);
 
     HT.analytics.profile_id = $.trim($html.data('analytics-code'));
     var is_enabled = ($.trim($html.data("analytics-enabled")) == 'true');
@@ -37,10 +38,11 @@ head.ready(function() {
 
                 HT.analytics.trackPageview = function(href, profile_id) {
                     // allow for passing alternative profile for analytics experiments
-                    var prefix = profile_id ? _get_prefix(profile_id) : '';
+                    var prefix = profile_id ? _get_prefix(profile_id) : '';                    
                     _gaq.push(
                         [prefix + '_setAccount', profile_id ? profile_id : HT.analytics.profile_id],
                         [prefix + '_setDomainName', 'hathitrust.org'],
+                        [prefix + '_setCustomVar', 2, 'Viewport Resolution', $window.width() + "x" + $window.height()],
                         [prefix + '_trackPageview', _munge_href(href)]
                     );
                 }
