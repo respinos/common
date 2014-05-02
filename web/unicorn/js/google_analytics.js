@@ -62,6 +62,14 @@ head.ready(function() {
                     var prefix = profile_id ? _get_prefix(profile_id) : '';
 
                     ga(prefix + 'set', 'dimension1', $window.width() + 'x' + $window.height());
+
+                    // do we have any extra dimensions?
+                    var value = $html.data('anlaytics-dimension');
+                    if ( value ) {
+                        value = value.split("=");
+                        ga(prefix + 'set', value[0], value[1]);
+                    }
+
                     ga(prefix + 'send', 'pageview', _munge_href(href));
                 }
 
