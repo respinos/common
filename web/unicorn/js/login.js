@@ -81,14 +81,22 @@ head.ready(function() {
 
             $.each(status.idp_list, function() {
 
-                var $option = $("<option></option>").appendTo($select);
+                //var $option = $("<option></option>").appendTo($select);
+                var $option = $("<option></option>");
                 $option.val(this.idp_url).data('sdrinst', this.sdrinst);
                 var name = this.name.replace("&amp;", "&");
                 if ( this.enabled == 1 ) {
                     $option.text(name);
-                } else if ( HT.is_dev ) {
-                    $option.text(name + " DEV");
+                } else if ( this.enabled == 0 ) {
+                    if ( HT.is_dev ) {
+                        $option.text(name + " DEV");
+                    } else {
+                        return;
+                    }
+                } else if ( this.enabled == 2 ) {
+                    return;
                 }
+                $option.appendTo($select);
 
                 // if ( this.selected ) { default_sdrinst = this.sdrinst; }
                 if ( this.sdrinst == selected_sdrinst ) {
