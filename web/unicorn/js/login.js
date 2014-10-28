@@ -142,7 +142,7 @@ head.ready(function() {
                 var sdrinst = $select.find("option:selected").data('sdrinst');
                 HT.prefs.set({ sdrinst : sdrinst });
                 if ( sdrinst == 'uom' ) {
-                    href = href.replace('___TARGET___', target).replace('&amp;', '&');
+                    href = href.replace('___TARGET___', target).replace('&amp;', '&').replace(/\$/, '%24');
                 } else {
                     target = target.replace('babel.hathitrust.org/cgi/', 'babel.hathitrust.org/shcgi/');
                     href = href.replace('___TARGET___', encodeURIComponent(target));
