@@ -141,8 +141,8 @@ head.ready(function() {
                 var href = $select.val();
                 var sdrinst = $select.find("option:selected").data('sdrinst');
                 HT.prefs.set({ sdrinst : sdrinst });
-                if ( href == '___TARGET___' ) {
-                    href = target;
+                if ( sdrinst == 'uom' ) {
+                    href = href.replace('___TARGET___', target).replace('&amp;', '&').replace(/\$/, '%24');
                 } else {
                     target = target.replace('babel.hathitrust.org/cgi/', 'babel.hathitrust.org/shcgi/');
                     href = href.replace('___TARGET___', encodeURIComponent(target));
