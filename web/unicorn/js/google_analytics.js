@@ -4,6 +4,7 @@ HT.analytics.enabled = false;
 HT.analytics.trackPageview = function(href) { /* no op */ };
 HT.analytics.trackEvent = function(params) { /* no op */ };
 HT.analytics.getTrackingLabel = function(arg) { return "-"; }
+HT.analytics.getContentGroupData = function() {};
 HT.analytics.post_setup = [];
 
 head.ready(function() {
@@ -62,6 +63,11 @@ head.ready(function() {
                     var prefix = profile_id ? _get_prefix(profile_id) : '';
 
                     ga(prefix + 'set', 'dimension1', $window.width() + 'x' + $window.height());
+
+                    var content_group_data = HT.analytics.getContentGroupData();
+                    if ( content_group_data ) {
+                        ga(prefix + 'set', 'contentGroup' + content_group_data.index, content_group_data.value);
+                    }
 
                     // do we have any extra dimensions?
                     var value = $html.data('anlaytics-dimension');
