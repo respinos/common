@@ -5,6 +5,7 @@ HT.analytics.trackPageview = function(href) { /* no op */ };
 HT.analytics.trackEvent = function(params) { /* no op */ };
 HT.analytics.getTrackingLabel = function(arg) { return "-"; }
 HT.analytics.getContentGroupData = function() {};
+HT.analytics.getPageHref = function() { return window.location.href ; }
 HT.analytics.post_setup = [];
 
 head.ready(function() {
@@ -135,7 +136,7 @@ head.ready(function() {
                 }
 
                 // track the current page view
-                HT.analytics.trackPageview(window.location.href);
+                HT.analytics.trackPageview(HT.analytics.getPageHref());
 
             });
     }
