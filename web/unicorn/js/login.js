@@ -79,6 +79,7 @@ head.ready(function() {
                 selected_sdrinst = default_sdrinst;
             }
 
+            var friend_login_link;
             $.each(status.idp_list, function() {
 
                 //var $option = $("<option></option>").appendTo($select);
@@ -112,11 +113,15 @@ head.ready(function() {
                         $option.attr("selected", "selected");
                     }
                 }
+
+                if ( this.sdrinst == 'uom' ) {
+                    friend_login_link = this.idp_url.replace('&amp;', '&');
+                }
             })
 
-            // update the friend account link
+            // update the friend account link to be the UM link (for now)
             var $friend_link = $block.find("#friend-login-link");
-            $friend_link.attr("href", HT.get_pong_target(location.href));
+            $friend_link.attr("href", friend_login_link.replace('___TARGET___', target).replace('&amp;', '&').replace(/\$/, '%24'));
 
             $block.find("a[href=wayf]").attr("href", 'http://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target));
 
