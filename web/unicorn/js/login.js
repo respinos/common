@@ -121,7 +121,7 @@ head.ready(function() {
 
             // update the friend account link to be the UM link (for now)
             var $friend_link = $block.find("#friend-login-link");
-            $friend_link.attr("href", friend_login_link.replace('___TARGET___', location.href));
+            $friend_link.attr("href", friend_login_link.replace('___TARGET___', target).replace('&amp;', '&').replace(/\$/, '%24'));
 
             $block.find("a[href=wayf]").attr("href", 'http://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target));
 
