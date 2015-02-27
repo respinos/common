@@ -154,7 +154,8 @@ form {
 	}
 }
 
-.navbar .nav > li  span {
+// used to be: li span
+.navbar .nav > li > span {
   float: none;
   // Vertically center the text given @navbarHeight
   // padding: ((@navbarHeight - @baseLineHeight) / 2) 15px ((@navbarHeight - @baseLineHeight) / 2);
@@ -200,14 +201,14 @@ form {
 			position: relative;
 			list-style: none;
 
-			a, span {
+			> a, > span {
 				width: 190px;
 			}
 
 		}
 	}
 
-	&:hover ul {
+	&:hover > ul {
 		display: block;
 		position: absolute;
 		background: #6b6a6b;
@@ -217,7 +218,7 @@ form {
 			border-bottom: 1px solid #39383a;
 		    padding-right: 0;
 
-			a {
+			> a {
 				// display: block;
 				// color: #f9f8f5;
 				// @include rem(font-size, 13);
@@ -232,34 +233,33 @@ form {
 
 		}
 	}
+}
 
-	a {
-	  float: none;
-	  // Vertically center the text given @navbarHeight
-	  // padding: ((@navbarHeight - @baseLineHeight) / 2) 15px ((@navbarHeight - @baseLineHeight) / 2);
-	  // padding: 0.7em 1.0em;
-	  @include rem(padding-top, 10);
-	  @include rem(padding-bottom, 10);
-	  @include rem(padding-left, 13);
-	  @include rem(padding-right, 13);
+.navbar .nav > li > a, .navbar .nav > li > ul li a {
+  float: none;
+  // Vertically center the text given @navbarHeight
+  // padding: ((@navbarHeight - @baseLineHeight) / 2) 15px ((@navbarHeight - @baseLineHeight) / 2);
+  // padding: 0.7em 1.0em;
+  @include rem(padding-top, 10);
+  @include rem(padding-bottom, 10);
+  @include rem(padding-left, 13);
+  @include rem(padding-right, 13);
 
-	  color: $navbar-link-color;
-	  text-decoration: none;
-	  display: block;
-	  // text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+  color: $navbar-link-color;
+  text-decoration: none;
+  display: block;
+  // text-shadow: 0 1px 0 @navbarBackgroundHighlight;
 
-	  // &:hover {
-	  // 	background: $navbar-bgcolor-hover;
-	  // 	color: $navbar-link-hover-color;
-	  // }
+  // &:hover {
+  //    background: $navbar-bgcolor-hover;
+  //    color: $navbar-link-hover-color;
+  // }
 
-	  // &:active {
-	  // 	background: $navbar-link-color;
-	  // 	color: $navbar-link-active-color;
-	  // }
+  // &:active {
+  //    background: $navbar-link-color;
+  //    color: $navbar-link-active-color;
+  // }
 
-
-	}
 
 }
 
@@ -1123,6 +1123,8 @@ a.btn {
 
     &.dark {
         background-image: url(../img/throbber-dark.gif);
+        background-repeat: no-repeat;
+        background-position: 90% 50%;
     }
 }
 
@@ -1272,7 +1274,7 @@ a.button.log-in.active:after {
         position: fixed;
         margin: 0;
         left: 35%;
-        top: 35%;
+        top: 25%; // 35%?
         right: auto;
     }
 

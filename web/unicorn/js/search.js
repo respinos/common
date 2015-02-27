@@ -72,7 +72,10 @@ head.ready(function() {
         }
       }
     }
-    setup[selected]();
+
+    if ( setup[selected] !== undefined ) {
+      setup[selected]();
+    }
 
     // add event handler for submit to check for empty query or asterisk
     $form.submit(function(event) 
@@ -80,11 +83,13 @@ head.ready(function() {
 
 
            //check for blank or single asterisk
-           var query = $(this).find("input[name=q1]").val();
+           var $input = $(this).find("input[name=q1]");
+           var query = $input.val();
            query = $.trim(query);
            if (query === '')
            {
              bootbox.alert("Please enter a search term.");
+             $input.trigger('blur');
              return false;
            }
            /**  Bill says go ahead and forward a query with an asterisk   ######

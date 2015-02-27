@@ -53,7 +53,7 @@ var HT = HT || {};
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/underscore-min.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js');
     } else {
-        HT.scripts.unshift(prefix + 'common/unicorn/js/common.js-to_load-min.js?_=1420467820');
+        HT.scripts.unshift(prefix + 'common/unicorn/js/common.js-to_load-min.js?_=1425655867');
     }
 
     if ( location.hostname != 'www.hathitrust.org' && 
@@ -62,7 +62,7 @@ var HT = HT || {};
         HT.scripts.push(prefix + 'common/unicorn/js/staging.js');
     }
 
-    HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/modernizr.custom.77754.js');
+    HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/modernizr.custom.js');
     HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-1.9.1.min.js');
 
     HT.prefs = {};
@@ -88,8 +88,11 @@ var HT = HT || {};
         }
     };
 
-    head.js.apply(this, HT.scripts, function() {
+    HT.scripts.push(function() {
+        console.log("PLACEHOLDERS UPDATED");
         $(":input[placeholder]").placeholder();
     });
+
+    head.js.apply(this, HT.scripts);
 
 })();
