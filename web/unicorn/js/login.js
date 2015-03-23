@@ -74,7 +74,7 @@ head.ready(function() {
                 found_sdrinst = true;
             }
         })
-        if ( ! found_sdrinst && selected_sdrinst != 'uom.dev' ) {
+        if ( ! found_sdrinst && selected_sdrinst != 'umich.dev' ) {
             selected_sdrinst = default_sdrinst;
         }
 
@@ -103,17 +103,17 @@ head.ready(function() {
                 $option.attr("selected", "selected");
             }
 
-            if ( this.sdrinst == 'uom' && ( HT.is_dev || window.location.hash == '#shibboleth' ) ) {
+            if ( this.sdrinst == 'umich' && ( HT.is_dev || window.location.hash == '#shibboleth' ) ) {
                 $option = $("<option></option>").appendTo($select);
                 $option.val('https://test.babel.hathitrust.org/Shibboleth.sso/' + this.sdrinst + '?target=___TARGET___');
                 $option.text(this.name + ' DEV');
-                $option.data('sdrinst', 'uom.dev');
-                if ( selected_sdrinst == 'uom.dev' ) {
+                $option.data('sdrinst', 'umich.dev');
+                if ( selected_sdrinst == 'umich.dev' ) {
                     $option.attr("selected", "selected");
                 }
             }
 
-            if ( this.sdrinst == 'uom' ) {
+            if ( this.sdrinst == 'umich' ) {
                 friend_login_link = this.idp_url.replace('&amp;', '&');
             }
         })
@@ -148,7 +148,7 @@ head.ready(function() {
             var href = $select.val();
             var sdrinst = $select.find("option:selected").data('sdrinst');
             HT.prefs.set({ sdrinst : sdrinst });
-            if ( sdrinst == 'uom' ) {
+            if ( sdrinst == 'umich' ) {
                 href = href.replace('___TARGET___', target).replace('&amp;', '&').replace(/\$/, '%24');
             } else {
                 target = target.replace('babel.hathitrust.org/cgi/', 'babel.hathitrust.org/shcgi/');
