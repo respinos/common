@@ -1,3 +1,4 @@
+gem 'susy', '=1.0.9'
 require 'susy'
 # Require any additional compass plugins here.
 
