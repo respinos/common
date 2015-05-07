@@ -7,6 +7,7 @@ User-agent: teoma
 User-agent: askjeeves
 User-agent: yandex
 User-agent: baiduspider
+User-agent: Twitterbot
 Crawl-delay: 1
 Allow: /cgi/pt
 Allow: /cgi/mb
