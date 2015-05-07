@@ -9,9 +9,9 @@ User-agent: yandex
 User-agent: baiduspider
 User-agent: Twitterbot
 Crawl-delay: 1
+Disallow: /cgi/
 Allow: /cgi/pt
 Allow: /cgi/mb
-Disallow: /cgi/
 
 User-agent: *
 Crawl-delay: 1
