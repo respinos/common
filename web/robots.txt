@@ -13,6 +13,11 @@ Disallow: /cgi/
 Allow: /cgi/pt
 Allow: /cgi/mb
 
+User-agent: Twitterbot
+Allow: /cgi/pt
+Allow: /cgi/mb
+Allow: /cgi/imgsrv
+
 User-agent: *
 Crawl-delay: 1
 Disallow: /cgi/
