@@ -30,7 +30,7 @@ head.ready(function() {
                 '</div>' +
                 '<div class="wayf-list">' + 
                     '<label for="idp" class="offscreen">Select your institution</label>' + 
-                    '<select id="mdp" name="mdp" aria-labelledby="Selectyourinstitution-ariaLabel"></select>' +
+                    '<select id="mdp" name="mdp" aria-labelledby="Selectyourinstitution-ariaLabel"><option value="0" style="font-weight: bold">Choose your partner institution</option></select>' +
                 '</div>' +
                 '<div class="actions">' + 
                     '<button class="btn btn-link btn-cancel">Cancel</button>' + 
@@ -146,6 +146,7 @@ head.ready(function() {
         $dialog.find("button.continue").click(function(e) {
             e.preventDefault();
             var href = $select.val();
+            if ( href == '0' ) { return ; }
             var sdrinst = $select.find("option:selected").data('sdrinst');
             HT.prefs.set({ sdrinst : sdrinst });
             if ( sdrinst == 'umich' ) {
