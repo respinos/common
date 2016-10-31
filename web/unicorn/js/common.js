@@ -89,8 +89,15 @@ var HT = HT || {};
     };
 
     HT.scripts.push(function() {
-        console.log("PLACEHOLDERS UPDATED");
+        // console.log("PLACEHOLDERS UPDATED");
         $(":input[placeholder]").placeholder();
+
+        var $li;
+        $li = $("a:contains('Our Collaborative Programs')").parent();
+        if ( $li.size() == 0 ) {
+            $li = $("a:contains('Our Digital Library')").parent();
+            $li.after('<li><a href="https://www.hathitrust.org/collaborative-programs">Our Collaborative Programs</a></li>');
+        }
     });
 
     head.js.apply(this, HT.scripts);
