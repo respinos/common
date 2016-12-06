@@ -30,7 +30,7 @@ head.ready(function() {
                 '</div>' +
                 '<div class="wayf-list">' + 
                     '<label for="idp" class="offscreen">Select your institution</label>' + 
-                    '<select id="mdp" name="mdp" aria-labelledby="Selectyourinstitution-ariaLabel"><option value="0" style="font-weight: bold">Choose your partner institution</option></select>' +
+                    '<select id="idp" name="idp"><option value="0" style="font-weight: bold">Choose your partner institution</option></select>' +
                 '</div>' +
                 '<div class="actions">' + 
                     '<button class="btn btn-link btn-cancel">Cancel</button>' + 
@@ -49,7 +49,7 @@ head.ready(function() {
             '</form>'
         );
 
-        var $select = $block.find("select[name=mdp]");
+        var $select = $block.find("select[name=idp]");
 
         var target = window.location.href;
         if ( target.indexOf("babel.hathitrust") < 0 ) {
@@ -103,7 +103,7 @@ head.ready(function() {
                 $option.attr("selected", "selected");
             }
 
-            if ( this.sdrinst == 'umich' && ( HT.is_dev || window.location.hash == '#shibboleth' ) ) {
+            if ( HT.is_cosign_active && this.sdrinst == 'umich' && ( HT.is_dev || window.location.hash == '#shibboleth' ) ) {
                 $option = $("<option></option>").appendTo($select);
                 $option.val('https://test.babel.hathitrust.org/Shibboleth.sso/' + this.sdrinst + '?target=___TARGET___');
                 $option.text(this.name + ' DEV');
@@ -172,6 +172,13 @@ head.ready(function() {
             display_login_dialog({ $trigger : $button });
         })
 
+        if ( status.expired ) {
+            //var $alert = $('<div class="container centered clearfix"><div class="row"><div class="span8 push2"><div class="alert alert-block alert-error centered"><p>Your login session has expired.</p></div></div></div></div>');
+            var $alert = $('<div class="alert alert-block alert-warning centered" style="width: auto; margin-left: auto; margin-right: auto; position: fixed; top: 0; right: 0; z-index: 1005; background: #ef7c22; border-color: #703608; color: white; text-shadow: none; font-size: 14px;"><p>You have been logged out. <a class="trigger-login btn btn-default" data-close-target=".modal.login" href="#">Login</a></p></div>');
+            $alert.find("a").attr("href", window.location.href);
+            $alert.insertBefore(".navbar-static-top");
+        }
+
     }
 
     function setup_logged_in_state(status) {
@@ -208,8 +215,8 @@ head.ready(function() {
         }
         $("html").trigger("action.login");
 
-        // rewrite /cgi/ links to /shcgi/
-        if ( status.authType == 'shibboleth' ) {
+        // rewrite /cgi/ links to /shcgi/ as needed
+        if ( status.authType == 'shibboleth' && HT.is_cosign_active ) {
             $("a[href*='/cgi/']").map(function() {
                 var $this = $(this);
                 $this.attr("href", $this.attr("href").replace("/cgi/", "/shcgi/").replace("http://", "https://"));
