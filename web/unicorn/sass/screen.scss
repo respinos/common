@@ -1538,6 +1538,7 @@ div > p:first-child {
     text-align: center;
     list-style: outside none;
     z-index: 5000;
+    @include rem(font-size, 14);
 }
 
 #skiplinks li { list-style-type: none }
