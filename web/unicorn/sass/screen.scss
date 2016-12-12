@@ -15,7 +15,11 @@ body {
 	background-color: $body-bgcolor;
 	font-family: $base-font-family;
 	color: $text-color;
-	@include rem(min-width, 975);
+	// @include rem(min-width, 975);
+ //    @include rem(max-width, 1000);
+
+    margin-left: auto;
+    margin-right: auto;
 }
 
 body.fixed {
@@ -41,6 +45,11 @@ a {
 		color: #d56d11;
 		text-decoration: none;
 	}
+
+    &:focus {
+        outline: medium solid;
+    }
+
 
 }
 
@@ -94,8 +103,9 @@ form {
 	// @include rem(max-width, 1200);
 	// @include rem(min-width, 800);
 
-    min-width: 90%; // $container-width;
-    width: 90%;
+    // min-width: 90%; // $container-width;
+    // width: 90%;
+    @include rem(width, 950);
 
 	// margin-left: 5%;
 	// margin-right: 5%;
@@ -107,6 +117,7 @@ form {
 
 .navbar-static-top {
 	padding-top: 0;
+    @include rem(min-width, 900);
 }
 
 .navbar .nav {
@@ -1025,10 +1036,14 @@ body.no-search .header .search-form {
 }
 
 .container.centered {
-	@include rem(max-width, 1200);
-	min-width: 89%;
-	// width: auto;
-    width: 90%;
+	// @include rem(max-width, 1200);
+	// min-width: 89%;
+	// // width: auto;
+ //    width: 90%;
+
+    min-width: 0;
+    @include rem(width, 950);
+
 }
 
 .container.header {
@@ -1512,4 +1527,46 @@ div > p:first-child {
      a:visited {
         color: $link-visited-color;
     }
+}
+
+#skiplinks {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+    list-style: outside none;
+    z-index: 5000;
+    @include rem(font-size, 14);
+}
+
+#skiplinks li { list-style-type: none }
+
+#skiplinks a {
+    position: absolute;
+    left: -99999px;
+    top: 20px;
+}
+
+#skiplinks a:focus, #skiplinks a:active{
+    // @include alert-variant($alert-success-bg, $alert-success-border, $alert-success-text);
+
+    background-color: #ddd; // #dff0d8;
+    border-color: #666; // #d6e9c6;
+    color: #000; // #3c763d;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 4px;
+
+    position: relative;
+    left: 0;
+    z-index:9999;
+    width: 75%;
+    height: auto;
+    margin: 0 auto;
+    // padding: 30px 45px;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold; 
 }
