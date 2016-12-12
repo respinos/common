@@ -247,7 +247,6 @@ head.ready(function() {
 
     HT.login_callback = function(status) {
 
-        HT.is_cosign_active = true;
         if ( status.logged_in ) {
             setup_logged_in_state(status);
         } else {
