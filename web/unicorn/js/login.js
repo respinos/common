@@ -216,7 +216,7 @@ head.ready(function() {
         $("html").trigger("action.login");
 
         // rewrite /cgi/ links to /shcgi/ as needed
-        if ( status.authType == 'shibboleth' && HT.is_cosign_active ) {
+        if ( status.authType == 'shibboleth' && HT.is_cosign_active && window.location.href.indexOf('/shcgi/') > -1 ) {
             $("a[href*='/cgi/']").map(function() {
                 var $this = $(this);
                 $this.attr("href", $this.attr("href").replace("/cgi/", "/shcgi/").replace("http://", "https://"));
@@ -247,6 +247,7 @@ head.ready(function() {
 
     HT.login_callback = function(status) {
 
+        HT.is_cosign_active = true;
         if ( status.logged_in ) {
             setup_logged_in_state(status);
         } else {
