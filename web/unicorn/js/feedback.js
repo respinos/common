@@ -44,6 +44,19 @@ head.ready(function() {
             var id = $(this).data('id');
             var m = $(this).data('m') || 'ht';
             var html = $(this).data('default-form') ? default_dialog() : ( HT.feedback ? HT.feedback.dialog() : default_dialog() );
+
+            var today = new Date();
+            if ( ( today.getFullYear() == 2016 && today.getDate() >= 21 && today.getMonth() == 11 ) || 
+                 ( today.getFullYear() == 2017 && today.getDate() < 3 && today.getMonth() == 0 ) ) {
+                var message = '<div class="alert alert-block"><p><span style="font-size: 400%; float: left; display: inline-block; margin-right: 8px" aria-hidden="true">☃</span> Because of the winter holiday, HathiTrust staff and volunteers are unavailable from December 24th through January 2nd. We will respond to your feedback as soon as possible starting January 3rd. Thank you for your patience.</p></div>';
+                if ( typeof(html) == 'string' ) {
+                    html = html.replace('<form', message + '<form');
+                } else {
+                    var $tmp = $(html).children().slice(0,1);
+                    $tmp.before(message);
+                }
+            }
+
             var $dialog = bootbox.dialog(
                 html,
                 [
