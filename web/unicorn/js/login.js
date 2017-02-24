@@ -149,10 +149,10 @@ head.ready(function() {
             if ( href == '0' ) { return ; }
             var sdrinst = $select.find("option:selected").data('sdrinst');
             HT.prefs.set({ sdrinst : sdrinst });
-            if ( sdrinst == 'umich' ) {
+            if ( sdrinst == 'umich' && HT.is_cosign_active ) {
                 href = href.replace('___TARGET___', target).replace('&amp;', '&').replace(/\$/, '%24');
             } else {
-                target = target.replace('babel.hathitrust.org/cgi/', 'babel.hathitrust.org/shcgi/');
+                // target = target.replace('babel.hathitrust.org/cgi/', 'babel.hathitrust.org/shcgi/');
                 href = href.replace('___TARGET___', encodeURIComponent(target));
             }
 
