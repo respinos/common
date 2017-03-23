@@ -12,6 +12,7 @@ User-agent: baiduspider
 User-agent: Twitterbot
 Crawl-delay: 1
 Disallow: /cgi/
+Disallow: /cgi/pt/search
 Allow: /cgi/pt
 Allow: /cgi/mb
 
