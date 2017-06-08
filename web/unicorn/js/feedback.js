@@ -44,6 +44,7 @@ head.ready(function() {
             var id = $(this).data('id');
             var m = $(this).data('m') || 'ht';
             var html = $(this).data('default-form') ? default_dialog() : ( HT.feedback ? HT.feedback.dialog() : default_dialog() );
+            var message;
 
             // var today = new Date();
             // if ( ( today.getFullYear() == 2016 && today.getDate() >= 21 && today.getMonth() == 11 ) || 
@@ -56,6 +57,17 @@ head.ready(function() {
             //         $tmp.before(message);
             //     }
             // }
+
+            message = '<div class="alert alert-block"><p><span style="font-size: 400%; float: left; display: inline-block; margin-right: 8px" aria-hidden="true">&#128467;</span> From June 9 through June 26, users may experience slower response times while we upgrade and transition HathiTrust user support systems. We will respond to your question as quickly as possible. Thank you for your patience.</p></div>';
+
+            if ( message ) {
+                if ( typeof(html) == 'string' ) {
+                    html = html.replace('<form', message + '<form');
+                } else {
+                    var $tmp = $(html).children().slice(0,1);
+                    $tmp.before(message);
+                }
+            }
 
             var $dialog = bootbox.dialog(
                 html,
