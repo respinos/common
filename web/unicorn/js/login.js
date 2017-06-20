@@ -31,6 +31,7 @@ head.ready(function() {
                 '<div class="wayf-list">' + 
                     '<label for="idp" class="offscreen">Select your institution</label>' + 
                     '<select id="idp" name="idp"><option value="0" style="font-weight: bold">Choose your partner institution</option></select>' +
+                    '<p style="font-size: 1.2rem; text-align: right; margin-top: 0"><a target="_blank" href="http://www.hathitrust.org/help_digital_library#LoginNotListed">Don\'t see your institution listed? &#x27a4;</a></p>' +
                 '</div>' +
                 '<div class="actions">' + 
                     '<button class="btn btn-link btn-cancel">Cancel</button>' + 
@@ -38,11 +39,11 @@ head.ready(function() {
                 '</div>' +
                 '<div class="questions">' +
                     '<ul>' +
-                        '<li><a target="_blank" href="http://www.hathitrust.org/help_digital_library#LoginNotListed">Don\'t see your institution listed? &raquo;</a></li>' +
                         '<li>' +
-                            '<span>Not with a partner institution?</span><br />' +
-                            '<a id="friend-login-link" href="#">Create or log in with a "Friend" account to create collections. &raquo;</a></li>' +
-                        '<li><a href="wayf">What are the benefits of logging in? &raquo;</a></li>' +
+                            '<span style="font-weight: bold">Not with a partner institution?</span><br />' +
+                            '<a id="friend-login-link" href="#">Log in with a "Friend" account to create collections. &#x27a4;</a><br />' +
+                            '&nbsp;&nbsp; <a id="friend-login-link" href="https://friend.weblogin.umich.edu/friend/">Need a "Friend" account?. &#x27a4;</a></li>' +
+                        '<li style="margin-top: 2rem"><a href="https://www.hathitrust.org/help_digital_library#Login" data-href="wayf">What are the benefits of logging in? &#x27a4;</a></li>' +
                     '</ul>' +
                 '</div>' +
                 '<input type="hidden" name="target" value="" />' + 
@@ -133,6 +134,12 @@ head.ready(function() {
             [],
             { classes : classes }
         );
+
+        $dialog.find("#idp").on('keydown', function(e) {
+            if ( e.keyCode == 13 ) {
+                $dialog.find("button.continue").trigger('click');
+            }
+        })
 
         $dialog.find(".btn-cancel").click(function(e) {
             e.preventDefault();
