@@ -26,12 +26,11 @@ head.ready(function() {
         var $block = $(
             '<form method="POST">' + 
                 '<div class="headline">' + 
-                    '<p>Log in with your partner institution<br />&mdash; no signup is necessary.</p>' +
+                    '<p>Log in with your partner institution:</p>' +
                 '</div>' +
                 '<div class="wayf-list">' + 
                     '<label for="idp" class="offscreen">Select your institution</label>' + 
-                    '<select id="idp" name="idp"><option value="0" style="font-weight: bold">Choose your partner institution</option></select>' +
-                    '<p style="font-size: 1.2rem; text-align: right; margin-top: 0"><a target="_blank" href="http://www.hathitrust.org/help_digital_library#LoginNotListed">Don\'t see your institution listed? &#x27a4;</a></p>' +
+                    '<select id="idp" name="idp"><option value="0" style="font-weight: bold">Choose your partner institution</option></select>' + 
                 '</div>' +
                 '<div class="actions">' + 
                     '<button class="btn btn-link btn-cancel">Cancel</button>' + 
@@ -41,9 +40,10 @@ head.ready(function() {
                     '<ul>' +
                         '<li>' +
                             '<span style="font-weight: bold">Not with a partner institution?</span><br />' +
-                            '<a id="friend-login-link" href="#">Log in with a "Friend" account to create collections. &#x27a4;</a><br />' +
-                            '&nbsp;&nbsp; <a id="friend-login-link" href="https://friend.weblogin.umich.edu/friend/">Need a "Friend" account?. &#x27a4;</a></li>' +
-                        '<li style="margin-top: 2rem"><a href="https://www.hathitrust.org/help_digital_library#Login" data-href="wayf">What are the benefits of logging in? &#x27a4;</a></li>' +
+                            '<span>Use a guest account to create collections.</span><br /><br />' + 
+                            '<a id="friend-login-link" href="#">Log in with a "Friend" account &#x27a4;</a><br />' +
+                            '&nbsp;&nbsp; <a target="_blank" href="https://friend.weblogin.umich.edu/friend/">Need a "Friend" account? &#x27a4;</a></li>' +
+                        '<li style="margin-top: 2rem"><a href="https://www.hathitrust.org/help_digital_library" data-href="wayf">Help &#x27a4;</a></li>' +
                     '</ul>' +
                 '</div>' +
                 '<input type="hidden" name="target" value="" />' + 
