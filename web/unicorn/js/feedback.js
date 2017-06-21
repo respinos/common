@@ -5,12 +5,7 @@ head.ready(function() {
 
     function get_feedback_url() {
         var login_status = HT.login_status || {};
-        if ( ! login_status.authType ) {
-            if ( window.location.href.indexOf("/shcgi/") > -1 ) {
-                login_status.authType = 'shibboleth';
-            }
-        }
-        var FEEDBACK_URL = '//' + HT.service_domain + (login_status.authType == 'shibboleth' ? '/shcgi' : '/cgi') + '/feedback';
+        var FEEDBACK_URL = '//' + HT.service_domain + '/cgi/feedback';
         if ( login_status.logged_in ) {
             FEEDBACK_URL = 'https:' + FEEDBACK_URL;
         }
