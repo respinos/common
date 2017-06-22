@@ -43,7 +43,7 @@ head.ready(function() {
                             '<span>Use a guest account to create collections.</span><br /><br />' + 
                             '<a id="friend-login-link" href="#">Log in with a "Friend" account &#x27a4;</a><br />' +
                             '&nbsp;&nbsp; <a target="_blank" href="https://friend.weblogin.umich.edu/friend/">Need a "Friend" account? &#x27a4;</a></li>' +
-                        '<li style="margin-top: 2rem"><a href="https://www.hathitrust.org/help_digital_library" data-href="wayf">Help &#x27a4;</a></li>' +
+                        '<li style="margin-top: 2rem"><a target="_blank" href="https://www.hathitrust.org/help_digital_library" data-href="wayf">Help &#x27a4;</a></li>' +
                     '</ul>' +
                 '</div>' +
                 '<input type="hidden" name="target" value="" />' + 
