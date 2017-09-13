@@ -22,6 +22,8 @@ var HT = HT || {};
 
     // service_url is either the babel dev, beta-3, or babel
     HT.service_domain = ( HT.is_babel ? hostname : ( HT.is_dev ? 'test.babel.hathitrust.org' : 'babel.hathitrust.org' ) );
+    HT.www_domain = ( HT.is_dev ? 'test.www.hathitrust.org' : 'www.hathitrust.org' );
+    HT.catalog_domain = ( HT.is_dev ? 'test.catalog.hathitrust.org' : 'catalog.hathitrust.org' );
 
     // check for whether to load common concatenated or unconcenated
     var common_re = new RegExp(/debug=.*common.*/);
@@ -54,7 +56,7 @@ var HT = HT || {};
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/selectwoo/dist/js/select2.full.js');
         HT.scripts.unshift(prefix + 'common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js');
     } else {
-        HT.scripts.unshift(prefix + 'common/unicorn/js/common.js-to_load-min.js?_=1505314634');
+        HT.scripts.unshift(prefix + 'common/unicorn/js/common.js-to_load-min.js?_=1505314882');
     }
 
     if ( location.hostname != 'www.hathitrust.org' && 
