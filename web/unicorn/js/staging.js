@@ -19,8 +19,10 @@ head.ready(function() {
         } else if ( href.indexOf("/catalog.hathitrust.org") > -1 ) {
             $link.attr("href", href.replace("/catalog.hathitrust.org", "/test.catalog.hathitrust.org"));
         } else if ( href.indexOf("/hdl.handle.net") > -1 ) {
-            var tmp = href.split("/");
-            href = "http:/" + babel_string + "/cgi/pt?id=" + tmp.pop();
+            // e.g. https://hdl.handle.net/2027/uc2.ark:/13960/t9s19288f
+            // var tmp = href.split("/");
+            // href = "http:/" + babel_string + "/cgi/pt?id=" + tmp.pop();
+            href = href.replace("//hdl.handle.net/2027/", "//" + babel_string + "/cgi/pt?id=");
             $link.attr("href", href);
         }
     })
