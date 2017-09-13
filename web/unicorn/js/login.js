@@ -15,7 +15,7 @@ head.ready(function() {
     function create_login_panel(args) {
         args = args || {};
         var status = HT.login_status;
-        $block = $(
+        var block_html = 
             '<div class="login-panel modal hide" tabindex="-1">' + 
                 '<div class="login-panel-arrow"></div>' +
                 '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></div>' + 
@@ -37,17 +37,18 @@ head.ready(function() {
                 '</div>' + 
                 '<div class="modal-footer">' + 
                     '<div class="questions">' + 
-                        '<p><a href="https://www.hathitrust.org/help_digital_library#LoginNotListed" target="_blank">Why isn\'t my institution listed?</a></p>' + 
+                        '<p><a href="https://{WWW_DOMAIN}/help_digital_library#LoginNotListed" target="_blank">Why isn\'t my institution listed?</a></p>' + 
                     '</div>' +
                     '<div class="questions">' +
                         '<p>' +
                             '<span style="font-weight: bold">Not with a partner institution?</span><br />' +
-                            '<a href="/cgi/wayf" data-href="wayf">See options to log in as a guest</a><br />' + // &#x27a4;
+                            '<a href="https://{SERVICE_DOMAIN}/cgi/wayf" data-href="wayf">See options to log in as a guest</a><br />' + // &#x27a4;
                         '</p>' +
                     '</div>' +
                 '</div>' + 
-            '</div>'
-        );
+            '</div>';
+
+        $block = $(block_html.replace(/{WWW_DOMAIN}/g, HT.www_domain).replace(/{SERVICE_DOMAIN}/g, HT.service_domain));
 
         var $select = $block.find("select[name=idp]");
 
