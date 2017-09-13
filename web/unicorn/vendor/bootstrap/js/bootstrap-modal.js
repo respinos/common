@@ -46,6 +46,7 @@
           , e = $.Event('show')
 
         this.$element.trigger(e)
+        $("body").addClass("modal-open");
 
         if (this.isShown || e.isDefaultPrevented()) return
 
@@ -94,6 +95,8 @@
         this.isShown = false
 
         this.escape()
+
+        $("body").removeClass("modal-open");
 
         $(document).off('focusin.modal')
 

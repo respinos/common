@@ -37,6 +37,7 @@ var HT = HT || {};
 
     //--BEGIN LOCAL--//
     // common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js
+    // common/unicorn/vendor/selectwoo/dist/js/select2.full.js
     // common/unicorn/vendor/js/underscore-min.js
     // common/unicorn/vendor/fancyBox/jquery.fancybox.js
     // common/unicorn/vendor/js/jquery.trap.js

@@ -12,8 +12,8 @@ head.ready(function() {
         var href = $link.attr("href");
         if ( ! href ) {
             // no op
-        } else if ( href.indexOf("http://www.hathitrust.org") > -1 ) {
-            $link.attr("href", href.replace("http://www.hathitrust.org", "http://test.www.hathitrust.org"));
+        } else if ( href.indexOf("//www.hathitrust.org") > -1 ) {
+            $link.attr("href", href.replace("//www.hathitrust.org", "//test.www.hathitrust.org"));
         } else if ( href.indexOf("/babel.hathitrust.org") > -1 ) {
             $link.attr("href", href.replace("/babel.hathitrust.org", babel_string));
         } else if ( href.indexOf("/catalog.hathitrust.org") > -1 ) {
