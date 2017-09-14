@@ -37,7 +37,7 @@ head.ready(function() {
                 '</div>' + 
                 '<div class="modal-footer">' + 
                     '<div class="questions">' + 
-                        '<p><a href="https://{WWW_DOMAIN}/help_digital_library#LoginNotListed" target="_blank">Why isn\'t my institution listed?</a></p>' + 
+                        '<p><a href="https://{WWW_DOMAIN}/help_digital_library#LoginNotListed">Why isn\'t my institution listed?</a></p>' + 
                     '</div>' +
                     '<div class="questions">' +
                         '<p>' +
@@ -123,7 +123,7 @@ head.ready(function() {
         var $friend_link = $block.find("#friend-login-link");
         $friend_link.attr("href", friend_login_link.replace('___TARGET___', target).replace('&amp;', '&').replace(/\$/, '%24'));
 
-        $block.find("a[data-href=wayf]").attr("href", 'http://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target));
+        $block.find("a[data-href=wayf]").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target));
 
         var classes = 'login-modal';
         if ( args.classname ) {
@@ -197,6 +197,16 @@ head.ready(function() {
             return;
         }
 
+        $("a.trigger-login").each(function() {
+            var target = $(this).attr("href") || window.location.href;
+            if ( target.indexOf("/cgi/wayf") < 0 ) {
+                var href = 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target);
+                $(this).attr('href', href);
+            } else if ( target.indexOf('http://') > -1 ) {
+                $(this).attr("href", target.replace('http://', 'https://'));
+            }
+        })
+
         create_login_panel({ $trigger: $button });
         $button.on('click', function(e) {
             e.preventDefault();
@@ -212,8 +222,8 @@ head.ready(function() {
 
         if ( status.expired ) {
             //var $alert = $('<div class="container centered clearfix"><div class="row"><div class="span8 push2"><div class="alert alert-block alert-error centered"><p>Your login session has expired.</p></div></div></div></div>');
-            var $alert = $('<div class="alert alert-block alert-warning centered" style="width: auto; margin-left: auto; margin-right: auto; position: fixed; top: 0; right: 0; z-index: 1005; background: #ef7c22; border-color: #703608; color: white; text-shadow: none; font-size: 14px;"><p>You have been logged out. <a class="trigger-login btn btn-default" data-close-target=".modal.login" href="#">Login</a></p></div>');
-            $alert.find("a").attr("href", window.location.href);
+            var $alert = $('<div class="alert alert-block alert-warning centered" style="width: auto; margin-left: auto; margin-right: auto; position: fixed; top: 42px; right: 0; z-index: 1005; background: #ef7c22; border-color: #703608; color: white; text-shadow: none; font-size: 14px;"><p>You have been logged out. <a class="btn btn-default" data-close-target=".modal.login" href="#">Login</a></p></div>');
+            $alert.find("a").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href));
             $alert.insertBefore(".navbar-static-top");
         }
 
