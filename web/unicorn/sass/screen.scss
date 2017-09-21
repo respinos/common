@@ -1455,3 +1455,16 @@ div > p:first-child {
 body.modal-open {
   overflow: hidden;
 }
+
+// legacy
+.icomoon-info-circle:before, .icomoon-document-2:before, .icomoon-locked:before, .icomoon-twitter:before, .icomoon-facebook:before, .icomoon-pinterest:before {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
