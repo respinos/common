@@ -227,6 +227,26 @@ head.ready(function() {
             $alert.insertBefore(".navbar-static-top");
         }
 
+        var last_provider = $.cookie('HTprovider');
+        if ( last_provider ) {
+            // previous login
+            var $navbar = $(".navbar-static-top");
+            var $alert = $('<div class="alert alert-block centered" style="border-radius: 0; width: auto; height: 45px;margin-left: auto; margin-right: auto; position: fixed; top: 0px; left: 0; right: 0; z-index: 1005; background: #ef7c22; border-color: #703608; color: white; text-shadow: none; font-size: 14px;"><p style="width: 900px; margin-left: auto; margin-right: auto">You have been logged out of HathiTrust, but are still logged in to your provider ({LAST_PROVIDER}).&nbsp;<button type="button" class="close">×</button></p></div>'.replace('{LAST_PROVIDER}', last_provider));
+            var margin_top = parseInt($("body").css("margin-top") || "0");
+            // $alert.find("a").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href));
+            $alert.insertBefore(".navbar-static-top");
+            $navbar.css("top", 45);
+            $alert.find("button").on("click", function(e) {
+                e.preventDefault();
+                $alert.remove();
+                $navbar.css('top', 0);
+                $.removeCookie('HTprovider', { domain: '.hathitrust.org', path: '/', secure: true });
+                $("body").css("margin-top", margin_top);
+            })
+            $("body").css('margin-top', margin_top + 45);
+            // $.removeCookie('HTprovider', { domain: '.hathitrust.org', path: '/', secure: true });
+        }
+
     }
 
     function display_login_dialog(options) {
@@ -277,14 +297,11 @@ head.ready(function() {
             $button.remove();
             var $navbar = $(".navbar-static-top .navbar-inner");
             var coll_url = 'https://babel.hathitrust.org/cgi/mb?colltype=priv';
-            if ( status.authType == 'shibboleth' ) {
-                coll_url = coll_url.replace("/cgi/", "/shcgi/");
-            }
             var html = 
                 '<ul id="person-nav" class="nav pull-right">' + 
                     '<li><span>Hi ' + status.displayName + '!</span></li>' + 
                     '<li><a href="' + coll_url + '">My Collections</a></li>' + 
-                    '<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href.replace('https://', 'http://') + '">Logout</a></li>' + 
+                    '<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Logout</a></li>' + 
                 '</ul>';
             $(html).appendTo($navbar);
 
@@ -296,10 +313,23 @@ head.ready(function() {
             $(html).prependTo($footer);
         }
         var $logout_link = $("#logout-link");
-        if ( status.authType == 'shibboleth' ) {
+        $logout_link.attr('href', 'https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + encodeURIComponent(window.location.href))
+        if ( 0 && status.authType == 'shibboleth' ) {
             $logout_link.click(function(e) {
                 e.preventDefault();
-                bootbox.alert("<p>Please quit your browser to logout.</p>");
+                console.log($.removeCookie('MDPsid', { domain: '.hathitrust.org', path: '/' }));
+                console.log($.removeCookie('_saml_idp', { domain: '.hathitrust.org', path: '/', secure: true }));
+                var shib_cookie = document.cookie.match(/.*(_shibsession_\w+)=/);
+                if ( shib_cookie ) {
+                    shib_cookie = shib_cookie[1];
+                    console.log("AHOY REMOVING", shib_cookie);
+                    console.log($.removeCookie(shib_cookie, { domain: '.hathitrust.org', path: '/', scure: true }));
+                }
+                setTimeout(function() {
+                    // window.location.href = location.href;
+                    location.reload(true);
+                }, 0);
+                // bootbox.alert("<p>Please quit your browser to logout.</p>");
                 return false;
             })
         }
