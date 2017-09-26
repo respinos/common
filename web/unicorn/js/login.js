@@ -299,7 +299,6 @@ head.ready(function() {
             var coll_url = 'https://babel.hathitrust.org/cgi/mb?colltype=priv';
             var html = 
                 '<ul id="person-nav" class="nav pull-right">' + 
-                    // '<li><span>Hi ' + status.displayName + '!</span></li>' + 
                     '<li><span>' + status.affiliation + ' (' + status.providerName + ')</span></li>' + 
                     '<li><a href="' + coll_url + '">My Collections</a></li>' + 
                     '<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Logout</a></li>' + 
