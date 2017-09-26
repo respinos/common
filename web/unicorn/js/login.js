@@ -227,7 +227,7 @@ head.ready(function() {
             $alert.insertBefore(".navbar-static-top");
         }
 
-        var last_provider = $.cookie('HTprovider');
+        var last_provider = $.cookie('HTproviderName');
         if ( last_provider ) {
             // previous login
             var $navbar = $(".navbar-static-top");
@@ -240,11 +240,11 @@ head.ready(function() {
                 e.preventDefault();
                 $alert.remove();
                 $navbar.css('top', 0);
-                $.removeCookie('HTprovider', { domain: '.hathitrust.org', path: '/', secure: true });
+                $.removeCookie('HTproviderName', { domain: '.hathitrust.org', path: '/', secure: true });
                 $("body").css("margin-top", margin_top);
             })
             $("body").css('margin-top', margin_top + 45);
-            // $.removeCookie('HTprovider', { domain: '.hathitrust.org', path: '/', secure: true });
+            // $.removeCookie('HTproviderName', { domain: '.hathitrust.org', path: '/', secure: true });
         }
 
     }
@@ -299,7 +299,8 @@ head.ready(function() {
             var coll_url = 'https://babel.hathitrust.org/cgi/mb?colltype=priv';
             var html = 
                 '<ul id="person-nav" class="nav pull-right">' + 
-                    '<li><span>Hi ' + status.displayName + '!</span></li>' + 
+                    // '<li><span>Hi ' + status.displayName + '!</span></li>' + 
+                    '<li><span>' + status.affiliation + ' (' + status.providerName + ')</span></li>' + 
                     '<li><a href="' + coll_url + '">My Collections</a></li>' + 
                     '<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Logout</a></li>' + 
                 '</ul>';
