@@ -244,7 +244,7 @@ head.ready(function() {
                 $("body").css("margin-top", margin_top);
             })
             $("body").css('margin-top', margin_top + 45);
-            // $.removeCookie('HTproviderName', { domain: '.hathitrust.org', path: '/', secure: true });
+            $.removeCookie('HTproviderName', { domain: '.hathitrust.org', path: '/', secure: true });
         }
 
     }
