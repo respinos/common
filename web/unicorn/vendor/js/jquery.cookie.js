@@ -33,7 +33,8 @@
 			s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
 		}
 		try {
-			return ( config.json || options.json ) ? JSON.parse(s) : s;
+			options = $.extend({}, config.defaults, options);
+			return ( config.json || ( options.json ) ) ? JSON.parse(s) : s;
 		} catch(er) {}
 	}
 
@@ -88,7 +89,7 @@
 	config.defaults = {};
 
 	$.removeCookie = function (key, options) {
-		if ($.cookie(key) !== undefined) {
+		if ($.cookie(key, undefined, options) !== undefined) {
 			// Must not alter options, thus extending a fresh object...
 			$.cookie(key, '', $.extend({}, options, { expires: -1 }));
 			return true;

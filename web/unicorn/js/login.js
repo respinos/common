@@ -5,50 +5,50 @@ head.ready(function() {
 
     PING_URL = 'https://' + HT.service_domain + '/cgi/ping';
 
-    // if ( window.location.hostname.indexOf("babel.hathitrust.org") < 0 ) {
-    //     PING_DOMAIN = SCRIPT_URL.split('/')[2];
-    //     // PING_DOMAIN = 'roger-full.babel.hathitrust.org';
-    //     // PING_URL = 'https://' + PING_DOMAIN + '/cgi/ping';
-    //     PING_URL = 'https://beta-3.babel.hathitrust.org/cgi/ping';
-    // } else {
-    //     PING_URL = '/cgi/ping';
-    //     PING_DOMAIN = window.location.hostname;
-    // }
-
     var is_babel = (window.location.href.indexOf("babel.hathitrust") > -1);
-    var $button = $("#login-button");
+    var $button = $("#login-button,#login-link");
 
     var prefs = HT.prefs.get();
 
-    function display_login_dialog(args) {
+    var $block;
+
+    function create_login_panel(args) {
         args = args || {};
         var status = HT.login_status;
-        var $block = $(
-            '<form method="POST">' + 
-                '<div class="headline">' + 
-                    '<p>Log in with your partner institution:</p>' +
-                '</div>' +
-                '<div class="wayf-list">' + 
-                    '<label for="idp" class="offscreen">Select your institution</label>' + 
-                    '<select id="idp" name="idp"><option value="0" style="font-weight: bold">Choose your partner institution</option></select>' + 
-                '</div>' +
-                '<div class="actions">' + 
-                    '<button class="btn btn-link btn-cancel">Cancel</button>' + 
-                    '<button class="button continue">Continue</button>' +
-                '</div>' +
-                '<div class="questions">' +
-                    '<ul>' +
-                        '<li>' +
+        var block_html = 
+            '<div class="login-panel modal hide" tabindex="-1">' + 
+                '<div class="login-panel-arrow"></div>' +
+                '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></div>' + 
+                '<div class="modal-body">' +
+                    '<form method="POST">' + 
+                        '<div class="headline">' + 
+                            '<p>Find your partner institution:</p>' +
+                        '</div>' +
+                        '<div class="wayf-list">' + 
+                            '<label for="idp" class="offscreen">Select your institution</label>' + 
+                            '<select id="idp" name="idp"><option value="0" style="font-weight: bold">Choose your partner institution</option></select>' + 
+                        '</div>' +
+                        '<div class="actions">' + 
+                            '<button class="btn btn-link btn-cancel" style="display: none">Cancel</button>' + 
+                            '<button class="button continue">Continue</button>' +
+                        '</div>' +
+                        '<input type="hidden" name="target" value="" />' + 
+                    '</form>' + 
+                '</div>' + 
+                '<div class="modal-footer">' + 
+                    '<div class="questions">' + 
+                        '<p><a href="https://{WWW_DOMAIN}/help_digital_library#LoginNotListed">Why isn\'t my institution listed?</a></p>' + 
+                    '</div>' +
+                    '<div class="questions">' +
+                        '<p>' +
                             '<span style="font-weight: bold">Not with a partner institution?</span><br />' +
-                            '<span>Use a guest account to create collections.</span><br /><br />' + 
-                            '<a id="friend-login-link" href="#">Log in with a "Friend" account &#x27a4;</a><br />' +
-                            '&nbsp;&nbsp; <a target="_blank" href="https://friend.weblogin.umich.edu/friend/">Need a "Friend" account? &#x27a4;</a></li>' +
-                        '<li style="margin-top: 2rem"><a target="_blank" href="https://www.hathitrust.org/help_digital_library" data-href="wayf">Help &#x27a4;</a></li>' +
-                    '</ul>' +
-                '</div>' +
-                '<input type="hidden" name="target" value="" />' + 
-            '</form>'
-        );
+                            '<a href="https://{SERVICE_DOMAIN}/cgi/wayf" data-href="wayf">See options to log in as a guest</a><br />' + // &#x27a4;
+                        '</p>' +
+                    '</div>' +
+                '</div>' + 
+            '</div>';
+
+        $block = $(block_html.replace(/{WWW_DOMAIN}/g, HT.www_domain).replace(/{SERVICE_DOMAIN}/g, HT.service_domain));
 
         var $select = $block.find("select[name=idp]");
 
@@ -123,34 +123,20 @@ head.ready(function() {
         var $friend_link = $block.find("#friend-login-link");
         $friend_link.attr("href", friend_login_link.replace('___TARGET___', target).replace('&amp;', '&').replace(/\$/, '%24'));
 
-        $block.find("a[href=wayf]").attr("href", 'http://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target));
+        $block.find("a[data-href=wayf]").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target));
 
         var classes = 'login-modal';
         if ( args.classname ) {
             classes += ' ' + args.classname;
         }
-        var $dialog = bootbox.dialog(
-            $block,
-            [],
-            { classes : classes }
-        );
 
-        $dialog.find("#idp").on('keydown', function(e) {
-            if ( e.keyCode == 13 ) {
-                $dialog.find("button.continue").trigger('click');
-            }
-        })
+        var $trigger = args.$trigger;
+        // $block.insertAfter($trigger);
+        $block.appendTo($("body"));
+        HT.$block = $block;
+        HT.$button = $trigger;
 
-        $dialog.find(".btn-cancel").click(function(e) {
-            e.preventDefault();
-            $("html").trigger("login.canceled");
-            if ( args.$trigger ) {
-                args.$trigger.removeClass("active");
-            }
-            $dialog.modal("hide");
-        })
-
-        $dialog.find("button.continue").click(function(e) {
+        $block.find("button.continue").click(function(e) {
             e.preventDefault();
             var href = $select.val();
             if ( href == '0' ) { return ; }
@@ -159,7 +145,6 @@ head.ready(function() {
             if ( sdrinst == 'umich' && HT.is_cosign_active ) {
                 href = href.replace('___TARGET___', target).replace('&amp;', '&').replace(/\$/, '%24');
             } else {
-                // target = target.replace('babel.hathitrust.org/cgi/', 'babel.hathitrust.org/shcgi/');
                 href = href.replace('___TARGET___', encodeURIComponent(target));
             }
 
@@ -169,23 +154,141 @@ head.ready(function() {
 
             // track a fake pageview to the wayf
             HT.analytics.trackPageview("/cgi/wayf?via=" + sdrinst + "&target=" + target);
+        });
+
+        $select.select2({
+            dropdownParent: $block,
+            allowCear: true,
+            width: '100%'
+        });
+
+        $select.on('select2:open', function() {
+            $block.data('selecting', true);
         })
+
+        $select.on('select2:close', function() {
+        })
+
+        $block.on('keyup.dismiss.login', function(e) {
+            if ( e.which == 27 ) {
+                if ( $block.data('selecting') ) {
+                    // NOOP
+                    $block.data('selecting', false);
+                } else {
+                    hide_login_dialog();
+                }
+            }
+        })
+
+        // is $button fixed or static?
+        var position = 'absolute';
+        $button.parents().each(function() {
+            var s = window.getComputedStyle(this);
+            if ( s.position == 'fixed' ) {
+                position = 'fixed';
+            }
+        })
+        console.log("AHOY POSITION", position);
+        $block.css({ position: position });
     }
 
     function setup_login_link(status) {
-        $button.click(function(e) {
+        if ( $("body").is(".no-login") ) {
+            return;
+        }
+
+        $("a.trigger-login").each(function() {
+            var target = $(this).attr("href") || window.location.href;
+            if ( target.indexOf("/cgi/wayf") < 0 ) {
+                var href = 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target);
+                $(this).attr('href', href);
+            } else if ( target.indexOf('http://') > -1 ) {
+                $(this).attr("href", target.replace('http://', 'https://'));
+            }
+        })
+
+        create_login_panel({ $trigger: $button });
+        $button.on('click', function(e) {
             e.preventDefault();
-            $button.addClass("active");
-            display_login_dialog({ $trigger : $button });
+            console.log("AHOY LOGIN CLICK", $button.data('active'), e);
+            if ( $button.data('active') ) {
+                console.log("AHOY LOGIN OFF");
+                hide_login_dialog({ $trigger: $button });
+            } else {
+                console.log("AHOY LOGIN ON");
+                display_login_dialog({ $trigger: $button });
+            }
         })
 
         if ( status.expired ) {
             //var $alert = $('<div class="container centered clearfix"><div class="row"><div class="span8 push2"><div class="alert alert-block alert-error centered"><p>Your login session has expired.</p></div></div></div></div>');
-            var $alert = $('<div class="alert alert-block alert-warning centered" style="width: auto; margin-left: auto; margin-right: auto; position: fixed; top: 0; right: 0; z-index: 1005; background: #ef7c22; border-color: #703608; color: white; text-shadow: none; font-size: 14px;"><p>You have been logged out. <a class="trigger-login btn btn-default" data-close-target=".modal.login" href="#">Login</a></p></div>');
-            $alert.find("a").attr("href", window.location.href);
+            var $alert = $('<div class="alert alert-block alert-warning centered" style="width: auto; margin-left: auto; margin-right: auto; position: fixed; top: 42px; right: 0; z-index: 1005; background: #ef7c22; border-color: #703608; color: white; text-shadow: none; font-size: 14px;"><p>You have been logged out. <a class="btn btn-default" data-close-target=".modal.login" href="#">Login</a></p></div>');
+            $alert.find("a").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href));
             $alert.insertBefore(".navbar-static-top");
         }
 
+        var last_provider = $.cookie('HTproviderName');
+        if ( last_provider ) {
+            // previous login
+            var $navbar = $(".navbar-static-top");
+            var $alert = $('<div class="alert alert-block centered" style="border-radius: 0; width: auto; height: 45px;margin-left: auto; margin-right: auto; position: fixed; top: 0px; left: 0; right: 0; z-index: 1005; background: #ef7c22; border-color: #703608; color: white; text-shadow: none; font-size: 14px;"><p style="width: 900px; margin-left: auto; margin-right: auto">You have been logged out of HathiTrust, but are still logged in to your provider ({LAST_PROVIDER}).&nbsp;<button type="button" class="close" style="opacity: 0.8"><span class="offscreen">Close</span><span aria-hidden="true">×</span></button></p></div>'.replace('{LAST_PROVIDER}', last_provider));
+            var margin_top = parseInt($("body").css("margin-top") || "0");
+            // $alert.find("a").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href));
+            $alert.insertBefore(".navbar-static-top");
+            $navbar.css("top", 45);
+            $alert.find("button").on("click", function(e) {
+                e.preventDefault();
+                $alert.remove();
+                $navbar.css('top', 0);
+                $.removeCookie('HTproviderName', { domain: '.hathitrust.org', path: '/', secure: true });
+                $("body").css("margin-top", margin_top);
+            })
+            $("body").css('margin-top', margin_top + 45);
+            $.removeCookie('HTproviderName', { domain: '.hathitrust.org', path: '/', secure: true });
+        }
+
+    }
+
+    function display_login_dialog(options) {
+
+        var top = $block.css('position') == 'fixed' ? $button.position().top : $button.offset().top;
+        top += $button.height() + 10;
+        // var right = $(window).width() - ( $button.offset().left + $button.outerWidth() );
+        var right = $(window).width() - ( $button.offset().left + ( $button.outerWidth() / 2 ) ) - ( 25 + 10 );
+        console.log("AHOY SETTING POSITION", top, "x", right);
+        $block.css({ top: top, right: right });
+        var $caret = $block.find(".login-panel-arrow");
+        $caret.css({ right: 25 });
+
+        if ( $button.is(".button") ) {
+            $button.addClass("active");
+        } else {
+            $button.parents("li").addClass("active");
+        }
+        $button.data('active', true);
+        $block.modal({ backdrop: true, keyboard: false });
+        $block.on('hidden', function() {
+            remove_active_status();
+            $button.data('active', false);
+        })
+    }
+
+    function hide_login_dialog(options) {
+        // $block.addClass("hidden");
+        setTimeout(function() {
+            $block.modal('hide');
+            // remove_active_status();
+            console.log("AHOY MODAL SHOULD BE OFF?", $button.data('active'));
+        }, 0);
+    }
+
+    function remove_active_status() {
+        if ( $button.is(".button") ) {
+            $button.removeClass("active");
+        } else {
+            $button.parents("li").removeClass("active");
+        }
+        $button.data('active', false);
     }
 
     function setup_logged_in_state(status) {
@@ -194,14 +297,11 @@ head.ready(function() {
             $button.remove();
             var $navbar = $(".navbar-static-top .navbar-inner");
             var coll_url = 'https://babel.hathitrust.org/cgi/mb?colltype=priv';
-            if ( status.authType == 'shibboleth' ) {
-                coll_url = coll_url.replace("/cgi/", "/shcgi/");
-            }
             var html = 
                 '<ul id="person-nav" class="nav pull-right">' + 
-                    '<li><span>Hi ' + status.displayName + '!</span></li>' + 
+                    '<li><span>' + status.affiliation + ' (' + status.providerName + ')</span></li>' + 
                     '<li><a href="' + coll_url + '">My Collections</a></li>' + 
-                    '<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href.replace('https://', 'http://') + '">Logout</a></li>' + 
+                    '<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Logout</a></li>' + 
                 '</ul>';
             $(html).appendTo($navbar);
 
@@ -213,10 +313,23 @@ head.ready(function() {
             $(html).prependTo($footer);
         }
         var $logout_link = $("#logout-link");
-        if ( status.authType == 'shibboleth' ) {
+        $logout_link.attr('href', 'https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + encodeURIComponent(window.location.href))
+        if ( 0 && status.authType == 'shibboleth' ) {
             $logout_link.click(function(e) {
                 e.preventDefault();
-                bootbox.alert("<p>Please quit your browser to logout.</p>");
+                console.log($.removeCookie('MDPsid', { domain: '.hathitrust.org', path: '/' }));
+                console.log($.removeCookie('_saml_idp', { domain: '.hathitrust.org', path: '/', secure: true }));
+                var shib_cookie = document.cookie.match(/.*(_shibsession_\w+)=/);
+                if ( shib_cookie ) {
+                    shib_cookie = shib_cookie[1];
+                    console.log("AHOY REMOVING", shib_cookie);
+                    console.log($.removeCookie(shib_cookie, { domain: '.hathitrust.org', path: '/', scure: true }));
+                }
+                setTimeout(function() {
+                    // window.location.href = location.href;
+                    location.reload(true);
+                }, 0);
+                // bootbox.alert("<p>Please quit your browser to logout.</p>");
                 return false;
             })
         }
@@ -271,16 +384,11 @@ head.ready(function() {
         jsonpCallback : 'HT.login_callback'
     })
 
-    $("body").on('click', '.trigger-login', function(e) {
-        e.preventDefault();
-        // var target = $(this).data('close-target');
-        // if ( target ) {
-        //     $(target).modal('hide');
-        // }
-        bootbox.hideAll();
-        // $("#login-button").addClass("centered").click();
-        display_login_dialog({ classname: 'login-centered' })
-    })
+    // $("body").on('click', '.trigger-login', function(e) {
+    //     e.preventDefault();
+    //     bootbox.hideAll();
+    //     display_login_dialog({ $target: $(this), classname: 'login-centered' })
+    // })
 
 
 });

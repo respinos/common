@@ -150,15 +150,19 @@ form {
 
 	&.active {
 		background-color: #F9F8F5;
+    // background-color: $navbar-bgcolor-hover;
 
 		> a {
 			color: #39383A;
+      // color: $navbar-link-hover-color;
 
 
 
 			&:hover {
 				background: #F9F8F5 !important;
 				color: #39383A !important;
+        // background-color: $navbar-bgcolor;
+        // color: $navbar-link-color !important;
 			}
 
 		}
@@ -1130,6 +1134,11 @@ a.btn {
     }
 }
 
+.modal-backdrop, .modal-backdrop.fade.in {
+  opacity: 0.1;
+  filter: alpha(opacity=10);
+}
+
 .btn.btn-loading {
     padding-right: 34px;
     background-image: url(../img/throbber.gif);
@@ -1156,13 +1165,6 @@ a.button.log-in.active:after {
 	content: "\2e" !important;
 }
 
-.modal.login {
-    background-color: $login-bgcolor; // matches the button
-
-    .modal-footer {
-        background-color: #FAF0C6;
-    }
-}
 
 .modal.error {
     background-color: #f2dede;
@@ -1173,127 +1175,6 @@ a.button.log-in.active:after {
 
 }
 
-
-.modal.login-modal {
-
-	// background-color: #fcf5d9;
-	// background: #f9f8f5 url('../img/homepage/stripes.png');
-	background-color: #f9f8f5;
-	width: 340px;
-	padding: 0px;
-	// padding-left: 20px;
-	// padding-right: 20px;
-
-	&.in {
-		position: absolute;
-        position: fixed;
-		margin: 0;
-		top: 125px;
-		// left: 900px;
-		left: auto;
-		right: 85px;
-	}
-
-	.modal-body {
-		background: transparent;
-		padding: 0;
-
-		div {
-			padding: 32px;
-			padding-top: 0;
-			padding-bottom: 8px;
-		}
-
-		.headline {
-			padding-top: 32px;
-		}
-
-		.headline p {
-			font-size: 16px;
-			margin-bottom: 8px;
-			// font-weight: bold;
-		}
-
-		select {
-			width: 100%;
-		}
-
-		.questions {
-			@include rem(margin-top, 16);
-			padding-top: 8px;
-			padding-bottom: 16px;
-			// background: #f9f8f5 url('../img/homepage/stripes.png');
-            background: #f0f0ef;
-
-			text-align: right;
-			ul {
-				list-style: none;
-
-				li {
-					// line-height: 1.2;
-					@include rem(font-size, 12);
-					@include rem(margin-bottom, 10);
-				}
-			}
-
-		}
-
-		.actions {
-			text-align: right;
-
-			.btn-cancel {
-				text-transform: uppercase;
-				@include rem(font-size, 10);
-				color: #6d6d6d;
-
-				padding-right: 24px;
-				position: relative;
-				vertical-align: middle;
-
-				margin-right: 24px;
-
-				&:hover {
-					color: #393839;
-					background: #f1d3d0;
-				}
-
-				&:after {
-					content: "\43";
-					font-family: 'icomoon';
-					font-style: normal;
-					speak: none;
-					font-weight: normal;
-					line-height: 1;
-					-webkit-font-smoothing: antialiased;
-					position: absolute;
-					@include rem(right, 8);
-					@include rem(top, 10);
-					color: red;
-				}
-
-
-			}
-
-			.continue {
-				padding: 4px 12px;
-				padding-right: 32px;
-				margin: auto;
-			}
-		}
-
-	}
-}
-
-.modal.login-modal.login-centered {
-    &.in {
-        position: fixed;
-        margin: 0;
-        left: 35%;
-        top: 25%; // 35%?
-        right: auto;
-    }
-
-}
 
 /* FORMS */
 
@@ -1374,7 +1255,7 @@ ul.nav-tabs {
 }
 
 .nav-tabs li.active a {
-  color: #4f4f4f;
+  color: #39383A;
 }
 
 div > p:first-child {
@@ -1569,4 +1450,21 @@ div > p:first-child {
     text-align: center;
     text-decoration: underline;
     font-weight: bold; 
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+// legacy
+.icomoon-info-circle:before, .icomoon-document-2:before, .icomoon-locked:before, .icomoon-twitter:before, .icomoon-facebook:before, .icomoon-pinterest:before {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

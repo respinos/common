@@ -1,195 +1,339 @@
+@import "variables";
+
 @font-face {
-    font-family: 'icomoon';
-    src:url('/common/unicorn/vendor/icomoon/fonts/icomoon.eot?-q75786');
-    src:url('/common/unicorn/vendor/icomoon/fonts/icomoon.eot?#iefix-q75786') format('embedded-opentype'),
-        url('/common/unicorn/vendor/icomoon/fonts/icomoon.ttf?-q75786') format('truetype'),
-        url('/common/unicorn/vendor/icomoon/fonts/icomoon.woff?-q75786') format('woff'),
-        url('/common/unicorn/vendor/icomoon/fonts/icomoon.svg?-q75786#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'icomoon';
+  src:  url('#{$icomoon-font-path}/icomoon.eot?6tsul6');
+  src:  url('#{$icomoon-font-path}/icomoon.eot?6tsul6#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/icomoon.ttf?6tsul6') format('truetype'),
+    url('#{$icomoon-font-path}/icomoon.woff?6tsul6') format('woff'),
+    url('#{$icomoon-font-path}/icomoon.svg?6tsul6#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
+.icomoon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
 
-.icomoon, .icomoon-info-circle:before, .icomoon-document-2:before, .icomoon-locked:before, 
-.icomoon-twitter:before, .icomoon-facebook:before, .icomoon-pinterest:before {
-    font-family: 'icomoon';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.icomoon-twitter2:before {
-    content: "\e600";
+.icomoon-aol {
+  &:before {
+    content: $icomoon-aol;
+  }
 }
-.icomoon-google-plus:before {
-    content: "\e601";
+.icomoon-first {
+  &:before {
+    content: $icomoon-first;
+  }
 }
-.icomoon-tumblr:before {
-    content: "\e602";
+.icomoon-last {
+  &:before {
+    content: $icomoon-last;
+  }
 }
-.icomoon-vk:before {
-    content: "\e603";
+.icomoon-go-previous {
+  &:before {
+    content: $icomoon-go-previous;
+  }
 }
-.icomoon-reddit:before {
-    content: "\e604";
+.icomoon-go-next {
+  &:before {
+    content: $icomoon-go-next;
+  }
 }
-.icomoon-pinterest-p:before {
-    content: "\e605";
+.icomoon-iconmonstr-magnifier-6-icon {
+  &:before {
+    content: $icomoon-iconmonstr-magnifier-6-icon;
+  }
 }
-.icomoon-attachment:before {
-    content: "\e9cd";
+.icomoon-iconmonstr-magnifier-7-icon {
+  &:before {
+    content: $icomoon-iconmonstr-magnifier-7-icon;
+  }
 }
-.icomoon-facebook2:before {
-    content: "\e607";
+.icomoon-document {
+  &:before {
+    content: $icomoon-document;
+  }
 }
-.icomoon-search:before {
-    content: "\e986";
+.icomoon-documents {
+  &:before {
+    content: $icomoon-documents;
+  }
 }
-.icomoon-first:before {
-    content: "\30";
+.icomoon-reload-CW {
+  &:before {
+    content: $icomoon-reload-CW;
+  }
 }
-.icomoon-last:before {
-    content: "\31";
+.icomoon-reload-CCW {
+  &:before {
+    content: $icomoon-reload-CCW;
+  }
 }
-.icomoon-go-previous:before {
-    content: "\32";
+.icomoon-list {
+  &:before {
+    content: $icomoon-list;
+  }
 }
-.icomoon-go-next:before {
-    content: "\33";
+.icomoon-article {
+  &:before {
+    content: $icomoon-article;
+  }
 }
-.icomoon-iconmonstr-magnifier-6-icon:before {
-    content: "\21";
+.icomoon-book-alt2 {
+  &:before {
+    content: $icomoon-book-alt2;
+  }
 }
-.icomoon-iconmonstr-magnifier-7-icon:before {
-    content: "\22";
+.icomoon-document-alt-stroke {
+  &:before {
+    content: $icomoon-document-alt-stroke;
+  }
 }
-.icomoon-document:before {
-    content: "\23";
+.icomoon-zoomin {
+  &:before {
+    content: $icomoon-zoomin;
+  }
 }
-.icomoon-documents:before {
-    content: "\24";
+.icomoon-zoomout {
+  &:before {
+    content: $icomoon-zoomout;
+  }
 }
-.icomoon-reload-CW:before {
-    content: "\25";
+.icomoon-triangle {
+  &:before {
+    content: $icomoon-triangle;
+  }
 }
-.icomoon-reload-CCW:before {
-    content: "\26";
+.icomoon-triangle2 {
+  &:before {
+    content: $icomoon-triangle2;
+  }
 }
-.icomoon-list:before {
-    content: "\27";
+.icomoon-gridview {
+  &:before {
+    content: $icomoon-gridview;
+  }
 }
-.icomoon-article:before {
-    content: "\28";
+.icomoon-scroll {
+  &:before {
+    content: $icomoon-scroll;
+  }
 }
-.icomoon-book-alt2:before {
-    content: "\29";
+.icomoon-twitter {
+  &:before {
+    content: $icomoon-twitter;
+  }
 }
-.icomoon-document-alt-stroke:before {
-    content: "\2a";
+.icomoon-pinterest {
+  &:before {
+    content: $icomoon-pinterest;
+  }
 }
-.icomoon-zoomin:before {
-    content: "\2c";
+.icomoon-facebook {
+  &:before {
+    content: $icomoon-facebook;
+  }
 }
-.icomoon-zoomout:before {
-    content: "\2d";
+.icomoon-bookmark {
+  &:before {
+    content: $icomoon-bookmark;
+  }
 }
-.icomoon-triangle:before {
-    content: "\2b";
+.icomoon-upload {
+  &:before {
+    content: $icomoon-upload;
+  }
 }
-.icomoon-triangle2:before {
-    content: "\2e";
+.icomoon-download {
+  &:before {
+    content: $icomoon-download;
+  }
 }
-.icomoon-gridview:before {
-    content: "\36";
+.icomoon-email {
+  &:before {
+    content: $icomoon-email;
+  }
 }
-.icomoon-scroll:before {
-    content: "\2f";
+.icomoon-feed {
+  &:before {
+    content: $icomoon-feed;
+  }
 }
-.icomoon-twitter:before {
-    content: "\37";
+.icomoon-info-circle {
+  &:before {
+    content: $icomoon-info-circle;
+  }
 }
-.icomoon-pinterest:before {
-    content: "\38";
+.icomoon-locked {
+  &:before {
+    content: $icomoon-locked;
+  }
 }
-.icomoon-facebook:before {
-    content: "\39";
+.icomoon-document-2 {
+  &:before {
+    content: $icomoon-document-2;
+  }
 }
-.icomoon-bookmark:before {
-    content: "\3a";
+.icomoon-arrow-right {
+  &:before {
+    content: $icomoon-arrow-right;
+  }
 }
-.icomoon-upload:before {
-    content: "\3b";
+.icomoon-cancel {
+  &:before {
+    content: $icomoon-cancel;
+  }
 }
-.icomoon-download:before {
-    content: "\3c";
+.icomoon-arrow-left {
+  &:before {
+    content: $icomoon-arrow-left;
+  }
 }
-.icomoon-email:before {
-    content: "\3d";
+.icomoon-enter {
+  &:before {
+    content: $icomoon-enter;
+  }
 }
-.icomoon-feed:before {
-    content: "\3e";
+.icomoon-help {
+  &:before {
+    content: $icomoon-help;
+  }
 }
-.icomoon-info-circle:before {
-    content: "\3f";
+.icomoon-share {
+  &:before {
+    content: $icomoon-share;
+  }
 }
-.icomoon-locked:before {
-    content: "\40";
+.icomoon-share2 {
+  &:before {
+    content: $icomoon-share2;
+  }
 }
-.icomoon-document-2:before {
-    content: "\41";
+.icomoon-fullscreen {
+  &:before {
+    content: $icomoon-fullscreen;
+  }
 }
-.icomoon-arrow-right:before {
-    content: "\42";
+.icomoon-fullscreen-exit {
+  &:before {
+    content: $icomoon-fullscreen-exit;
+  }
 }
-.icomoon-cancel:before {
-    content: "\43";
+.icomoon-checkmark {
+  &:before {
+    content: $icomoon-checkmark;
+  }
 }
-.icomoon-arrow-left:before {
-    content: "\44";
+.icomoon-eye {
+  &:before {
+    content: $icomoon-eye;
+  }
 }
-.icomoon-enter:before {
-    content: "\45";
+.icomoon-flash {
+  &:before {
+    content: $icomoon-flash;
+  }
 }
-.icomoon-help:before {
-    content: "\46";
+.icomoon-arrow-up {
+  &:before {
+    content: $icomoon-arrow-up;
+  }
 }
-.icomoon-share:before {
-    content: "\47";
+.icomoon-arrow-down {
+  &:before {
+    content: $icomoon-arrow-down;
+  }
 }
-.icomoon-share2:before {
-    content: "\48";
+.icomoon-reorder {
+  &:before {
+    content: $icomoon-reorder;
+  }
 }
-.icomoon-fullscreen:before {
-    content: "\49";
+.icomoon-signup {
+  &:before {
+    content: $icomoon-signup;
+  }
 }
-.icomoon-fullscreen-exit:before {
-    content: "\4a";
+.icomoon-link {
+  &:before {
+    content: $icomoon-link;
+  }
 }
-.icomoon-checkmark:before {
-    content: "\4b";
+.icomoon-google {
+  &:before {
+    content: $icomoon-google;
+  }
 }
-.icomoon-eye:before {
-    content: "\4c";
+.icomoon-yahoo {
+  &:before {
+    content: $icomoon-yahoo;
+  }
 }
-.icomoon-flash:before {
-    content: "\4e";
+.icomoon-windows8 {
+  &:before {
+    content: $icomoon-windows8;
+  }
 }
-.icomoon-arrow-up:before {
-    content: "\4f";
+.icomoon-linkedin {
+  &:before {
+    content: $icomoon-linkedin;
+  }
 }
-.icomoon-arrow-down:before {
-    content: "\50";
+.icomoon-attachment {
+  &:before {
+    content: $icomoon-attachment;
+  }
 }
-.icomoon-reorder:before {
-    content: "\f0c9";
+.icomoon-facebook2 {
+  &:before {
+    content: $icomoon-facebook2;
+  }
 }
-.icomoon-signup:before {
-    content: "\e000";
+.icomoon-search {
+  &:before {
+    content: $icomoon-search;
+  }
 }
+.icomoon-twitter2 {
+  &:before {
+    content: $icomoon-twitter2;
+  }
+}
+.icomoon-google-plus {
+  &:before {
+    content: $icomoon-google-plus;
+  }
+}
+.icomoon-tumblr {
+  &:before {
+    content: $icomoon-tumblr;
+  }
+}
+.icomoon-vk {
+  &:before {
+    content: $icomoon-vk;
+  }
+}
+.icomoon-reddit {
+  &:before {
+    content: $icomoon-reddit;
+  }
+}
+.icomoon-pinterest-p {
+  &:before {
+    content: $icomoon-pinterest-p;
+  }
+}
+

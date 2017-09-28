@@ -22,6 +22,8 @@ var HT = HT || {};
 
     // service_url is either the babel dev, beta-3, or babel
     HT.service_domain = ( HT.is_babel ? hostname : ( HT.is_dev ? 'test.babel.hathitrust.org' : 'babel.hathitrust.org' ) );
+    HT.www_domain = ( HT.is_dev ? 'test.www.hathitrust.org' : 'www.hathitrust.org' );
+    HT.catalog_domain = ( HT.is_dev ? 'test.catalog.hathitrust.org' : 'catalog.hathitrust.org' );
 
     // check for whether to load common concatenated or unconcenated
     var common_re = new RegExp(/debug=.*common.*/);
@@ -37,6 +39,7 @@ var HT = HT || {};
 
     //--BEGIN LOCAL--//
     // common/unicorn/vendor/js/jquery-migrate-1.1.1.min.js
+    // common/unicorn/vendor/selectwoo/dist/js/select2.full.js
     // common/unicorn/vendor/js/underscore-min.js
     // common/unicorn/vendor/fancyBox/jquery.fancybox.js
     // common/unicorn/vendor/js/jquery.trap.js
