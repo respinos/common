@@ -77,6 +77,16 @@ head.ready(function() {
                         ga(prefix + 'set', value[0], value[1]);
                     }
 
+                    if ( HT.login_status ) {
+                        var value;
+                        if ( HT.login_status.logged_in ) {
+                            value = HT.login_status.institutionCode + "/" + HT.login_status.affiliation.toLowerCase();
+                        } else {
+                            value = "anon/guest";
+                        }
+                        ga(prefix + 'set', 'dimension3', value);
+                    }
+
                     ga(prefix + 'send', 'pageview', _munge_href(href));
                 }
 
