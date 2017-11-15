@@ -381,10 +381,14 @@ head.ready(function() {
         track_event(status);
     }
 
-    var path_info = document.referrer ? "/" + btoa(document.referrer) : '';
+    var args = {};
+    if ( document.referrer ) {
+        args[ref] = document.referrer;
+    }
     $.ajax({
         type : "GET",
-        url : PING_URL + path_info,
+        url : PING_URL,
+        data: args,
         async : true,
         jsonp : 'callback',
         dataType : 'jsonp',
