@@ -383,7 +383,7 @@ head.ready(function() {
 
     var args = {};
     if ( document.referrer ) {
-        args[ref] = document.referrer;
+        args.ref = document.referrer;
     }
     $.ajax({
         type : "GET",
