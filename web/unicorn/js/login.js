@@ -357,10 +357,15 @@ head.ready(function() {
         var action = "visitor";
         var label = "visitor";
         if ( status.logged_in ) {
-            action = "member";
-            label = status.authType;
-            if ( status.authType == 'cosign' && status.displayName.indexOf('@') > -1 ) {
-                label = 'friend';
+            // action = "member";
+            // label = status.authType;
+            // if ( status.authType == 'cosign' && status.displayName.indexOf('@') > -1 ) {
+            //     label = 'friend';
+            // }
+            label = status.institutionCode;
+            action = status.affiliation.toLowerCase();
+            if ( status.mappedInstitutionCode ) {
+                label = status.mappedInstitutionCode + "/" + label;
             }
         }
         HT.analytics.trackEvent({ category : "userType", action : action, label : label });
@@ -374,11 +379,19 @@ head.ready(function() {
             setup_login_link(status);
         }
         track_event(status);
+        
+        // track the current page view
+        HT.analytics.trackPageview(HT.analytics.getPageHref());
     }
 
+    var args = {};
+    if ( document.referrer ) {
+        args.ref = document.referrer;
+    }
     $.ajax({
         type : "GET",
         url : PING_URL,
+        data: args,
         async : true,
         jsonp : 'callback',
         dataType : 'jsonp',

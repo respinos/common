@@ -81,6 +81,9 @@ head.ready(function() {
                         var value;
                         if ( HT.login_status.logged_in ) {
                             value = HT.login_status.institutionCode + "/" + HT.login_status.affiliation.toLowerCase();
+                            if ( HT.login_status.mappedInstitutionCode ) {
+                                value = HT.login_status.mappedInstitutionCode + "/" + value;
+                            }
                         } else {
                             value = "anon/guest";
                         }
@@ -145,8 +148,8 @@ head.ready(function() {
                     return;
                 }
 
-                // track the current page view
-                HT.analytics.trackPageview(HT.analytics.getPageHref());
+                // // track the current page view
+                // HT.analytics.trackPageview(HT.analytics.getPageHref());
 
             });
     }
