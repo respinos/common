@@ -148,8 +148,8 @@ head.ready(function() {
                     return;
                 }
 
-                // track the current page view
-                HT.analytics.trackPageview(HT.analytics.getPageHref());
+                // // track the current page view
+                // HT.analytics.trackPageview(HT.analytics.getPageHref());
 
             });
     }

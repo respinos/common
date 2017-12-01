@@ -379,6 +379,9 @@ head.ready(function() {
             setup_login_link(status);
         }
         track_event(status);
+        
+        // track the current page view
+        HT.analytics.trackPageview(HT.analytics.getPageHref());
     }
 
     var args = {};
