@@ -380,8 +380,12 @@ head.ready(function() {
         }
         track_event(status);
         
+        HT.analytics.waiting.login = false;
+        HT.analytics.deQ();
         // track the current page view
-        HT.analytics.trackPageview(HT.analytics.getPageHref());
+        if ( ! $("html").data('analytics-skip') ) {
+            HT.analytics.trackPageview(HT.analytics.getPageHref());
+        }
     }
 
     var args = {};

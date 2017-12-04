@@ -1,12 +1,21 @@
 var HT = HT || {};
 HT.analytics = {};
 HT.analytics.enabled = false;
-HT.analytics.trackPageview = function(href) { /* no op */ };
+// HT.analytics.trackPageview = function(href) { /* no op */ };
 HT.analytics.trackEvent = function(params) { /* no op */ };
 HT.analytics.getTrackingLabel = function(arg) { return "-"; }
 HT.analytics.getContentGroupData = function() {};
 HT.analytics.getPageHref = function() { return window.location.href ; }
 HT.analytics.post_setup = [];
+
+HT.analytics.q = [];
+HT.analytics.waiting = { ga: true, login: true };
+
+HT.analytics.trackPageview = function(href, profile_id) {
+    HT.analytics.q.push([href, profile_id]);
+}
+
+HT.analytics.deQ = function() { /* no op */ };
 
 head.ready(function() {
     var $html = $("html");
@@ -28,6 +37,8 @@ head.ready(function() {
         //   ga('send', 'pageview');
 
         // </script>
+
+        HT.analytics.enabled = true;
 
         window['GoogleAnalyticsObject'] = 'ga';
         window['ga'] = window['ga'] || function() {
@@ -51,7 +62,9 @@ head.ready(function() {
 
         head.js((("https:" == document.location.protocol) ? "https://ssl." : "http://www.") + "google-analytics.com/analytics.js",
             function() {
-                HT.analytics.enabled = true;
+
+                HT.analytics.waiting.ga = false;
+                console.log("AHOY DEQ GA");
 
                 function _munge_href(href) {
                     if ( href.indexOf(";") > -1 ) {
@@ -60,7 +73,25 @@ head.ready(function() {
                     return href.replace(window.location.protocol + "//" + window.location.hostname, '');
                 }
 
-                HT.analytics.trackPageview = function(href, profile_id) {
+                HT.analytics.deQ = function() {
+                    if ( HT.analytics.waiting.ga || HT.analytics.waiting.login ) {
+                        // console.log("AHOY DEQ", HT.analytics.waiting.ga, HT.analytics.waiting.login);
+                        return;
+                    }
+                    while ( HT.analytics.q.length ) {
+                        var tuple = HT.analytics.q.shift();
+                        // console.log("AHOY DEQ", tuple[0]);
+                        HT.analytics.trackPageview(tuple[0], tuple[1]);
+                    }
+                }
+
+                HT.analytics.trackPageview = function(href, profile_id, force) {
+                    if ( HT.analytics.waiting.ga || HT.analytics.waiting.login ) {
+                        // console.log("AHOY PUSHING TO Q", href);
+                        HT.analytics.q.push([href, profile_id]);
+                        return;
+                    }
+
                     // allow for passing alternative profile for analytics experiments
                     var prefix = profile_id ? _get_prefix(profile_id) : '';
 
@@ -145,9 +176,11 @@ head.ready(function() {
                     HT.analytics.post_setup[i]();
                 }
 
-                if ( $.trim($html.data('analytics-skip')) == 'true' ) {
-                    return;
-                }
+                HT.analytics.deQ();
+
+                // if ( $.trim($html.data('analytics-skip')) == 'true' ) {
+                //     return;
+                // }
 
                 // // track the current page view
                 // HT.analytics.trackPageview(HT.analytics.getPageHref());
