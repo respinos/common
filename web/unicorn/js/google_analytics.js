@@ -24,6 +24,7 @@ head.ready(function() {
     HT.analytics.profile_id = $.trim($html.data('analytics-code'));
     var is_enabled = $html.data('analytics-enabled');
     if ( typeof(is_enabled) == 'string' ) { is_enabled = $.trim(is_enabled) == 'true'; }
+    if ( window.location.host == 'www.hathitrust.org' ) { is_enabled = true; }
     if ( is_enabled ) {
 
         // deconstructed version of the tracking code, to mesh with unicorn
