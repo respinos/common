@@ -21,7 +21,7 @@ head.ready(function() {
     var $html = $("html");
     var $window = $(window);
 
-    HT.analytics.profile_id = $.trim($html.data('analytics-code'));
+    HT.analytics.profile_id = $.trim($html.data('analytics-code')) || 'UA-954893-23';
     var is_enabled = $html.data('analytics-enabled');
     if ( typeof(is_enabled) == 'string' ) { is_enabled = $.trim(is_enabled) == 'true'; }
     if ( window.location.host == 'www.hathitrust.org' ) { is_enabled = true; }
