@@ -220,10 +220,11 @@ head.ready(function() {
             }
         })
 
-        if ( status.expired ) {
+        if ( true || status.expired ) {
             //var $alert = $('<div class="container centered clearfix"><div class="row"><div class="span8 push2"><div class="alert alert-block alert-error centered"><p>Your login session has expired.</p></div></div></div></div>');
-            var $alert = $('<div class="alert alert-block alert-warning centered" style="width: auto; margin-left: auto; margin-right: auto; position: fixed; top: 42px; right: 0; z-index: 1005; background: #ef7c22; border-color: #703608; color: white; text-shadow: none; font-size: 14px;"><p>You have been logged out. <a class="btn btn-default" data-close-target=".modal.login" href="#">Login</a></p></div>');
+            var $alert = $('<div class="alert alert-block alert-warning centered" style="width: auto; margin-left: auto; margin-right: auto; position: fixed; top: 42px; right: 0; z-index: 1005; background: #ef7c22; border-color: #703608; color: white; text-shadow: none; font-size: 14px;"><p>You have been logged out. <a class="btn btn-default" data-close-target=".modal.login" href="#">Login</a><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></p></div>');
             $alert.find("a").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href));
+            $alert.find("button").on('click', function() { $alert.hide(); });
             $alert.insertBefore(".navbar-static-top");
         }
 
