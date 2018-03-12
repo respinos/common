@@ -559,6 +559,15 @@ ul.search-links li:last-child {
 
 }
 
+html.search-target-ls input.search-input-text {
+	width: 99%;
+}
+
+html.search-target-ls .search-input-options {
+	display: none;
+}
+
+
 /* all */
 ::-webkit-input-placeholder { color:#aaa; }
 ::-moz-placeholder { color:#aaa; } /* firefox 19+ */
