@@ -30,21 +30,21 @@ head.ready(function() {
     setup.ls = function() {
         $(".search-catalog-link").hide();
         $(".search-advanced-link").show();
+        $("html").removeClass("search-target-catalog").addClass("search-target-ls");
         // $select.find("option[data-target=ls]").attr({ disabled : null });
-        $select_div.hide();
         $input.attr("placeholder", 'Search words about or within the items');
     };
 
     setup.catalog = function() {
         $(".search-catalog-link").show();
         $(".search-advanced-link").hide();
+        $("html").removeClass("search-target-ls").addClass("search-target-catalog");
         // $select.find("option[data-target=ls]").attr({ disabled : 'disabled' });
         var $check = $select.find("option:selected[disabled]");
         if ( $check.length ) {
           $check.attr("selected", null);
           $select.find("option[value=all]").attr('selected', 'selected');
         }
-        $select_div.show();
         $input.attr("placeholder", 'Search words about the items');
     }
 
