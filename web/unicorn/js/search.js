@@ -24,6 +24,9 @@ head.ready(function() {
     var $select = $form.find("select");
     var $select_div = $form.find(".search-input-options");
 
+    $select_div.find("option[value=isbn]").each(function() {
+      $(this).attr('value', 'isn');
+    })
     $select.find("option[data-target=ls]").remove();
 
     var setup = {}
