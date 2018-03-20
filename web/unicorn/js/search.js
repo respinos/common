@@ -24,6 +24,9 @@ head.ready(function() {
     var $select = $form.find("select");
     var $select_div = $form.find(".search-input-options");
 
+    $select_div.find("option[value=isbn]").each(function() {
+      $(this).attr('value', 'isn');
+    })
     $select.find("option[data-target=ls]").remove();
 
     var setup = {}
@@ -45,6 +48,12 @@ head.ready(function() {
           $check.attr("selected", null);
           $select.find("option[value=all]").attr('selected', 'selected');
         }
+        // var prefs = HT.prefs.get();
+        // var searchtype = ( prefs.search && prefs.search.searchtype ) || 'all';
+        // if ( searchtype != 'all' ) {
+        //   $select.find("option:selected").attr("selected", null);
+        //   $select.find("option[value='" + prefs.search.searchtype + "']").attr("selected", "selected");
+        // }
         $input.attr("placeholder", 'Search words about the items');
     }
 
@@ -70,6 +79,12 @@ head.ready(function() {
         if ( prefs.search && prefs.search.ft != null ) {
           $("input[name=ft]").attr('checked', prefs.search.ft);
         }
+      }
+    }
+
+    if ( window.location.hostname.indexOf("catalog.hathitrust.org") > -1 ) {
+      if ( window.location.href.indexOf("searchtype=isn") > -1 ) {
+        $select.find("option[value=isn]").attr("selected", "selected");
       }
     }
 
@@ -104,7 +119,7 @@ head.ready(function() {
            {
 
             // save last settings
-            HT.prefs.set({ search : { ft : $("input[name=ft]:checked").length > 0, target : $tabs.filter(":checked").val() }})
+            HT.prefs.set({ search : { ft : $("input[name=ft]:checked").length > 0, target : $tabs.filter(":checked").val(), searchtype: $select.val() }})
 
             return true;
            }
