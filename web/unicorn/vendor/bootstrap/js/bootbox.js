@@ -343,7 +343,10 @@ var bootbox = window.bootbox || (function(document, $) {
         // @see https://github.com/twitter/bootstrap/issues/4854
         // for an explanation of tabIndex=-1
 
-        var parts = ["<div class='bootbox modal' tabindex='-1' style='overflow:hidden;'>"];
+        var idHeader = "id" + parseInt(Math.random(Date.now()) * 1000);
+        var idBody = "id" + parseInt(Math.random(Date.now()) * 1000);
+        var role = options['role'] || 'dialog'
+        var parts = ["<div role='" + role + "' aria-labelledby='" + idHeader + "' aria-describedby='" + idBody + "' class='bootbox modal' tabindex='-1' style='overflow:hidden;'>"];
 
         if (options['header']) {
             var closeButton = '';
@@ -351,11 +354,11 @@ var bootbox = window.bootbox || (function(document, $) {
                 closeButton = "<a href='"+_defaultHref+"' class='close'>&times;</a>";
             }
 
-            parts.push("<div class='modal-header'>"+closeButton+"<h3>"+options['header']+"</h3></div>");
+            parts.push("<div class='modal-header'>"+closeButton+"<h3 id='" + idHeader + "'>"+options['header']+"</h3></div>");
         }
 
         // push an empty body into which we'll inject the proper content later
-        parts.push("<div class='modal-body'></div>");
+        parts.push("<div class='modal-body' id='" + idBody + "'></div>");
 
         if (buttons) {
             parts.push("<div class='modal-footer'>"+buttons+"</div>");
