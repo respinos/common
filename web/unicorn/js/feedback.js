@@ -42,8 +42,8 @@ head.ready(function() {
             var message;
 
             var today = new Date();
-            if ( ( today.getFullYear() == 2017 && today.getDate() >= 22 && today.getMonth() == 11 ) || 
-                 ( today.getFullYear() == 2018 && today.getDate() < 2 && today.getMonth() == 0 ) ) { // ☃
+            if ( ( today.getFullYear() == 2018 && today.getDate() >= 22 && today.getMonth() == 11 ) || 
+                 ( today.getFullYear() == 2019 && today.getDate() < 2 && today.getMonth() == 0 ) ) { // ☃
                 message = '<div class="alert alert-block"><p><span style="font-size: 400%; float: left; display: inline-block; margin-right: 8px" aria-hidden="true">❄</span> Because of the winter holiday, HathiTrust staff and volunteers are unavailable from December 22nd through January 1st. We will respond to your feedback as soon as possible starting January 2nd. Thank you for your patience.</p></div>';
             }
 
