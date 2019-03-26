@@ -364,7 +364,9 @@ head.ready(function() {
         var banner_html = '<div class="alert alert-block alert-banner"><a href="javascript:;" aria-label="Close banner" class="close" style="margin-right: 24px;"><i aria-hidden="true" class="icomoon icomoon-cancel"></i></a>' + html + '</div>';
         var $banner = $(banner_html);
         $banner.attr('id', id);
-        $banner.insertAfter("#skiplinks");
+        var $target = $("#skiplinks");
+        if ( ! $target.length ) { $target = $("h1"); }
+        $banner.insertAfter($target);
 
         $banner.find("a.close").on('click', function(event) {
             event.preventDefault();
