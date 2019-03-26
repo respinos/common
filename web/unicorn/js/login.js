@@ -359,7 +359,7 @@ head.ready(function() {
 
         if ( head.mobile ) { return ; }
         var check = localStorage.getItem('x:' + id);
-        if ( check && ! window.location.href.indexOf('common!') ) { return; }
+        if ( check ) { return; }
 
         var banner_html = '<div class="alert alert-block alert-banner"><a href="javascript:;" aria-label="Close banner" class="close" style="margin-right: 24px;"><i aria-hidden="true" class="icomoon icomoon-cancel"></i></a>' + html + '</div>';
         var $banner = $(banner_html);
