@@ -350,8 +350,28 @@ head.ready(function() {
                 var action = $form.attr("action");
                 $form.attr("action", action.replace("/cgi/", "/shcgi/").replace("http://", "https://"));
             }
-
         }
+
+        insert_banner('usability-study-2019', '<p>Want to help improve our site? <a href="http://eepurl.com/gbk5Jb" target="_blank">Sign up for more information.</a></p>');
+    }
+
+    function insert_banner(id, html) {
+
+        if ( head.mobile ) { return ; }
+        var check = localStorage.getItem('x:' + id);
+        if ( check ) { return; }
+
+        var banner_html = '<div class="alert alert-block alert-banner"><a href="javascript:;" aria-label="Close banner" class="close" style="margin-right: 24px;"><i aria-hidden="true" class="icomoon icomoon-cancel"></i></a>' + html + '</div>';
+        var $banner = $(banner_html);
+        $banner.attr('id', id);
+        $banner.insertAfter("#skiplinks");
+
+        $banner.find("a.close").on('click', function(event) {
+            event.preventDefault();
+            $banner.remove();
+            localStorage.setItem('x:' + id, 'true');
+        });
+
     }
 
     function track_event(status) {
