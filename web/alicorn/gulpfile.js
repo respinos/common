@@ -8,7 +8,9 @@ var autoprefixer = require('gulp-autoprefixer');
 var es = require('event-stream');
 
 var concat = require('gulp-concat');  
-var rename = require('gulp-rename');  
+var rename = require('gulp-rename');
+var babel = require('gulp-babel');
+
 // var uglify = require('gulp-uglify'); 
 
 
@@ -20,6 +22,7 @@ stylesheets.output = './css';
 
 var javascripts = {};
 javascripts.input = [];
+javascripts.vendor = [];
 // javascripts.input.push('./vendor/leaflet/dist/leaflet-src.js');
 // javascripts.input.push('./vendor/leaflet/plugins/leaflet-iiif.js');
 // javascripts.input.push('./vendor/leaflet/plugins/tooltip.patches.js');
@@ -27,7 +30,9 @@ javascripts.input = [];
 // javascripts.input.push('./vendor/bigfoot/dist/bigfoot.js');
 javascripts.input.push('./node_modules/jquery/dist/jquery.js');
 javascripts.input.push('./node_modules/headjs/dist/1.0.0/head.js');
-javascripts.input.push('./vendor/micromodal/micromodal.js');
+// javascripts.input.push('./vendor/micromodal/micromodal.js');
+javascripts.input.push('./vendor/jquery.cookie.js');
+javascripts.input.push('./vendor/selectwoo/dist/js/select2.full.js');
 javascripts.input.push('./src/js/components/**/*.js', './src/js/main.js')
 javascripts.output = './js';
 
@@ -56,13 +61,53 @@ gulp.task('sass', function() {
     .pipe(gulp.dest(stylesheets.output));
 });
 
+var presets_v7 =  [
+        [
+          '@babel/env',
+          {
+            targets: {
+              edge: "17",
+              firefox: "60",
+              chrome: "67",
+              safari: "11.1",
+              ie: "11"
+            },
+          }
+        ]
+      ];
+
+var presets_v6 = [ 'env' ];
+
 gulp.task('scripts', function() {
   return gulp.src(javascripts.input)
     .pipe(sourcemaps.init())
-      .pipe(concat('utils.js'))
+    .pipe(babel({
+      babelrc: false,
+      presets: presets_v6
+      // exclude: [ 'node_modules/**' ]
+    }))
+    .pipe(concat('utils.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(javascripts.output))
 })
+
+// gulp.task('scripts', function() {
+//   return es.concat(
+//     gulp.src(javascripts.vendor)
+//       .pipe(sourcemaps.init()),
+//     gulp.src(javascripts.input)
+//       .pipe(sourcemaps.init())
+//       .pipe(babel({
+//         babelrc: false,
+//         presets: presets_v6
+//         // exclude: [ 'node_modules/**' ]
+//       }))
+//   )
+//   .pipe(concat('utils.js'))
+//   .pipe(sourcemaps.write())
+//   .pipe(gulp.dest(javascripts.output))
+
+// })
 
 gulp.task('sass:watch', function () {
   gulp.watch(stylesheets.watch, gulp.parallel('sass'));

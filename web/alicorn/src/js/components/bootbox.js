@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global.bootbox = factory());
-}(this, (function () { 'use strict';
+}(window, (function () { 'use strict';
 
 var version = "0.3.1";
 
@@ -63,6 +63,10 @@ var bootbox = function () {
           disableFocus = _ref$disableFocus === undefined ? false : _ref$disableFocus,
           _ref$awaitCloseAnimat = _ref.awaitCloseAnimation,
           awaitCloseAnimation = _ref$awaitCloseAnimat === undefined ? false : _ref$awaitCloseAnimat,
+          _ref$restore = _ref.restore,
+          restore = _ref$restore === undefined ? null : _ref$restore,
+          _ref$callbacks = _ref.callbacks,
+          callbacks = _ref$callbacks === undefined ? {} : _ref$callbacks,
           _ref$debugMode = _ref.debugMode,
           debugMode = _ref$debugMode === undefined ? false : _ref$debugMode;
       classCallCheck(this, Modal);
@@ -82,7 +86,9 @@ var bootbox = function () {
         onShow: onShow,
         onClose: onClose,
         awaitCloseAnimation: awaitCloseAnimation,
-        disableFocus: disableFocus
+        disableFocus: disableFocus,
+        callbacks: callbacks,
+        restore: restore
 
         // Register click events only if prebinding eventListeners
       };if (triggers.length > 0) this.registerTriggers.apply(this, toConsumableArray(triggers));
@@ -90,6 +96,8 @@ var bootbox = function () {
       // prebind functions for event listeners
       this.onClick = this.onClick.bind(this);
       this.onKeydown = this.onKeydown.bind(this);
+
+      this.root = document.querySelector('#root');
     }
 
     /**
@@ -118,6 +126,7 @@ var bootbox = function () {
       key: 'showModal',
       value: function showModal() {
         this.activeElement = document.activeElement;
+        if ( this.root ) { this.root.setAttribute('aria-hidden', 'true'); }
         this.modal.setAttribute('aria-hidden', 'false');
         this.modal.classList.add('is-open');
         this.setFocusToFirstNode();
@@ -143,6 +152,7 @@ var bootbox = function () {
         } else {
           modal.classList.remove('is-open');
         }
+        if ( this.root ) { this.root.setAttribute('aria-hidden', 'false'); }
       }
     }, {
       key: 'scrollBehaviour',
@@ -176,6 +186,14 @@ var bootbox = function () {
     }, {
       key: 'onClick',
       value: function onClick(event) {
+        var id = event.target.getAttribute('id');
+        if ( id && this.config.callbacks[id] ) {
+          var retval = this.config.callbacks[id](this);
+          if ( retval === false ) {
+            event.preventDefault();
+            return;
+          }
+        }
         if (event.target.hasAttribute(this.config.closeTrigger)) {
           this.closeModal();
           event.preventDefault();
@@ -223,6 +241,34 @@ var bootbox = function () {
             event.preventDefault();
           }
         }
+      }
+    }, {
+      key: 'modal',
+      value: function modal(action) {
+        if ( action == 'hide' ){
+          this.closeModal();
+        }
+      }
+    }, {
+      key: 'data',
+      value: function data(key, value) {
+        var element = this.modal.querySelector('.modal__content');
+        if ( window.jquery ) {
+          var $element = window.jquery(element);
+          if ( value === undefined ) {
+            return $element.data(key);
+          } else {
+            $element.data(key, value);
+          }
+        }
+      }
+    }, {
+      key: 'find',
+      value: function find(selector) {
+        if ( window.jQuery ) {
+          return window.jQuery(this.modal.querySelector('.modal__container')).find(selector);
+        }
+        return this.modal.querySelector('.modal__container').querySelector(selector);
       }
     }]);
     return Modal;
@@ -390,15 +436,16 @@ var bootbox = function () {
       h2.style.visibility = 'hidden';
       dialog.querySelector('.modal__container').classList.add('compact')
     }
-    show(dialog, {onClose: function(modal) {
+    return show(dialog, {onClose: function(modal) {
       document.body.removeChild(dialog);
     }});
   }
 
   var dialog = function(message, actions=[], options={}) {
     idx += 1;
+    var dialogID = options.id || idx;
     var append_message = false;
-    var dialogHTML = template.replace(/{ID}/g, idx).replace('{ACTIONS}', '');
+    var dialogHTML = template.replace(/{ID}/g, dialogID).replace('{ACTIONS}', '');
     if ( typeof(message) == "string" ) {
       dialogHTML = dialogHTML.replace('{TEMPLATE}', `<div>${message}</div>`);
     } else {
@@ -423,33 +470,45 @@ var bootbox = function () {
     }
 
     var footer = dialog.querySelector('.modal__footer');
+    var callbacks = {};
     for(var i = 0; i < actions.length; i++) {
       var action = actions[i];
       var button = document.createElement('button');
       button.innerHTML = action.label;
+      button.setAttribute('id', `action-modal-button-${idx}-${i}`);
       if ( action.ariaLabel ) {
         button.setAttribute('aria-label', action.ariaLabel);
       }
-      if ( action.class == 'btn-dismiss' ) {
+      if ( action.class.indexOf('btn-dismiss') > -1 ) {
         button.classList.add('modal__btn');
         button.dataset.micromodalClose = true;
       } else {
         button.classList.add('modal__btn');
       }
+      button.classList.add.apply(button.classList, action.class.split(' '))
       if ( action.callback ) {
-        button.addEventListener('click', function() {
-          action.callback();
-        })
+        callbacks[button.getAttribute('id')] = action.callback;
+        // button.addEventListener('click', function() {
+        //   action.callback();
+        // })
       }
       footer.appendChild(button);
     }
     var onClose = function(modal) {
       document.body.removeChild(dialog);
     }
-    show(dialog, {onClose: onClose});
+
+    if ( options.lightbox ) {
+      dialog.classList.add('lightbox');
+      var content = dialog.querySelector('.modal__content');
+      content.style.width = `${options.width - 0 + 16}px`;
+      content.style.height = `${options.height - 0 + 16}px`;
+    }
+
+    return show(dialog, {onClose: onClose, callbacks: callbacks});
   }
 
-  var hideAll = function() {
+  var hideAll =function() {
     /* WHEN WOULD THIS BE A VALID SCENARIO? */
   }
 

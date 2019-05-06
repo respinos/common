@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?dsjm9z');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?dsjm9z#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?dsjm9z') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?dsjm9z') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?dsjm9z##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?oauh0b');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?oauh0b#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?oauh0b') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?oauh0b') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?oauh0b##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,84 +26,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icomoon-exclamation-triangle {
+.icomoon-zoom_out {
   &:before {
-    content: $icomoon-exclamation-triangle; 
+    content: $icomoon-zoom_out; 
   }
 }
-.icomoon-twitter2 {
+.icomoon-zoom_in {
   &:before {
-    content: $icomoon-twitter2; 
+    content: $icomoon-zoom_in; 
   }
 }
-.icomoon-google-plus {
+.icomoon-zoom-out {
   &:before {
-    content: $icomoon-google-plus; 
+    content: $icomoon-zoom-out; 
   }
 }
-.icomoon-tumblr {
+.icomoon-zoom-in {
   &:before {
-    content: $icomoon-tumblr; 
-  }
-}
-.icomoon-vk {
-  &:before {
-    content: $icomoon-vk; 
-  }
-}
-.icomoon-reddit {
-  &:before {
-    content: $icomoon-reddit; 
-  }
-}
-.icomoon-pinterest-p {
-  &:before {
-    content: $icomoon-pinterest-p; 
-  }
-}
-.icomoon-warning {
-  &:before {
-    content: $icomoon-warning; 
-  }
-}
-.icomoon-link {
-  &:before {
-    content: $icomoon-link; 
-  }
-}
-.icomoon-google {
-  &:before {
-    content: $icomoon-google; 
-  }
-}
-.icomoon-yahoo {
-  &:before {
-    content: $icomoon-yahoo; 
-  }
-}
-.icomoon-windows8 {
-  &:before {
-    content: $icomoon-windows8; 
-  }
-}
-.icomoon-linkedin {
-  &:before {
-    content: $icomoon-linkedin; 
-  }
-}
-.icomoon-attachment {
-  &:before {
-    content: $icomoon-attachment; 
-  }
-}
-.icomoon-facebook2 {
-  &:before {
-    content: $icomoon-facebook2; 
-  }
-}
-.icomoon-search {
-  &:before {
-    content: $icomoon-search; 
+    content: $icomoon-zoom-in; 
   }
 }
 .icomoon-aol {
@@ -146,9 +86,9 @@
     content: $icomoon-document; 
   }
 }
-.icomoon-documents {
+.icomoon-documents1 {
   &:before {
-    content: $icomoon-documents; 
+    content: $icomoon-documents1; 
   }
 }
 .icomoon-reload-CW {
@@ -344,6 +284,121 @@
 .icomoon-signup {
   &:before {
     content: $icomoon-signup; 
+  }
+}
+.icomoon-search-minus {
+  &:before {
+    content: $icomoon-search-minus; 
+  }
+}
+.icomoon-search-plus {
+  &:before {
+    content: $icomoon-search-plus; 
+  }
+}
+.icomoon-exclamation-triangle {
+  &:before {
+    content: $icomoon-exclamation-triangle; 
+  }
+}
+.icomoon-twitter2 {
+  &:before {
+    content: $icomoon-twitter2; 
+  }
+}
+.icomoon-google-plus {
+  &:before {
+    content: $icomoon-google-plus; 
+  }
+}
+.icomoon-tumblr {
+  &:before {
+    content: $icomoon-tumblr; 
+  }
+}
+.icomoon-vk {
+  &:before {
+    content: $icomoon-vk; 
+  }
+}
+.icomoon-reddit {
+  &:before {
+    content: $icomoon-reddit; 
+  }
+}
+.icomoon-pinterest-p {
+  &:before {
+    content: $icomoon-pinterest-p; 
+  }
+}
+.icomoon-files-empty {
+  &:before {
+    content: $icomoon-files-empty; 
+  }
+}
+.icomoon-files {
+  &:before {
+    content: $icomoon-files; 
+  }
+}
+.icomoon-documents {
+  &:before {
+    content: $icomoon-documents; 
+  }
+}
+.icomoon-papers {
+  &:before {
+    content: $icomoon-papers; 
+  }
+}
+.icomoon-pages {
+  &:before {
+    content: $icomoon-pages; 
+  }
+}
+.icomoon-warning {
+  &:before {
+    content: $icomoon-warning; 
+  }
+}
+.icomoon-link {
+  &:before {
+    content: $icomoon-link; 
+  }
+}
+.icomoon-google {
+  &:before {
+    content: $icomoon-google; 
+  }
+}
+.icomoon-yahoo {
+  &:before {
+    content: $icomoon-yahoo; 
+  }
+}
+.icomoon-windows8 {
+  &:before {
+    content: $icomoon-windows8; 
+  }
+}
+.icomoon-linkedin {
+  &:before {
+    content: $icomoon-linkedin; 
+  }
+}
+.icomoon-attachment {
+  &:before {
+    content: $icomoon-attachment; 
+  }
+}
+.icomoon-facebook2 {
+  &:before {
+    content: $icomoon-facebook2; 
+  }
+}
+.icomoon-search {
+  &:before {
+    content: $icomoon-search; 
   }
 }
 
