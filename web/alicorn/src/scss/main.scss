@@ -46,6 +46,79 @@
       }
   }
 
+  .results-summary-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .results-summary {
+      font-size: 1rem;
+    }
+
+    select {
+      font-size: 0.9rem;
+      width: auto;
+      margin-right: 0.5rem;
+    }
+
+    .results-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-grow: 1;
+
+      label {
+        margin: 0 0.5rem 0 0.25rem;
+      }
+    }
+  }
+
+  .collections-action-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.75rem;
+    margin-bottom: .75rem;
+    padding: .5rem 1.25rem;
+
+    background: #666;
+    color: #fff;
+
+
+    font-size: 1rem;
+
+    label {
+      .checkbox {
+        min-height: 0;
+        margin-bottom: 0;
+        line-height: 1;
+      }
+      margin-bottom: 0;
+      color: #fff;
+      align-items: center;
+    }
+
+    > div {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-grow: 1;
+      margin-left: auto;
+      justify-content: flex-end;
+    }
+
+    select {
+      font-size: 0.9rem;
+      max-width: 10rem;
+    }
+
+    button {
+      white-space: nowrap;
+      font-size: 0.9rem;
+      margin-left: 0.5rem;
+    }
+  }
+
+
   .record-container, .cover, .record-action {
       padding: .75rem 1rem;
   }

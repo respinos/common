@@ -4,6 +4,12 @@ nav.pagination-container {
   grid-template-columns: 8rem auto 8rem;
   align-items: baseline;
 
+  margin-top: .75rem;
+  padding: .5rem 1.25rem;
+  background-color: #f9f8f5;
+  color: #565656;
+  border-color: #666;
+
   ul {
     display: flex;
     flex-wrap: wrap;

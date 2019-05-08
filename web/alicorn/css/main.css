@@ -46,7 +46,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
 .select2-container {
   box-sizing: border-box;
   display: inline-block;
@@ -1824,9 +1823,9 @@ header nav form select, footer nav form select {
 .results-summary-container {
   margin-bottom: .75rem;
   padding: .5rem 1.25rem;
-  background: #fff;
-  background: #fafafa;
-  border-radius: 4px;
+  background-color: #f9f8f5;
+  color: #565656;
+  border-color: #666;
 }
 
 @media (min-width: 600px) {
@@ -2416,6 +2415,11 @@ nav.pagination-container {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
+  margin-top: .75rem;
+  padding: .5rem 1.25rem;
+  background-color: #f9f8f5;
+  color: #565656;
+  border-color: #666;
 }
 
 nav.pagination-container ul {
@@ -3151,6 +3155,7 @@ symbol g {
 .sidebar-container .active-filter-item, .sidebar-container .filter-item {
   padding: 0;
   margin: 0;
+  margin-bottom: 0.25rem;
 }
 
 .sidebar-container .active-filter-item {
@@ -4062,6 +4067,105 @@ html.gt-ie10 .bibLinks {
 
 .results-container .record:nth-child(even) {
   background: #f6f4f1;
+}
+
+.results-container .results-summary-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.results-container .results-summary-container .results-summary {
+  font-size: 1rem;
+}
+
+.results-container .results-summary-container select {
+  font-size: 0.9rem;
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.results-container .results-summary-container .results-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.results-container .results-summary-container .results-actions label {
+  margin: 0 0.5rem 0 0.25rem;
+}
+
+.results-container .collections-action-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 0.75rem;
+  margin-bottom: .75rem;
+  padding: .5rem 1.25rem;
+  background: #666;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.results-container .collections-action-container label {
+  margin-bottom: 0;
+  color: #fff;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.results-container .collections-action-container label .checkbox {
+  min-height: 0;
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+.results-container .collections-action-container > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-left: auto;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.results-container .collections-action-container select {
+  font-size: 0.9rem;
+  max-width: 10rem;
+}
+
+.results-container .collections-action-container button {
+  white-space: nowrap;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
 }
 
 .results-container .record-container, .results-container .cover, .results-container .record-action {
