@@ -210,15 +210,16 @@ head.ready(function() {
         })
 
         if ( status.expired ) {
-            //var $alert = $('<div class="container centered clearfix"><div class="row"><div class="span8 push2"><div class="alert alert-block alert-error centered"><p>Your login session has expired.</p></div></div></div></div>');
-            // var $alert = $('<div class="alert alert-block alert-warning centered" style="width: auto; margin-left: auto; margin-right: auto; position: fixed; top: 42px; right: 0; z-index: 1005; background: #ef7c22; border-color: #703608; color: white; text-shadow: none; font-size: 14px;"><p style="color: #000">You have been logged out. <a class="btn btn-default" data-close-target=".modal.login" href="#">Login</a><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></p></div>');
-            var $alert = $('<div class="alert alert-block alert-warning alert-plain alert-banner"><a href="javascript:;" aria-label="Close banner" class="close" style="margin-right: 24px;"><i aria-hidden="true" class="icomoon icomoon-cancel"></i></a><p>You have been logged out. <a class="btn btn-default" data-action="login" data-close-target=".modal.login" href="#">Login</a></p></div>');
-            $alert.find("a[data-action='login']").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href));
-            $alert.find("a.close").on('click', function() { $alert.hide(); });
-            // $alert.find("button").on('click', function() { $alert.hide(); });
-            var $target = $("#skiplinks");
-            if ( ! $target.length ) { $target = $("h1"); }
-            $alert.insertAfter($target);
+            // var $alert = $('<div class="alert alert-block alert-warning alert-plain alert-banner"><a href="javascript:;" aria-label="Close banner" class="close" style="margin-right: 24px;"><i aria-hidden="true" class="icomoon icomoon-cancel"></i></a><p>You have been logged out. <a class="btn btn-default" data-action="login" data-close-target=".modal.login" href="#">Login</a></p></div>');
+            // $alert.find("a[data-action='login']").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href));
+            // $alert.find("a.close").on('click', function() { $alert.hide(); });
+            // // $alert.find("button").on('click', function() { $alert.hide(); });
+            // var $target = $("#skiplinks");
+            // if ( ! $target.length ) { $target = $("h1"); }
+            // $alert.insertAfter($target);
+
+            var login_href = 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href);
+            insert_banner('usability-study-2019', '<p>You have been logged out. <a class="btn btn-default" data-action="login" data-close-target=".modal.login" href="' + login_href + '">Login</a></p>');
         }
 
         var last_provider = $.cookie('HTproviderName');
@@ -297,22 +298,29 @@ head.ready(function() {
         if ( $button.length ) {
             // rewrite the header so we appear to be logged in!
             $button.remove();
-            var $navbar = $(".navbar-static-top .navbar-inner");
-            var coll_url = 'https://babel.hathitrust.org/cgi/mb?colltype=priv';
+            var $navbar = $("#person-nav");
+            var fragment = document.createDocumentFragment();
+            var coll_url = 'https://' + HT.service_domain + '/cgi/mb?colltype=my-collections';
             var html = 
                 '<ul id="person-nav" class="nav pull-right">' + 
                     '<li><span>' + status.affiliation + ' (' + status.providerName + ')</span></li>' + 
                     '<li><a href="' + coll_url + '">My Collections</a></li>' + 
                     '<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Logout</a></li>' + 
                 '</ul>';
-            $(html).appendTo($navbar);
 
-            var $footer = $(".navbar.footer .navbar-inner");
-            html = 
-                '<ul class="nav">' + 
-                    '<li><span>' + status.affiliation + '<br />Member, HathiTrust</span></li>' + 
-                '</ul>';
-            $(html).prependTo($footer);
+            $(fragment).append('<li><span>' + status.affiliation + '</span></li>');
+            $(fragment).append('<li><a href="' + coll_url + '">My Collections</a></li>');
+            $(fragment).append('<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Logout</a></li>');
+            // $(html).appendTo($navbar);
+            $navbar.find("#login-link").parent().remove();
+            $navbar.append(fragment);
+
+            // var $footer = $(".navbar.footer .navbar-inner");
+            // html = 
+            //     '<ul class="nav">' + 
+            //         '<li><span>' + status.affiliation + '<br />Member, HathiTrust</span></li>' + 
+            //     '</ul>';
+            // $(html).prependTo($footer);
         }
         var $logout_link = $("#logout-link");
         $logout_link.attr('href', 'https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + encodeURIComponent(window.location.href))
@@ -352,7 +360,7 @@ head.ready(function() {
             }
         }
 
-        insert_banner('usability-study-2019', '<p>Want to help improve our site? <a href="http://eepurl.com/gbk5Jb" target="_blank">Sign up for more information.</a></p>');
+        // insert_banner('usability-study-2019', '<p>Want to help improve our site? <a href="http://eepurl.com/gbk5Jb" target="_blank">Sign up for more information.</a></p>');
     }
 
     function insert_banner(id, html) {
@@ -395,6 +403,8 @@ head.ready(function() {
     }
 
     HT.login_callback = function(status) {
+
+        console.log("AHOY LOGIN STATUS", status);
 
         if ( status.logged_in ) {
             setup_logged_in_state(status);

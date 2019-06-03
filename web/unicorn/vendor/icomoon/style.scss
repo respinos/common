@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?oauh0b');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?oauh0b#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?oauh0b') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?oauh0b') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?oauh0b##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?kr7abw');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?kr7abw#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?kr7abw') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?kr7abw') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?kr7abw##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,6 +26,111 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icomoon-plus {
+  &:before {
+    content: $icomoon-plus; 
+  }
+}
+.icomoon-copy {
+  &:before {
+    content: $icomoon-copy; 
+  }
+}
+.icomoon-duplicate {
+  &:before {
+    content: $icomoon-duplicate; 
+  }
+}
+.icomoon-files1 {
+  &:before {
+    content: $icomoon-files1; 
+  }
+}
+.icomoon-pages1 {
+  &:before {
+    content: $icomoon-pages1; 
+  }
+}
+.icomoon-papers1 {
+  &:before {
+    content: $icomoon-papers1; 
+  }
+}
+.icomoon-documents2 {
+  &:before {
+    content: $icomoon-documents2; 
+  }
+}
+.icomoon-files-empty {
+  &:before {
+    content: $icomoon-files-empty; 
+  }
+}
+.icomoon-files {
+  &:before {
+    content: $icomoon-files; 
+  }
+}
+.icomoon-documents {
+  &:before {
+    content: $icomoon-documents; 
+  }
+}
+.icomoon-papers {
+  &:before {
+    content: $icomoon-papers; 
+  }
+}
+.icomoon-pages {
+  &:before {
+    content: $icomoon-pages; 
+  }
+}
+.icomoon-warning {
+  &:before {
+    content: $icomoon-warning; 
+  }
+}
+.icomoon-link {
+  &:before {
+    content: $icomoon-link; 
+  }
+}
+.icomoon-google {
+  &:before {
+    content: $icomoon-google; 
+  }
+}
+.icomoon-yahoo {
+  &:before {
+    content: $icomoon-yahoo; 
+  }
+}
+.icomoon-windows8 {
+  &:before {
+    content: $icomoon-windows8; 
+  }
+}
+.icomoon-linkedin {
+  &:before {
+    content: $icomoon-linkedin; 
+  }
+}
+.icomoon-attachment {
+  &:before {
+    content: $icomoon-attachment; 
+  }
+}
+.icomoon-facebook2 {
+  &:before {
+    content: $icomoon-facebook2; 
+  }
+}
+.icomoon-search {
+  &:before {
+    content: $icomoon-search; 
+  }
+}
 .icomoon-zoom_out {
   &:before {
     content: $icomoon-zoom_out; 
@@ -329,76 +434,6 @@
 .icomoon-pinterest-p {
   &:before {
     content: $icomoon-pinterest-p; 
-  }
-}
-.icomoon-files-empty {
-  &:before {
-    content: $icomoon-files-empty; 
-  }
-}
-.icomoon-files {
-  &:before {
-    content: $icomoon-files; 
-  }
-}
-.icomoon-documents {
-  &:before {
-    content: $icomoon-documents; 
-  }
-}
-.icomoon-papers {
-  &:before {
-    content: $icomoon-papers; 
-  }
-}
-.icomoon-pages {
-  &:before {
-    content: $icomoon-pages; 
-  }
-}
-.icomoon-warning {
-  &:before {
-    content: $icomoon-warning; 
-  }
-}
-.icomoon-link {
-  &:before {
-    content: $icomoon-link; 
-  }
-}
-.icomoon-google {
-  &:before {
-    content: $icomoon-google; 
-  }
-}
-.icomoon-yahoo {
-  &:before {
-    content: $icomoon-yahoo; 
-  }
-}
-.icomoon-windows8 {
-  &:before {
-    content: $icomoon-windows8; 
-  }
-}
-.icomoon-linkedin {
-  &:before {
-    content: $icomoon-linkedin; 
-  }
-}
-.icomoon-attachment {
-  &:before {
-    content: $icomoon-attachment; 
-  }
-}
-.icomoon-facebook2 {
-  &:before {
-    content: $icomoon-facebook2; 
-  }
-}
-.icomoon-search {
-  &:before {
-    content: $icomoon-search; 
   }
 }
 

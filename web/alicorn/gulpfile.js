@@ -15,7 +15,7 @@ var babel = require('gulp-babel');
 
 
 var stylesheets = {};
-stylesheets.input = [ './vendor/**/*.css', './src/scss/main.scss' ];
+stylesheets.input = [ './vendor/**/*.css', './src/scss/main.scss', './src/scss/main.scss' ];
 stylesheets.concat = [ './vendor/**/*.css' ];
 stylesheets.watch = [ './vendor/**/*.css', './vendor/**/*.scss', './src/scss/**/*.scss' ];
 stylesheets.output = './css';
@@ -23,15 +23,13 @@ stylesheets.output = './css';
 var javascripts = {};
 javascripts.input = [];
 javascripts.vendor = [];
-// javascripts.input.push('./vendor/leaflet/dist/leaflet-src.js');
-// javascripts.input.push('./vendor/leaflet/plugins/leaflet-iiif.js');
-// javascripts.input.push('./vendor/leaflet/plugins/tooltip.patches.js');
-// javascripts.input.push('./vendor/leaflet/plugins/easy-button.js');
-// javascripts.input.push('./vendor/bigfoot/dist/bigfoot.js');
 javascripts.input.push('./node_modules/jquery/dist/jquery.js');
+javascripts.input.push('./node_modules/jquery.tabbable/jquery.tabbable.js');
+javascripts.input.push('./node_modules/focus-visible/dist/focus-visible.js');
 javascripts.input.push('./node_modules/headjs/dist/1.0.0/head.js');
 // javascripts.input.push('./vendor/micromodal/micromodal.js');
 javascripts.input.push('./vendor/jquery.cookie.js');
+javascripts.input.push('./vendor/purl.js');
 javascripts.input.push('./vendor/selectwoo/dist/js/select2.full.js');
 javascripts.input.push('./src/js/components/**/*.js', './src/js/main.js')
 javascripts.output = './js';
@@ -45,6 +43,21 @@ stylesheets.options = {
 var autoprefixerOptions = {
   browsers: ['last 2 versions', '> 5%', 'Firefox ESR']
 };
+
+// Compile sass into CSS
+gulp.task('sass-dev', function() {
+
+  var vendorFiles = gulp.src(stylesheets.concat);
+
+  var localFiles = gulp.src('./src/scss/dev.scss')
+    .pipe(sass(stylesheets.options).on('error', sass.logError))
+    .pipe(autoprefixer(autoprefixerOptions));
+
+  return es.concat(vendorFiles, localFiles)
+    .pipe(concat('dev.css'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(stylesheets.output));
+});
 
 // Compile sass into CSS
 gulp.task('sass', function() {
@@ -110,7 +123,7 @@ gulp.task('scripts', function() {
 // })
 
 gulp.task('sass:watch', function () {
-  gulp.watch(stylesheets.watch, gulp.parallel('sass'));
+  gulp.watch(stylesheets.watch, gulp.parallel('sass', 'sass-dev'));
 });
 
 gulp.task('scripts:watch', function () {
@@ -118,4 +131,4 @@ gulp.task('scripts:watch', function () {
 });
 
 gulp.task('default', gulp.parallel('sass:watch', 'scripts:watch'));
-gulp.task('run', gulp.series('sass', 'scripts'));
+gulp.task('run', gulp.series('sass', 'sass-dev', 'scripts'));

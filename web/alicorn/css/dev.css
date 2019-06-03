@@ -2031,7 +2031,7 @@ table td {
   left: 0;
   top: 0;
   width: 100%;
-  margin: 0;
+  margin: 2rem;
 }
 
 #skiplinks ul {
@@ -4369,55 +4369,8 @@ input.date-range-input-text {
   margin: 1rem 0;
 }
 
-.drupal h3 span[style*='font-size: small'] {
-  font-size: 1rem !important;
-}
-
 .drupal .block .menu li {
   margin-bottom: 0.5rem;
-}
-
-.drupal section #search-box input[type="search"] {
-  font-size: 1rem;
-  height: auto;
-}
-
-.drupal section #edit-keys {
-  width: auto;
-}
-
-.drupal section .form-item-search-block-form label.element-invisible {
-  display: block !important;
-  font-weight: bold;
-  clip: unset;
-  height: auto;
-  position: static !important;
-}
-
-.drupal section .node p, .drupal section .node ul {
-  font-size: 1rem !important;
-  font-family: inherit !important;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.drupal section .node table {
-  width: 100%;
-  margin: 1rem 0;
-  border-top: 1px solid #ccc;
-}
-
-.drupal section .node table th {
-  border-bottom: 3px solid #ccc;
-  padding-right: 1em;
-  text-align: left;
-  font-weight: bold;
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
-}
-
-.drupal section .chart td {
-  margin: 0;
 }
 
 .drupal section p {

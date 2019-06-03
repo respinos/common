@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?oauh0b');
-  src:  url('fonts/icomoon.eot?oauh0b#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?oauh0b') format('truetype'),
-    url('fonts/icomoon.woff?oauh0b') format('woff'),
-    url('fonts/icomoon.svg?oauh0b#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?kr7abw');
+  src:  url('fonts/icomoon.eot?kr7abw#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?kr7abw') format('truetype'),
+    url('fonts/icomoon.woff?kr7abw') format('woff'),
+    url('fonts/icomoon.svg?kr7abw#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,69 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icomoon-plus:before {
+  content: "\ea0a";
+}
+.icomoon-copy:before {
+  content: "\e90a";
+}
+.icomoon-duplicate:before {
+  content: "\e90a";
+}
+.icomoon-files1:before {
+  content: "\e90a";
+}
+.icomoon-pages1:before {
+  content: "\e90a";
+}
+.icomoon-papers1:before {
+  content: "\e90a";
+}
+.icomoon-documents2:before {
+  content: "\e90a";
+}
+.icomoon-files-empty:before {
+  content: "\e907";
+}
+.icomoon-files:before {
+  content: "\e907";
+}
+.icomoon-documents:before {
+  content: "\e907";
+}
+.icomoon-papers:before {
+  content: "\e907";
+}
+.icomoon-pages:before {
+  content: "\e907";
+}
+.icomoon-warning:before {
+  content: "\e901";
+}
+.icomoon-link:before {
+  content: "\e9cb";
+}
+.icomoon-google:before {
+  content: "\ea88";
+}
+.icomoon-yahoo:before {
+  content: "\eabb";
+}
+.icomoon-windows8:before {
+  content: "\eac2";
+}
+.icomoon-linkedin:before {
+  content: "\eac9";
+}
+.icomoon-attachment:before {
+  content: "\e9cd";
+}
+.icomoon-facebook2:before {
+  content: "\e607";
+}
+.icomoon-search:before {
+  content: "\e986";
+}
 .icomoon-zoom_out:before {
   content: "\e903";
 }
@@ -206,46 +269,4 @@
 }
 .icomoon-pinterest-p:before {
   content: "\e605";
-}
-.icomoon-files-empty:before {
-  content: "\e907";
-}
-.icomoon-files:before {
-  content: "\e907";
-}
-.icomoon-documents:before {
-  content: "\e907";
-}
-.icomoon-papers:before {
-  content: "\e907";
-}
-.icomoon-pages:before {
-  content: "\e907";
-}
-.icomoon-warning:before {
-  content: "\e901";
-}
-.icomoon-link:before {
-  content: "\e9cb";
-}
-.icomoon-google:before {
-  content: "\ea88";
-}
-.icomoon-yahoo:before {
-  content: "\eabb";
-}
-.icomoon-windows8:before {
-  content: "\eac2";
-}
-.icomoon-linkedin:before {
-  content: "\eac9";
-}
-.icomoon-attachment:before {
-  content: "\e9cd";
-}
-.icomoon-facebook2:before {
-  content: "\e607";
-}
-.icomoon-search:before {
-  content: "\e986";
 }

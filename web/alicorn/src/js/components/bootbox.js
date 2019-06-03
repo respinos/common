@@ -485,7 +485,13 @@ var bootbox = function () {
       } else {
         button.classList.add('modal__btn');
       }
-      button.classList.add.apply(button.classList, action.class.split(' '))
+      if ( action.class ) {
+        var tmp = action.class.split(' ');
+        tmp.forEach(function(cls) {
+          button.classList.add(cls);
+        })
+      }
+      // button.classList.add.apply(button.classList, action.class.split(' '))
       if ( action.callback ) {
         callbacks[button.getAttribute('id')] = action.callback;
         // button.addEventListener('click', function() {

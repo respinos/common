@@ -1,0 +1,25 @@
+$min-desktop-width: 64rem;
+
+html.desktop.no-mobile {
+
+  body {
+    min-width: $min-desktop-width;
+  }
+
+  .flex-container {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+  }
+
+  .sidebar-container {
+    max-width: 18rem;
+  }
+
+
+  main > .container {
+    min-width: $min-desktop-width;
+  }
+
+
+}
