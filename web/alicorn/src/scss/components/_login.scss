@@ -1,0 +1,237 @@
+$login-panel-bgcolor: #f9f8f5;
+$login-arrow-size: 10px;
+
+
+.modal.login-panel {
+  position: absolute;
+
+  top: initial;
+  right: 0;
+  left: auto;
+  width: 50rem;
+  margin: 0;
+  margin-top: 2.8rem;
+ 
+  color: #4f4f4f;
+  background-color: #f9f8f5;
+  border-radius: 6px;
+
+  .button.continue {
+      padding: 10px 15px 8px 15px;
+      color: #474747;
+      background-color: #fdd116;
+      border: 2px solid #fac912;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-bottom-color: #d5a904;
+      position: relative;
+  }
+
+  .button.continue .after {
+      content: "\42";
+      font-family: 'icomoon';
+      font-style: normal;
+      speak: none;
+      font-weight: normal;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      position: absolute;
+      font-size: 1rem;
+      right: 0.5rem;
+      top: 0.6rem;
+  }
+
+  .modal__footer {
+    background-color: #f0f0ef;
+    border-radius: 0 0 6px 6px;
+    text-align: left;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    padding-left: 2rem;
+
+    button, a.btn, a {
+      margin: auto 0;
+    }
+
+    .questions {
+      // @include rem(margin-top, 16);
+      font-size: 1rem;
+      padding: 0;
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      text-align: left;
+      ul {
+        list-style: none;
+
+        li {
+          // line-height: 1.2;
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+        }
+      }
+
+      // &:not(:last-child) {
+      //   border-bottom: 1px solid #666;
+      // }
+
+    }
+
+    .questions + .questions {
+      border-top: 1px solid #ddd;
+      margin-top: 0;
+      padding-top: 1rem;
+      padding-left: 2rem;
+      margin-left: -2rem;
+      margin-right: -2rem;
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  .login-panel-arrow {
+    top: 0px;
+    right: 0px;
+    position: absolute;
+    height: 0px;
+    width: 25px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      right: 1px;
+      border-style: solid;
+      border-width: 0 $login-arrow-size $login-arrow-size $login-arrow-size;
+      border-color: $login-panel-bgcolor transparent;
+      display: block;
+      width: 0;
+      z-index: 1;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -($login-arrow-size + 1);
+      right: 0;
+      border-style: solid;
+      border-width: 0 ($login-arrow-size + 1) ($login-arrow-size + 1) ($login-arrow-size + 1);
+      border-color: #000 transparent;
+      display: block;
+      width: 0;
+      z-index: 0;
+    }
+  }
+
+
+
+}
+
+.modal.login-panel {
+
+  .modal__header {
+    border-bottom: 0;
+    padding: 0;
+    .modal__title {
+        visibility: hidden;
+    }
+  }
+
+  .modal__content {
+    // background: transparent;
+    padding: 0;
+    padding-bottom: 1rem;
+    position: relative;
+    border-radius: 6px 6px 0 0;
+
+    div {
+      padding: 2rem;
+      padding-top: 0;
+      padding-bottom: 0.5rem;
+    }
+
+    .headline {
+      // padding-top: 2rem;
+    }
+
+    .headline p {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      // font-weight: bold;
+    }
+
+    select {
+      width: 100%;
+    }
+
+    .actions {
+      text-align: right;
+
+      .btn-cancel {
+        text-transform: uppercase;
+        font-size: 1rem;
+        color: #6d6d6d;
+
+        padding-right: 2rem;
+        position: relative;
+        vertical-align: middle;
+
+        margin-right: 2rem;
+
+        &:hover {
+          color: #393839;
+          background: #f1d3d0;
+        }
+
+        &:after {
+          content: "\43";
+          font-family: 'icomoon';
+          font-style: normal;
+          speak: none;
+          font-weight: normal;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+          position: absolute;
+          right: 0.5rem;
+          top: 0.8rem;
+          color: red;
+        }
+
+
+      }
+
+      .continue {
+        padding: 0.25rem 0.75rem;
+        padding-right: 2rem;
+        margin: auto;
+      }
+    }
+
+  }
+
+  .select2-container {
+    font-size: 1.2rem;
+
+    input[type=text] {
+      height: 2em;
+    }
+
+    .select2-selection {
+        margin-bottom: 0.625rem;
+
+      &[aria-expanded=true] {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .select2-container--default .select2-results > .select2-results__options {
+    max-height: 7.5rem;
+  }
+
+
+}

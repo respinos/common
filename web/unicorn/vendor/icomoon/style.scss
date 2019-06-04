@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?dsjm9z');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?dsjm9z#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?dsjm9z') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?dsjm9z') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?dsjm9z##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?kr7abw');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?kr7abw#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?kr7abw') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?kr7abw') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?kr7abw##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,39 +26,64 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icomoon-exclamation-triangle {
+.icomoon-plus {
   &:before {
-    content: $icomoon-exclamation-triangle; 
+    content: $icomoon-plus; 
   }
 }
-.icomoon-twitter2 {
+.icomoon-copy {
   &:before {
-    content: $icomoon-twitter2; 
+    content: $icomoon-copy; 
   }
 }
-.icomoon-google-plus {
+.icomoon-duplicate {
   &:before {
-    content: $icomoon-google-plus; 
+    content: $icomoon-duplicate; 
   }
 }
-.icomoon-tumblr {
+.icomoon-files1 {
   &:before {
-    content: $icomoon-tumblr; 
+    content: $icomoon-files1; 
   }
 }
-.icomoon-vk {
+.icomoon-pages1 {
   &:before {
-    content: $icomoon-vk; 
+    content: $icomoon-pages1; 
   }
 }
-.icomoon-reddit {
+.icomoon-papers1 {
   &:before {
-    content: $icomoon-reddit; 
+    content: $icomoon-papers1; 
   }
 }
-.icomoon-pinterest-p {
+.icomoon-documents2 {
   &:before {
-    content: $icomoon-pinterest-p; 
+    content: $icomoon-documents2; 
+  }
+}
+.icomoon-files-empty {
+  &:before {
+    content: $icomoon-files-empty; 
+  }
+}
+.icomoon-files {
+  &:before {
+    content: $icomoon-files; 
+  }
+}
+.icomoon-documents {
+  &:before {
+    content: $icomoon-documents; 
+  }
+}
+.icomoon-papers {
+  &:before {
+    content: $icomoon-papers; 
+  }
+}
+.icomoon-pages {
+  &:before {
+    content: $icomoon-pages; 
   }
 }
 .icomoon-warning {
@@ -106,6 +131,26 @@
     content: $icomoon-search; 
   }
 }
+.icomoon-zoom_out {
+  &:before {
+    content: $icomoon-zoom_out; 
+  }
+}
+.icomoon-zoom_in {
+  &:before {
+    content: $icomoon-zoom_in; 
+  }
+}
+.icomoon-zoom-out {
+  &:before {
+    content: $icomoon-zoom-out; 
+  }
+}
+.icomoon-zoom-in {
+  &:before {
+    content: $icomoon-zoom-in; 
+  }
+}
 .icomoon-aol {
   &:before {
     content: $icomoon-aol; 
@@ -146,9 +191,9 @@
     content: $icomoon-document; 
   }
 }
-.icomoon-documents {
+.icomoon-documents1 {
   &:before {
-    content: $icomoon-documents; 
+    content: $icomoon-documents1; 
   }
 }
 .icomoon-reload-CW {
@@ -344,6 +389,51 @@
 .icomoon-signup {
   &:before {
     content: $icomoon-signup; 
+  }
+}
+.icomoon-search-minus {
+  &:before {
+    content: $icomoon-search-minus; 
+  }
+}
+.icomoon-search-plus {
+  &:before {
+    content: $icomoon-search-plus; 
+  }
+}
+.icomoon-exclamation-triangle {
+  &:before {
+    content: $icomoon-exclamation-triangle; 
+  }
+}
+.icomoon-twitter2 {
+  &:before {
+    content: $icomoon-twitter2; 
+  }
+}
+.icomoon-google-plus {
+  &:before {
+    content: $icomoon-google-plus; 
+  }
+}
+.icomoon-tumblr {
+  &:before {
+    content: $icomoon-tumblr; 
+  }
+}
+.icomoon-vk {
+  &:before {
+    content: $icomoon-vk; 
+  }
+}
+.icomoon-reddit {
+  &:before {
+    content: $icomoon-reddit; 
+  }
+}
+.icomoon-pinterest-p {
+  &:before {
+    content: $icomoon-pinterest-p; 
   }
 }
 
