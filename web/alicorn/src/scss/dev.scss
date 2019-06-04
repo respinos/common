@@ -1,0 +1,34 @@
+@import "./dev/variables";
+@import "../../vendor/reset.css";
+@import "../unicorn/vendor/icomoon/style.scss";
+@import "./dev/reset";
+@import './dev/skiplinks';
+@import "./dev/alerts";
+@import "./dev/modal";
+@import "./dev/nav";
+@import "./dev/form";
+@import "./dev/login";
+@import "./dev/sidebar";
+@import "./dev/search";
+@import "./dev/advanced_search_form";
+@import "./dev/drupal";
+@import "../../vendor/selectwoo/dist/css/selectWoo.scss";
+
+@import "./dev/responsive";
+
+.logo {
+  width: 14rem;
+  padding-right: 2rem;
+}
+
+.logo a {
+  background-image: url(/common/unicorn/img/HT-logo.png);
+  background-repeat: no-repeat;
+  display: block;
+  border: 1px dotted transparent;
+  height: 4.75rem;
+
+  &:hover {
+    border: 1px dotted $link-color;
+  }
+}
