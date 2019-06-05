@@ -4425,6 +4425,22 @@ input.date-range-input-text {
   padding-top: 0.5rem;
 }
 
+.drupal section .node table[border] {
+  border: 1px solid #ccc;
+}
+
+.drupal section .node table[border] tr {
+  border: 1px solid #ccc;
+}
+
+.drupal section .node table[border] tr td, .drupal section .node table[border] tr th {
+  padding: 1rem;
+}
+
+.drupal section .node table[border] tr td {
+  border: 1px solid #ccc;
+}
+
 .drupal section .chart td {
   margin: 0;
 }
