@@ -207,10 +207,14 @@ var bootbox = function () {
         if (event.keyCode === 13) {
           var form = this.modal.querySelector('form');
           if ( form && form.getAttribute('action') ) {
-            // form.submit();
-            var event = new Event('submit');
-            if ( form.dispatchEvent(event) ) {
-              form.submit();              
+            if ( window.jQuery ) {
+              $(form).submit();
+            } else {
+              // form.submit();
+              var event = new Event('submit');
+              if ( form.dispatchEvent(event) ) {
+                form.submit();              
+              }
             }
           }
         }
