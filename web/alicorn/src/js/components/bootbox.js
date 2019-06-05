@@ -186,6 +186,7 @@ var bootbox = function () {
     }, {
       key: 'onClick',
       value: function onClick(event) {
+        if ( event.detail == 0 ) { return; }
         var id = event.target.getAttribute('id');
         if ( id && this.config.callbacks[id] ) {
           var retval = this.config.callbacks[id](this);
@@ -205,19 +206,33 @@ var bootbox = function () {
         if (event.keyCode === 27) this.closeModal(event);
         if (event.keyCode === 9) this.maintainFocus(event);
         if (event.keyCode === 13) {
-          var form = this.modal.querySelector('form');
-          if ( form && form.getAttribute('action') ) {
-            if ( window.jQuery ) {
-              $(form).submit();
-            } else {
-              // form.submit();
-              var event = new Event('submit');
-              if ( form.dispatchEvent(event) ) {
-                form.submit();              
-              }
+          var id = event.target.getAttribute('id');
+          if ( id && this.config.callbacks[id] ) {
+            var retval = this.config.callbacks[id](this);
+            if ( retval === false ) {
+              event.preventDefault();
+              return;
             }
           }
+          if (event.target.hasAttribute(this.config.closeTrigger)) {
+            this.closeModal();
+            event.preventDefault();
+          }
         }
+        // if (event.keyCode === 13) {
+        //   var form = this.modal.querySelector('form');
+        //   if ( ( window.HT && ! window.HT.debugModal ) && form && form.getAttribute('action') ) {
+        //     if ( window.jQuery ) {
+        //       $(form).submit();
+        //     } else {
+        //       // form.submit();
+        //       var event = new Event('submit');
+        //       if ( form.dispatchEvent(event) ) {
+        //         form.submit();              
+        //       }
+        //     }
+        //   }
+        // }
       }
     }, {
       key: 'getFocusableNodes',
@@ -525,7 +540,7 @@ var bootbox = function () {
       content.style.height = `${options.height - 0 + 16}px`;
     }
 
-    return show(dialog, {onClose: onClose, callbacks: callbacks});
+    return show(dialog, {onClose: onClose, callbacks: callbacks, onShow: options.onShow});
   }
 
   var hideAll =function() {
