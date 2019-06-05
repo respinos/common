@@ -2030,8 +2030,10 @@ table td {
   position: absolute;
   left: 0;
   top: 0;
-  width: 100%;
   margin: 0;
+  padding: 0;
+  width: 0;
+  height: 0;
 }
 
 #skiplinks ul {
@@ -2058,7 +2060,9 @@ table td {
   padding: 15px;
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 4px;
-  position: relative;
+  position: absolute;
+  position: fixed;
+  top: 25px;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
