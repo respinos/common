@@ -204,6 +204,16 @@ var bootbox = function () {
       value: function onKeydown(event) {
         if (event.keyCode === 27) this.closeModal(event);
         if (event.keyCode === 9) this.maintainFocus(event);
+        if (event.keyCode === 13) {
+          var form = this.modal.querySelector('form');
+          if ( form ) {
+            // form.submit();
+            var event = new Event('submit');
+            if ( form.dispatchEvent(event) ) {
+              form.submit();              
+            }
+          }
+        }
       }
     }, {
       key: 'getFocusableNodes',
