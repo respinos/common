@@ -540,7 +540,7 @@ var bootbox = function () {
       content.style.height = `${options.height - 0 + 16}px`;
     }
 
-    return show(dialog, {onClose: onClose, callbacks: callbacks});
+    return show(dialog, {onClose: onClose, callbacks: callbacks, onShow: options.onShow});
   }
 
   var hideAll =function() {
