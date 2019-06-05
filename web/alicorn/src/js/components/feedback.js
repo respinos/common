@@ -83,7 +83,7 @@ head.ready(function() {
 
               var data = { 'return' : location.href, m : m };
               if ( id ) { data.id = id ; }
-              var is_valid = true; is_empty = true;
+              var is_valid = true; var is_empty = true;
               $dialog.find("input[type=text],textarea,input:checked,input[type=hidden]").each(function() {
                 var value = $.trim($(this).val());
                 if ( value ) {
