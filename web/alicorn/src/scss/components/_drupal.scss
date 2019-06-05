@@ -53,6 +53,20 @@
     padding-top: 0.5rem;
   }
 
+  .node table[border] {
+    border: 1px solid #ccc;
+    tr {
+      border: 1px solid #ccc;
+      td, th {
+        padding: 1rem;
+      }
+
+      td {
+        border: 1px solid #ccc;
+      }
+    }
+  }
+
   .chart td {
     margin: 0;
   }
