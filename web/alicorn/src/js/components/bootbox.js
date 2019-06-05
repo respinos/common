@@ -206,11 +206,15 @@ var bootbox = function () {
         if (event.keyCode === 9) this.maintainFocus(event);
         if (event.keyCode === 13) {
           var form = this.modal.querySelector('form');
-          if ( form ) {
-            // form.submit();
-            var event = new Event('submit');
-            if ( form.dispatchEvent(event) ) {
-              form.submit();              
+          if ( form && form.getAttribute('action') ) {
+            if ( window.jQuery ) {
+              $(form).submit();
+            } else {
+              // form.submit();
+              var event = new Event('submit');
+              if ( form.dispatchEvent(event) ) {
+                form.submit();              
+              }
             }
           }
         }
@@ -428,8 +432,8 @@ var bootbox = function () {
     </div>
   </div>`;
 
-  var buttonTemplate = `<button class="modal__btn modal__btn-primary">Continue</button>`;
-  var closeButtonTemplate = `<button class="modal__btn" data-micromodal-close aria-label="Close modal">Close</button>`;
+  var buttonTemplate = `<button class="modal__btn modal__btn-primary btn">Continue</button>`;
+  var closeButtonTemplate = `<button class="modal__btn btn btn-primary" data-micromodal-close aria-label="Close modal">Close</button>`;
 
   var idx = 0;
   var alert = function(message, options={}) {

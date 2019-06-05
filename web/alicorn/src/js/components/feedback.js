@@ -113,13 +113,21 @@ head.ready(function() {
                   // have to post the form
                   var $form = $("<form method='POST'></form>");
                   $form.attr("action", get_feedback_url());
-                  _.each(_.keys(data), function(name) {
-                    var values = data[name];
-                    values = $.isArray(values) ? values : [ values ];
-                    _.each(values, function(value) {
-                      $("<input type='hidden' />").attr({ name : name }).val(value).appendTo($form);
-                    })
+                  $.each(data, function(name, values) {
+                      values = $.isArray(values) ? values : [ values ];
+                      $.each(values, function(index, value) {
+                        $("<input type='hidden' />").attr({ name : name }).val(value).appendTo($form);
+                      });
                   })
+
+                  // $.each($.keys(data), function(name) {
+                  //   var values = data[name];
+                  //   values = $.isArray(values) ? values : [ values ];
+                  //   _.each(values, function(value) {
+                  //     $("<input type='hidden' />").attr({ name : name }).val(value).appendTo($form);
+                  //   })
+                  // })
+
                   $dialog.closeModal();
                   $form.hide().appendTo("body");
                   $form.submit();
