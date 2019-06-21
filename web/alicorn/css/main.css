@@ -1024,8 +1024,8 @@ table {
 @import url(../../vendor/reset.css);
 @font-face {
   font-family: "icomoon";
-  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.eot?kr7abw");
-  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.eot?kr7abw#iefix") format("embedded-opentype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.ttf?kr7abw") format("truetype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.woff?kr7abw") format("woff"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.svg?kr7abw#icomoon") format("svg");
+  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.eot?z915jg");
+  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.eot?z915jg#iefix") format("embedded-opentype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.ttf?z915jg") format("truetype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.woff?z915jg") format("woff"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.svg?z915jg#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1046,6 +1046,14 @@ table {
 
 .icomoon-plus:before {
   content: "";
+}
+
+.icomoon-circle-right:before {
+  content: "";
+}
+
+.icomoon-circle-left:before {
+  content: "";
 }
 
 .icomoon-copy:before {
@@ -1453,6 +1461,16 @@ ul.bullets li ul {
   margin: 0 1.5em;
 }
 
+ul.unstyled {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.unstyled li {
+  margin-bottom: 1rem;
+}
+
 li ul, li ol {
   margin: 0 1.5em;
 }
@@ -1762,7 +1780,7 @@ header nav .nav-menu, footer nav .nav-menu {
   position: relative;
 }
 
-header nav .nav-menu:hover .navbar-menu-children, header nav .nav-menu.active .navbar-menu-children, footer nav .nav-menu:hover .navbar-menu-children, footer nav .nav-menu.active .navbar-menu-children {
+header nav .nav-menu.active .navbar-menu-children, footer nav .nav-menu.active .navbar-menu-children {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1994,7 +2012,7 @@ header nav form select, footer nav form select {
 }
 
 .btn-loading {
-  padding-right: 34px;
+  padding-right: 34px !important;
   background-image: url(/common/unicorn/img/throbber-dark.gif) !important;
   background-repeat: no-repeat !important;
   background-position: 90% 50% !important;
@@ -2158,6 +2176,10 @@ table td {
 
 .alert-success {
   color: #3b723b;
+}
+
+.alert-success a:hover, .alert-success a:focus {
+  color: #855932;
 }
 
 .alert-info {
@@ -2947,7 +2969,7 @@ label {
   vertical-align: baseline;
   white-space: nowrap;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #999999;
+  background-color: #666666;
 }
 
 .form-horizontal .controls {
@@ -3027,20 +3049,7 @@ fieldset .help-block {
   background-color: #343a40;
 }
 
-.modal.login-panel {
-  position: absolute;
-  top: initial;
-  right: 0;
-  left: auto;
-  width: 50rem;
-  margin: 0;
-  margin-top: 2.8rem;
-  color: #4f4f4f;
-  background-color: #f9f8f5;
-  border-radius: 6px;
-}
-
-.modal.login-panel .button.continue {
+.button.continue {
   padding: 10px 15px 8px 15px;
   color: #474747;
   background-color: #fdd116;
@@ -3052,7 +3061,7 @@ fieldset .help-block {
   position: relative;
 }
 
-.modal.login-panel .button.continue .after {
+.button.continue .after {
   content: "\42";
   font-family: 'icomoon';
   font-style: normal;
@@ -3064,6 +3073,19 @@ fieldset .help-block {
   font-size: 1rem;
   right: 0.5rem;
   top: 0.6rem;
+}
+
+.modal.login-panel {
+  position: absolute;
+  top: initial;
+  right: 0;
+  left: auto;
+  width: 50rem;
+  margin: 0;
+  margin-top: 2.8rem;
+  color: #4f4f4f;
+  background-color: #f9f8f5;
+  border-radius: 6px;
 }
 
 .modal.login-panel .modal__footer {

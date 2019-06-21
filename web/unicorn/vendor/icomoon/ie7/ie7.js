@@ -14,6 +14,8 @@
 	}
 	var icons = {
 		'icomoon-plus': '&#xea0a;',
+		'icomoon-circle-right': '&#xea42;',
+		'icomoon-circle-left': '&#xea44;',
 		'icomoon-copy': '&#xe90a;',
 		'icomoon-duplicate': '&#xe90a;',
 		'icomoon-files1': '&#xe90a;',

@@ -226,10 +226,16 @@ head.ready(function() {
           var $count = $("#" + $this.attr('id') + "-count");
           var limit = $this.attr("maxlength");
 
-          $count.text(limit - $this.val().length);
-
+          var num_remaining = limit - $this.val().length;
+          $count.html(`${num_remaining} <span class="offscreen">character limit</span>`);
           $this.bind('keyup', function() {
-              $count.text(limit - $this.val().length);
+              num_remaining = limit - $this.val().length;
+              $count.html(`${num_remaining} <span class="offscreen">character limit</span>`);
+
+              if ( num_remaining <= 0 ) {
+                var $label = $this.parents(".control-group").find("label");
+                HT.update_status(`${$.trim($label.text())} has a maximum size of ${limit}.`);
+              }
           });
       })
   }
@@ -340,6 +346,7 @@ head.ready(function() {
       if ( ! $errormsg.length ) {
           $errormsg = $('<div class="alert alert-error errormsg" style="margin-top: 0.5rem"></div>').insertAfter($toolbar);
       }
+      $errormsg.empty();
       $errormsg.text(msg).show();
       HT.update_status(msg);
   }

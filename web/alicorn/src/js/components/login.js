@@ -219,27 +219,33 @@ head.ready(function() {
             // $alert.insertAfter($target);
 
             var login_href = 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href);
-            insert_banner('usability-study-2019', '<p>You have been logged out. <a class="btn btn-default" data-action="login" data-close-target=".modal.login" href="' + login_href + '">Login</a></p>');
+            insert_banner('login-expired', '<p>You have been logged out. <a class="btn btn-default" data-action="login" data-close-target=".modal.login" href="' + login_href + '">Login</a></p>', true);
         }
 
         var last_provider = $.cookie('HTproviderName');
         if ( last_provider ) {
             // previous login
             if ( document.referrer == location.href ) {
-                var $navbar = $(".navbar-static-top");
-                var $alert = $('<div class="alert alert-block centered" style="border-radius: 0; width: auto; height: 45px;margin-left: auto; margin-right: auto; position: fixed; top: 0px; left: 0; right: 0; z-index: 1005; background: #ef7c22; border-color: #703608; color: white; text-shadow: none; font-size: 14px;"><p style="width: 900px; margin-left: auto; margin-right: auto; color: #000">You have been logged out of HathiTrust, but are still logged in to your provider ({LAST_PROVIDER}).&nbsp;<button type="button" class="close" style="opacity: 0.8"><span class="offscreen">Close</span><span aria-hidden="true">×</span></button></p></div>'.replace('{LAST_PROVIDER}', last_provider));
-                var margin_top = parseInt($("body").css("margin-top") || "0");
-                // $alert.find("a").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href));
-                $alert.insertBefore(".navbar-static-top");
-                $navbar.css("top", 45);
-                $alert.find("button").on("click", function(e) {
-                    e.preventDefault();
-                    $alert.remove();
-                    $navbar.css('top', 0);
+                // var $navbar = $(".navbar-static-top");
+                // var $alert = $('<div class="alert alert-block centered" style="border-radius: 0; width: auto; height: 45px;margin-left: auto; margin-right: auto; position: fixed; top: 0px; left: 0; right: 0; z-index: 1005; background: #ef7c22; border-color: #703608; color: white; text-shadow: none; font-size: 14px;"><p style="width: 900px; margin-left: auto; margin-right: auto; color: #000">You have been logged out of HathiTrust, but are still logged in to your provider ({LAST_PROVIDER}).&nbsp;<button type="button" class="close" style="opacity: 0.8"><span class="offscreen">Close</span><span aria-hidden="true">×</span></button></p></div>'.replace('{LAST_PROVIDER}', last_provider));
+                // var margin_top = parseInt($("body").css("margin-top") || "0");
+                // // $alert.find("a").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href));
+                // $alert.insertBefore(".navbar-static-top");
+                // $navbar.css("top", 45);
+                // $alert.find("button").on("click", function(e) {
+                //     e.preventDefault();
+                //     $alert.remove();
+                //     $navbar.css('top', 0);
+                //     $.removeCookie('HTproviderName', { domain: '.hathitrust.org', path: '/', secure: true });
+                //     $("body").css("margin-top", margin_top);
+                // })
+                // $("body").css('margin-top', margin_top + 45);
+
+                var callback = function() {
                     $.removeCookie('HTproviderName', { domain: '.hathitrust.org', path: '/', secure: true });
-                    $("body").css("margin-top", margin_top);
-                })
-                $("body").css('margin-top', margin_top + 45);
+                }
+                var message = `You have been logged out of HathiTrust, but are still logged in to your provider (${last_provider}).`;
+                insert_banner('logged-out', `<p>${message} <a class="btn btn-default" data-action="login" data-close-target=".modal.login" href="' + login_href + '">Login</a></p>`, true, callback);
             }
             $.removeCookie('HTproviderName', { domain: '.hathitrust.org', path: '/', secure: true });
         }
@@ -363,11 +369,14 @@ head.ready(function() {
         // insert_banner('usability-study-2019', '<p>Want to help improve our site? <a href="http://eepurl.com/gbk5Jb" target="_blank">Sign up for more information.</a></p>');
     }
 
-    function insert_banner(id, html) {
+    function insert_banner(id, html, timestamped, callback) {
 
         if ( head.mobile ) { return ; }
-        var check = localStorage.getItem('x:' + id);
-        if ( check ) { return; }
+
+        if ( ! timestamped ) {
+            var check = localStorage.getItem('x:' + id);
+            if ( check ) { return; }
+        }
 
         var banner_html = '<div class="alert alert-block alert-banner"><a href="javascript:;" aria-label="Close banner" class="close" style="margin-right: 24px;"><i aria-hidden="true" class="icomoon icomoon-cancel"></i></a>' + html + '</div>';
         var $banner = $(banner_html);
@@ -379,7 +388,12 @@ head.ready(function() {
         $banner.find("a.close").on('click', function(event) {
             event.preventDefault();
             $banner.remove();
-            localStorage.setItem('x:' + id, 'true');
+            if ( callback ) {
+                callback();
+            }
+            if ( ! timestamped ) {
+                localStorage.setItem('x:' + id, 'true');
+            }
         });
 
     }

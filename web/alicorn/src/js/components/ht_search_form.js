@@ -20,7 +20,7 @@ head.ready(function() {
       $input.attr('placeholder', 'Search words about or within the items');
       $input_label.text('Search full-text index');
       if ( inited ) {
-          HT.update_status("Search will use the full-text index.");
+        HT.update_status("Search will use the full-text index.");
       }
   }
 
@@ -29,7 +29,7 @@ head.ready(function() {
       $input.attr('placeholder', 'Search words about the items');
       $input_label.text('Search catalog index');
       if ( inited ) {
-          HT.update_status("Search will use the catalog index; you can limit your search to a selection of fields.");
+        HT.update_status("Search will use the catalog index; use Shift + Tab to limit your search to a selection of fields.");
       }
   }
 

@@ -78,6 +78,16 @@ var bootbox = function () {
         this.modal = document.getElementById(targetModal);
       }
 
+      var status = this.modal.querySelector('div[role="status"]');
+      if ( ! status ) {
+        status = document.createElement('div');
+        status.setAttribute('role', 'status');
+        status.setAttribute('aria-live', 'polite');
+        status.setAttribute('aria-atomic', 'true');
+        status.classList.add("offscreen");
+        this.modal.appendChild(status);
+      }
+
       // Save a reference to the passed config
       this.config = { debugMode: debugMode,
         disableScroll: disableScroll,
@@ -228,7 +238,7 @@ var bootbox = function () {
         //       // form.submit();
         //       var event = new Event('submit');
         //       if ( form.dispatchEvent(event) ) {
-        //         form.submit();              
+        //         form.submit();
         //       }
         //     }
         //   }
@@ -430,6 +440,10 @@ var bootbox = function () {
     activeModal.closeModal();
   };
 
+  var active = function active() {
+    return activeModal;
+  }
+
   var template = `<div class="modal micromodal-slide" id="modal-{ID}" aria-hidden="true">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close>
       <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-{ID}-title">
@@ -547,7 +561,7 @@ var bootbox = function () {
     /* WHEN WOULD THIS BE A VALID SCENARIO? */
   }
 
-  return { init: init, show: show, close: close, alert: alert, dialog: dialog, hideAll: hideAll };
+  return { init: init, show: show, close: close, alert: alert, dialog: dialog, hideAll: hideAll, active: active };
 }();
 
 return bootbox;

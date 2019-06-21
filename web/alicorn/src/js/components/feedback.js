@@ -7,7 +7,7 @@ head.ready(function() {
     var target = event.target;
     var name = target.getAttribute('name');
     var $first = $(`input[name="${name}"]:first`);
-    $first.get(0).scrollIntoView();
+    $first.next().get(0).scrollIntoView();
     $(target).parents(".modal__content").get(0).scrollTop -= 150;
   })
 

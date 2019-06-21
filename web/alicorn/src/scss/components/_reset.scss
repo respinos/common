@@ -83,6 +83,16 @@ ul.bullets {
   }
 }
 
+ul.unstyled {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin-bottom: 1rem;
+  }
+}
+
 li ul, li ol {
   margin:0 1.5em;
 }
@@ -417,7 +427,8 @@ header nav, footer nav {
   .nav-menu {
     position: relative;
 
-    &:hover, &.active {
+    // &:hover, 
+    &.active {
       .navbar-menu-children {
         display: flex;
         position: absolute;
@@ -634,7 +645,7 @@ header nav, footer nav {
 }
 
 .btn-loading {
-  padding-right: 34px;
+  padding-right: 34px !important;
   background-image: url(/common/unicorn/img/throbber-dark.gif) !important;
   background-repeat: no-repeat !important;
   background-position: 90% 50% !important;
