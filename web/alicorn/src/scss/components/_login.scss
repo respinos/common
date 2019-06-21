@@ -1,6 +1,31 @@
 $login-panel-bgcolor: #f9f8f5;
 $login-arrow-size: 10px;
 
+.button.continue {
+    padding: 10px 15px 8px 15px;
+    color: #474747;
+    background-color: #fdd116;
+    border: 2px solid #fac912;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom-color: #d5a904;
+    position: relative;
+}
+
+.button.continue .after {
+    content: "\42";
+    font-family: 'icomoon';
+    font-style: normal;
+    speak: none;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    font-size: 1rem;
+    right: 0.5rem;
+    top: 0.6rem;
+}
 
 .modal.login-panel {
   position: absolute;
@@ -15,32 +40,6 @@ $login-arrow-size: 10px;
   color: #4f4f4f;
   background-color: #f9f8f5;
   border-radius: 6px;
-
-  .button.continue {
-      padding: 10px 15px 8px 15px;
-      color: #474747;
-      background-color: #fdd116;
-      border: 2px solid #fac912;
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      border-bottom-color: #d5a904;
-      position: relative;
-  }
-
-  .button.continue .after {
-      content: "\42";
-      font-family: 'icomoon';
-      font-style: normal;
-      speak: none;
-      font-weight: normal;
-      line-height: 1;
-      -webkit-font-smoothing: antialiased;
-      position: absolute;
-      font-size: 1rem;
-      right: 0.5rem;
-      top: 0.6rem;
-  }
 
   .modal__footer {
     background-color: #f0f0ef;

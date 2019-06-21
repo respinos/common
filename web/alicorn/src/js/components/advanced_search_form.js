@@ -42,15 +42,55 @@ head.ready(function() {
   $(".multiselect").each(function() {
     var $container = $(this);
     var $input = $container.find("input.multiselect-search");
-    var $items = $container.find(".multiselect-options li");
+    var $list = $container.find(".multiselect-options");
+    var $items = $list.find("li");
     var $toggle = $container.find(".multiselect-show-checked-toggle");
 
-    $input.on('keydown', function(event) {
-      if ( event.key == 'Tab' ) {
+    // disable the tabindex
+    $items.find("input").attr('tabindex', '-1');
+    $list.attr('tabindex', '0');
+    $list.css({ position: 'relative' });
+    $container.on('focusin', 'fieldset', function(event) {
+      if ( event.target.tagName == 'FIELDSET' ) {
+        event.preventDefault();
+        event.stopPropagation();
+        setTimeout(function() {
+          $items.filter(":visible").first().find("input").focus();
+        })
+      }
+    })
+    $list.on('keyup', 'input', function(event) {
+      var $possible = $items.filter(":visible");
+      if ( event.key == 'ArrowDown' || event.key == 'ArrowUp' ) {
+        var delta = ( event.key == 'ArrowDown' ) ? 1 : -1;
+        var $current = $(document.activeElement).parent("li");
+        var index = $possible.index($current);
+        var nextIndex = ( index + delta ) % $possible.length;
+        if ( nextIndex < 0 ) { nextIndex = $possible.length - 1 ; }
+        var $next = $possible.slice(nextIndex, nextIndex + 1).find("input");
+        $next.focus(); // $next.parent().get(0).scrollIntoView();
+        // $list.get(0).scrollBy(0, -( $next.parent().height() * 1.125 ));
+      }
+    });
+
+    $list.on('keydown', 'input', function(event) {
+      if ( event.key == 'Tab' && event.shiftKey ) {
+        event.preventDefault();
+        if ( event.shiftKey ) {
+          $list.prevAll(":tabbable").focus();
+        } else {
+          $list.nextAll(":tabbable").focus();
+        }
+      }
+    })
+
+    $input.on('xxkeydown', function(event) {
+      if ( event.key == 'TabXX' ) {
         // if ( $items.filter)
         // var $inputs = $("input[type=text]");
         // var idx = $inputs.index($input);
         // $inputs.slice(idx + 1, idx + 2).focus();
+
         var $tabbable = $(":tabbable");
         var idx = $tabbable.index($input);
         var next_idx = ( idx + 1 ) % $tabbable.length;
@@ -59,6 +99,12 @@ head.ready(function() {
           $next.focus();
         }, 0);
         return;
+      }
+
+      if ( event.key == 'Tab' ) {
+        setTimeout(function() {
+          $list.focus();
+        }, 0)
       }
     })
 
@@ -146,7 +192,7 @@ head.ready(function() {
     // HT.update_status("You've added a another group of search fields.");
   })
 
-  var show_error_message = function($container, message) {
+  var show_error_message = function($container, $focus, message) {
     // var $alert = $(`<div class="alert alert-error alert-block" role="alert"><p>${message}</p></div>`);
     // if ( $container.is("fieldset") ) {
     //   $alert.insertAfter($container.children("legend"));
@@ -156,12 +202,14 @@ head.ready(function() {
     // HT.update_status(message);
     var $alert = $container.find("[role='alert']");
     $alert.html(`<p>${message}</p>`);
+    $focus.focus();
   }
 
   var check_for_query = function() {
     if ( $form.data('ignore-empty-query') ) { return true; }
     var query_exists = false;
-    $form.find("input[type=text]").each(function(index, input) {
+    var $inputs = $form.find(".advanced-input-container input[type=text]");
+    $inputs.each(function(index, input) {
       var value = $.trim($(input).val());
       if ( value != "" ) {
         query_exists = true;
@@ -169,7 +217,7 @@ head.ready(function() {
     })
 
     if ( ! query_exists ) {
-      show_error_message($("form > fieldset:first"), "A search term is required to submit an advanced search.");
+      show_error_message($("form > fieldset:first"), $inputs.first(), "A search term is required to submit an advanced search.");
     }
 
     return query_exists;
@@ -184,7 +232,7 @@ head.ready(function() {
       if ( value ) {
         // check to see this looks like a year?
         if ( ! value.match(/^\d+$/) ) {
-          show_error_message($this.parents(".advanced-filter-inner-container"), "Date of Publication must be between 0-9999.");
+          show_error_message($this.parents(".advanced-filter-inner-container"), $this, "Date of Publication must be between 0-9999.");
           is_valid = false;
           return;
         }
@@ -196,7 +244,7 @@ head.ready(function() {
       var $input_start = $inputs.filter(".date-range--after");
       var $input_end = $inputs.filter(".date-range--before");
       if ( $input_start.val() > $input_end.val() ) {
-        show_error_message($input_start.parents(".advanced-filter-inner-container"), "The Start date must be less than the End date.");
+        show_error_message($input_start.parents(".advanced-filter-inner-container"), $input_start, "The Start date must be less than the End date.");
         is_valid = false;
       }
     }

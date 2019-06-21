@@ -6,7 +6,7 @@ if ( window.console === undefined ) {
 
 // IE11 POLYFILL
 if (!Element.prototype.matches) {
-  Element.prototype.matches = Element.prototype.msMatchesSelector || 
+  Element.prototype.matches = Element.prototype.msMatchesSelector ||
                               Element.prototype.webkitMatchesSelector;
 }
 
@@ -72,7 +72,7 @@ var HT = HT || {};
     // HT.catalog_domain = ( HT.is_dev ? 'test.catalog.hathitrust.org' : 'catalog.hathitrust.org' );
 
     HT.prefs = {};
-    HT.prefs.get = function() { 
+    HT.prefs.get = function() {
         var prefs = {};
         try {
             prefs = $.cookie('HT.prefs', undefined, { json : true }) || {};
@@ -107,14 +107,23 @@ var HT = HT || {};
         }
     });
 
-    var $status = $("div[role=status]");
+    var $rootStatus;
+    HT.update_status = function(message) {
+        if ( $rootStatus === undefined ) { $rootStatus = $("#root > div[role=status]"); }
+        var $status = $rootStatus;
+        if ( window.bootbox && window.bootbox.active() ) {
+            $status = $(window.bootbox.active().modal).find('div[role="status"]');
+        }
+        if ( ! $status.length ) { return ; }
+        HT._update_status($status, message);
+    }
 
     var lastMessage; var lastTimer;
-    HT.update_status = function(message) {
-        if ( ! $status.length ) { return ; }
+    HT._update_status = function($status, message) {
         if ( lastMessage != message ) {
           if ( lastTimer ) { clearTimeout(lastTimer); lastTimer = null; }
 
+          var clearDelay = HT.params && HT.params.debug == 'polite' ? 2000 : 500;
           setTimeout(() => {
             $status.text(message);
             lastMessage = message;
@@ -122,7 +131,7 @@ var HT = HT || {};
           }, 50);
           lastTimer = setTimeout(() => {
             $status.get(0).innerText = '';
-          }, 500);
+          }, clearDelay);
 
         }
     }
