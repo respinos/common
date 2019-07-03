@@ -132,7 +132,7 @@ a {
   text-decoration: underline;
 
   &:hover {
-      color: #d56d11;
+      color: $link-hover-color;
       text-decoration: none;
   }
 
@@ -147,6 +147,23 @@ a {
     overflow: hidden;
     clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
     clip: rect(1px, 1px, 1px, 1px);
+}
+
+::-webkit-input-placeholder {
+  color: #777;
+  opacity: 1; 
+}
+
+:-moz-placeholder { /* Firefox 18- */ 
+  color: #777;
+  opacity: 1; } 
+
+::-moz-placeholder { /* Firefox 19 */
+  color: #777; opacity: 1; } 
+
+:-ms-input-placeholder { 
+  color: #777;
+  opacity: 1; 
 }
 
 input[type=date], input[type=email], input[type=search], input[type=tel], input[type=text], textarea {
@@ -193,7 +210,7 @@ button:not([class]), input[type=submit], a.btn, button.btn, button.btn-dismiss {
   text-decoration: none;
   line-height: inherit;
 
-  &:hover, &:focus {
+  &:hover, &:focus, &.active {
     // background: #d4d4d4;
     background: #333;
     color: #f5f5f5;

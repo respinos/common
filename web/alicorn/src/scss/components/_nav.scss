@@ -101,7 +101,7 @@ nav.pagination-container {
 
     &:hover {
       background: transparent;
-      color: #d56d11;
+      color: $link-hover-color;
       text-decoration: none;
     }
   }

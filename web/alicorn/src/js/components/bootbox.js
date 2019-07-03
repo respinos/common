@@ -426,6 +426,11 @@ var bootbox = function () {
     // Checks if modals and triggers exist in dom
     if (options.debugMode === true && validateModalPresence(targetModal) === false) return;
 
+    if (activeModal){
+      activeModal.closeModal();
+      activeModal = null;
+    }
+
     // stores reference to active modal
     activeModal = new Modal(options); // eslint-disable-line no-new
     activeModal.showModal();
@@ -438,6 +443,7 @@ var bootbox = function () {
    */
   var close = function close() {
     activeModal.closeModal();
+    activeModal = null;
   };
 
   var active = function active() {
@@ -481,6 +487,7 @@ var bootbox = function () {
     }
     return show(dialog, {onClose: function(modal) {
       document.body.removeChild(dialog);
+      activeModal = null;
     }});
   }
 
@@ -545,6 +552,7 @@ var bootbox = function () {
     }
     var onClose = function(modal) {
       document.body.removeChild(dialog);
+      activeModal = null;
     }
 
     if ( options.lightbox ) {

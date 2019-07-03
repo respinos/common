@@ -195,7 +195,7 @@
   #options #stripes .feature a.mobile:hover {
     /* images-button things hover */
     background-color: #fffefb;
-    color: #d56d11;
+    color: $link-hover-color;
   }
   /* line 404, ../sass/homepage.scss */
   #options #stripes .feature a.online {
