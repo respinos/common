@@ -187,8 +187,12 @@ head.ready(function() {
         }
 
         $("a.trigger-login").each(function() {
-            var target = $(this).attr("href") || window.location.href;
+            var target = $(this).attr("href");
+            if ( ! target || target == '#' ) { target = window.location.href; }
             if ( target.indexOf("/cgi/wayf") < 0 ) {
+                if ( ! HT.is_babel ) {
+                    target = HT.get_pong_target(target);
+                }
                 var href = 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target);
                 $(this).attr('href', href);
             } else if ( target.indexOf('http://') > -1 ) {
@@ -198,6 +202,7 @@ head.ready(function() {
 
         create_login_panel({ $trigger: $button });
         $button.on('click', function(e) {
+            if ( $("html").is(".mobile") ) { return ; }
             e.preventDefault();
             console.log("AHOY LOGIN CLICK", $button.data('active'), e);
             if ( $button.data('active') ) {

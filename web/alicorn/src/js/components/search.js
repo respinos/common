@@ -80,6 +80,7 @@ head.ready(function() {
       xlink_href = '#panel-collapsed';
     }
     $this.find("svg use").attr("xlink:href", xlink_href);
+    $this.trigger('clicked');
   })
 
   $section.on('change', 'select[data-href]', function(event) {
