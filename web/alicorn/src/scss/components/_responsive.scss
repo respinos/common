@@ -1,6 +1,7 @@
 $min-desktop-width: 64rem;
 
-html.desktop.no-mobile {
+// html.desktop.no-mobile {
+@media (min-width: 64em) {
 
   body {
     min-width: $min-desktop-width;
@@ -14,6 +15,10 @@ html.desktop.no-mobile {
 
   .sidebar-container {
     max-width: 18rem;
+  }
+
+  .for-mobile {
+    display: none !important;
   }
 
 
