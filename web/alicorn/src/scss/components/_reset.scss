@@ -325,6 +325,14 @@ footer.site-navigation {
   }
 }
 
+pre {
+  font-family: monospace;
+  margin: 1.5rem 0;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+}
+
 $navbar-item-padding: 0.5rem 1rem;
 $navbar-item-margin: 0.25rem 0.25rem 0.25rem;
 header nav, footer nav {
@@ -619,6 +627,7 @@ header nav, footer nav {
   .section-container {
     margin: 1.5rem 2rem;
     flex-grow: 1;
+    min-width: 0;
   }
 }
 
