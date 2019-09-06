@@ -19,16 +19,18 @@
 .logo {
   width: 14rem;
   padding-right: 2rem;
-}
 
-.logo a {
-  background-image: url(/common/unicorn/img/HT-logo.png);
-  background-repeat: no-repeat;
-  display: block;
-  border: 1px dotted transparent;
-  height: 4.75rem;
+  a {
+    background-image: url(/common/unicorn/img/HT-logo.png);
+    background-repeat: no-repeat;
+    display: block;
+    border: 1px dotted transparent;
+    height: 4.75rem;
 
-  &:hover {
-    border: 1px dotted $link-color;
+    &:hover {
+      border: 1px dotted $link-color;
+    }
   }
 }
+
+

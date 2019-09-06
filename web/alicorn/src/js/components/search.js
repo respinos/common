@@ -93,4 +93,7 @@ head.ready(function() {
     location.href = href + value;
   })
 
+  var num_checked = $sidebar.find("button[aria-checked='true']").length + $(".active-filter-item").length;
+  $(".total-filter-count").text(` (${num_checked})`);
+
 });

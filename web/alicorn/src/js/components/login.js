@@ -202,7 +202,8 @@ head.ready(function() {
 
         create_login_panel({ $trigger: $button });
         $button.on('click', function(e) {
-            if ( $("html").is(".mobile") ) { return ; }
+            // if ( $("html").is(".mobile") ) { return ; }
+            if ( $(window).width() < 640 ) { return ; }
             e.preventDefault();
             console.log("AHOY LOGIN CLICK", $button.data('active'), e);
             if ( $button.data('active') ) {
