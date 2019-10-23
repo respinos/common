@@ -203,4 +203,8 @@ var HT = HT || {};
         window.dispatchEvent(event)
     }, 100);
 
+    if ( navigator && navigator.userAgent && navigator.userAgent.match(/Edge\/1[678]/) ) {
+        document.documentElement.classList.add('edge');
+    }
+
 })();
