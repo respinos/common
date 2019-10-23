@@ -120,10 +120,18 @@ p.smaller {
 a {
   color: $link-color;
   text-decoration: underline;
+  display: inline-block;
+  background-position: center;
+  transition: filter 0.8s;
 
   &:hover {
       color: #d56d11;
       text-decoration: none;
+  }
+
+  &:active {
+    filter: invert(1);
+    transition: filter 0s;
   }
 
   // &:focus {

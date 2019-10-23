@@ -1513,11 +1513,26 @@ p.smaller {
 a {
   color: #924a0b;
   text-decoration: underline;
+  display: inline-block;
+  background-position: center;
+  -webkit-transition: -webkit-filter 0.8s;
+  transition: -webkit-filter 0.8s;
+  transition: filter 0.8s;
+  transition: filter 0.8s, -webkit-filter 0.8s;
 }
 
 a:hover {
   color: #d56d11;
   text-decoration: none;
+}
+
+a:active {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+  -webkit-transition: -webkit-filter 0s;
+  transition: -webkit-filter 0s;
+  transition: filter 0s;
+  transition: filter 0s, -webkit-filter 0s;
 }
 
 .offscreen, .SkipLink, .hidden, .toolbar-label {

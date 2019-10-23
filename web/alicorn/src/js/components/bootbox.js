@@ -447,7 +447,9 @@ var bootbox = function () {
    * @return {void}
    */
   var close = function close() {
-    activeModal.closeModal();
+    if ( activeModal ) {
+      activeModal.closeModal();
+    }
     activeModal = null;
   };
 

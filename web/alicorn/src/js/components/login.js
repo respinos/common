@@ -317,12 +317,12 @@ head.ready(function() {
                 '<ul id="person-nav" class="nav pull-right">' + 
                     '<li><span>' + status.affiliation + ' (' + status.providerName + ')</span></li>' + 
                     '<li><a href="' + coll_url + '">My Collections</a></li>' + 
-                    '<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Logout</a></li>' + 
+                    '<li><a class="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Log out</a></li>' + 
                 '</ul>';
 
             $(fragment).append('<li><span>' + status.affiliation + '</span></li>');
             $(fragment).append('<li><a href="' + coll_url + '">My Collections</a></li>');
-            $(fragment).append('<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Logout</a></li>');
+            $(fragment).append('<li><a class="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Log out</a></li>');
             // $(html).appendTo($navbar);
             $navbar.find("#login-link").parent().remove();
             $navbar.append(fragment);
@@ -334,7 +334,7 @@ head.ready(function() {
             //     '</ul>';
             // $(html).prependTo($footer);
         }
-        var $logout_link = $("#logout-link");
+        var $logout_link = $(".logout-link");
         $logout_link.attr('href', 'https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + encodeURIComponent(window.location.href))
         if ( 0 && status.authType == 'shibboleth' ) {
             $logout_link.click(function(e) {

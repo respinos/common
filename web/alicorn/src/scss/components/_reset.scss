@@ -38,7 +38,7 @@ section:focus:not(.focus-visible) {
   display: grid;
   -ms-grid-rows: auto auto auto;
   -ms-grid-columns: 1fr;
-  grid-template: 'header' 'main' 'footer'/1fr;
+  grid-template: 'header' 'main' 1fr 'footer'/1fr;
 }
 
 @media (min-width: 45em) {
@@ -136,15 +136,31 @@ p.smaller {
 a {
   color: $link-color;
   text-decoration: underline;
+  display: inline-block;
+  background-position: center;
+  transition: all 0.5s;
+  // transition: filter 0.8s;
 
   &:hover {
-      color: $link-hover-color;
+      color: #d56d11;
       text-decoration: none;
+  }
+
+  &:active {
+    // filter: invert(1);
+    // background: #333;
+    // color: #f5f5f5;
+    background: #f3ece6;
+    transition: all 0s;
   }
 
   // &:focus {
   //   outline: medium solid;
   // }
+}
+
+section a:visited, .sidebar-container a:visited {
+  color: $link-visited-color;
 }
 
 .sr-only, .offscreen, .SkipLink, .hidden, .toolbar-label {
@@ -198,6 +214,11 @@ input.input-small {
 button {
   font-size: 1rem;
   color: #333;
+  white-space: nowrap; // maybe?
+}
+
+button.filter-button {
+  white-space: normal;
 }
 
 button:not([class]), input[type=submit], a.btn, button.btn, button.btn-dismiss {
@@ -279,35 +300,11 @@ main {
   background-color: $body-bgcolor;
 }
 
-header.site-navigation, footer.site-navigation {
+footer.site-navigation {
   background: $navbar-bgcolor;
   color: $navbar-color;
-  // nav {
-  //   padding: 0 0.5rem; // 0.5rem;
-  //   margin: 0 auto;
-  //   // max-width: 80vw;
-  //   max-width: 62rem;
-  //   display: flex;
-  //   justify-content: space-between;
-  // }
 }
 
-header.site-navigation {
-  -ms-grid-row: 1;
-  grid-area: header;
-  z-index: 25;
-
-
-  // nav {
-  //   > ul + ul::before {
-  //     content: "";
-  //     display: block;
-  //     border-left: 1px solid #6b6a6b;
-  //     margin-right: 1rem;
-  //     margin-left: -2rem;
-  //   }
-  // }
-}
 
 footer.site-navigation {
   z-index: 1;
@@ -318,24 +315,6 @@ footer.site-navigation {
     // font-size: 0.75rem;
   }
 }
-
-// header {
-//   .nav {
-
-//     @media screen and (min-width: 62rem) {
-//       li.nav-branded-home-link {
-//         display: none;
-//       }
-//     }
-
-//     @media screen and (max-width: 62rem) {
-//       li.nav-home-link {
-//         display: none;
-//       }
-//     }
-      
-//   }
-// }
 
 %home-link-logo-component {
   background-image: url(/common/unicorn/img/HT-logo-square-sm.png);
@@ -351,204 +330,57 @@ footer.site-navigation {
   margin-bottom: -0.5rem;
 }
 
-.home-link {
+// .home-link {
 
-  display: flex;
-  align-items: center;
+//   display: flex;
+//   align-items: center;
 
-  &::before {
-    @extend %home-link-logo-component;
-  }
+//   &::before {
+//     @extend %home-link-logo-component;
+//   }
 
-  &.always-branded {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+//   &.always-branded {
+//     padding-right: 0.5rem;
+//     padding-left: 0.5rem;
 
-    &::before {
-      margin-right: 0;
-    }
-  }
+//     &::before {
+//       margin-right: 0;
+//     }
+//   }
 
-  & > span {
-    padding: 0;
-    display: inline-block;
-  }
+//   & > span {
+//     padding: 0;
+//     display: inline-block;
+//   }
 
-  @media screen and (min-width: 62rem) {
-    &:not(.include-branding) {
-      &::before {
-        display: none;
-      }
-    }
-  }
+//   @media screen and (min-width: 62rem) {
+//     &:not(.include-branding) {
+//       &::before {
+//         display: none;
+//       }
+//     }
+//   }
 
-  @media screen and (max-width: 62rem) {
-    & > span.home-link-label {
-      position: absolute !important;
-      height: 1px; width: 1px;
-      overflow: hidden;
-      clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-      clip: rect(1px, 1px, 1px, 1px);
-    }
+//   @media screen and (max-width: 62rem) {
+//     & > span.home-link-label {
+//       position: absolute !important;
+//       height: 1px; width: 1px;
+//       overflow: hidden;
+//       clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+//       clip: rect(1px, 1px, 1px, 1px);
+//     }
 
-    &::before {
-      padding-right: 0.5rem;
-      padding-left: 0.5rem;
-      margin-right: 0;
-    }
-  }
+//     &::before {
+//       padding-right: 0.5rem;
+//       padding-left: 0.5rem;
+//       margin-right: 0;
+//     }
+//   }
 
 
-}
+// }
 
-.home-link-XXX {
-
-  background-image: url(/common/unicorn/img/HT-logo-square-sm.png);
-  background-repeat: no-repeat;
-  display: block;
-  border: 1px dotted #0000;
-  height: 35px;
-  width: 40px;
-  padding: 0;
-  margin-top: 2px;
-
-  &:hover {
-    background-image: url(/common/unicorn/img/HT-logo-square-sm.png) !important;
-    border-bottom: 1px solid #fff;
-  }
-}
-
-$navbar-item-padding: 0.5rem 1rem;
-$navbar-item-margin: 0.25rem 0.25rem 0.25rem;
-header nav, footer nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  button {
-    font-size: 100%;
-  }
-
-  & > ul {
-    justify-content: center;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    // justify-content: center;
-
-    span {
-      padding: $navbar-item-padding;
-      margin: $navbar-item-margin;
-
-      display: block;
-
-      &.institution-label {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 15rem;
-      }
-    }
-    a {
-      // padding: 0.8rem 1rem;
-      padding: $navbar-item-padding;
-      margin: $navbar-item-margin;
-
-      // position: relative;
-
-      white-space: nowrap;
-
-      color: $navbar-link-color;
-      text-decoration: none;
-      display: block;
-
-      &:hover {
-        background: $navbar-bgcolor-hover; // #F9F8F5;
-        color: $navbar-link-hover-color; // #39383A;
-      }
-
-      &.action-login {
-        background: $login-bgcolor;
-        color: #000; // $text-color;
-        padding: 0.4rem 1rem;
-        // padding-top: 0.6rem;
-        // padding-bottom: 0.6rem;
-        border-radius: 4px;
-        border: 1px solid #bbb;
-        border-color: #00000026 #00000026 #00000040;
-
-        text-transform: uppercase;
-
-        &:hover, &:focus {
-          background: #fde26e;
-          border-color: #fcde5b;
-        }
-      }
-
-      &.action-home {
-        background-image: url(https://babel.hathitrust.org/pt/graphics/HT-logo-square-sm.png);
-        background-repeat: no-repeat;
-        height: 35px;
-        width: 40px;
-        border: 1px dotted #ddd;
-        margin-top: 4px;
-      }
-
-    }
-  }
-
-  // .nav-menu {
-  //   // position: relative;
-
-  //   // &:hover, 
-  //   &.active {
-  //     .navbar-menu-children {
-  //       display: flex;
-  //       position: absolute;
-  //       left: 5rem; // this is a guess
-  //     }
-  //   }
-  // }
-
-  // .navbar-menu-children {
-  //   position: absolute;
-  //   left: 0;
-  //   top: auto;
-  //   width: inherit;
-  //   z-index: 50;
-  //   flex-direction: column;
-  //   background: $navbar-bgcolor;
-  //   display: none;
-  // }
-
-  // form {
-  //   display: flex;
-  //   margin-left: 8px;
-  //   margin-right: 8px;
-  //   // flex-basis: 50%;
-  //   flex-grow: 1;
-
-  //   input[name=q1] {
-  //     width: 100%;
-  //     display: inline-block;
-  //     margin-right: 0.25rem;
-  //   }
-  //   label {
-  //     display: inline-block;
-  //   }
-
-  //   select {
-  //     font-size: 100%;
-  //     height: 100%;
-  //     margin-right: 0.25rem;
-  //   }
-
-  // }
-}
+// }
 
 .btn-group {
   button {
