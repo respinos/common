@@ -187,8 +187,12 @@ head.ready(function() {
         }
 
         $("a.trigger-login").each(function() {
-            var target = $(this).attr("href") || window.location.href;
+            var target = $(this).attr("href");
+            if ( ! target || target == '#' ) { target = window.location.href; }
             if ( target.indexOf("/cgi/wayf") < 0 ) {
+                if ( ! HT.is_babel ) {
+                    target = HT.get_pong_target(target);
+                }
                 var href = 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target);
                 $(this).attr('href', href);
             } else if ( target.indexOf('http://') > -1 ) {
@@ -198,6 +202,8 @@ head.ready(function() {
 
         create_login_panel({ $trigger: $button });
         $button.on('click', function(e) {
+            // if ( $("html").is(".mobile") ) { return ; }
+            if ( $(window).width() < 640 ) { return ; }
             e.preventDefault();
             console.log("AHOY LOGIN CLICK", $button.data('active'), e);
             if ( $button.data('active') ) {
@@ -311,12 +317,12 @@ head.ready(function() {
                 '<ul id="person-nav" class="nav pull-right">' + 
                     '<li><span>' + status.affiliation + ' (' + status.providerName + ')</span></li>' + 
                     '<li><a href="' + coll_url + '">My Collections</a></li>' + 
-                    '<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Logout</a></li>' + 
+                    '<li><a class="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Log out</a></li>' + 
                 '</ul>';
 
             $(fragment).append('<li><span>' + status.affiliation + '</span></li>');
             $(fragment).append('<li><a href="' + coll_url + '">My Collections</a></li>');
-            $(fragment).append('<li><a id="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Logout</a></li>');
+            $(fragment).append('<li><a class="logout-link" href="https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + window.location.href + '">Log out</a></li>');
             // $(html).appendTo($navbar);
             $navbar.find("#login-link").parent().remove();
             $navbar.append(fragment);
@@ -328,7 +334,7 @@ head.ready(function() {
             //     '</ul>';
             // $(html).prependTo($footer);
         }
-        var $logout_link = $("#logout-link");
+        var $logout_link = $(".logout-link");
         $logout_link.attr('href', 'https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + encodeURIComponent(window.location.href))
         if ( 0 && status.authType == 'shibboleth' ) {
             $logout_link.click(function(e) {

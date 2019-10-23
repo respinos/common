@@ -1,3 +1,77 @@
+.search-modal-content {
+  flex-grow: 1;
+  max-width: 40rem;
+}
+
+.global-search-options {
+  // margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.global-search-links {
+  border-top: 1px solid #ddd;
+  margin-top: 1rem;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    display: flex;
+
+    li:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}
+
+form {
+  button {
+    white-space: nowrap;
+  }
+}
+
+#action-search-hathitrust {
+  margin: 0;
+}
+
+
+// @media screen and (max-width: 28rem) {
+//   #ht-search-form {
+//     > div {
+//       flex-wrap: wrap;
+//       button {
+//         white-space: nowrap;
+//         margin-top: 1rem;
+//       }
+//       > div {
+//         > div {
+//             .control-q1 {
+//               flex-wrap: wrap;
+//             }
+//         }
+//       }
+//     }
+
+//     .global-search-links {
+//       .search-links {
+//         flex-wrap: wrap;
+
+//         li {
+//           margin-right: 0;
+//         }
+
+//         li:last-child {
+//           display: none;
+//         }
+//       }
+//     }
+//   }
+// }
+
 .results-container {
   .record {
       margin: .75rem 0;
@@ -70,10 +144,32 @@ label, button.checkbox-label {
       justify-content: flex-end;
       align-items: center;
       flex-grow: 1;
+      white-space: nowrap;
 
       label {
         margin: 0 0.5rem 0 0.25rem;
       }
+
+      @media only screen and (max-width: 28rem) {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+
+        select {
+          flex-basis: 50%;
+          margin-bottom: 0.5rem;
+        }
+      }
+
+    }
+  }
+
+  @media only screen and (max-width: 62em) {
+    .results-summary-container {
+      display: block;
+    }
+
+    .cover {
+      display: none;
     }
   }
 
@@ -87,7 +183,6 @@ label, button.checkbox-label {
 
     background: #666;
     color: #fff;
-
 
     font-size: 1rem;
 
@@ -124,11 +219,30 @@ label, button.checkbox-label {
       font-size: 0.9rem;
       margin-left: 0.5rem;
     }
+
+    @media only screen and (max-width: 32rem) {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+
+      #action-select-all {
+        margin-bottom: 0.5rem;
+      }
+
+      & > div {
+        justify-content: flex-start;
+        margin-top: 0.5rem;
+        flex-wrap: wrap;
+        margin: -0.25rem -0.25rem;
+        & > * {
+          margin: 0.25rem;
+        }
+      }
+    }
   }
 }
 
 .record-container, .cover, .record-action {
-    padding: .75rem 1rem;
+    padding: .75rem 0.5rem; // 1rem;
 }
 
 .cover {
@@ -169,19 +283,31 @@ label, button.checkbox-label {
   flex-flow: row wrap;
 
   dt {
-    flex-basis: 20%;
+    // flex-basis: 20%;
+    width: 20%;
     padding: 0.25rem 0.5rem;
     padding-left: 0;
     color: #666;
     text-align: left;
+
+    @media only screen and (max-width: 32rem) {
+      width: 100%;
+      display: block;
+    }
   }
 
   dd {
-    flex-basis: 70%;
+    // flex-basis: 70%;
+    width: 79%;
     flex-grow: 1;
     margin: 0;
+    margin-left: auto;
     padding: 0.25rem 0.5rem;
-    // border-bottom: 1px dotted #ddd;
+
+    @media only screen and (max-width: 32rem) {
+      width: 100%;
+      display: block;
+    }
   }
 
   dd + dd {
@@ -217,6 +343,21 @@ label, button.checkbox-label {
     li + li {
       margin-left: 2rem;
     }
+
+    @media screen and (max-width: 26rem) {
+
+      display: block;
+
+      li {
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      li + li {
+        margin-left: 0;
+      }
+    }
+
   }
 }
 
@@ -252,6 +393,10 @@ label, button.checkbox-label {
     margin-right: 1rem;
     min-width: 4rem;
     min-height: 6rem;
+
+    @media screen and ( max-width: 28rem ) {
+      display: none;
+    }
   }
 
   .article-heading .cover img {
@@ -333,8 +478,27 @@ label, button.checkbox-label {
     font-weight: bold;
   }
 
-  table.citation th {
-    width: 25%;
+  table.citation {
+    th {
+      width: 25%;
+      @media only screen and (max-width: 30em) {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    td {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+    }
+
+    @media screen and (max-width: 38em) {
+      td {
+        display: block;
+      }
+    }
   }
 
   table thead th {
@@ -362,9 +526,25 @@ label, button.checkbox-label {
     margin-top: 1rem;
   }
 
-  // .collection-search-form form {
-  //   display: flex;
-  // }
+  @media screen and (max-width: 28rem) {
+    form  {
+      & > div {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        & > div {
+
+          .control {
+            flex-wrap: wrap;
+          }
+
+          & > div {
+            justify-content: flex-start !important;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 820px) {
@@ -439,3 +619,103 @@ label, button.checkbox-label {
     max-width: 90%;
   }
 }
+
+// COLLECTION LISTINGS
+.listcs-intro {
+  font-size: .9rem;
+  text-align: left;
+  width: 95%;
+  margin: auto;
+}
+
+.record-title-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .record-title {
+    flex-grow: 1;
+  }
+
+  @media screen and (max-width: 29em) {
+
+    & {
+      flex-wrap: wrap;
+
+      .record-title {
+        flex-basis: 100%;
+      }
+
+      .actions {
+        margin: 0.5rem 0 1rem;
+      }
+
+    }
+
+  }
+}
+
+// .results-actions {
+//   white-space: nowrap;
+// }
+
+
+html#mb-page {
+
+  .results-summary {
+    margin-right: 0.5rem;
+  }
+
+  .resource-access-container:empty {
+    display: none;
+  }
+
+  .record.record--featured {
+    border: 2px solid #ea7612;
+    border-radius: 8px;
+  }
+
+  .record.record--owned {
+    border: 2px solid #999;
+    border-radius: 8px;
+  }
+
+  .record .xbadge {
+    margin-left: 0.25rem;
+  }
+
+  .pagination-summary::after {
+    content: ": ";
+  }
+
+  .pagination-summary:empty {
+    display: none;
+  }
+
+  .active-filters--empty [class*=active-filters] {
+    display: none;
+  }
+
+  .sidebar-container .filter-list-container ul li.filter-item:nth-child(n+6) {
+      display: list-item;
+  }
+
+  label[aria-role="radio"] {
+    -moz-user-focus: normal;
+  }
+
+  .xbadge-secondary {
+    color: #fff;
+    background-color: #6c757d;
+  }
+
+  .actions {
+    white-space: nowrap;
+  }
+
+  .actions button, .actions span {
+    margin-right: 0.25rem;
+  }
+
+}
+

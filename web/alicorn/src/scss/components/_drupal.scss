@@ -12,6 +12,13 @@
   }
 }
 
+.drupal {
+  #search-box input[type="search"] {
+    font-size: 1rem;
+    height: auto;
+  }  
+}
+
 .drupal section {
 
   #search-box input[type="search"] {
@@ -86,7 +93,7 @@
     width: 100%;
   }
 
-  a.action-login {
+  main a.action-login {
     background: #fdd116;
     color: #000;
     padding: 0.6rem 1.5rem;

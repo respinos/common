@@ -44,6 +44,7 @@ symbol g {
     padding: 0 1rem;
     margin: 0 auto 1rem;
     width: 95%;
+    max-width: 30rem;
 
     h2, h3 {
       font-size: 1.1rem;
@@ -79,7 +80,8 @@ symbol g {
     }
 
     li + li {
-      margin-top: 0.25rem;
+      //margin-top: 0.25rem;
+      margin-top: 0.5rem;
     }
 
     form {
@@ -98,7 +100,7 @@ symbol g {
 
     select {
       width: 100%;
-      font-size: 100%;
+      font-size: 1rem;
       margin-top: 0.25rem;
       margin-bottom: 0.25rem;
     }
@@ -170,6 +172,7 @@ symbol g {
       background: #e2f4eb;
       border: 1px solid rgba(5,124,66,.4);
       border-radius: 4px;
+      white-space: normal;
   }
 
   .active-filter-button-text {
@@ -425,4 +428,32 @@ html.gt-ie10 {
   visibility: hidden;
 }
 
+@media only screen and (max-width:62em) {
+  .share-toolbar {
+    justify-content: left;
 
+    &.btn-group button + button {
+      margin-left: 0;
+    }
+
+    &.btn-group button {
+      min-width: 2.875rem;
+      min-height: 2.875rem;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 62em) {
+  .sidebar-container .collection-branding {
+    display: none;
+  }
+}
+
+.modal {
+  ul {
+    li + li {
+      margin-top: 0.5rem;
+    }
+  }
+}

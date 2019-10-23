@@ -1024,10 +1024,11 @@ table {
 @import url(../../vendor/reset.css);
 @font-face {
   font-family: "icomoon";
-  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.eot?z915jg");
-  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.eot?z915jg#iefix") format("embedded-opentype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.ttf?z915jg") format("truetype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.woff?z915jg") format("woff"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.svg?z915jg#icomoon") format("svg");
+  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.eot?rj4xs0");
+  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.eot?rj4xs0#iefix") format("embedded-opentype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.ttf?rj4xs0") format("truetype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.woff?rj4xs0") format("woff"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.svg?rj4xs0#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 .icomoon {
@@ -1048,8 +1049,16 @@ table {
   content: "";
 }
 
+.icomoon-circle-up:before {
+  content: "";
+}
+
 .icomoon-circle-right:before {
   content: "";
+}
+
+.icomoon-circle-down:before {
+  content: "";
 }
 
 .icomoon-circle-left:before {
@@ -1504,11 +1513,26 @@ p.smaller {
 a {
   color: #924a0b;
   text-decoration: underline;
+  display: inline-block;
+  background-position: center;
+  -webkit-transition: -webkit-filter 0.8s;
+  transition: -webkit-filter 0.8s;
+  transition: filter 0.8s;
+  transition: filter 0.8s, -webkit-filter 0.8s;
 }
 
 a:hover {
   color: #d56d11;
   text-decoration: none;
+}
+
+a:active {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+  -webkit-transition: -webkit-filter 0s;
+  transition: -webkit-filter 0s;
+  transition: filter 0s;
+  transition: filter 0s, -webkit-filter 0s;
 }
 
 .offscreen, .SkipLink, .hidden, .toolbar-label {

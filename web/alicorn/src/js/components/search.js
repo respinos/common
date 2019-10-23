@@ -80,6 +80,7 @@ head.ready(function() {
       xlink_href = '#panel-collapsed';
     }
     $this.find("svg use").attr("xlink:href", xlink_href);
+    $this.trigger('clicked');
   })
 
   $section.on('change', 'select[data-href]', function(event) {
@@ -91,5 +92,13 @@ head.ready(function() {
     var value = $this.val();
     location.href = href + value;
   })
+
+ $(".sidebar-toggle-button").on('clicked', function() {
+   // $sidebar.css('overflow', $(this).attr('aria-expanded') == 'true' ? 'auto' : 'hidden');
+   document.documentElement.dataset.sidebarExpanded = $(this).attr('aria-expanded') == 'true';
+ });
+
+  var num_checked = $sidebar.find("button[aria-checked='true']").length + $(".active-filter-item").length;
+  $(".total-filter-count").text(` (${num_checked})`);
 
 });
