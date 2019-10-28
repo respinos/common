@@ -4633,6 +4633,11 @@ input.date-range-input-text {
   margin-bottom: 1rem;
 }
 
+.drupal section .node p a, .drupal section .node ul a {
+  vertical-align: top;
+  display: inline;
+}
+
 .drupal section .node table {
   width: 100%;
   margin: 1rem 0;
