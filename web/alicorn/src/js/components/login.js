@@ -208,10 +208,10 @@ head.ready(function() {
             console.log("AHOY LOGIN CLICK", $button.data('active'), e);
             if ( $button.data('active') ) {
                 console.log("AHOY LOGIN OFF");
-                hide_login_dialog({ $trigger: $button });
+                hide_login_dialog({ $trigger: $(this) });
             } else {
                 console.log("AHOY LOGIN ON");
-                display_login_dialog({ $trigger: $button });
+                display_login_dialog({ $trigger: $(this) });
             }
         })
 
@@ -259,10 +259,12 @@ head.ready(function() {
 
     function display_login_dialog(options) {
 
-        var top = $block.css('position') == 'fixed' ? $button.position().top : $button.offset().top;
-        top += $button.height() + 32;
+        var $trigger = options.$trigger;
+        var top = $block.css('position') == 'fixed' ? $trigger.position().top : $trigger.offset().top;
+        top = $trigger.position().top;
+        top += $trigger.height() + 32;
         // var right = $(window).width() - ( $button.offset().left + $button.outerWidth() );
-        var right = $(window).width() - ( $button.offset().left + ( $button.outerWidth() / 2 ) ) - ( 25 + 10 );
+        var right = $(window).width() - ( $trigger.offset().left + ( $trigger.outerWidth() / 2 ) ) - ( 25 + 10 );
         console.log("AHOY SETTING POSITION", top, "x", right);
         $dialog.css({ top: top, right: right });
         var $caret = $dialog.find(".login-panel-arrow");
