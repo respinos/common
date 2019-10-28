@@ -171,6 +171,25 @@ label {
     vertical-align: middle;
 }
 
+@media only screen and (max-width: 26rem) {
+  .form-horizontal {
+    .control-group {
+      .control-label {
+        float: none;
+        display: block;
+        width: auto;
+        text-align: left;
+      }
+      .controls {
+        margin-left: 0;
+        textarea, input[type="text"] {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
 .modal fieldset {
     margin-bottom: 1.2rem;
 }

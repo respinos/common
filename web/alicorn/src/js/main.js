@@ -21,6 +21,14 @@ if (!Element.prototype.closest) {
     return null;
   };
 }
+if (window.NodeList && !NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = function (callback, thisArg) {
+        thisArg = thisArg || window;
+        for (var i = 0; i < this.length; i++) {
+            callback.call(thisArg, this[i], i, this);
+        }
+    };
+}
 
 var HT = HT || {};
 
@@ -95,17 +103,19 @@ var HT = HT || {};
     };
 
     HT.scripts = [];
-    HT.scripts.push(function() {
-        // console.log("PLACEHOLDERS UPDATED");
-        // $(":input[placeholder]").placeholder();
+    // HT.scripts.push(function() {
+    //     // console.log("PLACEHOLDERS UPDATED");
+    //     // $(":input[placeholder]").placeholder();
 
-        var $li;
-        $li = $("a:contains('Our Collaborative Programs')").parent();
-        if ( $li.size() == 0 ) {
-            $li = $("a:contains('Our Digital Library')").parent();
-            $li.after('<li><a href="https://www.hathitrust.org/collaborative-programs">Our Collaborative Programs</a></li>');
-        }
-    });
+    //     // var $li;
+    //     // $li = $("a:contains('Our Collaborative Programs')").parent();
+    //     // if ( $li.size() == 0 ) {
+    //     //     $li = $("a:contains('Our Digital Library')").parent();
+    //     //     $li.after('<li><a href="https://www.hathitrust.org/collaborative-programs">Our Collaborative Programs</a></li>');
+    //     // }
+    // });
+
+    console.log("AHOY THIS IS RUNNING?");
 
     var $rootStatus;
     HT.update_status = function(message) {
@@ -136,6 +146,65 @@ var HT = HT || {};
         }
     }
 
-    head.js.apply(this, HT.scripts);
+    var vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', vh + 'px');
+
+    console.log("AHOY THIS IS RUNNING?", vh);
+
+    var t = 0;; var lastwh = 0;
+    window.tx = setInterval(function() {
+        t += 100;
+        if ( window.innerHeight != lastwh ) {
+            console.log("AHOY AHOY INNER HEIGHT", window.innerHeight, t);
+            lastwh = window.innerHeight;
+
+            var vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', vh + 'px');
+
+            var event = document.createEvent('UIEvents');
+            event.initEvent('resize', true, false, window, 0);
+            window.dispatchEvent(event)
+        }
+    }, 100);
+
+    setTimeout(function() {
+        vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', vh + 'px');
+    }, 500);
+
+    window.addEventListener('resize', function() {
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', vh + 'px');
+    });
+
+    window.addEventListener("orientationchange", function() {
+        setTimeout(function() {
+            var vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', vh + 'px');
+
+            if ( HT && HT.utils && HT.utils.handleOrientationChange ) {
+                HT.utils.handleOrientationChange();
+            }
+        }, 500);
+    })
+
+    window.addEventListener('beforeunload', function() {
+        setTimeout(function() {
+            $('<div class="wait-for-it"></div>').appendTo("body");
+            setTimeout(function() {
+                $(".wait-for-it").remove();
+            }, 5000); // maybe something went wrong
+        }, 501);
+    })
+
+    setTimeout(() => {
+        var event = document.createEvent('UIEvents');
+        event.initEvent('resize', true, false, window, 0);
+        window.dispatchEvent(event)
+    }, 100);
+
+    if ( navigator && navigator.userAgent && navigator.userAgent.match(/Edge\/1[678]/) ) {
+        document.documentElement.classList.add('edge');
+    }
 
 })();

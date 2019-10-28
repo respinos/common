@@ -70,7 +70,7 @@ gulp.task('sass', function() {
     .pipe(autoprefixer(autoprefixerOptions));
 
   return es.concat(vendorFiles, localFiles)
-    .pipe(concat('main.css'))
+    .pipe(concat('main.201910.css'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(stylesheets.output));
 });
@@ -100,7 +100,7 @@ gulp.task('scripts', function() {
       presets: presets_v6
       // exclude: [ 'node_modules/**' ]
     }))
-    .pipe(concat('utils.js'))
+    .pipe(concat('utils.201910.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(javascripts.output))
 })

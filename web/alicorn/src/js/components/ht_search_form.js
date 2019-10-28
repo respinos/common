@@ -3,6 +3,8 @@ head.ready(function() {
   var $form = $("#ht-search-form");
   if ( ! $form.length ) { return ; }
 
+  var $header = $form.parents(".container-header");
+
   var is_search_app = $("html").data('use') == 'search';
   var inited = false;
 
@@ -16,18 +18,18 @@ head.ready(function() {
 
   var _setup = {};
   _setup.ls = function() {
-      $select.hide();
-      $input.attr('placeholder', 'Search words about or within the items');
-      $input_label.text('Search full-text index');
+      $(".ht-search-form .control-searchtype").hide();
+      $(".ht-search-form input.search-input-text").attr('placeholder', 'Search words about or within the items');
+      $(".ht-search-form label[for='q1-input']").text('Search full-text index');
       if ( inited ) {
         HT.update_status("Search will use the full-text index.");
       }
   }
 
   _setup.catalog = function() {
-      $select.show();
-      $input.attr('placeholder', 'Search words about the items');
-      $input_label.text('Search catalog index');
+      $(".ht-search-form .control-searchtype").show();
+      $(".ht-search-form input.search-input-text").attr('placeholder', 'Search words about the items');
+      $(".ht-search-form label[for='q1-input']").text('Search catalog index');
       if ( inited ) {
         HT.update_status("Search will use the catalog index; use Shift + Tab to limit your search to a selection of fields.");
       }
@@ -43,16 +45,84 @@ head.ready(function() {
       $("input[name=ft]").attr('checked', 'checked');
   }
 
-  $search_target.on('change', 'input[type="radio"]', function(e) {
+  // $("body").on('change', '.ht-search-form .control-search-type input[type="radio"]', function(e) {
+  $("body").on('change', '.ht-search-form .search-target input[type="radio"]', function(e) {
       var target = this.value;
       _setup[target]();
       HT.analytics.trackEvent({ label : "-", category : "HT Search", action : target });
   })
 
+  var $action = $("nav .action-search-hathitrust");
+  var $clone; var $dialog;
+  $action.on('click', function() {
+    if ( $dialog === undefined ) {
+      $dialog = $(`
+        <div class="modal micromodal-slide" id="search-modal" aria-hidden="true">
+          <div class="modal__overlay" tabindex="-1" data-micromodal-close="true">
+            <div class="modal__container modal__container--square" role="dialog" aria-modal="true" aria-labelledby="search-modal-title">
+              <form action="//${HT.service_domain}/cgi/ls/one" method="GET" role="search" class="ht-search-form">
+                <div class="modal__header">
+                  <h2 class="modal__title" id="search-modal-title">
+                    Search HathiTrust
+                  </h2>
+                  <button class="modal__close" aria-label="Close modal" data-micromodal-close="true"></button>
+                </div>
+                <div class="modal__content" id="search-modal-content">
+                </div>
+                <div class="modal__footer">
+                  <button class="modal__btn btn" data-micromodal-close="true" aria-label="Close modal">Close</button>
+                  <button class="modal__btn btn btn-primary">Search</button>
+                </div>
+              </form>
+            </div>
+          </div>          
+        </div>
+      `);
+      $("body").append($dialog);
+    }
+    var $content = $dialog.find("#search-modal-content");
+    $content.children().remove();
+    $content.append($form.children().clone());
+    $content.find("#action-search-hathitrust").parent().parent().remove();
+    $content.find("#option-full-text-search").attr('id', 'option-full-text-search-2');
+    $content.find("#option-catalog-search").attr('id', 'option-catalog-search-2');
+    $content.find('label.search-label-full-text').attr('for', 'option-full-text-search-2');
+    $content.find("label.search-label-catalog").attr('for', 'option-catalog-search-2');
+    $content.find("label[for='global-search-ft']").attr('for', 'global-search-ft-2');
+    $content.find('#global-search-ft').attr("id", 'global-search-ft-2');
+    var $input_modal = $content.find("input[type=text]");
+    $input_modal.on('keyup', function() {
+      $input.val($input_modal.val());
+    })
+    // $dialog.find(".modal__container").remove("form").append($form.clone(true));
+    bootbox.show($dialog.get(0), {
+        onShow: function(modal) {
+            $input.focus();
+        }
+    });
+  })
+
+  var _resizeTimer;
+  var _resizer = function() {
+    var active = bootbox.active();
+    if ( $header.is(":visible") && active && active.modal.getAttribute('id') == 'search-modal' ) {
+      bootbox.close();
+    } else {
+      /* NOP */
+    }
+  }
+  $(window).on('resize', function() {
+      if ( _resizeTimer ) { clearTimeout(_resizeTimer); }
+      _resizeTimer = setTimeout(_resizer, 500);
+  });
+
+  setTimeout(_resizer, 500);
+
   // add event handler for submit to check for empty query or asterisk
-  $form.submit(function(event)
+  $("body").on('submit', '.ht-search-form', function(event)
        {
 
+          var $form = $(this);
 
           if ( ! this.checkValidity() ) {
               this.reportValidity();
@@ -81,8 +151,8 @@ head.ready(function() {
          {
 
           // save last settings
-          var searchtype = ( target == 'ls' ) ? 'all' : $select.find("select").val();
-          HT.prefs.set({ search : { ft : $("input[name=ft]:checked").length > 0, target : target, searchtype: searchtype }})
+          var searchtype = ( target == 'ls' ) ? 'all' : $form.find("select").val();
+          HT.prefs.set({ search : { ft : $form.find("input[name=ft]:checked").length > 0, target : target, searchtype: searchtype }})
 
           return true;
          }

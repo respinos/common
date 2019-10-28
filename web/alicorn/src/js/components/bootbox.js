@@ -431,8 +431,13 @@ var bootbox = function () {
       activeModal = null;
     }
 
-    // stores reference to active modal
-    activeModal = new Modal(options); // eslint-disable-line no-new
+    if (targetModal instanceof Modal) {
+      activeModal = targetModal;
+    } else {
+      // stores reference to active modal
+      activeModal = new Modal(options); // eslint-disable-line no-new
+    }
+
     activeModal.showModal();
     return activeModal;
   };
@@ -442,7 +447,9 @@ var bootbox = function () {
    * @return {void}
    */
   var close = function close() {
-    activeModal.closeModal();
+    if ( activeModal ) {
+      activeModal.closeModal();
+    }
     activeModal = null;
   };
 
