@@ -1421,6 +1421,7 @@ section:focus:not(.focus-visible) {
 #root {
   min-height: 100vh;
   max-width: 100vw;
+  display: block;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: auto auto auto;
@@ -3166,6 +3167,7 @@ symbol g {
 }
 
 .sidebar-container {
+  overflow: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3267,8 +3269,6 @@ symbol g {
 
 .sidebar-container .scrollable {
   margin-bottom: 1rem;
-  overflow: auto;
-  overflow-x: hidden;
 }
 
 .sidebar-container .active-filters-heading, .sidebar-container .filters-heading {
@@ -3550,13 +3550,8 @@ symbol g {
   border-bottom: 1px solid #ccc;
 }
 
-html.gt-ie10 #sidebar {
-  overflow: auto;
-}
-
-html.gt-ie10 .scrollable {
-  margin-top: 4rem;
-  overflow: visible;
+html.gt-ie10 #sidebar, html.ios9 #sidebar {
+  display: block;
 }
 
 .help-block {

@@ -8,6 +8,8 @@ symbol g {
 
 .sidebar-container {
 
+  overflow: auto;
+
   display: flex;
   flex-direction: column;
   // height: 100%;
@@ -110,8 +112,8 @@ symbol g {
   .scrollable {
     // overflow: auto;
     margin-bottom: 1rem;
-    overflow: auto;
-    overflow-x: hidden;
+    // overflow: auto;
+    // overflow-x: hidden;
   }
 
   .active-filters-heading, .filters-heading {
@@ -395,14 +397,18 @@ symbol g {
 
 }
 
-html.gt-ie10 {
+html.gt-ie10, html.ios9 {
+  // #sidebar {
+  //   overflow: auto;
+  // }
+
   #sidebar {
-    overflow: auto;
+    display: block;
   }
 
   .scrollable {
-    margin-top: 4rem;
-    overflow: visible;
+    // margin-top: 8rem;
+    // overflow: visible;
   }
 
   .bibLinks {
