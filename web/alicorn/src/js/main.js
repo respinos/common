@@ -60,8 +60,8 @@ var HT = HT || {};
             // make this more robust later
             var babel_prefix = prefix;
             if ( hostname == 'test.www.hathitrust.org' ) {
-                babel_prefix = 'beta-3';
-                prefix = 'beta-3';
+                babel_prefix = 'test'; // beta-3';
+                prefix = 'test'; // beta-3';
             }
             if ( babel_prefix != 'test' && ! babel_prefix.match('beta-') && ! babel_prefix.match('-full') ) { babel_prefix += '-full'; }
             if ( prefix.match('-full') ) { prefix = prefix.replace('-full', ''); }
