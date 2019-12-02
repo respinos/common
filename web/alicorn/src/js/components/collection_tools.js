@@ -410,7 +410,7 @@ head.ready(function() {
       HT.update_status(`Added collection ${params.coll_name} to your list.`);
   }
 
-  function confirm_large(collSize, addNumItems, callback) {
+  function confirm_large(collSize, addNumItems, $btn, callback) {
 
       if ( collSize <= 1000 && collSize + addNumItems > 1000 ) {
           var numStr;
@@ -426,10 +426,12 @@ head.ready(function() {
               if ( answer ) {
                   callback();
               }
+              $btn.removeClass('btn-loading');
           })
       } else {
           // all other cases are okay
           callback();
+          $btn.removeClass('btn-loading');
       }
   }
 
@@ -473,7 +475,7 @@ head.ready(function() {
     var COLL_SIZE_ARRAY = getCollSizeArray();
     var coll_size = COLL_SIZE_ARRAY[selected_collection_id] || NEW_COLL_NUM_ITEMS[selected_collection_id];
 
-    confirm_large(coll_size, add_num_items, function() {
+    confirm_large(coll_size, add_num_items, $btn, function() {
         // possible ajax action
         submit_post({
             a : action,

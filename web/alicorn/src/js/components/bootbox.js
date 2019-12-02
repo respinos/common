@@ -576,12 +576,13 @@ var bootbox = function () {
     return dialog(message, [
       {
           "label" : "Cancel",
-          "class" : "btn-dismiss"
+          "class" : "btn-dismiss",
+          "callback" : function() { callback(false); }
       },
       {
           "label" : "OK",
           "class" : "btn btn-primary btn-dismiss",
-          "callback" : callback
+          "callback" : function() { callback(true); }
       }
     ]);
   }
