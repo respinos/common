@@ -422,7 +422,7 @@ head.ready(function() {
           }
           var msg = "Note: Your collection contains " + collSize + " items.  Adding " + numStr + " to your collection will increase its size to more than 1000 items.  This means your collection will not be searchable until it is indexed, usually within 1-5 days.  After that, just newly added items will see this delay before they can be searched. \n\nDo you want to proceed?"
 
-          confirm(msg, function(answer) {
+          bootbox.confirm(msg, function(answer) {
               if ( answer ) {
                   callback();
               }

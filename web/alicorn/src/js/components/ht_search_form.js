@@ -122,6 +122,7 @@ head.ready(function() {
   $("body").on('submit', '.ht-search-form', function(event)
        {
 
+          HT.beforeUnloadTimeout = 15000;
           var $form = $(this);
 
           if ( ! this.checkValidity() ) {

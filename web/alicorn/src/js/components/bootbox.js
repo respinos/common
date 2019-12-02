@@ -572,11 +572,25 @@ var bootbox = function () {
     return show(dialog, {onClose: onClose, callbacks: callbacks, onShow: options.onShow});
   }
 
+  var confirm = function(message, callback) {
+    return dialog(message, [
+      {
+          "label" : "Cancel",
+          "class" : "btn-dismiss"
+      },
+      {
+          "label" : "OK",
+          "class" : "btn btn-primary btn-dismiss",
+          "callback" : callback
+      }
+    ]);
+  }
+
   var hideAll =function() {
     /* WHEN WOULD THIS BE A VALID SCENARIO? */
   }
 
-  return { init: init, show: show, close: close, alert: alert, dialog: dialog, hideAll: hideAll, active: active };
+  return { init: init, show: show, close: close, alert: alert, dialog: dialog, confirm: confirm, hideAll: hideAll, active: active };
 }();
 
 return bootbox;

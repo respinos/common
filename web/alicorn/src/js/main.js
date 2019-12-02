@@ -63,7 +63,7 @@ var HT = HT || {};
                 babel_prefix = 'test'; // beta-3';
                 prefix = 'test'; // beta-3';
             }
-            if ( babel_prefix != 'test' && ! babel_prefix.match('beta-') && ! babel_prefix.match('-full') ) { babel_prefix += '-full'; }
+            if ( ! babel_prefix.match(/beta-|preview|test/) && ! babel_prefix.match('-full') ) { babel_prefix += '-full'; }
             if ( prefix.match('-full') ) { prefix = prefix.replace('-full', ''); }
             HT.service_domain = babel_prefix + '.babel.hathitrust.org';
             HT.catalog_domain = prefix + '.catalog.hathitrust.org';
@@ -188,12 +188,13 @@ var HT = HT || {};
         }, 500);
     })
 
-    window.addEventListener('beforeunload', function() {
+    window.addEventListener('beforeunload', function(event) {
+        var timeout = HT.beforeUnloadTimeout || 5000;
         setTimeout(function() {
             $('<div class="wait-for-it"></div>').appendTo("body");
             setTimeout(function() {
                 $(".wait-for-it").remove();
-            }, 5000); // maybe something went wrong
+            }, timeout); // maybe something went wrong
         }, 501);
     })
 
