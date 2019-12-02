@@ -115,8 +115,6 @@ var HT = HT || {};
     //     // }
     // });
 
-    console.log("AHOY THIS IS RUNNING?");
-
     var $rootStatus;
     HT.update_status = function(message) {
         if ( $rootStatus === undefined ) { $rootStatus = $("#root > div[role=status]"); }
@@ -149,13 +147,10 @@ var HT = HT || {};
     var vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', vh + 'px');
 
-    console.log("AHOY THIS IS RUNNING?", vh);
-
     var t = 0;; var lastwh = 0;
     window.tx = setInterval(function() {
         t += 100;
         if ( window.innerHeight != lastwh ) {
-            console.log("AHOY AHOY INNER HEIGHT", window.innerHeight, t);
             lastwh = window.innerHeight;
 
             var vh = window.innerHeight * 0.01;
@@ -207,5 +202,11 @@ var HT = HT || {};
     if ( navigator && navigator.userAgent && navigator.userAgent.match(/Edge\/1[678]/) ) {
         document.documentElement.classList.add('edge');
     }
+
+    // var $alert = $(".alert");
+    // if ( $alert.length ) {
+    //     // have alerts that were drawn on the page so read them aloud
+    //     HT.update_status($alert.text());
+    // }
 
 })();

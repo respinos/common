@@ -16,6 +16,7 @@ head.ready(function() {
   function summarize_results(params) {
       var $div = $(".mb-status");
       if ( $div.length ) { $div.remove(); }
+      $(".alert.alert-operation").remove();
       var status = 'alert-success';
       if ( params.result == 'ADD_ITEM_FAILURE' ) {
           status = 'alert-error';
@@ -27,26 +28,38 @@ head.ready(function() {
       var collID = params.coll_id;
       var collName = params.coll_name;
       var collHref= '<a href="mb?a=listis;c=' + collID + '">' + collName + '</a>';
-      var numAdded=params.NumAdded;
+      var numAdded=params.NumAddedToCollection;
+      var numAlreadyInCollection = params.NumAlreadyInCollection;
       var numFailed=params.NumFailed;
       var alertMsg;
-      var msg;
+      var msg = [];
       if ( params.result == 'ADD_ITEM_FAILURE' ) {
-          msg = "Sorry; there was a problem adding these items to your collection.";
+          msg = [ "Sorry; there was a problem adding these items to your collection." ];
       } else if (numFailed > 0 ){
-        msg = "numFailed items could not be added to your collection,\n " +  numAdded + " items were added to " + collHref;
-      }
-      else {
-        //  var msg =  params.NumAdded + " items of " + params.NumSubmitted + " were added to " + collHref + " collection";
-        if (numAdded >1){
-          msg =  numAdded + " items were added to " + collHref;
-        }
-        else{
-          msg =  numAdded + " item was added to " + collHref;
-        }
+        msg.push(`${numFailed} item${numFailed > 1 ? 's' : ''} could not be added to your collection`);
       }
 
+      if ( numAdded > 1 ) {
+        msg.push(`${numAdded} item${numAdded > 1 ? 's' : ''} ${numAdded > 1 ? 'were' : 'was'} added to ${collHref}.`);
+      }
+
+      if ( numAlreadyInCollection ) {
+        msg.push(`${numAlreadyInCollection} item${numAlreadyInCollection > 1 ? 's' : ''} ${numAlreadyInCollection > 1 ? 'were' : 'was'} already in ${collHref}.`)
+      }
+
+      // else {
+      //   //  var msg =  params.NumAdded + " items of " + params.NumSubmitted + " were added to " + collHref + " collection";
+      //   if (numAdded >1){
+      //     msg =  numAdded + " items were added to " + collHref;
+      //   }
+      //   else{
+      //     msg =  numAdded + " item was added to " + collHref;
+      //   }
+      // }
+
+      msg = msg.join(' ');
       $div.html(msg).show();
+      HT.update_status($div.text());
       add_item_to_collist(params);
 
       toggle_checkbox($select_all, false);
@@ -405,9 +418,8 @@ head.ready(function() {
           // need to add
           $option = $('<option></option>').val(params.coll_id).text(params.coll_name).appendTo($available_collections);
           NEW_COLL_NUM_ITEMS[params.coll_id] = params.NumAdded;
+          HT.update_status(`Added collection ${params.coll_name} to your list.`);
       }
-
-      HT.update_status(`Added collection ${params.coll_name} to your list.`);
   }
 
   function confirm_large(collSize, addNumItems, $btn, callback) {
@@ -431,7 +443,6 @@ head.ready(function() {
       } else {
           // all other cases are okay
           callback();
-          $btn.removeClass('btn-loading');
       }
   }
 
