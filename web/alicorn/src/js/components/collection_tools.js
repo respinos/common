@@ -16,6 +16,7 @@ head.ready(function() {
   function summarize_results(params) {
       var $div = $(".mb-status");
       if ( $div.length ) { $div.remove(); }
+      $(".alert.alert-operation").remove();
       var status = 'alert-success';
       if ( params.result == 'ADD_ITEM_FAILURE' ) {
           status = 'alert-error';
@@ -27,26 +28,38 @@ head.ready(function() {
       var collID = params.coll_id;
       var collName = params.coll_name;
       var collHref= '<a href="mb?a=listis;c=' + collID + '">' + collName + '</a>';
-      var numAdded=params.NumAdded;
+      var numAdded=params.NumAddedToCollection;
+      var numAlreadyInCollection = params.NumAlreadyInCollection;
       var numFailed=params.NumFailed;
       var alertMsg;
-      var msg;
+      var msg = [];
       if ( params.result == 'ADD_ITEM_FAILURE' ) {
-          msg = "Sorry; there was a problem adding these items to your collection.";
+          msg = [ "Sorry; there was a problem adding these items to your collection." ];
       } else if (numFailed > 0 ){
-        msg = "numFailed items could not be added to your collection,\n " +  numAdded + " items were added to " + collHref;
-      }
-      else {
-        //  var msg =  params.NumAdded + " items of " + params.NumSubmitted + " were added to " + collHref + " collection";
-        if (numAdded >1){
-          msg =  numAdded + " items were added to " + collHref;
-        }
-        else{
-          msg =  numAdded + " item was added to " + collHref;
-        }
+        msg.push(`${numFailed} item${numFailed > 1 ? 's' : ''} could not be added to your collection`);
       }
 
+      if ( numAdded > 1 ) {
+        msg.push(`${numAdded} item${numAdded > 1 ? 's' : ''} ${numAdded > 1 ? 'were' : 'was'} added to ${collHref}.`);
+      }
+
+      if ( numAlreadyInCollection ) {
+        msg.push(`${numAlreadyInCollection} item${numAlreadyInCollection > 1 ? 's' : ''} ${numAlreadyInCollection > 1 ? 'were' : 'was'} already in ${collHref}.`)
+      }
+
+      // else {
+      //   //  var msg =  params.NumAdded + " items of " + params.NumSubmitted + " were added to " + collHref + " collection";
+      //   if (numAdded >1){
+      //     msg =  numAdded + " items were added to " + collHref;
+      //   }
+      //   else{
+      //     msg =  numAdded + " item was added to " + collHref;
+      //   }
+      // }
+
+      msg = msg.join(' ');
       $div.html(msg).show();
+      HT.update_status($div.text());
       add_item_to_collist(params);
 
       toggle_checkbox($select_all, false);
@@ -405,12 +418,11 @@ head.ready(function() {
           // need to add
           $option = $('<option></option>').val(params.coll_id).text(params.coll_name).appendTo($available_collections);
           NEW_COLL_NUM_ITEMS[params.coll_id] = params.NumAdded;
+          HT.update_status(`Added collection ${params.coll_name} to your list.`);
       }
-
-      HT.update_status(`Added collection ${params.coll_name} to your list.`);
   }
 
-  function confirm_large(collSize, addNumItems, callback) {
+  function confirm_large(collSize, addNumItems, $btn, callback) {
 
       if ( collSize <= 1000 && collSize + addNumItems > 1000 ) {
           var numStr;
@@ -422,10 +434,11 @@ head.ready(function() {
           }
           var msg = "Note: Your collection contains " + collSize + " items.  Adding " + numStr + " to your collection will increase its size to more than 1000 items.  This means your collection will not be searchable until it is indexed, usually within 1-5 days.  After that, just newly added items will see this delay before they can be searched. \n\nDo you want to proceed?"
 
-          confirm(msg, function(answer) {
+          bootbox.confirm(msg, function(answer) {
               if ( answer ) {
                   callback();
               }
+              $btn.removeClass('btn-loading');
           })
       } else {
           // all other cases are okay
@@ -473,7 +486,7 @@ head.ready(function() {
     var COLL_SIZE_ARRAY = getCollSizeArray();
     var coll_size = COLL_SIZE_ARRAY[selected_collection_id] || NEW_COLL_NUM_ITEMS[selected_collection_id];
 
-    confirm_large(coll_size, add_num_items, function() {
+    confirm_large(coll_size, add_num_items, $btn, function() {
         // possible ajax action
         submit_post({
             a : action,

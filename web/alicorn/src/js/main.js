@@ -63,7 +63,7 @@ var HT = HT || {};
                 babel_prefix = 'test'; // beta-3';
                 prefix = 'test'; // beta-3';
             }
-            if ( babel_prefix != 'test' && ! babel_prefix.match('beta-') && ! babel_prefix.match('-full') ) { babel_prefix += '-full'; }
+            if ( ! babel_prefix.match(/beta-|preview|test/) && ! babel_prefix.match('-full') ) { babel_prefix += '-full'; }
             if ( prefix.match('-full') ) { prefix = prefix.replace('-full', ''); }
             HT.service_domain = babel_prefix + '.babel.hathitrust.org';
             HT.catalog_domain = prefix + '.catalog.hathitrust.org';
@@ -115,8 +115,6 @@ var HT = HT || {};
     //     // }
     // });
 
-    console.log("AHOY THIS IS RUNNING?");
-
     var $rootStatus;
     HT.update_status = function(message) {
         if ( $rootStatus === undefined ) { $rootStatus = $("#root > div[role=status]"); }
@@ -149,13 +147,10 @@ var HT = HT || {};
     var vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', vh + 'px');
 
-    console.log("AHOY THIS IS RUNNING?", vh);
-
     var t = 0;; var lastwh = 0;
     window.tx = setInterval(function() {
         t += 100;
         if ( window.innerHeight != lastwh ) {
-            console.log("AHOY AHOY INNER HEIGHT", window.innerHeight, t);
             lastwh = window.innerHeight;
 
             var vh = window.innerHeight * 0.01;
@@ -188,12 +183,13 @@ var HT = HT || {};
         }, 500);
     })
 
-    window.addEventListener('beforeunload', function() {
+    window.addEventListener('beforeunload', function(event) {
+        var timeout = HT.beforeUnloadTimeout || 5000;
         setTimeout(function() {
             $('<div class="wait-for-it"></div>').appendTo("body");
             setTimeout(function() {
                 $(".wait-for-it").remove();
-            }, 5000); // maybe something went wrong
+            }, timeout); // maybe something went wrong
         }, 501);
     })
 
@@ -206,5 +202,11 @@ var HT = HT || {};
     if ( navigator && navigator.userAgent && navigator.userAgent.match(/Edge\/1[678]/) ) {
         document.documentElement.classList.add('edge');
     }
+
+    // var $alert = $(".alert");
+    // if ( $alert.length ) {
+    //     // have alerts that were drawn on the page so read them aloud
+    //     HT.update_status($alert.text());
+    // }
 
 })();
