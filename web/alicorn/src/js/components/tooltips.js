@@ -10,6 +10,8 @@ const timeouts = new WeakMap();
 // and do not show the tooltip again
 const dismissals = new WeakMap();
 
+const initialized = new WeakMap();
+
 const TOOLTIP_OPTION = 'tooltip'; // 'humane'
 
 var idx = 0;
@@ -18,7 +20,7 @@ var messageIdx = 0;
 function initTooltipHumane(tooltipContainer) {
   const trigger = tooltipContainer;
   const tooltip = trigger;
-  tooltipContainer.addEventListener('mouseenter', () => {
+  tooltipContainer.addEventListener('mouseover', () => {
     showTooltipHumane(tooltip);
   });
   trigger.addEventListener('focus', () => {
@@ -49,6 +51,8 @@ function initTooltip(tooltipContainer) {
     trigger.setAttribute('aria-label', $.trim(tooltip.innerText));
   }
   
+  initialized.set(trigger, true);
+
   tooltip.classList.add('tooltip');
   tooltip.classList.remove('offscreen');
   tooltip.classList.add(trigger.dataset.microtipPosition || 'bottom');
@@ -62,34 +66,34 @@ function initTooltip(tooltipContainer) {
     tooltip.innerText = trigger.getAttribute('aria-label');
   }
 
-  // show tooltip on hover and focus
-  tooltipContainer.addEventListener('mouseenter', () => {
-    showTooltip(tooltip);
-  });
-  trigger.addEventListener('focus', () => {
-    showTooltip(tooltip);
-  });
-  // trigger.addEventListener('click', () => {
-  //   timeoutTooltip(tooltip, ACTIVE_TIMEOUT_LENGTH);
+  // // show tooltip on hover and focus
+  // tooltipContainer.addEventListener('mouseover', () => {
+  //   showTooltip(tooltip);
+  // });
+  // trigger.addEventListener('focus', () => {
+  //   showTooltip(tooltip);
+  // });
+  // // trigger.addEventListener('click', () => {
+  // //   timeoutTooltip(tooltip, ACTIVE_TIMEOUT_LENGTH);
+  // // });
+  
+  // // hide tooltip on mouse out and blur
+  // // use timeout on mouse leave
+  // tooltipContainer.addEventListener('mouseleave', () => {
+  //   timeoutTooltip(tooltip);
+  // });
+  // trigger.addEventListener('blur', () => {
+  //   hideTooltip(tooltip);
   // });
   
-  // hide tooltip on mouse out and blur
-  // use timeout on mouse leave
-  tooltipContainer.addEventListener('mouseleave', () => {
-    timeoutTooltip(tooltip);
-  });
-  trigger.addEventListener('blur', () => {
-    hideTooltip(tooltip);
-  });
-  
-  // hide the tooltip on escape key press
-  trigger.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      hideTooltip(tooltip);
-      // save dismissal
-      dismissals.set(tooltip, true);
-    }
-  });
+  // // hide the tooltip on escape key press
+  // trigger.addEventListener('keydown', (event) => {
+  //   if (event.key === 'Escape') {
+  //     hideTooltip(tooltip);
+  //     // save dismissal
+  //     dismissals.set(tooltip, true);
+  //   }
+  // });
 
   // create a close button for pointer dismissal
   const closeBtn = document.createElement('button');
@@ -146,11 +150,12 @@ function showTooltip(tooltip) {
     // tooltip.style.left = `${( bounds.left - $(tooltip).width() ) - (bounds.width / 2)}px`;
     tooltip.style.right = `${( window.innerWidth - bounds.left ) * 1.05}px`;
   } else if ( tooltip.classList.contains('bottom') ) {
-    tooltip.style.top = `${( bounds.y + bounds.height ) * 1.025}px`;
-    tooltip.style.left = `${bounds.x - ( bounds.width / 2 )}px`;
+    console.log("AHOY SHOW TOOLTIP BOTTOM", bounds.top, bounds.height, "/", bounds.x, bounds.width, bounds);
+    tooltip.style.top = `${( bounds.top + bounds.height ) * 1.025}px`;
+    tooltip.style.left = `${bounds.left - ( bounds.width / 2 )}px`;
   } else if ( tooltip.classList.contains('top') ) {
     tooltip.style.top = `${( bounds.top - bounds.height ) * 0.995}px`;
-    tooltip.style.left = `${bounds.x - ( bounds.width / 2 )}px`;
+    tooltip.style.left = `${bounds.left - ( bounds.width / 2 )}px`;
   }
   tooltip.style.display = 'block';
   tooltip.dataset.active = true;
@@ -187,6 +192,7 @@ function timeoutTooltipHumane(tooltip, duration) {
 }
 
 function timeoutTooltip(tooltip) {
+  if ( ! tooltip ) { return ; }
   const timeoutId = window.setTimeout(() => {
     hideTooltip(tooltip);
   }, TIMEOUT_LENGTH);  
@@ -203,15 +209,66 @@ head.ready(function() {
     document.body.appendChild(message);
   }
 
-  setTimeout(() => {
-    const tooltips = document.querySelectorAll('[data-role="tooltip"]');
-    console.log("AHOY TOOLTIPS INIT", tooltips);
-    tooltips.forEach((tooltip) => {
-      if ( TOOLTIP_OPTION == 'tooltip' ) {
-        initTooltip(tooltip);
-      } else {
-        initTooltipHumane(tooltip);
-      }
-    });
-  }, 500);
+  // setTimeout(() => {
+  //   const tooltips = document.querySelectorAll('[data-role="tooltip"]');
+  //   console.log("AHOY TOOLTIPS INIT", tooltips);
+  //   tooltips.forEach((tooltip) => {
+  //     if ( TOOLTIP_OPTION == 'tooltip' ) {
+  //       initTooltip(tooltip);
+  //     } else {
+  //       initTooltipHumane(tooltip);
+  //     }
+  //   });
+  // }, 500);
+
+  // mouseover
+  // mouseleave
+  // focus
+  // keydown
+  // show tooltip on hover and focus
+  document.body.addEventListener('mouseenter', (event) => {
+    if ( ! event.target.matches ) { return; }
+    if ( ! event.target.matches('[data-role="tooltip"]') ) { return ; }
+    if ( ! initialized.has(event.target) ) { console.log("AHOY TOOLTIP INIT", event.target); initTooltip(event.target); }
+    console.log("AHOY TOOLTIP MOUSEOVER", event.target);
+    showTooltip(event.target.querySelector('.tooltip'));
+  }, true);
+
+  document.body.addEventListener('focus', (event) => {
+    if ( ! event.target.matches ) { return; }
+    if ( ! event.target.matches('[data-role="tooltip"]') ) { return ; }
+    if ( ! initialized.has(event.target) ) { initTooltip(event.target); }
+    showTooltip(event.target.querySelector('.tooltip'));
+  });
+  
+  // hide tooltip on mouse out and blur
+  // use timeout on mouse leave
+
+  document.body.addEventListener('mouseleave', (event) => {
+    if ( ! event.target.matches ) { return; }
+    if ( ! event.target.matches('[data-role="tooltip"]') ) { return ; }
+    if ( ! initialized.has(event.target) ) { return; }
+    console.log("AHOY TOOLTIP MOUSEOUT", event.target);
+    timeoutTooltip(event.target.querySelector('.tooltip'));
+  }, true);
+  document.body.addEventListener('blur', (event) => {
+    if ( ! event.target.matches ) { return; }
+    if ( ! event.target.matches('[data-role="tooltip"]') ) { return ; }
+    if ( ! initialized.has(event.target) ) { return; }
+    hideTooltip(event.target.querySelector('.tooltip'));
+  });
+  
+  // hide the tooltip on escape key press
+  document.addEventListener('keydown', (event) => {
+    if ( ! event.target.matches ) { return; }
+    if ( ! event.target.matches('[data-role="tooltip"]') ) { return ; }
+    if ( ! initialized.has(event.target) ) { return; }
+    if (event.key === 'Escape') {
+      hideTooltip(event.target.querySelector('.tooltip'));
+      // save dismissal
+      dismissals.set(event.target.querySelector('.tooltip'), true);
+    }
+  });
+
+
 })
