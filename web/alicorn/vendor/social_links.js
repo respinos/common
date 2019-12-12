@@ -364,7 +364,7 @@
             _widget.dataset.role = 'tooltip';
             _widget.dataset.microtipPosition = 'top';
             _widget.dataset.microtipSize = 'small';
-            _widget.setAttribute('aria-label', widget.text());
+            _widget.setAttribute('aria-label', $.trim(widget.text()));
             // widget.tooltip({ title : widget.text(), animation: false });
 
             this.button = button;
