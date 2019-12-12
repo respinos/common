@@ -150,7 +150,6 @@ function showTooltip(tooltip) {
     // tooltip.style.left = `${( bounds.left - $(tooltip).width() ) - (bounds.width / 2)}px`;
     tooltip.style.right = `${( window.innerWidth - bounds.left ) * 1.05}px`;
   } else if ( tooltip.classList.contains('bottom') ) {
-    console.log("AHOY SHOW TOOLTIP BOTTOM", bounds.top, bounds.height, "/", bounds.x, bounds.width, bounds);
     tooltip.style.top = `${( bounds.top + bounds.height ) * 1.025}px`;
     tooltip.style.left = `${bounds.left - ( bounds.width / 2 )}px`;
   } else if ( tooltip.classList.contains('top') ) {
@@ -177,7 +176,6 @@ function timeoutTooltipHumane(tooltip, duration) {
   if ( ! duration ) { duration = TIMEOUT_LENGTH; }
   messageIdx -= 1;
   if ( timeoutId ) {
-    console.log("AHOY HIDE TOOLTIP PREVIOUSLY", timeoutId, messageIdx);
     clearTimeout(timeoutId);
     timeoutId = null;
   }
@@ -230,7 +228,6 @@ head.ready(function() {
     if ( ! event.target.matches ) { return; }
     if ( ! event.target.matches('[data-role="tooltip"]') ) { return ; }
     if ( ! initialized.has(event.target) ) { console.log("AHOY TOOLTIP INIT", event.target); initTooltip(event.target); }
-    console.log("AHOY TOOLTIP MOUSEOVER", event.target);
     showTooltip(event.target.querySelector('.tooltip'));
   }, true);
 
@@ -248,7 +245,6 @@ head.ready(function() {
     if ( ! event.target.matches ) { return; }
     if ( ! event.target.matches('[data-role="tooltip"]') ) { return ; }
     if ( ! initialized.has(event.target) ) { return; }
-    console.log("AHOY TOOLTIP MOUSEOUT", event.target);
     timeoutTooltip(event.target.querySelector('.tooltip'));
   }, true);
   document.body.addEventListener('blur', (event) => {
