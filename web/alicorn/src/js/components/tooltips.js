@@ -227,7 +227,7 @@ head.ready(function() {
   document.body.addEventListener('mouseenter', (event) => {
     if ( ! event.target.matches ) { return; }
     if ( ! event.target.matches('[data-role="tooltip"]') ) { return ; }
-    if ( ! initialized.has(event.target) ) { console.log("AHOY TOOLTIP INIT", event.target); initTooltip(event.target); }
+    if ( ! initialized.has(event.target) ) { initTooltip(event.target); }
     showTooltip(event.target.querySelector('.tooltip'));
   }, true);
 

@@ -33,17 +33,20 @@ head.ready(function() {
       var numFailed=params.NumFailed;
       var alertMsg;
       var msg = [];
+
+      console.log("AHOY PARAMS", params);
+
       if ( params.result == 'ADD_ITEM_FAILURE' ) {
           msg = [ "Sorry; there was a problem adding these items to your collection." ];
       } else if (numFailed > 0 ){
         msg.push(`${numFailed} item${numFailed > 1 ? 's' : ''} could not be added to your collection`);
       }
 
-      if ( numAdded > 1 ) {
+      if ( numAdded >= 1 ) {
         msg.push(`${numAdded} item${numAdded > 1 ? 's' : ''} ${numAdded > 1 ? 'were' : 'was'} added to ${collHref}.`);
       }
 
-      if ( numAlreadyInCollection ) {
+      if ( numAlreadyInCollection > 0 ) {
         msg.push(`${numAlreadyInCollection} item${numAlreadyInCollection > 1 ? 's' : ''} ${numAlreadyInCollection > 1 ? 'were' : 'was'} already in ${collHref}.`)
       }
 
@@ -384,6 +387,13 @@ head.ready(function() {
   }
   HT.ctools.hide_info = hide_info;
 
+  function hide_status() {
+    var $div = $(".mb-status");
+    if ( $div.length ) { $div.remove(); }
+    $(".alert.alert-operation").remove();
+    HT.update_status('--');
+  }
+
   function get_url() {
       var url = "/cgi/mb";
       if ( location.pathname.indexOf("/shcgi/") > -1 ) {
@@ -404,7 +414,7 @@ head.ready(function() {
   function parse_line(data) {
       var retval = {};
       var kv;
-      var tmp = data.split("|");
+      var tmp = data.trim().split("|");
       for(var i = 0; i < tmp.length; i++) {
           kv = tmp[i].split("=");
           retval[kv[0]] = kv[1];
@@ -452,6 +462,7 @@ head.ready(function() {
     var $btn = $(this);
 
     hide_error();
+    hide_status();
 
     var selected_collection_id = $available_collections.val();
     var selected_collection_name = $available_collections.find("option:selected").text();

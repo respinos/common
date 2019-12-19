@@ -128,6 +128,10 @@ var HT = HT || {};
 
     var lastMessage; var lastTimer;
     HT._update_status = function($status, message) {
+        if ( message == '--') {
+            lastMessage = message;
+            return;
+        }
         if ( lastMessage != message ) {
           if ( lastTimer ) { clearTimeout(lastTimer); lastTimer = null; }
 
