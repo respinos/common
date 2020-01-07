@@ -231,7 +231,7 @@ head.ready(function() {
     showTooltip(event.target.querySelector('.tooltip'));
   }, true);
 
-  document.body.addEventListener('focus', (event) => {
+  document.body.addEventListener('focusin', (event) => {
     if ( ! event.target.matches ) { return; }
     if ( ! event.target.matches('[data-role="tooltip"]') ) { return ; }
     if ( ! initialized.has(event.target) ) { initTooltip(event.target); }
@@ -248,6 +248,13 @@ head.ready(function() {
     timeoutTooltip(event.target.querySelector('.tooltip'));
   }, true);
   document.body.addEventListener('blur', (event) => {
+    if ( ! event.target.matches ) { return; }
+    if ( ! event.target.matches('[data-role="tooltip"]') ) { return ; }
+    if ( ! initialized.has(event.target) ) { return; }
+    hideTooltip(event.target.querySelector('.tooltip'));
+  });
+
+  document.body.addEventListener('focusout', (event) => {
     if ( ! event.target.matches ) { return; }
     if ( ! event.target.matches('[data-role="tooltip"]') ) { return ; }
     if ( ! initialized.has(event.target) ) { return; }
