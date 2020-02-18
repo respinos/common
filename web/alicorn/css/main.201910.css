@@ -3223,9 +3223,12 @@ symbol g {
 }
 
 .sidebar-container #mdpBackToResults {
-  padding: 1rem 1rem 0.5rem;
   width: 95%;
   margin: 0 auto;
+}
+
+.sidebar-container #mdpBackToResults p {
+  margin: 1rem 1rem 0.5rem;
 }
 
 .sidebar-container > h2 {
