@@ -215,6 +215,7 @@ head.ready(function() {
             }
         })
 
+        var login_href = 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href);
         if ( status.expired ) {
             // var $alert = $('<div class="alert alert-block alert-warning alert-plain alert-banner"><a href="javascript:;" aria-label="Close banner" class="close" style="margin-right: 24px;"><i aria-hidden="true" class="icomoon icomoon-cancel"></i></a><p>You have been logged out. <a class="btn btn-default" data-action="login" data-close-target=".modal.login" href="#">Login</a></p></div>');
             // $alert.find("a[data-action='login']").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href));
@@ -224,7 +225,6 @@ head.ready(function() {
             // if ( ! $target.length ) { $target = $("h1"); }
             // $alert.insertAfter($target);
 
-            var login_href = 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href);
             insert_banner('login-expired', '<p>You have been logged out. <a class="btn btn-default" data-action="login" data-close-target=".modal.login" href="' + login_href + '">Login</a></p>', true);
         }
 
@@ -251,7 +251,7 @@ head.ready(function() {
                     $.removeCookie('HTproviderName', { domain: '.hathitrust.org', path: '/', secure: true });
                 }
                 var message = `You have been logged out of HathiTrust, but are still logged in to your provider (${last_provider}).`;
-                insert_banner('logged-out', `<p>${message} <a class="btn btn-default" data-action="login" data-close-target=".modal.login" href="' + login_href + '">Login</a></p>`, true, callback);
+                insert_banner('logged-out', `<p>${message} <a class="btn btn-default" data-action="login" data-close-target=".modal.login" href="${login_href}">Login</a></p>`, true, callback);
             }
             $.removeCookie('HTproviderName', { domain: '.hathitrust.org', path: '/', secure: true });
         }

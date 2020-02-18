@@ -63,7 +63,8 @@ head.ready(function() {
     // $selected.get(0).focus();
   })
 
-  $sidebar.on('click keydown', '.filter-group-toggle-show-button', function(event) {
+  // $sidebar.on('click keydown', '.filter-group-toggle-show-button', function(event) {
+  $("body").on('click keydown', '.sidebar-container .filter-group-toggle-show-button', function(event) {
     if ( event.type == 'keydown' && ! ( event.keyCode == 32 || event.key == 'Enter' )) {
       return;
     }
@@ -93,7 +94,8 @@ head.ready(function() {
     location.href = href + value;
   })
 
- $(".sidebar-toggle-button").on('clicked', function() {
+ // $(".sidebar-toggle-button").on('clicked', function() {
+ $("body").on('clicked', '.sidebar-toggle-button', function() {
    // $sidebar.css('overflow', $(this).attr('aria-expanded') == 'true' ? 'auto' : 'hidden');
    document.documentElement.dataset.sidebarExpanded = $(this).attr('aria-expanded') == 'true';
  });
