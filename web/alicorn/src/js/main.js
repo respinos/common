@@ -148,17 +148,28 @@ var HT = HT || {};
         }
     }
 
-    var vh = window.innerHeight * 0.01;
+    var $html = $("html");
+    var __get_vh = function() {
+        var vh = window.innerHeight;
+        // if ( navigator.userAgent.match(/iphone|ipod|ipad/i) && window.visualViewport ) { vh *= window.visualViewport.scale; }
+        if ( window.visualViewport && window.visualViewport.scale != 1 ) {
+            vh = window.visualViewport.height * window.visualViewport.scale;
+        }
+        return vh;
+    };
+
+    var vh = __get_vh() * 0.01; // window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', vh + 'px');
 
     var t = 0;; var lastwh = 0;
     window.tx = setInterval(function() {
         t += 100;
-        if ( window.innerHeight != lastwh ) {
-            lastwh = window.innerHeight;
+        var vh = __get_vh();
+        if ( vh != lastwh ) {
+            lastwh = vh;
 
-            var vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', vh + 'px');
+            // var vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', ( vh * 0.01 ) + 'px');
 
             var event = document.createEvent('UIEvents');
             event.initEvent('resize', true, false, window, 0);
@@ -167,18 +178,19 @@ var HT = HT || {};
     }, 100);
 
     setTimeout(function() {
-        vh = window.innerHeight * 0.01;
+        // vh = window.innerHeight * 0.01;
+        var vh = __get_vh() * 0.01;
         document.documentElement.style.setProperty('--vh', vh + 'px');
     }, 500);
 
     window.addEventListener('resize', function() {
-        var vh = window.innerHeight * 0.01;
+        var vh = __get_vh() * 0.01; // window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', vh + 'px');
     });
 
     window.addEventListener("orientationchange", function() {
         setTimeout(function() {
-            var vh = window.innerHeight * 0.01;
+            var vh = __get_vh() * 0.01; // window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', vh + 'px');
 
             if ( HT && HT.utils && HT.utils.handleOrientationChange ) {
