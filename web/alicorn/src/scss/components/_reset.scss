@@ -283,7 +283,8 @@ button:not([class]), input[type=submit], a.btn, button.btn, button.btn-dismiss {
 button[disabled], a[disabled] {
   opacity: 0.65;
   pointer-events: none;
-  cursor: default;
+  cursor: not-allowed;
+  text-decoration: none;
 }
 
 input[type=text] + button {
