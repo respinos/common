@@ -71,6 +71,27 @@ var HT = HT || {};
         }
     }
 
+
+    document.addEventListener('DOMContentLoaded', function(event) {
+
+        if ( 
+            ( window.location.href.indexOf('babel.hathitrust.org') < 0 ) &&
+            ( window.location.href.indexOf('signon=') > -1 )        
+        ) {
+            // try to do the shibboleth dance
+            var tmp = location.href.split('signon=swle:');
+            var entityId = tmp.pop();
+            var target = tmp[0];
+            if ( document.querySelector('#logout-link') || document.querySelector('.logout-link') ) {
+                history.replaceState({}, document.title, target);
+            } else {
+                var pong_target = encodeURIComponent(`https://${HT.service_domain}/cgi/ping/pong?target=${target}`);
+                var redirect_href = `https://${HT.service_domain}/Shibboleth.sso/Login?entityID=${entityId}&target=${pong_target}`;
+                window.location.href = redirect_href;
+            }
+        }
+    })
+
     // // service_url is either the babel dev, beta-3, or babel
     // HT.service_domain = ( HT.is_babel ? hostname : ( HT.is_dev ? 'test.babel.hathitrust.org' : 'babel.hathitrust.org' ) );
     // if ( hostname.indexOf('beta-3') > -1 ) {
