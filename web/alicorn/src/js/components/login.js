@@ -344,7 +344,7 @@ head.ready(function() {
             //     '</ul>';
             // $(html).prependTo($footer);
         }
-        var $logout_link = $(".logout-link");
+        var $logout_link = $(".logout-link,#logout-link");
         $logout_link.attr('href', 'https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + encodeURIComponent(window.location.href))
         if ( 0 && status.authType == 'shibboleth' ) {
             $logout_link.click(function(e) {
