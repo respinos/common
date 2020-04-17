@@ -86,7 +86,12 @@ var HT = HT || {};
                 history.replaceState({}, document.title, target);
             } else {
                 var pong_target = encodeURIComponent(`https://${HT.service_domain}/cgi/ping/pong?target=${target}`);
-                var redirect_href = `https://${HT.service_domain}/Shibboleth.sso/Login?entityID=${entityId}&target=${pong_target}`;
+                var redirect_href;
+                if ( entityId == 'wayf' ) {
+                    redirect_href = `https://${HT.service_domain}/cgi/wayf?target=${pong_target}`;
+                } else {
+                    redirect_href = `https://${HT.service_domain}/Shibboleth.sso/Login?entityID=${entityId}&target=${pong_target}`;
+                }
                 window.location.href = redirect_href;
             }
         }
