@@ -41,6 +41,7 @@ var HT = HT || {};
 
     HT.service_domain = 'babel.hathitrust.org';
     HT.catalog_domain = 'catalog.hathitrust.org';
+    HT.www_domain = 'www.hathitrust.org';
 
     // figure out if we're in dev or not
     var hostname = location.hostname;
