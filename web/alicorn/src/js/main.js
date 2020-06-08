@@ -30,6 +30,46 @@ if (window.NodeList && !NodeList.prototype.forEach) {
     };
 }
 
+var docCookies = {
+  getItem: function (sKey) {
+    if (!sKey) { return null; }
+    return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+  },
+  setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+    if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
+    var sExpires = "";
+    if (vEnd) {
+      switch (vEnd.constructor) {
+        case Number:
+          sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
+          break;
+        case String:
+          sExpires = "; expires=" + vEnd;
+          break;
+        case Date:
+          sExpires = "; expires=" + vEnd.toUTCString();
+          break;
+      }
+    }
+    document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
+    return true;
+  },
+  removeItem: function (sKey, sPath, sDomain) {
+    if (!this.hasItem(sKey)) { return false; }
+    document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "");
+    return true;
+  },
+  hasItem: function (sKey) {
+    if (!sKey) { return false; }
+    return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
+  },
+  keys: function () {
+    var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
+    for (var nLen = aKeys.length, nIdx = 0; nIdx < nLen; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
+    return aKeys;
+  }
+};
+
 var HT = HT || {};
 
 (function() {
@@ -98,22 +138,23 @@ var HT = HT || {};
         }
     })
 
-    // // service_url is either the babel dev, beta-3, or babel
-    // HT.service_domain = ( HT.is_babel ? hostname : ( HT.is_dev ? 'test.babel.hathitrust.org' : 'babel.hathitrust.org' ) );
-    // if ( hostname.indexOf('beta-3') > -1 ) {
-    //     HT.service_domain = 'beta-3.babel.hathitrust.org';
-    // }
-    // HT.www_domain = ( HT.is_dev ? 'test.www.hathitrust.org' : 'www.hathitrust.org' );
-    // HT.catalog_domain = ( HT.is_dev ? 'test.catalog.hathitrust.org' : 'catalog.hathitrust.org' );
-
+    // const cookie = name => `; ${document.cookie}`.split(`; ${name}=`).pop().split(';').shift();
     HT.prefs = {};
     HT.prefs.get = function() {
         var prefs = {};
+        // try {
+        //     prefs = $.cookie('HT.prefs', undefined, { json : true }) || {};
+        // } catch (e) {
+        //     // just null the prefs
+        //     $.removeCookie("HT.prefs");
+        //     prefs = {};
+        // }
+
         try {
-            prefs = $.cookie('HT.prefs', undefined, { json : true }) || {};
+            prefs = JSON.parse(docCookies.getItem('HT.prefs') || '{}');
         } catch (e) {
             // just null the prefs
-            $.removeCookie("HT.prefs");
+            docCookies.removeItem("HT.prefs");
             prefs = {};
         }
         return prefs;
@@ -121,35 +162,34 @@ var HT = HT || {};
 
     HT.prefs.set = function(params) {
         var prefs = HT.prefs.get();
-        prefs = $.extend({}, prefs, params);
+        prefs = Object.assign({}, prefs, params);
         try {
-            $.cookie('HT.prefs', prefs, { json : true, domain : '.hathitrust.org', path : '/', expires : 90 });
-        } catch (e) {
+            var expires = new Date();
+            expires.setDate(expires.getDate() + 90);
+            docCookies.setItem('HT.prefs', JSON.stringify(prefs), expires, '/', '.hathitrust.org', true);
+        } catch(e) {
             // noop
         }
+
+        // prefs = $.extend({}, prefs, params);
+        // try {
+        //     $.cookie('HT.prefs', prefs, { json : true, domain : '.hathitrust.org', path : '/', expires : 90 });
+        // } catch (e) {
+        //     // noop
+        // }
     };
 
     HT.scripts = [];
-    // HT.scripts.push(function() {
-    //     // console.log("PLACEHOLDERS UPDATED");
-    //     // $(":input[placeholder]").placeholder();
-
-    //     // var $li;
-    //     // $li = $("a:contains('Our Collaborative Programs')").parent();
-    //     // if ( $li.size() == 0 ) {
-    //     //     $li = $("a:contains('Our Digital Library')").parent();
-    //     //     $li.after('<li><a href="https://www.hathitrust.org/collaborative-programs">Our Collaborative Programs</a></li>');
-    //     // }
-    // });
 
     var $rootStatus;
     HT.update_status = function(message) {
-        if ( $rootStatus === undefined ) { $rootStatus = $("#root > div[role=status]"); }
+        if ( $rootStatus === undefined ) { $rootStatus = document.querySelector("#root > div[role=status]"); }
         var $status = $rootStatus;
         if ( window.bootbox && window.bootbox.active() ) {
-            $status = $(window.bootbox.active().modal).find('div[role="status"]');
+            // $status = $(window.bootbox.active().modal).find('div[role="status"]');
+            $status = window.bootbox.active().modal.querySelector('div[role="status"]');
         }
-        if ( ! $status.length ) { return ; }
+        if ( ! $status ) { return ; }
         HT._update_status($status, message);
     }
 
@@ -164,18 +204,20 @@ var HT = HT || {};
 
           var clearDelay = HT.params && HT.params.debug == 'polite' ? 2000 : 500;
           setTimeout(() => {
-            $status.text(message);
+            //$status.text(message);
+            $status.innerText = message;
             lastMessage = message;
             console.log("-- status:", message);
           }, 50);
           lastTimer = setTimeout(() => {
-            $status.get(0).innerText = '';
+            // $status.get(0).innerText = '';
+            $status.innerText = '';
           }, clearDelay);
 
         }
     }
 
-    var $html = $("html");
+    var $html = document.querySelector("html");
     var __get_vh = function() {
         var vh = window.innerHeight;
         // if ( navigator.userAgent.match(/iphone|ipod|ipad/i) && window.visualViewport ) { vh *= window.visualViewport.scale; }
@@ -229,11 +271,19 @@ var HT = HT || {};
     window.addEventListener('beforeunload', function(event) {
         var timeout = HT.beforeUnloadTimeout || 5000;
         setTimeout(function() {
-            $('<div class="wait-for-it"></div>').appendTo("body");
+            var div = document.createElement('div');
+            div.classList.add('wait-for-it');
+            document.body.appendChild(div);
             setTimeout(function() {
-                $(".wait-for-it").remove();
-            }, timeout); // maybe something went wrong
+                document.body.removeChild(div);
+            }, timeout);
         }, 501);
+        // setTimeout(function() {
+        //     $('<div class="wait-for-it"></div>').appendTo("body");
+        //     setTimeout(function() {
+        //         $(".wait-for-it").remove();
+        //     }, timeout); // maybe something went wrong
+        // }, 501);
     })
 
     setTimeout(() => {
@@ -251,5 +301,8 @@ var HT = HT || {};
     //     // have alerts that were drawn on the page so read them aloud
     //     HT.update_status($alert.text());
     // }
+
+    var scripts = [ '/common/alicorn/js/utils.bundle.js' ];
+    head.js.apply(this, scripts);
 
 })();
