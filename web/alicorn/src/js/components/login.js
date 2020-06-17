@@ -131,11 +131,7 @@ head.ready(function() {
             if ( href == '0' ) { return ; }
             var sdrinst = $select.find("option:selected").data('sdrinst');
             HT.prefs.set({ sdrinst : sdrinst });
-            if ( sdrinst == 'umich' && HT.is_cosign_active ) {
-                href = href.replace('___TARGET___', target).replace('&amp;', '&').replace(/\$/, '%24');
-            } else {
-                href = href.replace('___TARGET___', encodeURIComponent(target));
-            }
+            href = href.replace('___TARGET___', encodeURIComponent(target));
 
             setTimeout(function() {
                 window.location.href = href;
@@ -367,20 +363,27 @@ head.ready(function() {
         }
         $("html").trigger("action.login");
 
-        // rewrite /cgi/ links to /shcgi/ as needed
-        if ( status.authType == 'shibboleth' && HT.is_cosign_active && window.location.href.indexOf('/shcgi/') > -1 ) {
-            $("a[href*='/cgi/']").map(function() {
-                var $this = $(this);
-                $this.attr("href", $this.attr("href").replace("/cgi/", "/shcgi/").replace("http://", "https://"));
-            })
-
-            // check the action
-            var $form = $("#search form, .search-form form");
-            if ( $form.length ) {
-                var action = $form.attr("action");
-                $form.attr("action", action.replace("/cgi/", "/shcgi/").replace("http://", "https://"));
+        if ( status.r ) {
+            // what is happening?
+            var $check = $("a.action-switch-role");
+            if ( $check.length == 0 ) {
+                var $li = $("#person-nav li.item-vanishing");
+                $li.removeClass('item-vanishing').addClass('x--of-for-narrowest');
+                var $e = $li.find("span");
+                var link_text = 'Member ⚡';
+                if ( status.r.enhancedTextProxy ) {
+                    // the role is active
+                    link_text = 'ATRS ⚡';
+                    document.documentElement.dataset.activated = 'enhancedTextProxy';
+                }
+                $e = $e.replaceWith(`<a class="action-switch-role" href=\"https://${HT.service_domain}/cgi/ping/switch\">${link_text}</a>`);
             }
         }
+
+        // var check = $.cookie('HTstatus', undefined, { json: true });
+        // if ( check && check.activated == 'enhancedTextProxy' && ! document.documentElement.dataset.activated ) {
+        //     document.documentElement.dataset.activated = 'enhancedTextProxy';
+        // }
 
         // insert_banner('usability-study-2019', '<p>Want to help improve our site? <a href="http://eepurl.com/gbk5Jb" target="_blank">Sign up for more information.</a></p>');
     }

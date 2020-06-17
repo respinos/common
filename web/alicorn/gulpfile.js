@@ -131,9 +131,12 @@ gulp.task('sass:watch', function () {
 });
 
 gulp.task('scripts:watch', function () {
-  gulp.watch(javascripts.main, gulp.parallel('scripts', 'scripts-bundle'));
+  gulp.watch(javascripts.main, gulp.parallel('scripts'));
 });
 
+gulp.task('scripts-bundle:watch', function () {
+  gulp.watch(javascripts.input, gulp.parallel('scripts-bundle'));
+});
 
-gulp.task('default', gulp.parallel('sass:watch', 'scripts:watch'));
+gulp.task('default', gulp.parallel('sass:watch', 'scripts:watch', 'scripts-bundle:watch'));
 gulp.task('run', gulp.series('sass', 'scripts', 'scripts-bundle'));
