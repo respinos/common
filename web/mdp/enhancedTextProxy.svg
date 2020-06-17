@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad" gradientTransform="rotate(45)">
+      <stop offset="0%" stop-color="#eeeeee" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#cccccc" stop-opacity="1"/>
+    </linearGradient>
+    <pattern id="pattern" x="0" y="0" width="200" height="66" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)">
+      <text x="0" y="60" style="font-family:Verdana,Helvetica,sans-serif; font-size:60px; font-weight:bold; stroke:none; fill:#ff8c00; fill-opacity:0.6"> ATRS </text>
+    </pattern>
+  </defs>
+  <rect x="0" y="0" rx="10" ry="10" width="100%" height="100%" style=" fill: url( #gradient); fill-opacity:0.4;"/>
+  <rect x="0" y="0" rx="10" ry="10" width="100%" height="100%" style=" fill: url( #pattern); fill-opacity:0.4;"/>
+</svg>

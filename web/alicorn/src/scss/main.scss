@@ -17,6 +17,25 @@
 
 @import "./components/responsive";
 
+html[data-activated="enhancedTextProxy"] body {
+  background-image: url('/common/mdp/enhancedTextProxy.svg');
+
+  #root {
+    border: 2rem solid rgba(255, 165, 0, 0.25);
+  }
+
+  a.action-switch-role {
+    background: orange;
+    border: 1px solid darkorange;
+    color: #000;
+  }
+}
+
+a.action-switch-role {
+  border: 1px solid #eee;
+  border-radius: 0.25rem;
+}
+
 .logo {
   width: 14rem;
   padding-right: 2rem;
