@@ -365,16 +365,19 @@ head.ready(function() {
 
         if ( status.r ) {
             // what is happening?
-            var $li = $("#person-nav li.item-vanishing");
-            $li.removeClass('item-vanishing').addClass('x--of-for-narrowest');
-            var $e = $li.find("span");
-            var link_text = 'Member ⚡';
-            if ( status.r.enhancedTextProxy ) {
-                // the role is active
-                link_text = 'ATRS ⚡';
-                document.documentElement.dataset.activated = 'enhancedTextProxy';
+            var $check = $("a.action-switch-role");
+            if ( $check.length == 0 ) {
+                var $li = $("#person-nav li.item-vanishing");
+                $li.removeClass('item-vanishing').addClass('x--of-for-narrowest');
+                var $e = $li.find("span");
+                var link_text = 'Member ⚡';
+                if ( status.r.enhancedTextProxy ) {
+                    // the role is active
+                    link_text = 'ATRS ⚡';
+                    document.documentElement.dataset.activated = 'enhancedTextProxy';
+                }
+                $e = $e.replaceWith(`<a class="action-switch-role" href=\"https://${HT.service_domain}/cgi/ping/switch\">${link_text}</a>`);
             }
-            $e = $e.replaceWith(`<a class="action-switch-role" href=\"https://${HT.service_domain}/cgi/ping/switch\">${link_text}</a>`);
         }
 
         // var check = $.cookie('HTstatus', undefined, { json: true });
