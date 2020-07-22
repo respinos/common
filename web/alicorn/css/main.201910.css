@@ -3250,13 +3250,13 @@ symbol g {
 
 .sidebar-container .panel {
   padding: 0 1rem;
-  margin: 0 auto 1rem;
+  margin: 0 0 1rem;
   width: 95%;
   max-width: 30rem;
 }
 
 .sidebar-container .panel h2, .sidebar-container .panel h3 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
   margin-bottom: 0.75rem;
   border-bottom: 1px solid #ddd;
@@ -3322,6 +3322,11 @@ symbol g {
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.5;
+}
+
+.sidebar-container h2.filters-heading {
+  font-size: 1.125rem;
+  padding-bottom: 0.75rem;
 }
 
 .sidebar-container .active-filters-list, .sidebar-container .filter-list {
@@ -4293,6 +4298,12 @@ label[disabled], button.checkbox-label[disabled] {
   margin: auto;
 }
 
+h1.listcs-intro {
+  margin-left: 0;
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+
 .record-title-actions {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4866,6 +4877,7 @@ input.date-range-input-text {
   background-image: url("/common/unicorn/img/homepage/browse.png");
   background-repeat: no-repeat;
   background-position: 50% 15px;
+  border: 1px solid transparent;
 }
 
 .home #options #stripes .feature a.browse:hover,
@@ -4874,6 +4886,7 @@ input.date-range-input-text {
   /* images-button things hover */
   background-color: #fffefb;
   color: #AF590D;
+  border: 1px solid orange !important;
 }
 
 .home #options #stripes .feature a.online {
@@ -5092,7 +5105,9 @@ input.date-range-input-text {
 
 .home #news-projects .news-inner .left ul.more {
   /*margin-top: 1rem;*/
+  padding-top: 0.5rem;
   margin-right: 1.5rem;
+  margin-left: 0;
   font-size: 0.9rem;
   /*text-align: right;*/
 }
@@ -5159,13 +5174,13 @@ input.date-range-input-text {
 }
 
 .home #news-projects .news-inner .social .buttons a {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   text-decoration: none;
   border-bottom: none;
   width: 1rem;
   height: 1rem;
   padding: 0.4rem;
-  margin-right: 0.25rem;
+  margin-right: 0.75rem;
   padding-left: 0;
   padding-top: 0;
   display: inline-block;
@@ -5175,10 +5190,11 @@ input.date-range-input-text {
   text-indent: -9000px;
   clip: rect(0, 0, 0, 0);
   display: inline-block;
+  color: #000;
 }
 
 .home #news-projects .news-inner .social .buttons .twitter-link {
-  color: #4099ff;
+  color: #1DA1F2;
 }
 
 .home #news-projects .news-inner .social .buttons .twitter-link:hover {
@@ -6216,6 +6232,15 @@ html[data-app="pt"] li.on-for-pt {
   }
   .off-for-narrowest {
     display: none;
+  }
+  .offscreen-for-narrowest {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
   }
   .home-link::before {
     margin-right: 0;
