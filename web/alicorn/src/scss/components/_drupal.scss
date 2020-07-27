@@ -201,6 +201,7 @@
     background-image: url("/common/unicorn/img/homepage/browse.png");
     background-repeat: no-repeat;
     background-position: 50% 15px;
+    border: 1px solid transparent;
   }
   /* line 399, ../sass/homepage.scss */
   #options #stripes .feature a.browse:hover,
@@ -209,6 +210,7 @@
     /* images-button things hover */
     background-color: #fffefb;
     color: $link-hover-color;
+    border: 1px solid orange !important;
   }
   /* line 404, ../sass/homepage.scss */
   #options #stripes .feature a.online {
@@ -382,12 +384,12 @@
     text-transform: uppercase;
   }
   /* line 546, ../sass/homepage.scss */
-  #news-projects .news-inner h2 {
-    margin-bottom: .75rem ;
-    font-size: .8rem;
-    font-weight: bold;
-    color: #39383a;
-  }
+  // #news-projects .news-inner h2 {
+  //   margin-bottom: .75rem ;
+  //   font-size: .8rem;
+  //   font-weight: bold;
+  //   color: #39383a;
+  // }
   /* line 554, ../sass/homepage.scss */
   #news-projects .news-inner p {
     font-size: .9rem ;
@@ -399,6 +401,7 @@
     font-weight: bold;
     text-transform: uppercase;
     margin-top: 0;
+    font-size: 1rem;
   }
   /* line 568, ../sass/homepage.scss */
   #news-projects .news-inner .left {
@@ -419,7 +422,9 @@
   /* line 578, ../sass/homepage.scss */
   #news-projects .news-inner .left ul.more {
     /*margin-top: 1rem;*/
+    padding-top: 0.5rem;
     margin-right: 1.5rem;
+    margin-left: 0;
     font-size: 0.9rem;
     /*text-align: right;*/
   }
@@ -482,13 +487,13 @@
   }
   /* line 649, ../sass/homepage.scss */
   #news-projects .news-inner .social .buttons a {
-    font-size: 1.1rem ;
+    font-size: 1.5rem ;
     text-decoration: none;
     border-bottom: none;
     width: 1rem ;
     height: 1rem ;
     padding: 0.4rem ;
-    margin-right: 0.25rem ;
+    margin-right: 0.75rem ;
     padding-left: 0;
     padding-top: 0;
     display: inline-block;
@@ -498,14 +503,16 @@
     text-indent: -9000px;
     clip: rect(0, 0, 0, 0);
     display: inline-block;
+    color: #000;
   }
   /* line 671, ../sass/homepage.scss */
   #news-projects .news-inner .social .buttons .twitter-link {
-    color: #4099ff;
+    // color: #4099ff;
+    color: #045ed1;
   }
   /* line 673, ../sass/homepage.scss */
   #news-projects .news-inner .social .buttons .twitter-link:hover {
-    color: #60a9fe;
+    color: #012553;
   }
   /* line 678, ../sass/homepage.scss */
   #news-projects .news-inner .social .buttons .pinterest-link {

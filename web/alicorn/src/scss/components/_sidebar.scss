@@ -47,12 +47,12 @@ symbol g {
 
   .panel {
     padding: 0 1rem;
-    margin: 0 auto 1rem;
+    margin: 0 0 1rem;
     width: 95%;
     max-width: 30rem;
 
     h2, h3 {
-      font-size: 1.1rem;
+      font-size: 1rem; // font-size: 1.1rem;
       font-weight: bold;
       margin-bottom: 0.75rem;
       border-bottom: 1px solid #ddd;
@@ -126,6 +126,11 @@ symbol g {
       font-weight: 600;
       font-size: 1rem;
       line-height: 1.5;
+  }
+
+  h2.filters-heading {
+    font-size: 1.125rem;
+    padding-bottom: 0.75rem;
   }
 
   .active-filters-list, .filter-list {

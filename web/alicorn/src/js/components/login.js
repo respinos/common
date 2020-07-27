@@ -366,7 +366,8 @@ head.ready(function() {
         if ( status.r ) {
             // what is happening?
             var $check = $("a.action-switch-role");
-            if ( $check.length == 0 ) {
+            // only enhancedTextProxy have an active toggle
+            if ( $check.length == 0 && status.r.hasOwnProperty('enhancedTextProxy') ) {
                 var $li = $("#person-nav li.item-vanishing");
                 $li.removeClass('item-vanishing').addClass('x--of-for-narrowest');
                 var $e = $li.find("span");
