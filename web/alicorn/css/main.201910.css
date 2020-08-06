@@ -2825,6 +2825,8 @@ select {
   background-position: right 0.7em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
   font-size: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 select::-ms-expand {
@@ -3825,10 +3827,38 @@ label[disabled], button.checkbox-label[disabled] {
           align-items: center;
   margin-top: 0.75rem;
   margin-bottom: .75rem;
-  padding: .5rem 1.25rem;
   background: #666;
   color: #fff;
   font-size: 1rem;
+}
+
+.results-container .collections-action-container hr[role="separator"] {
+  margin: 0 0 0 0.5em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-width: 0 1px 0 0;
+  margin: 0 0.5em;
+  padding: 0;
+  width: 0;
+  max-height: 100%;
+  min-height: 2rem;
+}
+
+.results-container .collections-action-container > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: .5rem 1.25rem;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.results-container .collections-action-container > div:first-child {
+  margin-right: 1rem;
 }
 
 .results-container .collections-action-container button.checkbox-label {
@@ -3837,6 +3867,7 @@ label[disabled], button.checkbox-label[disabled] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  white-space: nowrap;
 }
 
 .results-container .collections-action-container button.checkbox-label .checkbox {
@@ -3845,28 +3876,18 @@ label[disabled], button.checkbox-label[disabled] {
   line-height: 1;
 }
 
-.results-container .collections-action-container #action-select-all {
-  margin-left: -0.25rem;
-}
-
-.results-container .collections-action-container > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  margin-left: auto;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-.results-container .collections-action-container select {
+.results-container .collections-action-container .collections-bulk-container label {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0;
   font-size: 0.9rem;
-  max-width: 10rem;
+  color: white;
+  white-space: nowrap;
+}
+
+.results-container .collections-action-container .collections-bulk-container select {
+  font-size: 0.9rem;
+  max-width: 18ch;
 }
 
 .results-container .collections-action-container button {
@@ -3875,28 +3896,41 @@ label[disabled], button.checkbox-label[disabled] {
   margin-left: 0.5rem;
 }
 
-@media only screen and (max-width: 32rem) {
-  .results-container .collections-action-container {
+.results-container .collections-action-container hr + button {
+  margin-left: 0;
+}
+
+@media only screen and (max-width: 49rem) {
+  .results-container .collections-action-container[data-owned-by-user="yes"] {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
   }
-  .results-container .collections-action-container #action-select-all {
-    margin-bottom: 0.5rem;
+  .results-container .collections-action-container[data-owned-by-user="yes"] > div {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
   }
-  .results-container .collections-action-container > div {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    margin-top: 0.5rem;
+}
+
+@media only screen and (max-width: 37.875rem) {
+  .results-container .collections-action-container[data-owned-by-user="yes"] .collections-bulk-container[data-owned-by-user="yes"] {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    margin: -0.25rem -0.25rem;
   }
-  .results-container .collections-action-container > div > * {
+  .results-container .collections-action-container[data-owned-by-user="yes"] .collections-bulk-container[data-owned-by-user="yes"] button {
     margin: 0.25rem;
+  }
+}
+
+@media only screen and (max-width: 40rem) {
+  .results-container .collections-action-container[data-owned-by-user="no"] {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .results-container .collections-action-container[data-owned-by-user="no"] > div {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
   }
 }
 
