@@ -179,12 +179,35 @@ label, button.checkbox-label {
     align-items: center;
     margin-top: 0.75rem;
     margin-bottom: .75rem;
-    padding: .5rem 1.25rem;
+    // padding: .5rem 1.25rem;
 
     background: #666;
     color: #fff;
 
     font-size: 1rem;
+
+    hr[role="separator"] {
+      margin: 0 0 0 0.5em;
+      box-sizing: border-box;
+      border: 1px solid rgba(255,255,255, 0.25);
+      border-width: 0 1px 0 0;
+      margin: 0 0.5em;
+      padding: 0;
+      width: 0;
+      max-height: 100%;
+      min-height: 2rem;
+    }
+
+    > div {
+      display: flex;
+      padding: .5rem 1.25rem;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+
+    > div:first-child {
+      margin-right: 1rem;
+    }
 
     button.checkbox-label {
       .checkbox {
@@ -195,24 +218,50 @@ label, button.checkbox-label {
       margin-bottom: 0;
       color: #fff;
       align-items: center;
+      white-space: nowrap;
     }
 
-    #action-select-all {
-      margin-left: -0.25rem; // stable?
+    // #action-select-all {
+    //   margin-left: -0.25rem; // stable?
+    // }
+
+    .collections-bulk-container {
+      label {
+        margin-left: 0.5rem; 
+        margin-right: 0.5rem; 
+        margin-bottom: 0; 
+        font-size: 0.9rem; 
+        color: white;
+        white-space: nowrap;
+      }
+
+      select {
+        font-size: 0.9rem;
+        max-width: 18ch;
+      }
     }
 
-    > div {
-      display: flex;
-      flex-wrap: nowrap;
-      flex-grow: 1;
-      margin-left: auto;
-      justify-content: flex-end;
-    }
+    // > .collections-chooser-container {
+    //   display: flex;
+    //   flex-wrap: nowrap;
+    //   flex-grow: 1;
+    //   margin-left: auto;
+    //   justify-content: flex-end;
+    //   align-items: center;
 
-    select {
-      font-size: 0.9rem;
-      max-width: 10rem;
-    }
+    //   label {
+    //     margin-left: 0.5rem; 
+    //     margin-right: 0.5rem; 
+    //     margin-bottom: 0; 
+    //     font-size: 0.9rem; 
+    //     color: white;
+    //   }
+    // }
+
+    // select {
+    //   font-size: 0.9rem;
+    //   max-width: 10rem;
+    // }
 
     button {
       white-space: nowrap;
@@ -220,24 +269,38 @@ label, button.checkbox-label {
       margin-left: 0.5rem;
     }
 
-    @media only screen and (max-width: 32rem) {
-      flex-wrap: wrap;
-      justify-content: flex-start;
+    hr + button {
+      margin-left: 0;
+    }
 
-      #action-select-all {
-        margin-bottom: 0.5rem;
+    &[data-owned-by-user="yes"] {
+      @media only screen and (max-width: 49rem) {
+        flex-wrap: wrap;
+        > div {
+          flex-grow: 1;
+        }
       }
 
-      & > div {
-        justify-content: flex-start;
-        margin-top: 0.5rem;
+      @media only screen and (max-width: 37.875rem) {
+        .collections-bulk-container[data-owned-by-user="yes"] {
+          flex-wrap: wrap;
+          button {
+            margin: 0.25rem;
+          }
+        }
+      }
+
+    }
+
+    &[data-owned-by-user="no"] {
+      @media only screen and (max-width: 40rem) {
         flex-wrap: wrap;
-        margin: -0.25rem -0.25rem;
-        & > * {
-          margin: 0.25rem;
+        > div {
+          flex-grow: 1;
         }
       }
     }
+
   }
 }
 
