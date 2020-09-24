@@ -13,6 +13,17 @@ head.ready(function() {
     var $block;
     var $dialog;
 
+    function getWeek(date) {
+        date.setHours(0, 0, 0, 0);
+          // Thursday in current week decides the year.
+          date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
+          // January 4 is always in week 1.
+          var week1 = new Date(date.getFullYear(), 0, 4);
+          // Adjust to Thursday in week 1 and count number of weeks from date to week1.
+          return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000
+                                - 3 + (week1.getDay() + 6) % 7) / 7);
+    }
+
     function create_login_panel(args) {
         args = args || {};
         var status = HT.login_status;
@@ -387,6 +398,21 @@ head.ready(function() {
         // }
 
         // insert_banner('usability-study-2019', '<p>Want to help improve our site? <a href="http://eepurl.com/gbk5Jb" target="_blank">Sign up for more information.</a></p>');
+        if ( status && status.affiliation.match(/Member|Faculty|Staff|Student|Employee|Alum/) ) {
+            var possible_links = [];
+            possible_links.push('https://eepurl.com/gbk5Jb');
+            possible_links.push('https://eepurl.com/gbk6Jb');
+            var date = new Date;
+            var day = date.getDay();
+            var week = getWeek(date);
+            var link;
+            if ( day >= 2 && day <= 5) {
+                var idx = day % 2;
+                if ( week % 2 == 0 ) { idx = ( day + 1 % 2 ); }
+                link = possible_links[idx];
+            }
+            insert_banner('usability-study-2020', `<p>Want to help improve our site? <a href="${link}" target="_blank">Sign up for more information.</a></p>`);
+        }
     }
 
     function insert_banner(id, html, timestamped, callback) {
