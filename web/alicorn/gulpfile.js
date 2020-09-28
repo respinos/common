@@ -107,8 +107,8 @@ gulp.task('scripts-bundle', function() {
       // exclude: [ 'node_modules/**' ]
     }))
     .pipe(concat('utils.bundle.js'))
-    .pipe(sourcemaps.write())
     .pipe(uglify())
+    .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest(javascripts.output))
 })
 
@@ -121,8 +121,8 @@ gulp.task('scripts', function() {
       // exclude: [ 'node_modules/**' ]
     }))
     .pipe(concat('utils.201910.js'))
-    .pipe(sourcemaps.write())
     .pipe(uglify())
+    .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest(javascripts.output))
 })
 
