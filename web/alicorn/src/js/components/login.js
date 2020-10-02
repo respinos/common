@@ -406,8 +406,8 @@ head.ready(function() {
             var day = date.getDay();
             var week = getWeek(date);
             var link;
-            if ( location.href.indexOf("debug=cta") > -1 || ( day >= 2 && day <= 5) ) {
-                var idx = day % 2;
+            if ( location.href.indexOf("debug=cta") > -1 || ( day >= 2 && day <= 6) ) {
+                var idx = ( day == 6 ) ? 1 : ( day % 2 ); // Saturday acts like Friday
                 if ( week % 2 == 0 ) { idx = ( ( day + 1 ) % 2 ); }
                 link = possible_links[idx];
                 insert_banner('usability-study-2020', `<p style="text-align: left">Help us improve our website! We're making changes to our download feature and would love to hear from you. Would you be willing to take a 10 minute survey? <a style="font-weight: bold" href="${link}" target="_blank">Yes, I want to help</a></p>`);
