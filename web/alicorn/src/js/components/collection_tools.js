@@ -473,6 +473,10 @@ head.ready(function() {
         return;
     }
 
+    if ( action == 'delit' ) {
+      selected_collection_id = $("html").data('c');
+    }
+
     if ( ( selected_collection_id == DEFAULT_COLL_MENU_OPTION ) &&
          ( action == 'copyit' || action == 'movit' || action == 'addI' || action == 'addits' ) ) {
         display_error("You must select a collection.");
