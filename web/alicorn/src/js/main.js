@@ -269,6 +269,7 @@ var HT = HT || {};
     })
 
     window.addEventListener('beforeunload', function(event) {
+        if ( HT.disableUnloadTimeout ) { return ; }
         var timeout = HT.beforeUnloadTimeout || 5000;
         setTimeout(function() {
             var div = document.createElement('div');
