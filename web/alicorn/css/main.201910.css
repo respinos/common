@@ -3220,7 +3220,7 @@ symbol g {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-top: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   min-width: 18rem;
   padding-right: 0.25rem;
 }
@@ -3258,11 +3258,11 @@ symbol g {
 }
 
 .sidebar-container .panel h2, .sidebar-container .panel h3 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 0.75rem;
   border-bottom: 1px solid #ddd;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
   margin-top: 0;
 }
 
@@ -3602,6 +3602,15 @@ symbol g {
   border-bottom: 1px solid #ccc;
 }
 
+.scroll-gradient {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(33%, #fffefb), to(rgba(255, 254, 251, 0))), -webkit-gradient(linear, left top, left bottom, from(rgba(255, 254, 251, 0)), color-stop(66%, #fffefb)) 0 100%, radial-gradient(farthest-side at 50% 0, rgba(34, 34, 34, 0.5), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(34, 34, 34, 0.5), rgba(0, 0, 0, 0)) 0 100%;
+  background: linear-gradient(#fffefb 33%, rgba(255, 254, 251, 0)), linear-gradient(rgba(255, 254, 251, 0), #fffefb 66%) 0 100%, radial-gradient(farthest-side at 50% 0, rgba(34, 34, 34, 0.5), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(34, 34, 34, 0.5), rgba(0, 0, 0, 0)) 0 100%;
+  background-color: #fffefb;
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll;
+  background-size: 100% 39px, 100% 39px, 100% 13px, 100% 13px;
+}
+
 html.gt-ie10 #sidebar, html.ios9 #sidebar {
   display: block;
 }
@@ -3620,13 +3629,6 @@ html.gt-ie10 #sidebar, html.ios9 #sidebar {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-#action-clear-selection {
-  position: absolute;
-  right: 0;
-  margin-left: -8px;
-  visibility: hidden;
 }
 
 @media only screen and (max-width: 62em) {

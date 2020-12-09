@@ -50,15 +50,19 @@ head.ready(function() {
     $items.find("input").attr('tabindex', '-1');
     $list.attr('tabindex', '0');
     $list.css({ position: 'relative' });
-    $container.on('focusin', 'fieldset', function(event) {
-      if ( event.target.tagName == 'FIELDSET' ) {
-        event.preventDefault();
-        event.stopPropagation();
-        setTimeout(function() {
-          $items.filter(":visible").first().find("input").focus();
-        })
-      }
-    })
+
+    // // 2020-12-09 - chrome is triggering focusin on click, before the
+    // // targeted input can catch the click
+    // $container.on('focusin', 'fieldset', function(event) {
+    //   if ( event.target.tagName == 'FIELDSET' && $input.filter(":focus").length == 0 ) {
+    //     event.preventDefault();
+    //     event.stopPropagation();
+    //     setTimeout(function() {
+    //       $items.filter(":visible").first().find("input").focus();
+    //     })
+    //   }
+    // })
+
     $list.on('keyup', 'input', function(event) {
       var $possible = $items.filter(":visible");
       if ( event.key == 'ArrowDown' || event.key == 'ArrowUp' ) {
@@ -73,38 +77,23 @@ head.ready(function() {
       }
     });
 
+    $list.on('keydown', function(event) {
+      if ( event.target == $list.get(0) && event.key == 'Tab' && ! event.shiftKey ) {
+        event.preventDefault();
+        console.log("-- bogart");
+        $items.filter(":visible").first().find("input").focus();
+      }
+    })
+
     $list.on('keydown', 'input', function(event) {
       if ( event.key == 'Tab' && event.shiftKey ) {
         event.preventDefault();
+        event.stopPropagation();
         if ( event.shiftKey ) {
           $list.prevAll(":tabbable").focus();
         } else {
           $list.nextAll(":tabbable").focus();
         }
-      }
-    })
-
-    $input.on('xxkeydown', function(event) {
-      if ( event.key == 'TabXX' ) {
-        // if ( $items.filter)
-        // var $inputs = $("input[type=text]");
-        // var idx = $inputs.index($input);
-        // $inputs.slice(idx + 1, idx + 2).focus();
-
-        var $tabbable = $(":tabbable");
-        var idx = $tabbable.index($input);
-        var next_idx = ( idx + 1 ) % $tabbable.length;
-        var $next = $tabbable.slice(next_idx, next_idx + 1);
-        setTimeout(function() {
-          $next.focus();
-        }, 0);
-        return;
-      }
-
-      if ( event.key == 'Tab' ) {
-        setTimeout(function() {
-          $list.focus();
-        }, 0)
       }
     })
 
