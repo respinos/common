@@ -21,10 +21,11 @@ body {
   line-height: 1.25;
 }
 
-$outline-color: #4d90fe;
 :focus {
-  outline: $outline-color auto 5px;
+  // outline: $outline-color auto 5px;
   // outline: --webkit-focus-ring-color auto 5px;
+  outline: 4px solid $outline-color;
+  outline-offset: 4px;
 }
 
 section:focus:not(.focus-visible) {
@@ -141,6 +142,7 @@ a {
   display: inline-block;
   background-position: center;
   transition: all 0.5s;
+  transition: outline 0.1s;
   // transition: filter 0.8s;
 
   &:hover {

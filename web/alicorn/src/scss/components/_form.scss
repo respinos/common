@@ -55,9 +55,34 @@ input[type=checkbox]:checked + label:before {
   background-repeat: no-repeat;
 }
 
+.form-control {
+  &:focus-within {
+    outline: 4px solid $outline-color;
+    outline-offset: 4px;
+  }
+
+  input[type=radio]:focus, input[type=checkbox]:focus {
+    outline: none;
+  }
+
+  input[type=radio]:focus + label, input[type=checkbox]:focus + label {
+      color: #000;
+      // outline: 5px auto #4d90fe;
+      // outline: 4px solid $outline-color;
+      // outline-offset: 4px;
+      outline: none;
+  }
+}
+
+input[type=radio]:focus, input[type=checkbox]:focus {
+  outline: none;
+}
+
 input[type=radio]:focus + label, input[type=checkbox]:focus + label {
     color: #000;
-    outline: 5px auto #4d90fe;
+    // outline: 5px auto #4d90fe;
+    outline: 4px solid $outline-color;
+    outline-offset: 4px;
 }
 
 input[type=radio] + label, input[type=checkbox] + label {

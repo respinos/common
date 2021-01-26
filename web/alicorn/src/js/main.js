@@ -231,20 +231,32 @@ var HT = HT || {};
     document.documentElement.style.setProperty('--vh', vh + 'px');
 
     var t = 0;; var lastwh = 0;
-    window.tx = setInterval(function() {
-        t += 100;
-        var vh = __get_vh();
-        if ( vh != lastwh ) {
-            lastwh = vh;
-
-            // var vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', ( vh * 0.01 ) + 'px');
-
-            var event = document.createEvent('UIEvents');
-            event.initEvent('resize', true, false, window, 0);
-            window.dispatchEvent(event)
+    var __check_timestamp;
+    var __check_vh = function(timestamp) {
+        if ( __check_timestamp === undefined ) {
+            __check_timestamp = timestamp;
         }
-    }, 100);
+        var elapsed = timestamp - __check_timestamp;
+
+        if ( elapsed > 100 ) {
+            __check_timestamp = timestamp;
+
+            var vh = __get_vh();
+            if ( vh != lastwh ) {
+                lastwh = vh;
+
+                // var vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', ( vh * 0.01 ) + 'px');
+
+                var event = document.createEvent('UIEvents');
+                event.initEvent('resize', true, false, window, 0);
+                window.dispatchEvent(event)
+            }
+        }
+
+        window.tx = requestAnimationFrame(__check_vh);
+    }
+    window.txt = requestAnimationFrame(__check_vh);
 
     setTimeout(function() {
         // vh = window.innerHeight * 0.01;

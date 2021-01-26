@@ -1411,7 +1411,8 @@ body {
 }
 
 :focus {
-  outline: #4d90fe auto 5px;
+  outline: 4px solid #EF7C22;
+  outline-offset: 4px;
 }
 
 section:focus:not(.focus-visible) {
@@ -1532,6 +1533,8 @@ a {
   background-position: center;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  -webkit-transition: outline 0.1s;
+  transition: outline 0.1s;
 }
 
 a:hover {
@@ -2789,9 +2792,28 @@ input[type=checkbox]:checked + label:before {
   background-repeat: no-repeat;
 }
 
+.form-control:focus-within {
+  outline: 4px solid #EF7C22;
+  outline-offset: 4px;
+}
+
+.form-control input[type=radio]:focus, .form-control input[type=checkbox]:focus {
+  outline: none;
+}
+
+.form-control input[type=radio]:focus + label, .form-control input[type=checkbox]:focus + label {
+  color: #000;
+  outline: none;
+}
+
+input[type=radio]:focus, input[type=checkbox]:focus {
+  outline: none;
+}
+
 input[type=radio]:focus + label, input[type=checkbox]:focus + label {
   color: #000;
-  outline: 5px auto #4d90fe;
+  outline: 4px solid #EF7C22;
+  outline-offset: 4px;
 }
 
 input[type=radio] + label, input[type=checkbox] + label {
@@ -2838,7 +2860,7 @@ select:hover {
 }
 
 select:focus {
-  border-color: #4d90fe;
+  border-color: #EF7C22;
   -webkit-box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
           box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
   box-shadow: 0 0 0 3px -moz-mac-focusring;
@@ -3690,6 +3712,10 @@ html.gt-ie10 #sidebar, html.ios9 #sidebar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.global-search-links ul li + li {
+  margin-top: 0;
 }
 
 .global-search-links ul li:not(:last-child) {
