@@ -482,18 +482,22 @@ var bootbox = function () {
     idx += 1;
     var dialogHTML = template.replace(/{ID}/g, idx).replace('{TEMPLATE}', `<div>${message}</div>`);
     dialogHTML = dialogHTML.replace('{ACTIONS}', closeButtonTemplate);
-    var dialog = new DOMParser().parseFromString(dialogHTML, "text/html").body.children[0];
-    document.body.appendChild(dialog);
-    var h2 = dialog.querySelector('h2');
+    var dialogEl = new DOMParser().parseFromString(dialogHTML, "text/html").body.children[0];
+    document.body.appendChild(dialogEl);
+    var h2 = dialogEl.querySelector('h2');
     if ( options.header ) {
       h2.innerHTML = options.header;
     } else {
       h2.setAttribute('aria-hidden', 'true');
       h2.style.visibility = 'hidden';
-      dialog.querySelector('.modal__container').classList.add('compact')
+      dialogEl.querySelector('.modal__container').classList.add('compact')
     }
-    return show(dialog, {onClose: function(modal) {
-      document.body.removeChild(dialog);
+    return show(dialogEl, {onClose: function(modal) {
+      // document.body.removeChild(dialog);
+      if ( dialogEl ) {
+        var parentEl = dialogEl.parentElement;
+        if ( parentEl ) { parentEl.removeChild(dialogEl); }
+      }
       activeModal = null;
     }});
   }
@@ -509,24 +513,24 @@ var bootbox = function () {
       dialogHTML = dialogHTML.replace('{TEMPLATE}', '');
       append_message = true;
     }
-    var dialog = new DOMParser().parseFromString(dialogHTML, "text/html").body.children[0];
-    document.body.appendChild(dialog);
+    var dialogEl = new DOMParser().parseFromString(dialogHTML, "text/html").body.children[0];
+    document.body.appendChild(dialogEl);
 
     if ( append_message ) {
       if ( message.jquery ) { message = message.get(0); }
-      dialog.querySelector('.modal__content').appendChild(message);
+      dialogEl.querySelector('.modal__content').appendChild(message);
     }
 
-    var h2 = dialog.querySelector('h2');
+    var h2 = dialogEl.querySelector('h2');
     if ( options.header ) {
       h2.innerHTML = options.header;
     } else {
       h2.setAttribute('aria-hidden', 'true');
       h2.style.visibility = 'hidden';
-      dialog.querySelector('.modal__container').classList.add('compact')
+      dialogEl.querySelector('.modal__container').classList.add('compact')
     }
 
-    var footer = dialog.querySelector('.modal__footer');
+    var footer = dialogEL.querySelector('.modal__footer');
     var callbacks = {};
     for(var i = 0; i < actions.length; i++) {
       var action = actions[i];
@@ -558,18 +562,22 @@ var bootbox = function () {
       footer.appendChild(button);
     }
     var onClose = function(modal) {
-      document.body.removeChild(dialog);
+      // document.body.removeChild(dialog);
+      if ( dialogEl ) {
+        var parentEl = dialogEl.parentElement;
+        if ( parentEl ) { parentEl.removeChild(dialogEl); }
+      }
       activeModal = null;
     }
 
     if ( options.lightbox ) {
-      dialog.classList.add('lightbox');
-      var content = dialog.querySelector('.modal__content');
+      dialogEl.classList.add('lightbox');
+      var content = dialogEl.querySelector('.modal__content');
       content.style.width = `${options.width - 0 + 16}px`;
       content.style.height = `${options.height - 0 + 16}px`;
     }
 
-    return show(dialog, {onClose: onClose, callbacks: callbacks, onShow: options.onShow});
+    return show(dialogEl, {onClose: onClose, callbacks: callbacks, onShow: options.onShow});
   }
 
   var confirm = function(message, callback) {
