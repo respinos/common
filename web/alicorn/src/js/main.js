@@ -282,7 +282,7 @@ var HT = HT || {};
 
     window.addEventListener('beforeunload', function(event) {
         if ( HT.disableUnloadTimeout ) { return ; }
-        var timeout = HT.beforeUnloadTimeout || 5000;
+        var timeout = HT.beforeUnloadTimeout || 10 * 1000;
         setTimeout(function() {
             var div = document.createElement('div');
             div.classList.add('wait-for-it');
