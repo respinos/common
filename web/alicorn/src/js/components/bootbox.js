@@ -530,7 +530,7 @@ var bootbox = function () {
       dialogEl.querySelector('.modal__container').classList.add('compact')
     }
 
-    var footer = dialogEL.querySelector('.modal__footer');
+    var footer = dialogEl.querySelector('.modal__footer');
     var callbacks = {};
     for(var i = 0; i < actions.length; i++) {
       var action = actions[i];
