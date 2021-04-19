@@ -138,6 +138,27 @@ var HT = HT || {};
         }
     })
 
+    function isObject(item) {
+      return (item && typeof item === 'object' && !Array.isArray(item));
+    }
+
+    function mergeDeep(target, source) {
+      let output = Object.assign({}, target);
+      if (isObject(target) && isObject(source)) {
+        Object.keys(source).forEach(key => {
+          if (isObject(source[key])) {
+            if (!(key in target))
+              Object.assign(output, { [key]: source[key] });
+            else
+              output[key] = mergeDeep(target[key], source[key]);
+          } else {
+            Object.assign(output, { [key]: source[key] });
+          }
+        });
+      }
+      return output;
+    }
+
     // const cookie = name => `; ${document.cookie}`.split(`; ${name}=`).pop().split(';').shift();
     HT.prefs = {};
     HT.prefs.get = function() {
@@ -162,7 +183,8 @@ var HT = HT || {};
 
     HT.prefs.set = function(params) {
         var prefs = HT.prefs.get();
-        prefs = Object.assign({}, prefs, params);
+        // prefs = Object.assign({}, prefs, params);
+        prefs = mergeDeep(prefs, params);
         try {
             var expires = new Date();
             expires.setDate(expires.getDate() + 90);
@@ -252,9 +274,9 @@ var HT = HT || {};
                 event.initEvent('resize', true, false, window, 0);
                 window.dispatchEvent(event)
             }
-        }
 
-        window.tx = requestAnimationFrame(__check_vh);
+            window.tx = requestAnimationFrame(__check_vh);
+        }
     }
     window.txt = requestAnimationFrame(__check_vh);
 
@@ -287,9 +309,11 @@ var HT = HT || {};
             var div = document.createElement('div');
             div.classList.add('wait-for-it');
             document.body.appendChild(div);
-            setTimeout(function() {
-                document.body.removeChild(div);
-            }, timeout);
+            if ( $("html").is("ie") ) {
+                setTimeout(function() {
+                    document.body.removeChild(div);
+                }, timeout);
+            }
         }, 501);
         // setTimeout(function() {
         //     $('<div class="wait-for-it"></div>').appendTo("body");
