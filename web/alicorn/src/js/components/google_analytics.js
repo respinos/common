@@ -123,7 +123,13 @@ head.ready(function() {
                         ga(prefix + 'set', 'dimension3', value);
                     }
 
-                    ga(prefix + 'send', 'pageview', _munge_href(href));
+                    var title = HT.analytics.getTitle ? HT.analytics.getTitle() : document.title;
+                    ga(prefix + 'send', {
+                        hitType: 'pageview',
+                        page: _munge_href(href),
+                        title: title
+                    })
+                    // ga(prefix + 'send', 'pageview', _munge_href(href));
                 }
 
                 HT.analytics.trackEvent = function(params, profile_id) {
