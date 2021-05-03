@@ -127,6 +127,11 @@
     @include alert-badge("\e000");
   }
 
+  // alert-info does not have an icon
+  .alert.alert-info {
+    padding-right: 14px;
+  }
+
   .alert[dir='rtl'] {
 
     padding-left: 0;

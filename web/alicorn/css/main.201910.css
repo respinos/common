@@ -2206,6 +2206,10 @@ pre {
   font-size: 1.2rem;
 }
 
+.alert.alert-info {
+  padding-right: 14px;
+}
+
 .alert[dir='rtl'] {
   padding-left: 0;
   padding-right: 2rem;

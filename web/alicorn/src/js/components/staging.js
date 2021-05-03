@@ -17,7 +17,13 @@ head.ready(function() {
           // e.g. https://hdl.handle.net/2027/uc2.ark:/13960/t9s19288f
           // var tmp = href.split("/");
           // href = "http:/" + babel_string + "/cgi/pt?id=" + tmp.pop();
-          href = href.replace("//hdl.handle.net/2027/", "//" + HT.service_domain + "/cgi/pt?id=");
+          // href = href.replace("//hdl.handle.net/2027/", "//" + HT.service_domain + "/cgi/pt?id=");
+          var tmp = href.split('?');
+          href = tmp[0].replace("//hdl.handle.net/2027/", "//" + HT.service_domain + "/cgi/pt?id=");
+          if ( tmp[1] ) {
+            var tmp2 = tmp[1].split('=');
+            href += ";seq=" + tmp2[2];
+          }
           $link.attr("href", href);
       }
   })
@@ -49,7 +55,12 @@ head.ready(function() {
         // e.g. https://hdl.handle.net/2027/uc2.ark:/13960/t9s19288f
         // var tmp = href.split("/");
         // href = "http:/" + babel_string + "/cgi/pt?id=" + tmp.pop();
-        href = href.replace("//hdl.handle.net/2027/", "//" + HT.service_domain + "/cgi/pt?id=");
+        var tmp = href.split('?');
+        href = tmp[0].replace("//hdl.handle.net/2027/", "//" + HT.service_domain + "/cgi/pt?id=");
+        if ( tmp[1] ) {
+          var tmp2 = tmp[1].split('=');
+          href += ";seq=" + tmp2[2];
+        }
         $link.data("href", href);
     }
   })
