@@ -47,7 +47,7 @@ head.ready(function() {
                         '</div>' +
                         '<input type="hidden" name="target" value="" />' + 
                     '</form>' + 
-                    '<p>By logging into HathiTrust, you agree to follow our <a href="#">Acceptable Use Policy</a>.</p>' + 
+                    '<p class="aup-notice">By logging into HathiTrust, you agree to follow our <a href="#">Acceptable Use Policy</a>.</p>' + 
                 '</div>' + 
                 '<div class="modal__footer">' + 
                     '<div class="questions">' + 
@@ -354,25 +354,6 @@ head.ready(function() {
         }
         var $logout_link = $(".logout-link,#logout-link");
         $logout_link.attr('href', 'https://{SERVICE_DOMAIN}/cgi/logout?'.replace('{SERVICE_DOMAIN}', HT.service_domain) + encodeURIComponent(window.location.href))
-        if ( 0 && status.authType == 'shibboleth' ) {
-            $logout_link.click(function(e) {
-                e.preventDefault();
-                console.log($.removeCookie('MDPsid', { domain: '.hathitrust.org', path: '/' }));
-                console.log($.removeCookie('_saml_idp', { domain: '.hathitrust.org', path: '/', secure: true }));
-                var shib_cookie = document.cookie.match(/.*(_shibsession_\w+)=/);
-                if ( shib_cookie ) {
-                    shib_cookie = shib_cookie[1];
-                    console.log("AHOY REMOVING", shib_cookie);
-                    console.log($.removeCookie(shib_cookie, { domain: '.hathitrust.org', path: '/', scure: true }));
-                }
-                setTimeout(function() {
-                    // window.location.href = location.href;
-                    location.reload(true);
-                }, 0);
-                // bootbox.alert("<p>Please quit your browser to logout.</p>");
-                return false;
-            })
-        }
         $("html").trigger("action.login");
 
         if ( status.r ) {
@@ -393,10 +374,13 @@ head.ready(function() {
             }
         }
 
-        // var check = $.cookie('HTstatus', undefined, { json: true });
-        // if ( check && check.activated == 'enhancedTextProxy' && ! document.documentElement.dataset.activated ) {
-        //     document.documentElement.dataset.activated = 'enhancedTextProxy';
-        // }
+        // hey do I have the AUP-checked cookie?
+        insert_banner(
+            'aup-alert-form', 
+            '<p>By logging into HathiTrust, you agree to follow our <a href="#">Acceptable Use Policy.</a></p>',
+            null, null,
+            '<button class="btn" data-action="close">OK</button>'
+        );
 
         // insert_banner('usability-study-2019', '<p>Want to help improve our site? <a href="http://eepurl.com/gbk5Jb" target="_blank">Sign up for more information.</a></p>');
         // if ( location.pathname.indexOf('/cgi/pt') > -1 && status && status.affiliation.match(/Member|Faculty|Staff|Student|Employee|Alum/) ) {
@@ -416,7 +400,7 @@ head.ready(function() {
         // }
     }
 
-    function insert_banner(id, html, timestamped, callback) {
+    function insert_banner(id, html, timestamped, callback, action) {
 
         if ( head.mobile ) { return ; }
 
@@ -426,6 +410,9 @@ head.ready(function() {
         }
 
         var banner_html = '<div class="alert alert-block alert-banner"><a href="javascript:;" aria-label="Close banner" class="close" style="margin-right: 24px;"><i aria-hidden="true" class="icomoon icomoon-cancel"></i></a>' + html + '</div>';
+        if ( action ) {
+            banner_html = '<div class="alert alert-block alert-banner"><div>' + html + '</div>' + action +  '</div>';
+        }
         var $banner = $(banner_html);
         $banner.attr('id', id);
         var $target = $("#skiplinks");
@@ -439,7 +426,7 @@ head.ready(function() {
             }
         });
 
-        $banner.find("a.close").on('click', function(event) {
+        $banner.find("a.close,[data-action='close']").on('click', function(event) {
             event.preventDefault();
             $banner.remove();
             if ( callback ) {
