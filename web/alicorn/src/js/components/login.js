@@ -232,7 +232,7 @@ head.ready(function() {
         }
 
         var login_href = 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(target);
-        if ( true || status.expired ) {
+        if ( status.expired ) {
             // var $alert = $('<div class="alert alert-block alert-warning alert-plain alert-banner"><a href="javascript:;" aria-label="Close banner" class="close" style="margin-right: 24px;"><i aria-hidden="true" class="icomoon icomoon-cancel"></i></a><p>You have been logged out. <a class="btn btn-default" data-action="login" data-close-target=".modal.login" href="#">Login</a></p></div>');
             // $alert.find("a[data-action='login']").attr("href", 'https://' + HT.service_domain + "/cgi/wayf?target=" + encodeURIComponent(window.location.href));
             // $alert.find("a.close").on('click', function() { $alert.hide(); });
