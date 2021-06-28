@@ -377,7 +377,7 @@ head.ready(function() {
         // hey do I have the AUP-checked cookie?
         insert_banner(
             'aup-alert-form', 
-            '<p>By logging into HathiTrust, you agree to follow our <a href="#">Acceptable Use Policy.</a></p>',
+            '<p>By logging into HathiTrust, you agree to follow our <a href="https://www.hathitrust.org/acceptable-use">Acceptable Use Policy.</a></p>',
             null, null,
             '<button class="btn" data-action="close">OK</button>'
         );
