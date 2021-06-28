@@ -47,7 +47,7 @@ head.ready(function() {
                         '</div>' +
                         '<input type="hidden" name="target" value="" />' + 
                     '</form>' + 
-                    '<p class="aup-notice">By logging into HathiTrust, you agree to follow our <a href="#">Acceptable Use Policy</a>.</p>' + 
+                    '<p class="aup-notice">By logging into HathiTrust, you agree to follow our <a href="https://www.hathitrust.org/acceptable-use">Acceptable Use Policy</a>.</p>' + 
                 '</div>' + 
                 '<div class="modal__footer">' + 
                     '<div class="questions">' + 
