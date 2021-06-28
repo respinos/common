@@ -170,15 +170,58 @@
       border-radius: 0;
       animation: slideUp 0.4s ease;
       border-top: 1px solid rgba(0,0,0,0.33);
-      z-index: 10000;
+      z-index: 2147483645;
+
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      // gap: 1rem;
 
       & .close {
-          float: right;
+          position: absolute;
+          right: 2rem;
+          top: 50%;
+          transform: translateY(-50%);
+      }
+
+      button[data-action="close"] {
+        margin-left: 1rem;
       }
   }
 
-  .alert.alert-banner > p:first-of-type {
+  #aup-alert-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    background: #333;
+    color: #eee;
+    text-shadow: none;
+    border: 1px solid white;
+
+    a {
+      color: orange;
+    }
+
+    button {
+      background: #000;
+      color: #fff;
+      border: 1px solid #ccc;
+
+      &:hover {
+        border-color: #fff;
+      }
+    }
+
+  }
+
+  .alert.alert-banner p:first-of-type {
       margin-top: 0;
+  }
+
+  .alert.alert-banner p:last-of-type {
+      margin-bottom: 0;
   }
 
   .xbadge {
