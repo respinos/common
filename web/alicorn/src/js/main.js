@@ -302,10 +302,12 @@ var HT = HT || {};
         }, 500);
     })
 
+    let ignoreUnload = false;
     window.addEventListener('beforeunload', function(event) {
         if ( HT.disableUnloadTimeout ) { return ; }
         var timeout = HT.beforeUnloadTimeout || 10 * 1000;
         setTimeout(function() {
+            if ( ignoreUnload ) { return ; }
             var div = document.createElement('div');
             div.classList.add('wait-for-it');
             document.body.appendChild(div);
@@ -315,12 +317,18 @@ var HT = HT || {};
                 }, timeout);
             }
         }, 501);
-        // setTimeout(function() {
-        //     $('<div class="wait-for-it"></div>').appendTo("body");
-        //     setTimeout(function() {
-        //         $(".wait-for-it").remove();
-        //     }, timeout); // maybe something went wrong
-        // }, 501);
+    })
+
+    window.addEventListener('pagehide', function(event) {
+      ignoreUnload = true;
+      var div = document.querySelector('.wait-for-it');
+      if ( div ) { document.body.removeChild(div); }
+    })
+
+    window.addEventListener('unload', function(event) {
+      ignoreUnload = true;
+      var div = document.querySelector('.wait-for-it');
+      if ( div ) { document.body.removeChild(div); }
     })
 
     setTimeout(() => {
