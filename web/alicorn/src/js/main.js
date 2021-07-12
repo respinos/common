@@ -303,10 +303,11 @@ var HT = HT || {};
     })
 
     let ignoreUnload = false;
+    let unloadTimeout;
     window.addEventListener('beforeunload', function(event) {
         if ( HT.disableUnloadTimeout ) { return ; }
         var timeout = HT.beforeUnloadTimeout || 10 * 1000;
-        setTimeout(function() {
+        unloadTimeout = setTimeout(function() {
             if ( ignoreUnload ) { return ; }
             var div = document.createElement('div');
             div.classList.add('wait-for-it');
@@ -321,12 +322,14 @@ var HT = HT || {};
 
     window.addEventListener('pagehide', function(event) {
       ignoreUnload = true;
+      if ( unloadTimeout ) { clearTimeout(unloadTimeout); }
       var div = document.querySelector('.wait-for-it');
       if ( div ) { document.body.removeChild(div); }
     })
 
     window.addEventListener('unload', function(event) {
       ignoreUnload = true;
+      if ( unloadTimeout ) { clearTimeout(unloadTimeout); }
       var div = document.querySelector('.wait-for-it');
       if ( div ) { document.body.removeChild(div); }
     })
