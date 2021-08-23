@@ -1411,8 +1411,18 @@ body {
 }
 
 :focus {
-  outline: 4px solid #EF7C22;
+  outline: 4px solid #333;
   outline-offset: 4px;
+}
+
+header[role="banner"] :focus {
+  outline: 4px solid #EEE;
+  outline-offset: 0px;
+}
+
+footer :focus {
+  outline: 4px solid #EEE;
+  outline-offset: 0px;
 }
 
 section:focus:not(.focus-visible) {
@@ -1538,8 +1548,8 @@ a {
 }
 
 a:hover {
-  color: #d56d11;
-  text-decoration: none;
+  color: #9c5c23;
+  text-decoration-thickness: 2px;
 }
 
 a:active {
@@ -2740,7 +2750,7 @@ nav.pagination-container a:hover {
 
 .global-search-modal a:hover {
   background: transparent;
-  color: #AF590D;
+  color: #9c5c23;
   text-decoration: none;
 }
 
@@ -2840,7 +2850,7 @@ input[type=checkbox]:checked + label:before {
 }
 
 .form-control:focus-within {
-  outline: 4px solid #EF7C22;
+  outline: 4px solid #333;
   outline-offset: 4px;
 }
 
@@ -2859,7 +2869,7 @@ input[type=radio]:focus, input[type=checkbox]:focus {
 
 input[type=radio]:focus + label, input[type=checkbox]:focus + label {
   color: #000;
-  outline: 4px solid #EF7C22;
+  outline: 4px solid #333;
   outline-offset: 4px;
 }
 
@@ -2907,7 +2917,7 @@ select:hover {
 }
 
 select:focus {
-  border-color: #EF7C22;
+  border-color: #333;
   -webkit-box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
           box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
   box-shadow: 0 0 0 3px -moz-mac-focusring;
@@ -5000,7 +5010,7 @@ input.date-range-input-text {
 .home #options #stripes .feature a.mobile:hover {
   /* images-button things hover */
   background-color: #fffefb;
-  color: #AF590D;
+  color: #9c5c23;
   border: 1px solid orange !important;
 }
 
