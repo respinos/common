@@ -28,6 +28,16 @@ body {
   outline-offset: 4px;
 }
 
+header[role="banner"] :focus {
+  outline: 4px solid $outline-color-inverse;
+  outline-offset: 0px;
+}
+
+footer :focus {
+  outline: 4px solid $outline-color-inverse; 
+  outline-offset: 0px;
+}
+
 section:focus:not(.focus-visible) {
   outline: none;
 }
@@ -146,8 +156,9 @@ a {
   // transition: filter 0.8s;
 
   &:hover {
-      color: #d56d11;
-      text-decoration: none;
+      color: $link-hover-color; 
+      // text-decoration: none;
+      text-decoration-thickness: 2px;
   }
 
   &:active {

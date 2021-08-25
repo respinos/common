@@ -103,4 +103,6 @@ head.ready(function() {
   var num_checked = $sidebar.find("button[aria-checked='true']").length + $(".active-filter-item").length;
   $(".total-filter-count").text(` (${num_checked})`);
 
+  $("ul[role='radiogroup'] > li").attr('role', 'presentation');
+
 });
