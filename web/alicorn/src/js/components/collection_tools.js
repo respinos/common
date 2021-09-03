@@ -120,36 +120,36 @@ head.ready(function() {
       var options = $.extend({ creating : false, label : "Save Changes" }, args);
 
       var $block = $(
-          '<form class="form-horizontal" action="mb">' +
-              '<div class="control-group">' +
-                  '<label class="control-label" for="edit-cn">Collection Name</label>' +
-                  '<div class="controls">' +
-                      '<input type="text" class="input-large" maxlength="100" name="cn" id="edit-cn" value="" placeholder="Your collection name" required />' +
-                      '<span class="label counter" id="edit-cn-count">100</span>' +
-                  '</div>' +
-              '</div>' +
-              '<div class="control-group">' +
-                  '<label class="control-label" for="edit-desc">Description</label>' +
-                  '<div class="controls">' +
-                      '<textarea id="edit-desc" name="desc" rows="4" maxlength="255" class="input-large" placeholder="Add your collection description."></textarea>' +
-                      '<span class="label counter" id="edit-desc-count">255</span>' +
-                  '</div>' +
-              '</div>' +
-              '<div class="control-group">' +
-                  '<label class="control-label">Is this collection <strong>Public</strong> or <strong>Private</strong>?</label>' +
-                  '<div class="controls">' +
-                      '<input type="radio" name="shrd" id="edit-shrd-0" value="0" checked="checked" > ' +
-                      '<label class="radio inline" for="edit-shrd-0">' +
-                          '<i class="icomoon icomoon-locked" aria-hidden="true"></i> ' +
-                          'Private ' +
-                      '</label>' +
-                      '<input type="radio" name="shrd" id="edit-shrd-1" value="1" > ' +
-                      '<label class="radio inline" for="edit-shrd-1">' +
-                          'Public ' +
-                      '</label>' +
-                  '</div>' +
-              '</div>' +
-          '</form>'
+        '<form class="form-horizontal" action="mb">' +
+          '<div class="control-group">' +
+          '<label class="control-label" for="edit-cn">Collection Name</label>' +
+          '<div class="controls">' +
+          '<input type="text" class="input-large" maxlength="100" name="cn" id="edit-cn" value="" placeholder="Your collection name" required />' +
+          '<span class="label counter" id="edit-cn-count">100 <span class="offscreen">characters remaining</span></span>' +
+          "</div>" +
+          "</div>" +
+          '<div class="control-group">' +
+          '<label class="control-label" for="edit-desc">Description</label>' +
+          '<div class="controls">' +
+          '<textarea id="edit-desc" name="desc" rows="4" maxlength="255" class="input-large" placeholder="Add your collection description."></textarea>' +
+          '<span class="label counter" id="edit-desc-count">255 <span class="offscreen">characters remaining</span></span>' +
+          "</div>" +
+          "</div>" +
+          '<div class="control-group">' +
+          '<label class="control-label">Is this collection <strong>Public</strong> or <strong>Private</strong>?</label>' +
+          '<div class="controls">' +
+          '<input type="radio" name="shrd" id="edit-shrd-0" value="0" checked="checked" > ' +
+          '<label class="radio inline" for="edit-shrd-0">' +
+          '<i class="icomoon icomoon-locked" aria-hidden="true"></i> ' +
+          "Private " +
+          "</label>" +
+          '<input type="radio" name="shrd" id="edit-shrd-1" value="1" > ' +
+          '<label class="radio inline" for="edit-shrd-1">' +
+          "Public " +
+          "</label>" +
+          "</div>" +
+          "</div>" +
+          "</form>"
       );
 
       if ( options.cn ) {
@@ -243,10 +243,10 @@ head.ready(function() {
           var limit = $this.attr("maxlength");
 
           var num_remaining = limit - $this.val().length;
-          $count.html(`${num_remaining} <span class="offscreen">character limit</span>`);
+          $count.html(`${num_remaining} <span class="offscreen">characters remaining</span>`);
           $this.bind('keyup', function() {
               num_remaining = limit - $this.val().length;
-              $count.html(`${num_remaining} <span class="offscreen">character limit</span>`);
+              $count.html(`${num_remaining} <span class="offscreen">characters remaining</span>`);
 
               if ( num_remaining <= 0 ) {
                 var $label = $this.parents(".control-group").find("label");

@@ -82,7 +82,7 @@ var bootbox = function () {
       if ( ! status ) {
         status = document.createElement('div');
         status.setAttribute('role', 'status');
-        status.setAttribute('aria-live', 'polite');
+        status.setAttribute('aria-live', 'assertive');
         status.setAttribute('aria-atomic', 'true');
         status.classList.add("offscreen");
         this.modal.appendChild(status);
