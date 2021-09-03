@@ -1415,9 +1415,11 @@ body {
   outline-offset: 4px;
 }
 
-header[role="banner"] :focus {
+header[role="banner"] :focus, header[role="banner"] .focus-visible {
   outline: 4px solid #EEE;
   outline-offset: 0px;
+  background: #6b6a6b;
+  color: #fcfcfc;
 }
 
 footer :focus {
@@ -1541,10 +1543,6 @@ a {
   text-decoration: underline;
   display: inline-block;
   background-position: center;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  -webkit-transition: outline 0.1s;
-  transition: outline 0.1s;
 }
 
 a:hover {
@@ -6166,9 +6164,10 @@ header nav ul a.action-login {
   text-transform: uppercase;
 }
 
-header nav ul a.action-login::hover {
+header nav ul a.action-login:hover, header nav ul a.action-login:focus {
   background: #fde26e;
   border-color: #fcde5b;
+  color: black;
 }
 
 li.menu.nav-links > ul {
@@ -6388,9 +6387,12 @@ html[data-app="pt"] li.on-for-pt {
   header nav {
     padding: 0.5rem;
   }
+  header nav #burger-menu {
+    margin-left: 0;
+  }
   header nav a,
   header nav button {
-    font-size: 0.75rem;
+    font-size: 0.75rem !important;
     padding: 0.5rem;
   }
 }

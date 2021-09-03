@@ -104,9 +104,10 @@ header {
           border-color: #00000026 #00000026 #00000040;
           text-transform: uppercase;
 
-          &::hover {
+          &:hover, &:focus {
             background: #fde26e;
             border-color: #fcde5b;
+            color: black;
           }
         }
       }
@@ -357,9 +358,14 @@ html[data-app="pt"] {
   header {
     nav {
       padding: 0.5rem;
+
+      #burger-menu {
+        margin-left: 0;
+      }
+
       a,
       button {
-        font-size: 0.75rem;
+        font-size: 0.75rem !important;
         padding: 0.5rem;
       }
     }

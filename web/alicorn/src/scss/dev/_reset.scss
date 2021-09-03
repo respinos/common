@@ -366,8 +366,8 @@ header nav, footer nav {
         text-transform: uppercase;
 
         &:hover, &:focus {
-          background: #fde26e;
-          border-color: #fcde5b;
+          background: #fde26e !important;
+          border-color: #fcde5b !important;
         }
       }
 

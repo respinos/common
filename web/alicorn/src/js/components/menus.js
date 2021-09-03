@@ -55,9 +55,9 @@ head.ready(function() {
             selected_idx = ( selected_idx + delta ) % $items.length;
             if ( selected_idx < 0 ) { selected_idx = $items.length - 1 ; }
 
-            console.log("AHOY MENU KEYDOWN", selected_idx);
             $selected = $items.slice(selected_idx, selected_idx + 1);
             $selected.focus();
+            // console.log("AHOY MENU KEYDOWN", selected_idx, $selected);
             $container.data('selected_idx', selected_idx);
         })
     })
