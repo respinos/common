@@ -1,5 +1,66 @@
 head.ready(function() {
 
+    if ( $(".nav .nav-link").length > 0 ) {
+
+        return; 
+        
+        var $nav = $("header nav");
+        var $navUlEl = $("#nav");
+        var $burgerMenuTriggerEl = $("#burger-menu-trigger");
+        var $burgerMenu = $("#burger-menu");
+        var $burgerMenuContainer = $("#burger-menu-container");
+
+        var $aboutMenuTrigger = $("#about-menu");
+        var $aboutMenuContainer = $("#about-menu-container");
+
+        var toggleNav = function(target) {
+            var mode = $nav.get(0).dataset.mode;
+            if ( target === undefined  ) {
+                target = mode == "small" ? "large" : "small";
+            }
+            if ( mode == target ) {
+                return;
+            }
+
+            if ( target == 'small' ) {
+                // $("li.movable").each((index, liEl) => {
+                //     $burgerMenu.append(liEl);
+                // })
+                $burgerMenuContainer.css({ display: 'list-item' });
+                $aboutMenuContainer.css({ display: 'none' });
+                $("li.movable").css({ display: 'none' });
+                // $aboutMenuTrigger.attr('disabled', 'disabled');
+            } else {
+                $burgerMenuContainer.css({ display: 'none' });
+                $aboutMenuContainer.css({ display: 'list-item' });
+                $("li.movable").css({ display: 'list-item' });
+
+                // $("li.movable").each((index, liEl) => {
+                //     $navUlEl.append(liEl);
+                // })
+                // $aboutMenuTrigger.attr("disabled", null);
+            }
+
+            $nav.get(0).dataset.mode = target;
+        }
+
+        const navTriggerWidth = 53 * 16;
+        const resizeObserver = new ResizeObserver((entries) => {
+            for (let entry of entries) {
+                console.log("--", entry, entry.target, entry.target.offsetWidth);
+                const offsetWidth = entry.target.offsetWidth;
+                if (offsetWidth >= navTriggerWidth) {
+                    toggleNav("large");
+                } else if (offsetWidth < navTriggerWidth) {
+                    toggleNav("small");
+                }
+            }
+        });
+        resizeObserver.observe(document.querySelector('header'));
+
+        return;
+    }
+
     var DISMISS_EVENT = (window.hasOwnProperty &&
                 window.hasOwnProperty('ontouchstart')) ?
                     'touchstart' : 'mousedown';

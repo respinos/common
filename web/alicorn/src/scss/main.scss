@@ -17,6 +17,15 @@
 
 @import "./components/responsive";
 
+// Configuration
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+$link-color: #924a0b;
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/button-group";
+
 html[data-activated="enhancedTextProxy"] body {
   background-image: url('/common/mdp/enhancedTextProxy.svg');
 

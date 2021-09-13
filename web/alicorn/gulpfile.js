@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var es = require('event-stream');
@@ -26,6 +26,28 @@ javascripts.vendor = [];
 javascripts.input.push('./node_modules/jquery/dist/jquery.js');
 javascripts.input.push('./node_modules/jquery.tabbable/jquery.tabbable.js');
 javascripts.input.push('./node_modules/focus-visible/dist/focus-visible.js');
+
+// bootstrap
+// @popperjs/core
+// @dom/event-handler.js
+// @dom/manipulator.js
+// @dom/selector-engine.js
+// base-compoentn.js
+javascripts.input.push("node_modules/@popperjs/core/dist/umd/popper.min.js");
+
+javascripts.input.push(
+  "./node_modules/bootstrap/js/dist/dom/event-handler.js"
+);
+javascripts.input.push("./node_modules/bootstrap/js/dist/dom/data.js");
+javascripts.input.push("./node_modules/bootstrap/js/dist/dom/manipulator.js");
+javascripts.input.push(
+  "./node_modules/bootstrap/js/dist/dom/selector-engine.js"
+);
+javascripts.input.push("./node_modules/bootstrap/js/dist/base-component.js");
+javascripts.input.push("./node_modules/bootstrap/js/dist/dropdown.js");
+
+// javascripts.input.push("./node_modules/bootstrap/dist/js/bootstrap.min.js");
+
 // javascripts.input.push('./node_modules/headjs/dist/1.0.0/head.js');
 // javascripts.input.push('./vendor/micromodal/micromodal.js');
 javascripts.input.push('./vendor/jquery.cookie.js');
@@ -97,33 +119,42 @@ var presets_v7 =  [
       ];
 
 var presets_v6 = [ 'env' ];
+var presets_v7 = [ '@babel/env' ];
 
 gulp.task('scripts-bundle', function() {
-  return gulp.src(javascripts.input)
+  return gulp
+    .src(javascripts.input)
     .pipe(sourcemaps.init())
-    .pipe(babel({
-      babelrc: false,
-      presets: presets_v6
-      // exclude: [ 'node_modules/**' ]
-    }))
-    .pipe(concat('utils.bundle.js'))
+    .pipe(
+      babel({
+        babelrc: false,
+        presets: presets_v7,
+        plugins: ["@babel/plugin-proposal-object-rest-spread"],
+        // exclude: [ 'node_modules/**' ]
+      })
+    )
+    .pipe(concat("utils.bundle.js"))
     .pipe(uglify())
-    .pipe(sourcemaps.write('maps'))
-    .pipe(gulp.dest(javascripts.output))
+    .pipe(sourcemaps.write("maps"))
+    .pipe(gulp.dest(javascripts.output));
 })
 
 gulp.task('scripts', function() {
-  return gulp.src(javascripts.main)
+  return gulp
+    .src(javascripts.main)
     .pipe(sourcemaps.init())
-    .pipe(babel({
-      babelrc: false,
-      presets: presets_v6
-      // exclude: [ 'node_modules/**' ]
-    }))
-    .pipe(concat('utils.201910.js'))
+    .pipe(
+      babel({
+        babelrc: false,
+        presets: presets_v7,
+        plugins: ["@babel/plugin-proposal-object-rest-spread"],
+        // exclude: [ 'node_modules/**' ]
+      })
+    )
+    .pipe(concat("utils.201910.js"))
     .pipe(uglify())
-    .pipe(sourcemaps.write('maps'))
-    .pipe(gulp.dest(javascripts.output))
+    .pipe(sourcemaps.write("maps"))
+    .pipe(gulp.dest(javascripts.output));
 })
 
 gulp.task('sass:watch', function () {

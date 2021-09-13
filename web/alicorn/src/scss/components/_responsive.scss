@@ -173,6 +173,91 @@ a[aria-expanded="true"] {
   }
 }
 
+header {
+  nav {
+    .dropdown-item {
+      color: white;
+      padding: 0.5rem 0.5rem;
+      // margin: 0.25rem 0.25rem 0.25rem;
+      margin: 0.25rem 0;
+      margin-left: 0.25rem;
+      border-radius: 0.25rem;
+      color: white;
+      display: block;
+      white-space: nowrap;
+      text-decoration: none;
+      width: 96%;
+
+      &:hover {
+        background: #6b6a6b;
+        color: #fcfcfc;
+      }
+
+      &:focus {
+        outline: 4px solid #eee;
+        outline-offset: 0px;
+        background: #6b6a6b;
+        color: #fcfcfc;
+      }
+    }
+
+    &[data-mode="small"] {
+      #burger-menu {
+
+        li.nested {
+          a {
+            padding-left: 1.5rem;
+          }
+        }
+
+        span.dropdown-header {
+          color: #ccc;
+          font-size: 1rem;
+          padding: 0.5rem 0.5rem;
+        }
+
+        // a.dropdown-toggle {
+        //   .caret {
+        //     display: none;
+        //   }
+
+        //   &::after {
+        //     display: none;
+        //   }
+
+        //   &[disabled] {
+        //     color: #ccc;
+        //     pointer-events: none;
+
+        //     &:focus, &:hover {
+        //       background: inherit;
+        //       outline: none;
+        //     }
+        //   }
+        // }
+
+        // a.dropdown-item {
+        //   padding-right: 1rem;
+        // }
+
+        // .dropdown-menu {
+        //   display: block;
+        //   position: static;
+        //   border: none;
+        //   background: #39383a;
+
+        //   li {
+        //     // margin-left: 1rem;
+        //     a {
+        //       padding-left: 1rem;
+        //     }
+        //   }
+        // }
+      }
+    }
+  }
+}
+
 .home-link {
   display: flex;
   &::before {
@@ -211,6 +296,39 @@ html[data-app="pt"] {
   @media screen and ( max-width: 62em ) {
     li.item-vanishing {
       display: none !important;
+    }
+  }
+}
+
+header {
+  nav {
+
+    span.dropdown-header {
+      color: #ccc;
+      font-size: 1rem;
+      padding: 0.5rem 0.5rem;
+    }
+
+    li.nested a {
+      padding-left: 1.5rem;
+    }
+
+    #burger-menu-container {
+      display: none;
+    }
+
+    @media screen and ( max-width: 53rem ) {
+      #burger-menu-container {
+        display: list-item;
+      }
+
+      li.movable {
+        display: none;
+      }
+
+      #about-menu-container {
+        display: none;
+      }
     }
   }
 }

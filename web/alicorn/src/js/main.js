@@ -1,3 +1,6 @@
+
+// const Dropdown = require('bootstrap/js/dist/dropdown');
+
 if ( window.console === undefined ) {
     window.console = {
         log : function() { }
