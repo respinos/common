@@ -9,6 +9,8 @@ head.ready(function() {
                     'touchstart' : 'mousedown';
 
 
+    var $selected;
+
     var $menus = $("nav a.menu");
     var $about_menu = $("#about-menu");
     var $burger_menu = $("#burger-menu");
