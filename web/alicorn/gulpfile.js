@@ -27,7 +27,7 @@ javascripts.input.push('./node_modules/jquery/dist/jquery.js');
 javascripts.input.push('./node_modules/jquery.tabbable/jquery.tabbable.js');
 javascripts.input.push('./node_modules/focus-visible/dist/focus-visible.js');
 
-// bootstrap
+// // bootstrap dropdown dependencies
 // @popperjs/core
 // @dom/event-handler.js
 // @dom/manipulator.js
@@ -48,8 +48,6 @@ javascripts.input.push("./node_modules/bootstrap/js/dist/dropdown.js");
 
 // javascripts.input.push("./node_modules/bootstrap/dist/js/bootstrap.min.js");
 
-// javascripts.input.push('./node_modules/headjs/dist/1.0.0/head.js');
-// javascripts.input.push('./vendor/micromodal/micromodal.js');
 javascripts.input.push('./vendor/jquery.cookie.js');
 javascripts.input.push('./vendor/purl.js');
 javascripts.input.push('./vendor/selectwoo/dist/js/select2.full.js');
@@ -119,7 +117,7 @@ var presets_v7 =  [
       ];
 
 var presets_v6 = [ 'env' ];
-var presets_v7 = [ '@babel/env' ];
+var presets_v7 = [ '@babel/preset-env' ];
 
 gulp.task('scripts-bundle', function() {
   return gulp
@@ -128,7 +126,7 @@ gulp.task('scripts-bundle', function() {
     .pipe(
       babel({
         babelrc: false,
-        presets: presets_v7,
+        presets: presets_v7.map(require.resolve),
         plugins: ["@babel/plugin-proposal-object-rest-spread"],
         // exclude: [ 'node_modules/**' ]
       })

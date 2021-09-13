@@ -5129,16 +5129,15 @@ header nav #burger-menu-container {
     margin-left: 0;
   }
 }
-@media screen and (max-width: 20em) {
+@media screen and (max-width: 24em) {
   header nav {
-    padding: 0.5rem;
+    padding: 0.25rem 0;
   }
   header nav #burger-menu {
     margin-left: 0;
   }
   header nav a,
 header nav button {
-    font-size: 0.75rem !important;
     padding: 0.5rem;
   }
 }

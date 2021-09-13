@@ -33,6 +33,27 @@ if (window.NodeList && !NodeList.prototype.forEach) {
     };
 }
 
+// Event.composedPath
+// Possibly normalize to add window to Safari's chain, as it does not?
+(function(E, d, w) {
+  if(!E.composedPath) {
+    E.composedPath = function() {
+      if (this.path) {
+        return this.path;
+      } 
+    var target = this.target;
+    
+    this.path = [];
+    while (target.parentNode !== null) {
+      this.path.push(target);
+      target = target.parentNode;
+    }
+    this.path.push(d, w);
+    return this.path;
+    }
+  }
+})(Event.prototype, document, window);
+
 var docCookies = {
   getItem: function (sKey) {
     if (!sKey) { return null; }
@@ -353,7 +374,14 @@ var HT = HT || {};
     //     HT.update_status($alert.text());
     // }
 
-    var scripts = [ '/common/alicorn/js/utils.bundle.js' ];
+    // var scripts = [ '/common/alicorn/js/utils.bundle.js' ];
+    var scripts = [];
+    scripts.push(
+      "https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign,es2015,MutationObserver,CustomEvent,Event.composedPath"
+    );
+    scripts.push('/common/alicorn/js/utils.bundle.js');
+    // <script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign,es2015,MutationObserver,CustomEvent"></script>
+
     head.js.apply(this, scripts);
 
 })();

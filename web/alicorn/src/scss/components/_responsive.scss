@@ -472,10 +472,10 @@ header {
   }
 }
 
-@media screen and (max-width: 20em) {
+@media screen and (max-width: 24em) {
   header {
     nav {
-      padding: 0.5rem;
+      padding: 0.25rem 0;
 
       #burger-menu {
         margin-left: 0;
@@ -483,7 +483,7 @@ header {
 
       a,
       button {
-        font-size: 0.75rem !important;
+        // font-size: 0.9rem !important;
         padding: 0.5rem;
       }
     }
