@@ -28,9 +28,11 @@ body {
   outline-offset: 4px;
 }
 
-header[role="banner"] :focus {
+header[role="banner"] :focus, header[role="banner"] .focus-visible {
   outline: 4px solid $outline-color-inverse;
   outline-offset: 0px;
+  background: #6b6a6b;
+  color: #fcfcfc;
 }
 
 footer :focus {
@@ -151,8 +153,8 @@ a {
   text-decoration: underline;
   display: inline-block;
   background-position: center;
-  transition: all 0.5s;
-  transition: outline 0.1s;
+  // transition: all 0.5s;
+  // transition: outline 0.1s;
   // transition: filter 0.8s;
 
   &:hover {
