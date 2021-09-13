@@ -6328,7 +6328,7 @@ header nav #burger-menu-container {
   header nav #burger-menu-container {
     display: list-item;
   }
-  header nav li.movable {
+  header nav li.wide {
     display: none;
   }
   header nav #about-menu-container {
