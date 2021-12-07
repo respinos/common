@@ -358,19 +358,29 @@ head.ready(function() {
 
         if ( status.r ) {
             // what is happening?
+            var switchableRoles = [ 'enhancedTextProxy', 'totalAccess' ];
+            var switchableRolesLabels = {};
+            switchableRolesLabels['enhancedTextProxy'] = 'ATRS';
+            switchableRolesLabels['totalAccess'] = '<svg style="background: transparent;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>';
+        
             var $check = $("a.action-switch-role");
-            // only enhancedTextProxy have an active toggle
-            if ( $check.length == 0 && status.r.hasOwnProperty('enhancedTextProxy') ) {
-                var $li = $("#person-nav li.item-vanishing");
-                $li.removeClass('item-vanishing').addClass('x--of-for-narrowest');
-                var $e = $li.find("span");
-                var link_text = 'Member ⚡';
-                if ( status.r.enhancedTextProxy ) {
-                    // the role is active
-                    link_text = 'ATRS ⚡';
-                    document.documentElement.dataset.activated = 'enhancedTextProxy';
+            if ( $check.length == 0 ) {
+                for(var i = 0; i < switchableRoles.length; i++) {
+                    var switchableRole = switchableRoles[i];
+                    if ( status.r.hasOwnProperty(switchableRole) ) {
+                        var $li = $("#person-nav li.item-vanishing");
+                        $li.removeClass('item-vanishing').addClass('x--of-for-narrowest');
+                        var $e = $li.find("span");
+                        var link_text = 'Member ⚡';
+                        if ( status.r[switchableRole] ) {
+                            // the role is active
+                            link_text =
+                              switchableRolesLabels[switchableRole] + " ⚡";
+                            document.documentElement.dataset.activated = switchableRole;
+                        }
+                        $e = $e.replaceWith(`<a class="action-switch-role" href=\"https://${HT.service_domain}/cgi/ping/switch\">${link_text}</a>`);
+                    }
                 }
-                $e = $e.replaceWith(`<a class="action-switch-role" href=\"https://${HT.service_domain}/cgi/ping/switch\">${link_text}</a>`);
             }
         }
 

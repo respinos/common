@@ -7106,18 +7106,27 @@ header nav #burger-menu-container {
   border-top-right-radius: 0;
 }
 
-html[data-activated="enhancedTextProxy"] body {
+html[data-activated][data-activated="enhancedTextProxy"] body {
   background-image: url("/common/mdp/enhancedTextProxy.svg");
 }
 
-html[data-activated="enhancedTextProxy"] body #root {
+html[data-activated][data-activated="totalAccess"] body {
+  background-image: url("/common/mdp/totalAccess.svg");
+}
+
+html[data-activated] #root {
   border: 2rem solid rgba(255, 165, 0, 0.25);
 }
 
-html[data-activated="enhancedTextProxy"] body a.action-switch-role {
+html[data-activated] a.action-switch-role {
   background: orange;
   border: 1px solid darkorange;
   color: #000;
+  display: inline-block;
+}
+
+html[data-activated] a.action-switch-role svg {
+  background: #666;
 }
 
 a.action-switch-role {
