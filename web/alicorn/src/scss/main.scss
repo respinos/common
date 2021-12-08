@@ -26,8 +26,15 @@ $link-color: #924a0b;
 @import "bootstrap/scss/dropdown";
 @import "bootstrap/scss/button-group";
 
-html[data-activated="enhancedTextProxy"] body {
-  background-image: url('/common/mdp/enhancedTextProxy.svg');
+html[data-activated] {
+
+  &[data-activated="enhancedTextProxy"] body {
+    background-image: url('/common/mdp/enhancedTextProxy.svg');
+  }
+
+  &[data-activated="totalAccess"] body {
+    background-image: url('/common/mdp/totalAccess.svg');
+  }
 
   #root {
     border: 2rem solid rgba(255, 165, 0, 0.25);
@@ -37,6 +44,11 @@ html[data-activated="enhancedTextProxy"] body {
     background: orange;
     border: 1px solid darkorange;
     color: #000;
+    display: inline-block;
+
+    svg {
+      background: #666;
+    }
   }
 }
 
