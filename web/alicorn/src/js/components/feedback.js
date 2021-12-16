@@ -55,8 +55,8 @@ head.ready(function() {
       var message;
 
       var today = new Date();
-      if ( ( today.getFullYear() == 2020 && today.getDate() >= 20 && today.getMonth() == 11 ) ||
-         ( today.getFullYear() == 2021 && today.getDate() < 4 && today.getMonth() == 0 ) ) { // ☃
+      if ( ( today.getFullYear() == 2021 && today.getDate() >= 22 && today.getMonth() == 11 ) ||
+         ( today.getFullYear() == 2022 && today.getDate() < 3 && today.getMonth() == 0 ) ) { // ☃
         message = '<div class="alert alert-block"><p><span style="font-size: 400%; float: left; display: inline-block; margin-right: 8px" aria-hidden="true">❄</span> Because of the winter holiday, HathiTrust User Support is unavailable from December 23rd through January 3rd. We will respond to your feedback as soon as possible starting January 4th. Thank you for your patience.</p></div>';
       }
 
