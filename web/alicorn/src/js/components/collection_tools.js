@@ -292,34 +292,35 @@ head.ready(function() {
       bootbox.alert(html);
   });
 
-  $(".form-download-metadata").on('submit', function(e) {
-    // e.preventDefault();
-    var $form = $(this);
-    var $button = $form.find("button");
-    $button.attr("disabled", "disabled").addClass('btn-loading');
+  let checkInterval;
+  let checkDownloadStatus = function (collid, $button) {
+      fetch(`/cgi/mb/download?a=download-status&c=${collid}`)
+          .then(function (response) {
+              return response.json();
+          })
+          .then(function (data) {
+              if ( HT && HT.is_dev ) { console.log("-- download status", data.status); }
+              if (data.status == 'done') {
+                  clearInterval(checkInterval);
+                  $button.attr('disabled', null).removeClass("btn-loading");
+                  HT.update_status("Metadata has been downloaded.");
+              }
+          })
+  }
 
-    // var $progress = $form.find("[data-role=progress]").addClass("active");
+  $(".form-download-metadata").on('submit', function (e) {
+      var $form = $(this);
+      var $button = $form.find("button");
+      $button.attr("disabled", "disabled").addClass('btn-loading');
 
-    var collid = (location.search.match(/c=(\d+)/))[1];
-    var cookieName = "download" + collid;
+      var collid = (location.search.match(/c=(\d+)/))[1];
 
-    var downloadTimeout;
-    var checkDownloadCookie = function() {
-      if ( $.cookie(cookieName, undefined, { json: false }) == 1 ) {
-        // $.cookie('downloadStarted', "false");
-        $.cookie(cookieName, '', { json: false, expires: -1, path: '/' });
-        $button.attr('disabled', null).removeClass("btn-loading");
-        HT.update_status("Metadata has been downloaded.");
-        // $progress.removeClass('active');
-        // $btn.css({ opacity: 1.0 }).find("button").attr('disabled', null);
-      } else {
-        downloadTimeout = setTimeout(checkDownloadCookie, 1000);
-      }
-    }
+      checkInterval = setInterval(function() {
+        checkDownloadStatus(collid, $button);
+      }, 1000);
 
-    $.cookie(cookieName, 0, { path: '/' });
-    setTimeout(checkDownloadCookie, 1000);
-    HT.update_status("Download request submitted.");
+      HT.update_status("Download request submitted.");
+
   });
 
   if ( ! $("html").data('use') == 'search' ) { return; }
