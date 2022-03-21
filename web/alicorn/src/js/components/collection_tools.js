@@ -292,20 +292,26 @@ head.ready(function() {
       bootbox.alert(html);
   });
 
-  let checkInterval;
+  let checkInterval; let isFetching = false;
   let checkDownloadStatus = function (collid, $button) {
-      fetch(`/cgi/mb/download?a=download-status&c=${collid}`)
-          .then(function (response) {
-              return response.json();
-          })
-          .then(function (data) {
-              if ( HT && HT.is_dev ) { console.log("-- download status", data.status); }
-              if (data.status == 'done') {
-                  clearInterval(checkInterval);
-                  $button.attr('disabled', null).removeClass("btn-loading");
-                  HT.update_status("Metadata has been downloaded.");
-              }
-          })
+    if ( isFetching ) { 
+      if ( HT && HT.is_dev ) { console.log("-- still checking status"); }
+      return; 
+    }
+    isFetching = true;
+    fetch(`/cgi/mb/download?a=download-status&c=${collid}`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        isFetching = false;
+        if ( HT && HT.is_dev ) { console.log("-- download status", data.status); }
+        if (data.status == 'done') {
+          clearInterval(checkInterval);
+          $button.attr('disabled', null).removeClass("btn-loading");
+          HT.update_status("Metadata has been downloaded.");
+        }
+    })
   }
 
   $(".form-download-metadata").on('submit', function (e) {
