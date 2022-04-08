@@ -5,6 +5,7 @@
 @import './components/skiplinks';
 @import "./components/alerts";
 @import "./components/modal";
+@import "./components/dialog";
 @import "./components/tooltips";
 @import "./components/nav";
 @import "./components/form";
@@ -55,6 +56,31 @@ html[data-activated] {
 a.action-switch-role {
   border: 1px solid #eee;
   border-radius: 0.25rem;
+}
+
+button.btn.action-toggle-notifications {
+  background: transparent;
+  border: 1px solid #eee;
+  border-radius: 0.25rem;
+  color: orange;
+  font-size: 1.125rem;
+  padding: 0.4rem 0.5rem;
+
+  &[disabled] {
+    i {
+      @extend .icomoon-bell-slash-o;
+    }
+  }
+
+  &:hover {
+    background: #666;
+  }
+
+  &[data-active="true"] {
+    background: orange;
+    color: black;
+  }
+
 }
 
 .logo {

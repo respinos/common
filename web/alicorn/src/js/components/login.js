@@ -484,6 +484,8 @@ head.ready(function() {
         if ( ! $("html").data('analytics-skip') ) {
             HT.analytics.trackPageview(HT.analytics.getPageHref());
         }
+
+        $("html").trigger('ht:login');
     }
 
     var args = {};

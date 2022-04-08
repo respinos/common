@@ -52,6 +52,7 @@ javascripts.input.push('./vendor/jquery.cookie.js');
 javascripts.input.push('./vendor/purl.js');
 javascripts.input.push('./vendor/selectwoo/dist/js/select2.full.js');
 javascripts.input.push('./vendor/social_links.js');
+javascripts.input.push('./vendor/a11y-dialog.min.js');
 javascripts.input.push('./src/js/components/**/*.js');
 // javascripts.input.push('./src/js/components/**/*.js', './src/js/main.js')
 javascripts.output = './js';
@@ -132,7 +133,7 @@ gulp.task('scripts-bundle', function() {
       })
     )
     .pipe(concat("utils.bundle.js"))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(sourcemaps.write("maps"))
     .pipe(gulp.dest(javascripts.output));
 })
