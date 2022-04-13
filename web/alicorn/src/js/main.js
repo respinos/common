@@ -116,11 +116,14 @@ var HT = HT || {};
 
     if ( HT.is_dev ) {
         var prefix = hostname.split(".")[0];
-        if ( prefix == 'mrnibbs' ) {
+        console.log("-- main setting hostname", prefix, hostname);
+        if ( prefix == 'localhost' ) {
+            if ( location.port ) {
+              hostname += ':' + location.port;
+            }
             HT.service_domain = hostname;
             HT.catalog_domain = hostname;
             HT.www_domain = hostname;
-            // HT.www_domain = 'test.www.hathitrusg.org';
         } else {
             // make this more robust later
             var babel_prefix = prefix;

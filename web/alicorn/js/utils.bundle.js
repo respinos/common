@@ -18861,6 +18861,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 });
 "use strict";
 
+<<<<<<< HEAD
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /*! a11y-dialog 7.4.0 — © Kitty Giraudel */
@@ -18936,6 +18937,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 });
 "use strict";
 
+=======
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
 head.ready(function () {
   var $form = $(".advanced-search-form");
 
@@ -20845,6 +20848,55 @@ head.ready(function () {
     }
   };
 
+<<<<<<< HEAD
+=======
+  var _handler = {};
+
+  _handler.ls = function (formData) {
+    var search_url;
+    var submitData = new URLSearchParams();
+    submitData.set('q1', formData.get('q1'));
+    submitData.set('field1', 'ocr');
+    submitData.set('a', 'srchls');
+
+    if (formData.get('ft') == 'ft') {
+      submitData.set('ft', 'ft');
+      submitData.set('lmt', 'ft');
+    }
+
+    search_url = "//".concat(HT.service_domain);
+    search_url += "/cgi/ls?";
+    search_url += submitData.toString();
+    location.href = search_url;
+  };
+
+  _handler.catalog = function (formData) {
+    var search_url;
+    var submitData = new URLSearchParams();
+    var searchtype = formData.get('searchtype');
+
+    if (searchtype == 'isbn') {
+      searchtype = 'isn';
+    }
+
+    submitData.set('lookfor', formData.get('q1'));
+    submitData.set('searchtype', searchtype);
+
+    if (formData.get('ft') == 'ft') {
+      submitData.set('ft', 'ft');
+      submitData.set('setft', 'true');
+    } else {
+      submitData.set('ft', '');
+      submitData.set('setft', 'false');
+    }
+
+    search_url = "//".concat(HT.catalog_domain);
+    search_url += "/Search/Home?";
+    search_url += submitData.toString();
+    location.href = search_url;
+  };
+
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
   var target = $search_target.find("input:checked").val();
 
   _setup[target]();
@@ -20859,7 +20911,11 @@ head.ready(function () {
 
 
   $("body").on('change', '.ht-search-form .search-target input[type="radio"]', function (e) {
+<<<<<<< HEAD
     var target = this.value;
+=======
+    target = this.value;
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
 
     _setup[target]();
 
@@ -20919,9 +20975,17 @@ head.ready(function () {
 
     _resizeTimer = setTimeout(_resizer, 500);
   });
+<<<<<<< HEAD
   setTimeout(_resizer, 500); // add event handler for submit to check for empty query or asterisk
 
   $("body").on('submit', '.ht-search-form', function (event) {
+=======
+  setTimeout(_resizer, 500);
+  $("#ht-search-form").addClass('ht-search-form'); // add event handler for submit to check for empty query or asterisk
+
+  $("body").on('submit', '.ht-search-form', function (event) {
+    event.preventDefault();
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
     HT.beforeUnloadTimeout = 15000;
     var $form = $(this);
 
@@ -20957,7 +21021,14 @@ head.ready(function () {
           searchtype: searchtype
         }
       });
+<<<<<<< HEAD
       return true;
+=======
+
+      _handler[target](new FormData($form.get(0)));
+
+      return false;
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
     }
   });
 });
@@ -21225,6 +21296,7 @@ head.ready(function () {
     var $trigger = options.$trigger;
     var top = $block.css('position') == 'fixed' ? $trigger.position().top : $trigger.offset().top;
     top = $trigger.position().top;
+<<<<<<< HEAD
     top += $trigger.outerHeight() + 100 / 2; // 32;
     // top = 6.25 * 16;
     // var right = $(window).width() - ( $button.offset().left + $button.outerWidth() );
@@ -21234,6 +21306,11 @@ head.ready(function () {
     right -= 2 * 16; // padding
 
     right -= 150 / 2;
+=======
+    top += $trigger.height() + 32; // var right = $(window).width() - ( $button.offset().left + $button.outerWidth() );
+
+    var right = $(window).width() - ($trigger.offset().left + $trigger.outerWidth() / 2) - (25 + 10);
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
     console.log("AHOY SETTING POSITION", top, "x", right);
     $dialog.css({
       top: top,
@@ -21332,7 +21409,11 @@ head.ready(function () {
               document.documentElement.dataset.activated = switchableRole;
             }
 
+<<<<<<< HEAD
             $e = $e.replaceWith("<a class=\"action-switch-role\" href=\"https://".concat(HT.service_domain, "/cgi/ping/switch?target=").concat(encodeURIComponent(location.href), "\">").concat(link_text, "</a>"));
+=======
+            $e = $e.replaceWith("<a class=\"action-switch-role\" href=\"https://".concat(HT.service_domain, "/cgi/ping/switch\">").concat(link_text, "</a>"));
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
           }
         }
       }
@@ -21362,6 +21443,7 @@ head.ready(function () {
       return;
     }
 
+<<<<<<< HEAD
     var xtracking;
 
     var xupdate = function xupdate(id) {
@@ -21382,6 +21464,10 @@ head.ready(function () {
     if (!timestamped) {
       // get any pre-existing localStorage value
       var check = xtracking[id] || localStorage.getItem('x:' + id);
+=======
+    if (!timestamped) {
+      var check = localStorage.getItem('x:' + id);
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
 
       if (check) {
         return;
@@ -21407,8 +21493,12 @@ head.ready(function () {
       $banner.remove();
 
       if (!timestamped) {
+<<<<<<< HEAD
         // localStorage.setItem('x:' + id, 'true');
         xupdate(id);
+=======
+        localStorage.setItem('x:' + id, 'true');
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
       }
     });
     $banner.find("a.close,[data-action='close']").on('click', function (event) {
@@ -21420,8 +21510,12 @@ head.ready(function () {
       }
 
       if (!timestamped) {
+<<<<<<< HEAD
         // localStorage.setItem('x:' + id, 'true');
         xupdate(id);
+=======
+        localStorage.setItem('x:' + id, 'true');
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
       }
     });
   }
@@ -21467,6 +21561,7 @@ head.ready(function () {
     if (!$("html").data('analytics-skip')) {
       HT.analytics.trackPageview(HT.analytics.getPageHref());
     }
+<<<<<<< HEAD
 
     $("html").trigger('ht:login');
   };
@@ -21494,11 +21589,33 @@ head.ready(function () {
       jsonpCallback: 'HT.login_callback'
     });
   } // $("body").on('click', '.trigger-login', function(e) {
+=======
+  };
+
+  var args = {};
+
+  if (document.referrer) {
+    args.ref = document.referrer;
+  }
+
+  $.ajax({
+    type: "GET",
+    url: PING_URL,
+    data: args,
+    async: true,
+    jsonp: 'callback',
+    dataType: 'jsonp',
+    jsonpCallback: 'HT.login_callback'
+  }); // $("body").on('click', '.trigger-login', function(e) {
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
   //     e.preventDefault();
   //     bootbox.hideAll();
   //     display_login_dialog({ $target: $(this), classname: 'login-centered' })
   // })
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
 });
 "use strict";
 
@@ -21605,6 +21722,7 @@ head.ready(function () {
 });
 "use strict";
 
+<<<<<<< HEAD
 var HT = HT || {};
 var $action;
 var notificationData;
@@ -21681,6 +21799,8 @@ head.ready(function () {
 });
 "use strict";
 
+=======
+>>>>>>> 4b014ec... use localhost as catalog/service_domain
 head.ready(function () {
   if (!$("html").data('use') == 'search') {
     return;
