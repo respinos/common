@@ -11,7 +11,7 @@ const openNotifications = function() {
   let modal_html = `
 <div class="notifications-panel modal micromodal-slide" tabindex="-1" aria-hidden="true" id="notifications-modal">
   <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="login-modal-title">
+    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="notifications-modal-title">
       <div class="notifications-panel-arrow"></div>
       <div class="modal__header"><h2 class="modal__title" id="notifications-modal-title">Your notifications</h2><button class="modal__close" aria-label="Close" data-micromodal-close></button></div>
       <div class="modal__content" id="notifications-modal-content">

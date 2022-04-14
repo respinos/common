@@ -368,11 +368,19 @@ var HT = HT || {};
         document.documentElement.classList.add('edge');
     }
 
-    // var $alert = $(".alert");
-    // if ( $alert.length ) {
-    //     // have alerts that were drawn on the page so read them aloud
-    //     HT.update_status($alert.text());
-    // }
+    HT.pre_login_callback = function(status) {
+      // so now we have login_status
+    }
+
+    var args = {};
+    if (document.referrer) {
+      args.ref = document.referrer;
+    }
+
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = `//${HT.service_domain}/cgi/ping?callback=HT.pre_login_callback`;
+    document.head.appendChild(script);
 
     // var scripts = [ '/common/alicorn/js/utils.bundle.js' ];
     var scripts = [];

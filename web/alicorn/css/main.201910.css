@@ -2620,177 +2620,6 @@ pre {
   will-change: transform;
 }
 
-#notifications-modal-description div {
-  padding-bottom: 1rem;
-}
-
-#notifications-modal-description div + div {
-  border-top: 1px solid #ccc;
-  padding-top: 1rem;
-}
-
-.dialog-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 150;
-}
-
-.dialog-container[aria-hidden='true'] {
-  display: none;
-}
-
-.dialog-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  -webkit-animation: fade-in 200ms both;
-          animation: fade-in 200ms both;
-  z-index: 151;
-}
-
-.dialog-content {
-  background-color: white;
-  margin: auto;
-  z-index: 2;
-  position: relative;
-  -webkit-animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
-          animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
-  padding: 1em;
-  max-width: 90%;
-  width: 40rem;
-  max-height: 90vh;
-  border-radius: 0.5rem;
-  z-index: 152;
-}
-
-@media screen and (min-width: 700px) {
-  .dialog-content {
-    padding: 2em;
-  }
-}
-
-@-webkit-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes slide-up {
-  from {
-    -webkit-transform: translateY(10%);
-            transform: translateY(10%);
-  }
-}
-
-@keyframes slide-up {
-  from {
-    -webkit-transform: translateY(10%);
-            transform: translateY(10%);
-  }
-}
-
-.dialog h1 {
-  margin: 0;
-  font-size: 1.25em;
-}
-
-.dialog-close {
-  position: absolute;
-  top: 0.5em;
-  right: 0.5em;
-  border: 0;
-  padding: 0;
-  background-color: transparent;
-  font-weight: bold;
-  font-size: 1.25em;
-  width: 1.2em;
-  height: 1.2em;
-  text-align: center;
-  cursor: pointer;
-  -webkit-transition: 0.15s;
-  transition: 0.15s;
-}
-
-.dialog-close:before {
-  font-family: icomoon;
-  content: "\2715";
-}
-
-@media screen and (min-width: 700px) {
-  .dialog-close {
-    top: 1em;
-    right: 1em;
-  }
-}
-
-.dialog-content::before {
-  content: "";
-  height: 0;
-  width: 0;
-  position: absolute;
-  top: -40px;
-  right: 0;
-  display: block;
-  overflow: revert;
-  border-width: 0 100px 100px 100px;
-  border-color: transparent transparent #fff;
-  border-style: solid;
-}
-
-#notifications-modal:not([aria-hidden='true']) .dialog-content {
-  position: absolute;
-  top: 6.25rem;
-  right: calc(var(--right-x) * 1px);
-}
-
-#notifications-modal:not([aria-hidden='true']) .dialog-content dt {
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.notifications-panel-arrow::before {
-  content: "";
-  height: 0;
-  width: 0;
-  position: absolute;
-  top: -40px;
-  right: 0;
-  display: block;
-  overflow: revert;
-  border-width: 0 100px 100px 100px;
-  border-color: transparent transparent #fff;
-  border-style: solid;
-  z-index: -1;
-}
-
-#notifications-modal.is-open .modal__container {
-  position: absolute;
-  top: 6.25rem;
-  right: calc(var(--right-x) * 1px);
-}
-
-#notifications-modal.is-open .modal__container dt {
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
 .uber-tooltip {
   position: fixed;
   bottom: 0;
@@ -3343,43 +3172,23 @@ fieldset .help-block {
   margin-bottom: 1rem;
 }
 
-.modal.login-panel .login-panel-arrow {
-  top: 0px;
-  right: 0px;
-  position: absolute;
-  height: 0px;
-  width: 25px;
-}
-
-.modal.login-panel .login-panel-arrow:after {
+.modal.login-panel .login-panel-arrow::before {
   content: "";
-  position: absolute;
-  bottom: 0px;
-  right: 1px;
-  border-style: solid;
-  border-width: 0 10px 10px 10px;
-  border-color: #f9f8f5 transparent;
-  display: block;
+  height: 0;
   width: 0;
-  z-index: 1;
-}
-
-.modal.login-panel .login-panel-arrow:before {
-  content: "";
   position: absolute;
-  top: -11px;
+  top: -40px;
   right: 0;
-  border-style: solid;
-  border-width: 0 11px 11px 11px;
-  border-color: #000 transparent;
   display: block;
-  width: 0;
-  z-index: 0;
+  overflow: revert;
+  border-width: 0 100px 100px 100px;
+  border-color: transparent transparent #fff;
+  border-style: solid;
+  z-index: -1;
 }
 
 .modal.login-panel .modal__header {
   border-bottom: 0;
-  padding: 0;
 }
 
 .modal.login-panel .modal__header .modal__title {
@@ -3471,6 +3280,54 @@ fieldset .help-block {
 
 .modal.login-panel .select2-container--default .select2-results > .select2-results__options {
   max-height: 7.5rem;
+}
+
+#notifications-modal:not([aria-hidden='true']) .dialog-content {
+  position: absolute;
+  top: 6.25rem;
+  right: calc(var(--right-x) * 1px);
+}
+
+#notifications-modal:not([aria-hidden='true']) .dialog-content dt {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.notifications-panel-arrow::before {
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: -40px;
+  right: 0;
+  display: block;
+  overflow: revert;
+  border-width: 0 100px 100px 100px;
+  border-color: transparent transparent #fff;
+  border-style: solid;
+  z-index: -1;
+}
+
+#notifications-modal.is-open .modal__container {
+  position: absolute;
+  top: 6.25rem;
+  right: calc(var(--right-x) * 1px);
+}
+
+#notifications-modal.is-open .modal__container dt {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+#notifications-modal-description div {
+  padding-bottom: 1rem;
+}
+
+#notifications-modal-description div + div {
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
 }
 
 symbol g {

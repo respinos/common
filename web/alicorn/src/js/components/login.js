@@ -279,8 +279,13 @@ head.ready(function() {
         var top = $block.css('position') == 'fixed' ? $trigger.position().top : $trigger.offset().top;
         top = $trigger.position().top;
         top += $trigger.height() + 32;
+        top = 6.25 * 16;
         // var right = $(window).width() - ( $button.offset().left + $button.outerWidth() );
-        var right = $(window).width() - ( $trigger.offset().left + ( $trigger.outerWidth() / 2 ) ) - ( 25 + 10 );
+        // var right = $(window).width() - ( $trigger.offset().left + ( $trigger.outerWidth() / 2 ) ) - ( 25 + 10 );
+        var right = (window.outerWidth - $trigger.position().left - ($trigger.outerWidth()) + ($trigger.outerWidth() / 2));
+        right -= (2 * 16); // padding
+        right -= (150 / 2);
+
         console.log("AHOY SETTING POSITION", top, "x", right);
         $dialog.css({ top: top, right: right });
         var $caret = $dialog.find(".login-panel-arrow");
@@ -488,19 +493,27 @@ head.ready(function() {
         $("html").trigger('ht:login');
     }
 
-    var args = {};
-    if ( document.referrer ) {
-        args.ref = document.referrer;
+    if ( HT.login_status ) {
+        // we already have the status
+        console.log("AHOY have status", HT.login_status.logged_in);
+        setTimeout(() => {
+            HT.login_callback(HT.login_status);
+        }, 0);
+    } else {
+        var args = {};
+        if (document.referrer) {
+            args.ref = document.referrer;
+        }
+        $.ajax({
+            type: "GET",
+            url: PING_URL,
+            data: args,
+            async: true,
+            jsonp: 'callback',
+            dataType: 'jsonp',
+            jsonpCallback: 'HT.login_callback'
+        })
     }
-    $.ajax({
-        type : "GET",
-        url : PING_URL,
-        data: args,
-        async : true,
-        jsonp : 'callback',
-        dataType : 'jsonp',
-        jsonpCallback : 'HT.login_callback'
-    })
 
     // $("body").on('click', '.trigger-login', function(e) {
     //     e.preventDefault();

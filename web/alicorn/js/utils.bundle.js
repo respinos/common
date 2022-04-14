@@ -21225,9 +21225,14 @@ head.ready(function () {
     var $trigger = options.$trigger;
     var top = $block.css('position') == 'fixed' ? $trigger.position().top : $trigger.offset().top;
     top = $trigger.position().top;
-    top += $trigger.height() + 32; // var right = $(window).width() - ( $button.offset().left + $button.outerWidth() );
+    top += $trigger.height() + 32;
+    top = 6.25 * 16; // var right = $(window).width() - ( $button.offset().left + $button.outerWidth() );
+    // var right = $(window).width() - ( $trigger.offset().left + ( $trigger.outerWidth() / 2 ) ) - ( 25 + 10 );
 
-    var right = $(window).width() - ($trigger.offset().left + $trigger.outerWidth() / 2) - (25 + 10);
+    var right = window.outerWidth - $trigger.position().left - $trigger.outerWidth() + $trigger.outerWidth() / 2;
+    right -= 2 * 16; // padding
+
+    right -= 150 / 2;
     console.log("AHOY SETTING POSITION", top, "x", right);
     $dialog.css({
       top: top,
@@ -21445,25 +21450,34 @@ head.ready(function () {
     $("html").trigger('ht:login');
   };
 
-  var args = {};
+  if (HT.login_status) {
+    // we already have the status
+    console.log("AHOY have status", HT.login_status.logged_in);
+    setTimeout(function () {
+      HT.login_callback(HT.login_status);
+    }, 0);
+  } else {
+    var args = {};
 
-  if (document.referrer) {
-    args.ref = document.referrer;
-  }
+    if (document.referrer) {
+      args.ref = document.referrer;
+    }
 
-  $.ajax({
-    type: "GET",
-    url: PING_URL,
-    data: args,
-    async: true,
-    jsonp: 'callback',
-    dataType: 'jsonp',
-    jsonpCallback: 'HT.login_callback'
-  }); // $("body").on('click', '.trigger-login', function(e) {
+    $.ajax({
+      type: "GET",
+      url: PING_URL,
+      data: args,
+      async: true,
+      jsonp: 'callback',
+      dataType: 'jsonp',
+      jsonpCallback: 'HT.login_callback'
+    });
+  } // $("body").on('click', '.trigger-login', function(e) {
   //     e.preventDefault();
   //     bootbox.hideAll();
   //     display_login_dialog({ $target: $(this), classname: 'login-centered' })
   // })
+
 });
 "use strict";
 
@@ -21580,7 +21594,7 @@ var openNotifications = function openNotifications() {
   }
 
   $action.prop('disabled', false);
-  var modal_html = "\n<div class=\"notifications-panel modal micromodal-slide\" tabindex=\"-1\" aria-hidden=\"true\" id=\"notifications-modal\">\n  <div class=\"modal__overlay\" tabindex=\"-1\" data-micromodal-close>\n    <div class=\"modal__container\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"login-modal-title\">\n      <div class=\"notifications-panel-arrow\"></div>\n      <div class=\"modal__header\"><h2 class=\"modal__title\" id=\"notifications-modal-title\">Your notifications</h2><button class=\"modal__close\" aria-label=\"Close\" data-micromodal-close></button></div>\n      <div class=\"modal__content\" id=\"notifications-modal-content\">\n        <dl id=\"notifications-modal-description\">\n        </dl>\n      </div>\n    </div>\n  </div>\n</div>\n    ";
+  var modal_html = "\n<div class=\"notifications-panel modal micromodal-slide\" tabindex=\"-1\" aria-hidden=\"true\" id=\"notifications-modal\">\n  <div class=\"modal__overlay\" tabindex=\"-1\" data-micromodal-close>\n    <div class=\"modal__container\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"notifications-modal-title\">\n      <div class=\"notifications-panel-arrow\"></div>\n      <div class=\"modal__header\"><h2 class=\"modal__title\" id=\"notifications-modal-title\">Your notifications</h2><button class=\"modal__close\" aria-label=\"Close\" data-micromodal-close></button></div>\n      <div class=\"modal__content\" id=\"notifications-modal-content\">\n        <dl id=\"notifications-modal-description\">\n        </dl>\n      </div>\n    </div>\n  </div>\n</div>\n    ";
   var dialogEl = $(modal_html).appendTo('body').get(0);
   notificationData.forEach(function (datum) {
     var notice_html = "<div>\n        <dt>".concat(datum.title, "</dt>\n        <dd>\n          <p>").concat(datum.message, "</p>\n          <p><a href=\"").concat(datum.read_more_link, "\">").concat(datum.read_more_label, "</a></p>\n        </dd>\n      </div>");
