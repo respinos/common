@@ -379,7 +379,7 @@ var HT = HT || {};
 
     var script = document.createElement('script');
     script.async = true;
-    script.src = `//${HT.service_domain}/cgi/ping?callback=HT.pre_login_callback`;
+    script.src = `//${HT.service_domain}/cgi/ping?callback=HT.pre_login_callback&_${(new Date).getTime()}`;
     document.head.appendChild(script);
 
     // var scripts = [ '/common/alicorn/js/utils.bundle.js' ];
