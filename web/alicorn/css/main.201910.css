@@ -2620,6 +2620,15 @@ pre {
   will-change: transform;
 }
 
+#notifications-modal-description div {
+  padding-bottom: 1rem;
+}
+
+#notifications-modal-description div + div {
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+}
+
 .dialog-container {
   display: -webkit-box;
   display: -ms-flexbox;

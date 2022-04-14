@@ -21571,14 +21571,34 @@ head.ready(function () {
 "use strict";
 
 var HT = HT || {};
-var notificationData = []; // notificationData.push({
-//   title: 'Have you checked your ergonomics?',
-//   message: 'Perhaps you\'ve been sitting too long, reading screens. Stand up and stretch and get a snack. A healthy snack.',
-//   link: 'https://umich.edu'
-// })
+var $action;
+var notificationData;
+
+var openNotifications = function openNotifications() {
+  if (notificationData == null || notificationData.length == 0) {
+    return;
+  }
+
+  $action.prop('disabled', false);
+  var modal_html = "\n<div class=\"notifications-panel modal micromodal-slide\" tabindex=\"-1\" aria-hidden=\"true\" id=\"notifications-modal\">\n  <div class=\"modal__overlay\" tabindex=\"-1\" data-micromodal-close>\n    <div class=\"modal__container\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"login-modal-title\">\n      <div class=\"notifications-panel-arrow\"></div>\n      <div class=\"modal__header\"><h2 class=\"modal__title\" id=\"notifications-modal-title\">Your notifications</h2><button class=\"modal__close\" aria-label=\"Close\" data-micromodal-close></button></div>\n      <div class=\"modal__content\" id=\"notifications-modal-content\">\n        <dl id=\"notifications-modal-description\">\n        </dl>\n      </div>\n    </div>\n  </div>\n</div>\n    ";
+  var dialogEl = $(modal_html).appendTo('body').get(0);
+  notificationData.forEach(function (datum) {
+    var notice_html = "<div>\n        <dt>".concat(datum.title, "</dt>\n        <dd>\n          <p>").concat(datum.message, "</p>\n          <p><a href=\"").concat(datum.read_more_link, "\">").concat(datum.read_more_label, "</a></p>\n        </dd>\n      </div>");
+    $(notice_html).appendTo(dialogEl.querySelector('dl'));
+  }); // dialogEl.dataset.right = ( $action.position().left - $action.width() / 2 ) - dialogEl.offsetWidth;
+
+  var rightX = window.outerWidth - $action.position().left - $action.width() + $action.width() / 2;
+  rightX -= 2 * 16; // padding
+
+  rightX -= 150 / 2;
+  dialogEl.style.setProperty('--right-x', rightX);
+  $action.get(0).dataset.active = 'true'; // dialog.show();
+
+  bootbox.show('notifications-modal');
+};
 
 head.ready(function () {
-  var $action = $(".action-toggle-notifications");
+  $action = $(".action-toggle-notifications");
 
   if (!$action.get(0)) {
     return;
@@ -21586,38 +21606,11 @@ head.ready(function () {
 
   $("html").on('ht:login', function (event) {
     console.log("AHOY WE ARE LOGGED IN");
-
-    if (HT.login_status.institutionCode == 'sc' || HT.login_status.displayName == 'Roger Roberto Espinosa' || HT.login_status.displayName.indexOf('Zaytsev') > -1) {
-      notificationData.push({
-        title: 'University of South Carolina is migrating to Open Athens!',
-        message: "If you've made personal collections, those will have to be migrated to your new identity.",
-        link: 'https://httpstatusdogs.com/416-requested-range-not-satisfiable'
-      });
-    }
-
-    if (notificationData.length == 0) {
-      return;
-    }
-
-    $action.prop('disabled', false);
-    var modal_html = "\n<div\n  id=\"notifications-modal\"\n  aria-labelledby=\"notifications-modal-title\"\n  aria-describedby=\"notifications-modal-description\"\n  aria-hidden=\"true\"\n  class=\"dialog-container\"\n>\n  <div class=\"dialog-overlay\" data-a11y-dialog-hide></div>\n  <div role=\"document\" class=\"dialog-content\">\n    <button type=\"button\" data-a11y-dialog-hide aria-label=\"Close dialog\" class=\"dialog-close\">\n    </button>\n    <!-- 5. The dialog title -->\n    <h1 id=\"notifictaions-modal-title\">Your notifications</h1>\n    <!-- 6. Dialog content -->\n    \n    <dl id=\"notifications-modal-description\">\n    </dl>\n  </div>\n</div>\n    ";
-    modal_html = "\n<div class=\"notifications-panel modal micromodal-slide\" tabindex=\"-1\" aria-hidden=\"true\" id=\"notifications-modal\">\n  <div class=\"modal__overlay\" tabindex=\"-1\" data-micromodal-close>\n    <div class=\"modal__container\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"login-modal-title\">\n      <div class=\"notifications-panel-arrow\"></div>\n      <div class=\"modal__header\"><h2 class=\"modal__title\" id=\"notifications-modal-title\">Your notifications</h2><button class=\"modal__close\" aria-label=\"Close\" data-micromodal-close></button></div>\n      <div class=\"modal__content\" id=\"notifications-modal-content\">\n        <dl id=\"notifications-modal-description\">\n        </dl>\n      </div>\n    </div>\n  </div>\n</div>\n    "; // 296px
-
-    var dialogEl = $(modal_html).appendTo('body').get(0); // let dialog = new A11yDialog(dialogEl);
-
-    notificationData.forEach(function (datum) {
-      var notice_html = "<div>\n        <dt>".concat(datum.title, "</dt>\n        <dd>\n          <p>").concat(datum.message, "</p>\n          <p><a href=\"").concat(datum.link, "\">Would you like to know more?</a></p>\n        </dd>\n      </div>");
-      $(notice_html).appendTo(dialogEl.querySelector('dl'));
-    }); // dialogEl.dataset.right = ( $action.position().left - $action.width() / 2 ) - dialogEl.offsetWidth;
-
-    var rightX = window.outerWidth - $action.position().left - $action.width() + $action.width() / 2;
-    rightX -= 2 * 16; // padding
-
-    rightX -= 150 / 2;
-    dialogEl.style.setProperty('--right-x', rightX);
-    $action.get(0).dataset.active = 'true'; // dialog.show();
-
-    bootbox.show('notifications-modal');
+    notificationData = HT.login_status.notificationData;
+    openNotifications();
+    $action.on('click', function (event) {
+      openNotifications();
+    });
   });
 });
 "use strict";

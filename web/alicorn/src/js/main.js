@@ -379,9 +379,6 @@ var HT = HT || {};
     scripts.push(
       "https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign,es2015,MutationObserver,CustomEvent,Event.composedPath"
     );
-    scripts.push(
-      'https://cdn.jsdelivr.net/npm/a11y-dialog@7/dist/a11y-dialog.min.js'
-    );
     scripts.push('/common/alicorn/js/utils.bundle.js');
     // <script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign,es2015,MutationObserver,CustomEvent"></script>
 
