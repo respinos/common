@@ -3282,18 +3282,6 @@ fieldset .help-block {
   max-height: 7.5rem;
 }
 
-#notifications-modal:not([aria-hidden='true']) .dialog-content {
-  position: absolute;
-  top: 6.25rem;
-  right: calc(var(--right-x) * 1px);
-}
-
-#notifications-modal:not([aria-hidden='true']) .dialog-content dt {
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
 .notifications-panel-arrow::before {
   content: "";
   height: 0;
@@ -3309,6 +3297,12 @@ fieldset .help-block {
   z-index: -1;
 }
 
+@media only screen and (max-width: 38rem) {
+  .notifications-panel-arrow::before {
+    display: none;
+  }
+}
+
 #notifications-modal.is-open .modal__container {
   position: absolute;
   top: 6.25rem;
@@ -3319,6 +3313,14 @@ fieldset .help-block {
   font-weight: bold;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
+}
+
+@media only screen and (max-width: 38rem) {
+  #notifications-modal.is-open .modal__container {
+    right: auto;
+    left: auto;
+    width: 90%;
+  }
 }
 
 #notifications-modal-description div {

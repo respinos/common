@@ -21587,19 +21587,31 @@ head.ready(function () {
 var HT = HT || {};
 var $action;
 var notificationData;
+var dialogEl;
 
 var openNotifications = function openNotifications() {
   if (notificationData == null || notificationData.length == 0) {
     return;
   }
 
-  $action.prop('disabled', false);
-  var modal_html = "\n<div class=\"notifications-panel modal micromodal-slide\" tabindex=\"-1\" aria-hidden=\"true\" id=\"notifications-modal\">\n  <div class=\"modal__overlay\" tabindex=\"-1\" data-micromodal-close>\n    <div class=\"modal__container\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"notifications-modal-title\">\n      <div class=\"notifications-panel-arrow\"></div>\n      <div class=\"modal__header\"><h2 class=\"modal__title\" id=\"notifications-modal-title\">Your notifications</h2><button class=\"modal__close\" aria-label=\"Close\" data-micromodal-close></button></div>\n      <div class=\"modal__content\" id=\"notifications-modal-content\">\n        <dl id=\"notifications-modal-description\">\n        </dl>\n      </div>\n    </div>\n  </div>\n</div>\n    ";
-  var dialogEl = $(modal_html).appendTo('body').get(0);
-  notificationData.forEach(function (datum) {
-    var notice_html = "<div>\n        <dt>".concat(datum.title, "</dt>\n        <dd>\n          <p>").concat(datum.message, "</p>\n          <p><a href=\"").concat(datum.read_more_link, "\">").concat(datum.read_more_label, "</a></p>\n        </dd>\n      </div>");
-    $(notice_html).appendTo(dialogEl.querySelector('dl'));
-  }); // dialogEl.dataset.right = ( $action.position().left - $action.width() / 2 ) - dialogEl.offsetWidth;
+  if (dialogEl === undefined) {
+    var modal_html = "\n<div class=\"notifications-panel modal micromodal-slide\" tabindex=\"-1\" aria-hidden=\"true\" id=\"notifications-modal\">\n  <div class=\"modal__overlay\" tabindex=\"-1\" data-micromodal-close>\n    <div class=\"modal__container\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"notifications-modal-title\">\n      <div class=\"notifications-panel-arrow\"></div>\n      <div class=\"modal__header\"><h2 class=\"modal__title\" id=\"notifications-modal-title\">Your notifications</h2><button class=\"modal__close\" aria-label=\"Close\" data-micromodal-close></button></div>\n      <div class=\"modal__content\" id=\"notifications-modal-content\">\n        <dl id=\"notifications-modal-description\">\n        </dl>\n      </div>\n    </div>\n  </div>\n</div>\n    ";
+    dialogEl = $(modal_html).appendTo('body').get(0);
+    notificationData.forEach(function (datum) {
+      var message;
+
+      if (datum.message.indexOf('<p>') > -1) {
+        message = datum.message + '<p>';
+      } else {
+        message = "<p>".concat(datum.message, " ");
+      }
+
+      message += "<a href=\"".concat(datum.read_more_link, "\">").concat(datum.read_more_label, "</a></p>");
+      var notice_html = "<div>\n        <dt>".concat(datum.title, "</dt>\n        <dd>\n          ").concat(message, "\n        </dd>\n      </div>");
+      $(notice_html).appendTo(dialogEl.querySelector('dl'));
+    });
+  } // dialogEl.dataset.right = ( $action.position().left - $action.width() / 2 ) - dialogEl.offsetWidth;
+
 
   var rightX = window.outerWidth - $action.position().left - $action.width() + $action.width() / 2;
   rightX -= 2 * 16; // padding
@@ -21608,7 +21620,11 @@ var openNotifications = function openNotifications() {
   dialogEl.style.setProperty('--right-x', rightX);
   $action.get(0).dataset.active = 'true'; // dialog.show();
 
-  bootbox.show('notifications-modal');
+  bootbox.show('notifications-modal', {
+    onClose: function onClose(modal) {
+      localStorage.setItem('ht.notification', notificationData[0].published_on);
+    }
+  });
 };
 
 head.ready(function () {
@@ -21621,7 +21637,21 @@ head.ready(function () {
   $("html").on('ht:login', function (event) {
     console.log("AHOY WE ARE LOGGED IN");
     notificationData = HT.login_status.notificationData;
-    openNotifications();
+
+    if (notificationData == null || notificationData.length == 0) {
+      return;
+    }
+
+    $action.prop('disabled', false);
+    var notificationTimestamp = notificationData[0].published_on;
+    var lastNotificationTimestamp = localStorage.getItem('ht.notification');
+    console.log("-- notification timestamp", notificationTimestamp, lastNotificationTimestamp, lastNotificationTimestamp != notificationTimestamp);
+
+    if (lastNotificationTimestamp != notificationTimestamp) {
+      // automatically open if there are unseen notifications
+      openNotifications();
+    }
+
     $action.on('click', function (event) {
       openNotifications();
     });
