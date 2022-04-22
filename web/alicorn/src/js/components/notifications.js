@@ -53,7 +53,8 @@ const openNotifications = function() {
   // dialog.show();
   bootbox.show('notifications-modal', {
     onClose: function (modal) {
-      localStorage.setItem('ht.notification', notificationData[0].published_on);
+      docCookies.setItem('HT.notice', notificationData[0].effective_on, null, '/', '.hathitrust.org', true);
+      // localStorage.setItem('ht.notification', notificationData[0].effective_on);
     }
   });
 
@@ -72,8 +73,9 @@ head.ready(function () {
 
     $action.prop('disabled', false);
 
-    let notificationTimestamp = notificationData[0].published_on;
-    let lastNotificationTimestamp = localStorage.getItem('ht.notification');
+    let notificationTimestamp = notificationData[0].effective_on;
+    let lastNotificationTimestamp = docCookies.getItem('HT.notice');
+    // let lastNotificationTimestamp = localStorage.getItem('ht.notification');
 
     console.log("-- notification timestamp", notificationTimestamp, lastNotificationTimestamp, lastNotificationTimestamp != notificationTimestamp);
     if ( lastNotificationTimestamp != notificationTimestamp ) {

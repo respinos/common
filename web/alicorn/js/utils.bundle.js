@@ -21225,8 +21225,9 @@ head.ready(function () {
     var $trigger = options.$trigger;
     var top = $block.css('position') == 'fixed' ? $trigger.position().top : $trigger.offset().top;
     top = $trigger.position().top;
-    top += $trigger.height() + 32;
-    top = 6.25 * 16; // var right = $(window).width() - ( $button.offset().left + $button.outerWidth() );
+    top += $trigger.outerHeight() + 100 / 2; // 32;
+    // top = 6.25 * 16;
+    // var right = $(window).width() - ( $button.offset().left + $button.outerWidth() );
     // var right = $(window).width() - ( $trigger.offset().left + ( $trigger.outerWidth() / 2 ) ) - ( 25 + 10 );
 
     var right = window.outerWidth - $trigger.position().left - $trigger.outerWidth() + $trigger.outerWidth() / 2;
@@ -21361,8 +21362,26 @@ head.ready(function () {
       return;
     }
 
+    var xtracking;
+
+    var xupdate = function xupdate(id) {
+      xtracking[id] = true;
+      var expires = new Date();
+      expires.setDate(expires.getDate() + 90);
+      docCookies.setItem('HT.x', JSON.stringify(xtracking), expires, '/', '.hathitrust.org', true);
+    };
+
+    try {
+      xtracking = JSON.parse(docCookies.getItem('HT.x') || '{}');
+    } catch (e) {
+      // just null the prefs
+      docCookies.removeItem("HT.x");
+      xtracking = {};
+    }
+
     if (!timestamped) {
-      var check = localStorage.getItem('x:' + id);
+      // get any pre-existing localStorage value
+      var check = xtracking[id] || localStorage.getItem('x:' + id);
 
       if (check) {
         return;
@@ -21388,7 +21407,8 @@ head.ready(function () {
       $banner.remove();
 
       if (!timestamped) {
-        localStorage.setItem('x:' + id, 'true');
+        // localStorage.setItem('x:' + id, 'true');
+        xupdate(id);
       }
     });
     $banner.find("a.close,[data-action='close']").on('click', function (event) {
@@ -21400,7 +21420,8 @@ head.ready(function () {
       }
 
       if (!timestamped) {
-        localStorage.setItem('x:' + id, 'true');
+        // localStorage.setItem('x:' + id, 'true');
+        xupdate(id);
       }
     });
   }
@@ -21622,7 +21643,7 @@ var openNotifications = function openNotifications() {
 
   bootbox.show('notifications-modal', {
     onClose: function onClose(modal) {
-      localStorage.setItem('ht.notification', notificationData[0].published_on);
+      docCookies.setItem('HT.notice', notificationData[0].effective_on, null, '/', '.hathitrust.org', true); // localStorage.setItem('ht.notification', notificationData[0].effective_on);
     }
   });
 };
@@ -21643,8 +21664,9 @@ head.ready(function () {
     }
 
     $action.prop('disabled', false);
-    var notificationTimestamp = notificationData[0].published_on;
-    var lastNotificationTimestamp = localStorage.getItem('ht.notification');
+    var notificationTimestamp = notificationData[0].effective_on;
+    var lastNotificationTimestamp = docCookies.getItem('HT.notice'); // let lastNotificationTimestamp = localStorage.getItem('ht.notification');
+
     console.log("-- notification timestamp", notificationTimestamp, lastNotificationTimestamp, lastNotificationTimestamp != notificationTimestamp);
 
     if (lastNotificationTimestamp != notificationTimestamp) {
