@@ -6182,6 +6182,7 @@ header nav ul {
 header nav ul li {
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
 header nav ul li > span {
