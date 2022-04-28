@@ -1,10 +1,9 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?yvbc5s');
-  src:  url('fonts/icomoon.eot?yvbc5s#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?yvbc5s') format('truetype'),
-    url('fonts/icomoon.woff?yvbc5s') format('woff'),
-    url('fonts/icomoon.svg?yvbc5s#icomoon') format('svg');
+  src:
+    url('fonts/icomoon.ttf?7zbosz') format('truetype'),
+    url('fonts/icomoon.woff?7zbosz') format('woff'),
+    url('fonts/icomoon.svg?7zbosz#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icomoon-unlocked:before {
+  content: "\e990";
+}
 .icomoon-plus:before {
   content: "\ea0a";
 }
@@ -116,139 +118,139 @@
   content: "\e900";
 }
 .icomoon-first:before {
-  content: "\30";
+  content: "\e001";
 }
 .icomoon-last:before {
-  content: "\31";
+  content: "\e002";
 }
 .icomoon-go-previous:before {
-  content: "\32";
+  content: "\e003";
 }
 .icomoon-go-next:before {
-  content: "\33";
+  content: "\e004";
 }
 .icomoon-iconmonstr-magnifier-6-icon:before {
-  content: "\21";
+  content: "\e005";
 }
 .icomoon-iconmonstr-magnifier-7-icon:before {
-  content: "\22";
+  content: "\e006";
 }
 .icomoon-document:before {
-  content: "\23";
+  content: "\e007";
 }
 .icomoon-documents1:before {
-  content: "\24";
+  content: "\e008";
 }
 .icomoon-reload-CW:before {
-  content: "\25";
+  content: "\e009";
 }
 .icomoon-reload-CCW:before {
-  content: "\26";
+  content: "\e00a";
 }
 .icomoon-list:before {
-  content: "\27";
+  content: "\e00b";
 }
 .icomoon-article:before {
-  content: "\28";
+  content: "\e00c";
 }
 .icomoon-book-alt2:before {
-  content: "\29";
+  content: "\e00d";
 }
 .icomoon-document-alt-stroke:before {
-  content: "\2a";
+  content: "\e00e";
 }
 .icomoon-zoomin:before {
-  content: "\2c";
+  content: "\e00f";
 }
 .icomoon-zoomout:before {
-  content: "\2d";
+  content: "\e010";
 }
 .icomoon-triangle:before {
-  content: "\2b";
+  content: "\e011";
 }
 .icomoon-triangle2:before {
-  content: "\2e";
+  content: "\e012";
 }
 .icomoon-gridview:before {
-  content: "\36";
+  content: "\e013";
 }
 .icomoon-scroll:before {
-  content: "\2f";
+  content: "\e014";
 }
 .icomoon-twitter:before {
-  content: "\37";
+  content: "\e015";
 }
 .icomoon-pinterest:before {
-  content: "\38";
+  content: "\e016";
 }
 .icomoon-facebook:before {
-  content: "\39";
+  content: "\e017";
 }
 .icomoon-bookmark:before {
-  content: "\3a";
+  content: "\e018";
 }
 .icomoon-upload:before {
-  content: "\3b";
+  content: "\e019";
 }
 .icomoon-download:before {
-  content: "\3c";
+  content: "\e01a";
 }
 .icomoon-email:before {
-  content: "\3d";
+  content: "\e01b";
 }
 .icomoon-feed:before {
-  content: "\3e";
+  content: "\e01c";
 }
 .icomoon-info-circle:before {
-  content: "\3f";
+  content: "\e01d";
 }
 .icomoon-locked:before {
-  content: "\40";
+  content: "\e01e";
 }
 .icomoon-document-2:before {
-  content: "\41";
+  content: "\e01f";
 }
 .icomoon-arrow-right:before {
-  content: "\42";
+  content: "\e020";
 }
 .icomoon-cancel:before {
-  content: "\43";
+  content: "\e021";
 }
 .icomoon-arrow-left:before {
-  content: "\44";
+  content: "\e022";
 }
 .icomoon-enter:before {
-  content: "\45";
+  content: "\e023";
 }
 .icomoon-help:before {
-  content: "\46";
+  content: "\e024";
 }
 .icomoon-share:before {
-  content: "\47";
+  content: "\e025";
 }
 .icomoon-share2:before {
-  content: "\48";
+  content: "\e026";
 }
 .icomoon-fullscreen:before {
-  content: "\49";
+  content: "\e027";
 }
 .icomoon-fullscreen-exit:before {
-  content: "\4a";
+  content: "\e028";
 }
 .icomoon-checkmark:before {
-  content: "\4b";
+  content: "\e029";
 }
 .icomoon-eye:before {
-  content: "\4c";
+  content: "\e02a";
 }
 .icomoon-flash:before {
-  content: "\4e";
+  content: "\e02b";
 }
 .icomoon-arrow-up:before {
-  content: "\4f";
+  content: "\e02c";
 }
 .icomoon-arrow-down:before {
-  content: "\50";
+  content: "\e02d";
 }
 .icomoon-reorder:before {
   content: "\f0c9";

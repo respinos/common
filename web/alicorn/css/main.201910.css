@@ -1024,8 +1024,7 @@ table {
 @import url(../../vendor/reset.css);
 @font-face {
   font-family: "icomoon";
-  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.eot?yvbc5s");
-  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.eot?yvbc5s#iefix") format("embedded-opentype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.ttf?yvbc5s") format("truetype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.woff?yvbc5s") format("woff"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.svg?yvbc5s#icomoon") format("svg");
+  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.ttf?7zbosz") format("truetype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.woff?7zbosz") format("woff"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.svg?7zbosz#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -1043,6 +1042,10 @@ table {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icomoon-unlocked:before {
+  content: "";
 }
 
 .icomoon-plus:before {
@@ -1166,183 +1169,183 @@ table {
 }
 
 .icomoon-first:before {
-  content: "0";
+  content: "";
 }
 
 .icomoon-last:before {
-  content: "1";
+  content: "";
 }
 
 .icomoon-go-previous:before {
-  content: "2";
+  content: "";
 }
 
 .icomoon-go-next:before {
-  content: "3";
+  content: "";
 }
 
 .icomoon-iconmonstr-magnifier-6-icon:before {
-  content: "!";
+  content: "";
 }
 
 .icomoon-iconmonstr-magnifier-7-icon:before {
-  content: '"';
+  content: "";
 }
 
 .icomoon-document:before {
-  content: "#";
+  content: "";
 }
 
 .icomoon-documents1:before {
-  content: "$";
+  content: "";
 }
 
 .icomoon-reload-CW:before {
-  content: "%";
+  content: "";
 }
 
 .icomoon-reload-CCW:before {
-  content: "&";
+  content: "";
 }
 
 .icomoon-list:before {
-  content: "'";
+  content: "";
 }
 
 .icomoon-article:before {
-  content: "(";
+  content: "";
 }
 
 .icomoon-book-alt2:before {
-  content: ")";
+  content: "";
 }
 
 .icomoon-document-alt-stroke:before {
-  content: "*";
+  content: "";
 }
 
 .icomoon-zoomin:before {
-  content: ",";
+  content: "";
 }
 
 .icomoon-zoomout:before {
-  content: "-";
+  content: "";
 }
 
 .icomoon-triangle:before {
-  content: "+";
+  content: "";
 }
 
 .icomoon-triangle2:before {
-  content: ".";
+  content: "";
 }
 
 .icomoon-gridview:before {
-  content: "6";
+  content: "";
 }
 
 .icomoon-scroll:before {
-  content: "/";
+  content: "";
 }
 
 .icomoon-twitter:before {
-  content: "7";
+  content: "";
 }
 
 .icomoon-pinterest:before {
-  content: "8";
+  content: "";
 }
 
 .icomoon-facebook:before {
-  content: "9";
+  content: "";
 }
 
 .icomoon-bookmark:before {
-  content: ":";
+  content: "";
 }
 
 .icomoon-upload:before {
-  content: ";";
+  content: "";
 }
 
 .icomoon-download:before {
-  content: "<";
+  content: "";
 }
 
 .icomoon-email:before {
-  content: "=";
+  content: "";
 }
 
 .icomoon-feed:before {
-  content: ">";
+  content: "";
 }
 
 .icomoon-info-circle:before {
-  content: "?";
+  content: "";
 }
 
 .icomoon-locked:before {
-  content: "@";
+  content: "";
 }
 
 .icomoon-document-2:before {
-  content: "A";
+  content: "";
 }
 
 .icomoon-arrow-right:before {
-  content: "B";
+  content: "";
 }
 
 .icomoon-cancel:before {
-  content: "C";
+  content: "";
 }
 
 .icomoon-arrow-left:before {
-  content: "D";
+  content: "";
 }
 
 .icomoon-enter:before {
-  content: "E";
+  content: "";
 }
 
 .icomoon-help:before {
-  content: "F";
+  content: "";
 }
 
 .icomoon-share:before {
-  content: "G";
+  content: "";
 }
 
 .icomoon-share2:before {
-  content: "H";
+  content: "";
 }
 
 .icomoon-fullscreen:before {
-  content: "I";
+  content: "";
 }
 
 .icomoon-fullscreen-exit:before {
-  content: "J";
+  content: "";
 }
 
 .icomoon-checkmark:before {
-  content: "K";
+  content: "";
 }
 
 .icomoon-eye:before {
-  content: "L";
+  content: "";
 }
 
 .icomoon-flash:before {
-  content: "N";
+  content: "";
 }
 
 .icomoon-arrow-up:before {
-  content: "O";
+  content: "";
 }
 
 .icomoon-arrow-down:before {
-  content: "P";
+  content: "";
 }
 
 .icomoon-reorder:before {
