@@ -1024,8 +1024,7 @@ table {
 @import url(../../vendor/reset.css);
 @font-face {
   font-family: "icomoon";
-  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.eot?rj4xs0");
-  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.eot?rj4xs0#iefix") format("embedded-opentype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.ttf?rj4xs0") format("truetype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.woff?rj4xs0") format("woff"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.svg?rj4xs0#icomoon") format("svg");
+  src: url("/common/unicorn/vendor/icomoon/fonts/icomoon.ttf?7zbosz") format("truetype"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.woff?7zbosz") format("woff"), url("/common/unicorn/vendor/icomoon/fonts/icomoon.svg?7zbosz#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -1034,7 +1033,7 @@ table {
 .icomoon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "icomoon" !important;
-  speak: none;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -1043,6 +1042,10 @@ table {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icomoon-unlocked:before {
+  content: "";
 }
 
 .icomoon-plus:before {
@@ -1166,183 +1169,183 @@ table {
 }
 
 .icomoon-first:before {
-  content: "0";
+  content: "";
 }
 
 .icomoon-last:before {
-  content: "1";
+  content: "";
 }
 
 .icomoon-go-previous:before {
-  content: "2";
+  content: "";
 }
 
 .icomoon-go-next:before {
-  content: "3";
+  content: "";
 }
 
 .icomoon-iconmonstr-magnifier-6-icon:before {
-  content: "!";
+  content: "";
 }
 
 .icomoon-iconmonstr-magnifier-7-icon:before {
-  content: '"';
+  content: "";
 }
 
 .icomoon-document:before {
-  content: "#";
+  content: "";
 }
 
 .icomoon-documents1:before {
-  content: "$";
+  content: "";
 }
 
 .icomoon-reload-CW:before {
-  content: "%";
+  content: "";
 }
 
 .icomoon-reload-CCW:before {
-  content: "&";
+  content: "";
 }
 
 .icomoon-list:before {
-  content: "'";
+  content: "";
 }
 
 .icomoon-article:before {
-  content: "(";
+  content: "";
 }
 
 .icomoon-book-alt2:before {
-  content: ")";
+  content: "";
 }
 
 .icomoon-document-alt-stroke:before {
-  content: "*";
+  content: "";
 }
 
 .icomoon-zoomin:before {
-  content: ",";
+  content: "";
 }
 
 .icomoon-zoomout:before {
-  content: "-";
+  content: "";
 }
 
 .icomoon-triangle:before {
-  content: "+";
+  content: "";
 }
 
 .icomoon-triangle2:before {
-  content: ".";
+  content: "";
 }
 
 .icomoon-gridview:before {
-  content: "6";
+  content: "";
 }
 
 .icomoon-scroll:before {
-  content: "/";
+  content: "";
 }
 
 .icomoon-twitter:before {
-  content: "7";
+  content: "";
 }
 
 .icomoon-pinterest:before {
-  content: "8";
+  content: "";
 }
 
 .icomoon-facebook:before {
-  content: "9";
+  content: "";
 }
 
 .icomoon-bookmark:before {
-  content: ":";
+  content: "";
 }
 
 .icomoon-upload:before {
-  content: ";";
+  content: "";
 }
 
 .icomoon-download:before {
-  content: "<";
+  content: "";
 }
 
 .icomoon-email:before {
-  content: "=";
+  content: "";
 }
 
 .icomoon-feed:before {
-  content: ">";
+  content: "";
 }
 
 .icomoon-info-circle:before {
-  content: "?";
+  content: "";
 }
 
 .icomoon-locked:before {
-  content: "@";
+  content: "";
 }
 
 .icomoon-document-2:before {
-  content: "A";
+  content: "";
 }
 
 .icomoon-arrow-right:before {
-  content: "B";
+  content: "";
 }
 
 .icomoon-cancel:before {
-  content: "C";
+  content: "";
 }
 
 .icomoon-arrow-left:before {
-  content: "D";
+  content: "";
 }
 
 .icomoon-enter:before {
-  content: "E";
+  content: "";
 }
 
 .icomoon-help:before {
-  content: "F";
+  content: "";
 }
 
 .icomoon-share:before {
-  content: "G";
+  content: "";
 }
 
 .icomoon-share2:before {
-  content: "H";
+  content: "";
 }
 
 .icomoon-fullscreen:before {
-  content: "I";
+  content: "";
 }
 
 .icomoon-fullscreen-exit:before {
-  content: "J";
+  content: "";
 }
 
 .icomoon-checkmark:before {
-  content: "K";
+  content: "";
 }
 
 .icomoon-eye:before {
-  content: "L";
+  content: "";
 }
 
 .icomoon-flash:before {
-  content: "N";
+  content: "";
 }
 
 .icomoon-arrow-up:before {
-  content: "O";
+  content: "";
 }
 
 .icomoon-arrow-down:before {
-  content: "P";
+  content: "";
 }
 
 .icomoon-reorder:before {
@@ -1351,6 +1354,22 @@ table {
 
 .icomoon-signup:before {
   content: "";
+}
+
+.icomoon-bell-slash-o:before, button.btn.action-toggle-notifications[disabled] i:before {
+  content: "";
+}
+
+.icomoon-bell-slash:before {
+  content: "";
+}
+
+.icomoon-bell-o:before {
+  content: "";
+}
+
+.icomoon-bell:before {
+  content: "";
 }
 
 .icomoon-search-minus:before {
@@ -3156,43 +3175,23 @@ fieldset .help-block {
   margin-bottom: 1rem;
 }
 
-.modal.login-panel .login-panel-arrow {
-  top: 0px;
-  right: 0px;
-  position: absolute;
-  height: 0px;
-  width: 25px;
-}
-
-.modal.login-panel .login-panel-arrow:after {
+.modal.login-panel .login-panel-arrow::before {
   content: "";
-  position: absolute;
-  bottom: 0px;
-  right: 1px;
-  border-style: solid;
-  border-width: 0 10px 10px 10px;
-  border-color: #f9f8f5 transparent;
-  display: block;
+  height: 0;
   width: 0;
-  z-index: 1;
-}
-
-.modal.login-panel .login-panel-arrow:before {
-  content: "";
   position: absolute;
-  top: -11px;
+  top: -40px;
   right: 0;
-  border-style: solid;
-  border-width: 0 11px 11px 11px;
-  border-color: #000 transparent;
   display: block;
-  width: 0;
-  z-index: 0;
+  overflow: revert;
+  border-width: 0 100px 100px 100px;
+  border-color: transparent transparent #fff;
+  border-style: solid;
+  z-index: -1;
 }
 
 .modal.login-panel .modal__header {
   border-bottom: 0;
-  padding: 0;
 }
 
 .modal.login-panel .modal__header .modal__title {
@@ -3284,6 +3283,56 @@ fieldset .help-block {
 
 .modal.login-panel .select2-container--default .select2-results > .select2-results__options {
   max-height: 7.5rem;
+}
+
+.notifications-panel-arrow::before {
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: -40px;
+  right: 0;
+  display: block;
+  overflow: revert;
+  border-width: 0 100px 100px 100px;
+  border-color: transparent transparent #fff;
+  border-style: solid;
+  z-index: -1;
+}
+
+@media only screen and (max-width: 38rem) {
+  .notifications-panel-arrow::before {
+    display: none;
+  }
+}
+
+#notifications-modal.is-open .modal__container {
+  position: absolute;
+  top: 6.25rem;
+  right: calc(var(--right-x) * 1px);
+}
+
+#notifications-modal.is-open .modal__container dt {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+@media only screen and (max-width: 38rem) {
+  #notifications-modal.is-open .modal__container {
+    right: auto;
+    left: auto;
+    width: 90%;
+  }
+}
+
+#notifications-modal-description div {
+  padding-bottom: 1rem;
+}
+
+#notifications-modal-description div + div {
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
 }
 
 symbol g {
@@ -6125,6 +6174,9 @@ header nav ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -6133,6 +6185,7 @@ header nav ul {
 header nav ul li {
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
 header nav ul li > span {
@@ -6203,6 +6256,9 @@ a[aria-expanded="true"] + ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   background: #39383a;
 }
 
@@ -7132,6 +7188,24 @@ html[data-activated] a.action-switch-role svg {
 a.action-switch-role {
   border: 1px solid #eee;
   border-radius: 0.25rem;
+}
+
+button.btn.action-toggle-notifications {
+  background: transparent;
+  border: 1px solid #eee;
+  border-radius: 0.25rem;
+  color: orange;
+  font-size: 1.125rem;
+  padding: 0.4rem 0.5rem;
+}
+
+button.btn.action-toggle-notifications:hover {
+  background: #666;
+}
+
+button.btn.action-toggle-notifications[data-active="true"] {
+  background: orange;
+  color: black;
 }
 
 .logo {

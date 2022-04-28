@@ -278,9 +278,14 @@ head.ready(function() {
         var $trigger = options.$trigger;
         var top = $block.css('position') == 'fixed' ? $trigger.position().top : $trigger.offset().top;
         top = $trigger.position().top;
-        top += $trigger.height() + 32;
+        top += $trigger.outerHeight() + ( 100 / 2 ); // 32;
+        // top = 6.25 * 16;
         // var right = $(window).width() - ( $button.offset().left + $button.outerWidth() );
-        var right = $(window).width() - ( $trigger.offset().left + ( $trigger.outerWidth() / 2 ) ) - ( 25 + 10 );
+        // var right = $(window).width() - ( $trigger.offset().left + ( $trigger.outerWidth() / 2 ) ) - ( 25 + 10 );
+        var right = (window.outerWidth - $trigger.position().left - ($trigger.outerWidth()) + ($trigger.outerWidth() / 2));
+        right -= (2 * 16); // padding
+        right -= (150 / 2);
+
         console.log("AHOY SETTING POSITION", top, "x", right);
         $dialog.css({ top: top, right: right });
         var $caret = $dialog.find(".login-panel-arrow");
@@ -414,8 +419,26 @@ head.ready(function() {
 
         if ( head.mobile ) { return ; }
 
+        var xtracking;
+
+        var xupdate = function(id) {
+            xtracking[id] = true;
+            var expires = new Date();
+            expires.setDate(expires.getDate() + 90);
+            docCookies.setItem('HT.x', JSON.stringify(xtracking), expires, '/', '.hathitrust.org', true);
+        }
+
+        try {
+            xtracking = JSON.parse(docCookies.getItem('HT.x') || '{}');
+        } catch (e) {
+            // just null the prefs
+            docCookies.removeItem("HT.x");
+            xtracking = {};
+        }
+
         if ( ! timestamped ) {
-            var check = localStorage.getItem('x:' + id);
+            // get any pre-existing localStorage value
+            var check = xtracking[id] || localStorage.getItem('x:' + id);
             if ( check ) { return; }
         }
 
@@ -432,7 +455,8 @@ head.ready(function() {
         $banner.find("a[target]").on('click', function(event) {
             $banner.remove();
             if ( ! timestamped ) {
-                localStorage.setItem('x:' + id, 'true');
+                // localStorage.setItem('x:' + id, 'true');
+                xupdate(id);
             }
         });
 
@@ -443,7 +467,8 @@ head.ready(function() {
                 callback();
             }
             if ( ! timestamped ) {
-                localStorage.setItem('x:' + id, 'true');
+                // localStorage.setItem('x:' + id, 'true');
+                xupdate(id);
             }
         });
 
@@ -484,21 +509,31 @@ head.ready(function() {
         if ( ! $("html").data('analytics-skip') ) {
             HT.analytics.trackPageview(HT.analytics.getPageHref());
         }
+
+        $("html").trigger('ht:login');
     }
 
-    var args = {};
-    if ( document.referrer ) {
-        args.ref = document.referrer;
+    if ( HT.login_status ) {
+        // we already have the status
+        console.log("AHOY have status", HT.login_status.logged_in);
+        setTimeout(() => {
+            HT.login_callback(HT.login_status);
+        }, 0);
+    } else {
+        var args = {};
+        if (document.referrer) {
+            args.ref = document.referrer;
+        }
+        $.ajax({
+            type: "GET",
+            url: PING_URL,
+            data: args,
+            async: true,
+            jsonp: 'callback',
+            dataType: 'jsonp',
+            jsonpCallback: 'HT.login_callback'
+        })
     }
-    $.ajax({
-        type : "GET",
-        url : PING_URL,
-        data: args,
-        async : true,
-        jsonp : 'callback',
-        dataType : 'jsonp',
-        jsonpCallback : 'HT.login_callback'
-    })
 
     // $("body").on('click', '.trigger-login', function(e) {
     //     e.preventDefault();

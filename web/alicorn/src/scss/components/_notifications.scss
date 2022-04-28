@@ -1,0 +1,56 @@
+
+.notifications-panel-arrow::before {
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: -40px;
+  right: 0;
+  display: block;
+  overflow: revert;
+  border-width: 0 100px 100px 100px;
+  border-color: transparent transparent #fff;
+  border-style: solid;
+  z-index: -1;
+
+  @media only screen and (max-width: 38rem) {
+    display: none;;
+  }
+
+}
+
+#notifications-modal.is-open {
+  .modal__container {
+    position: absolute;
+    top: 6.25rem;
+    right: calc(var(--right-x) * 1px);
+
+    dt {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    dl > div {
+
+    }
+
+    @media only screen and (max-width: 38rem) {
+      right: auto;
+      left: auto;
+      width: 90%;
+    }
+
+  }
+}
+
+#notifications-modal-description {
+  div {
+    padding-bottom: 1rem;
+
+    & + div {
+      border-top: 1px solid #ccc;
+      padding-top: 1rem;
+    }
+  }
+}

@@ -94,39 +94,54 @@ $login-arrow-size: 10px;
     }
   }
 
-  .login-panel-arrow {
-    top: 0px;
-    right: 0px;
+  .login-panel-arrow::before {
+    content: "";
+    height: 0;
+    width: 0;
     position: absolute;
-    height: 0px;
-    width: 25px;
-
-    &:after {
-      content: "";
-      position: absolute;
-      bottom: 0px;
-      right: 1px;
-      border-style: solid;
-      border-width: 0 $login-arrow-size $login-arrow-size $login-arrow-size;
-      border-color: $login-panel-bgcolor transparent;
-      display: block;
-      width: 0;
-      z-index: 1;
-    }
-
-    &:before {
-      content: "";
-      position: absolute;
-      top: -($login-arrow-size + 1);
-      right: 0;
-      border-style: solid;
-      border-width: 0 ($login-arrow-size + 1) ($login-arrow-size + 1) ($login-arrow-size + 1);
-      border-color: #000 transparent;
-      display: block;
-      width: 0;
-      z-index: 0;
-    }
+    top: -40px;
+    right: 0;
+    display: block;
+    overflow: revert;
+    border-width: 0 100px 100px 100px;
+    border-color: transparent transparent #fff;
+    border-style: solid;
+    z-index: -1;
   }
+
+  // .login-panel-arrow-xx {
+  //   top: 0px;
+  //   right: 0px;
+  //   position: absolute;
+  //   height: 0px;
+  //   width: 25px;
+
+  //   &:after {
+  //     content: "";
+  //     position: absolute;
+  //     bottom: 0px;
+  //     right: 1px;
+  //     border-style: solid;
+  //     border-width: 0 $login-arrow-size $login-arrow-size $login-arrow-size;
+  //     border-color: $login-panel-bgcolor transparent;
+  //     display: block;
+  //     width: 0;
+  //     z-index: 1;
+  //   }
+
+  //   &:before {
+  //     content: "";
+  //     position: absolute;
+  //     top: -($login-arrow-size + 1);
+  //     right: 0;
+  //     border-style: solid;
+  //     border-width: 0 ($login-arrow-size + 1) ($login-arrow-size + 1) ($login-arrow-size + 1);
+  //     border-color: #000 transparent;
+  //     display: block;
+  //     width: 0;
+  //     z-index: 0;
+  //   }
+  // }
 
 
 
@@ -136,7 +151,7 @@ $login-arrow-size: 10px;
 
   .modal__header {
     border-bottom: 0;
-    padding: 0;
+    // padding: 0;
     .modal__title {
         visibility: hidden;
     }

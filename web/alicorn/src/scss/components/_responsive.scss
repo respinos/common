@@ -65,6 +65,7 @@ header {
     ul {
       display: flex;
       justify-content: center;
+      align-items: center;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -72,6 +73,7 @@ header {
       li {
         padding: 0;
         margin: 0;
+        width: 100%;
       }
 
       li > span {
@@ -142,6 +144,7 @@ a[aria-expanded="true"] {
 
     display: flex !important;
     flex-direction: column;
+    align-items: flex-start;
     // align-items: normal;
     // justify-content: normal;
 
