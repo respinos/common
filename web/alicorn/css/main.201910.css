@@ -4509,6 +4509,18 @@ h1.listcs-intro {
   }
 }
 
+a[data-activated-role] {
+  background: #924a0b;
+  color: white;
+  padding: 0.25rem;
+  display: inline-block;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 4px;
+  text-underline-offset: 2px;
+}
+
 html#mb-page .results-summary {
   margin-right: 0.5rem;
 }
