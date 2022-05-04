@@ -108,7 +108,7 @@
   }
 
   .alert-warning:not(.alert-plain):before {
-    @include alert-badge("?");
+    @include alert-badge("\e01d");
   }
 
   .alert-error:before {
@@ -120,7 +120,7 @@
   }
 
   .alert-success:before {
-    @include alert-badge("K");
+    @include alert-badge("\e029");
   }
 
   .alert-block.alert-notice:before {
