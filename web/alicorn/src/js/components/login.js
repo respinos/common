@@ -383,7 +383,7 @@ head.ready(function() {
                               switchableRolesLabels[switchableRole] + " ⚡";
                             document.documentElement.dataset.activated = switchableRole;
                         }
-                        $e = $e.replaceWith(`<a class="action-switch-role" href=\"https://${HT.service_domain}/cgi/ping/switch\">${link_text}</a>`);
+                        $e = $e.replaceWith(`<a class="action-switch-role" href=\"https://${HT.service_domain}/cgi/ping/switch?target=${encodeURIComponent(location.href)}\">${link_text}</a>`);
                     }
                 }
             }

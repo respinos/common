@@ -21332,7 +21332,7 @@ head.ready(function () {
               document.documentElement.dataset.activated = switchableRole;
             }
 
-            $e = $e.replaceWith("<a class=\"action-switch-role\" href=\"https://".concat(HT.service_domain, "/cgi/ping/switch\">").concat(link_text, "</a>"));
+            $e = $e.replaceWith("<a class=\"action-switch-role\" href=\"https://".concat(HT.service_domain, "/cgi/ping/switch?target=").concat(encodeURIComponent(location.href), "\">").concat(link_text, "</a>"));
           }
         }
       }
