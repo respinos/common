@@ -2165,7 +2165,7 @@ pre {
 }
 
 .alert-warning:not(.alert-plain):before {
-  content: "?";
+  content: "";
   font-family: 'icomoon';
   font-style: normal;
   speak: none;
@@ -2207,7 +2207,7 @@ pre {
 }
 
 .alert-success:before {
-  content: "K";
+  content: "";
   font-family: 'icomoon';
   font-style: normal;
   speak: none;
@@ -4507,6 +4507,18 @@ h1.listcs-intro {
   .record-title-actions .actions {
     margin: 0.5rem 0 1rem;
   }
+}
+
+a[data-activated-role] {
+  background: #924a0b;
+  color: white;
+  padding: 0.25rem;
+  display: inline-block;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 4px;
+  text-underline-offset: 2px;
 }
 
 html#mb-page .results-summary {

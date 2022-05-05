@@ -732,6 +732,15 @@ h1.listcs-intro {
 //   white-space: nowrap;
 // }
 
+a[data-activated-role] {
+  background: #924a0b;
+  color: white;
+  padding: 0.25rem;
+  display: inline-block;
+  align-items: center;
+  border-radius: 4px;
+  text-underline-offset: 2px;
+}
 
 html#mb-page {
 
