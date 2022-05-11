@@ -4521,6 +4521,10 @@ a[data-activated-role] {
   text-underline-offset: 2px;
 }
 
+a[data-activated-role]:visited {
+  color: #eee;
+}
+
 html#mb-page .results-summary {
   margin-right: 0.5rem;
 }

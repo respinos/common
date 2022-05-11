@@ -35,6 +35,45 @@ head.ready(function() {
       }
   }
 
+  var _handler = {};
+  _handler.ls = function(formData) {
+    let search_url;
+    let submitData = new URLSearchParams();
+    submitData.set('q1', formData.get('q1'));
+    submitData.set('field1', 'ocr');
+    submitData.set('a', 'srchls');
+    if (formData.get('ft') == 'ft') {
+      submitData.set('ft', 'ft');
+      submitData.set('lmt', 'ft');
+    }
+    search_url = `//${HT.service_domain}`;
+    search_url += `/cgi/ls?`;
+    search_url += submitData.toString();
+    location.href = search_url;
+  }
+
+  _handler.catalog = function(formData) {
+    let search_url;
+    let submitData = new URLSearchParams();
+
+    let searchtype = formData.get('searchtype');
+    if ( searchtype == 'isbn' ) { searchtype = 'isn'; }
+    submitData.set('lookfor', formData.get('q1'));
+    submitData.set('searchtype', searchtype);
+    if ( formData.get('ft') == 'ft' ) {
+      submitData.set('ft', 'ft');
+      submitData.set('setft', 'true');
+    } else {
+      submitData.set('ft', '');
+      submitData.set('setft', 'false');
+    }
+
+    search_url = `//${HT.catalog_domain}`;
+    search_url += `/Search/Home?`;
+    search_url += submitData.toString();
+    location.href = search_url;
+  }
+
   var target = $search_target.find("input:checked").val();
   _setup[target]();
   inited = true;
@@ -47,7 +86,7 @@ head.ready(function() {
 
   // $("body").on('change', '.ht-search-form .control-search-type input[type="radio"]', function(e) {
   $("body").on('change', '.ht-search-form .search-target input[type="radio"]', function(e) {
-      var target = this.value;
+      target = this.value;
       _setup[target]();
       HT.analytics.trackEvent({ label : "-", category : "HT Search", action : target });
   })
@@ -118,9 +157,13 @@ head.ready(function() {
 
   setTimeout(_resizer, 500);
 
+  $("#ht-search-form").addClass('ht-search-form');
+
   // add event handler for submit to check for empty query or asterisk
   $("body").on('submit', '.ht-search-form', function(event)
        {
+
+          event.preventDefault();
 
           HT.beforeUnloadTimeout = 15000;
           var $form = $(this);
@@ -155,7 +198,9 @@ head.ready(function() {
           var searchtype = ( target == 'ls' ) ? 'all' : $form.find("select").val();
           HT.prefs.set({ search : { ft : $form.find("input[name=ft]:checked").length > 0, target : target, searchtype: searchtype }})
 
-          return true;
+          _handler[target](new FormData($form.get(0)));
+
+          return false;
          }
 
    } );

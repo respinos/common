@@ -3,7 +3,7 @@ head.ready(function() {
 
     var PING_URL; var PING_DOMAIN;
 
-    PING_URL = 'https://' + HT.service_domain + '/cgi/ping';
+    PING_URL = location.protocol + '//' + HT.service_domain + '/cgi/ping';
 
     var is_babel = (window.location.href.indexOf("babel.hathitrust") > -1);
     var $button = $("#login-button,#login-link");
@@ -383,7 +383,7 @@ head.ready(function() {
                               switchableRolesLabels[switchableRole] + " ⚡";
                             document.documentElement.dataset.activated = switchableRole;
                         }
-                        $e = $e.replaceWith(`<a class="action-switch-role" href=\"https://${HT.service_domain}/cgi/ping/switch\">${link_text}</a>`);
+                        $e = $e.replaceWith(`<a class="action-switch-role" href=\"https://${HT.service_domain}/cgi/ping/switch?target=${encodeURIComponent(location.href)}\">${link_text}</a>`);
                     }
                 }
             }

@@ -20845,6 +20845,52 @@ head.ready(function () {
     }
   };
 
+  var _handler = {};
+
+  _handler.ls = function (formData) {
+    var search_url;
+    var submitData = new URLSearchParams();
+    submitData.set('q1', formData.get('q1'));
+    submitData.set('field1', 'ocr');
+    submitData.set('a', 'srchls');
+
+    if (formData.get('ft') == 'ft') {
+      submitData.set('ft', 'ft');
+      submitData.set('lmt', 'ft');
+    }
+
+    search_url = "//".concat(HT.service_domain);
+    search_url += "/cgi/ls?";
+    search_url += submitData.toString();
+    location.href = search_url;
+  };
+
+  _handler.catalog = function (formData) {
+    var search_url;
+    var submitData = new URLSearchParams();
+    var searchtype = formData.get('searchtype');
+
+    if (searchtype == 'isbn') {
+      searchtype = 'isn';
+    }
+
+    submitData.set('lookfor', formData.get('q1'));
+    submitData.set('searchtype', searchtype);
+
+    if (formData.get('ft') == 'ft') {
+      submitData.set('ft', 'ft');
+      submitData.set('setft', 'true');
+    } else {
+      submitData.set('ft', '');
+      submitData.set('setft', 'false');
+    }
+
+    search_url = "//".concat(HT.catalog_domain);
+    search_url += "/Search/Home?";
+    search_url += submitData.toString();
+    location.href = search_url;
+  };
+
   var target = $search_target.find("input:checked").val();
 
   _setup[target]();
@@ -20859,7 +20905,7 @@ head.ready(function () {
 
 
   $("body").on('change', '.ht-search-form .search-target input[type="radio"]', function (e) {
-    var target = this.value;
+    target = this.value;
 
     _setup[target]();
 
@@ -20919,9 +20965,11 @@ head.ready(function () {
 
     _resizeTimer = setTimeout(_resizer, 500);
   });
-  setTimeout(_resizer, 500); // add event handler for submit to check for empty query or asterisk
+  setTimeout(_resizer, 500);
+  $("#ht-search-form").addClass('ht-search-form'); // add event handler for submit to check for empty query or asterisk
 
   $("body").on('submit', '.ht-search-form', function (event) {
+    event.preventDefault();
     HT.beforeUnloadTimeout = 15000;
     var $form = $(this);
 
@@ -20957,7 +21005,10 @@ head.ready(function () {
           searchtype: searchtype
         }
       });
-      return true;
+
+      _handler[target](new FormData($form.get(0)));
+
+      return false;
     }
   });
 });
@@ -20967,7 +21018,7 @@ var HT = HT || {};
 head.ready(function () {
   var PING_URL;
   var PING_DOMAIN;
-  PING_URL = 'https://' + HT.service_domain + '/cgi/ping';
+  PING_URL = location.protocol + '//' + HT.service_domain + '/cgi/ping';
   var is_babel = window.location.href.indexOf("babel.hathitrust") > -1;
   var $button = $("#login-button,#login-link");
   var prefs = HT.prefs.get();
@@ -21332,7 +21383,7 @@ head.ready(function () {
               document.documentElement.dataset.activated = switchableRole;
             }
 
-            $e = $e.replaceWith("<a class=\"action-switch-role\" href=\"https://".concat(HT.service_domain, "/cgi/ping/switch\">").concat(link_text, "</a>"));
+            $e = $e.replaceWith("<a class=\"action-switch-role\" href=\"https://".concat(HT.service_domain, "/cgi/ping/switch?target=").concat(encodeURIComponent(location.href), "\">").concat(link_text, "</a>"));
           }
         }
       }
