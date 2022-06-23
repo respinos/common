@@ -419,6 +419,11 @@ head.ready(function() {
 
         if ( head.mobile ) { return ; }
 
+        if ( $(".alert-banner").length ) {
+            // already have a banner, so don't do this one
+            return;
+        }
+
         var xtracking;
 
         var xupdate = function(id) {
@@ -457,6 +462,9 @@ head.ready(function() {
             if ( ! timestamped ) {
                 // localStorage.setItem('x:' + id, 'true');
                 xupdate(id);
+            }
+            if (callback) {
+                callback();
             }
         });
 
@@ -511,6 +519,12 @@ head.ready(function() {
         }
 
         $("html").trigger('ht:login');
+
+        if (location.hostname.indexOf('www.hathitrust.org') > -1 && sessionStorage.getItem('website-survey') != 'true') {
+            insert_banner('website-survey', '<p>Would you help us improve the HathiTrust website? <a xclass="btn btn-default" data-close-target=".modal.login" target="_blank" style="font-weight: bold" href="https://www.surveymonkey.com/r/2MV55VY">Take this survey!</a></p>', true, function() {
+                sessionStorage.setItem('website-survey', true);
+            });
+        }
     }
 
     if ( HT.login_status ) {
@@ -540,6 +554,5 @@ head.ready(function() {
     //     bootbox.hideAll();
     //     display_login_dialog({ $target: $(this), classname: 'login-centered' })
     // })
-
 
 });
