@@ -154,7 +154,7 @@ head.ready(function() {
                     var retval = true;
 
                     if ( $link.is("a") ) {
-                        if ( $link.attr('target') ) {
+                        if ( $link.attr('target') || $link.prop('download') !== undefined ) {
                           return true;
                         }
                         retval = false;
