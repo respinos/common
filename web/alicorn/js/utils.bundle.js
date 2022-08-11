@@ -20056,14 +20056,7 @@ head.ready(function () {
             name: name
           }).val(value).appendTo($form);
         });
-      }); // _.each(_.keys(formdata), function(name) {
-      //     var values = formdata[name];
-      //     values = $.isArray(values) ? values : [ values ];
-      //     _.each(values, function(value) {
-      //         $("<input type='hidden' />").attr({ name : name }).val(value).appendTo($form);
-      //     })
-      // })
-
+      });
       $form.hide().appendTo("body");
       $form.submit();
     }
@@ -20074,7 +20067,7 @@ head.ready(function () {
       creating: false,
       label: "Save Changes"
     }, args);
-    var $block = $('<form class="form-horizontal" action="mb">' + '<div class="control-group">' + '<label class="control-label" for="edit-cn">Collection Name</label>' + '<div class="controls">' + '<input type="text" class="input-large" maxlength="100" name="cn" id="edit-cn" value="" placeholder="Your collection name" required />' + '<span class="label counter" id="edit-cn-count">100 <span class="offscreen">characters remaining</span></span>' + "</div>" + "</div>" + '<div class="control-group">' + '<label class="control-label" for="edit-desc">Description</label>' + '<div class="controls">' + '<textarea id="edit-desc" name="desc" rows="4" maxlength="255" class="input-large" placeholder="Add your collection description."></textarea>' + '<span class="label counter" id="edit-desc-count">255 <span class="offscreen">characters remaining</span></span>' + "</div>" + "</div>" + '<div class="control-group">' + '<label class="control-label">Is this collection <strong>Public</strong> or <strong>Private</strong>?</label>' + '<div class="controls">' + '<input type="radio" name="shrd" id="edit-shrd-0" value="0" checked="checked" > ' + '<label class="radio inline" for="edit-shrd-0">' + '<i class="icomoon icomoon-locked" aria-hidden="true"></i> ' + "Private " + "</label>" + '<input type="radio" name="shrd" id="edit-shrd-1" value="1" > ' + '<label class="radio inline" for="edit-shrd-1">' + "Public " + "</label>" + "</div>" + "</div>" + "</form>");
+    var $block = $('<form class="form-horizontal" action="mb" style="margin-top: 0.5rem">' + '<div class="control-group">' + '<label class="control-label" for="edit-cn">Collection Name</label>' + '<div class="controls">' + '<input type="text" class="input-large" maxlength="100" name="cn" id="edit-cn" value="" placeholder="Your collection name" required />' + '<span class="label counter" id="edit-cn-count">100 <span class="offscreen">characters remaining</span></span>' + "</div>" + "</div>" + '<div class="control-group">' + '<label class="control-label" for="edit-desc">Description</label>' + '<div class="controls">' + '<textarea id="edit-desc" name="desc" rows="4" maxlength="255" class="input-large" placeholder="Add your collection description."></textarea>' + '<span class="label counter" id="edit-desc-count">255 <span class="offscreen">characters remaining</span></span>' + "</div>" + "</div>" + '<div class="control-group">' + '<label class="control-label" for="edit-contributor_name">Contributor</label>' + '<div class="controls">' + '<input type="text" class="input-large" maxlength="255" name="contributor_name" id="edit-contributor_name" value="" placeholder="Contributor" />' + '<span class="label counter" id="edit-contributor_name-count">255 <span class="offscreen">characters remaining</span></span>' + '<p class="help-block"><strong>Optional.</strong> Set a public contributor name.</p>' + "</div>" + "</div>" + '<div class="control-group">' + '<label class="control-label">Is this collection <strong>Public</strong> or <strong>Private</strong>?</label>' + '<div class="controls">' + '<input type="radio" name="shrd" id="edit-shrd-0" value="0" checked="checked" > ' + '<label class="radio inline" for="edit-shrd-0">' + '<i class="icomoon icomoon-locked" aria-hidden="true"></i> ' + "Private " + "</label>" + '<input type="radio" name="shrd" id="edit-shrd-1" value="1" > ' + '<label class="radio inline" for="edit-shrd-1">' + "Public " + "</label>" + "</div>" + "</div>" + "</form>");
 
     if (options.cn) {
       $block.find("input[name=cn]").val(options.cn);
@@ -20082,6 +20075,10 @@ head.ready(function () {
 
     if (options.desc) {
       $block.find("textarea[name=desc]").val(options.desc);
+    }
+
+    if (options.contributor_name) {
+      $block.find("input[name=contributor_name]").val(options.contributor_name);
     }
 
     if (options.shrd != null) {
@@ -20125,6 +20122,7 @@ head.ready(function () {
         var c = $.trim($block.find("input[name=c]").val());
         var cn = $.trim($block.find("input[name=cn]").val());
         var desc = $.trim($block.find("textarea[name=desc]").val());
+        var contributor_name = $.trim($block.find("input[name=contributor_name]").val());
 
         if (!cn) {
           $('<div class="alert alert-error">You must enter a collection name.</div>').appendTo($block);
@@ -20137,6 +20135,7 @@ head.ready(function () {
           a: options.a,
           cn: cn,
           desc: desc,
+          contributor_name: contributor_name,
           shrd: $block.find("input[name=shrd]:checked").val()
         };
 
@@ -20181,6 +20180,7 @@ head.ready(function () {
       a: 'editc',
       cn: $this.data('cn'),
       desc: $this.data('desc'),
+      contributor_name: $this.data('contributor_name'),
       shrd: $this.data('shrd'),
       c: $this.data('c')
     });
