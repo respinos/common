@@ -20491,8 +20491,6 @@ head.ready(function () {
       message = '<div class="alert alert-block"><p><span style="font-size: 400%; float: left; display: inline-block; margin-right: 8px" aria-hidden="true">❄</span> Because of the winter holiday, HathiTrust User Support is unavailable from December 22nd through January 2nd. We will respond to your feedback as soon as possible starting January 4th. Thank you for your patience.</p></div>';
     }
 
-    message = '<div class="alert alert-block"><p>HathiTrust is undertaking a major upgrade of our user support system. Between July 18 and August 25, you will likely experience slower response times. Thank you for your patience.</p></div>';
-
     if (message) {
       if (typeof html == 'string') {
         html = html.replace('<form', message + '<form');
