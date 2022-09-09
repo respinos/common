@@ -33,6 +33,12 @@
     "jquery": "^3.4.0",
     "jquery.tabbable": "^1.0.1",
     "merge-stream": "^1.0.1",
-    "node-sass": "^6.0.1"
+    "node-sass": "^7.0.3"
+  },
+  "overrides": {
+    "chokidar": "^3.0.0",
+    "glob-stream": "^7.0.0",
+    "glob-parent": "^6.0.0",
+    "micromatch": "^4.0.0"
   }
 }
