@@ -46,20 +46,15 @@ javascripts.input.push(
 javascripts.input.push("./node_modules/bootstrap/js/dist/base-component.js");
 javascripts.input.push("./node_modules/bootstrap/js/dist/dropdown.js");
 
-// javascripts.input.push("./node_modules/bootstrap/dist/js/bootstrap.min.js");
-
 javascripts.input.push('./vendor/jquery.cookie.js');
 javascripts.input.push('./vendor/purl.js');
 javascripts.input.push('./vendor/selectwoo/dist/js/select2.full.js');
 javascripts.input.push('./vendor/social_links.js');
-javascripts.input.push('./vendor/a11y-dialog.min.js');
 javascripts.input.push('./src/js/components/**/*.js');
-// javascripts.input.push('./src/js/components/**/*.js', './src/js/main.js')
 javascripts.output = './js';
 
 javascripts.main = [];
 javascripts.main.push('./node_modules/headjs/dist/1.0.0/head.js');
-// javascripts.main.push('./node_modules/jquery/dist/jquery.js');
 javascripts.main.push('./src/js/main.js');
 
 stylesheets.options = {
