@@ -13,7 +13,7 @@
 
 `alicorn` was our 2019 uplift of the `unicorn` design, to further centralize styles and better address accessibility.
 
-## wnicorn
+## unicorn
 
 `unicorn` was the 2013 design that first unified the styles and UX of the www/catalog/babel applications.
 
