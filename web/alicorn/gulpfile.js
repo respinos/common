@@ -68,21 +68,6 @@ var autoprefixerOptions = {
 };
 
 // Compile sass into CSS
-gulp.task('sass-dev', function() {
-
-  var vendorFiles = gulp.src(stylesheets.concat);
-
-  var localFiles = gulp.src('./src/scss/dev.scss')
-    .pipe(sass(stylesheets.options).on('error', sass.logError))
-    .pipe(autoprefixer(autoprefixerOptions));
-
-  return es.concat(vendorFiles, localFiles)
-    .pipe(concat('dev.css'))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(stylesheets.output));
-});
-
-// Compile sass into CSS
 gulp.task('sass', function() {
 
   var vendorFiles = gulp.src(stylesheets.concat);
