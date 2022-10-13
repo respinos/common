@@ -19424,7 +19424,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             _ref$closeTrigger = _ref.closeTrigger,
             closeTrigger = _ref$closeTrigger === undefined ? 'data-micromodal-close' : _ref$closeTrigger,
             _ref$disableScroll = _ref.disableScroll,
-            disableScroll = _ref$disableScroll === undefined ? false : _ref$disableScroll,
+            disableScroll = _ref$disableScroll === undefined ? true : _ref$disableScroll,
             _ref$disableFocus = _ref.disableFocus,
             disableFocus = _ref$disableFocus === undefined ? false : _ref$disableFocus,
             _ref$awaitCloseAnimat = _ref.awaitCloseAnimation,
@@ -19540,20 +19540,19 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         value: function scrollBehaviour(toggle) {
           if (!this.config.disableScroll) return;
           var body = document.querySelector('body');
+          var documentEl = document.documentElement;
 
           switch (toggle) {
             case 'enable':
-              Object.assign(body.style, {
-                overflow: 'initial',
-                height: 'initial'
-              });
+              // Object.assign(body.style, { overflow: 'initial', height: 'initial' });
+              documentEl.style.removeProperty('overflow');
+              body.style.removeProperty('overflow');
               break;
 
             case 'disable':
-              Object.assign(body.style, {
-                overflow: 'hidden',
-                height: '100vh'
-              });
+              // Object.assign(body.style, { overflow: 'hidden', height: '100vh' });
+              body.style.overflow = 'hidden';
+              documentEl.style.overflow = 'hidden';
               break;
 
             default:
