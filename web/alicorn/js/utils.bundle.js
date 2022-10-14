@@ -3438,7 +3438,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     readyList.then(fn) // Wrap jQuery.readyException in a function so that the lookup
     // happens at the time of error handling instead of callback
     // registration.
-    ["catch"](function (error) {
+    .catch(function (error) {
       jQuery.readyException(error);
     });
     return this;
@@ -5770,10 +5770,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
   function finalPropName(name) {
-    var _final = jQuery.cssProps[name] || vendorProps[name];
+    var final = jQuery.cssProps[name] || vendorProps[name];
 
-    if (_final) {
-      return _final;
+    if (final) {
+      return final;
     }
 
     if (name in emptyStyle) {
@@ -8081,7 +8081,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
           if (conv !== true) {
             // Unless errors are allowed to bubble, catch and return them
-            if (conv && s["throws"]) {
+            if (conv && s.throws) {
               response = conv(response);
             } else {
               try {
@@ -11230,10 +11230,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }
 
       var instanceMap = elementMap.get(element);
-      instanceMap["delete"](key); // free up element references if there are no instances left for an element
+      instanceMap.delete(key); // free up element references if there are no instances left for an element
 
       if (instanceMap.size === 0) {
-        elementMap["delete"](element);
+        elementMap.delete(element);
       }
     }
   };
@@ -19370,6 +19370,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   'use strict';
 
   var version = "0.3.1";
+  var isIE = window.navigator.userAgent.indexOf("Trident/") > -1;
 
   var classCallCheck = function classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -19424,7 +19425,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             _ref$closeTrigger = _ref.closeTrigger,
             closeTrigger = _ref$closeTrigger === undefined ? 'data-micromodal-close' : _ref$closeTrigger,
             _ref$disableScroll = _ref.disableScroll,
-            disableScroll = _ref$disableScroll === undefined ? false : _ref$disableScroll,
+            disableScroll = _ref$disableScroll === undefined ? true : _ref$disableScroll,
             _ref$disableFocus = _ref.disableFocus,
             disableFocus = _ref$disableFocus === undefined ? false : _ref$disableFocus,
             _ref$awaitCloseAnimat = _ref.awaitCloseAnimation,
@@ -19540,20 +19541,19 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         value: function scrollBehaviour(toggle) {
           if (!this.config.disableScroll) return;
           var body = document.querySelector('body');
+          var documentEl = document.documentElement;
 
           switch (toggle) {
             case 'enable':
-              Object.assign(body.style, {
-                overflow: 'initial',
-                height: 'initial'
-              });
+              // Object.assign(body.style, { overflow: 'initial', height: 'initial' });
+              documentEl.style.removeProperty('overflow');
+              body.style.removeProperty('overflow');
               break;
 
             case 'disable':
-              Object.assign(body.style, {
-                overflow: 'hidden',
-                height: '100vh'
-              });
+              // Object.assign(body.style, { overflow: 'hidden', height: '100vh' });
+              body.style.overflow = 'hidden';
+              documentEl.style.overflow = 'hidden';
               break;
 
             default:
@@ -19576,7 +19576,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }, {
         key: 'onClick',
         value: function onClick(event) {
-          if (event.detail == 0) {
+          if (!isIE && event.detail == 0) {
             return;
           }
 
@@ -19939,15 +19939,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           button.setAttribute('aria-label', action.ariaLabel);
         }
 
-        if (action["class"].indexOf('btn-dismiss') > -1) {
+        if (action.class.indexOf('btn-dismiss') > -1) {
           button.classList.add('modal__btn');
           button.dataset.micromodalClose = true;
         } else {
           button.classList.add('modal__btn');
         }
 
-        if (action["class"]) {
-          var tmp = action["class"].split(' ');
+        if (action.class) {
+          var tmp = action.class.split(' ');
           tmp.forEach(function (cls) {
             button.classList.add(cls);
           });
@@ -20170,8 +20170,7 @@ head.ready(function () {
     if (options.shrd != null) {
       $block.find("input[name=shrd][value=" + options.shrd + ']').attr("checked", "checked");
     } else if (!HT.login_status.logged_in) {
-      $block.find("input[name=shrd][value=0]").attr("checked", "checked");
-      $('<div class="alert alert-info"><strong>This collection will be temporary</strong>. Log in to create permanent and public collections.</div>').appendTo($block); // remove the <label> that wraps the radio button
+      $block.find("input[name=shrd][value=0]").attr("checked", "checked"); // remove the <label> that wraps the radio button
 
       $block.find("input[name=shrd][value=1]").remove();
       $block.find("label[for='edit-shrd-1']").remove();
@@ -20240,6 +20239,11 @@ head.ready(function () {
       }
     }]);
     HT.ctools.$dialog = $dialog;
+
+    if (!HT.login_status.logged_in) {
+      $('<div class="alert alert-danger" style="text-align: left"><strong>This collection will be temporary</strong>. Log in to create permanent and public collections.</div>').insertBefore($dialog.find(".modal__footer button.modal__btn.btn-dismiss"));
+    }
+
     $dialog.find("input[type=text],textarea").each(function () {
       var $this = $(this);
       var $count = $("#" + $this.attr('id') + "-count");
@@ -20715,24 +20719,6 @@ head.ready(function () {
   }
 
   if (is_enabled) {
-    var _get_prefix = function _get_prefix(profile_id) {
-      var idx = profiles.indexOf(profile_id);
-
-      if (idx < 0) {
-        profiles.push(profile_id);
-        idx = profiles.length - 1; // and then setup the tracker
-
-        var config = {
-          cookieDomain: 'hathitrust.org',
-          legacyCookieDomain: 'hathitrust.org',
-          name: "ht" + idx
-        };
-        window['ga']('create', profile_id, config);
-      }
-
-      return "ht" + idx + ".";
-    };
-
     // deconstructed version of the tracking code, to mesh with unicorn
     // <script>
     //   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -20751,6 +20737,25 @@ head.ready(function () {
 
     window['ga'].l = 1 * new Date();
     var profiles = [HT.analytics.profile_id];
+
+    function _get_prefix(profile_id) {
+      var idx = profiles.indexOf(profile_id);
+
+      if (idx < 0) {
+        profiles.push(profile_id);
+        idx = profiles.length - 1; // and then setup the tracker
+
+        var config = {
+          cookieDomain: 'hathitrust.org',
+          legacyCookieDomain: 'hathitrust.org',
+          name: "ht" + idx
+        };
+        window['ga']('create', profile_id, config);
+      }
+
+      return "ht" + idx + ".";
+    }
+
     window['ga']('create', HT.analytics.profile_id, {
       cookieDomain: 'hathitrust.org',
       legacyCookieDomain: 'hathitrust.org'

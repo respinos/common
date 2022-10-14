@@ -5,6 +5,7 @@
 }(window, (function () { 'use strict';
 
 var version = "0.3.1";
+var isIE = window.navigator.userAgent.indexOf("Trident/") > -1;
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -58,7 +59,7 @@ var bootbox = function () {
           _ref$closeTrigger = _ref.closeTrigger,
           closeTrigger = _ref$closeTrigger === undefined ? 'data-micromodal-close' : _ref$closeTrigger,
           _ref$disableScroll = _ref.disableScroll,
-          disableScroll = _ref$disableScroll === undefined ? false : _ref$disableScroll,
+          disableScroll = _ref$disableScroll === undefined ? true : _ref$disableScroll,
           _ref$disableFocus = _ref.disableFocus,
           disableFocus = _ref$disableFocus === undefined ? false : _ref$disableFocus,
           _ref$awaitCloseAnimat = _ref.awaitCloseAnimation,
@@ -169,12 +170,17 @@ var bootbox = function () {
       value: function scrollBehaviour(toggle) {
         if (!this.config.disableScroll) return;
         var body = document.querySelector('body');
+        var documentEl = document.documentElement;
         switch (toggle) {
           case 'enable':
-            Object.assign(body.style, { overflow: 'initial', height: 'initial' });
+            // Object.assign(body.style, { overflow: 'initial', height: 'initial' });
+            documentEl.style.removeProperty('overflow');
+            body.style.removeProperty('overflow');
             break;
           case 'disable':
-            Object.assign(body.style, { overflow: 'hidden', height: '100vh' });
+            // Object.assign(body.style, { overflow: 'hidden', height: '100vh' });
+            body.style.overflow = 'hidden';
+            documentEl.style.overflow = 'hidden';
             break;
           default:
         }
@@ -196,7 +202,7 @@ var bootbox = function () {
     }, {
       key: 'onClick',
       value: function onClick(event) {
-        if ( event.detail == 0 ) { return; }
+        if ( ! isIE && event.detail == 0 ) { return; }
         var id = event.target.getAttribute('id');
         if ( id && this.config.callbacks[id] ) {
           var retval = this.config.callbacks[id](this);
