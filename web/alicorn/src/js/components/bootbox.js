@@ -5,6 +5,7 @@
 }(window, (function () { 'use strict';
 
 var version = "0.3.1";
+var isIE = window.navigator.userAgent.indexOf("Trident/") > -1;
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -201,7 +202,7 @@ var bootbox = function () {
     }, {
       key: 'onClick',
       value: function onClick(event) {
-        if ( event.detail == 0 ) { return; }
+        if ( ! isIE && event.detail == 0 ) { return; }
         var id = event.target.getAttribute('id');
         if ( id && this.config.callbacks[id] ) {
           var retval = this.config.callbacks[id](this);

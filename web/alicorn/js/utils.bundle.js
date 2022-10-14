@@ -19370,6 +19370,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   'use strict';
 
   var version = "0.3.1";
+  var isIE = window.navigator.userAgent.indexOf("Trident/") > -1;
 
   var classCallCheck = function classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -19575,7 +19576,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }, {
         key: 'onClick',
         value: function onClick(event) {
-          if (event.detail == 0) {
+          if (!isIE && event.detail == 0) {
             return;
           }
 
