@@ -19428,7 +19428,7 @@ head.ready(function () {
 
   var config;
 
-  if (hostname.indexOf('catalog.hathitrust.org') > 1) {
+  if (hostname.indexOf('catalog.hathitrust.org') > -1) {
     config = profiles['catalog.hathitrust.org'];
   } else if (hostname.indexOf('www.hathitrust.org') > -1) {
     config = profiles['www.hathitrust.org'];
