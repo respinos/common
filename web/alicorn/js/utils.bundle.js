@@ -20999,9 +20999,8 @@ head.ready(function () {
   _setup.ls = function () {
     $(".ht-search-form .control-searchtype").hide();
     $(".ht-search-form input.search-input-text").attr('placeholder', 'Search words about or within the items');
-    $(".ht-search-form label[for='q1-input']").text('Search full-text index'); // $(".ht-search-form .global-search-ft").hide();
-
-    $("input[name=ft]").attr('checked', 'checked');
+    $(".ht-search-form label[for='q1-input']").text('Search full-text index'); // has "All Items" view has been selected?
+    // check/unchecked hidden "full-view" checkbox depending 
 
     if (allItems == 'true') {
       $("input[name=ft]").attr('checked', null);
@@ -21017,7 +21016,8 @@ head.ready(function () {
   _setup.catalog = function () {
     $(".ht-search-form .control-searchtype").show();
     $(".ht-search-form input.search-input-text").attr('placeholder', 'Search words about the items');
-    $(".ht-search-form label[for='q1-input']").text('Search catalog index'); // $(".ht-search-form .global-search-ft").hide();
+    $(".ht-search-form label[for='q1-input']").text('Search catalog index'); // has "All Items" view has been selected?
+    // check/unchecked hidden "full-view" checkbox depending 
 
     if (allItems == 'true') {
       $("input[name=ft]").attr('checked', null);
