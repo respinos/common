@@ -23,7 +23,7 @@ head.ready(function() {
       $(".ht-search-form .control-searchtype").hide();
       $(".ht-search-form input.search-input-text").attr('placeholder', 'Search words about or within the items');
       $(".ht-search-form label[for='q1-input']").text('Search full-text index');
-      $(".ht-search-form .global-search-ft").hide();
+      // $(".ht-search-form .global-search-ft").hide();
       $("input[name=ft]").attr('checked', 'checked');
       if (allItems == 'true') {
         $("input[name=ft]").attr('checked', null);
@@ -39,7 +39,7 @@ head.ready(function() {
       $(".ht-search-form .control-searchtype").show();
       $(".ht-search-form input.search-input-text").attr('placeholder', 'Search words about the items');
       $(".ht-search-form label[for='q1-input']").text('Search catalog index');
-      $(".ht-search-form .global-search-ft").hide();
+      // $(".ht-search-form .global-search-ft").hide();
       if (allItems == 'true') {
         $("input[name=ft]").attr('checked', null);
       } else {
