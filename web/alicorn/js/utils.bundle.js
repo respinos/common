@@ -21184,10 +21184,10 @@ head.ready(function () {
     else {
       // save last settings
       var searchtype = target == 'ls' ? 'all' : $form.find("select").val(); // this won't set ft because there won't be a checkbox
+      //HT.prefs.set({ search : { ft : $form.find("input[name=ft]:checked").length > 0, target : target, searchtype: searchtype }})
 
       HT.prefs.set({
         search: {
-          ft: $form.find("input[name=ft]:checked").length > 0,
           target: target,
           searchtype: searchtype
         }
