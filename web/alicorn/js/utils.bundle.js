@@ -20985,27 +20985,27 @@ head.ready(function () {
   }
 
   var $header = $form.parents(".container-header");
-  var is_search_app = $("html").data('use') == 'search';
+  var is_search_app = $("html").data("use") == "search";
   var inited = false;
   var $input = $form.find("input.search-input-text");
   var $input_label = $form.find("label[for='q1-input']");
   var $select = $form.find(".control-searchtype");
   var $search_target = $form.find(".search-target");
   var $ft = $form.find("span.funky-full-view");
-  var $ft_check = $("html").data('ft');
-  var allItems = $('[aria-labelledby=view-all]').attr('aria-checked');
+  var $ft_check = $("html").data("ft");
+  var allItems = $("[aria-labelledby=view-all]").attr("aria-checked");
   var _setup = {};
 
   _setup.ls = function () {
     $(".ht-search-form .control-searchtype").hide();
-    $(".ht-search-form input.search-input-text").attr('placeholder', 'Search words about or within the items');
-    $(".ht-search-form label[for='q1-input']").text('Search full-text index'); // has "All Items" view has been selected?
-    // check/unchecked hidden "full-view" checkbox depending 
+    $(".ht-search-form input.search-input-text").attr("placeholder", "Search words about or within the items");
+    $(".ht-search-form label[for='q1-input']").text("Search full-text index"); // has "All Items" view has been selected?
+    // check/unchecked hidden "full-view" checkbox depending
 
-    if (allItems == 'true') {
-      $("input[name=ft]").attr('checked', null);
+    if (allItems == "true") {
+      $("input[name=ft]").attr("checked", null);
     } else {
-      $("input[name=ft]").attr('checked', 'checked');
+      $("input[name=ft]").attr("checked", "checked");
     }
 
     if (inited) {
@@ -21015,14 +21015,14 @@ head.ready(function () {
 
   _setup.catalog = function () {
     $(".ht-search-form .control-searchtype").show();
-    $(".ht-search-form input.search-input-text").attr('placeholder', 'Search words about the items');
-    $(".ht-search-form label[for='q1-input']").text('Search catalog index'); // has "All Items" view has been selected?
-    // check/unchecked hidden "full-view" checkbox depending 
+    $(".ht-search-form input.search-input-text").attr("placeholder", "Search words about the items");
+    $(".ht-search-form label[for='q1-input']").text("Search catalog index"); // has "All Items" view has been selected?
+    // check/unchecked hidden "full-view" checkbox depending
 
-    if (allItems == 'true') {
-      $("input[name=ft]").attr('checked', null);
+    if (allItems == "true") {
+      $("input[name=ft]").attr("checked", null);
     } else {
-      $("input[name=ft]").attr('checked', 'checked');
+      $("input[name=ft]").attr("checked", "checked");
     }
 
     if (inited) {
@@ -21035,45 +21035,47 @@ head.ready(function () {
   _handler.ls = function (formData) {
     var search_url;
     var submitData = new URLSearchParams();
-    submitData.set('q1', formData.get('q1'));
-    submitData.set('field1', 'ocr');
-    submitData.set('a', 'srchls');
+    submitData.set("q1", formData.get("q1"));
+    submitData.set("field1", "ocr");
+    submitData.set("a", "srchls");
 
-    if (formData.get('ft') == 'ft') {
-      submitData.set('ft', 'ft');
-      submitData.set('lmt', 'ft');
+    if (formData.get("ft") == "ft") {
+      submitData.set("ft", "ft");
+      submitData.set("lmt", "ft");
     }
 
     search_url = "//".concat(HT.service_domain);
     search_url += "/cgi/ls?";
     search_url += submitData.toString();
     location.href = search_url;
+    alert(submitData.toString());
   };
 
   _handler.catalog = function (formData) {
     var search_url;
     var submitData = new URLSearchParams();
-    var searchtype = formData.get('searchtype');
+    var searchtype = formData.get("searchtype");
 
-    if (searchtype == 'isbn') {
-      searchtype = 'isn';
+    if (searchtype == "isbn") {
+      searchtype = "isn";
     }
 
-    submitData.set('lookfor', formData.get('q1'));
-    submitData.set('searchtype', searchtype);
+    submitData.set("lookfor", formData.get("q1"));
+    submitData.set("searchtype", searchtype);
 
-    if (formData.get('ft') == 'ft') {
-      submitData.set('ft', 'ft');
-      submitData.set('setft', 'true');
+    if (formData.get("ft") == "ft") {
+      submitData.set("ft", "ft");
+      submitData.set("setft", "true");
     } else {
-      submitData.set('ft', '');
-      submitData.set('setft', 'false');
+      submitData.set("ft", "");
+      submitData.set("setft", "false");
     }
 
     search_url = "//".concat(HT.catalog_domain);
     search_url += "/Search/Home?";
     search_url += submitData.toString();
     location.href = search_url;
+    alert(submitData.toString());
   };
 
   var target = $search_target.find("input:checked").val();
@@ -21085,11 +21087,11 @@ head.ready(function () {
 
   if ($ft == null && !is_search_app && prefs.search && prefs.search.ft) {
     console.log("AHOY AHOY SEARCH FORM");
-    $("input[name=ft]").attr('checked', 'checked');
+    $("input[name=ft]").attr("checked", "checked");
   } // $("body").on('change', '.ht-search-form .control-search-type input[type="radio"]', function(e) {
 
 
-  $("body").on('change', '.ht-search-form .search-target input[type="radio"]', function (e) {
+  $("body").on("change", '.ht-search-form .search-target input[type="radio"]', function (e) {
     target = this.value;
 
     _setup[target]();
@@ -21103,7 +21105,7 @@ head.ready(function () {
   var $action = $("nav .action-search-hathitrust");
   var $clone;
   var $dialog;
-  $action.on('click', function () {
+  $action.on("click", function () {
     if ($dialog === undefined) {
       $dialog = $("\n        <div class=\"modal micromodal-slide\" id=\"search-modal\" aria-hidden=\"true\">\n          <div class=\"modal__overlay\" tabindex=\"-1\" data-micromodal-close=\"true\">\n            <div class=\"modal__container modal__container--square\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"search-modal-title\">\n              <form action=\"//".concat(HT.service_domain, "/cgi/ls/one\" method=\"GET\" role=\"search\" class=\"ht-search-form\">\n                <div class=\"modal__header\">\n                  <h2 class=\"modal__title\" id=\"search-modal-title\">\n                    Search HathiTrust\n                  </h2>\n                  <button class=\"modal__close\" aria-label=\"Close modal\" data-micromodal-close=\"true\"></button>\n                </div>\n                <div class=\"modal__content\" id=\"search-modal-content\">\n                </div>\n                <div class=\"modal__footer\">\n                  <button class=\"modal__btn btn\" data-micromodal-close=\"true\" aria-label=\"Close modal\">Close</button>\n                  <button class=\"modal__btn btn btn-primary\">Search</button>\n                </div>\n              </form>\n            </div>\n          </div>          \n        </div>\n      "));
       $("body").append($dialog);
@@ -21113,14 +21115,14 @@ head.ready(function () {
     $content.children().remove();
     $content.append($form.children().clone());
     $content.find("#action-search-hathitrust").parent().parent().remove();
-    $content.find("#option-full-text-search").attr('id', 'option-full-text-search-2');
-    $content.find("#option-catalog-search").attr('id', 'option-catalog-search-2');
-    $content.find('label.search-label-full-text').attr('for', 'option-full-text-search-2');
-    $content.find("label.search-label-catalog").attr('for', 'option-catalog-search-2');
-    $content.find("label[for='global-search-ft']").attr('for', 'global-search-ft-2');
-    $content.find('#global-search-ft').attr("id", 'global-search-ft-2');
+    $content.find("#option-full-text-search").attr("id", "option-full-text-search-2");
+    $content.find("#option-catalog-search").attr("id", "option-catalog-search-2");
+    $content.find("label.search-label-full-text").attr("for", "option-full-text-search-2");
+    $content.find("label.search-label-catalog").attr("for", "option-catalog-search-2");
+    $content.find("label[for='global-search-ft']").attr("for", "global-search-ft-2");
+    $content.find("#global-search-ft").attr("id", "global-search-ft-2");
     var $input_modal = $content.find("input[type=text]");
-    $input_modal.on('keyup', function () {
+    $input_modal.on("keyup", function () {
       $input.val($input_modal.val());
     }); // $dialog.find(".modal__container").remove("form").append($form.clone(true));
 
@@ -21136,14 +21138,14 @@ head.ready(function () {
   var _resizer = function _resizer() {
     var active = bootbox.active();
 
-    if ($header.is(":visible") && active && active.modal.getAttribute('id') == 'search-modal') {
+    if ($header.is(":visible") && active && active.modal.getAttribute("id") == "search-modal") {
       bootbox.close();
     } else {
       /* NOP */
     }
   };
 
-  $(window).on('resize', function () {
+  $(window).on("resize", function () {
     if (_resizeTimer) {
       clearTimeout(_resizeTimer);
     }
@@ -21151,9 +21153,9 @@ head.ready(function () {
     _resizeTimer = setTimeout(_resizer, 500);
   });
   setTimeout(_resizer, 500);
-  $("#ht-search-form").addClass('ht-search-form'); // add event handler for submit to check for empty query or asterisk
+  $("#ht-search-form").addClass("ht-search-form"); // add event handler for submit to check for empty query or asterisk
 
-  $("body").on('submit', '.ht-search-form', function (event) {
+  $("body").on("submit", ".ht-search-form", function (event) {
     event.preventDefault();
     HT.beforeUnloadTimeout = 15000;
     var $form = $(this);
@@ -21168,9 +21170,9 @@ head.ready(function () {
     var query = $input.val();
     query = $.trim(query);
 
-    if (query === '') {
+    if (query === "") {
       alert("Please enter a search term.");
-      $input.trigger('blur');
+      $input.trigger("blur");
       return false;
     } // // *  Bill says go ahead and forward a query with an asterisk   ######
     // else if (query === '*')
@@ -21182,7 +21184,7 @@ head.ready(function () {
     // ##################################################################*
     else {
       // save last settings
-      var searchtype = target == 'ls' ? 'all' : $form.find("select").val(); // this won't set ft because there won't be a checkbox
+      var searchtype = target == "ls" ? "all" : $form.find("select").val(); // this won't set ft because there won't be a checkbox
       //HT.prefs.set({ search : { ft : $form.find("input[name=ft]:checked").length > 0, target : target, searchtype: searchtype }})
 
       HT.prefs.set({
