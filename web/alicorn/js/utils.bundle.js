@@ -19022,6 +19022,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 });
 "use strict";
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 head.ready(function () {
   var $form = $(".advanced-search-form");
 
@@ -19029,15 +19035,15 @@ head.ready(function () {
     return;
   }
 
-  jQuery.expr[':'].icontains = function (a, i, m) {
+  jQuery.expr[":"].icontains = function (a, i, m) {
     return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
   };
 
   var update_toggle_message = function update_toggle_message($toggle, count) {
-    $toggle.data('message', "Show only selected options (".concat(count, ")"));
+    $toggle.data("message", "Show only selected options (".concat(count, ")"));
 
-    if (!$toggle.data('state')) {
-      $toggle.find('span').text($toggle.data('message'));
+    if (!$toggle.data("state")) {
+      $toggle.find("span").text($toggle.data("message"));
     }
   };
 
@@ -19060,14 +19066,14 @@ head.ready(function () {
   var filter_items = function filter_items($items, value) {
     if (value == "") {
       $items.css({
-        display: 'list-item'
+        display: "list-item"
       }); // .find("input").attr('tabindex', -1);
     } else {
       $items.find("label:not(:icontains(" + value + "))").parent().css({
-        display: 'none'
+        display: "none"
       });
       $items.find("label:icontains(" + value + ")").parent().css({
-        display: 'list-item'
+        display: "list-item"
       }); // $items.find("input[type=checkbox]:not(:checked):hidden").attr("tabindex", -1);
       // $items.find("input[type=checkbox]:visible").attr("tabindex", 0);
     }
@@ -19080,10 +19086,10 @@ head.ready(function () {
     var $items = $list.find("li");
     var $toggle = $container.find(".multiselect-show-checked-toggle"); // disable the tabindex
 
-    $items.find("input").attr('tabindex', '-1');
-    $list.attr('tabindex', '0');
+    $items.find("input").attr("tabindex", "-1");
+    $list.attr("tabindex", "0");
     $list.css({
-      position: 'relative'
+      position: "relative"
     }); // // 2020-12-09 - chrome is triggering focusin on click, before the
     // // targeted input can catch the click
     // $container.on('focusin', 'fieldset', function(event) {
@@ -19096,11 +19102,11 @@ head.ready(function () {
     //   }
     // })
 
-    $list.on('keyup', 'input', function (event) {
+    $list.on("keyup", "input", function (event) {
       var $possible = $items.filter(":visible");
 
-      if (event.key == 'ArrowDown' || event.key == 'ArrowUp') {
-        var delta = event.key == 'ArrowDown' ? 1 : -1;
+      if (event.key == "ArrowDown" || event.key == "ArrowUp") {
+        var delta = event.key == "ArrowDown" ? 1 : -1;
         var $current = $(document.activeElement).parent("li");
         var index = $possible.index($current);
         var nextIndex = (index + delta) % $possible.length;
@@ -19114,15 +19120,15 @@ head.ready(function () {
         // $list.get(0).scrollBy(0, -( $next.parent().height() * 1.125 ));
       }
     });
-    $list.on('keydown', function (event) {
-      if (event.target == $list.get(0) && event.key == 'Tab' && !event.shiftKey) {
+    $list.on("keydown", function (event) {
+      if (event.target == $list.get(0) && event.key == "Tab" && !event.shiftKey) {
         event.preventDefault();
         console.log("-- bogart");
         $items.filter(":visible").first().find("input").focus();
       }
     });
-    $list.on('keydown', 'input', function (event) {
-      if (event.key == 'Tab' && event.shiftKey) {
+    $list.on("keydown", "input", function (event) {
+      if (event.key == "Tab" && event.shiftKey) {
         event.preventDefault();
         event.stopPropagation();
 
@@ -19133,22 +19139,22 @@ head.ready(function () {
         }
       }
     });
-    $input.on('keyup', function (event) {
+    $input.on("keyup", function (event) {
       var value = $(this).val();
       filter_items($items, value);
     });
 
     var update_toggle_button = function update_toggle_button($toggle, state) {
       if (state != null) {
-        $toggle.data('state', state);
+        $toggle.data("state", state);
       }
 
-      var $span = $toggle.find('span');
+      var $span = $toggle.find("span");
 
-      if ($toggle.data('state')) {
-        $span.text('Show all options');
+      if ($toggle.data("state")) {
+        $span.text("Show all options");
       } else {
-        $span.text($toggle.data('message'));
+        $span.text($toggle.data("message"));
       }
     }; // var $last_selected;
     // $toggle.on('click', function(event) {
@@ -19167,16 +19173,16 @@ head.ready(function () {
     // })
 
 
-    $toggle.on('click', function (event) {
-      $toggle.data('state', !$toggle.data('state'));
+    $toggle.on("click", function (event) {
+      $toggle.data("state", !$toggle.data("state"));
 
-      if ($toggle.data('state')) {
+      if ($toggle.data("state")) {
         // show only selected
         $items.css({
-          display: 'none'
+          display: "none"
         });
         $items.find("input:checked").parent().css({
-          display: 'list-item'
+          display: "list-item"
         });
         $input.attr("disabled", "disabled");
       } else {
@@ -19188,14 +19194,14 @@ head.ready(function () {
     });
     filter_items($items, $input.val());
     update_selected_count($items, $toggle, true);
-    $container.on('click', 'input[type=checkbox]', function (event) {
+    $container.on("click", "input[type=checkbox]", function (event) {
       // update the toggle
       var $this = $(this);
       update_selected_count($items, $toggle); // $this.attr('tabindex', $this.is(":checked") ? '0' : '-1');
 
       if (!$this.is(":checked") && $items.filter(":visible:checked").length == 0) {
         // de-selected the last visible item, so un-filter
-        $input.attr('disabled', null);
+        $input.attr("disabled", null);
         filter_items($items, $input.val());
         update_toggle_button($toggle, false);
       }
@@ -19209,14 +19215,14 @@ head.ready(function () {
     $(".date-range--".concat(value)).show();
   };
 
-  $date_range_input.on('change', function (event) {
+  $date_range_input.on("change", function (event) {
     update_date_range($(this).val());
   });
-  var init_date_range = $date_range_input.filter(":checked").length == 0 ? 'between' : $date_range_input.filter(":checked").val();
+  var init_date_range = $date_range_input.filter(":checked").length == 0 ? "between" : $date_range_input.filter(":checked").val();
   update_date_range(init_date_range);
-  $(".action-add-clause").on('click', function (event) {
+  $(".action-add-clause").on("click", function (event) {
     event.preventDefault();
-    $(".group-boolean-container").addClass('active'); // HT.update_status("You've added a another group of search fields.");
+    $(".group-boolean-container").addClass("active"); // HT.update_status("You've added a another group of search fields.");
   });
 
   var show_error_message = function show_error_message($container, $focus, message) {
@@ -19233,7 +19239,7 @@ head.ready(function () {
   };
 
   var check_for_query = function check_for_query() {
-    if ($form.data('ignore-empty-query')) {
+    if ($form.data("ignore-empty-query")) {
       return true;
     }
 
@@ -19288,16 +19294,91 @@ head.ready(function () {
   var clone_input = function clone_input($this) {
     var $input = $('<input type="hidden" />');
     $input.val($this.val());
-    $input.attr('name', $this.data('param') || $this.attr('name'));
+    $input.attr("name", $this.data("param") || $this.attr("name"));
     return $input;
   };
 
   var scroll_error_into_view = function scroll_error_into_view() {
     $(".alert-error").get(0).scrollIntoView();
     $("html").get(0).scrollTop -= $(window).height() * 0.125;
+  }; //set up for unified advanced search box
+
+
+  var paramCounts = {};
+
+  var getParam = function getParam(field) {
+    var d = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    var idx = paramCounts[field] || d;
+    idx += 1;
+    paramCounts[field] = idx;
+    return "".concat(field).concat(idx);
   };
 
-  $form.on('submit', function (event) {
+  var isFullTextQuery = function isFullTextQuery(formData) {
+    var _iterator = _createForOfIteratorHelper(formData.entries()),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var tuple = _step.value;
+
+        if (tuple[0] == "type[]" && tuple[1].indexOf("ocr") >= 0) {
+          return true;
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  };
+
+  var convertToFullTextQuery = function convertToFullTextQuery(formData) {
+    var submitData = new URLSearchParams();
+
+    var _iterator2 = _createForOfIteratorHelper(formData.entries()),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var tuple = _step2.value;
+        var key = tuple[0];
+        var value = tuple[1];
+
+        if (key == "type[]") {
+          submitData.set(getParam("field"), value);
+        } else if (key == "lookfor[]") {
+          submitData.set(getParam("q"), value);
+        } else if (key == "bool[]") {
+          submitData.set(getParam("op", 1), value);
+        } else if (key == "ft") {
+          if (value == "true") {
+            submitData.set("lmt", "ft");
+          }
+        } else if (key == "yop") {
+          submitData.set("yop", value);
+        } else if (key == "fqrange-start-publishDateTrie-1") {
+          submitData.set("pdate_start", value);
+        } else if (key == "fqrange-end-publishDateTrie-1") {
+          submitData.set("pdate_end", value);
+        } else if (key == "fqor-publishDateTrie[]") {
+          submitData.set("pdate", value);
+        } else if (key == "fqor-language[]") {
+          submitData.set("facet_lang", value);
+        } else if (key == "fqor-format[]") {
+          submitData.set("facet_format", value);
+        }
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+
+    return submitData;
+  };
+
+  $form.on("submit", function (event) {
     event.preventDefault();
     $("[role='alert']").empty();
 
@@ -19307,8 +19388,23 @@ head.ready(function () {
 
     if (!check_date_range()) {
       return scroll_error_into_view();
-    } // assemble form
+    } //not _really sure_ where to put this function that builds the FormData object
 
+
+    var formData = new FormData(event.target);
+    var req;
+    var queryType = "catalog";
+
+    if (isFullTextQuery(formData)) {
+      queryType = "fulltext";
+      req = convertToFullTextQuery(formData);
+    } else {
+      req = new URLSearchParams(formData);
+    } // console.log(queryType, "->", req.toString());
+
+
+    var alertMessage = "".concat(queryType, " -> ").concat(req.toString());
+    alert(alertMessage); // assemble form
 
     var $proxy = $("<form style='display: none'></form>");
     $proxy.attr("action", $form.attr("action"));
