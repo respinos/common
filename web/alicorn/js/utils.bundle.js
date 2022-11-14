@@ -19302,7 +19302,27 @@ head.ready(function () {
     $(".alert-error").get(0).scrollIntoView();
     $("html").get(0).scrollTop -= $(window).height() * 0.125;
   }; //set up for unified advanced search box
+  //swap form action on field select
+  //as of 11/11, this is indeed working to change the form action
+  //but the resulting page for fulltext/ls isn't populating results
+  //search URL /cgi/ls?adv=1&lookfor%5B%5D=crust&type%5B%5D=ocronly&yop=after
+  // instead of /cgi/ls?q1=pie&field1=ocr&a=srchls&ft=ft&lmt=ft
+  // i'm pretty sure this has something to do with how I implemented roger's new submit handler inside of the old submit handler
 
+
+  $("select.advanced-field-select").change(function () {
+    var newAction;
+
+    if (this.value === "ocr" || this.value === "ocronly") {
+      // newAction = "//babel.hathitrust.org/cgi/ls";
+      newAction = "//localhost:5555/cgi/ls";
+    } else {
+      // newAction = "//catalog.hathitrust.org/Search/Home";
+      newAction = "//localhost:5555/Search/Home";
+    }
+
+    $form.attr("action", newAction);
+  }); //roger's codepen
 
   var paramCounts = {};
 
