@@ -1,5 +1,6 @@
 head.ready(function () {
   var $form = $(".advanced-search-form");
+  var formAction = "//localhost:5555/Search/Home"; //default to catalog
   if (!$form.length) {
     return;
   }
@@ -293,22 +294,16 @@ head.ready(function () {
 
   //set up for unified advanced search box
 
-  //swap form action on field select
-  //as of 11/11, this is indeed working to change the form action
-  //but the resulting page for fulltext/ls isn't populating results
-  //search URL /cgi/ls?adv=1&lookfor%5B%5D=crust&type%5B%5D=ocronly&yop=after
-  // instead of /cgi/ls?q1=pie&field1=ocr&a=srchls&ft=ft&lmt=ft
-  // i'm pretty sure this has something to do with how I implemented roger's new submit handler inside of the old submit handler
+  //swap form action URL on field select
+
   $("select.advanced-field-select").change(function () {
-    var newAction;
     if (this.value === "ocr" || this.value === "ocronly") {
-      // newAction = "//babel.hathitrust.org/cgi/ls";
-      newAction = "//localhost:5555/cgi/ls";
+      // formAction = "//babel.hathitrust.org/cgi/ls";
+      formAction = "//localhost:5555/cgi/ls";
     } else {
-      // newAction = "//catalog.hathitrust.org/Search/Home";
-      newAction = "//localhost:5555/Search/Home";
+      // formAction = "//catalog.hathitrust.org/Search/Home";
+      formAction = "//localhost:5555/Search/Home";
     }
-    $form.attr("action", newAction);
   });
 
   //roger's codepen
@@ -358,8 +353,13 @@ head.ready(function () {
         submitData.set("facet_format", value);
       }
     }
+    submitData.set("a", "srchls");
     return submitData;
   };
+
+  function redirect(queryParams) {
+    window.location.assign(`${formAction}?${queryParams}`);
+  }
 
   $form.on("submit", function (event) {
     event.preventDefault();
@@ -372,7 +372,7 @@ head.ready(function () {
     }
 
     //not _really sure_ where to put this function that builds the FormData object
-
+    // console.log(JSON.stringify(event.target));
     const formData = new FormData(event.target);
     let req;
     let queryType = "catalog";
@@ -382,11 +382,31 @@ head.ready(function () {
     } else {
       req = new URLSearchParams(formData);
     }
-    // console.log(queryType, "->", req.toString());
-    let alertMessage = `${queryType} -> ${req.toString()}`;
-    alert(alertMessage);
+
+    let keysForDel = [];
+    req.forEach((value, key) => {
+      console.log(`PRE--> value: ${value}, key: ${key}`);
+      if (value == "") {
+        keysForDel.push(key);
+      }
+    });
+    keysForDel.forEach((key) => {
+      req.delete(key);
+    });
+    req.forEach((value, key) => {
+      console.log(`POST--> value: ${value}, key: ${key}`);
+    });
+
+    // GOAL: if q1 is only field, don't include boolean value/key in params
+
+    // let alertMessage = `${queryType} -> ${req.toString()}`;
+    // alert(alertMessage);
+
+    //uncomment the redirect when ready to go
+    // redirect(req.toString());
 
     // assemble form
+    /*
     var $proxy = $("<form style='display: none'></form>");
     $proxy.attr("action", $form.attr("action"));
     $form.children("input[type=hidden]").each(function () {
@@ -441,7 +461,10 @@ head.ready(function () {
       $proxy.append(clone_input($this));
     });
 
+    // caryl trying to figure out why this proxy exists
+    // alert(JSON.stringify($proxy));
     $("body").append($proxy);
     $proxy.submit();
+    */
   });
 });

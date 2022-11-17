@@ -19030,6 +19030,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 head.ready(function () {
   var $form = $(".advanced-search-form");
+  var formAction = "//localhost:5555/Search/Home"; //default to catalog
 
   if (!$form.length) {
     return;
@@ -19302,26 +19303,17 @@ head.ready(function () {
     $(".alert-error").get(0).scrollIntoView();
     $("html").get(0).scrollTop -= $(window).height() * 0.125;
   }; //set up for unified advanced search box
-  //swap form action on field select
-  //as of 11/11, this is indeed working to change the form action
-  //but the resulting page for fulltext/ls isn't populating results
-  //search URL /cgi/ls?adv=1&lookfor%5B%5D=crust&type%5B%5D=ocronly&yop=after
-  // instead of /cgi/ls?q1=pie&field1=ocr&a=srchls&ft=ft&lmt=ft
-  // i'm pretty sure this has something to do with how I implemented roger's new submit handler inside of the old submit handler
+  //swap form action URL on field select
 
 
   $("select.advanced-field-select").change(function () {
-    var newAction;
-
     if (this.value === "ocr" || this.value === "ocronly") {
-      // newAction = "//babel.hathitrust.org/cgi/ls";
-      newAction = "//localhost:5555/cgi/ls";
+      // formAction = "//babel.hathitrust.org/cgi/ls";
+      formAction = "//localhost:5555/cgi/ls";
     } else {
-      // newAction = "//catalog.hathitrust.org/Search/Home";
-      newAction = "//localhost:5555/Search/Home";
+      // formAction = "//catalog.hathitrust.org/Search/Home";
+      formAction = "//localhost:5555/Search/Home";
     }
-
-    $form.attr("action", newAction);
   }); //roger's codepen
 
   var paramCounts = {};
@@ -19395,8 +19387,13 @@ head.ready(function () {
       _iterator2.f();
     }
 
+    submitData.set("a", "srchls");
     return submitData;
   };
+
+  function redirect(queryParams) {
+    window.location.assign("".concat(formAction, "?").concat(queryParams));
+  }
 
   $form.on("submit", function (event) {
     event.preventDefault();
@@ -19409,6 +19406,7 @@ head.ready(function () {
     if (!check_date_range()) {
       return scroll_error_into_view();
     } //not _really sure_ where to put this function that builds the FormData object
+    // console.log(JSON.stringify(event.target));
 
 
     var formData = new FormData(event.target);
@@ -19420,29 +19418,43 @@ head.ready(function () {
       req = convertToFullTextQuery(formData);
     } else {
       req = new URLSearchParams(formData);
-    } // console.log(queryType, "->", req.toString());
+    }
 
+    var keysForDel = [];
+    req.forEach(function (value, key) {
+      console.log("PRE--> value: ".concat(value, ", key: ").concat(key));
 
-    var alertMessage = "".concat(queryType, " -> ").concat(req.toString());
-    alert(alertMessage); // assemble form
+      if (value == "") {
+        keysForDel.push(key);
+      }
+    });
+    keysForDel.forEach(function (key) {
+      req.delete(key);
+    });
+    req.forEach(function (value, key) {
+      console.log("POST--> value: ".concat(value, ", key: ").concat(key));
+    }); // GOAL: if q1 is only field, don't include boolean value/key in params
+    // let alertMessage = `${queryType} -> ${req.toString()}`;
+    // alert(alertMessage);
+    //uncomment the redirect when ready to go
+    // redirect(req.toString());
+    // assemble form
 
+    /*
     var $proxy = $("<form style='display: none'></form>");
     $proxy.attr("action", $form.attr("action"));
     $form.children("input[type=hidden]").each(function () {
       $proxy.append($(this).clone());
     });
-    var $fieldsets;
-
+     var $fieldsets;
     if ($form.find("fieldsets.group:visible").length) {
       $fieldsets = $form.find("fieldset.group:visible fieldset.clause");
     } else {
       $fieldsets = $form.find("fieldset.clause");
     }
-
-    $fieldsets.each(function () {
+     $fieldsets.each(function () {
       var $fieldset = $(this);
       var $input = $fieldset.find("input[type=text]");
-
       if ($.trim($input.val())) {
         // have input
         $proxy.append($input.clone());
@@ -19454,26 +19466,33 @@ head.ready(function () {
           $proxy.append(clone_input($(this)));
         });
       }
-    }); // clone the group clause if present
-
+    });
+     // clone the group clause if present
     $proxy.append($form.find(".group-boolean:visible input:checked").clone());
-    $form.find(".advanced-search-filter-container input[type=radio]:checked:visible").each(function () {
-      $proxy.append(clone_input($(this)));
-    });
-    $form.find(".advanced-search-filter-container input[type=checkbox]:checked").each(function () {
-      $proxy.append(clone_input($(this)));
-    });
-    $form.find(".date-range-input-text:visible").each(function () {
+     $form
+      .find(
+        ".advanced-search-filter-container input[type=radio]:checked:visible"
+      )
+      .each(function () {
+        $proxy.append(clone_input($(this)));
+      });
+     $form
+      .find(".advanced-search-filter-container input[type=checkbox]:checked")
+      .each(function () {
+        $proxy.append(clone_input($(this)));
+      });
+     $form.find(".date-range-input-text:visible").each(function () {
       var $this = $(this);
-
       if (!$.trim($this.val())) {
         return;
       }
-
       $proxy.append(clone_input($this));
     });
+     // caryl trying to figure out why this proxy exists
+    // alert(JSON.stringify($proxy));
     $("body").append($proxy);
     $proxy.submit();
+    */
   });
 });
 "use strict";
