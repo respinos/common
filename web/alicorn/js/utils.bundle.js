@@ -19322,7 +19322,8 @@ head.ready(function () {
     var d = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     var idx = paramCounts[field] || d;
     idx += 1;
-    paramCounts[field] = idx;
+    paramCounts[field] = idx; //console.log(`${field}${idx}`);
+
     return "".concat(field).concat(idx);
   };
 
@@ -19406,10 +19407,24 @@ head.ready(function () {
     if (!check_date_range()) {
       return scroll_error_into_view();
     } //not _really sure_ where to put this function that builds the FormData object
-    // console.log(JSON.stringify(event.target));
 
 
     var formData = new FormData(event.target);
+
+    var _iterator3 = _createForOfIteratorHelper(formData.entries()),
+        _step3;
+
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var pair = _step3.value;
+        console.log(pair[0] + "=>" + pair[1]);
+      }
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
+    }
+
     var req;
     var queryType = "catalog";
 
@@ -19418,22 +19433,44 @@ head.ready(function () {
       req = convertToFullTextQuery(formData);
     } else {
       req = new URLSearchParams(formData);
-    }
+    } // this won't work because it deletes lookfor/search term field because other lookfor keys are empty
 
-    var keysForDel = [];
-    req.forEach(function (value, key) {
-      console.log("PRE--> value: ".concat(value, ", key: ").concat(key));
-
+    /*
+    let keysForDel = [];
+    req.forEach((value, key) => {
+      console.log(`PRE: ${value} => ${key}`);
       if (value == "") {
         keysForDel.push(key);
       }
     });
-    keysForDel.forEach(function (key) {
+    keysForDel.forEach((key) => {
       req.delete(key);
     });
-    req.forEach(function (value, key) {
-      console.log("POST--> value: ".concat(value, ", key: ").concat(key));
-    }); // GOAL: if q1 is only field, don't include boolean value/key in params
+    req.forEach((value, key) => {
+      console.log(`POST: ${value} => ${key}`);
+    });
+    */
+    // need to loop through each lookfor field to see if it's empty
+    // if !empty, include it and other fields
+    // else, don't include booleans or other fields
+    // forEach $clause
+
+
+    var $fieldsets = $(".advanced-search-form").find("fieldset.clause"); //borrowing parts of this from the proxy building stuff below
+
+    $fieldsets.each(function () {
+      var $fieldset = $(this);
+      var $input = $fieldset.find("input[type=text]");
+
+      if ($.trim($input.val())) {
+        console.log("trim input", $.trim($input.val()));
+        $fieldset.find(".advanced-boolean-clause:checked").each(function () {
+          console.log($(this));
+        });
+      }
+    }); // if lookfor[] !empty add to URLsearchparams
+    // else skip
+    // GOAL: if q1 is only field, don't include boolean value/key in params
     // let alertMessage = `${queryType} -> ${req.toString()}`;
     // alert(alertMessage);
     //uncomment the redirect when ready to go

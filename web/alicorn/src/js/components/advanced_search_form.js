@@ -313,6 +313,7 @@ head.ready(function () {
     let idx = paramCounts[field] || d;
     idx += 1;
     paramCounts[field] = idx;
+    //console.log(`${field}${idx}`);
     return `${field}${idx}`;
   };
 
@@ -372,8 +373,10 @@ head.ready(function () {
     }
 
     //not _really sure_ where to put this function that builds the FormData object
-    // console.log(JSON.stringify(event.target));
     const formData = new FormData(event.target);
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + "=>" + pair[1]);
+    }
     let req;
     let queryType = "catalog";
     if (isFullTextQuery(formData)) {
@@ -383,9 +386,12 @@ head.ready(function () {
       req = new URLSearchParams(formData);
     }
 
-    let keysForDel = [];
+    // this won't work because it deletes lookfor/search term field because other lookfor keys are empty
+
+    /*
+   let keysForDel = [];
     req.forEach((value, key) => {
-      console.log(`PRE--> value: ${value}, key: ${key}`);
+      console.log(`PRE: ${value} => ${key}`);
       if (value == "") {
         keysForDel.push(key);
       }
@@ -394,8 +400,31 @@ head.ready(function () {
       req.delete(key);
     });
     req.forEach((value, key) => {
-      console.log(`POST--> value: ${value}, key: ${key}`);
+      console.log(`POST: ${value} => ${key}`);
     });
+    */
+
+    // need to loop through each lookfor field to see if it's empty
+    // if !empty, include it and other fields
+    // else, don't include booleans or other fields
+
+    // forEach $clause
+
+    var $fieldsets = $(".advanced-search-form").find("fieldset.clause");
+    //borrowing parts of this from the proxy building stuff below
+    $fieldsets.each(function () {
+      var $fieldset = $(this);
+      var $input = $fieldset.find("input[type=text]");
+      if ($.trim($input.val())) {
+        console.log("trim input", $.trim($input.val()));
+        $fieldset.find(".advanced-boolean-clause:checked").each(function () {
+          console.log($(this));
+        });
+      }
+    });
+    // if lookfor[] !empty add to URLsearchparams
+
+    // else skip
 
     // GOAL: if q1 is only field, don't include boolean value/key in params
 
