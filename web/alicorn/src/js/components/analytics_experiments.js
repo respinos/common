@@ -2,11 +2,13 @@ const isEnabled = true;
 const profiles = {
   'www.hathitrust.org': {
     'ga4': 'G-88Z3DQ18W5',
-    'matomo': '1'
+    'matomo': '1',
+    'matomo_container': 'JBgjlXyE'
   },
   'catalog.hathitrust.org': {
     'ga4': 'G-SRTQWPMGW8',
-    'matomo': '2'
+    'matomo': '2',
+    'matomo_container': 'SnfE6ZC0'
   }
 }
 
@@ -42,6 +44,13 @@ const add_matomo = function(profileId) {
   })();
 }
 
+const add_matomo_tag = function(profileId) {
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({ 'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start' });
+  var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+  g.async = true; g.src = `https://testing.matomo.hathitrust.org/js/container_${profileId}.js`; s.parentNode.insertBefore(g, s);  
+}
+
 head.ready(function () {
 
   const hostname = location.hostname;
@@ -59,5 +68,6 @@ head.ready(function () {
   }
 
   add_ga4(config.ga4);
-  add_matomo(config.matomo);
+  // add_matomo(config.matomo);
+  add_matomo_tag(config.matomo_container);
 });
