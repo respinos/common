@@ -20661,7 +20661,7 @@ head.ready(function () {
   }
 
   function default_dialog() {
-    var html = '<form class="form-horizontal">' + '<div class="control-group">' + '<label class="control-label" for="email">Email Address</label>' + '<div class="controls">' + '<input id="email" name="email" type="text" class="input-xlarge" placeholder="[Your email address]" required="required" />' + '<span class="required"><i class="icomoon icomoon-info-circle" aria-hidden="true"></i> This field is required.</span>' + '</div>' + '</div>' + '<div class="control-group">' + '<label class="control-label" for="comments">Comments</label>' + '<div class="controls">' + '<textarea rows="5" id="comments" name="comments" required="required" class="input-xlarge" placeholder="Add your feedback here"></textarea>' + '<span class="required"><i class="icomoon icomoon-info-circle" aria-hidden="true"></i> This field is required.</span>' + '</div>' + '</div>' + '</form>';
+    var html = '<form class="form-horizontal">' + '<div class="control-group">' + '<label class="control-label" for="email">Email Address</label>' + '<div class="controls">' + '<input id="email" name="email" type="email" class="input-xlarge" placeholder="[Your email address]" required="required" />' + '<span class="required"><i class="icomoon icomoon-info-circle" aria-hidden="true"></i> This field is required.</span>' + '</div>' + '</div>' + '<div class="control-group">' + '<label class="control-label" for="comments">Comments</label>' + '<div class="controls">' + '<textarea rows="5" id="comments" name="comments" required="required" class="input-xlarge" placeholder="Add your feedback here"></textarea>' + '<span class="required"><i class="icomoon icomoon-info-circle" aria-hidden="true"></i> This field is required.</span>' + '</div>' + '</div>' + '</form>';
     return html;
   }
 
@@ -20706,7 +20706,14 @@ head.ready(function () {
 
         var is_valid = true;
         var is_empty = true;
-        $dialog.find("input[type=text],textarea,input:checked,input[type=hidden]").each(function () {
+        var $form = $dialog.find('form');
+
+        if (!$form.get(0).checkValidity()) {
+          $form.get(0).reportValidity();
+          return;
+        }
+
+        $dialog.find("input[type=email],input[type=text],textarea,input:checked,input[type=hidden]").each(function () {
           var value = $.trim($(this).val());
 
           if (value) {
