@@ -19381,12 +19381,18 @@ var profiles = {
   'www.hathitrust.org': {
     'ga4': 'G-88Z3DQ18W5',
     'matomo': '1',
-    'matomo_container': 'JBgjlXyE'
+    'matomo_container': {
+      live: 'JBgjlXyE'
+    }
   },
   'catalog.hathitrust.org': {
     'ga4': 'G-SRTQWPMGW8',
     'matomo': '2',
-    'matomo_container': 'SnfE6ZC0'
+    'matomo_container': {
+      live: 'SnfE6ZC0',
+      staging: 'SnfE6ZC0_staging_b75afee0f9d38b27dd8d1f7e',
+      dev: 'SnfE6ZC0_dev_d955b9deaed0678d60f62d0c'
+    }
   }
 };
 var HT = HT || {};
@@ -19475,20 +19481,18 @@ HT.analytics.babel.get_report_href = function () {
         params = _parse_babel_href6[1];
 
     var new_params = new URLSearchParams();
-    var id = params.get('id');
+    var id = window.HT && HT.params ? HT.params.id : params.get('id');
     parts.push(document.documentElement.dataset.contentProvider);
-    parts.push(id);
+    parts.push(encodeURIComponent(id));
 
     if (parts[0] == 'pt/search') {
       parts[0] = 'pt';
       parts.push('search');
       new_params.add('q1', params.get('q1'));
-    } else {
-      parts.push(params.get('view') || '1up');
-
-      if (params.has('seq')) {
-        new_params.set('seq', params.get('seq'));
-      }
+    } else {// parts.push(params.get('view') || '1up');
+      // if (params.has('seq')) {
+      //   new_params.set('seq', params.get('seq'));
+      // }
     }
 
     var qs = new_params.toString();
@@ -19552,7 +19556,7 @@ var add_matomo = function add_matomo(profileId) {
   })();
 };
 
-var add_matomo_tag = function add_matomo_tag(profileId) {
+var add_matomo_tag = function add_matomo_tag(config) {
   var _mtm = window._mtm = window._mtm || [];
 
   var _paq = window._paq = window._paq || [];
@@ -19565,6 +19569,14 @@ var add_matomo_tag = function add_matomo_tag(profileId) {
   if (location.host.indexOf('babel.') > -1) {
     // this is a babel app, change the URL
     _paq.push(['setCustomUrl', HT.analytics.babel.get_report_href()]);
+  }
+
+  var profileId = config.live;
+
+  if (HT.is_dev && config.dev) {
+    profileId = config.dev;
+  } else if (location.host.startsWith('preview') && config.staging) {
+    profileId = config.staging;
   }
 
   var d = document,
@@ -19593,9 +19605,9 @@ head.ready(function () {
     config = profiles['www.hathitrust.org'];
   } else {
     return;
-  }
+  } // add_ga4(config.ga4);
+  // add_matomo(config.matomo);
 
-  add_ga4(config.ga4); // add_matomo(config.matomo);
 
   add_matomo_tag(config.matomo_container);
 });
