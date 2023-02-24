@@ -3,12 +3,18 @@ const profiles = {
   'www.hathitrust.org': {
     'ga4': 'G-88Z3DQ18W5',
     'matomo': '1',
-    'matomo_container': 'JBgjlXyE'
+    'matomo_container': {
+      live: 'JBgjlXyE'
+    }
   },
   'catalog.hathitrust.org': {
     'ga4': 'G-SRTQWPMGW8',
     'matomo': '2',
-    'matomo_container': 'SnfE6ZC0'
+    'matomo_container': {
+      live: 'SnfE6ZC0',
+      staging: 'SnfE6ZC0_staging_b75afee0f9d38b27dd8d1f7e',
+      dev: 'SnfE6ZC0_dev_d955b9deaed0678d60f62d0c',
+    } 
   }
 }
 
@@ -76,21 +82,21 @@ HT.analytics.babel.get_report_href = function() {
     let [parts, params] = parse_babel_href(href);
 
     let new_params = new URLSearchParams();
-    let id = params.get('id');
+    let id = (window.HT && HT.params) ? HT.params.id : params.get('id');
 
     parts.push(document.documentElement.dataset.contentProvider);
-    parts.push(id);
+    parts.push(encodeURIComponent(id));
     
     if (parts[0] == 'pt/search') {
       parts[0] = 'pt';
       parts.push('search');
       new_params.add('q1', params.get('q1'));
     } else {
-      parts.push(params.get('view') || '1up');
+      // parts.push(params.get('view') || '1up');
 
-      if (params.has('seq')) {
-        new_params.set('seq', params.get('seq'));
-      }
+      // if (params.has('seq')) {
+      //   new_params.set('seq', params.get('seq'));
+      // }
     }
 
     let qs = new_params.toString();
@@ -140,7 +146,7 @@ const add_matomo = function(profileId) {
   })();
 }
 
-const add_matomo_tag = function(profileId) {
+const add_matomo_tag = function(config) {
   var _mtm = window._mtm = window._mtm || [];
   var _paq = window._paq = window._paq || [];
   _mtm.push({ 'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start' });
@@ -149,6 +155,10 @@ const add_matomo_tag = function(profileId) {
     // this is a babel app, change the URL
     _paq.push(['setCustomUrl', HT.analytics.babel.get_report_href()]);
   }
+
+  let profileId = config.live;
+  if ( HT.is_dev && config.dev ) { profileId = config.dev; }
+  else if ( location.host.startsWith('preview') && config.staging ) { profileId = config.staging; }
 
   var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
   g.async = true; g.src = `https://testing.matomo.hathitrust.org/js/container_${profileId}.js`; s.parentNode.insertBefore(g, s);  
@@ -172,7 +182,7 @@ head.ready(function () {
     return;
   }
 
-  add_ga4(config.ga4);
+  // add_ga4(config.ga4);
   // add_matomo(config.matomo);
   add_matomo_tag(config.matomo_container);
 });
