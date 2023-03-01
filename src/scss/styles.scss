@@ -1,0 +1,161 @@
+// Import all of Bootstrap's CSS
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap');
+
+// Toggle global options
+$enable-gradients: false;
+$enable-shadows: true;
+
+$offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
+
+// // Customize some defaults
+// $body-color: #333;
+// $body-bg: #fff;
+
+$ht-color-neutral-50: #F8F8F8;
+$ht-color-neutral-100: #F2F2F2;
+$ht-color-neutral-200: #E4E4E4;
+$ht-color-neutral-300: #CFD0D1;
+$ht-color-neutral-400: #A9ACAC;
+$ht-color-neutral-500: #6E7375;
+$ht-color-neutral-600: #505759;
+$ht-color-neutral-700: #333739;
+$ht-color-neutral-800: #242828;
+$ht-color-neutral-900: #0F1010;
+
+$ht-color-primary-50: #FEF9F4;
+$ht-color-primary-100: #FBEADD;
+$ht-color-primary-200: #F8D5BB;
+$ht-color-primary-300: #F3B688;
+$ht-color-primary-400: #ED9655;
+$ht-color-primary-500: #EC7217;
+$ht-color-primary-600: #CE5C06;
+$ht-color-primary-700: #A14E11;
+$ht-color-primary-800: #783B0D;
+$ht-color-primary-900: #502708;
+  
+$ht-color-shades-0: #FFFFFF;
+$ht-color-shades-100: #000000;
+
+$gray-100: $ht-color-neutral-100;
+$gray-200: $ht-color-neutral-200;
+$gray-300: $ht-color-neutral-300;
+$gray-400: $ht-color-neutral-400;
+$gray-500: $ht-color-neutral-500;
+$gray-600: $ht-color-neutral-600;
+$gray-700: $ht-color-neutral-700;
+$gray-800: $ht-color-neutral-800;
+$gray-900: $ht-color-neutral-900;
+
+$primary:  $ht-color-primary-500;
+$secondary: $ht-color-neutral-600;
+
+$font-family-sans-serif: Mulish, Helvetica, Arial, system-ui;
+
+$font-size-base: 1rem;
+$h1-font-size: $font-size-base * 2;
+$h2-font-size: $font-size-base * 1.75;
+$h3-font-size: $font-size-base * 1.125;
+$h4-font-size: $font-size-base * 1;
+$h5-font-size: $font-size-base * 1;
+$h6-font-size: $font-size-base * 1;
+
+$headings-font-weight: 700;
+$btn-font-weight: 700;
+$form-label-font-weight: 800;
+
+// Required
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+
+@import "~bootstrap/scss/type";
+// @import "~bootstrap/scss/images";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar"; // Requires nav
+// @import "~bootstrap/scss/card";
+// @import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/accordion";
+// @import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+// @import "~bootstrap/scss/toasts";
+@import "~bootstrap/scss/modal"; // Requires transitions
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+// @import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/spinners";
+@import "~bootstrap/scss/offcanvas"; // Requires transitions
+@import "~bootstrap/scss/placeholders";
+
+// Helpers
+@import "~bootstrap/scss/helpers";
+
+// Utilities
+@import "~bootstrap/scss/utilities/api";
+
+// define design tokens which may be used in application stylesheets
+:root {
+  --color-neutral-50: #{$ht-color-neutral-50};
+  --color-neutral-100: #{$ht-color-neutral-100};
+  --color-neutral-200: #{$ht-color-neutral-200};
+  --color-neutral-300: #{$ht-color-neutral-300};
+  --color-neutral-400: #{$ht-color-neutral-400};
+  --color-neutral-500: #{$ht-color-neutral-500};
+  --color-neutral-600: #{$ht-color-neutral-600};
+  --color-neutral-700: #{$ht-color-neutral-700};
+  --color-neutral-800: #{$ht-color-neutral-800};
+  --color-neutral-900: #{$ht-color-neutral-900};
+
+  --color-primary-50: #{$ht-color-primary-50};
+  --color-primary-100: #{$ht-color-primary-100};
+  --color-primary-200: #{$ht-color-primary-200};
+  --color-primary-300: #{$ht-color-primary-300};
+  --color-primary-400: #{$ht-color-primary-400};
+  --color-primary-500: #{$ht-color-primary-500};
+  --color-primary-600: #{$ht-color-primary-600};
+  --color-primary-700: #{$ht-color-primary-700};
+  --color-primary-800: #{$ht-color-primary-800};
+  --color-primary-900: #{$ht-color-primary-900};
+
+  --color-shades-0: #{$ht-color-shades-0};
+  --color-shades-100: #{$ht-color-shades-100};
+
+  --color-shades-0: $ht-color-shades-0;
+  --color-shades-100: $ht-color-shades-100;
+
+  --bs-font-sans-serif: Mulish, Helvetica, Arial, system-ui;
+}
+
+// Further refine some bootstrap styles
+
+// bootstrap's contrast functions pair black text on our primary background
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-active-border-color: var(--color-primary-700);
+  --bs-btn-hover-border-color: var(--color-primary-900);
+
+  &:hover, &:active {
+    --bs-btn-hover-color: #fff;
+    background-color: var(--color-primary-700);
+  }
+}
+
+input.form-control[type] {
+  background-color: var(--color-neutral-50);
+}
