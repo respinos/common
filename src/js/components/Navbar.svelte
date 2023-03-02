@@ -1,5 +1,5 @@
 <script>
-import { Collapse, Dropdown, Popover } from 'bootstrap'
+// import { Collapse, Dropdown, Popover } from 'bootstrap'
 </script>
 
 <nav class="navbar navbar-expand-lg bg-light">
@@ -58,3 +58,10 @@ import { Collapse, Dropdown, Popover } from 'bootstrap'
     </div>
   </div>
 </nav>
+
+<style lang="scss">
+/* .navbar{
+// //   --#{$prefix}navbar-color: #{$navbar-light-color};
+ }
+ */
+</style>
