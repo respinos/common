@@ -1,4 +1,5 @@
 <script>
+    import '../scss/styles.scss'
     import Navbar from "./components/Navbar.svelte"
     import Button from "./components/Button.svelte";
 </script>

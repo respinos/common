@@ -1,5 +1,8 @@
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
+import autoPreprocess from "svelte-preprocess";
+import pkg from "svelte-preprocess";
+const { scss } = pkg;
 import path from "node:path";
 // const path = require("path");
 
@@ -7,6 +10,7 @@ export default defineConfig({
   plugins: [
     svelte({
       /* plugin options */
+      preprocess: [scss({})],
     }),
   ],
   root: path.resolve(__dirname, "src"),
@@ -22,5 +26,14 @@ export default defineConfig({
   server: {
     // port: 8080,
     hot: true,
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        //  additionalData: `@import "@/scss/app.scss";`,
+        //additionalData: `@import "src/scss/_variables.scss";`,
+        quietDeps: true,
+      },
+    },
   },
 });

@@ -2,7 +2,7 @@
 // import { Collapse, Dropdown, Popover } from 'bootstrap'
 </script>
 
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-white">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,8 +60,11 @@
 </nav>
 
 <style lang="scss">
-/* .navbar{
-// //   --#{$prefix}navbar-color: #{$navbar-light-color};
+.navbar {
+    --bs-navbar-color: var(--color-neutral-800);
+    --bs-navbar-brand-color: var(--color-neutral-800);
+    .navbar-nav {
+        --bs-nav-link-font-weight: var(--headings-font-weight)
+    }
  }
- */
 </style>

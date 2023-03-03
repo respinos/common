@@ -1,39 +1,39 @@
 // Import all of Bootstrap's CSS
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap");
 
 // Toggle global options
 $enable-gradients: false;
 $enable-shadows: true;
 
-$offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
+$offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
 
 // // Customize some defaults
 // $body-color: #333;
 // $body-bg: #fff;
 
-$ht-color-neutral-50: #F8F8F8;
-$ht-color-neutral-100: #F2F2F2;
-$ht-color-neutral-200: #E4E4E4;
-$ht-color-neutral-300: #CFD0D1;
-$ht-color-neutral-400: #A9ACAC;
-$ht-color-neutral-500: #6E7375;
+$ht-color-neutral-50: #f8f8f8;
+$ht-color-neutral-100: #f2f2f2;
+$ht-color-neutral-200: #e4e4e4;
+$ht-color-neutral-300: #cfd0d1;
+$ht-color-neutral-400: #a9acac;
+$ht-color-neutral-500: #6e7375;
 $ht-color-neutral-600: #505759;
 $ht-color-neutral-700: #333739;
 $ht-color-neutral-800: #242828;
-$ht-color-neutral-900: #0F1010;
+$ht-color-neutral-900: #0f1010;
 
-$ht-color-primary-50: #FEF9F4;
-$ht-color-primary-100: #FBEADD;
-$ht-color-primary-200: #F8D5BB;
-$ht-color-primary-300: #F3B688;
-$ht-color-primary-400: #ED9655;
-$ht-color-primary-500: #EC7217;
-$ht-color-primary-600: #CE5C06;
-$ht-color-primary-700: #A14E11;
-$ht-color-primary-800: #783B0D;
+$ht-color-primary-50: #fef9f4;
+$ht-color-primary-100: #fbeadd;
+$ht-color-primary-200: #f8d5bb;
+$ht-color-primary-300: #f3b688;
+$ht-color-primary-400: #ed9655;
+$ht-color-primary-500: #ec7217;
+$ht-color-primary-600: #ce5c06;
+$ht-color-primary-700: #a14e11;
+$ht-color-primary-800: #783b0d;
 $ht-color-primary-900: #502708;
-  
-$ht-color-shades-0: #FFFFFF;
+
+$ht-color-shades-0: #ffffff;
 $ht-color-shades-100: #000000;
 
 $gray-100: $ht-color-neutral-100;
@@ -46,7 +46,7 @@ $gray-700: $ht-color-neutral-700;
 $gray-800: $ht-color-neutral-800;
 $gray-900: $ht-color-neutral-900;
 
-$primary:  $ht-color-primary-500;
+$primary: $ht-color-primary-500;
 $secondary: $ht-color-neutral-600;
 
 $font-family-sans-serif: Mulish, Helvetica, Arial, system-ui;
@@ -139,6 +139,8 @@ $form-label-font-weight: 800;
   --color-shades-0: $ht-color-shades-0;
   --color-shades-100: $ht-color-shades-100;
 
+  --headings-font-weight: $headings-font-weight;
+
   --bs-font-sans-serif: Mulish, Helvetica, Arial, system-ui;
 }
 
@@ -150,7 +152,8 @@ $form-label-font-weight: 800;
   --bs-btn-active-border-color: var(--color-primary-700);
   --bs-btn-hover-border-color: var(--color-primary-900);
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     --bs-btn-hover-color: #fff;
     background-color: var(--color-primary-700);
   }
