@@ -4,25 +4,30 @@
 
 <nav class="navbar navbar-expand-lg bg-white">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <img src="../assets/HT-logo-mobile-nav.svg" alt="HathiTrust">
+    <div>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fa-solid fa-bars"></i></span>
+      </button>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#" aria-controls="" aria-expanded="false" aria-label="Toggle search bar">
+      <span><i class="fa-solid fa-magnifying-glass"></i></span>
     </button>
+    </div>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             About
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Welcome to HathiTrust</a></li>
-            <li><a class="dropdown-item" href="#">Our Mission &amp; History</a></li>
-            <li><a class="dropdown-item" href="#">HathiTrust Research Center (HTRC)</a></li>
-            <li><a class="dropdown-item" href="#">Our Team</a></li>
+          <ul class="dropdown-menu border-0 shadow-none">
+            <li><a class="dropdown-item px-0" href="#">Welcome to HathiTrust</a></li>
+            <li><a class="dropdown-item px-0" href="#">Our Mission &amp; History</a></li>
+            <li><a class="dropdown-item px-0" href="#">HathiTrust Research Center (HTRC)</a></li>
+            <li><a class="dropdown-item px-0" href="#">Our Team</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
            The Collection 
           </a>
           <ul class="dropdown-menu">
@@ -32,7 +37,7 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Member Libraries
           </a>
           <ul class="dropdown-menu">
@@ -46,7 +51,7 @@
           <a class="nav-link active" href="#">Join</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">News &amp; Events</a>
+          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">News &amp; Events</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Newsletter</a></li>
             <li><a class="dropdown-item" href="#">Blog</a></li>

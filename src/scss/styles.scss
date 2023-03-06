@@ -139,7 +139,7 @@ $form-label-font-weight: 800;
   --color-shades-0: $ht-color-shades-0;
   --color-shades-100: $ht-color-shades-100;
 
-  --headings-font-weight: $headings-font-weight;
+  --headings-font-weight: #{$headings-font-weight};
 
   --bs-font-sans-serif: Mulish, Helvetica, Arial, system-ui;
 }
