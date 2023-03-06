@@ -6,12 +6,12 @@ import menuData from '../../assets/menuData.json'
 <nav class="navbar navbar-expand-lg bg-white">
   <div class="container-fluid">
     <img src="../assets/HT-logo-mobile-nav.svg" alt="HathiTrust" class="ps-3 pt-3">
-    <div class="pe-3 pt-3">
+    <div class="pt-3">
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span><i class="fa-solid fa-bars"></i></span>
+      <span><i class="fa-solid fa-bars fa-fw"></i></span>
       </button>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#" aria-controls="" aria-expanded="false" aria-label="Toggle search bar">
-      <span><i class="fa-solid fa-magnifying-glass"></i></span>
+      <span><i class="fa-solid fa-magnifying-glass fa-fw"></i></span>
     </button>
     </div>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -58,6 +58,12 @@ import menuData from '../../assets/menuData.json'
             <li class="ps-3"><a class="dropdown-item px-0" href="#">{linkText}</a></li>
             {/each}
           </ul>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center" href="#">Get Help <i class="fa-solid fa-square-arrow-up-right fa-fw"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center" href="#">Log In <i class="fa-solid fa-user fa-fw"></i></a>
         </li>
       </ul>
     </div>
