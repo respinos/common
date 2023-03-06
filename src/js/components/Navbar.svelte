@@ -5,8 +5,8 @@ import menuData from '../../assets/menuData.json'
 
 <nav class="navbar navbar-expand-lg bg-white">
   <div class="container-fluid">
-    <img src="../assets/HT-logo-mobile-nav.svg" alt="HathiTrust">
-    <div>
+    <img src="../assets/HT-logo-mobile-nav.svg" alt="HathiTrust" class="ps-3 pt-3">
+    <div class="pe-3 pt-3">
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span><i class="fa-solid fa-bars"></i></span>
       </button>
@@ -17,43 +17,45 @@ import menuData from '../../assets/menuData.json'
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             About
           </a>
-          <ul class="dropdown-menu border-0 shadow-none">
-            {#each menuData.about as linkText}
-            <li><a class="dropdown-item px-0" href="#">{linkText}</a></li>
-            {/each}
-          </ul>
+          <div>
+            <ul class="dropdown-menu border-0 shadow-none">
+              {#each menuData.about as linkText}
+              <li class="ps-3"><a class="dropdown-item px-0" href="#">{linkText}</a></li>
+              {/each}
+            </ul>
+          </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
            The Collection 
           </a>
           <ul class="dropdown-menu border-0 shadow-none">
             {#each menuData.collection as linkText}
-            <li><a class="dropdown-item px-0" href="#">{linkText}</a></li>
+            <li class="ps-3"><a class="dropdown-item px-0" href="#">{linkText}</a></li>
             {/each}
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Member Libraries
           </a>
           <ul class="dropdown-menu border-0 shadow-none">
             {#each menuData.memberLibraries as linkText}
-            <li><a class="dropdown-item px-0" href="#">{linkText}</a></li>
+            <li class="ps-3"><a class="dropdown-item px-0" href="#">{linkText}</a></li>
             {/each}
           </ul>
         </li>
          <li class="nav-item">
-          <a class="nav-link active" href="#">Join</a>
+          <a class="nav-link p-3" href="#">Join</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">News &amp; Events</a>
+          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">News &amp; Events</a>
           <ul class="dropdown-menu border-0 shadow-none">
             {#each menuData.newsEvents as linkText}
-            <li><a class="dropdown-item px-0" href="#">{linkText}</a></li>
+            <li class="ps-3"><a class="dropdown-item px-0" href="#">{linkText}</a></li>
             {/each}
           </ul>
         </li>
@@ -63,6 +65,9 @@ import menuData from '../../assets/menuData.json'
 </nav>
 
 <style lang="scss">
+.container-fluid {
+  padding: 0;
+}
 .navbar {
     --bs-navbar-color: var(--color-neutral-800);
     --bs-navbar-brand-color: var(--color-neutral-800);
