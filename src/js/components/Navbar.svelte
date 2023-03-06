@@ -1,5 +1,6 @@
 <script>
 // import { Collapse, Dropdown, Popover } from 'bootstrap'
+import menuData from '../../assets/menuData.json'
 </script>
 
 <nav class="navbar navbar-expand-lg bg-white">
@@ -20,31 +21,29 @@
             About
           </a>
           <ul class="dropdown-menu border-0 shadow-none">
-            <li><a class="dropdown-item px-0" href="#">Welcome to HathiTrust</a></li>
-            <li><a class="dropdown-item px-0" href="#">Our Mission &amp; History</a></li>
-            <li><a class="dropdown-item px-0" href="#">HathiTrust Research Center (HTRC)</a></li>
-            <li><a class="dropdown-item px-0" href="#">Our Team</a></li>
+            {#each menuData.about as linkText}
+            <li><a class="dropdown-item px-0" href="#">{linkText}</a></li>
+            {/each}
           </ul>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
            The Collection 
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">About the Collection</a></li>
-            <li><a class="dropdown-item" href="#">How to Search &amp; Access</a></li>
-            <li><a class="dropdown-item" href="#">Preservation</a></li>
+          <ul class="dropdown-menu border-0 shadow-none">
+            {#each menuData.collection as linkText}
+            <li><a class="dropdown-item px-0" href="#">{linkText}</a></li>
+            {/each}
           </ul>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Member Libraries
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Member Library Overview</a></li>
-            <li><a class="dropdown-item" href="#">Member List</a></li>
-            <li><a class="dropdown-item" href="#">Services & Programs</a></li>
-            <li><a class="dropdown-item" href="#">Resources for Librarians</a></li>
+          <ul class="dropdown-menu border-0 shadow-none">
+            {#each menuData.memberLibraries as linkText}
+            <li><a class="dropdown-item px-0" href="#">{linkText}</a></li>
+            {/each}
           </ul>
         </li>
          <li class="nav-item">
@@ -52,11 +51,10 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">News &amp; Events</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Newsletter</a></li>
-            <li><a class="dropdown-item" href="#">Blog</a></li>
-            <li><a class="dropdown-item" href="#">Events &amp; Webinars</a></li>
-            <li><a class="dropdown-item" href="#">Press</a></li>
+          <ul class="dropdown-menu border-0 shadow-none">
+            {#each menuData.newsEvents as linkText}
+            <li><a class="dropdown-item px-0" href="#">{linkText}</a></li>
+            {/each}
           </ul>
         </li>
       </ul>
@@ -68,8 +66,32 @@
 .navbar {
     --bs-navbar-color: var(--color-neutral-800);
     --bs-navbar-brand-color: var(--color-neutral-800);
-    .navbar-nav {
-        --bs-nav-link-font-weight: var(--headings-font-weight)
-    }
+    --bs-nav-link-color: var(--color-neutral-900);
+    --bs-nav-link-hover-color: var(--color-primary-500);
  }
+.navbar-nav {
+      font-size: var(--ht-text-sm);
+      --bs-nav-link-font-weight: var(--headings-font-weight);
+      .nav-link {
+        &:hover, &:focus {
+          color: var(--color-primary-500);
+        }
+      }
+  }
+.dropdown-menu {
+    --bs-dropdown-padding-y: 0.5rem;
+    --bs-dropdown-font-size: var(--ht-text-sm);
+    --bs-dropdown-color: var(--color-neutral-800);
+    --bs-dropdown-bg: var(--color-neutral-50);
+    --bs-dropdown-border-radius: 0;
+    --bs-dropdown-item-padding-y: 0.5rem;
+    --bs-dropdown-link-color: var(--color-netural-800);
+    --bs-dropdown-link-hover-color: var(--color-netural-800);
+    --bs-dropdown-link-hover-bg: var(--color-netural-50);
+    a {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 </style>
