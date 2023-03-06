@@ -1,10 +1,10 @@
 <script>
     import '../scss/styles.scss'
     import Navbar from "./components/Navbar.svelte"
-    import Button from "./components/Button.svelte";
+    import Boilerplate from './components/Boilerplate.svelte';
 </script>
 
 <div>
     <Navbar />
-    <Button />
+    <Boilerplate />
 </div>
