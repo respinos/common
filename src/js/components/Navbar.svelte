@@ -1,69 +1,125 @@
+<!-- svelte-ignore a11y-invalid-attribute -->
 <script>
-// import { Collapse, Dropdown, Popover } from 'bootstrap'
-import menuData from '../../assets/menuData.json'
+  // import { Collapse, Dropdown, Popover } from 'bootstrap'
+  import menuData from "../../assets/menuData.json";
 </script>
 
 <nav class="navbar navbar-expand-lg bg-white">
   <div class="container-fluid p-3">
-    <img src="../assets/HT-logo-mobile-nav.svg" alt="HathiTrust" class="">
+    <img src="../assets/HT-logo-mobile-nav.svg" alt="HathiTrust" class="" />
     <div class="">
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span><i class="fa-solid fa-bars fa-fw"></i></span>
+      <button
+        class="navbar-toggler border-0"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span><i class="fa-solid fa-bars fa-fw" /></span>
       </button>
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#" aria-controls="" aria-expanded="false" aria-label="Toggle search bar">
-      <span><i class="fa-solid fa-magnifying-glass fa-fw"></i></span>
-    </button>
+      <button
+        class="navbar-toggler border-0"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#"
+        aria-controls=""
+        aria-expanded="false"
+        aria-label="Toggle search bar"
+      >
+        <span><i class="fa-solid fa-magnifying-glass fa-fw" /></span>
+      </button>
     </div>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             About
           </a>
           <div>
             <ul class="dropdown-menu border-0 shadow-none">
               {#each menuData.about as linkText}
-              <li class="ps-3"><a class="dropdown-item px-0" href="#">{linkText}</a></li>
+                <li class="ps-3">
+                  <a class="dropdown-item px-0" href="#">{linkText}</a>
+                </li>
               {/each}
             </ul>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           The Collection 
+          <a
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            The Collection
           </a>
           <ul class="dropdown-menu border-0 shadow-none">
             {#each menuData.collection as linkText}
-            <li class="ps-3"><a class="dropdown-item px-0" href="#">{linkText}</a></li>
+              <li class="ps-3">
+                <a class="dropdown-item px-0" href="#">{linkText}</a>
+              </li>
             {/each}
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Member Libraries
           </a>
           <ul class="dropdown-menu border-0 shadow-none">
             {#each menuData.memberLibraries as linkText}
-            <li class="ps-3"><a class="dropdown-item px-0" href="#">{linkText}</a></li>
+              <li class="ps-3">
+                <a class="dropdown-item px-0" href="#">{linkText}</a>
+              </li>
             {/each}
           </ul>
         </li>
-         <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link p-3" href="#">Join</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">News &amp; Events</a>
+          <a
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">News &amp; Events</a
+          >
           <ul class="dropdown-menu border-0 shadow-none">
             {#each menuData.newsEvents as linkText}
-            <li class="ps-3"><a class="dropdown-item px-0" href="#">{linkText}</a></li>
+              <li class="ps-3">
+                <a class="dropdown-item px-0" href="#">{linkText}</a>
+              </li>
             {/each}
           </ul>
         </li>
-         <li class="nav-item">
-          <a class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center" href="#">Get Help <i class="fa-solid fa-square-arrow-up-right fa-fw"></i></a>
+        <li class="nav-item">
+          <a
+            class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
+            href="#"
+            >Get Help <i class="fa-solid fa-square-arrow-up-right fa-fw" /></a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center" href="#">Log In <i class="fa-solid fa-user fa-fw"></i></a>
+          <a
+            class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
+            href="#">Log In <i class="fa-solid fa-user fa-fw" /></a
+          >
         </li>
       </ul>
     </div>
@@ -71,29 +127,30 @@ import menuData from '../../assets/menuData.json'
 </nav>
 
 <style lang="scss">
-.container-fluid {
-  padding: 0;
-}
-.navbar {
+  .container-fluid {
+    padding: 0;
+  }
+  .navbar {
     --bs-navbar-padding-y: 0;
     --bs-navbar-color: var(--color-neutral-800);
     --bs-navbar-brand-color: var(--color-neutral-800);
     --bs-nav-link-color: var(--color-neutral-900);
     --bs-nav-link-hover-color: var(--color-primary-500);
- }
- .navbar-toggler {
-  padding: 0;
- }
-.navbar-nav {
-      font-size: var(--ht-text-sm);
-      --bs-nav-link-font-weight: var(--headings-font-weight);
-      .nav-link {
-        &:hover, &:focus {
-          color: var(--color-primary-500);
-        }
-      }
   }
-.dropdown-menu {
+  .navbar-toggler {
+    padding: 0;
+  }
+  .navbar-nav {
+    font-size: var(--ht-text-sm);
+    --bs-nav-link-font-weight: var(--headings-font-weight);
+    .nav-link {
+      &:hover,
+      &:focus {
+        color: var(--color-primary-500);
+      }
+    }
+  }
+  .dropdown-menu {
     --bs-dropdown-padding-y: 0.5rem;
     --bs-dropdown-font-size: var(--ht-text-sm);
     --bs-dropdown-color: var(--color-neutral-800);
