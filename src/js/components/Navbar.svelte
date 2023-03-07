@@ -4,9 +4,9 @@ import menuData from '../../assets/menuData.json'
 </script>
 
 <nav class="navbar navbar-expand-lg bg-white">
-  <div class="container-fluid">
-    <img src="../assets/HT-logo-mobile-nav.svg" alt="HathiTrust" class="ps-3 pt-3">
-    <div class="pt-3">
+  <div class="container-fluid p-3">
+    <img src="../assets/HT-logo-mobile-nav.svg" alt="HathiTrust" class="">
+    <div class="">
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span><i class="fa-solid fa-bars fa-fw"></i></span>
       </button>
@@ -75,10 +75,14 @@ import menuData from '../../assets/menuData.json'
   padding: 0;
 }
 .navbar {
+    --bs-navbar-padding-y: 0;
     --bs-navbar-color: var(--color-neutral-800);
     --bs-navbar-brand-color: var(--color-neutral-800);
     --bs-nav-link-color: var(--color-neutral-900);
     --bs-nav-link-hover-color: var(--color-primary-500);
+ }
+ .navbar-toggler {
+  padding: 0;
  }
 .navbar-nav {
       font-size: var(--ht-text-sm);
