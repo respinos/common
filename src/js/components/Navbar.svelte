@@ -5,9 +5,11 @@
 </script>
 
 <nav class="navbar navbar-expand-lg bg-white">
-  <div class="container-fluid p-3">
-    <img src="../assets/HT-logo-mobile-nav.svg" alt="HathiTrust" class="" />
-    <div class="">
+  <div class="container-fluid">
+    <div class="py-3 ps-3">
+      <img src="../assets/HT-logo-mobile-nav.svg" alt="HathiTrust" class="" />
+    </div>
+    <div class="py-3 pe-3 d-flex gap-4">
       <button
         class="navbar-toggler border-0"
         type="button"
@@ -44,12 +46,14 @@
             About
           </a>
           <div>
-            <ul class="dropdown-menu border-0 shadow-none">
-              {#each menuData.about as linkText}
-                <li class="ps-3">
-                  <a class="dropdown-item px-0" href="#">{linkText}</a>
-                </li>
-              {/each}
+            <ul class="dropdown-menu border-0 shadow-none pt-2">
+              <div class="d-flex flex-column gap-4 pt-2">
+                {#each menuData.about as linkText}
+                  <li class="ps-3">
+                    <a class="dropdown-item px-0" href="#">{linkText}</a>
+                  </li>
+                {/each}
+              </div>
             </ul>
           </div>
         </li>
@@ -63,12 +67,14 @@
           >
             The Collection
           </a>
-          <ul class="dropdown-menu border-0 shadow-none">
-            {#each menuData.collection as linkText}
-              <li class="ps-3">
-                <a class="dropdown-item px-0" href="#">{linkText}</a>
-              </li>
-            {/each}
+          <ul class="dropdown-menu border-0 shadow-none pt-2">
+            <div class="d-flex flex-column gap-4 pt-2">
+              {#each menuData.collection as linkText}
+                <li class="ps-3">
+                  <a class="dropdown-item px-0" href="#">{linkText}</a>
+                </li>
+              {/each}
+            </div>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -81,12 +87,14 @@
           >
             Member Libraries
           </a>
-          <ul class="dropdown-menu border-0 shadow-none">
-            {#each menuData.memberLibraries as linkText}
-              <li class="ps-3">
-                <a class="dropdown-item px-0" href="#">{linkText}</a>
-              </li>
-            {/each}
+          <ul class="dropdown-menu border-0 shadow-none pt-2">
+            <div class="d-flex flex-column gap-4 pt-2">
+              {#each menuData.memberLibraries as linkText}
+                <li class="ps-3">
+                  <a class="dropdown-item px-0" href="#">{linkText}</a>
+                </li>
+              {/each}
+            </div>
           </ul>
         </li>
         <li class="nav-item">
@@ -100,12 +108,14 @@
             data-bs-toggle="dropdown"
             aria-expanded="false">News &amp; Events</a
           >
-          <ul class="dropdown-menu border-0 shadow-none">
-            {#each menuData.newsEvents as linkText}
-              <li class="ps-3">
-                <a class="dropdown-item px-0" href="#">{linkText}</a>
-              </li>
-            {/each}
+          <ul class="dropdown-menu border-0 shadow-none pt-2">
+            <div class="d-flex flex-column gap-4 pt-2">
+              {#each menuData.newsEvents as linkText}
+                <li class="ps-3">
+                  <a class="dropdown-item px-0" href="#">{linkText}</a>
+                </li>
+              {/each}
+            </div>
           </ul>
         </li>
         <li class="nav-item">
@@ -143,6 +153,18 @@
   .navbar-nav {
     font-size: var(--ht-text-sm);
     --bs-nav-link-font-weight: var(--headings-font-weight);
+    .nav-item:nth-of-type(6),
+    .nav-item:nth-of-type(7) {
+      background: var(--color-neutral-50);
+      border-top: 1px solid var(--color-neutral-200);
+      i {
+        color: var(--color-primary-500);
+      }
+    }
+    .nav-item:nth-of-type(7) {
+      border-bottom: 1px solid var(--color-neutral-200);
+      border-radius: 0 0 8px 8px;
+    }
     .nav-link {
       &:hover,
       &:focus {
@@ -150,13 +172,16 @@
       }
     }
   }
+  .dropdown-toggle::after {
+    font-size: 1.1rem;
+  }
   .dropdown-menu {
-    --bs-dropdown-padding-y: 0.5rem;
+    --bs-dropdown-padding-y: 1rem;
     --bs-dropdown-font-size: var(--ht-text-sm);
     --bs-dropdown-color: var(--color-neutral-800);
     --bs-dropdown-bg: var(--color-neutral-50);
     --bs-dropdown-border-radius: 0;
-    --bs-dropdown-item-padding-y: 0.5rem;
+    --bs-dropdown-item-padding-y: 0;
     --bs-dropdown-link-color: var(--color-netural-800);
     --bs-dropdown-link-hover-color: var(--color-netural-800);
     --bs-dropdown-link-hover-bg: var(--color-netural-50);
