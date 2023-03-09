@@ -2,6 +2,29 @@
 <script>
   // import { Collapse, Dropdown, Popover } from 'bootstrap'
   import menuData from "../../assets/menuData.json";
+
+  let dropdownOpen = {
+    about: false,
+    collection: false,
+    libraries: false,
+    news: false,
+  };
+
+  // let selected = undefined;
+
+  // function setSelectedIndex(index) {
+  //   if (this.selected == undefined || this.selected !== index) {
+  //     this.selected = index;
+  //   } else {
+  //     this.selected = undefined;
+  //   }
+  // }
+
+  function animateCaret() {
+    var link = document.getElementsByClassName("dropdown-toggle show");
+    {
+    }
+  }
 </script>
 
 <nav class="navbar navbar-expand-lg bg-white">
@@ -44,7 +67,7 @@
             aria-expanded="false"
           >
             <span>About</span>
-            <i class="fa-solid fa-caret-down" />
+            <!-- <i class="fa-solid fa-caret-down" /> -->
           </a>
           <div>
             <ul class="dropdown-menu border-0 shadow-none pt-2">
@@ -67,7 +90,11 @@
             aria-expanded="false"
           >
             <span>The Collection</span>
-            <i class="fa-solid fa-caret-down" />
+            <!-- <i
+              class="fa-solid {dropdownOpen.collection
+                ? 'fa-caret-down open'
+                : 'fa-caret-down'}"
+            /> -->
           </a>
           <ul class="dropdown-menu border-0 shadow-none pt-2">
             <div class="d-flex flex-column gap-4 pt-2">
@@ -88,7 +115,11 @@
             aria-expanded="false"
           >
             <span>Member Libraries</span>
-            <i class="fa-solid fa-caret-down" />
+            <!-- <i
+              class="fa-solid {dropdownOpen.libraries
+                ? 'fa-caret-down open'
+                : 'fa-caret-down'}"
+            /> -->
           </a>
           <ul class="dropdown-menu border-0 shadow-none pt-2">
             <div class="d-flex flex-column gap-4 pt-2">
@@ -112,8 +143,12 @@
             aria-expanded="false"
           >
             <span>News &amp; Events</span>
-            <i class="fa-solid fa-caret-down" /></a
-          >
+            <!-- <i
+              class="fa-solid {dropdownOpen.news
+                ? 'fa-caret-down open'
+                : 'fa-caret-down'}"
+            />-->
+          </a>
           <ul class="dropdown-menu border-0 shadow-none pt-2">
             <div class="d-flex flex-column gap-4 pt-2">
               {#each menuData.newsEvents as linkText}
@@ -178,8 +213,11 @@
     }
   }
   .dropdown-toggle::after {
-    display: none;
+    font-size: 1.1em;
   }
+  // .show::after {
+  //   display: none;
+  // }
   .dropdown-menu {
     --bs-dropdown-padding-y: 1rem;
     --bs-dropdown-font-size: var(--ht-text-sm);
@@ -196,4 +234,17 @@
       }
     }
   }
+  .fa-caret-down {
+    // transform: rotate(0deg);
+    // transition: transform 200ms linear;
+  }
+  // [aria-expanded="true"] {
+  //   // transform: rotate(0.5turn);
+  //   // transition: transform 200ms linear;
+  //   font-size: 2em;
+  // }
+  // .fa-caret-down.open {
+  //   transform: rotate(180deg);
+  //   transition: transform 200ms linear;
+  // }
 </style>
