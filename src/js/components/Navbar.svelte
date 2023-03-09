@@ -43,7 +43,8 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            About
+            <span>About</span>
+            <i class="fa-solid fa-caret-down" />
           </a>
           <div>
             <ul class="dropdown-menu border-0 shadow-none pt-2">
@@ -65,7 +66,8 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            The Collection
+            <span>The Collection</span>
+            <i class="fa-solid fa-caret-down" />
           </a>
           <ul class="dropdown-menu border-0 shadow-none pt-2">
             <div class="d-flex flex-column gap-4 pt-2">
@@ -85,7 +87,8 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Member Libraries
+            <span>Member Libraries</span>
+            <i class="fa-solid fa-caret-down" />
           </a>
           <ul class="dropdown-menu border-0 shadow-none pt-2">
             <div class="d-flex flex-column gap-4 pt-2">
@@ -106,7 +109,10 @@
             href="#"
             role="button"
             data-bs-toggle="dropdown"
-            aria-expanded="false">News &amp; Events</a
+            aria-expanded="false"
+          >
+            <span>News &amp; Events</span>
+            <i class="fa-solid fa-caret-down" /></a
           >
           <ul class="dropdown-menu border-0 shadow-none pt-2">
             <div class="d-flex flex-column gap-4 pt-2">
@@ -172,7 +178,7 @@
     }
   }
   .dropdown-toggle::after {
-    font-size: 1.1rem;
+    display: none;
   }
   .dropdown-menu {
     --bs-dropdown-padding-y: 1rem;
