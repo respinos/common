@@ -118,14 +118,16 @@
             </div>
           </ul>
         </li>
-        <li class="nav-item">
+        <li class="nav-item bg-neutral-50 border-top border-neutral-200">
           <a
             class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
             href="#"
             >Get Help <i class="fa-solid fa-square-arrow-up-right fa-fw" /></a
           >
         </li>
-        <li class="nav-item">
+        <li
+          class="nav-item bg-neutral-50 border-top border-bottom border-neutral-200 "
+        >
           <a
             class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
             href="#">Log In <i class="fa-solid fa-user fa-fw" /></a
@@ -155,14 +157,11 @@
     --bs-nav-link-font-weight: var(--headings-font-weight);
     .nav-item:nth-of-type(6),
     .nav-item:nth-of-type(7) {
-      background: var(--color-neutral-50);
-      border-top: 1px solid var(--color-neutral-200);
       i {
         color: var(--color-primary-500);
       }
     }
     .nav-item:nth-of-type(7) {
-      border-bottom: 1px solid var(--color-neutral-200);
       border-radius: 0 0 8px 8px;
     }
     .nav-link {
