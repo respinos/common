@@ -3,12 +3,14 @@
   // import { Collapse, Dropdown, Popover } from 'bootstrap'
   import menuData from "../../assets/menuData.json";
 
-  let dropdownOpen = {
-    about: false,
-    collection: false,
-    libraries: false,
-    news: false,
-  };
+  let loggedIn = true;
+
+  // let dropdownOpen = {
+  //   about: false,
+  //   collection: false,
+  //   libraries: false,
+  //   news: false,
+  // };
 
   // let selected = undefined;
 
@@ -20,11 +22,11 @@
   //   }
   // }
 
-  function animateCaret() {
-    var link = document.getElementsByClassName("dropdown-toggle show");
-    {
-    }
-  }
+  // function animateCaret() {
+  //   var link = document.getElementsByClassName("dropdown-toggle show");
+  //   {
+  //   }
+  // }
 </script>
 
 <nav class="navbar navbar-expand-lg bg-white">
@@ -42,7 +44,7 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span><i class="fa-solid fa-bars fa-fw" /></span>
+        <span><i class="fa-solid fa-bars fa-fw hasNotification" /></span>
       </button>
       <button
         class="navbar-toggler border-0"
@@ -166,14 +168,59 @@
             >Get Help <i class="fa-solid fa-square-arrow-up-right fa-fw" /></a
           >
         </li>
-        <li
-          class="nav-item bg-neutral-50 border-top border-bottom border-neutral-200 "
-        >
-          <a
-            class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
-            href="#">Log In <i class="fa-solid fa-user fa-fw" /></a
+        {#if loggedIn}
+          <li
+            class="nav-item dropdown bg-neutral-50 border-top border-bottom border-neutral-200 "
           >
-        </li>
+            <a
+              class="nav-link dropdown-toggle p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <div class="d-flex justify-content-center align-items-center">
+                <span
+                  class="accountHasNotification d-flex align-items-center justify-content-center border border-neutral-300 rounded-circle bg-neutral-100 me-2"
+                  style="width:40px;height:40px;"
+                >
+                  <i class="fa-solid fa-user text-neutral-800" />
+                </span>
+                <span>My Account</span>
+              </div>
+            </a>
+            <ul class="dropdown-menu border-0 shadow-none pt-2">
+              <div class="d-flex flex-column gap-4 pt-2">
+                <li class="px-3">
+                  <a
+                    class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
+                    href="#"
+                    ><span class="needs-hover-state">Notifications (4)</span>
+                    <i class="fa-solid fa-bell fa-fw" />
+                  </a>
+                </li>
+                <li class="px-3">
+                  <a
+                    class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
+                    href="#"
+                    ><span class="needs-hover-state">Log Out</span><i
+                      class="fa-solid fa-arrow-right-from-bracket fa-fw"
+                    /></a
+                  >
+                </li>
+              </div>
+            </ul>
+          </li>
+        {:else}
+          <li
+            class="nav-item bg-neutral-50 border-top border-bottom border-neutral-200 "
+          >
+            <a
+              class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
+              href="#">Log In<i class="fa-solid fa-user fa-fw" /></a
+            >
+          </li>
+        {/if}
       </ul>
     </div>
   </div>
@@ -198,8 +245,17 @@
     --bs-nav-link-font-weight: var(--headings-font-weight);
     .nav-item:nth-of-type(6),
     .nav-item:nth-of-type(7) {
+      a.nav-link {
+        font-weight: 800;
+      }
+      a:hover {
+        text-decoration: none;
+      }
       i {
         color: var(--color-primary-500);
+      }
+      .needs-hover-state:hover {
+        text-decoration: underline;
       }
     }
     .nav-item:nth-of-type(7) {
@@ -210,6 +266,32 @@
       &:focus {
         color: var(--color-primary-500);
       }
+    }
+  }
+  .hasNotification {
+    position: relative;
+    ::after {
+      content: "";
+      position: absolute;
+      background: var(--color-primary-500);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      top: -2.5px;
+      left: 17px;
+    }
+  }
+  .accountHasNotification {
+    position: relative;
+    ::after {
+      content: "";
+      position: absolute;
+      background: var(--color-primary-500);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      top: -1.5px;
+      left: 27px;
     }
   }
   .dropdown-toggle::after {

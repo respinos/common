@@ -123,6 +123,7 @@ $utilities: map-merge(
         map-merge(
           $utilities-text-colors,
           (
+            "neutral-100": $ht-color-neutral-100,
             "neutral-200": $ht-color-neutral-200,
             "neutral-800": $ht-color-neutral-800,
             "neutral-900": $ht-color-neutral-900,
@@ -150,6 +151,7 @@ $utilities: map-merge(
           $utilities-bg-colors,
           (
             "neutral-50": $ht-color-neutral-50,
+            "neutral-100": $ht-color-neutral-100,
             "neutral-200": $ht-color-neutral-200,
             "transparent": transparent,
             "body-secondary":
@@ -181,6 +183,7 @@ $utilities: map-merge(
           $utilities-border-colors,
           (
             "neutral-200": $ht-color-neutral-200,
+            "neutral-300": $ht-color-neutral-300,
           )
         ),
     ),
