@@ -46,6 +46,7 @@
 
   .modal-content {
     height: 90vh;
+    max-height: 45rem;
   }
 
   .modal-title {
@@ -103,7 +104,7 @@
 </style>
 
 <div class="modal fade show" style="display: block;">
-  <div class="modal-dialog modal-dialog-scrollable">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title">Partner Institution Login</h1>
