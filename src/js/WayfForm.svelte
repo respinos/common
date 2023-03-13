@@ -1,3 +1,5 @@
+<svelte:options accessors={true}/>
+<svelte:body on:keyup={handleKeydown} />
 <script>
 	import { onMount } from 'svelte';
   import FilterableSelection from "./components/FilterableSelection.svelte";
@@ -7,6 +9,10 @@
   let modalBody;
   let maxHeight = 15;
   let widget; let widgetBody;
+
+  let guid;
+
+  export let isOpen = false;
 
   function handleClick() {
     let target = window.location.href;
@@ -25,9 +31,18 @@
     }
   }
 
+  function handleKeydown(event) {
+    if ( ! isOpen ) { return ; }
+    if ( event.key == 'Escape' ) {
+      isOpen = false;
+    }
+  }
+
   onMount(() => {
     // let p = modalBody.querySelector('p');
     // widget.resize(modalBody.clientHeight - p.clientHeight - 32, widgetBody);
+    guid = (new Date).getTime();
+    document.body.classList.add('modal-open');
   })
 
 
@@ -103,12 +118,13 @@
 
 </style>
 
-<div class="modal fade show" style="display: block;">
+{#if isOpen}
+<div class="modal fade show" tabindex="-1" id="login-form" aria-labelledby="login-form-label" aria-modal="true" role="dialog" style="display: block;">
   <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title">Partner Institution Login</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal">Close <i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        <h1 id="login-form-label" class="modal-title">Partner Institution Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" on:click={() => { isOpen = false }}>Close <i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
       </div>
       <div class="modal-body" bind:this={modalBody}>
         <p class="mb-0">
@@ -163,3 +179,5 @@
     </div>
   </div>
 </div>
+<div class="modal-backdrop fade show"></div>
+{/if}
