@@ -7,7 +7,7 @@ import { setupHTEnv } from './lib/utils';
 import * as bootstrap from 'bootstrap'
 
 import Button from './Button.svelte';
-import LoginForm from './WayfForm.svelte'
+import LoginForm from './LoginForm.svelte'
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/ig, ($1) => {
@@ -17,24 +17,45 @@ const toCamel = (s) => {
   });
 };
 
+const buildProps = (el) => {
+  let propProperty = `data-prop-`;
+  let props = {};
+  for (const attr of el.attributes) {
+    if (attr.name.startsWith(propProperty)) {
+      let value = attr.value;
+      try {
+        value = JSON.parse(value);
+      } catch (error) { }
+
+      props[toCamel(attr.name.replace(propProperty, ''))] = value;
+    }
+  }
+  return props;
+}
+
 const apps = {};
 apps['hathi-button'] = Button;
 apps['hathi-login-form'] = LoginForm;
+apps['hathi-echo'] = Echo;
 
+// configure the HT global
 setupHTEnv();
 
-document.querySelectorAll('[data-hathi-use]').forEach((el) => {
-  let slug = el.dataset.hathiUse;
-  let props = {};
-  let component = new apps[slug]({
-    target: el,
-    props: props,
-  })
-})
+// // APPROACH: look for wrapper elements, e.g. <div data-hathi-use="website-header">
+// document.querySelectorAll('[data-hathi-use]').forEach((el) => {
+//   let slug = el.dataset.hathiUse;
+//   let props = {};
+//   let component = new apps[slug]({
+//     target: el,
+//     props: props,
+//   })
+// })
 
+// APPROACH: look for custom elements and instantiate 
+// the svelte component inside that element
 Object.keys(apps).forEach((slug) => {
   document.querySelectorAll(slug).forEach((el) => {
-    let props = {};
+    let props = buildProps(el);
     el.component = new apps[slug]({
       target: el,
       props: props,
@@ -42,21 +63,11 @@ Object.keys(apps).forEach((slug) => {
   })
 })
 
+// look for buttons that trigger the appearance of 
+// svelte components
 document.querySelectorAll('[data-hathi-trigger]').forEach((el) => {
   let slug = el.dataset.hathiTrigger;
-  let props = {};
-  let slugProperty = `data-${slug}-`;
-  for(const attr of el.attributes) {
-    if (attr.name.startsWith(slugProperty)) {
-      let value = attr.value;
-      try {
-        value = JSON.parse(value);
-      } catch(error) {}
-
-      props[toCamel(attr.name.replace(slugProperty, ''))] = value;
-    }
-  }
-
+  let props = buildProps(el);
   el.component = new apps[slug]({
     target: document.body,
     props: props
@@ -66,7 +77,6 @@ document.querySelectorAll('[data-hathi-trigger]').forEach((el) => {
     event.preventDefault();
     event.stopImmediatePropagation();
     el.component.isOpen = true;
-    window.component = el.component;
   })
 })
 
