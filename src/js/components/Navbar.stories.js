@@ -1,5 +1,3 @@
-import "../../scss/styles.scss";
-import * as bootstrap from "bootstrap";
 import Navbar from "./Navbar.svelte";
 
 export default {
