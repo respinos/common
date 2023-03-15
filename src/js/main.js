@@ -6,7 +6,7 @@ import { setupHTEnv } from './lib/utils';
 // these are made available globally
 import * as bootstrap from 'bootstrap'
 
-import Button from './Button.svelte';
+import Quote from './components/Quote.svelte';
 import LoginForm from './LoginForm.svelte'
 
 const toCamel = (s) => {
@@ -34,9 +34,8 @@ const buildProps = (el) => {
 }
 
 const apps = {};
-apps['hathi-button'] = Button;
+apps['hathi-quote'] = Quote;
 apps['hathi-login-form'] = LoginForm;
-apps['hathi-echo'] = Echo;
 
 // configure the HT global
 setupHTEnv();
