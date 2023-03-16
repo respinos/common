@@ -99,7 +99,7 @@
     </div>
     <div class="py-3 pe-3 d-flex gap-4">
       <button
-        class="navbar-toggler border-0"
+        class="navbar-toggler border-0 m-0"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarNavDropdown"
@@ -110,7 +110,7 @@
         <span><i class="fa-solid fa-bars fa-fw hasNotification" /></span>
       </button>
       <button
-        class="navbar-toggler border-0"
+        class="navbar-toggler border-0 m-0"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#"
