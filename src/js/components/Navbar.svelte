@@ -3,7 +3,8 @@
   // import { Collapse, Dropdown, Popover } from 'bootstrap'
   import menuData from "../../assets/menuData.json";
 
-  let loggedIn = true;
+  export let loggedIn = false;
+  export let hasNotification = false;
 
   // let dropdownOpen = {
   //   about: false,
@@ -107,7 +108,7 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span><i class="fa-solid fa-bars fa-fw hasNotification" /></span>
+        <span><i class:hasNotification class="fa-solid fa-bars fa-fw" /></span>
       </button>
       <button
         class="navbar-toggler border-0 m-0"
@@ -244,7 +245,8 @@
             >
               <div class="d-flex justify-content-center align-items-center">
                 <span
-                  class="accountHasNotification d-flex align-items-center justify-content-center border border-neutral-300 rounded-circle bg-neutral-100 me-2"
+                  class:accountHasNotification={hasNotification}
+                  class="d-flex align-items-center justify-content-center border border-neutral-300 rounded-circle bg-neutral-100 me-2"
                   style="width:40px;height:40px;"
                 >
                   <i class="fa-solid fa-user text-neutral-800" />
@@ -258,7 +260,9 @@
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
                     href="#"
-                    ><span class="needs-hover-state">Notifications (4)</span>
+                    ><span class="needs-hover-state"
+                      >Notifications{#if hasNotification} (4){/if}</span
+                    >
                     <i class="fa-solid fa-bell fa-fw" />
                   </a>
                 </li>
@@ -333,7 +337,7 @@
   }
   .hasNotification {
     position: relative;
-    ::after {
+    &::after {
       content: "";
       position: absolute;
       background: var(--color-primary-500);
@@ -346,7 +350,7 @@
   }
   .accountHasNotification {
     position: relative;
-    ::after {
+    &::after {
       content: "";
       position: absolute;
       background: var(--color-primary-500);

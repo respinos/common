@@ -13,3 +13,16 @@ export const Mobile = {
     },
   },
 };
+export const MobileLoggedIn = {
+  parameters: { ...Mobile.parameters },
+  args: {
+    loggedIn: true,
+  },
+};
+export const MobileLoggedInWithNotifications = {
+  parameters: { ...Mobile.parameters },
+  args: {
+    loggedIn: true,
+    hasNotification: true,
+  },
+};
