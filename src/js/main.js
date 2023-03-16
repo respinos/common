@@ -7,7 +7,7 @@ import { setupHTEnv } from './lib/utils';
 import * as bootstrap from 'bootstrap'
 
 import Quote from './components/Quote.svelte';
-import LoginForm from './LoginForm.svelte'
+import LoginForm from './components/LoginForm.svelte'
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/ig, ($1) => {

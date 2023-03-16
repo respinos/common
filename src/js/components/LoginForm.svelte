@@ -2,7 +2,7 @@
 <svelte:body on:keyup={handleKeydown} />
 <script>
 	import { onMount } from 'svelte';
-  import FilterableSelection from "./components/FilterableSelection.svelte";
+  import FilterableSelection from "./FilterableSelection.svelte";
 
   let HT = window.HT || {};
   let sdrinst;
