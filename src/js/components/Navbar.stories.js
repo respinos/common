@@ -1,4 +1,6 @@
 import Navbar from "./Navbar.svelte";
+import { userEvent, within } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 export default {
   title: "Navbar",
@@ -11,6 +13,12 @@ export const Mobile = {
     viewport: {
       defaultViewport: "mobile2",
     },
+  },
+};
+export const MobileOpenMenu = {
+  parameters: { ...Mobile.parameters },
+  play: async ({ canvasElement }) => {
+    await userEvent.type;
   },
 };
 export const MobileLoggedIn = {
