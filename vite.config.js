@@ -4,7 +4,19 @@ import autoPreprocess from "svelte-preprocess";
 import pkg from "svelte-preprocess";
 const { scss } = pkg;
 import path from "node:path";
-// const path = require("path");
+import glob from 'fast-glob';
+
+// Find all HTML files and build an object of names and paths to work from
+const files = glob.sync(path.resolve(__dirname, 'src') + '/**/*.html').reduce((acc, cur) => {
+  // we want to keep the path
+  let name = cur.replace(path.join(__dirname) + '/src/', '').replace('.html', '').replace('/', '-');
+
+  // let name = path.basename(cur, '.html');
+  console.log(name, "->", cur);
+
+  acc[name] = cur;
+  return acc;
+}, {});
 
 export default defineConfig({
   plugins: [
@@ -16,6 +28,10 @@ export default defineConfig({
   root: path.resolve(__dirname, "src"),
   build: {
     outDir: path.resolve(__dirname, "dist"),
+    emptyOutDir: true,
+    rollupOptions: {
+      input: files
+    }
   },
   resolve: {
     alias: {
