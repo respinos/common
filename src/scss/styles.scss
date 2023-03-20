@@ -1,4 +1,5 @@
 // Import all of Bootstrap's CSS
+@use "sass:map";
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap");
 
 // Toggle global options
@@ -69,6 +70,12 @@ $form-label-font-weight: 800;
 // Required
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
+
+$font-sizes: map.set($font-sizes, 7, $font-size-base * 0.875);
+
+$btn-close-bg: "#fff";
+$btn-close-hover-opacity: 1;
+$btn-close-opacity: 1;
 
 @import "~bootstrap/scss/maps";
 @import "~bootstrap/scss/mixins";
@@ -235,6 +242,7 @@ $utilities: map-merge(
   --bs-btn-color: #fff;
   --bs-btn-active-border-color: var(--color-primary-700);
   --bs-btn-hover-border-color: var(--color-primary-900);
+  --bs-btn-border-color: var(--color-primary-700);
 
   &:hover,
   &:active {
@@ -245,4 +253,15 @@ $utilities: map-merge(
 
 input.form-control[type] {
   background-color: var(--color-neutral-50);
+  border-radius: var(--bs-border-radius) !important;
+}
+
+.input-group-text + input.form-control[type] {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.input-group-text {
+  border-top-left-radius: var(--bs-border-radius) !important;
+  border-bottom-left-radius: var(--bs-border-radius) !important;
 }
