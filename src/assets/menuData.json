@@ -1,0 +1,25 @@
+{
+  "about": [
+    "Welcome to HathiTrust",
+    "Our Mission & History",
+    "HathiTrust Research Center (HTRC)",
+    "Our Team"
+  ],
+  "collection": [
+    "About the Collection",
+    "How to Search & Access",
+    "Preservation",
+    "Terms & Conditions"
+  ],
+  "join": [],
+  "memberLibraries": [
+    "Member Library Overview",
+    "Member List",
+    "Services & Programs",
+    "Resources for Librarians",
+    "Contribute Content",
+    "Get Involved",
+    "Governance & Groups"
+  ],
+  "newsEvents": ["Newsletters", "Blog", "Events & Webinars", "Press"]
+}
