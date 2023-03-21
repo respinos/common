@@ -8,7 +8,7 @@ import * as bootstrap from 'bootstrap';
 
 import Quote from './components/Quote.svelte';
 import LoginForm from './components/LoginForm.svelte';
-import Navbar from './components/Navbar.svelte';
+import Navbar from './components/Navbar';
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {

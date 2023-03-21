@@ -1,6 +1,7 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
   // import { Collapse, Dropdown, Popover } from 'bootstrap'
+  // import './containerqueries.css';
   import menuData from '../../../assets/menuData.json';
 
   export let loggedIn = false;
@@ -225,7 +226,8 @@
             </div>
           </ul>
         </li>
-        <li class="nav-item bg-neutral-50 border-top border-neutral-200">
+
+        <li class="nav-item">
           <a
             class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
             href="#"
@@ -233,9 +235,7 @@
           >
         </li>
         {#if loggedIn}
-          <li
-            class="nav-item dropdown bg-neutral-50 border-top border-bottom border-neutral-200 "
-          >
+          <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
               href="#"
@@ -279,9 +279,7 @@
             </ul>
           </li>
         {:else}
-          <li
-            class="nav-item bg-neutral-50 border-top border-bottom border-neutral-200 "
-          >
+          <li class="nav-item ">
             <a
               class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
               href="#">Log In<i class="fa-solid fa-user fa-fw" /></a
@@ -310,8 +308,11 @@
   .navbar-nav {
     font-size: var(--ht-text-sm);
     --bs-nav-link-font-weight: var(--headings-font-weight);
+
     .nav-item:nth-of-type(6),
     .nav-item:nth-of-type(7) {
+      background: var(--color-neutral-50);
+      border-top: solid 1px var(--color-neutral-200);
       a.nav-link {
         font-weight: 800;
       }
@@ -326,6 +327,7 @@
       }
     }
     .nav-item:nth-of-type(7) {
+      border-bottom: solid 1px var(--color-neutral-200);
       border-radius: 0 0 8px 8px;
     }
     .nav-link {
@@ -335,6 +337,7 @@
       }
     }
   }
+
   .hasNotification {
     position: relative;
     &::after {
@@ -396,4 +399,13 @@
   //   transform: rotate(180deg);
   //   transition: transform 200ms linear;
   // }
+  @media (min-width: 1100px) {
+    .nav-item:nth-of-type(6),
+    .nav-item:nth-of-type(7) {
+      background: white !important;
+      border-top: none !important;
+      border-bottom: none !important;
+      border-radius: 0 !important;
+    }
+  }
 </style>
