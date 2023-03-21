@@ -1,4 +1,4 @@
-import Navbar from './Navbar.svelte';
+import Navbar from './index.svelte';
 import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 

@@ -1,7 +1,7 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
   // import { Collapse, Dropdown, Popover } from 'bootstrap'
-  import menuData from '../../assets/menuData.json';
+  import menuData from '../../../assets/menuData.json';
 
   export let loggedIn = false;
   export let hasNotification = false;
