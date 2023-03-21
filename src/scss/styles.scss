@@ -1,6 +1,6 @@
 // Import all of Bootstrap's CSS
-@use "sass:map";
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap");
+@use 'sass:map';
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap');
 
 // Toggle global options
 $enable-gradients: false;
@@ -68,110 +68,110 @@ $btn-font-weight: 700;
 $form-label-font-weight: 800;
 
 // Required
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
 
 $font-sizes: map.set($font-sizes, 7, $font-size-base * 0.875);
 
-$btn-close-bg: "#fff";
+$btn-close-bg: '#fff';
 $btn-close-hover-opacity: 1;
 $btn-close-opacity: 1;
 
-@import "~bootstrap/scss/maps";
-@import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/utilities";
-@import "~bootstrap/scss/root";
-@import "~bootstrap/scss/reboot";
+@import '~bootstrap/scss/maps';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/root';
+@import '~bootstrap/scss/reboot';
 
-@import "~bootstrap/scss/type";
+@import '~bootstrap/scss/type';
 // @import "~bootstrap/scss/images";
-@import "~bootstrap/scss/containers";
-@import "~bootstrap/scss/grid";
-@import "~bootstrap/scss/tables";
-@import "~bootstrap/scss/forms";
-@import "~bootstrap/scss/buttons";
-@import "~bootstrap/scss/transitions";
-@import "~bootstrap/scss/dropdown";
-@import "~bootstrap/scss/button-group";
-@import "~bootstrap/scss/nav";
-@import "~bootstrap/scss/navbar"; // Requires nav
+@import '~bootstrap/scss/containers';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/tables';
+@import '~bootstrap/scss/forms';
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/transitions';
+@import '~bootstrap/scss/dropdown';
+@import '~bootstrap/scss/button-group';
+@import '~bootstrap/scss/nav';
+@import '~bootstrap/scss/navbar'; // Requires nav
 // @import "~bootstrap/scss/card";
 // @import "~bootstrap/scss/breadcrumb";
-@import "~bootstrap/scss/accordion";
+@import '~bootstrap/scss/accordion';
 // @import "~bootstrap/scss/pagination";
-@import "~bootstrap/scss/badge";
-@import "~bootstrap/scss/alert";
-@import "~bootstrap/scss/progress";
-@import "~bootstrap/scss/list-group";
-@import "~bootstrap/scss/close";
+@import '~bootstrap/scss/badge';
+@import '~bootstrap/scss/alert';
+@import '~bootstrap/scss/progress';
+@import '~bootstrap/scss/list-group';
+@import '~bootstrap/scss/close';
 // @import "~bootstrap/scss/toasts";
-@import "~bootstrap/scss/modal"; // Requires transitions
-@import "~bootstrap/scss/tooltip";
-@import "~bootstrap/scss/popover";
+@import '~bootstrap/scss/modal'; // Requires transitions
+@import '~bootstrap/scss/tooltip';
+@import '~bootstrap/scss/popover';
 // @import "~bootstrap/scss/carousel";
-@import "~bootstrap/scss/spinners";
-@import "~bootstrap/scss/offcanvas"; // Requires transitions
-@import "~bootstrap/scss/placeholders";
+@import '~bootstrap/scss/spinners';
+@import '~bootstrap/scss/offcanvas'; // Requires transitions
+@import '~bootstrap/scss/placeholders';
 
 // Helpers
-@import "~bootstrap/scss/helpers";
+@import '~bootstrap/scss/helpers';
 
 // extend utility classes
 $utilities: map-merge(
   $utilities,
   (
-    "color": (
+    'color': (
       property: color,
       class: text,
       local-vars: (
-        "text-opacity": 1,
+        'text-opacity': 1,
       ),
       values:
         map-merge(
           $utilities-text-colors,
           (
-            "neutral-100": $ht-color-neutral-100,
-            "neutral-200": $ht-color-neutral-200,
-            "neutral-800": $ht-color-neutral-800,
-            "neutral-900": $ht-color-neutral-900,
-            "muted": $text-muted,
+            'neutral-100': $ht-color-neutral-100,
+            'neutral-200': $ht-color-neutral-200,
+            'neutral-800': $ht-color-neutral-800,
+            'neutral-900': $ht-color-neutral-900,
+            'muted': $text-muted,
             // deprecated
-            "black-50": rgba($black, 0.5),
+            'black-50': rgba($black, 0.5),
             // deprecated
-            "white-50": rgba($white, 0.5),
+            'white-50': rgba($white, 0.5),
             // deprecated
-            "body-secondary": var(--#{$prefix}secondary-color),
-            "body-tertiary": var(--#{$prefix}tertiary-color),
-            "body-emphasis": var(--#{$prefix}emphasis-color),
-            "reset": inherit,
+            'body-secondary': var(--#{$prefix}secondary-color),
+            'body-tertiary': var(--#{$prefix}tertiary-color),
+            'body-emphasis': var(--#{$prefix}emphasis-color),
+            'reset': inherit,
           )
         ),
     ),
-    "background-color": (
+    'background-color': (
       property: background-color,
       class: bg,
       local-vars: (
-        "bg-opacity": 1,
+        'bg-opacity': 1,
       ),
       values:
         map-merge(
           $utilities-bg-colors,
           (
-            "neutral-50": $ht-color-neutral-50,
-            "neutral-100": $ht-color-neutral-100,
-            "neutral-200": $ht-color-neutral-200,
-            "transparent": transparent,
-            "body-secondary":
+            'neutral-50': $ht-color-neutral-50,
+            'neutral-100': $ht-color-neutral-100,
+            'neutral-200': $ht-color-neutral-200,
+            'transparent': transparent,
+            'body-secondary':
               rgba(
                 var(--#{$prefix}secondary-bg-rgb),
                 var(--#{$prefix}bg-opacity)
               ),
-            "body-tertiary":
+            'body-tertiary':
               rgba(
                 var(--#{$prefix}tertiary-bg-rgb),
                 var(--#{$prefix}bg-opacity)
               ),
-            "body-emphasis":
+            'body-emphasis':
               rgba(
                 var(--#{$prefix}emphasis-bg-rgb),
                 var(--#{$prefix}bg-opacity)
@@ -179,18 +179,18 @@ $utilities: map-merge(
           )
         ),
     ),
-    "border-color": (
+    'border-color': (
       property: border-color,
       class: border,
       local-vars: (
-        "border-opacity": 1,
+        'border-opacity': 1,
       ),
       values:
         map-merge(
           $utilities-border-colors,
           (
-            "neutral-200": $ht-color-neutral-200,
-            "neutral-300": $ht-color-neutral-300,
+            'neutral-200': $ht-color-neutral-200,
+            'neutral-300': $ht-color-neutral-300,
           )
         ),
     ),
@@ -198,7 +198,7 @@ $utilities: map-merge(
 );
 
 // Utilities
-@import "~bootstrap/scss/utilities/api";
+@import '~bootstrap/scss/utilities/api';
 
 // define design tokens which may be used in application stylesheets
 :root {

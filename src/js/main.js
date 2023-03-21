@@ -1,18 +1,18 @@
 // Import our custom CSS
-import "../scss/styles.scss";
-import { setupHTEnv } from "./lib/utils";
+import '../scss/styles.scss';
+import { setupHTEnv } from './lib/utils';
 
 // Import all of Bootstrap's JS
 // these are made available globally
-import * as bootstrap from "bootstrap";
+import * as bootstrap from 'bootstrap';
 
-import Quote from "./components/Quote.svelte";
-import LoginForm from "./components/LoginForm.svelte";
-import Navbar from "./components/Navbar.svelte";
+import Quote from './components/Quote.svelte';
+import LoginForm from './components/LoginForm.svelte';
+import Navbar from './components/Navbar.svelte';
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
-    return $1.toUpperCase().replace("-", "").replace("_", "");
+    return $1.toUpperCase().replace('-', '').replace('_', '');
   });
 };
 
@@ -26,16 +26,16 @@ const buildProps = (el) => {
         value = JSON.parse(value);
       } catch (error) {}
 
-      props[toCamel(attr.name.replace(propProperty, ""))] = value;
+      props[toCamel(attr.name.replace(propProperty, ''))] = value;
     }
   }
   return props;
 };
 
 const apps = {};
-apps["hathi-quote"] = Quote;
-apps["hathi-login-form"] = LoginForm;
-apps["hathi-navbar"] = Navbar;
+apps['hathi-quote'] = Quote;
+apps['hathi-login-form'] = LoginForm;
+apps['hathi-navbar'] = Navbar;
 
 // configure the HT global
 setupHTEnv();
@@ -64,7 +64,7 @@ Object.keys(apps).forEach((slug) => {
 
 // look for buttons that trigger the appearance of
 // svelte components
-document.querySelectorAll("[data-hathi-trigger]").forEach((el) => {
+document.querySelectorAll('[data-hathi-trigger]').forEach((el) => {
   let slug = el.dataset.hathiTrigger;
   let props = buildProps(el);
   el.component = new apps[slug]({
@@ -72,7 +72,7 @@ document.querySelectorAll("[data-hathi-trigger]").forEach((el) => {
     props: props,
   });
 
-  el.addEventListener("click", (event) => {
+  el.addEventListener('click', (event) => {
     event.preventDefault();
     event.stopImmediatePropagation();
     el.component.isOpen = true;
