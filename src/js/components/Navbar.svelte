@@ -1,7 +1,7 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
   // import { Collapse, Dropdown, Popover } from 'bootstrap'
-  import menuData from "../../assets/menuData.json";
+  import menuData from '../../assets/menuData.json';
 
   export let loggedIn = false;
   export let hasNotification = false;
@@ -338,7 +338,7 @@
   .hasNotification {
     position: relative;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       background: var(--color-primary-500);
       width: 10px;
@@ -351,7 +351,7 @@
   .accountHasNotification {
     position: relative;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       background: var(--color-primary-500);
       width: 10px;

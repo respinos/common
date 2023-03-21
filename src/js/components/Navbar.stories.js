@@ -1,9 +1,9 @@
-import Navbar from "./Navbar.svelte";
-import { userEvent, within } from "@storybook/testing-library";
-import { expect } from "@storybook/jest";
+import Navbar from './Navbar.svelte';
+import { userEvent, within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
 export default {
-  title: "Navbar",
+  title: 'Navbar',
   component: Navbar,
 };
 
@@ -11,7 +11,7 @@ export const Default = {};
 export const Mobile = {
   parameters: {
     viewport: {
-      defaultViewport: "mobile2",
+      defaultViewport: 'mobile2',
     },
   },
 };
