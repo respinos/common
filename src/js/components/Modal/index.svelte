@@ -11,6 +11,7 @@
   let dialog;
 
   export const show = function() {
+    if ( dialog.open ) { return ; }
     dialog.showModal();
   }
 
@@ -27,7 +28,7 @@
     }
   })
 
-  $: if ( dialog && isOpen ) { openModal(); }
+  $: if ( dialog && isOpen ) { show(); }
 
 </script>
 

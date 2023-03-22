@@ -2,14 +2,21 @@
 <!-- <svelte:body on:keyup={handleKeydown} /> -->
 <script>
 	import { onMount } from 'svelte';
-  import Modal from './Modal';
-  import FilterableSelection from "./FilterableSelection.svelte";
+  import Modal from '../Modal';
+  import FilterableSelection from "../FilterableSelection.svelte";
 
   let HT = window.HT || {};
   let sdrinst;
   let modal;
 
   export let isOpen = false;
+  export let onSubmit = function(href) {
+    setTimeout(() => {
+      window.location.assign(login_href);
+      console.log(login_href);
+    })
+  }
+
   export const show = function() {
     modal.show();
   }
@@ -24,14 +31,17 @@
         // not a babel app, need to route through ping/pong
         target = HT.get_pong_target(target);
     }
+
     let selected = HT.login_status.idp_list.find(item => item.sdrinst == sdrinst);
     if ( selected ) {
       HT.prefs.set({ sdrinst : sdrinst });
       let login_href = selected.idp_url.replace('___TARGET___', encodeURIComponent(target));
-      setTimeout(() => {
-        // window.location.href = login_href;
-        console.log(login_href);
-      })
+      onSubmit(login_href);
+      // setTimeout(() => {
+      //   // window.location.assign(login_href);
+      //   onSubmit(login_href);
+      //   console.log(login_href);
+      // })
     }
   }
 
@@ -40,6 +50,9 @@
       modal.show();
     }
   })
+
+  $: if ( modal && isOpen ) { show() }
+  $: if ( modal && ! isOpen ) { hide() }
 
 </script>
 
@@ -120,7 +133,7 @@
           By logging into HathiTrust, you agree to follow our
           <a href="https://www.hathitrust.org/acceptable-use">Acceptable Use Policy</a>.
         </p>
-        <button type="submit" class="btn btn-primary align-self-center" on:click={handleClick}>Continue</button>
+        <button type="submit" name="submit" class="btn btn-primary align-self-center" on:click={handleClick}>Continue</button>
       </div>
 
       <div>

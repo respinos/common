@@ -7,10 +7,8 @@ import { setupHTEnv } from './lib/utils';
 import * as bootstrap from 'bootstrap';
 
 import Quote from './components/Quote.svelte';
-import LoginForm from './components/LoginForm.svelte';
-import Navbar from './components/Navbar.svelte';
-
-import TestModal from './components/TestModal.svelte';
+import LoginFormModal from './components/LoginFormModal';
+import Navbar from './components/Navbar';
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -36,9 +34,8 @@ const buildProps = (el) => {
 
 const apps = {};
 apps["hathi-quote"] = Quote;
-apps["hathi-login-form"] = LoginForm;
+apps["hathi-login-form-modal"] = LoginFormModal;
 apps["hathi-navbar"] = Navbar;
-apps["hathi-test-modal"] = TestModal;
 
 // configure the HT global
 setupHTEnv();
