@@ -7,11 +7,17 @@ export default {
   component: Navbar,
 };
 
-export const Default = {};
+export const Default = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'bsXl',
+    },
+  },
+};
 export const Mobile = {
   parameters: {
     viewport: {
-      defaultViewport: 'mobile2',
+      defaultViewport: 'bsXs',
     },
   },
 };
