@@ -7,8 +7,8 @@ import { setupHTEnv } from './lib/utils';
 import * as bootstrap from 'bootstrap';
 
 import Quote from './components/Quote.svelte';
-import LoginForm from './components/LoginForm.svelte';
-import Navbar from './components/Navbar.svelte';
+import LoginFormModal from './components/LoginFormModal';
+import Navbar from './components/Navbar';
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -33,9 +33,9 @@ const buildProps = (el) => {
 };
 
 const apps = {};
-apps['hathi-quote'] = Quote;
-apps['hathi-login-form'] = LoginForm;
-apps['hathi-navbar'] = Navbar;
+apps["hathi-quote"] = Quote;
+apps["hathi-login-form-modal"] = LoginFormModal;
+apps["hathi-navbar"] = Navbar;
 
 // configure the HT global
 setupHTEnv();
@@ -70,12 +70,13 @@ document.querySelectorAll('[data-hathi-trigger]').forEach((el) => {
   el.component = new apps[slug]({
     target: document.body,
     props: props,
+    intro: true,
   });
 
   el.addEventListener('click', (event) => {
     event.preventDefault();
     event.stopImmediatePropagation();
-    el.component.isOpen = true;
+    el.component.show();
   });
 });
 
