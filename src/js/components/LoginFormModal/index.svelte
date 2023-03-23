@@ -7,17 +7,19 @@
 
   let HT = window.HT || {};
   let sdrinst;
+  let filterText;
   let modal;
 
   export let isOpen = false;
   export let onSubmit = function(href) {
     setTimeout(() => {
-      window.location.assign(login_href);
-      console.log(login_href);
+      window.location.assign(href);
+      console.log(href);
     })
   }
 
   export const show = function() {
+    filterText = '';
     modal.show();
   }
 
@@ -37,11 +39,6 @@
       HT.prefs.set({ sdrinst : sdrinst });
       let login_href = selected.idp_url.replace('___TARGET___', encodeURIComponent(target));
       onSubmit(login_href);
-      // setTimeout(() => {
-      //   // window.location.assign(login_href);
-      //   onSubmit(login_href);
-      //   console.log(login_href);
-      // })
     }
   }
 
@@ -119,6 +116,7 @@
           label="Partner Institution"
           placeholder="Type something"
           icon="fa-solid fa-building-columns"
+          bind:filterText={filterText}
           bind:value={sdrinst}>
         </FilterableSelection>
       {:else}

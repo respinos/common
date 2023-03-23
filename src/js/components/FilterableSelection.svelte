@@ -8,6 +8,7 @@
   export let icon;
   export let multiple = false;
   export let value = '';
+  export let filterText = '';
 
   let fieldset1; let fieldset2; let list;
 
@@ -29,8 +30,6 @@
 
   let guid;
 
-  let filterText = '';
-
   function filterData(value) {
     if ( value.trim() == '' ) { return items; }
     let re = new RegExp(value, "i");
@@ -39,7 +38,10 @@
     })
   }
 
-  function updateValue(event){
+  function updateValue(event, forced){
+    if ( forced ) {
+      event.target.checked = forced;
+    }
     value = event.target.value;
   }
 
@@ -116,7 +118,7 @@
           {#if multiple}
             <input class="form-check-input visually-hidden" type="checkbox" name="item-{guid}" id="item{index}-{guid}" value={item.value}>
           {:else}
-            <input class="form-check-input visually-hidden" type="radio" name="item-{guid}" id="item{index}-{guid}" value={item.value} on:click={updateValue}>
+            <input class="form-check-input visually-hidden" type="radio" name="item-{guid}" id="item{index}-{guid}" value={item.value} on:click={updateValue} on:focus={(event) => updateValue(event, true)}>
           {/if}
           <label class="form-check-label p-2 px-3" for="item{index}-{guid}">{item.option}</label>
         </li>
