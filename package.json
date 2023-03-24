@@ -10,7 +10,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build-js": "vite build",
-    "build": "vite build && storybook build -o dist/storybook && cp _redirect dist"
+    "build": "vite build && storybook build -o dist/storybook && cp _redirects dist"
   },
   "repository": {
     "type": "git",
