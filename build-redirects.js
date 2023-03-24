@@ -17,4 +17,10 @@ filenames.forEach((filename) => {
 })
 
 writeFileSync('../_redirects', redirects.join("\n"))
-console.log("-- created _redirects")
+
+let headers = `/*
+  Access-Control-Allow-Origin: *
+`;
+writeFileSync('../_headers', headers)
+
+console.log("-- created _redirects and _headers")
