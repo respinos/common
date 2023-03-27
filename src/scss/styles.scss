@@ -6,6 +6,8 @@
 $enable-gradients: false;
 $enable-shadows: true;
 $enable-negative-margins: true;
+$enable-grid-classes: true;
+$enable-cssgrid: true;
 
 $offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
 
@@ -234,6 +236,7 @@ $utilities: map-merge(
   --form-label-font-weight: #{$form-label-font-weight};
 
   --bs-font-sans-serif: Mulish, Helvetica, Arial, system-ui;
+  --bs-link-color: var(--color-primary-700);
 }
 
 // Further refine some bootstrap styles
