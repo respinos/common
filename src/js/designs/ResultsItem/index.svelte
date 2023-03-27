@@ -11,8 +11,19 @@
 </script>
 
 <style lang="scss">
+
+  article:nth-child(even) {
+    background: var(--color-neutral-100);
+  }
+
   .d-gap-3 {
     gap: 1rem;
+  }
+
+  .cover {
+    width: 6rem;
+    text-align: right;
+    flex-shrink: 0;
   }
 
   a.d-inline-flex {
@@ -36,7 +47,7 @@
   }
 </style>
 
-<article class="record d-flex d-gap-3">
+<article class="record d-flex d-gap-3 p-3">
   <div class="cover" data-hdl="{htid}">
     {#if htid == 'MULTIPLE'}
     <img loading="lazy" class="bookCover border p-1 flex-grow-0 flex-shrink-0" aria-hidden="true" alt="" height="90" width="60" src={blankImage}>
