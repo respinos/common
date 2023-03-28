@@ -33,7 +33,7 @@
 
 <nav class="navbar navbar-expand-xl bg-white">
   <div class="container-fluid">
-    <div class="py-3 ps-3">
+    <div class="ht-logo">
       <!-- <img src="../assets/HT-logo-mobile-nav.svg" alt="HathiTrust" class="" /> -->
       <svg
         width="180"
@@ -99,7 +99,7 @@
         </defs>
       </svg>
     </div>
-    <div class="py-3 pe-3 d-flex gap-4">
+    <div class=" d-flex d-xl-none mobile-collapse-buttons">
       <button
         class="navbar-toggler border-0 m-0"
         type="button"
@@ -127,10 +127,10 @@
       class="collapse navbar-collapse justify-content-between"
       id="navbarNavDropdown"
     >
-      <ul class="navbar-nav">
+      <ul class="navbar-nav menu-links">
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3"
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -153,7 +153,7 @@
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3"
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center "
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -178,7 +178,7 @@
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3"
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center "
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -202,11 +202,11 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-3" href="#">Join</a>
+          <a class="nav-link " href="#">Join</a>
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3"
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center "
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -233,13 +233,13 @@
       <ul class="navbar-nav action-links">
         <li class="nav-item d-none d-xl-block">
           <a
-            class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
+            class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center"
             href="#">Search <i class="fa-solid fa-magnifying-glass fa-fw" /></a
           >
         </li>
         <li class="nav-item">
           <a
-            class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
+            class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center"
             href="#"
             >Get Help <i class="fa-solid fa-square-arrow-up-right fa-fw" /></a
           >
@@ -247,7 +247,7 @@
         {#if loggedIn}
           <li class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
+              class="nav-link dropdown-toggle  text-uppercase d-flex flex-row justify-content-between align-items-center"
               href="#"
               role="button"
               data-bs-toggle="dropdown"
@@ -291,7 +291,7 @@
         {:else}
           <li class="nav-item ">
             <a
-              class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
+              class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center"
               href="#">Log In<i class="fa-solid fa-user fa-fw" /></a
             >
           </li>
@@ -311,8 +311,7 @@
     --bs-navbar-padding-x: 0;
     --bs-navbar-color: var(--color-neutral-800);
     --bs-navbar-brand-color: var(--color-neutral-800);
-    --bs-nav-link-color: var(--color-neutral-900);
-    --bs-nav-link-hover-color: var(--color-primary-500);
+
     --bs-navbar-active-color: var(--color-primary-500);
     --bs-navbar-toggler-padding-y: 3px;
     --bs-navbar-toggler-padding-x: 3px;
@@ -320,15 +319,54 @@
   }
   .navbar-nav {
     font-size: var(--ht-text-sm);
+    --bs-nav-link-color: var(--color-neutral-900);
+    --bs-nav-link-hover-color: var(--color-primary-500);
     --bs-nav-link-font-weight: var(--headings-font-weight);
+    --bs-nav-link-padding-x: 16px;
+    --bs-nav-link-padding-y: 16px;
+    @media (min-width: 1200px) {
+      --bs-nav-link-padding-x: 0;
+      --bs-nav-link-padding-y: 0;
+      --bs-navbar-nav-link-padding-x: 0;
+      --bs-navbar-nav-link-padding-y: 0;
+      gap: 24px;
+    }
+  }
+  .navbar .ht-logo,
+  .navbar .mobile-collapse-buttons {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .navbar .ht-logo {
+    padding-left: 1rem;
+    @media (min-width: 1200px) {
+      padding-right: 2.5rem;
+    }
+  }
+  .navbar .mobile-collapse-buttons {
+    padding-right: 1rem;
+    gap: 1.5rem;
+  }
+  .navbar-nav.menu-links .nav-item a {
+    @media (min-width: 1200px) {
+      gap: 0.5rem;
+    }
   }
   .navbar-nav.action-links {
+    @media (min-width: 1200px) {
+      padding-right: 1rem;
+    }
     .nav-item {
       background: var(--color-neutral-50);
       border-top: solid 1px var(--color-neutral-200);
       @media (min-width: 1200px) {
         background: white;
         border-top: none;
+      }
+      a {
+        @media (min-width: 1200px) {
+          gap: 0.75rem;
+        }
       }
     }
     .nav-item:last-of-type {
