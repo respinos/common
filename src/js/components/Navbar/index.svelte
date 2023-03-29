@@ -1,34 +1,9 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
-  // import { Collapse, Dropdown, Popover } from 'bootstrap'
-  // import './containerqueries.css';
   import menuData from '../../../assets/menuData.json';
 
   export let loggedIn = false;
   export let hasNotification = false;
-
-  // let dropdownOpen = {
-  //   about: false,
-  //   collection: false,
-  //   libraries: false,
-  //   news: false,
-  // };
-
-  // let selected = undefined;
-
-  // function setSelectedIndex(index) {
-  //   if (this.selected == undefined || this.selected !== index) {
-  //     this.selected = index;
-  //   } else {
-  //     this.selected = undefined;
-  //   }
-  // }
-
-  // function animateCaret() {
-  //   var link = document.getElementsByClassName("dropdown-toggle show");
-  //   {
-  //   }
-  // }
 </script>
 
 <nav class="navbar navbar-expand-xl bg-white">
@@ -301,7 +276,6 @@
 </nav>
 
 <style lang="scss">
-  // @import '~bootstrap/scss/_mixins.scss';
   .container-fluid {
     padding: 0;
   }
@@ -477,17 +451,4 @@
       }
     }
   }
-  // .fa-caret-down {
-  // transform: rotate(0deg);
-  // transition: transform 200ms linear;
-  // }
-  // [aria-expanded="true"] {
-  //   // transform: rotate(0.5turn);
-  //   // transition: transform 200ms linear;
-  //   font-size: 2em;
-  // }
-  // .fa-caret-down.open {
-  //   transform: rotate(180deg);
-  //   transition: transform 200ms linear;
-  // }
 </style>
