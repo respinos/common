@@ -140,10 +140,10 @@
             <!-- <i class="fa-solid fa-caret-down" /> -->
           </a>
           <div>
-            <ul class="dropdown-menu border-0 shadow-none pt-2">
-              <div class="d-flex flex-column gap-4 pt-2">
+            <ul class="dropdown-menu">
+              <div class="d-flex flex-column gap-4">
                 {#each menuData.about as linkText}
-                  <li class="ps-3">
+                  <li class="px-3">
                     <a class="dropdown-item px-0" href="#">{linkText}</a>
                   </li>
                 {/each}
@@ -166,10 +166,10 @@
                 : 'fa-caret-down'}"
             /> -->
           </a>
-          <ul class="dropdown-menu border-0 shadow-none pt-2">
-            <div class="d-flex flex-column gap-4 pt-2">
+          <ul class="dropdown-menu">
+            <div class="d-flex flex-column gap-4">
               {#each menuData.collection as linkText}
-                <li class="ps-3">
+                <li class="px-3">
                   <a class="dropdown-item px-0" href="#">{linkText}</a>
                 </li>
               {/each}
@@ -191,10 +191,10 @@
                 : 'fa-caret-down'}"
             /> -->
           </a>
-          <ul class="dropdown-menu border-0 shadow-none pt-2">
-            <div class="d-flex flex-column gap-4 pt-2">
+          <ul class="dropdown-menu">
+            <div class="d-flex flex-column gap-4">
               {#each menuData.memberLibraries as linkText}
-                <li class="ps-3">
+                <li class="px-3">
                   <a class="dropdown-item px-0" href="#">{linkText}</a>
                 </li>
               {/each}
@@ -219,10 +219,10 @@
                 : 'fa-caret-down'}"
             />-->
           </a>
-          <ul class="dropdown-menu border-0 shadow-none pt-2">
-            <div class="d-flex flex-column gap-4 pt-2">
+          <ul class="dropdown-menu">
+            <div class="d-flex flex-column gap-4">
               {#each menuData.newsEvents as linkText}
-                <li class="ps-3">
+                <li class="px-3">
                   <a class="dropdown-item px-0" href="#">{linkText}</a>
                 </li>
               {/each}
@@ -432,14 +432,34 @@
     --bs-dropdown-color: var(--color-neutral-800);
     --bs-dropdown-bg: var(--color-neutral-50);
     --bs-dropdown-border-radius: 0;
+    --bs-dropdown-border-width: 0;
+    --bs-dropdown-border-color: transparent;
+    --bs-dropdown-box-shadow: none;
     --bs-dropdown-item-padding-y: 0;
-    --bs-dropdown-link-color: var(--color-netural-800);
+    --bs-dropdown-link-color: var(--color-neutral-800);
     --bs-dropdown-link-hover-color: var(--color-netural-800);
-    --bs-dropdown-link-hover-bg: var(--color-netural-50);
+    --bs-dropdown-link-hover-bg: var(--color-neutral-50);
+    div {
+      padding-top: 0.5rem;
+      @media (min-width: 1200px) {
+        padding-top: 0;
+      }
+    }
     a {
       &:hover {
         text-decoration: underline;
       }
+    }
+    @media (min-width: 1200px) {
+      --bs-dropdown-padding-y: 1.5rem;
+      --bs-dropdown-item-padding-y: 0;
+      --bs-dropdown-bg: #fff;
+      --bs-dropdown-border-radius: 8px;
+      --bs-dropdown-border-width: 1px;
+      --bs-dropdown-border-color: var(--color-neutral-300);
+      --bs-dropdown-box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
+      --bs-dropdown-link-hover-bg: #fff;
+      margin-top: 1rem;
     }
   }
   .fa-caret-down {
