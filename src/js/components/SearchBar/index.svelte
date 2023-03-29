@@ -3,10 +3,7 @@
 
 <div>
   <form>
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon1"
-        ><i class="fa-solid fa-magnifying-glass fa-fw" /></span
-      >
+    <div class="search-form input-group mb-3 d-flex">
       <input
         type="text"
         class="form-control"
@@ -46,3 +43,25 @@
     </div>
   </form>
 </div>
+
+<style lang="scss">
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    input {
+      width: 100%;
+      border-top-right-radius: 0.375rem !important;
+      border-bottom-right-radius: 0.375rem !important;
+    }
+  }
+  @media (min-width: 1200px) {
+    .search-form {
+      flex-direction: row;
+      input {
+        width: 1%;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+      }
+    }
+  }
+</style>
