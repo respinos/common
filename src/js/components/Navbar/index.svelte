@@ -1,6 +1,7 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
   // import { Collapse, Dropdown, Popover } from 'bootstrap'
+  // import './containerqueries.css';
   import menuData from '../../../assets/menuData.json';
 
   export let loggedIn = false;
@@ -30,9 +31,9 @@
   // }
 </script>
 
-<nav class="navbar navbar-expand-lg bg-white">
+<nav class="navbar navbar-expand-xl bg-white">
   <div class="container-fluid">
-    <div class="py-3 ps-3">
+    <div class="ht-logo">
       <!-- <img src="../assets/HT-logo-mobile-nav.svg" alt="HathiTrust" class="" /> -->
       <svg
         width="180"
@@ -98,7 +99,7 @@
         </defs>
       </svg>
     </div>
-    <div class="py-3 pe-3 d-flex gap-4">
+    <div class=" d-flex d-xl-none mobile-collapse-buttons">
       <button
         class="navbar-toggler border-0 m-0"
         type="button"
@@ -115,18 +116,21 @@
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#"
-        aria-controls=""
+        aria-controls="siteSearchDropdown"
         aria-expanded="false"
         aria-label="Toggle search bar"
       >
         <span><i class="fa-solid fa-magnifying-glass fa-fw" /></span>
       </button>
     </div>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+    <div
+      class="collapse navbar-collapse justify-content-between"
+      id="navbarNavDropdown"
+    >
+      <ul class="navbar-nav menu-links">
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3"
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -149,7 +153,7 @@
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3"
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center "
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -174,7 +178,7 @@
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3"
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center "
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -198,11 +202,11 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link p-3" href="#">Join</a>
+          <a class="nav-link " href="#">Join</a>
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center p-3"
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center "
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -225,19 +229,25 @@
             </div>
           </ul>
         </li>
-        <li class="nav-item bg-neutral-50 border-top border-neutral-200">
+      </ul>
+      <ul class="navbar-nav action-links">
+        <li class="nav-item d-none d-xl-block">
           <a
-            class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
+            class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center"
+            href="#">Search <i class="fa-solid fa-magnifying-glass fa-fw" /></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center"
             href="#"
             >Get Help <i class="fa-solid fa-square-arrow-up-right fa-fw" /></a
           >
         </li>
         {#if loggedIn}
-          <li
-            class="nav-item dropdown bg-neutral-50 border-top border-bottom border-neutral-200 "
-          >
+          <li class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
+              class="nav-link dropdown-toggle  text-uppercase d-flex flex-row justify-content-between align-items-center"
               href="#"
               role="button"
               data-bs-toggle="dropdown"
@@ -279,11 +289,9 @@
             </ul>
           </li>
         {:else}
-          <li
-            class="nav-item bg-neutral-50 border-top border-bottom border-neutral-200 "
-          >
+          <li class="nav-item ">
             <a
-              class="nav-link p-3 text-uppercase d-flex flex-row justify-content-between align-items-center"
+              class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center"
               href="#">Log In<i class="fa-solid fa-user fa-fw" /></a
             >
           </li>
@@ -294,47 +302,101 @@
 </nav>
 
 <style lang="scss">
+  // @import '~bootstrap/scss/_mixins.scss';
   .container-fluid {
     padding: 0;
   }
   .navbar {
     --bs-navbar-padding-y: 0;
+    --bs-navbar-padding-x: 0;
     --bs-navbar-color: var(--color-neutral-800);
     --bs-navbar-brand-color: var(--color-neutral-800);
-    --bs-nav-link-color: var(--color-neutral-900);
-    --bs-nav-link-hover-color: var(--color-primary-500);
-  }
-  .navbar-toggler {
-    padding: 0;
+
+    --bs-navbar-active-color: var(--color-primary-500);
+    --bs-navbar-toggler-padding-y: 3px;
+    --bs-navbar-toggler-padding-x: 3px;
+    --bs-navbar-toggler-focus-width: 3px;
   }
   .navbar-nav {
     font-size: var(--ht-text-sm);
+    --bs-nav-link-color: var(--color-neutral-900);
+    --bs-nav-link-hover-color: var(--color-primary-500);
     --bs-nav-link-font-weight: var(--headings-font-weight);
-    .nav-item:nth-of-type(6),
-    .nav-item:nth-of-type(7) {
-      a.nav-link {
-        font-weight: 800;
-      }
-      a:hover {
-        text-decoration: none;
-      }
-      i {
-        color: var(--color-primary-500);
-      }
-      .needs-hover-state:hover {
-        text-decoration: underline;
-      }
-    }
-    .nav-item:nth-of-type(7) {
-      border-radius: 0 0 8px 8px;
-    }
-    .nav-link {
-      &:hover,
-      &:focus {
-        color: var(--color-primary-500);
-      }
+    --bs-nav-link-padding-x: 16px;
+    --bs-nav-link-padding-y: 16px;
+    @media (min-width: 1200px) {
+      --bs-nav-link-padding-x: 0;
+      --bs-nav-link-padding-y: 0;
+      --bs-navbar-nav-link-padding-x: 0;
+      --bs-navbar-nav-link-padding-y: 0;
+      gap: 24px;
     }
   }
+  .navbar .ht-logo,
+  .navbar .mobile-collapse-buttons {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .navbar .ht-logo {
+    padding-left: 1rem;
+    @media (min-width: 1200px) {
+      padding-right: 2.5rem;
+    }
+  }
+  .navbar .mobile-collapse-buttons {
+    padding-right: 1rem;
+    gap: 1.5rem;
+  }
+  .navbar-nav.menu-links .nav-item a {
+    @media (min-width: 1200px) {
+      gap: 0.5rem;
+    }
+  }
+  .navbar-nav.action-links {
+    @media (min-width: 1200px) {
+      padding-right: 1rem;
+    }
+    .nav-item {
+      background: var(--color-neutral-50);
+      border-top: solid 1px var(--color-neutral-200);
+      @media (min-width: 1200px) {
+        background: white;
+        border-top: none;
+      }
+      a {
+        @media (min-width: 1200px) {
+          gap: 0.75rem;
+        }
+      }
+    }
+    .nav-item:last-of-type {
+      border-bottom: solid 1px var(--color-neutral-200);
+      border-radius: 0 0 8px 8px;
+      @media (min-width: 1200px) {
+        border-bottom: none;
+        border-radius: 0;
+      }
+    }
+    a.nav-link {
+      font-weight: 800;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+    i {
+      color: var(--color-primary-500);
+    }
+    .needs-hover-state:hover {
+      text-decoration: underline;
+    }
+  }
+  .nav-link {
+    &:hover,
+    &:focus {
+      color: var(--color-primary-500);
+    }
+  }
+
   .hasNotification {
     position: relative;
     &::after {
@@ -364,9 +426,6 @@
   .dropdown-toggle::after {
     font-size: 1.1em;
   }
-  // .show::after {
-  //   display: none;
-  // }
   .dropdown-menu {
     --bs-dropdown-padding-y: 1rem;
     --bs-dropdown-font-size: var(--ht-text-sm);

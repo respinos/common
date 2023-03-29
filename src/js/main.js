@@ -33,9 +33,9 @@ const buildProps = (el) => {
 };
 
 const apps = {};
-apps["hathi-quote"] = Quote;
-apps["hathi-login-form-modal"] = LoginFormModal;
-apps["hathi-navbar"] = Navbar;
+apps['hathi-quote'] = Quote;
+apps['hathi-login-form-modal'] = LoginFormModal;
+apps['hathi-navbar'] = Navbar;
 
 // configure the HT global
 setupHTEnv();
