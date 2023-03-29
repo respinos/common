@@ -245,7 +245,7 @@
           >
         </li>
         {#if loggedIn}
-          <li class="nav-item dropdown">
+          <li id="my-account" class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle  text-uppercase d-flex flex-row justify-content-between align-items-center"
               href="#"
@@ -256,16 +256,15 @@
               <div class="d-flex justify-content-center align-items-center">
                 <span
                   class:accountHasNotification={hasNotification}
-                  class="d-flex align-items-center justify-content-center border border-neutral-300 rounded-circle bg-neutral-100 me-2"
-                  style="width:40px;height:40px;"
+                  class="account-icon me-n1 d-flex align-items-center justify-content-center border border-neutral-300 rounded-circle bg-neutral-100"
                 >
                   <i class="fa-solid fa-user text-neutral-800" />
                 </span>
-                <span>My Account</span>
+                <span class="account-text ms-3">My Account</span>
               </div>
             </a>
-            <ul class="dropdown-menu border-0 shadow-none pt-2">
-              <div class="d-flex flex-column gap-4 pt-2">
+            <ul class="dropdown-menu dropdown-menu-end">
+              <div class="d-flex flex-column gap-4 ">
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
@@ -355,6 +354,7 @@
   .navbar-nav.action-links {
     @media (min-width: 1200px) {
       padding-right: 1rem;
+      align-items: center;
     }
     .nav-item {
       background: var(--color-neutral-50);
@@ -394,6 +394,15 @@
     &:hover,
     &:focus {
       color: var(--color-primary-500);
+    }
+  }
+  #my-account a span.account-icon {
+    width: 40px;
+    height: 40px;
+  }
+  #my-account .account-text {
+    @media (min-width: 1200px) {
+      display: none;
     }
   }
 
@@ -461,11 +470,17 @@
       --bs-dropdown-link-hover-bg: #fff;
       margin-top: 1rem;
     }
+    &.dropdown-menu-end {
+      padding-top: 0;
+      @media (min-width: 1200px) {
+        padding-top: 1.5rem;
+      }
+    }
   }
-  .fa-caret-down {
-    // transform: rotate(0deg);
-    // transition: transform 200ms linear;
-  }
+  // .fa-caret-down {
+  // transform: rotate(0deg);
+  // transition: transform 200ms linear;
+  // }
   // [aria-expanded="true"] {
   //   // transform: rotate(0.5turn);
   //   // transition: transform 200ms linear;
