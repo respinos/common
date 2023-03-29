@@ -1,34 +1,9 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
-  // import { Collapse, Dropdown, Popover } from 'bootstrap'
-  // import './containerqueries.css';
   import menuData from '../../../assets/menuData.json';
 
   export let loggedIn = false;
   export let hasNotification = false;
-
-  // let dropdownOpen = {
-  //   about: false,
-  //   collection: false,
-  //   libraries: false,
-  //   news: false,
-  // };
-
-  // let selected = undefined;
-
-  // function setSelectedIndex(index) {
-  //   if (this.selected == undefined || this.selected !== index) {
-  //     this.selected = index;
-  //   } else {
-  //     this.selected = undefined;
-  //   }
-  // }
-
-  // function animateCaret() {
-  //   var link = document.getElementsByClassName("dropdown-toggle show");
-  //   {
-  //   }
-  // }
 </script>
 
 <nav class="navbar navbar-expand-xl bg-white">
@@ -140,10 +115,10 @@
             <!-- <i class="fa-solid fa-caret-down" /> -->
           </a>
           <div>
-            <ul class="dropdown-menu border-0 shadow-none pt-2">
-              <div class="d-flex flex-column gap-4 pt-2">
+            <ul class="dropdown-menu">
+              <div class="d-flex flex-column gap-4">
                 {#each menuData.about as linkText}
-                  <li class="ps-3">
+                  <li class="px-3">
                     <a class="dropdown-item px-0" href="#">{linkText}</a>
                   </li>
                 {/each}
@@ -166,10 +141,10 @@
                 : 'fa-caret-down'}"
             /> -->
           </a>
-          <ul class="dropdown-menu border-0 shadow-none pt-2">
-            <div class="d-flex flex-column gap-4 pt-2">
+          <ul class="dropdown-menu">
+            <div class="d-flex flex-column gap-4">
               {#each menuData.collection as linkText}
-                <li class="ps-3">
+                <li class="px-3">
                   <a class="dropdown-item px-0" href="#">{linkText}</a>
                 </li>
               {/each}
@@ -191,10 +166,10 @@
                 : 'fa-caret-down'}"
             /> -->
           </a>
-          <ul class="dropdown-menu border-0 shadow-none pt-2">
-            <div class="d-flex flex-column gap-4 pt-2">
+          <ul class="dropdown-menu">
+            <div class="d-flex flex-column gap-4">
               {#each menuData.memberLibraries as linkText}
-                <li class="ps-3">
+                <li class="px-3">
                   <a class="dropdown-item px-0" href="#">{linkText}</a>
                 </li>
               {/each}
@@ -219,10 +194,10 @@
                 : 'fa-caret-down'}"
             />-->
           </a>
-          <ul class="dropdown-menu border-0 shadow-none pt-2">
-            <div class="d-flex flex-column gap-4 pt-2">
+          <ul class="dropdown-menu">
+            <div class="d-flex flex-column gap-4">
               {#each menuData.newsEvents as linkText}
-                <li class="ps-3">
+                <li class="px-3">
                   <a class="dropdown-item px-0" href="#">{linkText}</a>
                 </li>
               {/each}
@@ -245,7 +220,7 @@
           >
         </li>
         {#if loggedIn}
-          <li class="nav-item dropdown">
+          <li id="my-account" class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle  text-uppercase d-flex flex-row justify-content-between align-items-center"
               href="#"
@@ -256,16 +231,15 @@
               <div class="d-flex justify-content-center align-items-center">
                 <span
                   class:accountHasNotification={hasNotification}
-                  class="d-flex align-items-center justify-content-center border border-neutral-300 rounded-circle bg-neutral-100 me-2"
-                  style="width:40px;height:40px;"
+                  class="account-icon me-n1 d-flex align-items-center justify-content-center border border-neutral-300 rounded-circle bg-neutral-100"
                 >
                   <i class="fa-solid fa-user text-neutral-800" />
                 </span>
-                <span>My Account</span>
+                <span class="account-text ms-3">My Account</span>
               </div>
             </a>
-            <ul class="dropdown-menu border-0 shadow-none pt-2">
-              <div class="d-flex flex-column gap-4 pt-2">
+            <ul class="dropdown-menu dropdown-menu-end">
+              <div class="d-flex flex-column gap-4 ">
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
@@ -302,7 +276,6 @@
 </nav>
 
 <style lang="scss">
-  // @import '~bootstrap/scss/_mixins.scss';
   .container-fluid {
     padding: 0;
   }
@@ -355,6 +328,7 @@
   .navbar-nav.action-links {
     @media (min-width: 1200px) {
       padding-right: 1rem;
+      align-items: center;
     }
     .nav-item {
       background: var(--color-neutral-50);
@@ -396,6 +370,15 @@
       color: var(--color-primary-500);
     }
   }
+  #my-account a span.account-icon {
+    width: 40px;
+    height: 40px;
+  }
+  #my-account .account-text {
+    @media (min-width: 1200px) {
+      display: none;
+    }
+  }
 
   .hasNotification {
     position: relative;
@@ -432,27 +415,40 @@
     --bs-dropdown-color: var(--color-neutral-800);
     --bs-dropdown-bg: var(--color-neutral-50);
     --bs-dropdown-border-radius: 0;
+    --bs-dropdown-border-width: 0;
+    --bs-dropdown-border-color: transparent;
+    --bs-dropdown-box-shadow: none;
     --bs-dropdown-item-padding-y: 0;
-    --bs-dropdown-link-color: var(--color-netural-800);
+    --bs-dropdown-link-color: var(--color-neutral-800);
     --bs-dropdown-link-hover-color: var(--color-netural-800);
-    --bs-dropdown-link-hover-bg: var(--color-netural-50);
+    --bs-dropdown-link-hover-bg: var(--color-neutral-50);
+    div {
+      padding-top: 0.5rem;
+      @media (min-width: 1200px) {
+        padding-top: 0;
+      }
+    }
     a {
       &:hover {
         text-decoration: underline;
       }
     }
+    @media (min-width: 1200px) {
+      --bs-dropdown-padding-y: 1.5rem;
+      --bs-dropdown-item-padding-y: 0;
+      --bs-dropdown-bg: #fff;
+      --bs-dropdown-border-radius: 8px;
+      --bs-dropdown-border-width: 1px;
+      --bs-dropdown-border-color: var(--color-neutral-300);
+      --bs-dropdown-box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
+      --bs-dropdown-link-hover-bg: #fff;
+      margin-top: 1rem;
+    }
+    &.dropdown-menu-end {
+      padding-top: 0;
+      @media (min-width: 1200px) {
+        padding-top: 1.5rem;
+      }
+    }
   }
-  .fa-caret-down {
-    // transform: rotate(0deg);
-    // transition: transform 200ms linear;
-  }
-  // [aria-expanded="true"] {
-  //   // transform: rotate(0.5turn);
-  //   // transition: transform 200ms linear;
-  //   font-size: 2em;
-  // }
-  // .fa-caret-down.open {
-  //   transform: rotate(180deg);
-  //   transition: transform 200ms linear;
-  // }
 </style>

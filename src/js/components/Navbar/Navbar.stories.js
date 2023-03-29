@@ -14,6 +14,19 @@ export const Default = {
     },
   },
 };
+export const DesktopLoggedIn = {
+  parameters: { ...Default.parameters },
+  args: {
+    loggedIn: true,
+  },
+};
+export const DesktopLoggedInWithNotifications = {
+  parameters: { ...Default.parameters },
+  args: {
+    loggedIn: true,
+    hasNotification: true,
+  },
+};
 export const Mobile = {
   parameters: {
     viewport: {
