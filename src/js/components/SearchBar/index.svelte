@@ -66,13 +66,10 @@
     &.input-group {
       gap: 0.5rem;
     }
-    input,
-    &.input-group .input-group-text {
-      padding: 0.625em 0.75em;
-    }
-    &.input-group > .form-select {
+    .search-input {
+      display: flex;
       border: 0.5px solid var(--color-neutral-500);
-      padding: 0.625em 0.75em;
+      border-radius: 0.375em;
     }
     input {
       width: 100%;
@@ -80,23 +77,22 @@
       box-shadow: none;
       border-top-right-radius: 0 !important;
       border-bottom-right-radius: 0 !important;
+      padding: 0.625em 0.75em;
     }
-    .search-input {
-      display: flex;
-      border: 0.5px solid var(--color-neutral-500);
-      border-radius: 0.375em;
-    }
-    &.input-group .input-group-text {
+    .input-group-text {
       font-size: 1rem;
       border-top-left-radius: 0 !important;
       border-bottom-left-radius: 0 !important;
       border: none;
       background-color: var(--color-neutral-50);
+      padding: 0.625em 0.75em;
       i {
         font-size: 14px;
       }
     }
-    &.input-group > .form-select {
+    .form-select {
+      border: 0.5px solid var(--color-neutral-500);
+      padding: 0.625em 0.75em;
       width: 100%;
       border-radius: 0.375rem;
       margin-left: 0;
@@ -152,10 +148,22 @@
       &.input-group {
         gap: 0;
       }
+      .search-input {
+        width: 55%;
+        .input-group-text {
+          order: -1;
+          border-top-left-radius: 0.375em !important;
+          border-bottom-left-radius: 0.375em !important;
+          border-top-right-radius: 0 !important;
+          border-bottom-right-radius: 0 !important;
+          padding: 1em 0 1em 1em;
+        }
+      }
       input {
-        width: 1%;
-        border-top-right-radius: 0 !important;
-        border-bottom-right-radius: 0 !important;
+        // width: 1%;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        padding: 1em;
       }
       &.input-group
         > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(
@@ -174,6 +182,19 @@
       }
       &.input-group > .form-select {
         width: 1%;
+        padding: 1em;
+      }
+      button {
+        padding: 1em;
+      }
+    }
+    .search-details {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: start;
+      padding-top: 0.75em;
+      .search-links {
+        gap: 1.5em;
       }
     }
   }
