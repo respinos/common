@@ -5,12 +5,17 @@
 <div class="search-form-wrapper">
   <form>
     <div id="searchbar-form" class="input-group d-flex">
-      <input
-        type="text"
-        class="form-control"
-        aria-label="Text input with dropdown button"
-        placeholder="Search using keywords"
-      />
+      <div class="search-input">
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Text input with dropdown button"
+          placeholder="Search using keywords"
+        />
+        <span class="input-group-text" id="search-icon"
+          ><i class="fa-solid fa-magnifying-glass fa-fw" /></span
+        >
+      </div>
       <select class="form-select" aria-label="Default select example">
         <option value="Collection" selected>Collection</option>
         <option value="Website">Website</option>
@@ -62,14 +67,34 @@
       gap: 0.5rem;
     }
     input,
+    &.input-group .input-group-text {
+      padding: 0.625em 0.75em;
+    }
     &.input-group > .form-select {
       border: 0.5px solid var(--color-neutral-500);
       padding: 0.625em 0.75em;
     }
     input {
       width: 100%;
-      border-top-right-radius: 0.375rem !important;
-      border-bottom-right-radius: 0.375rem !important;
+      border: none;
+      box-shadow: none;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+    .search-input {
+      display: flex;
+      border: 0.5px solid var(--color-neutral-500);
+      border-radius: 0.375em;
+    }
+    &.input-group .input-group-text {
+      font-size: 1rem;
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+      border: none;
+      background-color: var(--color-neutral-50);
+      i {
+        font-size: 14px;
+      }
     }
     &.input-group > .form-select {
       width: 100%;
