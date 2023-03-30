@@ -2,9 +2,9 @@
 <script>
 </script>
 
-<div>
+<div class="search-form-wrapper">
   <form>
-    <div id="searchbar-form" class="input-group mb-3 d-flex">
+    <div id="searchbar-form" class="input-group d-flex">
       <input
         type="text"
         class="form-control"
@@ -12,16 +12,20 @@
         placeholder="Search using keywords"
       />
       <select class="form-select" aria-label="Default select example">
-        <option selected>Collection</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option value="Collection" selected>Collection</option>
+        <option value="Website">Website</option>
       </select>
       <select class="form-select" aria-label="Default select example">
-        <option selected>All Fields</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option value="Everything" selected>Everything</option>
+        <option value="All Bibliographic Fields"
+          >All Bibliographic Fields</option
+        >
+        <option value="Title">Title</option>
+        <option value="Author">Author</option>
+        <option value="Subject">Subject</option>
+        <option value="ISBN/ISSN">ISBN/ISSN</option>
+        <option value="Publisher">Publisher</option>
+        <option value="Series Title">Series Title</option>
       </select>
       <button
         class="btn btn-primary btn-outline-secondary"
@@ -30,28 +34,37 @@
       >
     </div>
   </form>
-  <div class="search-links">
-    <span
-      ><i class="fa-solid fa-circle-info" />You're searching for items you can
-      access.</span
+  <div class="search-details d-flex">
+    <span class="search-help"
+      ><i class="fa-solid fa-circle-info fa-fw" />You're searching for items you
+      can access.</span
     >
-    <div>
-      <a href="#"><i class="fa-regular fa-circle-question" />Search Help</a>
-      <a href="#"><i class="fa-solid fa-toolbox" />Advanced Collection Search</a
+    <div class="search-links">
+      <a href="#"
+        ><i class="fa-regular fa-circle-question fa-fw" />Search Help</a
+      >
+      <a href="#"
+        ><i class="fa-solid fa-toolbox fa-fw" />Advanced Collection Search</a
       >
     </div>
   </div>
 </div>
 
 <style lang="scss">
-  form {
+  .search-form-wrapper {
     padding: 1rem;
+    background: #fff;
   }
   #searchbar-form {
     display: flex;
     flex-direction: column;
     &.input-group {
       gap: 0.5rem;
+    }
+    input,
+    &.input-group > .form-select {
+      border: 0.5px solid var(--color-neutral-500);
+      padding: 0.625em 0.75em;
     }
     input {
       width: 100%;
@@ -66,6 +79,46 @@
     button {
       border-radius: 0.375rem;
       margin-left: 0;
+      text-transform: uppercase;
+      font-weight: var(--form-label-font-weight);
+      letter-spacing: -0.01em;
+      padding: 0.5em 0.75em;
+    }
+  }
+  .search-details {
+    padding-top: 1rem;
+    flex-direction: column;
+    gap: 1.375em;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    .search-help {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5em;
+      font-style: italic;
+      i {
+        font-size: 14px;
+        color: var(--color-primary-500);
+      }
+    }
+    .search-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25em;
+      a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.75em;
+        text-decoration: none;
+        color: var(--color-neutral-800);
+      }
+      i {
+        font-size: 14px;
+        color: var(--color-primary-500);
+      }
     }
   }
   @media (min-width: 768px) {
