@@ -1,8 +1,18 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
+  export let index = 'library';
+
+  //search form bindings
+  let _select, _searchtype, _root, fieldValue, _input;
+  fieldValue = 'Everything';
+
+  let _updateSelect = function (event) {
+    _root.dataset.index = event.target.value;
+    index = event.target.value;
+  };
 </script>
 
-<div class="search-form-wrapper">
+<div class="search-form-wrapper" bind:this={_root}>
   <form>
     <div id="searchbar-form" class="input-group d-flex">
       <div class="search-input">
@@ -11,27 +21,39 @@
           class="form-control"
           aria-label="Text input with dropdown button"
           placeholder="Search using keywords"
+          bind:this={_input}
         />
         <span class="input-group-text" id="search-icon"
           ><i class="fa-solid fa-magnifying-glass fa-fw" /></span
         >
       </div>
-      <select class="form-select" aria-label="Default select example">
-        <option value="Collection" selected>Collection</option>
-        <option value="Website">Website</option>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        bind:this={_select}
+        on:change={_updateSelect}
+      >
+        <option value="library" selected>Collection</option>
+        <option value="website">Website</option>
       </select>
-      <select class="form-select" aria-label="Default select example">
-        <option value="Everything" selected>Everything</option>
-        <option value="All Bibliographic Fields"
-          >All Bibliographic Fields</option
+      {#if index == 'library'}
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          bind:this={_searchtype}
         >
-        <option value="Title">Title</option>
-        <option value="Author">Author</option>
-        <option value="Subject">Subject</option>
-        <option value="ISBN/ISSN">ISBN/ISSN</option>
-        <option value="Publisher">Publisher</option>
-        <option value="Series Title">Series Title</option>
-      </select>
+          <option value="Everything" selected>Everything</option>
+          <option value="All Bibliographic Fields"
+            >All Bibliographic Fields</option
+          >
+          <option value="Title">Title</option>
+          <option value="Author">Author</option>
+          <option value="Subject">Subject</option>
+          <option value="ISBN/ISSN">ISBN/ISSN</option>
+          <option value="Publisher">Publisher</option>
+          <option value="Series Title">Series Title</option>
+        </select>
+      {/if}
       <button
         class="btn btn-primary btn-outline-secondary"
         type="button"
@@ -41,9 +63,14 @@
   </form>
   <div class="search-details d-flex">
     <span class="search-help"
-      ><i class="fa-solid fa-circle-info fa-fw" />You're searching for items you
-      can access.</span
-    >
+      ><i class="fa-solid fa-circle-info fa-fw" />
+      {#if index == 'library'}
+        You're searching for items you can access.
+      {/if}
+      {#if index == 'website'}
+        You're searching the information website.
+      {/if}
+    </span>
     <div class="search-links">
       <a href="#"
         ><i class="fa-regular fa-circle-question fa-fw" />Search Help</a
@@ -149,7 +176,10 @@
         gap: 0;
       }
       .search-input {
-        width: 55%;
+        flex-grow: 2;
+        @media (min-width: 992px) {
+          flex-grow: 3;
+        }
         .input-group-text {
           order: -1;
           border-top-left-radius: 0.375em !important;
