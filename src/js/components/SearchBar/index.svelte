@@ -28,6 +28,33 @@
     SERVICE_DOMAIN = window.HT.service_domain;
     CATALOG_DOMAIN = window.HT.catalog_domain;
   }
+
+  let _submitSearch = function (event) {
+    let search_url;
+    if (index == 'library' && _searchtype.value == 'everything') {
+      let submitData = new URLSearchParams();
+      submitData.set('q1', _input.value);
+      submitData.set('field1', 'ocr');
+      submitData.set('a', 'srchls');
+      submitData.set('ft', 'ft');
+      submitData.set('lmt', 'ft');
+      search_url = `//${SERVICE_DOMAIN}/cgi/ls?${submitData.toString()}`;
+    } else if (index == 'library') {
+      let submitData = new URLSearchParams();
+      submitData.set('lookfor', _input.value);
+      submitData.set('searchtype', _searchtype.value);
+      submitData.set('ft', 'ft');
+      submitData.set('setft', 'true');
+      search_url = `//${CATALOG_DOMAIN}/Search/Home?${submitData.toString()}`;
+    } else {
+      // website search
+      let searchTerms = _input.value.toLowerCase();
+      search_url = `https://www.hathitrust.org/search/node/${searchTerms}`;
+    }
+    if (search_url) {
+      location.href = search_url;
+    }
+  };
 </script>
 
 <div class="search-form-wrapper" bind:this={_root}>
@@ -74,7 +101,8 @@
       <button
         class="btn btn-primary btn-outline-secondary"
         type="button"
-        id="button-addon2">Search</button
+        id="button-addon2"
+        on:click={_submitSearch}>Search</button
       >
     </div>
   </form>
@@ -92,7 +120,7 @@
       <a href="#"
         ><i class="fa-regular fa-circle-question fa-fw" />Search Help</a
       >
-      <a href="#"
+      <a href={`//${CATALOG_DOMAIN}/Search/Advanced`}
         ><i class="fa-solid fa-toolbox fa-fw" />Advanced Collection Search</a
       >
     </div>
