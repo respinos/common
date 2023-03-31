@@ -6,10 +6,28 @@
   let _select, _searchtype, _root, fieldValue, _input;
   fieldValue = 'Everything';
 
+  //updates UI when 'Collection' or 'Website' is selected in search options
   let _updateSelect = function (event) {
     _root.dataset.index = event.target.value;
     index = event.target.value;
   };
+
+  //updates search hint message when use selects search type
+  function _updateSearchType() {
+    let value = _searchtype.value;
+    _root.dataset.field = value;
+    let menuItem = _searchtype.options[_searchtype.selectedIndex];
+    // window._s1 = _searchtype;
+    console.log('-- updateSearchType', value, _searchtype, menuItem);
+    fieldValue = menuItem.text;
+  }
+
+  let SERVICE_DOMAIN = 'babel.hathitrust.org';
+  let CATALOG_DOMAIN = 'catalog.hathitrust.org';
+  if (window.HT && window.HT.service_domain) {
+    SERVICE_DOMAIN = window.HT.service_domain;
+    CATALOG_DOMAIN = window.HT.catalog_domain;
+  }
 </script>
 
 <div class="search-form-wrapper" bind:this={_root}>
@@ -41,17 +59,16 @@
           class="form-select"
           aria-label="Default select example"
           bind:this={_searchtype}
+          on:change={_updateSearchType}
         >
-          <option value="Everything" selected>Everything</option>
-          <option value="All Bibliographic Fields"
-            >All Bibliographic Fields</option
-          >
-          <option value="Title">Title</option>
-          <option value="Author">Author</option>
-          <option value="Subject">Subject</option>
-          <option value="ISBN/ISSN">ISBN/ISSN</option>
-          <option value="Publisher">Publisher</option>
-          <option value="Series Title">Series Title</option>
+          <option value="everything" selected>Everything</option>
+          <option value="all">All Bibliographic Fields</option>
+          <option value="title">Title</option>
+          <option value="author">Author</option>
+          <option value="subject">Subject</option>
+          <option value="isbn">ISBN/ISSN</option>
+          <option value="publisher">Publisher</option>
+          <option value="seriestitle">Series Title</option>
         </select>
       {/if}
       <button
@@ -65,7 +82,7 @@
     <span class="search-help"
       ><i class="fa-solid fa-circle-info fa-fw" />
       {#if index == 'library'}
-        You're searching for items you can access.
+        You're searching in {fieldValue} for items you can access.
       {/if}
       {#if index == 'website'}
         You're searching the information website.
