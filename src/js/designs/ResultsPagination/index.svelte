@@ -10,20 +10,6 @@
 </script>
 
 <style lang="scss">
-  // a.d-inline-flex {
-  //   gap: 0.25rem;
-  //   text-decoration: none;
-  //   padding: 0.25rem;
-  //   align-items: center;
-
-  //   & > * {
-  //     // text-decoration: underline;
-  //   }
-  // }
-
-  a i[aria-hidden] {
-    text-decoration: none;
-  }
 
 </style>
 
