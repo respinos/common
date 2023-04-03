@@ -199,8 +199,24 @@ $utilities: map-merge(
   )
 );
 
+$utilities: map-merge(
+  $utilities, (
+    "width": map-merge(
+      map-get($utilities, "width"),
+      (responsive: true),
+    ),
+));
+
+@include media-breakpoint-up('xs') {
+  $infix: breakpoint-infix('xs', $grid-breakpoints);
+  .list-group-vertical#{$infix} {
+    flex-direction: column;
+  }
+}
+
 // Utilities
 @import '~bootstrap/scss/utilities/api';
+
 
 // define design tokens which may be used in application stylesheets
 :root {

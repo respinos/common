@@ -1,6 +1,8 @@
 <script>
   import ResultsItem from '../ResultsItem';
 
+  export let supportsSelection = true;
+
   let items = [
     {
       htid: 'uiuo.ark:/13960/t9086v22h',
@@ -32,7 +34,7 @@
       title: 'Publications of the Dominion Observatory, Ottawa v.19:7',
       author: 'Dominion Observatory (Canada)',
       publicationDate: 1970,
-      access: 'limited-search-only',
+      access: 'limited-access-permitted',
     },
     {
       htid: 'uiuo.ark:/13960/t7pn9p41f',
@@ -43,10 +45,21 @@
       access: 'full-view',
     },
   ]
+
+  if ( supportsSelection === false ) {
+    items.unshift({
+      htid: 'mdp.39015013972271',
+      catalogId: '000455846',
+      title: 'Agincourt',
+      author: 'Hibbert, Christopher, 1924-2008.',
+      publicationDate: 1964,
+      access: 'multiple-items',
+    })
+  }
 </script>
 
-<div class="container">
+<div class="container-fluid">
   {#each items as item}
-    <ResultsItem {...item}></ResultsItem>
+    <ResultsItem {...item} {supportsSelection}></ResultsItem>
   {/each}
 </div>
