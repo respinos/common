@@ -83,19 +83,26 @@
         {/if}
       </dl>
     </div>
-    <div class="list-group list-group-horizontal-sm align-items-center">
-      <a class="list-group-item list-group-item-action w-sm-50" href="http://catalog.hathitrust.org/Record/{catalogId}"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> <span>Catalog Record</span></a>
+    <div>
       {#if access == 'multiple-items'}
-      <span class="list-group-item w-sm-50 border-0 bg-transparent fs-7">Use the Catalog Record to view multiple volumes</span>
-      {:else if access == 'limited-search-only'}
-      <a class="list-group-item list-group-item-action w-sm-50" href="https://babel.hathitrust.org/cgi/pt?id={htid}"><i aria-hidden="true" class="fa-solid fa-lock"></i> <span>Limited (search-only)</span></a>
-      {:else if access == 'limited-access-permitted'}
-      <a data-access-role="superuser" class="list-group-item list-group-item-action w-sm-50" href="https://babel.hathitrust.org/cgi/pt?id={htid}"><i aria-hidden="true" class="fa-solid fa-unlock"></i> <span>Limited (access permitted)</span></a>
-      {:else}
-      <a class="list-group-item list-group-item-action list-group-item-dark active w-sm-50" href="https://babel.hathitrust.org/cgi/pt?id={htid}"><i class="fa-regular fa-file-lines" aria-hidden="true"></i> <span>Full View</span></a>
+        <p class="fs-7 text-secondary mb-1">
+          Use the Catalog Record to view multiple volumes
+        </p>
       {/if}
+      <div class="list-group list-group-horizontal-sm align-items-center">
+        <a class="list-group-item list-group-item-action w-sm-50" href="http://catalog.hathitrust.org/Record/{catalogId}"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> <span>Catalog Record</span></a>
+        {#if access == 'multiple-items'}
+        <!-- <span class="list-group-item w-sm-50 border-0 bg-transparent fs-7">Use the Catalog Record to view multiple volumes</span> -->
+        {:else if access == 'limited-search-only'}
+        <a class="list-group-item list-group-item-action w-sm-50" href="https://babel.hathitrust.org/cgi/pt?id={htid}"><i aria-hidden="true" class="fa-solid fa-lock"></i> <span>Limited (search-only)</span></a>
+        {:else if access == 'limited-access-permitted'}
+        <a data-access-role="superuser" class="list-group-item list-group-item-action w-sm-50" href="https://babel.hathitrust.org/cgi/pt?id={htid}"><i aria-hidden="true" class="fa-solid fa-unlock"></i> <span>Limited (access permitted)</span></a>
+        {:else}
+        <a class="list-group-item list-group-item-action list-group-item-dark active w-sm-50" href="https://babel.hathitrust.org/cgi/pt?id={htid}"><i class="fa-regular fa-file-lines" aria-hidden="true"></i> <span>Full View</span></a>
+        {/if}
+      </div>
     </div>
-  </div>
+    </div>
   {#if supportsSelection}
   <div class="record-action form-check" style="order: -1">
     <input class="form-check-input" type="checkbox" id="select-{htid}" name="extern_item_id" value={htid} aria-label="Add item to a collection" />
