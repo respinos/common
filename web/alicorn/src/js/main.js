@@ -117,7 +117,7 @@ var HT = HT || {};
     if ( HT.is_dev ) {
         var prefix = hostname.split(".")[0];
         console.log("-- main setting hostname", prefix, hostname);
-        if ( prefix == 'localhost' ) {
+        if ( prefix == 'localhost' || hostname.indexOf('.local') > -1 ) {
             if ( location.port ) {
               hostname += ':' + location.port;
             }
