@@ -33,7 +33,6 @@ export default {
 //   isOpen: true
 // };
 
-export const Default = {};
 export const ModalOpen = {
   parameters: {
     title: 'Modal Open',
@@ -42,6 +41,7 @@ export const ModalOpen = {
     isOpen: true
   }
 }
+export const ToggleOpen = {};
 
 export const FindInstitution = {
   args: {
