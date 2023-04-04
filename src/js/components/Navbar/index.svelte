@@ -4,6 +4,12 @@
 
   export let loggedIn = false;
   export let hasNotification = false;
+  export let searchOpen = true;
+
+  function toggleSearch() {
+    searchOpen = !searchOpen;
+    console.log('open?', searchOpen);
+  }
 </script>
 
 <nav class="navbar navbar-expand-xl bg-white">
@@ -208,8 +214,11 @@
       <ul class="navbar-nav action-links">
         <li class="nav-item d-none d-xl-block">
           <a
-            class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center"
-            href="#">Search <i class="fa-solid fa-magnifying-glass fa-fw" /></a
+            class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center "
+            class:search-active={searchOpen}
+            href="#"
+            on:click|preventDefault|stopPropagation={toggleSearch}
+            >Search <i class="fa-solid fa-magnifying-glass fa-fw" /></a
           >
         </li>
         <li class="nav-item">
@@ -353,6 +362,9 @@
     }
     a.nav-link {
       font-weight: 800;
+      &.search-active {
+        color: var(--color-primary-500);
+      }
     }
     a:hover {
       text-decoration: none;
