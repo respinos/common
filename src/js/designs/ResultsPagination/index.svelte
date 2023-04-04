@@ -2,6 +2,7 @@
   export let minPages = 1;
   export let maxPages = 35;
   export let value = 1;
+  export let stickyBottom = true;
 
   let numPerPage = 50;
 
@@ -10,10 +11,17 @@
 </script>
 
 <style lang="scss">
-
+  .sticky-bottom {
+    position: sticky;
+    padding: 1rem;
+    padding-bottom: 1rem;
+    bottom: 0;
+    background-color: #fff;
+    box-shadow: 0px -0.5rem 0.5rem -0.5rem rgba(0,0,0,0.1);
+  }
 </style>
 
-<nav aria-label="Result navigation" class="d-flex flex-column align-items-start justify-content-between flex-sm-row align-items-sm-center gap-3">
+<nav aria-label="Result navigation" class:sticky-bottom={stickyBottom} class="d-flex flex-column align-items-start justify-content-between flex-sm-row align-items-sm-center gap-3">
   <div>
     <ul class="list-unstyled d-flex gap-2 m-0">
       <li>

@@ -20,17 +20,22 @@ const parameters = {
 };
 
 export const FirstPageOfMany = {
-  parameters: parameters
+  parameters: parameters,
+  args: {
+    stickyBottom: false,
+  }
 };
 export const InsidePageOfMany = {
   parameters: parameters,
   args: {
+    stickyBottom: false,
     value: 5
   }
 };
 export const LastPageOfMany = {
   parameters: parameters,
   args: {
+    stickyBottom: false,
     value: 35
   }
 };
