@@ -1,5 +1,7 @@
 <script>
-  import ResultsZePage from '../ResultsZePage';
+  import ResultsList from '../ResultsList';
+  import ResultsPagination from '../ResultsPagination';
+  import ResultsToolbar from '../ResultsToolbar';
 
   export let enableBorder = false;
 </script>
@@ -77,8 +79,12 @@
       </div>
     </div>
     <div class="twocol-main ">
-      <div class="mainplain w-auto">
-        <slot name="main"><ResultsZePage /></slot>
+      <div class="mainplain w-auto position-relative">
+        <slot name="main">
+          <ResultsToolbar></ResultsToolbar>
+          <ResultsList></ResultsList>
+          <ResultsPagination></ResultsPagination>
+        </slot>
       </div>
     </div>
   </div>
