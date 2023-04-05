@@ -1,4 +1,7 @@
 <script>
+  import { slide } from 'svelte/transition';
+  import { sineIn, sineOut } from 'svelte/easing';
+
   import Navbar from '../Navbar/';
   import SearchBar from '../SearchBar';
 
@@ -24,6 +27,11 @@
 <div>
   <Navbar bind:searchOpen={searchOpenToggle} />
   {#if searchOpenToggle}
-    <SearchBar />
+    <div
+      out:slide={{ easing: sineOut, duration: 150 }}
+      in:slide={{ easing: sineIn, duration: 150 }}
+    >
+      <SearchBar />
+    </div>
   {/if}
 </div>
