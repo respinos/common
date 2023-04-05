@@ -26,14 +26,14 @@
 </style>
 
 
-<div class="bg-light rounded-2 p-2 d-flex flex-column flex-lg-row gap-3 justify-content-between align-items-center" role="toolbar" aria-label="Search toolbar" aria-describedby="results-summary">
-  <span id="results-summary" class="w-100 w-lg-auto">
+<div class="bg-light rounded-2 p-2 d-flex flex-sm-row flex-column gap-3 justify-content-between align-items-start align-items-sm-start" role="toolbar" aria-label="Search toolbar" aria-describedby="results-summary">
+  <span id="results-summary">
     {format(currentPage)} to {format(maxPages)} of {format(totalResults)} results
   </span>
-  <div class="d-flex w-100 w-lg-auto gap-3 flex-wrap justify-content-end">
+  <div class="d-flex flex-column align-items-start gap-3 xxflex-wrap justify-content-end">
     {#if target == 'catalog'}
-    <div class="row flex-nowrap">
-      <div class="col-auto pe-0">
+    <div class="row flex-nowrap" style="--bs-gutter-x: 0.5rem">
+      <div class="col-auto">
         <label class="col-form-label fw-normal" for="sort">Sort by</label>
       </div>
       <div class="col-auto">
@@ -45,8 +45,8 @@
       </div>
     </div>
     {/if}
-    <div class="row flex-nowrap">
-      <div class="col-auto pe-0">
+    <div class="row flex-nowrap" style="--bs-gutter-x: 0.5rem">
+      <div class="col-auto">
         <label class="col-form-label fw-normal" for="sort">Items per page</label>
       </div>
       <div class="col-auto">

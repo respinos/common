@@ -8,6 +8,8 @@
 
 <style lang="scss">
 
+  $twocol-breakpoint: 54em;
+
   :global(body) {
     padding: 0;
   }
@@ -32,7 +34,9 @@
     margin-top: 2.625rem;
     margin-inline: max(clamp(.938rem, calc(.268rem + 3.348vw), 1.875rem), ((100% - 73.125rem) / 2));
 
-    @media (min-width: 48em) {
+    // Phire is 48em, but that might assume a main 
+    // column that wraps more than HTDL
+    @media (min-width: $twocol-breakpoint) {
       flex-wrap: nowrap;
     }
   }
@@ -46,7 +50,7 @@
     flex-grow: 1;
     gap: 1.875rem;
 
-    @media (min-width: 48em) {
+    @media (min-width: 64em) {
       flex-shrink: 0;
       flex-basis: 18.75rem;
       gap: 3rem;
@@ -58,14 +62,14 @@
     flex-grow: 1;
     gap: 1.875rem;
 
-    @media (min-width: 48em) {
+    @media (min-width: $twocol-breakpoint) {
       flex-basis: 43.75rem;
       gap: 2.625rem;
     }
   }
 
   .twocol-main > * {
-    max-width: 43.75rem;
+    // max-width: 43.75rem;
     
   }
  
