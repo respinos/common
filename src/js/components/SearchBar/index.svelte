@@ -57,76 +57,74 @@
   };
 </script>
 
-<div
-  class="search-form-wrapper collapse show"
-  id="siteSearchDropdown"
-  bind:this={_root}
->
-  <form>
-    <div id="searchbar-form" class="input-group d-flex">
-      <div class="search-input">
-        <input
-          type="text"
-          class="form-control"
-          aria-label="Text input with dropdown button"
-          placeholder="Search using keywords"
-          bind:this={_input}
-        />
-        <span class="input-group-text" id="search-icon"
-          ><i class="fa-solid fa-magnifying-glass fa-fw" /></span
-        >
-      </div>
-      <select
-        class="form-select"
-        aria-label="Default select example"
-        bind:this={_select}
-        on:change={_updateSelect}
-      >
-        <option value="library" selected>Collection</option>
-        <option value="website">Website</option>
-      </select>
-      {#if index == 'library'}
+<div class="collapse show" id="siteSearchDropdown">
+  <div class="search-form-wrapper" bind:this={_root}>
+    <form>
+      <div id="searchbar-form" class="input-group d-flex">
+        <div class="search-input">
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Text input with dropdown button"
+            placeholder="Search using keywords"
+            bind:this={_input}
+          />
+          <span class="input-group-text" id="search-icon"
+            ><i class="fa-solid fa-magnifying-glass fa-fw" /></span
+          >
+        </div>
         <select
           class="form-select"
           aria-label="Default select example"
-          bind:this={_searchtype}
-          on:change={_updateSearchType}
+          bind:this={_select}
+          on:change={_updateSelect}
         >
-          <option value="everything" selected>Everything</option>
-          <option value="all">All Bibliographic Fields</option>
-          <option value="title">Title</option>
-          <option value="author">Author</option>
-          <option value="subject">Subject</option>
-          <option value="isbn">ISBN/ISSN</option>
-          <option value="publisher">Publisher</option>
-          <option value="seriestitle">Series Title</option>
+          <option value="library" selected>Collection</option>
+          <option value="website">Website</option>
         </select>
-      {/if}
-      <button
-        class="btn btn-primary btn-outline-secondary"
-        type="button"
-        id="button-addon2"
-        on:click={_submitSearch}>Search</button
-      >
-    </div>
-  </form>
-  <div class="search-details d-flex">
-    <span class="search-help"
-      ><i class="fa-solid fa-circle-info fa-fw" />
-      {#if index == 'library'}
-        You're searching in {fieldValue} for items you can access.
-      {/if}
-      {#if index == 'website'}
-        You're searching the information website.
-      {/if}
-    </span>
-    <div class="search-links">
-      <a href="#"
-        ><i class="fa-regular fa-circle-question fa-fw" />Search Help</a
-      >
-      <a href={`//${CATALOG_DOMAIN}/Search/Advanced`}
-        ><i class="fa-solid fa-toolbox fa-fw" />Advanced Collection Search</a
-      >
+        {#if index == 'library'}
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            bind:this={_searchtype}
+            on:change={_updateSearchType}
+          >
+            <option value="everything" selected>Everything</option>
+            <option value="all">All Bibliographic Fields</option>
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+            <option value="subject">Subject</option>
+            <option value="isbn">ISBN/ISSN</option>
+            <option value="publisher">Publisher</option>
+            <option value="seriestitle">Series Title</option>
+          </select>
+        {/if}
+        <button
+          class="btn btn-primary btn-outline-secondary"
+          type="button"
+          id="button-addon2"
+          on:click={_submitSearch}>Search</button
+        >
+      </div>
+    </form>
+    <div class="search-details d-flex">
+      <span class="search-help"
+        ><i class="fa-solid fa-circle-info fa-fw" />
+        {#if index == 'library'}
+          You're searching in {fieldValue} for items you can access.
+        {/if}
+        {#if index == 'website'}
+          You're searching the information website.
+        {/if}
+      </span>
+      <div class="search-links">
+        <a href="#"
+          ><i class="fa-regular fa-circle-question fa-fw" />Search Help</a
+        >
+        <a href={`//${CATALOG_DOMAIN}/Search/Advanced`}
+          ><i class="fa-solid fa-toolbox fa-fw" />Advanced Collection Search</a
+        >
+      </div>
     </div>
   </div>
 </div>
