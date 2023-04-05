@@ -72,13 +72,13 @@
       <h3 class="record-title">{title}</h3>
       <dl class="metadata">
         <div class="grid">
-          <dt class="g-col-lg-2 g-col-12">Published</dt>
-          <dd class="g-col-lg-10 g-col-12">{publicationDate}</dd>
+          <dt class="g-col-lg-4 g-col-12">Published</dt>
+          <dd class="g-col-lg-8 g-col-12">{publicationDate}</dd>
         </div>
         {#if author}
         <div class="grid">
-          <dt class="g-col-lg-2 g-col-12">Author</dt>
-          <dd class="g-col-lg-10 g-col-12">{author}</dd>
+          <dt class="g-col-lg-4 g-col-12">Author</dt>
+          <dd class="g-col-lg-8 g-col-12">{author}</dd>
         </div>
         {/if}
       </dl>
