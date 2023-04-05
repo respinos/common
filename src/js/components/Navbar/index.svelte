@@ -8,7 +8,6 @@
 
   function toggleSearch() {
     searchOpen = !searchOpen;
-    console.log('open?', searchOpen);
   }
 </script>
 
@@ -96,9 +95,9 @@
         class="navbar-toggler border-0 m-0"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#"
+        data-bs-target="#siteSearchDropdown"
         aria-controls="siteSearchDropdown"
-        aria-expanded="false"
+        aria-expanded="true"
         aria-label="Toggle search bar"
       >
         <span><i class="fa-solid fa-magnifying-glass fa-fw" /></span>

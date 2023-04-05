@@ -57,7 +57,11 @@
   };
 </script>
 
-<div class="search-form-wrapper" bind:this={_root}>
+<div
+  class="search-form-wrapper collapse show"
+  id="siteSearchDropdown"
+  bind:this={_root}
+>
   <form>
     <div id="searchbar-form" class="input-group d-flex">
       <div class="search-input">
