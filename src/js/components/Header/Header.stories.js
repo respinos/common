@@ -6,17 +6,29 @@ export default {
   component: Header,
 };
 
-export const Mobile = {
+export const MobileDefault = {
   parameters: {
     viewport: {
       defaultViewport: 'bsXs',
     },
   },
+  args: {
+    searchOpenToggle: true,
+  },
 };
-export const Desktop = {
+export const MobileSearchClosed = {
+  parameters: { ...MobileDefault.parameters },
+  args: {
+    searchOpenToggle: false,
+  },
+};
+export const DefaultDesktop = {
   parameters: {
     viewport: {
       defaultViewport: 'bsXl',
     },
+  },
+  args: {
+    searchOpen: true,
   },
 };

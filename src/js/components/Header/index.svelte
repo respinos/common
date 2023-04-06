@@ -30,8 +30,12 @@
     <div
       out:slide={{ easing: sineOut, duration: 150 }}
       in:slide={{ easing: sineIn, duration: 150 }}
+      class="collapse"
+      class:show={searchOpenToggle}
+      id="siteSearchDropdown"
     >
-      <SearchBar />
+      <SearchBar bootstrapToggleShow={searchOpenToggle} />
     </div>
   {/if}
+  <h2>{searchOpenToggle}</h2>
 </div>

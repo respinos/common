@@ -1,6 +1,7 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
   export let index = 'library';
+  export let bootstrapToggleShow;
 
   //search form bindings
   let _select, _searchtype, _root, fieldValue, _input;
@@ -57,7 +58,7 @@
   };
 </script>
 
-<div class="collapse show" id="siteSearchDropdown">
+<div>
   <div class="search-form-wrapper" bind:this={_root}>
     <form>
       <div id="searchbar-form" class="input-group d-flex">
