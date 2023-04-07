@@ -3,7 +3,8 @@
   import SearchHelpModal from '../SearchHelpModal';
   export let index = 'library';
   // export let bootstrapToggleShow;
-  export let modalOpen = true;
+
+  let modal;
 
   //search form bindings
   let _select, _searchtype, _root, fieldValue, _input;
@@ -65,7 +66,7 @@
 </script>
 
 <div>
-  <SearchHelpModal bind:isOpen={modalOpen} />
+  <SearchHelpModal bind:this={modal} />
   <div class="search-form-wrapper" bind:this={_root}>
     <form>
       <div id="searchbar-form" class="input-group d-flex">
@@ -126,8 +127,11 @@
         {/if}
       </span>
       <div class="search-links">
-        <a href="#" on:click|preventDefault={toggleSearchModal}
-          ><i class="fa-regular fa-circle-question fa-fw" />Search Help</a
+        <a
+          href="#"
+          on:click|preventDefault={() => {
+            modal.show();
+          }}><i class="fa-regular fa-circle-question fa-fw" />Search Help</a
         >
         <a href={`//${CATALOG_DOMAIN}/Search/Advanced`}
           ><i class="fa-solid fa-toolbox fa-fw" />Advanced Collection Search</a
