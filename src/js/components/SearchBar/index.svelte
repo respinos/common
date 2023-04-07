@@ -231,11 +231,15 @@
   @media (min-width: 768px) {
     #searchbar-form {
       flex-direction: row;
+      border: 1px solid var(--color-neutral-500);
+      border-radius: 0.5em;
+      box-shadow: none;
       &.input-group {
         gap: 0;
       }
       .search-input {
         flex-grow: 2;
+        border: none;
         @media (min-width: 992px) {
           flex-grow: 3;
         }
@@ -272,9 +276,15 @@
       &.input-group > .form-select {
         width: 1%;
         padding: 1em;
+        border: none;
+        box-shadow: none;
+        &:last-of-type {
+          border-left: 1px solid var(--color-neutral-100);
+        }
       }
       button {
         padding: 1em;
+        border: none;
       }
     }
     .search-details {
