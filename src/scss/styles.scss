@@ -6,6 +6,8 @@
 $enable-gradients: false;
 $enable-shadows: true;
 $enable-negative-margins: true;
+$enable-grid-classes: true;
+$enable-cssgrid: true;
 
 $offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
 
@@ -65,7 +67,7 @@ $ht-text-lg: $font-size-base;
 
 $headings-font-weight: 700;
 $btn-font-weight: 700;
-$form-label-font-weight: 800;
+$form-label-font-weight: 400;
 
 // Required
 @import '~bootstrap/scss/functions';
@@ -197,8 +199,24 @@ $utilities: map-merge(
   )
 );
 
+$utilities: map-merge(
+  $utilities, (
+    "width": map-merge(
+      map-get($utilities, "width"),
+      (responsive: true),
+    ),
+));
+
+@include media-breakpoint-up('xs') {
+  $infix: breakpoint-infix('xs', $grid-breakpoints);
+  .list-group-vertical#{$infix} {
+    flex-direction: column;
+  }
+}
+
 // Utilities
 @import '~bootstrap/scss/utilities/api';
+
 
 // define design tokens which may be used in application stylesheets
 :root {
@@ -234,6 +252,7 @@ $utilities: map-merge(
   --form-label-font-weight: #{$form-label-font-weight};
 
   --bs-font-sans-serif: Mulish, Helvetica, Arial, system-ui;
+  --bs-link-color: var(--color-primary-700);
 }
 
 // Further refine some bootstrap styles
@@ -265,4 +284,20 @@ input.form-control[type] {
 .input-group-text {
   border-top-left-radius: var(--bs-border-radius) !important;
   border-bottom-left-radius: var(--bs-border-radius) !important;
+}
+
+a:has(i[aria-hidden]) {
+  
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: center;
+  text-decoration: none;
+
+  i[aria-hidden] {
+    text-decoration: none;
+  }
+
+  &>* {
+    text-decoration: underline;
+  }
 }
