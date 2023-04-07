@@ -1,7 +1,9 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
+  import SearchHelpModal from '../SearchHelpModal';
   export let index = 'library';
-  export let bootstrapToggleShow;
+  // export let bootstrapToggleShow;
+  export let modalOpen = true;
 
   //search form bindings
   let _select, _searchtype, _root, fieldValue, _input;
@@ -12,6 +14,10 @@
     _root.dataset.index = event.target.value;
     index = event.target.value;
   };
+
+  function toggleSearchModal() {
+    modalOpen = !modalOpen;
+  }
 
   //updates search hint message when use selects search type
   function _updateSearchType() {
@@ -59,6 +65,7 @@
 </script>
 
 <div>
+  <SearchHelpModal bind:isOpen={modalOpen} />
   <div class="search-form-wrapper" bind:this={_root}>
     <form>
       <div id="searchbar-form" class="input-group d-flex">
@@ -119,7 +126,7 @@
         {/if}
       </span>
       <div class="search-links">
-        <a href="#"
+        <a href="#" on:click|preventDefault={toggleSearchModal}
           ><i class="fa-regular fa-circle-question fa-fw" />Search Help</a
         >
         <a href={`//${CATALOG_DOMAIN}/Search/Advanced`}

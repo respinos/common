@@ -7,28 +7,23 @@ export default {
 };
 
 export const MobileDefault = {
+  args: {
+    searchOpenToggle: false,
+  },
   parameters: {
     viewport: {
       defaultViewport: 'bsXs',
     },
   },
-  args: {
-    searchOpenToggle: true,
-  },
 };
-export const MobileSearchClosed = {
-  parameters: { ...MobileDefault.parameters },
+
+export const DefaultDesktop = {
   args: {
     searchOpenToggle: false,
   },
-};
-export const DefaultDesktop = {
   parameters: {
     viewport: {
       defaultViewport: 'bsXl',
     },
-  },
-  args: {
-    searchOpen: true,
   },
 };

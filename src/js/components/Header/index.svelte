@@ -21,7 +21,7 @@
   //   searchFormDisplayed = !searchFormDisplayed;
   // }
 
-  let searchOpenToggle = true;
+  let searchOpenToggle;
 </script>
 
 <div>
@@ -34,8 +34,7 @@
       class:show={searchOpenToggle}
       id="siteSearchDropdown"
     >
-      <SearchBar bootstrapToggleShow={searchOpenToggle} />
+      <SearchBar />
     </div>
   {/if}
-  <h2>{searchOpenToggle}</h2>
 </div>

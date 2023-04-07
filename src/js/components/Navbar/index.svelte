@@ -99,6 +99,7 @@
         aria-controls="siteSearchDropdown"
         aria-expanded="true"
         aria-label="Toggle search bar"
+        on:click|stopPropagation={toggleSearch}
       >
         <span><i class="fa-solid fa-magnifying-glass fa-fw" /></span>
       </button>
