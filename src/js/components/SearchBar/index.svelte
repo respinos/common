@@ -5,6 +5,7 @@
   // export let bootstrapToggleShow;
 
   let modal;
+  let modalOpen;
 
   //search form bindings
   let _select, _searchtype, _root, fieldValue, _input;
@@ -16,9 +17,9 @@
     index = event.target.value;
   };
 
-  function toggleSearchModal() {
-    modalOpen = !modalOpen;
-  }
+  // function toggleSearchModal() {
+  //   modalOpen = !modalOpen;
+  // }
 
   //updates search hint message when use selects search type
   function _updateSearchType() {
