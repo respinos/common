@@ -73,5 +73,15 @@
         </li>
       </ul>
     </svelte:fragment>
+    <svelte:fragment slot="modal-footer">
+      <button
+        type="reset"
+        autofocus
+        class="btn btn-secondary"
+        on:click={() => {
+          hide();
+        }}>Close</button
+      >
+    </svelte:fragment>
   </Modal>
 </div>
