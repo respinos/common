@@ -132,10 +132,15 @@
           href="#"
           on:click|preventDefault={() => {
             modal.show();
-          }}><i class="fa-regular fa-circle-question fa-fw" />Search Help</a
+          }}
+          ><i class="fa-regular fa-circle-question fa-fw" /><span
+            >Search Help</span
+          ></a
         >
         <a href={`//${CATALOG_DOMAIN}/Search/Advanced`}
-          ><i class="fa-solid fa-toolbox fa-fw" />Advanced Collection Search</a
+          ><i class="fa-solid fa-toolbox fa-fw" /><span
+            >Advanced Collection Search</span
+          ></a
         >
       </div>
     </div>
@@ -222,6 +227,9 @@
         gap: 0.75em;
         text-decoration: none;
         color: var(--color-neutral-800);
+        span:hover {
+          text-decoration: underline;
+        }
       }
       i {
         font-size: 14px;
@@ -288,9 +296,10 @@
         padding: 1em;
         border: none;
         box-shadow: none;
-        &:last-of-type {
-          border-left: 1px solid var(--color-neutral-100);
-        }
+        border-width: 0px 1px;
+        border-style: solid;
+        border-color: var(--color-neutral-100);
+        // border-left: 1px solid var(--color-neutral-100);
       }
       button {
         padding: 1em;
