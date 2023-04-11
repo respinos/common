@@ -127,7 +127,7 @@
 </Modal>
 
 <style>
-  :global(.modal-body) {
+  /* :global(.modal-body) {
     overflow: hidden !important;
-  }
+  } */
 </style>

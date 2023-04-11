@@ -26,7 +26,7 @@
 </script>
 
 <div>
-  <Modal bind:this={modal}>
+  <Modal bind:this={modal} scrollable>
     <svelte:fragment slot="modal-title">HathiTrust Search Help</svelte:fragment>
     <svelte:fragment slot="modal-body">
       <h2 class="h3">Primary Catalog Search</h2>

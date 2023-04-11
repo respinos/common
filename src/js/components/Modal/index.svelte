@@ -6,6 +6,7 @@
   export let id = `id${new Date().getTime()}`;
   export let onClose = function () {};
   export let height = 'auto';
+  export let scrollable = false;
 
   let modalBody;
 
@@ -57,7 +58,7 @@
             }}>Close <i class="fa-solid fa-xmark" aria-hidden="true" /></button
           >
         </div>
-        <div class="modal-body">
+        <div class="modal-body {scrollable ? '' : 'dont-scroll'}">
           <slot name="modal-body" />
         </div>
         <div class="modal-footer">
@@ -156,5 +157,9 @@
 
   .btn-close i.fa-solid {
     color: var(--color-primary-500) !important;
+  }
+
+  .dont-scroll {
+    overflow: hidden !important;
   }
 </style>
