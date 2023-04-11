@@ -127,41 +127,7 @@
 </Modal>
 
 <style>
-  :global(.modal) {
-    --bs-modal-width: 34rem;
-    --bs-modal-padding-width: 1.875rem;
-    --bs-modal-header-padding: 1rem var(--bs-modal-padding-width) 0;
-    --bs-modal-footer-padding: 1rem var(--bs-modal-padding-width) 0;
-    --bs-modal-padding: 1rem 1.875rem;
-    --bs-modal-header-border-width: 0;
-  }
-
-  :global(.modal-content) {
-    height: 90vh;
-    max-height: 45rem !important;
-  }
-
   :global(.modal-body) {
     overflow: hidden !important;
-    display: grid;
-    grid-template-rows: min-content 1fr;
-  }
-
-  :global(.modal-footer) {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  .modal-grid {
-    display: grid;
-    grid-template-rows: min-content 1fr;
-    min-height: 0;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .px-modal {
-    padding-left: var(--bs-modal-padding-width) !important;
-    padding-right: var(--bs-modal-padding-width) !important;
   }
 </style>

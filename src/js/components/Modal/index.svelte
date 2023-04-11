@@ -1,39 +1,86 @@
 <script>
-	import { onMount } from 'svelte';
+  import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
 
   export let isOpen = false;
-  export let id = `id${(new Date).getTime()}`;
-  export let onClose = function() {};
+  export let id = `id${new Date().getTime()}`;
+  export let onClose = function () {};
+  export let height = 'auto';
 
   let modalBody;
 
   let dialog;
 
-  export const show = function() {
-    if ( dialog.open ) { return ; }
+  export const show = function () {
+    if (dialog.open) {
+      return;
+    }
     dialog.showModal();
-  }
+  };
 
-  export const hide = function() {
+  export const hide = function () {
     dialog.close();
     isOpen = false;
     onClose();
-    console.log("-- dialog is closed");
-  }
+    console.log('-- dialog is closed');
+  };
 
   onMount(() => {
-    if ( isOpen ) {
+    if (isOpen) {
       openModal();
     }
-  })
+  });
 
-  $: if ( dialog && isOpen ) { show(); }
-
+  $: if (dialog && isOpen) {
+    show();
+  }
 </script>
 
-<style>
+<svelte:head>
+  <link rel="stylesheet" href="https://unpkg.com/open-props" />
+</svelte:head>
 
+<dialog bind:this={dialog}>
+  <div class="modal show" aria-labelledby="{id}-label" style="display: block;">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+      <div class="modal-content" style:height={height != 'auto' && height}>
+        <div class="modal-header">
+          <h1 id="{id}-label" class="modal-title">
+            <slot name="modal-title" />
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            on:click={() => {
+              hide();
+            }}>Close <i class="fa-solid fa-xmark" aria-hidden="true" /></button
+          >
+        </div>
+        <div class="modal-body">
+          <slot name="modal-body" />
+        </div>
+        <div class="modal-footer">
+          <slot name="modal-footer">
+            <button
+              type="reset"
+              autofocus
+              class="btn btn-secondary"
+              on:click={() => {
+                hide();
+              }}>Close</button
+            >
+            <button type="button" class="btn btn-primary">
+              <slot name="modal-action">OK</slot>
+            </button>
+          </slot>
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<style>
   :global(html:has(dialog[open])) {
     overflow: hidden;
   }
@@ -49,9 +96,9 @@
     z-index: var(--layer-important);
     max-inline-size: min(90vw, var(--size-content-3));
     max-block-size: min(80vh, 100%);
-    max-block-size: min(80dvb, 100%);    
+    max-block-size: min(80dvb, 100%);
     max-height: none;
-    transition: opacity .25s var(--ease-3);
+    transition: opacity 0.25s var(--ease-3);
   }
 
   dialog:not([open]) {
@@ -60,7 +107,7 @@
   }
 
   dialog::backdrop {
-    transition: backdrop-filter .25s ease;
+    transition: backdrop-filter 0.25s ease;
     backdrop-filter: blur(2px);
   }
 
@@ -72,7 +119,7 @@
   dialog[open] {
     animation: var(--animation-slide-in-down) forwards;
     animation-duration: 0.25s;
-  }  
+  }
 
   .modal {
     position: static;
@@ -110,33 +157,4 @@
   .btn-close i.fa-solid {
     color: var(--color-primary-500) !important;
   }
-
 </style>
-
-<svelte:head>
-  <link rel="stylesheet" href="https://unpkg.com/open-props" />
-</svelte:head>
-
-<dialog bind:this={dialog}>
-  <div class="modal show" aria-labelledby="{id}-label" style="display: block;">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 id="{id}-label" class="modal-title"><slot name="modal-title"></slot></h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" on:click={() => { hide() }}>Close <i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-        </div>
-        <div class="modal-body">
-          <slot name="modal-body"></slot>
-        </div>
-        <div class="modal-footer">
-          <slot name="modal-footer">
-            <button type="reset" autofocus class="btn btn-secondary" on:click={() => { hide()}}>Close</button>
-            <button type="button" class="btn btn-primary">
-              <slot name="modal-action">OK</slot>
-            </button>
-          </slot>
-        </div>      
-      </div>
-    </div>
-  </div>  
-</dialog>
