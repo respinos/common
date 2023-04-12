@@ -94,7 +94,7 @@
     inset: 0;
     border: none;
     background: transparent;
-    z-index: var(--layer-important);
+    /* z-index: var(--layer-important); */
     max-inline-size: min(90vw, var(--size-content-3));
     max-block-size: min(80vh, 100%);
     max-block-size: min(80dvb, 100%);
@@ -105,6 +105,7 @@
   dialog:not([open]) {
     pointer-events: none;
     opacity: 0;
+    z-index: -1;
   }
 
   dialog::backdrop {
@@ -120,6 +121,7 @@
   dialog[open] {
     animation: var(--animation-slide-in-down) forwards;
     animation-duration: 0.25s;
+    /* z-index: var(--layer-important); */
   }
 
   .modal {
