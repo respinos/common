@@ -193,7 +193,7 @@
       border-radius: 0.375rem;
       margin-left: 0;
       text-transform: uppercase;
-      font-weight: var(--form-label-font-weight);
+      font-weight: var(--btn-font-weight);
       letter-spacing: -0.01em;
       padding: 0.5em 0.75em;
     }
