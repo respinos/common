@@ -2,23 +2,13 @@
 	import { onMount } from 'svelte';
   import Modal from '../Modal';
 
-  export let HT = window.HT || {};
+  export let manager;
   let modal;
 
   export let isOpen = false;
 
-
-  function userIsAuthed() {
-    if ( ! HT.login_status ) { return false; }
-    return HT.login_status.logged_in;
-  }
-
-  function userHasNotifications() {
-    return userIsAuthed() && (HT.login_status.notificationData.length > 0);
-  }
-
   export const show = function() {
-    if ( ! userHasNotifications() ) { return ; }
+    if ( ! manager.hasNotifications() ) { return ; }
     modal.show();
   }
 
@@ -26,26 +16,37 @@
     modal.hide();
   }
 
+  const onClose = function() {
+    manager.updateTimestamp();
+  }
+
   onMount(() => {
-    if ( isOpen && modal && userIsAuthed() ) {
+    if ( modal && manager.hasNewNotifications() ) {
       modal.show();
     }
+    console.log(manager.hasNewNotifications());
   })
 
-  $: if ( modal && isOpen && userIsAuthed() ) { show() }
+  $: if ( modal && manager.hasNewNotifications() ) { show() }
+  $: if ( modal && isOpen ) { show(); }
   $: if ( modal && ! isOpen ) { hide() }
 
 </script>
 
 <style>
-
+  pre {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+  }
 </style>
 
-<Modal bind:this={modal}>
+{#if manager.hasNotifications()}
+<Modal bind:this={modal} onClose={onClose}>
   <svelte:fragment slot="modal-title">Your notifications</svelte:fragment>
   <svelte:fragment slot="modal-body">
     <ul class="list-group list-group-flush">
-      {#each HT.login_status.notificationData as datum, i}
+      {#each manager.notificationData as datum, i}
         <li class="list-group-item p-3">
           <h2 class="fs-6">{datum.title}</h2>
           {#if datum.message.indexOf('<p>') > -1}
@@ -62,3 +63,4 @@
     </ul>
   </svelte:fragment>
 </Modal>
+{/if}
