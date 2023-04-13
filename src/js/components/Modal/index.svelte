@@ -7,6 +7,7 @@
   export let onClose = function () {};
   export let height = 'auto';
   export let scrollable = false;
+  export let mode = 'alert';
 
   let modalBody;
 
@@ -71,9 +72,11 @@
                 hide();
               }}>Close</button
             >
+            {#if mode == 'prompt'}
             <button type="button" class="btn btn-primary">
               <slot name="modal-action">OK</slot>
             </button>
+            {/if}
           </slot>
         </div>
       </div>
