@@ -83,31 +83,35 @@
             ><i class="fa-solid fa-magnifying-glass fa-fw" /></span
           >
         </div>
-        <select
-          class="form-select select-caret"
-          aria-label="Default select example"
-          bind:this={_select}
-          on:change={_updateSelect}
-        >
-          <option value="library" selected>Collection</option>
-          <option value="website">Website</option>
-        </select>
-        {#if index == 'library'}
+        <div class="select-container" id="search-where">
           <select
             class="form-select select-caret"
             aria-label="Default select example"
-            bind:this={_searchtype}
-            on:change={_updateSearchType}
+            bind:this={_select}
+            on:change={_updateSelect}
           >
-            <option value="everything" selected>Everything</option>
-            <option value="all">All Bibliographic Fields</option>
-            <option value="title">Title</option>
-            <option value="author">Author</option>
-            <option value="subject">Subject</option>
-            <option value="isbn">ISBN/ISSN</option>
-            <option value="publisher">Publisher</option>
-            <option value="seriestitle">Series Title</option>
+            <option value="library" selected>Collection</option>
+            <option value="website">Website</option>
           </select>
+        </div>
+        {#if index == 'library'}
+          <div class="select-container" id="search-what">
+            <select
+              class="form-select select-caret"
+              aria-label="Default select example"
+              bind:this={_searchtype}
+              on:change={_updateSearchType}
+            >
+              <option value="everything" selected>Everything</option>
+              <option value="all">All Bibliographic Fields</option>
+              <option value="title">Title</option>
+              <option value="author">Author</option>
+              <option value="subject">Subject</option>
+              <option value="isbn">ISBN/ISSN</option>
+              <option value="publisher">Publisher</option>
+              <option value="seriestitle">Series Title</option>
+            </select>
+          </div>
         {/if}
         <button
           class="btn btn-primary btn-outline-secondary"
@@ -237,15 +241,20 @@
       }
     }
   }
+  .select-container {
+    width: 100%;
+  }
   select.select-caret {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath d='M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z'/%3E%3C/svg%3E");
     -moz-appearance: none;
     -webkit-appearance: none;
     -webkit-border-radius: 0px;
+    border-radius: 0px;
     border: none;
     appearance: none;
     outline-width: 0;
   }
+  // medium (and up) screen size styles
   @media (min-width: 768px) {
     #searchbar-form {
       flex-direction: row;
@@ -271,37 +280,30 @@
         }
       }
       input {
-        // width: 1%;
         border-top-left-radius: 0 !important;
         border-bottom-left-radius: 0 !important;
         padding: 1em;
       }
-      &.input-group
-        > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(
-          .valid-feedback
-        ):not(.invalid-tooltip):not(.invalid-feedback) {
-        margin-left: -1px;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+
+      #search-where.select-container {
+        width: 125px;
       }
-      &.input-group:not(.has-validation)
-        > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(
-          .form-floating
-        ) {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+      #search-what.select-container {
+        width: 215px;
       }
-      &.input-group > .form-select {
-        width: 1%;
+      .form-select {
+        border-radius: 0;
         padding: 1em;
         border: none;
         box-shadow: none;
         border-width: 0px 1px;
         border-style: solid;
         border-color: var(--color-neutral-100);
-        // border-left: 1px solid var(--color-neutral-100);
       }
       button {
+        margin-left: -1px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
         padding: 1em;
         border: none;
       }
