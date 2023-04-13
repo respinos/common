@@ -200,12 +200,17 @@ $utilities: map-merge(
 );
 
 $utilities: map-merge(
-  $utilities, (
-    "width": map-merge(
-      map-get($utilities, "width"),
-      (responsive: true),
-    ),
-));
+  $utilities,
+  (
+    'width':
+      map-merge(
+        map-get($utilities, 'width'),
+        (
+          responsive: true,
+        )
+      ),
+  )
+);
 
 @include media-breakpoint-up('xs') {
   $infix: breakpoint-infix('xs', $grid-breakpoints);
@@ -216,7 +221,6 @@ $utilities: map-merge(
 
 // Utilities
 @import '~bootstrap/scss/utilities/api';
-
 
 // define design tokens which may be used in application stylesheets
 :root {
@@ -250,6 +254,7 @@ $utilities: map-merge(
 
   --headings-font-weight: #{$headings-font-weight};
   --form-label-font-weight: #{$form-label-font-weight};
+  --btn-font-weight: #{$btn-font-weight};
 
   --bs-font-sans-serif: Mulish, Helvetica, Arial, system-ui;
   --bs-link-color: var(--color-primary-700);
@@ -287,7 +292,6 @@ input.form-control[type] {
 }
 
 a:has(i[aria-hidden]) {
-  
   display: inline-flex;
   gap: 0.25rem;
   align-items: center;
@@ -297,7 +301,46 @@ a:has(i[aria-hidden]) {
     text-decoration: none;
   }
 
-  &>* {
+  & > * {
     text-decoration: underline;
   }
+}
+
+//modal styles
+.modal {
+  --bs-modal-width: 34rem;
+  --bs-modal-padding-width: 1.875rem;
+  --bs-modal-header-padding: 1rem var(--bs-modal-padding-width) 0;
+  --bs-modal-footer-padding: 1rem var(--bs-modal-padding-width) 0;
+  --bs-modal-padding: 1rem 1.875rem;
+  --bs-modal-header-border-width: 0;
+}
+
+.modal-content {
+  height: 90vh;
+  max-height: 45rem !important;
+}
+
+.modal-body {
+  // overflow: hidden !important;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+}
+
+.modal-footer {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.px-modal {
+  padding-left: var(--bs-modal-padding-width) !important;
+  padding-right: var(--bs-modal-padding-width) !important;
 }

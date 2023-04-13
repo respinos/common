@@ -19,4 +19,7 @@ export const Desktop = {
       defaultViewport: 'bsXl',
     },
   },
+  args: {
+    modalOpen: false,
+  },
 };

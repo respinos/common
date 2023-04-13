@@ -4,6 +4,11 @@
 
   export let loggedIn = false;
   export let hasNotification = false;
+  export let searchOpen = true;
+
+  function toggleSearch() {
+    searchOpen = !searchOpen;
+  }
 </script>
 
 <nav class="navbar navbar-expand-xl bg-white">
@@ -90,10 +95,11 @@
         class="navbar-toggler border-0 m-0"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#"
+        data-bs-target="#siteSearchDropdown"
         aria-controls="siteSearchDropdown"
-        aria-expanded="false"
+        aria-expanded="true"
         aria-label="Toggle search bar"
+        on:click|stopPropagation={toggleSearch}
       >
         <span><i class="fa-solid fa-magnifying-glass fa-fw" /></span>
       </button>
@@ -208,8 +214,11 @@
       <ul class="navbar-nav action-links">
         <li class="nav-item d-none d-xl-block">
           <a
-            class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center"
-            href="#">Search <i class="fa-solid fa-magnifying-glass fa-fw" /></a
+            class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center "
+            class:search-active={searchOpen}
+            href="#"
+            on:click|preventDefault|stopPropagation={toggleSearch}
+            >Search <i class="fa-solid fa-magnifying-glass fa-fw" /></a
           >
         </li>
         <li class="nav-item">
@@ -353,6 +362,9 @@
     }
     a.nav-link {
       font-weight: 800;
+      &.search-active {
+        color: var(--color-primary-500);
+      }
     }
     a:hover {
       text-decoration: none;

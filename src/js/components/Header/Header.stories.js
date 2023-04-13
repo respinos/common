@@ -6,14 +6,21 @@ export default {
   component: Header,
 };
 
-export const Mobile = {
+export const MobileDefault = {
+  args: {
+    searchOpenToggle: false,
+  },
   parameters: {
     viewport: {
       defaultViewport: 'bsXs',
     },
   },
 };
-export const Desktop = {
+
+export const DefaultDesktop = {
+  args: {
+    searchOpenToggle: false,
+  },
   parameters: {
     viewport: {
       defaultViewport: 'bsXl',
