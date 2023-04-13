@@ -1,6 +1,12 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
   import menuData from '../../../assets/menuData.json';
+  import LoginFormModal from '../LoginFormModal';
+
+  let HT = window.HT || {};
+
+  //eventually, the loggedIn variable needs to reflect
+  //HT.login_status.logged_in (true/false)
 
   export let loggedIn = false;
   export let hasNotification = false;
@@ -8,6 +14,12 @@
 
   function toggleSearch() {
     searchOpen = !searchOpen;
+  }
+
+  function openLoginModal() {
+    //check viewport size to see if LoginFormModal will fit
+    //if not, redirect user to https://babel.hathitrust.org/cgi/wayf
+    //else, open LoginFormModal
   }
 </script>
 
@@ -134,7 +146,7 @@
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center "
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -159,7 +171,7 @@
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center "
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -183,11 +195,11 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#">Join</a>
+          <a class="nav-link" href="#">Join</a>
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center "
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -214,7 +226,7 @@
       <ul class="navbar-nav action-links">
         <li class="nav-item d-none d-xl-block">
           <a
-            class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center "
+            class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
             class:search-active={searchOpen}
             href="#"
             on:click|preventDefault|stopPropagation={toggleSearch}
@@ -223,7 +235,7 @@
         </li>
         <li class="nav-item">
           <a
-            class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center"
+            class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
             href="#"
             >Get Help <i class="fa-solid fa-square-arrow-up-right fa-fw" /></a
           >
@@ -231,7 +243,7 @@
         {#if loggedIn}
           <li id="my-account" class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle  text-uppercase d-flex flex-row justify-content-between align-items-center"
+              class="nav-link dropdown-toggle text-uppercase d-flex flex-row justify-content-between align-items-center"
               href="#"
               role="button"
               data-bs-toggle="dropdown"
@@ -248,7 +260,7 @@
               </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <div class="d-flex flex-column gap-4 ">
+              <div class="d-flex flex-column gap-4">
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
@@ -272,9 +284,10 @@
             </ul>
           </li>
         {:else}
-          <li class="nav-item ">
+          <!--TODO: if user !loggedIn, this link needs to have click even to launch login form modal-->
+          <li class="nav-item">
             <a
-              class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center"
+              class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
               href="#">Log In<i class="fa-solid fa-user fa-fw" /></a
             >
           </li>
