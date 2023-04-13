@@ -69,7 +69,7 @@
 <div>
   <SearchHelpModal bind:this={modal} />
   <div class="search-form-wrapper" bind:this={_root}>
-    <form>
+    <form on:submit|preventDefault={_submitSearch}>
       <div id="searchbar-form" class="input-group d-flex">
         <div class="search-input">
           <input
@@ -117,8 +117,14 @@
           class="btn btn-primary btn-outline-secondary"
           type="button"
           id="button-addon2"
-          on:click={_submitSearch}>Search</button
-        >
+          on:click={_submitSearch}
+          >Search
+        </button>
+        <!-- <button
+          class="btn btn-primary btn-outline-secondary"
+          type="button"
+          id="button-addon2">Search</button
+        > -->
       </div>
     </form>
     <div class="search-details d-flex">
