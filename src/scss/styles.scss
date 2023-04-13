@@ -276,7 +276,8 @@ $utilities: map-merge(
   }
 }
 
-input.form-control[type] {
+input.form-control[type],
+textarea.form-control {
   background-color: var(--color-neutral-50);
   border-radius: var(--bs-border-radius) !important;
 }
