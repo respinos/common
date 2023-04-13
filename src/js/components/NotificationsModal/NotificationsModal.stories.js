@@ -97,7 +97,7 @@ export const PreviouslySeenNotifications = {
     manager: previouslySeenManager
   },
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    expect(canvas.getByText('Your notifications')).not.toBeInTheDocument();
+    const dialogEl = canvasElement.querySelector('dialog');
+    expect(dialogEl.open).toBeFalsy();
   }
 }

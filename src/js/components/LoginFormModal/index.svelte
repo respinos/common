@@ -62,7 +62,7 @@
   }
 </script>
 
-<Modal bind:this={modal}>
+<Modal bind:this={modal} height="90vh">
   <svelte:fragment slot="modal-title">Partner Institution Login</svelte:fragment
   >
   <svelte:fragment slot="modal-body">
