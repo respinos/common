@@ -4,11 +4,12 @@
   import LoginFormModal from '../LoginFormModal';
 
   let HT = window.HT || {};
+  let modal;
 
   //eventually, the loggedIn variable needs to reflect
-  //HT.login_status.logged_in (true/false)
+  HT.login_status.logged_in = false;
 
-  export let loggedIn = false;
+  export let loggedIn = HT.login_status.logged_in;
   export let hasNotification = false;
   export let searchOpen = true;
 
@@ -16,10 +17,15 @@
     searchOpen = !searchOpen;
   }
 
-  function openLoginModal() {
+  function openLogin() {
     //check viewport size to see if LoginFormModal will fit
-    //if not, redirect user to https://babel.hathitrust.org/cgi/wayf
+    if ( window.innerHeight < 700 ) {
+    //if not, redirect user 
+      window.location.assign('https://babel.hathitrust.org/cgi/wayf');
+    } else {
     //else, open LoginFormModal
+      modal.show();
+    }
   }
 </script>
 
@@ -285,10 +291,11 @@
           </li>
         {:else}
           <!--TODO: if user !loggedIn, this link needs to have click even to launch login form modal-->
+          <LoginFormModal bind:this={modal} />
           <li class="nav-item">
             <a
               class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
-              href="#">Log In<i class="fa-solid fa-user fa-fw" /></a
+              href="#" on:click|preventDefault={openLogin}>Log In<i class="fa-solid fa-user fa-fw" /></a
             >
           </li>
         {/if}
