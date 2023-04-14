@@ -7,7 +7,7 @@
   let modal;
 
   //eventually, the loggedIn variable needs to reflect
-  HT.login_status.logged_in = false;
+  // HT.login_status.logged_in = true;
 
   export let loggedIn = HT.login_status.logged_in;
   export let hasNotification = false;

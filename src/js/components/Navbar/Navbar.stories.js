@@ -14,10 +14,18 @@ export const Default = {
     },
   },
 };
+export const DesktopLoginModalOpen = {
+  parameters: { ...Default.parameters },
+  args: {
+    loggedIn: false,
+
+  },
+};
 export const DesktopLoggedIn = {
   parameters: { ...Default.parameters },
   args: {
-    loggedIn: true,
+    loggedIn: false,
+    isOpen: true,
   },
 };
 export const DesktopLoggedInWithNotifications = {
