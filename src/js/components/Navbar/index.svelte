@@ -290,7 +290,6 @@
             </ul>
           </li>
         {:else}
-          <!--TODO: if user !loggedIn, this link needs to have click even to launch login form modal-->
           <LoginFormModal bind:this={modal} />
           <li class="nav-item">
             <a

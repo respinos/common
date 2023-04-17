@@ -1,6 +1,7 @@
 import Navbar from './index.svelte';
 import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
+import * as LoginFormModalStories from '../LoginFormModal/LoginFormModal.stories'
 
 export default {
   title: 'Navbar',
