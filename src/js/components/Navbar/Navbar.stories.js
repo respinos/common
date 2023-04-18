@@ -46,7 +46,9 @@ export const Mobile = {
 export const MobileOpenMenu = {
   parameters: { ...Mobile.parameters },
   play: async ({ canvasElement }) => {
-    await userEvent.type;
+    const canvas = within(canvasElement);
+    const mobileMenuButton = await canvas.getByRole('button', {name: 'Toggle navigation'}); 
+    await userEvent.click(mobileMenuButton);
   },
 };
 export const MobileLoggedIn = {
