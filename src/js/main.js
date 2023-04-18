@@ -8,7 +8,7 @@ import * as bootstrap from 'bootstrap';
 
 import Quote from './components/Quote.svelte';
 import LoginFormModal from './components/LoginFormModal';
-import Navbar from './components/Navbar';
+import Header from './components/Header';
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -35,7 +35,7 @@ const buildProps = (el) => {
 const apps = {};
 apps['hathi-quote'] = Quote;
 apps['hathi-login-form-modal'] = LoginFormModal;
-apps['hathi-navbar'] = Navbar;
+apps['hathi-website-header'] = Header;
 
 // configure the HT global
 setupHTEnv();
