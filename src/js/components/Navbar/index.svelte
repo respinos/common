@@ -236,6 +236,7 @@
             class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
             class:search-active={searchOpen}
             href="#"
+            role="button"
             on:click|preventDefault|stopPropagation={toggleSearch}
             >Search <i class="fa-solid fa-magnifying-glass fa-fw" /></a
           >
@@ -271,7 +272,7 @@
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
-                    href="#"
+                    href="#" role="button"
                     ><span class="needs-hover-state"
                       >Notifications{#if hasNotification} (4){/if}</span
                     >
@@ -281,7 +282,7 @@
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
-                    href="#"
+                    href="#" role="button"
                     ><span class="needs-hover-state">Log Out</span><i
                       class="fa-solid fa-arrow-right-from-bracket fa-fw"
                     /></a
@@ -295,7 +296,7 @@
           <li class="nav-item">
             <a
               class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
-              href="#" on:click|preventDefault={openLogin}>Log In<i class="fa-solid fa-user fa-fw" /></a
+              href="#" role="button" on:click|preventDefault={openLogin}>Log In<i class="fa-solid fa-user fa-fw" /></a
             >
           </li>
         {/if}

@@ -1,7 +1,6 @@
 import Navbar from './index.svelte';
 import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
-import * as LoginFormModalStories from '../LoginFormModal/LoginFormModal.stories'
 
 export default {
   title: 'Navbar',
@@ -36,8 +35,14 @@ export const DesktopLoginModalOpen = {
   parameters: { ...Default.parameters },
   args: {
     loggedIn: false,
-
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    
+    // const rightSideNavbar = document.querySelector('action-links')
+    const loginButton = await canvas.getByRole('button', {name: /log in/i}); 
+    await userEvent.click(loginButton);
+  }, 
 };
 export const DesktopLoggedIn = {
   parameters: { ...Default.parameters },
