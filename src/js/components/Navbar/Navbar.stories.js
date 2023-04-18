@@ -39,11 +39,23 @@ export const DesktopLoginModalOpen = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     
-    // const rightSideNavbar = document.querySelector('action-links')
     const loginButton = await canvas.getByRole('button', {name: /log in/i}); 
     await userEvent.click(loginButton);
   }, 
 };
+// export const DesktopShortViewportModal = {
+//   parameters: {
+//     viewport: {
+//       defaultViewport: 'shortDesktop'
+//     }
+//   },
+  // play: async ({ canvasElement }) => {
+  //   const canvas = within(canvasElement);
+    
+  //   const loginButton = await canvas.getByRole('button', {name: /log in/i}); 
+  //   await userEvent.click(loginButton);
+  // }, 
+// }
 export const DesktopLoggedIn = {
   parameters: { ...Default.parameters },
   args: {

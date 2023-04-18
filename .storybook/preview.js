@@ -38,6 +38,13 @@ const BOOTSTRAP_VIEWPORTS = {
       height: '1200px',
     },
   },
+  shortDesktop: {
+    name: 'short desktop',
+    styles: {
+      width: '1200px',
+      height: '600px',
+    },
+  },
 };
 
 const preview = {
