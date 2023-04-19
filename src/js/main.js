@@ -50,20 +50,28 @@ setupHTEnv();
 //   })
 // })
 
-// APPROACH: look for custom elements and instantiate
-// the svelte component inside that element
-Object.keys(apps).forEach((slug) => {
-  document.querySelectorAll(slug).forEach((el) => {
-    let props = buildProps(el);
-    el.component = new apps[slug]({
-      target: el,
-      props: props,
+HT.postPingCallback = function() {
+  // APPROACH: look for custom elements and instantiate
+  // the svelte component inside that element
+  Object.keys(apps).forEach((slug) => {
+    document.querySelectorAll(slug).forEach((el) => {
+      let props = buildProps(el);
+      el.component = new apps[slug]({
+        target: el,
+        props: props,
+      });
     });
   });
-});
+}
+
+let script = document.createElement('script');
+script.async = true;
+script.src = `//${HT.service_domain}/cgi/ping?callback=HT.postPingCallback&_${(new Date).getTime()}`;
+document.head.appendChild(script);
 
 // look for buttons that trigger the appearance of
 // svelte components
+
 document.querySelectorAll('[data-hathi-trigger]').forEach((el) => {
   let slug = el.dataset.hathiTrigger;
   let props = buildProps(el);
