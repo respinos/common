@@ -10,7 +10,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build-js": "vite build",
-    "build": "vite build && storybook build -o dist/storybook && node ./build-redirects.js"
+    "build": "vite build && storybook build -o dist/storybook && node ./build-redirects.js",
+    "test-storybook": "test-storybook"
   },
   "repository": {
     "type": "git",

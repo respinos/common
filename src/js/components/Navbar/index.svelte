@@ -1,13 +1,31 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
   import menuData from '../../../assets/menuData.json';
+  import LoginFormModal from '../LoginFormModal';
 
-  export let loggedIn = false;
+  let HT = window.HT || {};
+  let modal;
+
+  //eventually, the loggedIn variable needs to reflect
+  // HT.login_status.logged_in = true;
+
+  export let loggedIn = HT.login_status.logged_in;
   export let hasNotification = false;
   export let searchOpen = true;
 
   function toggleSearch() {
     searchOpen = !searchOpen;
+  }
+
+  function openLogin() {
+    //check viewport size to see if LoginFormModal will fit
+    if ( window.innerHeight < 700 ) {
+    //if not, redirect user 
+      window.location.assign('https://babel.hathitrust.org/cgi/wayf');
+    } else {
+    //else, open LoginFormModal
+      modal.show();
+    }
   }
 </script>
 
@@ -22,6 +40,7 @@
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
+        <title>HathiTrust logo</title>
         <g clip-path="url(#clip0_410_7968)">
           <path
             d="M0 27.8623V26.4217H3.075V11.2123H0V9.7998H8.11875V11.2123H5.40313V17.8623H14.1844V11.2123H11.4969V9.7998H19.6156V11.2123H16.5406V26.4217H19.6156V27.8623H11.4969V26.4217H14.1844V19.1623H5.40313V26.4217H8.11875V27.8623H0V27.8623Z"
@@ -134,7 +153,7 @@
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center "
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -159,7 +178,7 @@
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center "
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -183,11 +202,11 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#">Join</a>
+          <a class="nav-link" href="#">Join</a>
         </li>
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center "
+            class="nav-link dropdown-toggle d-flex flex-row justify-content-between align-items-center"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -214,16 +233,17 @@
       <ul class="navbar-nav action-links">
         <li class="nav-item d-none d-xl-block">
           <a
-            class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center "
+            class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
             class:search-active={searchOpen}
             href="#"
+            role="button"
             on:click|preventDefault|stopPropagation={toggleSearch}
             >Search <i class="fa-solid fa-magnifying-glass fa-fw" /></a
           >
         </li>
         <li class="nav-item">
           <a
-            class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center"
+            class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
             href="#"
             >Get Help <i class="fa-solid fa-square-arrow-up-right fa-fw" /></a
           >
@@ -231,7 +251,7 @@
         {#if loggedIn}
           <li id="my-account" class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle  text-uppercase d-flex flex-row justify-content-between align-items-center"
+              class="nav-link dropdown-toggle text-uppercase d-flex flex-row justify-content-between align-items-center"
               href="#"
               role="button"
               data-bs-toggle="dropdown"
@@ -248,11 +268,11 @@
               </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <div class="d-flex flex-column gap-4 ">
+              <div class="d-flex flex-column gap-4">
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
-                    href="#"
+                    href="#" role="button"
                     ><span class="needs-hover-state"
                       >Notifications{#if hasNotification} (4){/if}</span
                     >
@@ -262,7 +282,7 @@
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
-                    href="#"
+                    href="#" role="button"
                     ><span class="needs-hover-state">Log Out</span><i
                       class="fa-solid fa-arrow-right-from-bracket fa-fw"
                     /></a
@@ -272,10 +292,11 @@
             </ul>
           </li>
         {:else}
-          <li class="nav-item ">
+          <LoginFormModal bind:this={modal} />
+          <li class="nav-item">
             <a
-              class="nav-link  text-uppercase d-flex flex-row justify-content-between align-items-center"
-              href="#">Log In<i class="fa-solid fa-user fa-fw" /></a
+              class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
+              href="#" role="button" on:click|preventDefault={openLogin}>Log In<i class="fa-solid fa-user fa-fw" /></a
             >
           </li>
         {/if}
