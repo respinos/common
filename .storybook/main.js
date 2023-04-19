@@ -12,6 +12,9 @@ const config = {
     name: "@storybook/svelte-vite",
     options: {},
   },
+  features: {
+    interactionsDebugger: true,
+  },
   docs: {
     autodocs: "tag",
   },
