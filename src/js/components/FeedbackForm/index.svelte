@@ -89,7 +89,7 @@
 </script>
 
 <main>
-  <form on:submit|preventDefault={onSubmit} class:hidden>
+  <form on:submit|preventDefault={onSubmit} class:hidden name="feedback">
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
       <input type="name" class="form-control" id="name" name="name" required />
