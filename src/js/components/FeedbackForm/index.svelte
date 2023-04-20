@@ -27,14 +27,10 @@
   // when true, shows the success/failure alert message
   let submitted = false;
 
-  const postForm = async () => {
-    //shoelace serializer for turning FormData into JSON
-    const form = document.querySelector('form');
-    const data = serialize(form);
-
+  const postForm = async (data) => {
     return fetch('http://localhost:5000/api', {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: data,
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -54,30 +50,39 @@
   };
 
   // handles front-end reaction to form submission
-  const onSubmit = () => {
+  const onSubmit = (event) => {
     // set the submit button spinner spinning
     loading = true;
+    //serialize form data
+    const data = JSON.stringify(Object.fromEntries(new FormData(event.target)));
+    const form = document.querySelector('.needs-validation');
 
-    // do the post fetch function
-    postForm()
-      // if no error, hide form and log new issue ID
-      .then((jiraResponseData) => {
-        loading = false;
-        submitted = true;
-        hidden = true;
+    // check for required fields
+    if (!form.checkValidity()) {
+      event.stopPropagation();
+      form.classList.add('was-validated');
+    } else {
+      // do the post fetch function, passing in the seralized data
+      postForm(data)
+        // if no error, hide form and log new issue ID
+        .then((jiraResponseData) => {
+          loading = false;
+          submitted = true;
+          hidden = true;
 
-        console.log(
-          `request created in service desk ${jiraResponseData.serviceDeskId}: ${jiraResponseData.issueKey}`
-        );
-        console.log('status code', postResponseStatusCode);
-      })
+          console.log(
+            `request created in service desk ${jiraResponseData.serviceDeskId}: ${jiraResponseData.issueKey}`
+          );
+          console.log('status code', postResponseStatusCode);
+        })
 
-      // if something went wrong, stop the submit button spinner, show appropriate error message to user, log error message
-      .catch((error) => {
-        loading = false;
-        submitted = true;
-        console.log(`There was an error posting the form, ${error}`);
-      });
+        // if something went wrong, stop the submit button spinner, show appropriate error message to user, log error message
+        .catch((error) => {
+          loading = false;
+          submitted = true;
+          console.log(`There was an error posting the form, ${error}`);
+        });
+    }
   };
 
   const startOver = () => {
@@ -89,14 +94,25 @@
 </script>
 
 <main>
-  <form on:submit|preventDefault={onSubmit} class:hidden name="feedback">
+  <form
+    on:submit|preventDefault={onSubmit}
+    class:hidden
+    class="needs-validation"
+    name="feedback"
+    novalidate
+  >
     <div class="mb-3">
-      <label for="name" class="form-label">Name</label>
+      <label for="name" class="form-label"
+        >Name <span class="required">(required)</span></label
+      >
       <input type="name" class="form-control" id="name" name="name" required />
+      <div class="invalid-feedback">Please provide your name.</div>
       <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
     </div>
     <div class="mb-3">
-      <label for="email" class="form-label">Email address</label>
+      <label for="email" class="form-label"
+        >Email address <span class="required">(required)</span></label
+      >
       <input
         type="email"
         class="form-control"
@@ -104,10 +120,20 @@
         name="email"
         required
       />
+      <div class="invalid-feedback">Please provide an email address.</div>
     </div>
     <div class="mb-3">
       <label for="summary" class="form-label">Short summary</label>
-      <input type="text" class="form-control" id="summary" name="summary" />
+      <input
+        type="text"
+        class="form-control"
+        id="summary"
+        name="summary"
+        required
+      />
+      <div class="invalid-feedback">
+        Please provide a title or subject line to summarize your feedback.
+      </div>
     </div>
     <div class="mb-3">
       <label for="bookDescription" class="form-label"
@@ -215,6 +241,9 @@
   }
   .hidden {
     display: none;
+  }
+  .required {
+    font-size: 0.75em;
   }
 
   /* .label-on-left {
