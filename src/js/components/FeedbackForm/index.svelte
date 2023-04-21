@@ -28,14 +28,17 @@
   export let submitted = false;
 
   const postForm = async (data) => {
-    return fetch('http://localhost:5000/api', {
-      method: 'POST',
-      body: data,
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    }).then((response) => {
+    return fetch(
+      'https://feedback-testing.macc.kubernetes.hathitrust.org/api',
+      {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      }
+    ).then((response) => {
       // did something go wrong with the fetch?
       // if yes, the function stops here
       if (!response.ok) {
@@ -60,6 +63,7 @@
     // check for required fields
     if (!form.checkValidity()) {
       event.stopPropagation();
+      loading = false;
       form.classList.add('was-validated');
     } else {
       // do the post fetch function, passing in the seralized data
@@ -279,31 +283,4 @@
       }
     }
   }
-
-  /* .label-on-left {
-    --label-width: 150px;
-    --gap-width: 1rem;
-  }
-
-  .label-on-left + .label-on-left {
-    margin-top: var(--sl-spacing-medium);
-  }
-
-  .label-on-left::part(form-control) {
-    display: grid;
-    grid: auto / var(--label-width) 1fr;
-    gap: var(--sl-spacing-3x-small) var(--gap-width);
-    align-items: center;
-  }
-
-  .label-on-left::part(form-control-label) {
-    text-align: right;
-  }
-
-  .form-options {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    padding: 1em 0;
-  } */
 </style>
