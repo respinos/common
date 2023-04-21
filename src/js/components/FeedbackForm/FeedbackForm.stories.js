@@ -5,6 +5,7 @@ import { expect } from '@storybook/jest';
 export default {
   title: 'Feedback Form',
   component: FeedbackForm,
+  argTypes: { onSubmit: { action: 'form submitted' } },
 };
 
 export const Default = {
@@ -15,8 +16,14 @@ export const Default = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const submitButton = await canvas.getByRole('button', {
+      name: 'Submit',
+    });
+
     //sanity check
     expect(await canvas.getByRole('main')).toBeInTheDocument();
+    expect(submitButton.innerHTML).toBe('Submit');
+    expect(submitButton.classList).toContain('btn-primary');
   },
 };
 
@@ -81,12 +88,40 @@ export const DesktopFormMissingRequiredFields = {
 };
 export const DesktopLoadingOnSubmit = {
   parameters: { ...Default.parameters },
+  args: {
+    loading: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const submitButton = await canvas.getByRole('button', { name: 'Submit' });
+
+    // this is a dumb test
+    // i want to test that the loading prop is working, but how?
+    expect(await canvas.getByRole('button', { name: 'Submit' })).toBeVisible();
+  },
 };
 export const DesktopSuccessMessage = {
   parameters: { ...Default.parameters },
+  args: {
+    hidden: true,
+    submitted: true,
+    postResponseStatusCode: 200,
+  },
+};
+export const DesktopSubmissionLimitMessage = {
+  parameters: { ...Default.parameters },
+  args: {
+    hidden: false,
+    submitted: true,
+    postResponseStatusCode: 429,
+  },
 };
 export const DesktopFailureMessage = {
   parameters: { ...Default.parameters },
+  args: {
+    hidden: false,
+    submitted: true,
+  },
 };
 
 export const DefaultMobile = {

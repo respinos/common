@@ -18,14 +18,14 @@
   //if user isn't logged in, HTstatus cookie won't exist
   let userAuthStatus = cookies.HTstatus || 'not logged in';
 
-  let postResponseStatusCode;
+  export let postResponseStatusCode;
 
   // when true, spinner on submit button animates
-  let loading = false;
+  export let loading = false;
   // when true, hides the element (in this case, the form)
-  let hidden = false;
+  export let hidden = false;
   // when true, shows the success/failure alert message
-  let submitted = false;
+  export let submitted = false;
 
   const postForm = async (data) => {
     return fetch('http://localhost:5000/api', {
@@ -50,7 +50,7 @@
   };
 
   // handles front-end reaction to form submission
-  const onSubmit = (event) => {
+  export const onSubmit = (event) => {
     // set the submit button spinner spinning
     loading = true;
     //serialize form data
@@ -97,7 +97,7 @@
   <form
     on:submit|preventDefault={onSubmit}
     class:hidden
-    class="needs-validation"
+    class="needs-validation mb-3"
     name="feedback"
     novalidate
   >
@@ -171,71 +171,70 @@
       bind:value={userAuthStatus}
     />
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-
-    <!-- <div class="form-options">
-      <sl-button
-        class="btn form-button"
-        variant="default"
-        type="submit"
-        value="Submit"
-        aria-label="Submit">Cancel</sl-button
-      >
-      <sl-button
-        class="btn form-button"
-        variant="primary"
-        type="submit"
-        value="Submit"
-        aria-label="Submit"
-        {loading}>Submit</sl-button
-      >
-    </div> -->
+    <button type="submit" class="btn btn-primary" disabled={loading}>
+      Submit
+      {#if loading}
+        <span
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+        />
+        <span class="visually-hidden">Loading...</span>
+      {/if}
+    </button>
   </form>
 
   <!-- TODO: use props to make these messages more modular <FormMessage /> -->
-  <!-- a whole bunch of shoelace stuff that needs to be converted to bootstrap-->
-  <!--
   {#if submitted}
     <section>
       {#if postResponseStatusCode === 200}
         <div transition:slide>
-          <sl-alert variant="success" open>
-            <sl-icon slot="icon" name="check2-circle" />
-            <strong>Thank you!</strong><br />
-            Your feedback has been submitted.
-            <sl-button
-              variant="default"
-              on:click={startOver}
-              on:keypress={startOver}
-              ><sl-icon slot="suffix" name="arrow-counterclockwise" />Start over</sl-button
-            >
-          </sl-alert>
+          <div class="alert alert-success submit-message" role="alert">
+            <i class="fa-solid fa-circle-check fa-lg me-2" />
+            <div>
+              <div class="d-flex flex-column">
+                <strong>Thank you!&nbsp;</strong>Your feedback has been
+                submitted.
+              </div>
+              <button
+                type="button"
+                class="btn btn-success"
+                on:click={startOver}
+                on:keypress={startOver}
+                >Start over <i
+                  class="fa-solid fa-arrow-rotate-left fa-lg ms-2"
+                /></button
+              >
+            </div>
+          </div>
         </div>
       {:else if postResponseStatusCode === 429}
         <div transition:slide>
-          <sl-alert variant="danger" open>
-            <sl-icon slot="icon" name="exclamation-octagon" />
-            <strong>Limit reached</strong><br />
-            You have reached the maximum amount of submissions for this time period.
-            Please submit your request again another time.
-          </sl-alert>
+          <div class="alert alert-danger submit-message" role="alert">
+            <i class="fa-solid fa-triangle-exclamation fa-lg me-2" />
+            <div>
+              <strong>Limit reached.&nbsp;</strong>You have reached the maximum
+              amount of submissions for this time period. Please submit your
+              request again another time.
+            </div>
+          </div>
         </div>
       {:else}
         <div transition:slide={{ duration: 300 }}>
-          <sl-alert variant="danger" open>
-            <sl-icon slot="icon" name="exclamation-octagon" />
-            <strong>Oops!</strong><br />
-            There was an error submitting the form. Please try again or email us
-            at support@hathitrust.org
-          </sl-alert>
+          <div class="alert alert-danger submit-message" role="alert">
+            <i class="fa-solid fa-triangle-exclamation fa-lg me-2" />
+            <div>
+              <strong>Oops!&nbsp;</strong>There was an error submitting the
+              form. Please try again or email us at support@hathitrust.org
+            </div>
+          </div>
         </div>
       {/if}
     </section>
   {/if}
--->
 </main>
 
-<style>
+<style lang="scss">
   .form-control:focus {
     background-color: var(--color-neutral-50);
   }
@@ -244,6 +243,41 @@
   }
   .required {
     font-size: 0.75em;
+  }
+  .submit-message {
+    /*styles for md and up screens*/
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    @media (min-width: 768px) {
+      gap: 0.25em;
+    }
+    & > div {
+      display: flex;
+      flex-direction: column;
+    }
+    & > i {
+      font-size: 2em;
+      @media (min-width: 768px) {
+        font-size: 1.5em;
+      }
+    }
+    button {
+      margin-top: 0.5em;
+    }
+  }
+  .alert-success.submit-message {
+    & > div {
+      @media (min-width: 768px) {
+        flex-direction: row;
+        gap: 1em;
+      }
+    }
+    button {
+      @media (min-width: 768px) {
+        margin-top: 0;
+      }
+    }
   }
 
   /* .label-on-left {
