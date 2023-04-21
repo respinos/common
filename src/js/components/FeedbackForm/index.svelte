@@ -53,7 +53,7 @@
   };
 
   // handles front-end reaction to form submission
-  export const onSubmit = (event) => {
+  const onSubmit = (event) => {
     // set the submit button spinner spinning
     loading = true;
     //serialize form data
