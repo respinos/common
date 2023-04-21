@@ -127,7 +127,9 @@
       <div class="invalid-feedback">Please provide an email address.</div>
     </div>
     <div class="mb-3">
-      <label for="summary" class="form-label">Short summary</label>
+      <label for="summary" class="form-label"
+        >Short summary <span class="required">(required)</span></label
+      >
       <input
         type="text"
         class="form-control"
@@ -186,6 +188,10 @@
         <span class="visually-hidden">Loading...</span>
       {/if}
     </button>
+    <div id="data-message" class="form-text">
+      By submitting this form, you agree to send your browser details to help
+      our team track down your issue.
+    </div>
   </form>
 
   <!-- TODO: use props to make these messages more modular <FormMessage /> -->
