@@ -9,6 +9,9 @@ import * as bootstrap from 'bootstrap';
 import Quote from './components/Quote.svelte';
 import LoginFormModal from './components/LoginFormModal';
 import Header from './components/Header';
+import ResultsPagination from './components/ResultsPagination';
+import ResultsToolbar from './components/ResultsToolbar';
+import CollectionsToolbar from './components/CollectionsToolbar';
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -36,6 +39,9 @@ const apps = {};
 apps['hathi-quote'] = Quote;
 apps['hathi-login-form-modal'] = LoginFormModal;
 apps['hathi-website-header'] = Header;
+apps['hathi-results-pagination'] = ResultsPagination;
+apps['hathi-results-toolbar'] = ResultsToolbar;
+apps['hathi-collections-toolbar'] = CollectionsToolbar;
 
 // configure the HT global
 setupHTEnv();
