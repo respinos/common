@@ -12,6 +12,7 @@ import Header from './components/Header';
 import ResultsPagination from './components/ResultsPagination';
 import ResultsToolbar from './components/ResultsToolbar';
 import CollectionsToolbar from './components/CollectionsToolbar';
+import Footer from './components/Footer';
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -42,6 +43,7 @@ apps['hathi-website-header'] = Header;
 apps['hathi-results-pagination'] = ResultsPagination;
 apps['hathi-results-toolbar'] = ResultsToolbar;
 apps['hathi-collections-toolbar'] = CollectionsToolbar;
+apps['hathi-website-footer'] = Footer;
 
 // configure the HT global
 setupHTEnv();
@@ -56,7 +58,7 @@ setupHTEnv();
 //   })
 // })
 
-HT.postPingCallback = function() {
+HT.postPingCallback = function () {
   // APPROACH: look for custom elements and instantiate
   // the svelte component inside that element
   Object.keys(apps).forEach((slug) => {
@@ -68,11 +70,13 @@ HT.postPingCallback = function() {
       });
     });
   });
-}
+};
 
 let script = document.createElement('script');
 script.async = true;
-script.src = `//${HT.service_domain}/cgi/ping?callback=HT.postPingCallback&_${(new Date).getTime()}`;
+script.src = `//${
+  HT.service_domain
+}/cgi/ping?callback=HT.postPingCallback&_${new Date().getTime()}`;
 document.head.appendChild(script);
 
 // look for buttons that trigger the appearance of
