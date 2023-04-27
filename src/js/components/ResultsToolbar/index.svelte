@@ -1,4 +1,7 @@
 <script>
+  import { onMount } from 'svelte';
+  import CollectionEditModal from '../CollectionEditModal';
+
   export let firstRecordNumber = 1;
   export let lastRecordNumber = 35;
   export let totalRecords = 225314;
@@ -39,6 +42,17 @@
     ...config['mb.listis'],
     label: 'results'
   };
+  config['mb.listcs'] = {
+    label: 'lists',
+    sortParam: 'sort',
+    pageParam: 'pn',
+    sortOptions: [
+      {value: 'cn_a', label: 'List Title'},
+      {value: 'updated_d', label: 'Last Updated'},
+      {value: 'num_a', label: 'Items (low to high)'},
+      {value: 'num_d', label: 'Items (high to low)'}
+    ]
+  }
 
   $: label = config[target].label;
   $: sortOptions = config[target].sortOptions;
@@ -55,13 +69,52 @@
     location.href = url.toString();
   }
 
+  let modal; 
+  let action = 'addc';
+  let status = {};
+  const openModal = function() {
+    modal.show();
+  }
+
+  async function submitAction(params) {
+
+    const non_ajax = { movit : true, delit : true, movitnc : true, editc : true, addc: true };
+
+    status.class = null; status = status;
+    params.set('a', action);
+    if (! non_ajax[action]) {
+      params.set('page', 'ajax');
+    }
+
+    params.set('skin', 'firebird');
+
+    let url = new URL(`${location.protocol}//${HT.service_domain}/cgi/mb?${params.toString()}`);
+
+    if (params.get('page') == 'ajax') {
+      let response = await fetch(url, {
+        method: 'GET',
+      })
+      if (response.ok) {
+        parseResponse(await response.text());
+        userCollections.push({
+          value: status.coll_id,
+          label: status.coll_name
+        })
+        userCollections = userCollections;
+        clearSelection();
+      }
+    } else {
+      location.href = url;
+    }
+  }
+
 </script>
 
 <div class="bg-light rounded-2 p-2 p-3 d-flex flex-sm-row flex-column gap-3 justify-content-between align-items-start align-items-sm-center" role="toolbar" aria-label="Search toolbar" aria-describedby="results-summary">
   <span id="results-summary">
     {format(firstRecordNumber)} to {format(lastRecordNumber)} of {format(totalRecords)} {label}
   </span>
-  <div class="d-flex flex-column align-items-start gap-3 xxflex-wrap justify-content-end">
+  <div class="d-flex flex-row align-items-start gap-3 xxflex-wrap justify-content-end">
     {#if sortOptions !== false}
     <div class="row flex-nowrap" style="--bs-gutter-x: 0.5rem">
       <div class="col-auto">
@@ -75,6 +128,9 @@
         </select>
       </div>
     </div>
+    {/if}
+    {#if target == 'mb.listcs'}
+      <button class="btn btn-secondary" on:click={openModal}>New List</button>
     {/if}
     <!-- <div class="row flex-nowrap" style="--bs-gutter-x: 0.5rem">
       <div class="col-auto">
@@ -91,6 +147,9 @@
   </div>
 </div>
 
+{#if target == 'mb.listcs'}
+<CollectionEditModal bind:this={modal} {submitAction} />
+{/if}
 
 <style>
 

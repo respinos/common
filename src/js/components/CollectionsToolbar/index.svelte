@@ -1,11 +1,15 @@
 <script>
   import { onMount } from 'svelte';
 
-  import Modal from '../Modal';
+  import CollectionEditModal from '../CollectionEditModal';
 
   export let editable = false;
   export let userIsAnonymous = true;
+  export let colldata = null;
   export let collid = null;
+  // export let collname = null;
+  // export let desc = null;
+  // export let shared = 0;
   
   let userCollections = [];
   let div;
@@ -64,7 +68,6 @@
   function addItems(event) {
     if (!checkSelection()) { return ; }
     action = 'addits';
-    alert(c);
     if (c == '__NEW__') {
       action = 'additsnc';
       openModal();
@@ -91,21 +94,20 @@
 
   function removeItems() {
     if (!checkSelection()) { return ; }
-    action = 'movit';
+    action = 'delit';
     let params = new URLSearchParams();
     params.set('c', collid);
     submitAction(params);
   }
 
-  function saveChanges(event) {
-    let params = new URLSearchParams();
-    params.set('cn', cn.trim());
-    params.set('desc', desc.trim());
-    params.set('contributor_name', contributorName.trim());
-    params.set('shrd', shared);
-
-    submitAction(params);
-    modal.hide();
+  function editMetadata() {
+    action = 'editc';
+    c = collid;
+    cn = document.documentElement.dataset.collname;
+    desc = document.documentElement.dataset.desc;
+    shared = parseInt(document.documentElement.dataset.shared, 10);
+    contributorName = document.documentElement.dataset.contributorName;
+    modal.show();
   }
 
   async function submitAction(params) {
@@ -179,7 +181,6 @@
   onMount(() => {
     let parentEl = div.parentElement;
     parentEl.querySelectorAll('[data-use="collections"] option').forEach((optionEl) => {
-      console.log(optionEl);
       userCollections.push({
         value: optionEl.value,
         label: optionEl.innerText
@@ -194,6 +195,15 @@
           allItemsSelected = false;
         }
       })
+    })
+
+    let btnEdit = document.querySelector('button[data-action="edit-metadata"]');
+    if ( btnEdit ) {
+      btnEdit.addEventListener('click', editMetadata);
+    }
+
+    return(() => {
+      if ( btnEdit ) { btnEdit.removeEventListener('click', editMetdata); }
     })
   })
 
@@ -226,7 +236,7 @@
           <button class="dropdown-item" type="button" on:click={moveItems}>Move</button>
         </li>
         <li>
-          <button class="dropdown-item" type="button" on:clic={removeItems}>Remove</button>
+          <button class="dropdown-item" type="button" on:click={removeItems}>Remove</button>
         </li>
       </ul>
       {/if}
@@ -244,61 +254,15 @@
 </div>
 {/if}
 
-<Modal bind:this={modal} scrollable={true}>
-  <svelte:fragment slot="modal-title">Edit Collection</svelte:fragment
-  >
-  <svelte:fragment slot="modal-body">
-    <form>
-      <div class="mb-3">
-        <label for="cn" class="form-label">Collection Name</label>
-        <input type="text" class="form-control" id="cn" name="cn" aria-describedby="cn-help" maxlength="100" bind:value={cn}>
-        <div id="cn-help" class="form-text">Collection names can be 100 characters long ({100 - cn.length} characters remaining).</div>
-      </div>
-      <div class="mb-3">
-        <label for="desc" class="form-label">Description</label>
-        <textarea class="form-control" id="desc" name="desc" aria-describedby="desc-help" rows="3" maxlength="255" bind:value={desc}></textarea>
-        <div id="cn-help" class="form-text">Descriptions can be 255 characters long ({255 - desc.length} characters remaining).</div>
-      </div>
-      <div class="mb-3">
-        <label for="contributor_name" class="form-label">Contributor Name</label>
-        <input type="text" class="form-control" id="contributor_name" name="contributor_name" aria-describedby="contributor_name-help" maxlength="255" bind:value={contributorName}>
-        <div id="contributor_name-help" class="form-text">
-          <strong>Optional.</strong> Set a public contributor name ({255 - contributorName.length} characters remaining).
-        </div>
-      </div>
-      <div class="mb-0">
-        <p class="mb-1">Is this collection visible to others?</p>
-        <div class="d-flex">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="shared" id="shared-0" value="0" checked={shared == 0}>
-            <label class="form-check-label" for="shared-0">
-              <i class="fa-solid fa-lock" aria-hidden="true"></i>
-              Private
-            </label>
-          </div>
-          {#if !userIsAnonymous}
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="shared" id="shared-1" checked={shared == 1}>
-            <label class="form-check-label" for="shared-1">
-              Public
-            </label>
-          </div>
-          {/if}
-        </div>
-      </div>
-    </form>
-  </svelte:fragment>
-  <svelte:fragment slot="modal-footer">
-    {#if userIsAnonymous}
-      <div class="alert alert-block alert-danger mx-3">
-        <p class="mb-0"><strong>This collection will be temporary.</strong> Log in to create 
-          permanent and public collections.</p>
-      </div>
-    {/if}
-    <button class="btn btn-secondary" type="button" on:click={() => modal.hide()}>Close</button>
-    <button class="btn btn-primary" type="button" on:click={saveChanges}>Save Changes</button>
-  </svelte:fragment>
-</Modal>
+<CollectionEditModal 
+  bind:this={modal} 
+  {userIsAnonymous}
+  {c}
+  {cn}
+  {desc}
+  {contributorName}
+  {shared}
+  {submitAction} />
 
 <style>
 
