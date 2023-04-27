@@ -19,11 +19,11 @@
 
   function openLogin() {
     //check viewport size to see if LoginFormModal will fit
-    if ( window.innerHeight < 700 ) {
-    //if not, redirect user 
+    if (window.innerHeight < 700) {
+      //if not, redirect user
       window.location.assign('https://babel.hathitrust.org/cgi/wayf');
     } else {
-    //else, open LoginFormModal
+      //else, open LoginFormModal
       modal.show();
     }
   }
@@ -142,9 +142,11 @@
           <div>
             <ul class="dropdown-menu">
               <div class="d-flex flex-column gap-4">
-                {#each menuData.about as linkText}
+                {#each menuData.about as menuItem}
                   <li class="px-3">
-                    <a class="dropdown-item px-0" href="#">{linkText}</a>
+                    <a class="dropdown-item px-0" href={menuItem.link}
+                      >{menuItem.title}</a
+                    >
                   </li>
                 {/each}
               </div>
@@ -168,9 +170,11 @@
           </a>
           <ul class="dropdown-menu">
             <div class="d-flex flex-column gap-4">
-              {#each menuData.collection as linkText}
+              {#each menuData.collection as menuItem}
                 <li class="px-3">
-                  <a class="dropdown-item px-0" href="#">{linkText}</a>
+                  <a class="dropdown-item px-0" href={menuItem.link}
+                    >{menuItem.title}</a
+                  >
                 </li>
               {/each}
             </div>
@@ -193,9 +197,11 @@
           </a>
           <ul class="dropdown-menu">
             <div class="d-flex flex-column gap-4">
-              {#each menuData.memberLibraries as linkText}
+              {#each menuData.memberLibraries as menuItem}
                 <li class="px-3">
-                  <a class="dropdown-item px-0" href="#">{linkText}</a>
+                  <a class="dropdown-item px-0" href={menuItem.link}
+                    >{menuItem.title}</a
+                  >
                 </li>
               {/each}
             </div>
@@ -221,9 +227,11 @@
           </a>
           <ul class="dropdown-menu">
             <div class="d-flex flex-column gap-4">
-              {#each menuData.newsEvents as linkText}
+              {#each menuData.newsEvents as menuItem}
                 <li class="px-3">
-                  <a class="dropdown-item px-0" href="#">{linkText}</a>
+                  <a class="dropdown-item px-0" href={menuItem.link}
+                    >{menuItem.title}</a
+                  >
                 </li>
               {/each}
             </div>
@@ -272,7 +280,8 @@
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
-                    href="#" role="button"
+                    href="#"
+                    role="button"
                     ><span class="needs-hover-state"
                       >Notifications{#if hasNotification} (4){/if}</span
                     >
@@ -282,7 +291,8 @@
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
-                    href="#" role="button"
+                    href="#"
+                    role="button"
                     ><span class="needs-hover-state">Log Out</span><i
                       class="fa-solid fa-arrow-right-from-bracket fa-fw"
                     /></a
@@ -296,7 +306,10 @@
           <li class="nav-item">
             <a
               class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
-              href="#" role="button" on:click|preventDefault={openLogin}>Log In<i class="fa-solid fa-user fa-fw" /></a
+              href="#"
+              role="button"
+              on:click|preventDefault={openLogin}
+              >Log In<i class="fa-solid fa-user fa-fw" /></a
             >
           </li>
         {/if}
