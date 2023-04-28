@@ -22,6 +22,11 @@
   export let hasNotification = false;
   export let searchOpen = true;
 
+  const switchableRoles = [ 'enhancedTextProxy', 'totalAccess' ];
+  const switchableRolesLabels = {};
+  switchableRolesLabels['enhancedTextProxy'] = 'ATRS';
+  switchableRolesLabels['totalAccess'] = 'Admin';
+
   function toggleSearch() {
     searchOpen = !searchOpen;
   }
@@ -36,6 +41,26 @@
       modal.show();
     }
   }
+
+  function checkSwitchableRoles(isLoggedIn) {
+    if ( HT.login_status.r ) {
+      for(const i in switchableRoles) {
+        let role = switchableRoles[i];
+        if ( HT.login_status.r.hasOwnProperty(role) ) {
+          return { 
+            status: true, 
+            label: switchableRolesLabels[role],
+            activated: HT.login_status.r[role]
+           };
+        }
+      }
+    }
+    return { status: false };
+  }
+
+  $: hasSwitchableRoles = checkSwitchableRoles(loggedIn).status;
+  $: hasActivatedRole = checkSwitchableRoles(loggedIn).activated;
+  $: role = checkSwitchableRoles(loggedIn).label;
 
   onMount(() => {
     if ( HT.login_status && HT.login_status.notificationData ) {
@@ -286,7 +311,11 @@
                   class:accountHasNotification={hasNotification}
                   class="account-icon me-n1 d-flex align-items-center justify-content-center border border-neutral-300 rounded-circle bg-neutral-100"
                 >
+                  {#if hasActivatedRole}
+                  <i class="fa-solid fa-bolt-lightning text-primary-500"></i>
+                  {:else}
                   <i class="fa-solid fa-user text-neutral-800" />
+                  {/if}
                 </span>
                 <span class="account-text ms-3">My Account</span>
               </div>
@@ -303,6 +332,22 @@
                     <i class="fa-solid fa-bell fa-fw" />
                   </button>
                 </li>
+                {#if hasSwitchableRoles}
+                <li class="px-3">
+                  <a
+                    class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
+                    href="//{HT.service_domain}/cgi/ping/switch"
+                    role="button"><span class="needs-hover-state">
+                      {#if hasActivatedRole}
+                      Switch to Member
+                      {:else}
+                      Switch to {role}
+                      {/if}
+                    </span><i
+                      class="fa-solid fa-bolt-lightning fa-fw"
+                    /></a>
+                </li>
+                {/if}
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
