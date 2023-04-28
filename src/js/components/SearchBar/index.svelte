@@ -47,6 +47,7 @@
       submitData.set('a', 'srchls');
       submitData.set('ft', 'ft');
       submitData.set('lmt', 'ft');
+      submitData.set('skin', 'firebird');
       search_url = `//${SERVICE_DOMAIN}/cgi/ls?${submitData.toString()}`;
     } else if (index == 'library') {
       let submitData = new URLSearchParams();

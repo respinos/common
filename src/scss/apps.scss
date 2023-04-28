@@ -1,11 +1,30 @@
 $twocol-breakpoint: 54em;
 
-body {
+html, body {
   padding: 0;
+  height: 100%;
 }
 
 .apps {
+
+  #root {
+    height: 100%;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "main" "footer";
+  }
+
+  hathi-website-header {
+    grid-area: header;
+  }
+
+  hathi-website-footer {
+    grid-area: footer;
+  }
+
   .main {
+    grid-area: main;
     display: grid; 
     grid-template: auto auto / 1fr; 
     padding-block: .75rem var(--pb); 
@@ -19,7 +38,9 @@ body {
   .twocol {
     display: flex;
     flex-wrap: wrap;
-    grid-area: 2 / 1;
+    // --- in the wordpress, 1/1 is the <nav>
+    // -- revisit this when talk about breadcrumbs
+    // grid-area: 2 / 1;
     gap: 3.125rem;
     align-items: start;
     margin-top: 2.625rem;
@@ -39,12 +60,14 @@ body {
   .twocol-side {
     display: grid;
     flex-grow: 1;
-    gap: 1.875rem;
+    // gap: 1.875rem;
+    gap: 1rem;
 
     @media (min-width: 64em) {
       flex-shrink: 0;
       flex-basis: 18.75rem;
-      gap: 3rem;
+      // gap: 3rem;
+      gap: 1rem;
     }
   }
 
@@ -78,50 +101,49 @@ body {
         max-width: 100%;
       }
     }
+  }
 
-    a.d-inline-flex {
-      gap: var(--bs-gutter-x);
-      text-decoration: none;
-      padding: 0.25rem;
+  a:not(.btn).d-inline-flex {
+    gap: var(--bs-gutter-x);
+    text-decoration: none;
+    padding: 0.25rem;
 
-      & > * {
-        text-decoration: underline;
+    & > * {
+      text-decoration: underline;
+    }
+  }
+
+  a i[aria-hidden] {
+    text-decoration: none;
+  }
+
+  a[data-access-role] {
+    background: #924a0b;
+    // border-radius: 4px;
+    color: white;
+
+    &:hover {
+      background: white;
+      color:  #924a0b;
+    }
+  }
+
+  .list-group a {
+    white-space: nowrap;
+
+    &:has(+ span) {
+      border-top-right-radius: var(--bs-list-group-border-radius) !important;
+      border-bottom-right-radius: var(--bs-list-group-border-radius) !important;
+    }
+  }
+
+  // by default, hide the 10+nth facets
+  div.filter-list {
+    &[data-expanded="false"] {
+      .filter-list-item:nth-child(n+10) {
+        display: none !important;
       }
     }
-
-    a i[aria-hidden] {
-      text-decoration: none;
-    }
-
-    a[data-access-role] {
-      background: #924a0b;
-      // border-radius: 4px;
-      color: white;
-
-      &:hover {
-        background: white;
-        color:  #924a0b;
-      }
-    }
-
-    .list-group a {
-      white-space: nowrap;
-
-      &:has(+ span) {
-        border-top-right-radius: var(--bs-list-group-border-radius) !important;
-        border-bottom-right-radius: var(--bs-list-group-border-radius) !important;
-      }
-    }
-
-    // by default, hide the 10+nth facets
-    div.filter-list {
-      &[data-expanded="false"] {
-        .filter-list-item:nth-child(n+10) {
-          display: none !important;
-        }
-      }
-    }
-
   }
 
   .sticky-bottom {

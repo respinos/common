@@ -49,7 +49,7 @@
       <div class="mb-3">
         <label for="desc" class="form-label">Description</label>
         <textarea class="form-control" id="desc" name="desc" aria-describedby="desc-help" rows="3" maxlength="255" bind:value={desc}></textarea>
-        <div id="cn-help" class="form-text">Descriptions can be 255 characters long ({255 - desc.length} characters remaining).</div>
+        <div id="desc-help" class="form-text">Descriptions can be 255 characters long ({255 - desc.length} characters remaining).</div>
       </div>
       <div class="mb-3">
         <label for="contributor_name" class="form-label">Contributor Name</label>
