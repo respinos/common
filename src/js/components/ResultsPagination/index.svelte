@@ -61,6 +61,9 @@
     padding-bottom: 1rem;
     bottom: 0;
     background-color: #fff;
-    box-shadow: 0px -0.5rem 0.5rem -0.5rem rgba(0,0,0,0.1);
+    /* box-shadow: 0px -0.5rem 0.5rem -0.5rem rgba(0,0,0,0.1); */
+    box-shadow: 4px 8px 25px  rgba(0, 0, 0, 0.55);
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
   }
 </style>
