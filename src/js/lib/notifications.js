@@ -1,6 +1,6 @@
 class NotificationsManager {
-  constructor({ notificationsData = [], cookieJar = {}}) {
-    this.notificationData = notificationsData;
+  constructor({ notificationData = [], cookieJar = {}}) {
+    this.notificationData = notificationData;
     this.cookieJar = cookieJar;
   }
 
@@ -12,8 +12,11 @@ class NotificationsManager {
     return this.notificationData.length > 0;
   }
 
+  count() {
+    return this.notificationData.length;
+  }
+
   hasNewNotifications() {
-    console.log("-- ahoy", this.timestamp(), this.effectiveOn());
     return (this.timestamp() != this.effectiveOn());
   }
 

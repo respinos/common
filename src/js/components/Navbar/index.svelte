@@ -1,10 +1,17 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
+  import { onMount } from 'svelte';
   import menuData from '../../../assets/menuData.json';
   import LoginFormModal from '../LoginFormModal';
+  import NotificationsModal from '../NotificationsModal';
+
+  import NotificationsManager from '../../lib/notifications';
 
   let HT = window.HT || {};
   let modal;
+
+  let notificationsModal;
+  let notificationsManager;
 
   //eventually, the loggedIn variable needs to reflect
   // HT.login_status.logged_in = true;
@@ -27,6 +34,17 @@
       modal.show();
     }
   }
+
+  onMount(() => {
+    if ( HT.login_status ) {
+      notificationsManager = new NotificationsManager({
+        cookieJar: HT.cookieJar,
+        notificationData: HT.login_status.notificationData
+      });
+      window.notificationsManager = notificationsManager;
+      hasNotification = notificationsManager.hasNotifications();
+    }
+  })
 </script>
 
 <nav class="navbar navbar-expand-xl bg-white">
@@ -278,20 +296,28 @@
             <ul class="dropdown-menu dropdown-menu-end">
               <div class="d-flex flex-column gap-4">
                 <li class="px-3">
-                  <a
+                  <button 
+                    class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
+                    on:click={notificationsModal.show()}
+                    ><span class="needs-hover-state"
+                      >Notifications {#if hasNotification}({notificationsManager.count()}){/if}</span
+                    >
+                    <i class="fa-solid fa-bell fa-fw" />
+                  </button>
+                  <!-- <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
                     href="#"
                     role="button"
                     ><span class="needs-hover-state"
-                      >Notifications{#if hasNotification} (4){/if}</span
+                      >Notifications {#if hasNotification}({notificationsManager.count()}){/if}</span
                     >
                     <i class="fa-solid fa-bell fa-fw" />
-                  </a>
+                  </a> -->
                 </li>
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
-                    href="#"
+                    href="//{`${HT.service_domain}/cgi/logout`}"
                     role="button"
                     ><span class="needs-hover-state">Log Out</span><i
                       class="fa-solid fa-arrow-right-from-bracket fa-fw"
@@ -317,6 +343,9 @@
     </div>
   </div>
 </nav>
+{#if hasNotification}
+  <NotificationsModal manager={notificationsManager} bind:this={notificationsModal} />
+{/if}
 
 <style lang="scss">
   .container-fluid {
