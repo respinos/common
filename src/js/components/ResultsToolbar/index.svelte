@@ -43,11 +43,11 @@
     label: 'results'
   };
   config['mb.listcs'] = {
-    label: 'lists',
+    label: 'collections',
     sortParam: 'sort',
     pageParam: 'pn',
     sortOptions: [
-      {value: 'cn_a', label: 'List Title'},
+      {value: 'cn_a', label: 'Collection Title'},
       {value: 'updated_d', label: 'Last Updated'},
       {value: 'num_a', label: 'Items (low to high)'},
       {value: 'num_d', label: 'Items (high to low)'}
