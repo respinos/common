@@ -150,9 +150,14 @@
         >
         <a href={`//${CATALOG_DOMAIN}/Search/Advanced`}
           ><i class="fa-solid fa-toolbox fa-fw" /><span
-            >Advanced Collection Search</span
+            >Advanced Search</span
           ></a
         >
+        <!-- <a href={`//${SERVICE_DOMAIN}/cgi/mb`}
+          ><i class="fa-solid fa-list fa-fw" /><span
+            >Reading Lists</span
+          ></a
+        > -->
       </div>
     </div>
   </div>

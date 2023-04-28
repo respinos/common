@@ -13,9 +13,9 @@ export class CookieJar {
 }
 
 export class NotificationsManager {
-  constructor({ notificationData = [], cookieJar = {}}) {
+  constructor({ notificationData = [], cookieJar = null}) {
     this.notificationData = notificationData;
-    this.cookieJar = cookieJar;
+    this.cookieJar = cookieJar ? cookieJar : (new CookieJar());
   }
 
   update(notificationData) {

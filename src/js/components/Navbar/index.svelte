@@ -302,16 +302,18 @@
                     >
                     <i class="fa-solid fa-bell fa-fw" />
                   </button>
-                  <!-- <a
-                    class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
-                    href="#"
-                    role="button"
-                    ><span class="needs-hover-state"
-                      >Notifications {#if hasNotification}({notificationsManager.count()}){/if}</span
-                    >
-                    <i class="fa-solid fa-bell fa-fw" />
-                  </a> -->
                 </li>
+                <li class="px-3">
+                  <a
+                    class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
+                    href="//{`${HT.service_domain}/cgi/mb?a=listcs&colltype=my-collections`}"
+                    role="button"
+                    ><span class="needs-hover-state">My Collections</span><i
+                      class="fa-solid fa-list fa-fw"
+                    /></a
+                  >
+                </li>
+                <li style="margin-top: -1rem; margin-bottom: -1rem;"><hr class="dropdown-divider"></li>
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"

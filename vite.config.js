@@ -46,7 +46,11 @@ export default defineConfig({
       '^/cgi/ping': {
         target: 'https://babel.hathitrust.org',
         changeOrigin: true
-      },    
+      },
+      '^/cgi/ls': {
+        target: 'https://dev-3.babel.hathitrust.org',
+        changeOrigin: true
+      },
     },
   },
   css: {
