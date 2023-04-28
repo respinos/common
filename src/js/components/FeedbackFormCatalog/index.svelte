@@ -2,6 +2,7 @@
   import { slide } from 'svelte/transition';
   let userURL = location.href;
   let userAgent = navigator.userAgent;
+  let formName = 'catalog-correction';
 
   //takes long string output of document.cookie and splits it into a usable javascript object
   let cookies = document.cookie
@@ -28,8 +29,10 @@
   export let submitted = false;
 
   const postForm = async (data) => {
+    console.log(data);
     return fetch(
-      'https://feedback-testing.macc.kubernetes.hathitrust.org/api',
+      // 'https://feedback-testing.macc.kubernetes.hathitrust.org/api',
+      'http://localhost:5006/api',
       {
         method: 'POST',
         body: data,
@@ -176,6 +179,7 @@
       type="hidden"
       bind:value={userAuthStatus}
     />
+    <input name="formName" id="formName" type="hidden" bind:value={formName} />
 
     <button type="submit" class="btn btn-primary" disabled={loading}>
       Submit
