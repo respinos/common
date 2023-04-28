@@ -11,7 +11,9 @@
   let modal;
 
   let notificationsModal;
-  let notificationsManager;
+  let notificationsManager = new NotificationsManager({
+    cookieJar: HT.cookieJar
+  });
 
   //eventually, the loggedIn variable needs to reflect
   // HT.login_status.logged_in = true;
@@ -36,12 +38,8 @@
   }
 
   onMount(() => {
-    if ( HT.login_status ) {
-      notificationsManager = new NotificationsManager({
-        cookieJar: HT.cookieJar,
-        notificationData: HT.login_status.notificationData
-      });
-      window.notificationsManager = notificationsManager;
+    if ( HT.login_status && HT.login_status.notificationData ) {
+      notificationsManager.update(HT.login_status.notificationData);
       hasNotification = notificationsManager.hasNotifications();
     }
   })

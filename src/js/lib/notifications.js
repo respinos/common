@@ -1,4 +1,18 @@
-class NotificationsManager {
+export class CookieJar {
+  constructor() {
+    this.data = {};
+  }
+
+  getItem(key) {
+    return this.data[key];
+  }
+
+  setItem(key, value) {
+    this.data[key] = value;
+  }
+}
+
+export class NotificationsManager {
   constructor({ notificationData = [], cookieJar = {}}) {
     this.notificationData = notificationData;
     this.cookieJar = cookieJar;
