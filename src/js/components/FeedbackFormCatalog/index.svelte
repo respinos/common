@@ -103,6 +103,8 @@
     //unhide the form, hide the submission message, reset the form
     hidden = !hidden;
     submitted = !submitted;
+    problems = ['None'];
+    access = 'None';
     document.querySelector('form').reset();
   };
 </script>

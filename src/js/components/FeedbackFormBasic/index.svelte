@@ -146,7 +146,8 @@
     </div>
     <div class="mb-3">
       <label for="bookDescription" class="form-label"
-        >Description or URL of the book</label
+        >Description or URL of the book <span class="required">(optional)</span
+        ></label
       >
       <input
         type="text"
@@ -157,14 +158,20 @@
     </div>
     <div class="mb-3">
       <label for="description" class="form-label"
-        >Full description of problem or question</label
+        >Full description of problem or question <span class="required"
+          >(required)</span
+        ></label
       >
       <textarea
         class="form-control"
         id="description"
         name="description"
         rows="3"
+        required
       />
+      <div class="invalid-feedback">
+        Please provide some background or details for your feedback or question.
+      </div>
     </div>
     <input name="userURL" id="userURL" type="hidden" bind:value={userURL} />
     <input
