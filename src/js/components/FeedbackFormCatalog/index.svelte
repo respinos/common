@@ -1,5 +1,7 @@
 <script>
   import { slide } from 'svelte/transition';
+  let problems = ['None'];
+  let access = 'None';
   let userURL = location.href;
   let userAgent = navigator.userAgent;
   let formName = 'catalog-correction';
@@ -59,8 +61,13 @@
   const onSubmit = (event) => {
     // set the submit button spinner spinning
     loading = true;
-    //serialize form data
-    const data = JSON.stringify(Object.fromEntries(new FormData(event.target)));
+
+    //set form data
+    let data = new FormData(event.target);
+    // i could *not* figure out why checkbox values were being ovewritten by each other, so this is my probably too-complex solution
+    data.append('problems', problems.join(', '));
+    // serialize form data
+    data = JSON.stringify(Object.fromEntries(data));
     const form = document.querySelector('.needs-validation');
 
     // check for required fields
@@ -145,25 +152,151 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="bookDescription" class="form-label"
-        >Description or URL of the book</label
+      <label for="recordURL" class="form-label"
+        >URL of catalog record <span class="required">(required)</span></label
       >
-      <input
-        type="text"
-        class="form-control"
-        id="bookDescription"
-        name="bookDescription"
-      />
+      <input type="text" class="form-control" id="recordURL" name="recordURL" />
     </div>
     <div class="mb-3">
+      <label for="itemURL" class="form-label"
+        >URL of specific item within record related to issue <span
+          class="required">(optional)</span
+        ></label
+      >
+      <input type="text" class="form-control" id="itemURL" name="itemURL" />
+    </div>
+    <div class="mb-3">
+      <label for="itemTitle" class="form-label"
+        >Title of the book <span class="required">(optional)</span></label
+      >
+      <input type="text" class="form-control" id="itemTitle" name="itemTitle" />
+    </div>
+    <fieldset class="mb-3">
+      <legend class="mb-3 fs-6">
+        What specific problems are you noticing with the catalog record?
+        <span class="required">(required)</span>
+      </legend>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="problems"
+          value="Book doesn't match description"
+          bind:group={problems}
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          The book doesn't match the description in its catalog record
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="problems"
+          value="Typo in metadata"
+          bind:group={problems}
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          There is a typo in the metadata
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="problems"
+          value="Other"
+          bind:group={problems}
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          Other (describe in description box)
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="problems"
+          value="None"
+          bind:group={problems}
+          checked
+        />
+        <label class="form-check-label" for="flexCheckChecked">
+          No problems
+        </label>
+      </div>
+    </fieldset>
+    <fieldset class="mb-3">
+      <legend class="mb-3 fs-6">
+        Is there a problem with access rights for this item? <span
+          class="required">(required)</span
+        >
+      </legend>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="access"
+          id="public-domain"
+          value="Item in public domain, but I don't have access to it"
+          bind:group={access}
+        />
+        <label class="form-check-label" for="public-domain">
+          This item is in the public domain, but I don't have access to it.
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="access"
+          value="Fed doc I should be able to access"
+          bind:group={access}
+          id="fed-document"
+        />
+        <label class="form-check-label" for="fed-document">
+          This it is a U.S. federal document, and therefore I should be able to
+          access it.
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="access"
+          value="I shouldn't have acccess to this item"
+          bind:group={access}
+          id="should-not-have-access"
+        />
+        <label class="form-check-label" for="should-not-have-access">
+          I have access to this item but should not.
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="access"
+          id="none"
+          value="None"
+          bind:group={access}
+          checked
+        />
+        <label class="form-check-label" for="none"> No problems </label>
+      </div>
+    </fieldset>
+    <div class="mb-3">
       <label for="description" class="form-label"
-        >Full description of problem or question</label
+        >Full description of problem or question <span class="required"
+          >(required)</span
+        ></label
       >
       <textarea
         class="form-control"
         id="description"
         name="description"
         rows="3"
+        required
       />
     </div>
     <input name="userURL" id="userURL" type="hidden" bind:value={userURL} />
