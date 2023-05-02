@@ -156,6 +156,10 @@
         >URL of catalog record <span class="required">(required)</span></label
       >
       <input type="text" class="form-control" id="recordURL" name="recordURL" />
+      <div class="invalid-feedback">
+        Please provide the URL of the record from the catalog where you found
+        the issue.
+      </div>
     </div>
     <div class="mb-3">
       <label for="itemURL" class="form-label"
@@ -287,8 +291,7 @@
     </fieldset>
     <div class="mb-3">
       <label for="description" class="form-label"
-        >Full description of problem or question <span class="required"
-          >(required)</span
+        >Other problems or comments? <span class="optional">(required)</span
         ></label
       >
       <textarea
@@ -296,7 +299,6 @@
         id="description"
         name="description"
         rows="3"
-        required
       />
     </div>
     <input name="userURL" id="userURL" type="hidden" bind:value={userURL} />
