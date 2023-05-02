@@ -10,6 +10,7 @@
 
   const fieldOptions = [
     { value: 'ocr', label: 'Everything' },
+    { value: 'ocronly', label: 'Only Full-Text' },
     { value: 'all', label: 'All Bibliographic Fields' },
     { value: 'title', label: 'Title' },
     { value: 'author', label: 'Author' },
@@ -70,7 +71,7 @@
     let target = 'catalog';
     let url;
     for(let i = 0; i < types.length; i++) {
-      if (types[i] == 'ocr' && lookFors[i]) {
+      if ((types[i] == 'ocr' || types[i] == 'ocronly') && lookFors[i]) {
         target = 'ls';
         break;
       }
