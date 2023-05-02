@@ -72,6 +72,9 @@ HT.postPingCallback = function () {
       });
     });
   });
+  setTimeout(() => {
+    document.body.dataset.initialized = true;
+  });
 };
 
 let script = document.createElement('script');
