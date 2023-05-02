@@ -33,8 +33,8 @@
   const postForm = async (data) => {
     console.log(data);
     return fetch(
-      // 'https://feedback-testing.macc.kubernetes.hathitrust.org/api',
-      'http://localhost:5006/api',
+      'https://feedback-testing.macc.kubernetes.hathitrust.org/api',
+      // 'http://localhost:5006/api',
       {
         method: 'POST',
         body: data,
