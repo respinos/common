@@ -61,13 +61,13 @@ export const NoNotificationsSoTadaNothing = {
   }
 }
 
-let newNotificationsData = structuredClone(sampleData);
+let newnotificationData = structuredClone(sampleData);
 // optimistically future enough
-newNotificationsData[0].effective_on = "2025-12-31 23:59:59";
+newnotificationData[0].effective_on = "2025-12-31 23:59:59";
 let newCookieJar = new CookieJar();
 let newManager = new NotificationsManager({
   cookieJar: newCookieJar,
-  notificationsData: newNotificationsData
+  notificationData: newnotificationData
 })
 export const HasNewNotifications = {
   args: {
@@ -81,15 +81,15 @@ export const HasNewNotifications = {
     })
     closeButton = await canvas.getAllByText(/^Close$/);
     await userEvent.click(closeButton[0]);
-    expect(newCookieJar.getItem('HT.notice')).toBe(newNotificationsData[0].effective_on);
+    expect(newCookieJar.getItem('HT.notice')).toBe(newnotificationData[0].effective_on);
   }
 }
 
-let previouslySeenNotificationsData = structuredClone(sampleData);
+let previouslySeennotificationData = structuredClone(sampleData);
 let previouslySeenCookieJar = new CookieJar();
 let previouslySeenManager = new NotificationsManager({
   cookieJar: previouslySeenCookieJar,
-  notificationsData: previouslySeenNotificationsData
+  notificationData: previouslySeennotificationData
 })
 export const PreviouslySeenNotifications = {
   args: {

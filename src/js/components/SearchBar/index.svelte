@@ -47,6 +47,7 @@
       submitData.set('a', 'srchls');
       submitData.set('ft', 'ft');
       submitData.set('lmt', 'ft');
+      submitData.set('skin', 'firebird');
       search_url = `//${SERVICE_DOMAIN}/cgi/ls?${submitData.toString()}`;
     } else if (index == 'library') {
       let submitData = new URLSearchParams();
@@ -147,11 +148,16 @@
             >Search Help</span
           ></a
         >
-        <a href={`//${CATALOG_DOMAIN}/Search/Advanced`}
+        <a href={`//${SERVICE_DOMAIN}/cgi/ls?a=page&page=advanced`}
           ><i class="fa-solid fa-toolbox fa-fw" /><span
-            >Advanced Collection Search</span
+            >Advanced Search</span
           ></a
         >
+        <!-- <a href={`//${SERVICE_DOMAIN}/cgi/mb`}
+          ><i class="fa-solid fa-list fa-fw" /><span
+            >Reading Lists</span
+          ></a
+        > -->
       </div>
     </div>
   </div>
