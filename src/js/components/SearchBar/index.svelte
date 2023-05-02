@@ -148,7 +148,7 @@
             >Search Help</span
           ></a
         >
-        <a href={`//${CATALOG_DOMAIN}/Search/Advanced`}
+        <a href={`//${SERVICE_DOMAIN}/cgi/ls?a=page&page=advanced`}
           ><i class="fa-solid fa-toolbox fa-fw" /><span
             >Advanced Search</span
           ></a
