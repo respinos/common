@@ -261,7 +261,7 @@
           id="fed-document"
         />
         <label class="form-check-label" for="fed-document">
-          This it is a U.S. federal document, and therefore I should be able to
+          This is a U.S. federal document, and therefore I should be able to
           access it.
         </label>
       </div>
