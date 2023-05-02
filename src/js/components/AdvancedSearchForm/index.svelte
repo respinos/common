@@ -22,8 +22,8 @@
   ];
 
   let booleanOptions = [
-    { value: 'and', label: 'And' },
-    { value: 'or', label: 'Or' }
+    { value: 'AND', label: 'And' },
+    { value: 'OR', label: 'Or' }
   ];
 
   const yopOptions = [
@@ -47,7 +47,7 @@
   // let types = new Array(4); types.fill('ocr');
   let types = ['ocr', 'all', 'title', 'author'];
   let lookFors = new Array(4); lookFors.fill('');
-  let bools = new Array(4); bools.fill('and');
+  let bools = new Array(4); bools.fill('AND');
   let anyalls = new Array(4); anyalls.fill('all');
   let isFullView = true;
 
