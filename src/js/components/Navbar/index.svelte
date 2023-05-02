@@ -21,11 +21,12 @@
   export let loggedIn = HT.login_status.logged_in;
   export let hasNotification = false;
   export let searchOpen = true;
+  export let searchState;
 
   const switchableRoles = [ 'enhancedTextProxy', 'totalAccess' ];
   const switchableRolesLabels = {};
   switchableRolesLabels['enhancedTextProxy'] = 'ATRS';
-  switchableRolesLabels['totalAccess'] = 'Admin';
+  switchableRolesLabels['totalAccess'] = 'CAA';
 
   function toggleSearch() {
     searchOpen = !searchOpen;
@@ -151,6 +152,7 @@
       >
         <span><i class:hasNotification class="fa-solid fa-bars fa-fw" /></span>
       </button>
+      {#if searchState != 'none'}
       <button
         class="navbar-toggler border-0 m-0"
         type="button"
@@ -163,6 +165,7 @@
       >
         <span><i class="fa-solid fa-magnifying-glass fa-fw" /></span>
       </button>
+      {/if}
     </div>
     <div
       class="collapse navbar-collapse justify-content-between"
@@ -280,6 +283,7 @@
         </li>
       </ul>
       <ul class="navbar-nav action-links">
+        {#if searchState != 'none'}
         <li class="nav-item d-none d-xl-block">
           <a
             class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
@@ -290,6 +294,7 @@
             >Search <i class="fa-solid fa-magnifying-glass fa-fw" /></a
           >
         </li>
+        {/if}
         <li class="nav-item">
           <a
             class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
@@ -333,15 +338,16 @@
                   </button>
                 </li>
                 {#if hasSwitchableRoles}
+                <li style="margin-bottom: -1rem"><h6 class="dropdown-header">Current Role: {hasActivatedRole ? role : 'Member'}</h6></li>
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
                     href="//{HT.service_domain}/cgi/ping/switch"
                     role="button"><span class="needs-hover-state">
                       {#if hasActivatedRole}
-                      Switch to Member
+                      Switch Role: Member
                       {:else}
-                      Switch to {role}
+                      Switch Role: {role}
                       {/if}
                     </span><i
                       class="fa-solid fa-bolt-lightning fa-fw"

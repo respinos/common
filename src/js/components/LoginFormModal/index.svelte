@@ -73,7 +73,7 @@
     <div class="mt-3 modal-grid">
       {#if HT.login_status}
         <FilterableSelection
-          --filterable-list-height="15rem"
+          --filterable-list-height="14rem"
           items={HT.login_status.idp_list.map((item) => ({
             option: item.name.replace(/&amp;/g, '&'),
             key: item.sdrinst,
