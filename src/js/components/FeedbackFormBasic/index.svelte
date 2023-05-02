@@ -146,8 +146,8 @@
     </div>
     <div class="mb-3">
       <label for="bookDescription" class="form-label"
-        >Description or URL of the book <span class="required">(optional)</span
-        ></label
+        >If your question is related to a specific book, what is the title or
+        URL? <span class="required">(optional)</span></label
       >
       <input
         type="text"
