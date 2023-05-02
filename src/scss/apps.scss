@@ -7,6 +7,13 @@ html, body {
 
 .apps {
 
+  transition: visibility 0s linear 100ms, opacity 150ms;
+
+  &[data-initialized="true"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
   #root {
     height: 100%;
     display: grid;
@@ -41,7 +48,8 @@ html, body {
     // --- in the wordpress, 1/1 is the <nav>
     // -- revisit this when talk about breadcrumbs
     // grid-area: 2 / 1;
-    gap: 3.125rem;
+    // gap: 3.125rem;
+    gap: 1.5rem;
     align-items: start;
     margin-top: 2.625rem;
     margin-inline: max(clamp(.938rem, calc(.268rem + 3.348vw), 1.875rem), ((100% - 73.125rem) / 2));
@@ -50,6 +58,17 @@ html, body {
     // column that wraps more than HTDL
     @media (min-width: $twocol-breakpoint) {
       flex-wrap: nowrap;
+    }
+  }
+
+  .twocol.single {
+    max-width: 62rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    &.twocol-main {
+      flex-basis: auto;
     }
   }
 

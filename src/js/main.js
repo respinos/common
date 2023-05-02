@@ -13,6 +13,7 @@ import ResultsPagination from './components/ResultsPagination';
 import ResultsToolbar from './components/ResultsToolbar';
 import CollectionsToolbar from './components/CollectionsToolbar';
 import Footer from './components/Footer';
+import AdvancedSearchForm from './components/AdvancedSearchForm';
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -44,6 +45,7 @@ apps['hathi-results-pagination'] = ResultsPagination;
 apps['hathi-results-toolbar'] = ResultsToolbar;
 apps['hathi-collections-toolbar'] = CollectionsToolbar;
 apps['hathi-website-footer'] = Footer;
+apps['hathi-advanced-search-form'] = AdvancedSearchForm;
 
 // configure the HT global
 setupHTEnv();
@@ -69,6 +71,9 @@ HT.postPingCallback = function () {
         props: props,
       });
     });
+  });
+  setTimeout(() => {
+    document.body.dataset.initialized = true;
   });
 };
 
