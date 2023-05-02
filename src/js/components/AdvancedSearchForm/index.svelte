@@ -268,15 +268,15 @@
       lookFors[1] = params.get('q2'); 
       types[1] = params.get('field2') || 'all';
       anyalls[1] = params.get('anyall2') || 'all';
-      bools[1] = params.get('op2') || 'and';
+      bools[1] = params.get('op2') || 'AND';
       lookFors[2] = params.get('q3'); 
       types[2] = params.get('field3') || 'title';
       anyalls[2] = params.get('anyall3') || 'all';
-      bools[2] = params.get('op3') || 'and';
+      bools[2] = params.get('op3') || 'AND';
       lookFors[3] = params.get('q4'); 
       types[3] = params.get('field4') || 'author';
       anyalls[3] = params.get('anyall4') || 'all';
-      bools[4] = params.get('op3') || 'and';
+      bools[4] = params.get('op3') || 'AND';
 
       if (params.get('facet_lang')) {
         params.getAll('facet_lang').forEach((value) => {
