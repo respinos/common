@@ -1,3 +1,4 @@
+import docCookies from './cookies';
 import cookies from './cookies';
 
 function isObject(item) {
@@ -81,6 +82,8 @@ function setupHTEnv() {
       console.log(e);
     }
   };
+
+  HT.cookieJar = docCookies;
 }
 
 export { mergeDeep, setDomains, setupHTEnv };

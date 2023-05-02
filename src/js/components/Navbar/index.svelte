@@ -1,10 +1,19 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
+  import { onMount } from 'svelte';
   import menuData from '../../../assets/menuData.json';
   import LoginFormModal from '../LoginFormModal';
+  import NotificationsModal from '../NotificationsModal';
+
+  import NotificationsManager from '../../lib/notifications';
 
   let HT = window.HT || {};
   let modal;
+
+  let notificationsModal;
+  let notificationsManager = new NotificationsManager({
+    cookieJar: HT.cookieJar
+  });
 
   //eventually, the loggedIn variable needs to reflect
   // HT.login_status.logged_in = true;
@@ -12,6 +21,12 @@
   export let loggedIn = HT.login_status.logged_in;
   export let hasNotification = false;
   export let searchOpen = true;
+  export let searchState;
+
+  const switchableRoles = [ 'enhancedTextProxy', 'totalAccess' ];
+  const switchableRolesLabels = {};
+  switchableRolesLabels['enhancedTextProxy'] = 'ATRS';
+  switchableRolesLabels['totalAccess'] = 'CAA';
 
   function toggleSearch() {
     searchOpen = !searchOpen;
@@ -19,14 +34,41 @@
 
   function openLogin() {
     //check viewport size to see if LoginFormModal will fit
-    if ( window.innerHeight < 700 ) {
-    //if not, redirect user 
+    if (window.innerHeight < 700) {
+      //if not, redirect user
       window.location.assign('https://babel.hathitrust.org/cgi/wayf');
     } else {
-    //else, open LoginFormModal
+      //else, open LoginFormModal
       modal.show();
     }
   }
+
+  function checkSwitchableRoles(isLoggedIn) {
+    if ( HT.login_status.r ) {
+      for(const i in switchableRoles) {
+        let role = switchableRoles[i];
+        if ( HT.login_status.r.hasOwnProperty(role) ) {
+          return { 
+            status: true, 
+            label: switchableRolesLabels[role],
+            activated: HT.login_status.r[role]
+           };
+        }
+      }
+    }
+    return { status: false };
+  }
+
+  $: hasSwitchableRoles = checkSwitchableRoles(loggedIn).status;
+  $: hasActivatedRole = checkSwitchableRoles(loggedIn).activated;
+  $: role = checkSwitchableRoles(loggedIn).label;
+
+  onMount(() => {
+    if ( HT.login_status && HT.login_status.notificationData ) {
+      notificationsManager.update(HT.login_status.notificationData);
+      hasNotification = notificationsManager.hasNotifications();
+    }
+  })
 </script>
 
 <nav class="navbar navbar-expand-xl bg-white">
@@ -110,6 +152,7 @@
       >
         <span><i class:hasNotification class="fa-solid fa-bars fa-fw" /></span>
       </button>
+      {#if searchState != 'none'}
       <button
         class="navbar-toggler border-0 m-0"
         type="button"
@@ -122,6 +165,7 @@
       >
         <span><i class="fa-solid fa-magnifying-glass fa-fw" /></span>
       </button>
+      {/if}
     </div>
     <div
       class="collapse navbar-collapse justify-content-between"
@@ -142,9 +186,11 @@
           <div>
             <ul class="dropdown-menu">
               <div class="d-flex flex-column gap-4">
-                {#each menuData.about as linkText}
+                {#each menuData.about as menuItem}
                   <li class="px-3">
-                    <a class="dropdown-item px-0" href="#">{linkText}</a>
+                    <a class="dropdown-item px-0" href={menuItem.link}
+                      >{menuItem.title}</a
+                    >
                   </li>
                 {/each}
               </div>
@@ -168,9 +214,11 @@
           </a>
           <ul class="dropdown-menu">
             <div class="d-flex flex-column gap-4">
-              {#each menuData.collection as linkText}
+              {#each menuData.collection as menuItem}
                 <li class="px-3">
-                  <a class="dropdown-item px-0" href="#">{linkText}</a>
+                  <a class="dropdown-item px-0" href={menuItem.link}
+                    >{menuItem.title}</a
+                  >
                 </li>
               {/each}
             </div>
@@ -193,9 +241,11 @@
           </a>
           <ul class="dropdown-menu">
             <div class="d-flex flex-column gap-4">
-              {#each menuData.memberLibraries as linkText}
+              {#each menuData.memberLibraries as menuItem}
                 <li class="px-3">
-                  <a class="dropdown-item px-0" href="#">{linkText}</a>
+                  <a class="dropdown-item px-0" href={menuItem.link}
+                    >{menuItem.title}</a
+                  >
                 </li>
               {/each}
             </div>
@@ -221,9 +271,11 @@
           </a>
           <ul class="dropdown-menu">
             <div class="d-flex flex-column gap-4">
-              {#each menuData.newsEvents as linkText}
+              {#each menuData.newsEvents as menuItem}
                 <li class="px-3">
-                  <a class="dropdown-item px-0" href="#">{linkText}</a>
+                  <a class="dropdown-item px-0" href={menuItem.link}
+                    >{menuItem.title}</a
+                  >
                 </li>
               {/each}
             </div>
@@ -231,6 +283,7 @@
         </li>
       </ul>
       <ul class="navbar-nav action-links">
+        {#if searchState != 'none'}
         <li class="nav-item d-none d-xl-block">
           <a
             class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
@@ -241,6 +294,7 @@
             >Search <i class="fa-solid fa-magnifying-glass fa-fw" /></a
           >
         </li>
+        {/if}
         <li class="nav-item">
           <a
             class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
@@ -262,7 +316,11 @@
                   class:accountHasNotification={hasNotification}
                   class="account-icon me-n1 d-flex align-items-center justify-content-center border border-neutral-300 rounded-circle bg-neutral-100"
                 >
+                  {#if hasActivatedRole}
+                  <i class="fa-solid fa-bolt-lightning text-primary-500"></i>
+                  {:else}
                   <i class="fa-solid fa-user text-neutral-800" />
+                  {/if}
                 </span>
                 <span class="account-text ms-3">My Account</span>
               </div>
@@ -270,19 +328,48 @@
             <ul class="dropdown-menu dropdown-menu-end">
               <div class="d-flex flex-column gap-4">
                 <li class="px-3">
-                  <a
+                  <button 
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
-                    href="#" role="button"
+                    on:click={notificationsModal.show()}
                     ><span class="needs-hover-state"
-                      >Notifications{#if hasNotification} (4){/if}</span
+                      >Notifications {#if hasNotification}({notificationsManager.count()}){/if}</span
                     >
                     <i class="fa-solid fa-bell fa-fw" />
-                  </a>
+                  </button>
                 </li>
+                {#if hasSwitchableRoles}
+                <li style="margin-bottom: -1rem"><h6 class="dropdown-header">Current Role: {hasActivatedRole ? role : 'Member'}</h6></li>
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
-                    href="#" role="button"
+                    href="//{HT.service_domain}/cgi/ping/switch"
+                    role="button"><span class="needs-hover-state">
+                      {#if hasActivatedRole}
+                      Switch Role: Member
+                      {:else}
+                      Switch Role: {role}
+                      {/if}
+                    </span><i
+                      class="fa-solid fa-bolt-lightning fa-fw"
+                    /></a>
+                </li>
+                {/if}
+                <li class="px-3">
+                  <a
+                    class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
+                    href="//{`${HT.service_domain}/cgi/mb?a=listcs&colltype=my-collections`}"
+                    role="button"
+                    ><span class="needs-hover-state">My Collections</span><i
+                      class="fa-solid fa-list fa-fw"
+                    /></a
+                  >
+                </li>
+                <li style="margin-top: -1rem; margin-bottom: -1rem;"><hr class="dropdown-divider"></li>
+                <li class="px-3">
+                  <a
+                    class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
+                    href="//{`${HT.service_domain}/cgi/logout`}"
+                    role="button"
                     ><span class="needs-hover-state">Log Out</span><i
                       class="fa-solid fa-arrow-right-from-bracket fa-fw"
                     /></a
@@ -296,7 +383,10 @@
           <li class="nav-item">
             <a
               class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
-              href="#" role="button" on:click|preventDefault={openLogin}>Log In<i class="fa-solid fa-user fa-fw" /></a
+              href="#"
+              role="button"
+              on:click|preventDefault={openLogin}
+              >Log In<i class="fa-solid fa-user fa-fw" /></a
             >
           </li>
         {/if}
@@ -304,6 +394,9 @@
     </div>
   </div>
 </nav>
+{#if hasNotification}
+  <NotificationsModal manager={notificationsManager} bind:this={notificationsModal} />
+{/if}
 
 <style lang="scss">
   .container-fluid {

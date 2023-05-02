@@ -1,0 +1,178 @@
+$twocol-breakpoint: 54em;
+
+html, body {
+  padding: 0;
+  height: 100%;
+}
+
+.apps {
+
+  transition: visibility 0s linear 100ms, opacity 150ms;
+
+  &[data-initialized="true"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  #root {
+    height: 100%;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "main" "footer";
+  }
+
+  hathi-website-header {
+    grid-area: header;
+  }
+
+  hathi-website-footer {
+    grid-area: footer;
+  }
+
+  .main {
+    grid-area: main;
+    display: grid; 
+    grid-template: auto auto / 1fr; 
+    padding-block: .75rem var(--pb); 
+    --pb: 2.5rem;
+
+    @media (min-width: 48em) {
+      --pb: 3.75rem;
+    }
+  }
+
+  .twocol {
+    display: flex;
+    flex-wrap: wrap;
+    // --- in the wordpress, 1/1 is the <nav>
+    // -- revisit this when talk about breadcrumbs
+    // grid-area: 2 / 1;
+    // gap: 3.125rem;
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 2.625rem;
+    margin-inline: max(clamp(.938rem, calc(.268rem + 3.348vw), 1.875rem), ((100% - 73.125rem) / 2));
+
+    // Phire is 48em, but that might assume a main 
+    // column that wraps more than HTDL
+    @media (min-width: $twocol-breakpoint) {
+      flex-wrap: nowrap;
+    }
+  }
+
+  .twocol.single {
+    max-width: 62rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    &.twocol-main {
+      flex-basis: auto;
+    }
+  }
+
+  .twocol > * > *:first-child {
+    margin-top: 0;
+  }
+
+  .twocol-side {
+    display: grid;
+    flex-grow: 1;
+    // gap: 1.875rem;
+    gap: 1rem;
+
+    @media (min-width: 64em) {
+      flex-shrink: 0;
+      flex-basis: 18.75rem;
+      // gap: 3rem;
+      gap: 1rem;
+    }
+  }
+
+  .twocol-main {
+    display: grid;
+    flex-grow: 1;
+    gap: 1.875rem;
+
+    @media (min-width: $twocol-breakpoint) {
+      flex-basis: 43.75rem;
+      gap: 2.625rem;
+    }
+  }
+
+  .twocol-main > * {
+    // max-width: 43.75rem;
+    
+  }
+
+  article.record {
+      .metadata .grid {
+      --bs-gap: 0rem;
+    }
+
+    .cover {
+      width: 6rem;
+      text-align: right;
+      flex-shrink: 0;
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+
+  a:not(.btn).d-inline-flex {
+    gap: var(--bs-gutter-x);
+    text-decoration: none;
+    padding: 0.25rem;
+
+    & > * {
+      text-decoration: underline;
+    }
+  }
+
+  a i[aria-hidden] {
+    text-decoration: none;
+  }
+
+  a[data-access-role] {
+    background: #924a0b;
+    // border-radius: 4px;
+    color: white;
+
+    &:hover {
+      background: white;
+      color:  #924a0b;
+    }
+  }
+
+  .list-group a {
+    white-space: nowrap;
+
+    &:has(+ span) {
+      border-top-right-radius: var(--bs-list-group-border-radius) !important;
+      border-bottom-right-radius: var(--bs-list-group-border-radius) !important;
+    }
+  }
+
+  // by default, hide the 10+nth facets
+  div.filter-list {
+    &[data-expanded="false"] {
+      .filter-list-item:nth-child(n+10) {
+        display: none !important;
+      }
+    }
+  }
+
+  .sticky-bottom {
+    position: sticky;
+    padding: 1rem;
+    padding-bottom: 1rem;
+    bottom: 0;
+    background-color: #fff;
+    box-shadow: 0px -0.5rem 0.5rem -0.5rem rgba(0,0,0,0.1);
+  }
+
+}
+

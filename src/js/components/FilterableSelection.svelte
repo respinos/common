@@ -15,9 +15,7 @@
   export const utils = {
     resize(height, container) {
       let h = container.clientHeight;
-      console.log(height, h);
       while ( h > height ) {
-        console.log(height, h);
         list.style.height = `${list.clientHeight - 10}px`;
         h = container.clientHeight;
       }
@@ -42,13 +40,25 @@
     if ( forced ) {
       event.target.checked = forced;
     }
-    value = event.target.value;
+    if (multiple) {
+      let target = event.target.value;
+      if (value.indexOf(target) > -1) {
+        let idx = value.indexOf(target);
+        value.splice(idx,1);
+      } else {
+        value.push(target);
+      }
+      value = value;
+    } else {
+      value = event.target.value;
+    }
   }
 
   $: possibleItems = filterData(filterText);
+  $: isSelected = (check, value) => value.indexOf(check) > -1;
 
   onMount(() => {
-    guid = (new Date).getTime();
+    guid = `${(new Date).getTime()}-${Math.random() * 1000}`;
   })
 
 </script>
@@ -56,7 +66,7 @@
 <style>
 
   .filterable-list {
-    /* max-height: var(--filterable-list-height, 22rem); */
+    max-height: var(--filterable-list-height, 22rem);
     overflow: scroll;
     min-height: 0;
     grid-row: 2/3;
@@ -92,7 +102,7 @@
 
 </style>
 
-  <fieldset class="fieldset-filter input-group mb-3" bind:this={fieldset1}>
+  <fieldset class="fieldset-filter mb-3" class:input-group={icon} bind:this={fieldset1}>
     <legend class="fs-7">Filter by {label}</legend>
     {#if icon}
     <span class="input-group-text ms-0"><i class={icon} aria-hidden="true"></i></span>
@@ -116,7 +126,7 @@
       {#each possibleItems as item, index (item.key)}
         <li class="form-check mt-0 mb-0 px-0">
           {#if multiple}
-            <input class="form-check-input visually-hidden" type="checkbox" name="item-{guid}" id="item{index}-{guid}" value={item.value}>
+            <input class="form-check-input visually-hidden" type="checkbox" name="item-{guid}" id="item{index}-{guid}" value={item.value} on:click={updateValue} checked={isSelected(item.value, value)}>
           {:else}
             <input class="form-check-input visually-hidden" type="radio" name="item-{guid}" id="item{index}-{guid}" value={item.value} on:click={updateValue} on:focus={(event) => updateValue(event, true)}>
           {/if}

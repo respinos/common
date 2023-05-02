@@ -1,25 +1,87 @@
 {
   "about": [
-    "Welcome to HathiTrust",
-    "Our Mission & History",
-    "HathiTrust Research Center (HTRC)",
-    "Our Team"
+    {
+      "title": "Welcome to HathiTrust",
+      "link": "https://www.hathitrust.org/about"
+    },
+    {
+      "title": "Our Mission & History",
+      "link": "https://www.hathitrust.org/about/our-mission-and-history"
+    },
+    {
+      "title": "HathiTrust Research Center (HTRC)",
+      "link": "https://www.hathitrust.org/about/hathitrust-research-center"
+    },
+    {
+      "title": "Our Team",
+      "link": "https://www.hathitrust.org/about/our-team"
+    }
   ],
   "collection": [
-    "About the Collection",
-    "How to Search & Access",
-    "Preservation",
-    "Terms & Conditions"
+    {
+      "title": "About the Collection",
+      "link": "https://www.hathitrust.org/the-collection"
+    },
+    {
+      "title": "How to Search & Access",
+      "link": "https://www.hathitrust.org/the-collection"
+    },
+    {
+      "title": "Preservation",
+      "link": "https://www.hathitrust.org/the-collection"
+    },
+    {
+      "title": "Terms & Conditions",
+      "link": "https://www.hathitrust.org/the-collection"
+    }
   ],
   "join": [],
   "memberLibraries": [
-    "Member Library Overview",
-    "Member List",
-    "Services & Programs",
-    "Resources for Librarians",
-    "Contribute Content",
-    "Get Involved",
-    "Governance & Groups"
+    {
+      "title": "Member Library Overview",
+      "link": "https://www.hathitrust.org/member-libraries"
+    },
+    {
+      "title": "Member List",
+      "link": "https://www.hathitrust.org/member-libraries"
+    },
+    {
+      "title": "Services & Programs",
+      "link": "https://www.hathitrust.org/member-libraries"
+    },
+    {
+      "title": "Resources for Librarians",
+      "link": "https://www.hathitrust.org/member-libraries"
+    },
+    {
+      "title": "Contribute Content",
+      "link": "https://www.hathitrust.org/member-libraries"
+    },
+    {
+      "title": "Get Involved",
+      "link": "https://www.hathitrust.org/member-libraries"
+    },
+    {
+      "title": "Governance & Groups",
+      "link": "https://www.hathitrust.org/member-libraries"
+    }
   ],
-  "newsEvents": ["Newsletters", "Blog", "Events & Webinars", "Press"]
+  "newsEvents": [
+    {
+      "title": "Newsletters",
+      "link": "https://www.hathitrust.org/news"
+    },
+    {
+      "title": "Blog",
+      "link": "https://www.hathitrust.org/news"
+    },
+    {
+      "title": "Events & Webinars",
+      "link": "https://www.hathitrust.org/news"
+    },
+    {
+      "title": "Press",
+      "link": "https://www.hathitrust.org/news"
+    }
+  ]
 }

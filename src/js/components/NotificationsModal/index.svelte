@@ -24,12 +24,11 @@
     if ( modal && manager.hasNewNotifications() ) {
       modal.show();
     }
-    console.log(manager.hasNewNotifications());
   })
 
   $: if ( modal && manager.hasNewNotifications() ) { show() }
   $: if ( modal && isOpen ) { show(); }
-  $: if ( modal && ! isOpen ) { hide() }
+  // $: if ( modal && ! isOpen ) { hide() }
 
 </script>
 

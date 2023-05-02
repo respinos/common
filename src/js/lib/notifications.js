@@ -1,7 +1,21 @@
-class NotificationsManager {
-  constructor({ notificationsData = [], cookieJar = {}}) {
-    this.notificationData = notificationsData;
-    this.cookieJar = cookieJar;
+export class CookieJar {
+  constructor() {
+    this.data = {};
+  }
+
+  getItem(key) {
+    return this.data[key];
+  }
+
+  setItem(key, value) {
+    this.data[key] = value;
+  }
+}
+
+export class NotificationsManager {
+  constructor({ notificationData = [], cookieJar = null}) {
+    this.notificationData = notificationData;
+    this.cookieJar = cookieJar ? cookieJar : (new CookieJar());
   }
 
   update(notificationData) {
@@ -12,8 +26,11 @@ class NotificationsManager {
     return this.notificationData.length > 0;
   }
 
+  count() {
+    return this.notificationData.length;
+  }
+
   hasNewNotifications() {
-    console.log("-- ahoy", this.timestamp(), this.effectiveOn());
     return (this.timestamp() != this.effectiveOn());
   }
 

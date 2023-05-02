@@ -8,7 +8,12 @@ import * as bootstrap from 'bootstrap';
 
 import Quote from './components/Quote.svelte';
 import LoginFormModal from './components/LoginFormModal';
-import Navbar from './components/Navbar';
+import Header from './components/Header';
+import ResultsPagination from './components/ResultsPagination';
+import ResultsToolbar from './components/ResultsToolbar';
+import CollectionsToolbar from './components/CollectionsToolbar';
+import Footer from './components/Footer';
+import AdvancedSearchForm from './components/AdvancedSearchForm';
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -35,7 +40,12 @@ const buildProps = (el) => {
 const apps = {};
 apps['hathi-quote'] = Quote;
 apps['hathi-login-form-modal'] = LoginFormModal;
-apps['hathi-navbar'] = Navbar;
+apps['hathi-website-header'] = Header;
+apps['hathi-results-pagination'] = ResultsPagination;
+apps['hathi-results-toolbar'] = ResultsToolbar;
+apps['hathi-collections-toolbar'] = CollectionsToolbar;
+apps['hathi-website-footer'] = Footer;
+apps['hathi-advanced-search-form'] = AdvancedSearchForm;
 
 // configure the HT global
 setupHTEnv();
@@ -50,20 +60,33 @@ setupHTEnv();
 //   })
 // })
 
-// APPROACH: look for custom elements and instantiate
-// the svelte component inside that element
-Object.keys(apps).forEach((slug) => {
-  document.querySelectorAll(slug).forEach((el) => {
-    let props = buildProps(el);
-    el.component = new apps[slug]({
-      target: el,
-      props: props,
+HT.postPingCallback = function () {
+  // APPROACH: look for custom elements and instantiate
+  // the svelte component inside that element
+  Object.keys(apps).forEach((slug) => {
+    document.querySelectorAll(slug).forEach((el) => {
+      let props = buildProps(el);
+      el.component = new apps[slug]({
+        target: el,
+        props: props,
+      });
     });
   });
-});
+  setTimeout(() => {
+    document.body.dataset.initialized = true;
+  });
+};
+
+let script = document.createElement('script');
+script.async = true;
+script.src = `//${
+  HT.service_domain
+}/cgi/ping?callback=HT.postPingCallback&_${new Date().getTime()}`;
+document.head.appendChild(script);
 
 // look for buttons that trigger the appearance of
 // svelte components
+
 document.querySelectorAll('[data-hathi-trigger]').forEach((el) => {
   let slug = el.dataset.hathiTrigger;
   let props = buildProps(el);

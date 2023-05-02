@@ -5,14 +5,14 @@
   import Navbar from '../Navbar/';
   import SearchBar from '../SearchBar';
 
-  export let search_state = 'default';
+  export let searchState = 'default';
   // let searchFormDisplayed = search_state == 'default';
-  let searchFormDisplayed = true;
+  // let searchFormDisplayed = true;
 
   function displaySearchForm() {
-    if (search_state == 'default') {
+    if (searchState == 'default') {
       return true;
-    } else if (search_state == 'toggle') {
+    } else if (searchState == 'toggle') {
       return searchFormDisplayed;
     }
     return false;
@@ -21,11 +21,14 @@
   //   searchFormDisplayed = !searchFormDisplayed;
   // }
 
+  $: searchFormDisplayed = ( searchState != 'none' );
+  $: console.log("AHOY search_state", searchState, searchFormDisplayed);
+
   let searchOpenToggle;
 </script>
 
 <div>
-  <Navbar bind:searchOpen={searchOpenToggle} />
+  <Navbar bind:searchOpen={searchOpenToggle} {searchState}/>
   {#if searchOpenToggle}
     <div
       out:slide={{ easing: sineOut, duration: 150 }}
@@ -34,7 +37,9 @@
       class:show={searchOpenToggle}
       id="siteSearchDropdown"
     >
+      {#if searchFormDisplayed}
       <SearchBar />
+      {/if}
     </div>
   {/if}
 </div>

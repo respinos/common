@@ -86,7 +86,7 @@ $btn-close-opacity: 1;
 @import '~bootstrap/scss/reboot';
 
 @import '~bootstrap/scss/type';
-// @import "~bootstrap/scss/images";
+@import "~bootstrap/scss/images";
 @import '~bootstrap/scss/containers';
 @import '~bootstrap/scss/grid';
 @import '~bootstrap/scss/tables';
@@ -97,7 +97,7 @@ $btn-close-opacity: 1;
 @import '~bootstrap/scss/button-group';
 @import '~bootstrap/scss/nav';
 @import '~bootstrap/scss/navbar'; // Requires nav
-// @import "~bootstrap/scss/card";
+@import "~bootstrap/scss/card";
 // @import "~bootstrap/scss/breadcrumb";
 @import '~bootstrap/scss/accordion';
 // @import "~bootstrap/scss/pagination";
@@ -292,7 +292,7 @@ textarea.form-control {
   border-bottom-left-radius: var(--bs-border-radius) !important;
 }
 
-a:has(i[aria-hidden]) {
+a:not(.btn):has(i[aria-hidden]) {
   display: inline-flex;
   gap: 0.25rem;
   align-items: center;
@@ -345,3 +345,5 @@ a:has(i[aria-hidden]) {
   padding-left: var(--bs-modal-padding-width) !important;
   padding-right: var(--bs-modal-padding-width) !important;
 }
+
+@import 'apps';
