@@ -1,10 +1,10 @@
-import FeedbackForm from './index.svelte';
+import FeedbackFormBasic from './index.svelte';
 import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
 export default {
-  title: 'Feedback Form',
-  component: FeedbackForm,
+  title: 'Feedback Form - Basic',
+  component: FeedbackFormBasic,
   argTypes: { onSubmit: { action: 'form submitted' } },
 };
 

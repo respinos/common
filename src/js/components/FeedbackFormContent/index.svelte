@@ -1,7 +1,10 @@
 <script>
   import { slide } from 'svelte/transition';
+  let imageQuality = 'No problems';
+  let imageProblems = ['No problems'];
   let userURL = location.href;
   let userAgent = navigator.userAgent;
+  let formName = 'content-correction';
 
   //takes long string output of document.cookie and splits it into a usable javascript object
   let cookies = document.cookie
@@ -28,8 +31,10 @@
   export let submitted = false;
 
   const postForm = async (data) => {
+    console.log(data);
     return fetch(
       'https://feedback-testing.macc.kubernetes.hathitrust.org/api',
+      // 'http://localhost:5006/api',
       {
         method: 'POST',
         body: data,
@@ -56,8 +61,13 @@
   const onSubmit = (event) => {
     // set the submit button spinner spinning
     loading = true;
+    // create form data variable
+    let data = new FormData(event.target);
+    // couldn't fix the checkbox values overwriting each other, so i'm appending it instead
+    data.append('imageProblems', imageProblems.join(', '));
     //serialize form data
-    const data = JSON.stringify(Object.fromEntries(new FormData(event.target)));
+    data = JSON.stringify(Object.fromEntries(data));
+
     const form = document.querySelector('.needs-validation');
 
     // check for required fields
@@ -93,6 +103,8 @@
     //unhide the form, hide the submission message, reset the form
     hidden = !hidden;
     submitted = !submitted;
+    imageQuality = 'No problems';
+    imageProblems = ['No problems'];
     document.querySelector('form').reset();
   };
 </script>
@@ -142,19 +154,170 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="bookDescription" class="form-label"
-        >Description or URL of the book</label
+      <label for="bookURL" class="form-label"
+        >URL of book that you are reporting a problem with <span
+          class="required">(required)</span
+        ></label
       >
-      <input
-        type="text"
-        class="form-control"
-        id="bookDescription"
-        name="bookDescription"
-      />
+      <input type="text" class="form-control" id="bookURL" name="bookURL" />
+      <div class="invalid-feedback">
+        Please provide the URL of the record from the catalog where you found
+        the issue.
+      </div>
     </div>
     <div class="mb-3">
+      <label for="itemTitle" class="form-label"
+        >Title of the book <span class="required">(optional)</span></label
+      >
+      <input type="text" class="form-control" id="itemTitle" name="itemTitle" />
+    </div>
+
+    <fieldset class="mb-3">
+      <div>
+        <p>What specific problems are you noticing with the digital scans?</p>
+      </div>
+      <legend class="mb-3 fs-6">
+        Overall page readability and quality <span class="required"
+          >(required)</span
+        >
+      </legend>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="imageQuality"
+          id="public-domain"
+          value="Few problems, page is readable"
+          bind:group={imageQuality}
+        />
+        <label class="form-check-label" for="public-domain">
+          A few problems, entire page is readable
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="imageQuality"
+          value="Some problems but still readable"
+          bind:group={imageQuality}
+          id="fed-document"
+        />
+        <label class="form-check-label" for="fed-document">
+          Some problems, but still readable
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="imageQuality"
+          value="Signficant: difficult or impossible to read"
+          bind:group={imageQuality}
+          id="should-not-have-access"
+        />
+        <label class="form-check-label" for="should-not-have-access">
+          Significant problems, difficult or impossible to read
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="imageQuality"
+          value="Other problem"
+          bind:group={imageQuality}
+          id="readability-other"
+        />
+        <label class="form-check-label" for="should-not-have-access">
+          Other problem (please describe in comment field below)
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="imageQuality"
+          id="none"
+          value="No problems"
+          bind:group={imageQuality}
+          checked
+        />
+        <label class="form-check-label" for="none"> No problems </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="mb-3">
+      <legend class="mb-3 fs-6">
+        Specific page image problems?
+        <span class="required">(required)</span>
+      </legend>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="imageProblems"
+          value="Missing parts of the page"
+          bind:group={imageProblems}
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          Missing parts of the page
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="imageProblems"
+          value="Blurry text"
+          bind:group={imageProblems}
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          Blurry text
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="imageProblems"
+          value="OCR unreadable"
+          bind:group={imageProblems}
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          The OCR is unreadable
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="imageProblems"
+          value="Other"
+          bind:group={imageProblems}
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          Other (describe in description box)
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="imageProblems"
+          value="No problems"
+          bind:group={imageProblems}
+          checked
+        />
+        <label class="form-check-label" for="flexCheckChecked">
+          No problems
+        </label>
+      </div>
+    </fieldset>
+    <div class="mb-3">
       <label for="description" class="form-label"
-        >Full description of problem or question</label
+        >Other problems or comments? <span class="required">(optional)</span
+        ></label
       >
       <textarea
         class="form-control"
@@ -176,6 +339,7 @@
       type="hidden"
       bind:value={userAuthStatus}
     />
+    <input name="formName" id="formName" type="hidden" bind:value={formName} />
 
     <button type="submit" class="btn btn-primary" disabled={loading}>
       Submit
