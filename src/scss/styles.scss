@@ -346,4 +346,30 @@ a:not(.btn):has(i[aria-hidden]) {
   padding-right: var(--bs-modal-padding-width) !important;
 }
 
+.accordion {
+  --bs-accordion-active-bg: transparent; 
+  --bs-accordion-active-color: var(--color-neutral-700);
+  --bs-accordion-body-padding-x: 1rem;
+  --bs-accordion-body-padding-y: 1rem;
+
+  .accordion-header {
+    --bs-accordion-border-color: transparent;
+  }
+
+  .accordion-button {
+    // padding: 1rem 1rem 0.25rem;
+    padding-left: 1rem;
+  }
+
+  .accordion-body:has(.list-group) {
+    padding-left: 0; 
+    padding-right: 0;
+  }
+}
+
+// // EVALUATE
+// .accordion-item:not(:last-of-type) {
+//   border-bottom-color: var(--color-neutral-900);
+// }
+
 @import 'apps';

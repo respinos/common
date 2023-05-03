@@ -7,7 +7,7 @@
   import FilterableSelection from '../FilterableSelection.svelte';
 
   let HT = window.HT || {};
-  let sdrinst;
+  let sdrinst = HT.prefs ? HT.prefs.get().sdrinst : undefined;
   let filterText;
   let modal;
 
@@ -20,7 +20,12 @@
   };
 
   export const show = function () {
-    filterText = '';
+    if ( ! sdrinst ) { filterText = ''; }
+    else { 
+      filterText = HT.login_status.idp_list.find(
+        (item) => item.sdrinst == sdrinst
+      ).name.replace(/&amp;/g, '&');
+    }
     modal.show();
   };
 

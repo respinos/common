@@ -63,7 +63,7 @@
 
 </style>
 
-<article class="record d-flex gap-3 p-3 border-bottom mb-3 mt-3">
+<article class="record d-flex gap-3 p-3 mb-3 mt-3 shadow-sm">
   <div class="cover d-none d-md-block" data-hdl="{htid}">
     <img loading="lazy" class="bookCover border p-1 flex-grow-0 flex-shrink-0" aria-hidden="true" alt="" src={coverUrl}>
   </div>
@@ -96,9 +96,9 @@
         {:else if access == 'limited-search-only'}
         <a class="list-group-item list-group-item-action w-sm-50" href="https://babel.hathitrust.org/cgi/pt?id={htid}"><i aria-hidden="true" class="fa-solid fa-lock"></i> <span>Limited (search-only)</span></a>
         {:else if access == 'limited-access-permitted'}
-        <a data-access-role="superuser" class="list-group-item list-group-item-action w-sm-50" href="https://babel.hathitrust.org/cgi/pt?id={htid}"><i aria-hidden="true" class="fa-solid fa-unlock"></i> <span>Limited (access permitted)</span></a>
+        <a data-access-role="superuser" class="list-group-item list-group-item-action w-sm-50" href="https://babel.hathitrust.org/cgi/pt?id={htid}"><i aria-hidden="true" class="fa-solid fa-unlock-keyhole"></i> <span>Limited (access permitted)</span></a>
         {:else}
-        <a class="list-group-item list-group-item-action list-group-item-dark active w-sm-50" href="https://babel.hathitrust.org/cgi/pt?id={htid}"><i class="fa-regular fa-file-lines" aria-hidden="true"></i> <span>Full View</span></a>
+        <a class="list-group-item list-group-item-action active active w-sm-50" href="https://babel.hathitrust.org/cgi/pt?id={htid}"><i class="fa-regular fa-file-lines" aria-hidden="true"></i> <span>Full View</span></a>
         {/if}
       </div>
     </div>
