@@ -89,6 +89,11 @@
     grid-row: 1/2;
   }
 
+  .fieldset-filter input[type="text"] {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
   .fieldset-select {
     grid-row: 2/3;
     display: grid;
@@ -102,19 +107,27 @@
 
 </style>
 
-  <fieldset class="fieldset-filter mb-3" class:input-group={icon} bind:this={fieldset1}>
+  <fieldset class="fieldset-filter mb-3" bind:this={fieldset1} data-wtf={filterText}>
     <legend class="fs-7">Filter by {label}</legend>
-    {#if icon}
-    <span class="input-group-text ms-0"><i class={icon} aria-hidden="true"></i></span>
-    {/if}
-    <input 
-      type="text" 
-      class="form-control" 
-      placeholder={placeholder}
-      aria-label="Filter options"
-      aria-describedby="filter-help-{guid}"
-      bind:value={filterText}
-      >
+    <div class="input-group">
+      {#if icon}
+      <span class="input-group-text ms-0"><i class={icon} aria-hidden="true"></i></span>
+      {/if}
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder={placeholder}
+        aria-label="Filter options"
+        aria-describedby="filter-help-{guid}"
+        bind:value={filterText}
+        >
+      <button 
+        class="btn btn-outline-secondary" 
+        aria-label="Clear filter" 
+        on:click={() => { filterText = ''; }}>
+        <i class="fa-regular fa-circle-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
     <p id="filter-help-{guid}" class="visually-hidden">
       Below this edit box is a list of items that allow you to filter down your options. As you type in this edit box, the list of items is updated to reflect only those that match the query typed in this box.
     </p>
@@ -128,7 +141,7 @@
           {#if multiple}
             <input class="form-check-input visually-hidden" type="checkbox" name="item-{guid}" id="item{index}-{guid}" value={item.value} on:click={updateValue} checked={isSelected(item.value, value)}>
           {:else}
-            <input class="form-check-input visually-hidden" type="radio" name="item-{guid}" id="item{index}-{guid}" value={item.value} on:click={updateValue} on:focus={(event) => updateValue(event, true)}>
+            <input class="form-check-input visually-hidden" type="radio" name="item-{guid}" id="item{index}-{guid}" checked={item.value == value} value={item.value} on:click={updateValue} on:focus={(event) => updateValue(event, true)}>
           {/if}
           <label class="form-check-label p-2 px-3" for="item{index}-{guid}">{item.option}</label>
         </li>
