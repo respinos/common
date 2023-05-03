@@ -367,8 +367,9 @@ a:not(.btn):has(i[aria-hidden]) {
   }
 }
 
-.accordion-item + .accordion-item {
-  border-top-width: 2px;
-}
+// // EVALUATE
+// .accordion-item:not(:last-of-type) {
+//   border-bottom-color: var(--color-neutral-900);
+// }
 
 @import 'apps';
