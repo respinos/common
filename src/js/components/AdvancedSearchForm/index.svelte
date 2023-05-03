@@ -3,10 +3,16 @@
   import FilterableSelection from '../FilterableSelection.svelte';
   import SearchHelpModal from '../SearchHelpModal';
 
+  // CONFIGURING <hathi-advanced-search-form>
+  // formatData and languageData are exposed as
+  // data-prop-format-data
+  // data-prop-language-data
+  // and can be assigned a JSON-encoded array of strings, e.g.
+  // <hathi-advanced-search-form data-prop-language-data="[&quot;Abkhaz&quot;,&quot;Achinese&quot;,&quot;Acoli&quot;,&quot;Adangme&quot;...
   export let formatData = [];
   export let languageData = [];
 
-  export let useAnyAll = true;
+  // export let useAnyAll = true;
 
   const fieldOptions = [
     { value: 'ocr', label: 'Everything' },
