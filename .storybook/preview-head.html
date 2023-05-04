@@ -12,7 +12,7 @@
   window.HT = {};
   window.HT.get_pong_target = function(href ) { return href; }
   window.HT.login_status = {};
-  window.HT.prefs = { set: function() {}, get: function() {} };
+  window.HT.prefs = { set: function() {}, get: function() { return {} } };
 
   function fakeIdpUrl(sdrinst) {
     return `https://hathi/Login?entityID=urn:institution:${sdrinst}&target=___TARGET___`;
