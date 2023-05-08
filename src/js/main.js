@@ -103,4 +103,12 @@ document.querySelectorAll('[data-hathi-trigger]').forEach((el) => {
   });
 });
 
+let btnToggleFilters = document.querySelector('#action-toggle-filters');
+if ( btnToggleFilters ) {
+  btnToggleFilters.addEventListener('click', (event) => {
+    let isExpanded = ! ( btnToggleFilters.getAttribute('aria-expanded') == 'true' );
+    btnToggleFilters.setAttribute('aria-expanded', isExpanded );
+  })
+}
+
 export default apps;

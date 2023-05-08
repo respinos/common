@@ -1,9 +1,19 @@
 <script>
+
+  import { onMount } from 'svelte';
+
   import ResultsList from '../ResultsList';
   import ResultsPagination from '../ResultsPagination';
   import ResultsToolbar from '../ResultsToolbar';
 
   export let enableBorder = false;
+
+  let btnToggleFilters;
+  function toggleExpandedFilters() {
+    let isExpanded = ! ( btnToggleFilters.getAttribute('aria-expanded') == 'true' );
+    btnToggleFilters.setAttribute('aria-expanded', isExpanded);
+  }
+
 </script>
 
 <style lang="scss">
@@ -48,7 +58,7 @@
   .twocol-side {
     display: grid;
     flex-grow: 1;
-    gap: 1.875rem;
+    gap: 1rem;
 
     @media (min-width: 64em) {
       flex-shrink: 0;
@@ -73,14 +83,52 @@
     
   }
  
+  #action-toggle-filters {
+    &[aria-expanded="false"] .is-expanded {
+      display: none;
+    }
+
+    &:is([aria-expanded="true"]) .not-expanded {
+      display: none;
+    }
+
+    &[aria-expanded="false"] ~ * {
+      display: none !important;
+    }
+    
+    @media (min-width: 54em) {
+      display: none;
+
+      &[aria-expanded] ~ * {
+        display: initial !important;
+      }
+    }
+  } 
 </style>
 
 <main class="main">
   <div class="twocol" class:border={enableBorder}>
-    <div class="twocol-side bg-primary">
-      <div>
-        <slot name="side">.twocol-side</slot>
-      </div>
+    <div class="twocol-side">
+      <slot name="side">
+        <!-- this HTML without the svelte properties is handled -->
+        <!-- by main.js and apps.scss -->
+        <button 
+          id="action-toggle-filters" 
+          class="btn btn-outline-primary" 
+          aria-expanded="false"
+          bind:this={btnToggleFilters}
+          on:click={toggleExpandedFilters}>
+          <span>
+            <span class="not-expanded">Show</span>
+            <span class="is-expanded">Hide</span>
+            Search Filters
+          </span>
+        </button>
+        <h2>This are sidebar items</h2>
+        <div class="alert alert-block alert-info">
+          <p>This is a filter.</p>
+        </div>
+      </slot>
     </div>
     <div class="twocol-main ">
       <div class="mainplain w-auto position-relative">
