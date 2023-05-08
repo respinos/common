@@ -99,7 +99,7 @@
     @media (min-width: 54em) {
       display: none;
 
-      & ~ * {
+      &[aria-expanded] ~ * {
         display: initial !important;
       }
     }
