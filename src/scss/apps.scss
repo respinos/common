@@ -109,18 +109,18 @@ body {
   }
 
   #action-toggle-filters {
-    &[aria-expanded="false"] .is-expanded {
+    &[aria-expanded='false'] .is-expanded {
       display: none;
     }
 
-    &[aria-expanded="true"] .not-expanded {
+    &[aria-expanded='true'] .not-expanded {
       display: none;
     }
 
-    &[aria-expanded="false"] ~ * {
+    &[aria-expanded='false'] ~ * {
       display: none !important;
     }
-    
+
     @media (min-width: 54em) {
       display: none;
 
@@ -129,7 +129,7 @@ body {
       }
     }
   }
-  
+
   article.record {
     .metadata .grid {
       --bs-gap: 0rem;
@@ -196,20 +196,6 @@ body {
     bottom: 0;
     background-color: #fff;
     box-shadow: 0px -0.5rem 0.5rem -0.5rem rgba(0, 0, 0, 0.1);
-  }
-
-  .btable-wrapper[role='region'][aria-labelledby][tabindex] {
-    overflow: auto;
-  }
-  .btable-wrapper[role='region'][aria-labelledby][tabindex]:focus {
-    outline: 0.1em solid rgba(0, 0, 0, 0.1);
-  }
-  .btable-wrapper[role='region'][aria-labelledby][tabindex]
-    .btable-hasrowheaders
-    tr
-    > :first-child {
-    position: sticky;
-    left: 0;
   }
 
   .btable {
