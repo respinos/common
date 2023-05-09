@@ -35,9 +35,11 @@
 
   let SERVICE_DOMAIN = 'babel.hathitrust.org';
   let CATALOG_DOMAIN = 'catalog.hathitrust.org';
+  let WWW_DOMAIN = 'www.hathitrust.org';
   if (window.HT && window.HT.service_domain) {
     SERVICE_DOMAIN = window.HT.service_domain;
     CATALOG_DOMAIN = window.HT.catalog_domain;
+    WWW_DOMAIN = window.HT.www_domain;
   }
 
   let _submitSearch = function (event) {
@@ -61,7 +63,8 @@
     } else {
       // website search
       let searchTerms = _input.value.toLowerCase();
-      search_url = `https://www.hathitrust.org/search/node/${searchTerms}`;
+      search_url = `//${WWW_DOMAIN}/search/${searchTerms}`;
+      // search_url = `https://www.hathitrust.org/search/node/${searchTerms}`;
     }
     if (search_url) {
       location.href = search_url;
