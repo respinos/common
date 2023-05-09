@@ -95,11 +95,14 @@
           break;
         default:
           _searchtypeValue = 'everything';
-          _selectValue = 'website';
           if (location.pathname.startsWith('/search/')) {
+            _selectValue = 'website';
+            index = 'website';
             let tmp = location.pathname.split('/').slice(2);
             _inputValue = tmp.pop();
           } else {
+            _selectValue = 'website';
+            index = 'website';
             _inputValue = searchParams.get('s');
           }
           break;
