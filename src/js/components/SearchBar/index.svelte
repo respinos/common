@@ -1,5 +1,7 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
+  import { onMount } from 'svelte';
+
   import SearchHelpModal from '../SearchHelpModal';
   export let index = 'library';
   // export let bootstrapToggleShow;
@@ -65,6 +67,45 @@
       location.href = search_url;
     }
   };
+
+  onMount(() => {
+    // find current configuration
+    let _searchtypeValue = 'everything';
+    let _selectValue = 'library';
+    let _inputValue = '';
+    if ( location && location.href ) {
+      let searchParams = new URLSearchParams(location.search);
+
+      switch(location.pathname) {
+        case '/cgi/ls':
+        case '/cgi/mb':
+        case '/cgi/pt':
+          _searchtypeValue = 'everything';
+          _selectValue = 'library';
+          _inputValue = searchParams.get('q1');
+          break;
+        case '/Search/Home':
+        case '/Search/Record':
+          _searchtypeValue = searchParams.get('searchtype') || 'all';
+          _selectValue = 'library';
+          _inputValue = searchParams.get('lookfor');
+          break;
+        default:
+          _searchtypeValue = 'everything';
+          _selectValue = 'website';
+          if (location.pathname.startsWith('/search/')) {
+            let tmp = location.pathname.split('/').slice(2);
+            _inputValue = tmp.pop();
+          } else {
+            _inputValue = searchParams.get('s');
+          }
+          break;
+      }
+    }
+    _searchtype.value = _searchtypeValue;
+    _select.value = _selectValue;
+    _input.value = _inputValue;
+  })
 </script>
 
 <div>
@@ -103,7 +144,7 @@
               bind:this={_searchtype}
               on:change={_updateSearchType}
             >
-              <option value="everything" selected>Everything</option>
+              <option value="everything">Everything</option>
               <option value="all">All Bibliographic Fields</option>
               <option value="title">Title</option>
               <option value="author">Author</option>
@@ -153,11 +194,6 @@
             >Advanced Search</span
           ></a
         >
-        <!-- <a href={`//${SERVICE_DOMAIN}/cgi/mb`}
-          ><i class="fa-solid fa-list fa-fw" /><span
-            >Reading Lists</span
-          ></a
-        > -->
       </div>
     </div>
   </div>
