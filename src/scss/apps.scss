@@ -1,15 +1,15 @@
 $twocol-breakpoint: 54em;
 
-html, body {
+html,
+body {
   padding: 0;
   height: 100%;
 }
 
 .apps {
-
   transition: visibility 0s linear 100ms, opacity 150ms;
 
-  &[data-initialized="true"] {
+  &[data-initialized='true'] {
     visibility: visible !important;
     opacity: 1 !important;
   }
@@ -19,7 +19,7 @@ html, body {
     display: grid;
     grid-template-rows: min-content 1fr min-content;
     grid-template-columns: 1fr;
-    grid-template-areas: "header" "main" "footer";
+    grid-template-areas: 'header' 'main' 'footer';
   }
 
   hathi-website-header {
@@ -32,9 +32,9 @@ html, body {
 
   .main {
     grid-area: main;
-    display: grid; 
-    grid-template: auto auto / 1fr; 
-    padding-block: .75rem var(--pb); 
+    display: grid;
+    grid-template: auto auto / 1fr;
+    padding-block: 0.75rem var(--pb);
     --pb: 2.5rem;
 
     @media (min-width: 48em) {
@@ -52,9 +52,12 @@ html, body {
     gap: 1.5rem;
     align-items: start;
     margin-top: 2.625rem;
-    margin-inline: max(clamp(.938rem, calc(.268rem + 3.348vw), 1.875rem), ((100% - 73.125rem) / 2));
+    margin-inline: max(
+      clamp(0.938rem, calc(0.268rem + 3.348vw), 1.875rem),
+      ((100% - 73.125rem) / 2)
+    );
 
-    // Phire is 48em, but that might assume a main 
+    // Phire is 48em, but that might assume a main
     // column that wraps more than HTDL
     @media (min-width: $twocol-breakpoint) {
       flex-wrap: nowrap;
@@ -103,11 +106,10 @@ html, body {
 
   .twocol-main > * {
     // max-width: 43.75rem;
-    
   }
 
   article.record {
-      .metadata .grid {
+    .metadata .grid {
       --bs-gap: 0rem;
     }
 
@@ -143,7 +145,7 @@ html, body {
 
     &:hover {
       background: white;
-      color:  #924a0b;
+      color: #924a0b;
     }
   }
 
@@ -158,8 +160,8 @@ html, body {
 
   // by default, hide the 10+nth facets
   div.filter-list {
-    &[data-expanded="false"] {
-      .filter-list-item:nth-child(n+10) {
+    &[data-expanded='false'] {
+      .filter-list-item:nth-child(n + 10) {
         display: none !important;
       }
     }
@@ -171,8 +173,10 @@ html, body {
     padding-bottom: 1rem;
     bottom: 0;
     background-color: #fff;
-    box-shadow: 0px -0.5rem 0.5rem -0.5rem rgba(0,0,0,0.1);
+    box-shadow: 0px -0.5rem 0.5rem -0.5rem rgba(0, 0, 0, 0.1);
   }
 
+  table {
+    --bs-table-striped-order: even;
+  }
 }
-
