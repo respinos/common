@@ -176,7 +176,79 @@ body {
     box-shadow: 0px -0.5rem 0.5rem -0.5rem rgba(0, 0, 0, 0.1);
   }
 
-  table {
-    --bs-table-striped-order: even;
+  .btable-wrapper[role='region'][aria-labelledby][tabindex] {
+    overflow: auto;
+  }
+  .btable-wrapper[role='region'][aria-labelledby][tabindex]:focus {
+    outline: 0.1em solid rgba(0, 0, 0, 0.1);
+  }
+  .btable-wrapper[role='region'][aria-labelledby][tabindex]
+    .btable-hasrowheaders
+    tr
+    > :first-child {
+    position: sticky;
+    left: 0;
+  }
+
+  .btable {
+    min-width: 100%;
+    border-spacing: 0;
+    --border: 1px solid var(--color-primary-500);
+  }
+  .btable :is(th, td) {
+    padding: 1.25rem 1rem;
+  }
+  .btable thead th {
+    padding: 0.75rem 1rem;
+  }
+  .btable th {
+    text-align: initial;
+  }
+  .btable tr:nth-child(2n) {
+    background-color: var(--color-neutral-100);
+  }
+  .btable thead tr > * {
+    border-top: var(--border);
+    border-bottom: var(--border);
+    background-color: var(--color-primary-200);
+  }
+  .btable tbody th {
+    border-right: var(--border);
+    background-color: var(--color-primary-200);
+  }
+  .btable
+    :is(thead, tbody:first-child, caption:first-child + tbody)
+    tr:first-child
+    > :first-child {
+    border-left: var(--border);
+    border-top-left-radius: 0.375rem;
+  }
+  .btable
+    :is(thead, tbody:first-child, caption:first-child + tbody)
+    tr:first-child
+    > :last-child {
+    border-right: var(--border);
+    border-top-right-radius: 0.375rem;
+  }
+  .btable
+    :is(tbody:first-child, caption:first-child + tbody)
+    tr:first-child
+    > * {
+    border-top: var(--border);
+  }
+  .btable tbody tr > :first-child {
+    border-left: var(--border);
+  }
+  .btable tbody tr > :last-child {
+    border-right: var(--border);
+  }
+  .btable tbody tr:last-child > * {
+    border-bottom: var(--border);
+  }
+  .btable tbody tr:last-child > :first-child {
+    border-bottom-left-radius: 0.375rem;
+  }
+  .btable tbody tr:last-child > :last-child {
+    border-bottom-right-radius: 0.375rem;
   }
 }
