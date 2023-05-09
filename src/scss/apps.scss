@@ -85,7 +85,7 @@ body {
     // gap: 1.875rem;
     gap: 1rem;
 
-    @media (min-width: 64em) {
+    @media (min-width: 54em) {
       flex-shrink: 0;
       flex-basis: 18.75rem;
       // gap: 3rem;
@@ -108,6 +108,28 @@ body {
     // max-width: 43.75rem;
   }
 
+  #action-toggle-filters {
+    &[aria-expanded="false"] .is-expanded {
+      display: none;
+    }
+
+    &[aria-expanded="true"] .not-expanded {
+      display: none;
+    }
+
+    &[aria-expanded="false"] ~ * {
+      display: none !important;
+    }
+    
+    @media (min-width: 54em) {
+      display: none;
+
+      &[aria-expanded] ~ * {
+        display: initial !important;
+      }
+    }
+  }
+  
   article.record {
     .metadata .grid {
       --bs-gap: 0rem;

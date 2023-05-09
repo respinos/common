@@ -42,7 +42,7 @@
   <link rel="stylesheet" href="https://unpkg.com/open-props" />
 </svelte:head>
 
-<dialog bind:this={dialog}>
+<dialog bind:this={dialog} inert={!isOpen} aria-hidden={!isOpen}>
   <div class="modal show" aria-labelledby="{id}-label" style="display: block;">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content" style:height={height != 'auto' && height}>

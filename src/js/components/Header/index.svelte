@@ -21,10 +21,13 @@
   //   searchFormDisplayed = !searchFormDisplayed;
   // }
 
-  $: searchFormDisplayed = ( searchState != 'none' );
-  $: console.log("AHOY search_state", searchState, searchFormDisplayed);
+  // let searchOpenToggle = ( searchState == 'default' );
 
-  let searchOpenToggle;
+  $: searchOpenToggle = ( searchState == 'default' );
+  $: searchFormDisplayed = ( searchState == 'default' );
+  $: console.log("AHOY search_state", searchState, searchOpenToggle, searchFormDisplayed);
+  $: console.log("AHOY searchOpenToggle changed", searchOpenToggle);
+
 </script>
 
 <div>
