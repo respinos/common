@@ -1,4 +1,4 @@
-<div class="apps">
+<div class="apps p-3 mb-3">
   <table class="btable">
     <thead>
       <tr>
