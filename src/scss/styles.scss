@@ -32,7 +32,7 @@ $ht-color-primary-200: #f8d5bb;
 $ht-color-primary-300: #f3b688;
 $ht-color-primary-400: #ed9655;
 $ht-color-primary-500: #ec7217;
-$ht-color-primary-600: #ce5c06;
+$ht-color-primary-600: #c35400;
 $ht-color-primary-700: #a14e11;
 $ht-color-primary-800: #783b0d;
 $ht-color-primary-900: #502708;
@@ -86,7 +86,7 @@ $btn-close-opacity: 1;
 @import '~bootstrap/scss/reboot';
 
 @import '~bootstrap/scss/type';
-@import "~bootstrap/scss/images";
+@import '~bootstrap/scss/images';
 @import '~bootstrap/scss/containers';
 @import '~bootstrap/scss/grid';
 @import '~bootstrap/scss/tables';
@@ -97,7 +97,7 @@ $btn-close-opacity: 1;
 @import '~bootstrap/scss/button-group';
 @import '~bootstrap/scss/nav';
 @import '~bootstrap/scss/navbar'; // Requires nav
-@import "~bootstrap/scss/card";
+@import '~bootstrap/scss/card';
 // @import "~bootstrap/scss/breadcrumb";
 @import '~bootstrap/scss/accordion';
 // @import "~bootstrap/scss/pagination";
@@ -257,7 +257,7 @@ $utilities: map-merge(
   --btn-font-weight: #{$btn-font-weight};
 
   --bs-font-sans-serif: Mulish, Helvetica, Arial, system-ui;
-  --bs-link-color: var(--color-primary-700);
+  --bs-link-color: var(--color-primary-600);
 }
 
 // Further refine some bootstrap styles
@@ -347,7 +347,7 @@ a:not(.btn):has(i[aria-hidden]) {
 }
 
 .accordion {
-  --bs-accordion-active-bg: transparent; 
+  --bs-accordion-active-bg: transparent;
   --bs-accordion-active-color: var(--color-neutral-700);
   --bs-accordion-body-padding-x: 1rem;
   --bs-accordion-body-padding-y: 1rem;
@@ -362,7 +362,7 @@ a:not(.btn):has(i[aria-hidden]) {
   }
 
   .accordion-body:has(.list-group) {
-    padding-left: 0; 
+    padding-left: 0;
     padding-right: 0;
   }
 }
