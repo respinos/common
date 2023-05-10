@@ -295,12 +295,36 @@
           >
         </li>
         {/if}
-        <li class="nav-item">
-          <a
-            class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
-            href="#"
-            >Get Help <i class="fa-solid fa-square-arrow-up-right fa-fw" /></a
+        <li class="nav-item dropdown">
+          <button
+            type="button"
+            aria-expanded="false"
+            class="nav-link btn-link btn dropdown-toggle text-uppercase d-flex flex-row justify-content-between align-items-center gap-2"
+            data-bs-toggle="dropdown" 
+            ><span>Get Help</span> </button
           >
+          <ul class="dropdown-menu dropdown-menu-end">
+            <div class="d-flex flex-column gap-4">
+              <li class="px-3">
+                <a href="#" class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center">
+                  <span>Find Help</span>
+                  <i class="fa-solid fa-square-arrow-up-right fa-fw" />
+                </a>
+              </li>
+              <li class="px-3">
+                <a href="#" class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center">
+                  <span>Ask a Question</span>
+                  <i class="fa-regular fa-circle-question"></i>
+                </a>
+              </li>
+              <li class="px-3">
+                <a href="#" class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center">
+                  <span>Report a Problem</span>
+                  <i class="fa-solid fa-bug"></i>
+                </a>
+              </li>
+            </div>
+          </ul>          
         </li>
         {#if loggedIn}
           <li id="my-account" class="nav-item dropdown">
@@ -474,7 +498,7 @@
         border-radius: 0;
       }
     }
-    a.nav-link {
+    a.nav-link, button.nav-link {
       font-weight: 800;
       &.search-active {
         color: var(--color-primary-600);
