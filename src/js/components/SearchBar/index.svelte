@@ -77,7 +77,7 @@
     let _selectValue = 'library';
     let _inputValue = '';
     if ( location && location.href ) {
-      let searchParams = new URLSearchParams(location.search);
+      let searchParams = new URLSearchParams(location.search.replace(/;/g, '&'));
 
       switch(location.pathname) {
         case '/cgi/ls':
