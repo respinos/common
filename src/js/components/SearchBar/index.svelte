@@ -88,7 +88,7 @@
           _inputValue = searchParams.get('q1');
           break;
         case '/Search/Home':
-        case '/Search/Record':
+        case '/Record':
           _searchtypeValue = searchParams.get('searchtype') || 'all';
           _selectValue = 'library';
           _inputValue = searchParams.get('lookfor');
