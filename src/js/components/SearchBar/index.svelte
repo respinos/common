@@ -1,5 +1,7 @@
 <!-- svelte-ignore a11y-invalid-attribute -->
 <script>
+  import { onMount } from 'svelte';
+
   import SearchHelpModal from '../SearchHelpModal';
   export let index = 'library';
   // export let bootstrapToggleShow;
@@ -33,9 +35,11 @@
 
   let SERVICE_DOMAIN = 'babel.hathitrust.org';
   let CATALOG_DOMAIN = 'catalog.hathitrust.org';
+  let WWW_DOMAIN = 'www.hathitrust.org';
   if (window.HT && window.HT.service_domain) {
     SERVICE_DOMAIN = window.HT.service_domain;
     CATALOG_DOMAIN = window.HT.catalog_domain;
+    WWW_DOMAIN = window.HT.www_domain;
   }
 
   let _submitSearch = function (event) {
@@ -59,12 +63,55 @@
     } else {
       // website search
       let searchTerms = _input.value.toLowerCase();
-      search_url = `https://www.hathitrust.org/search/node/${searchTerms}`;
+      search_url = `//${WWW_DOMAIN}/search/${searchTerms}`;
+      // search_url = `https://www.hathitrust.org/search/node/${searchTerms}`;
     }
     if (search_url) {
       location.href = search_url;
     }
   };
+
+  onMount(() => {
+    // find current configuration
+    let _searchtypeValue = 'everything';
+    let _selectValue = 'library';
+    let _inputValue = '';
+    if ( location && location.href ) {
+      let searchParams = new URLSearchParams(location.search);
+
+      switch(location.pathname) {
+        case '/cgi/ls':
+        case '/cgi/mb':
+        case '/cgi/pt':
+          _searchtypeValue = 'everything';
+          _selectValue = 'library';
+          _inputValue = searchParams.get('q1');
+          break;
+        case '/Search/Home':
+        case '/Search/Record':
+          _searchtypeValue = searchParams.get('searchtype') || 'all';
+          _selectValue = 'library';
+          _inputValue = searchParams.get('lookfor');
+          break;
+        default:
+          _searchtypeValue = 'everything';
+          if (location.pathname.startsWith('/search/')) {
+            _selectValue = 'website';
+            index = 'website';
+            let tmp = location.pathname.split('/').slice(2);
+            _inputValue = tmp.pop();
+          } else {
+            _selectValue = 'website';
+            index = 'website';
+            _inputValue = searchParams.get('s');
+          }
+          break;
+      }
+    }
+    _searchtype.value = _searchtypeValue;
+    _select.value = _selectValue;
+    _input.value = _inputValue;
+  })
 </script>
 
 <div>
@@ -103,7 +150,7 @@
               bind:this={_searchtype}
               on:change={_updateSearchType}
             >
-              <option value="everything" selected>Everything</option>
+              <option value="everything">Everything</option>
               <option value="all">All Bibliographic Fields</option>
               <option value="title">Title</option>
               <option value="author">Author</option>
@@ -153,11 +200,6 @@
             >Advanced Search</span
           ></a
         >
-        <!-- <a href={`//${SERVICE_DOMAIN}/cgi/mb`}
-          ><i class="fa-solid fa-list fa-fw" /><span
-            >Reading Lists</span
-          ></a
-        > -->
       </div>
     </div>
   </div>

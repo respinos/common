@@ -17,6 +17,7 @@
     if (dialog.open) {
       return;
     }
+    isOpen = true;
     dialog.showModal();
   };
 
