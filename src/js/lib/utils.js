@@ -40,6 +40,9 @@ function setDomains() {
       HT.catalog_domain = hostname;
       HT.www_domain = hostname;
       HT.cookies_domain = 'localhost';
+    } else if ( hostname.indexOf('phiredevelopment') > -1 ) {
+      // shameless green
+      HT.www_domain = hostname;
     } else {
       // make this more robust later
       var babel_prefix = prefix;
