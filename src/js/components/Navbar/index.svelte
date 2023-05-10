@@ -317,7 +317,7 @@
                   class="account-icon me-n1 d-flex align-items-center justify-content-center border border-neutral-300 rounded-circle bg-neutral-100"
                 >
                   {#if hasActivatedRole}
-                  <i class="fa-solid fa-bolt-lightning text-primary-500"></i>
+                  <i class="fa-solid fa-bolt-lightning text-primary-600"></i>
                   {:else}
                   <i class="fa-solid fa-user text-neutral-800" />
                   {/if}
@@ -408,7 +408,7 @@
     --bs-navbar-color: var(--color-neutral-800);
     --bs-navbar-brand-color: var(--color-neutral-800);
 
-    --bs-navbar-active-color: var(--color-primary-500);
+    --bs-navbar-active-color: var(--color-primary-600);
     --bs-navbar-toggler-padding-y: 3px;
     --bs-navbar-toggler-padding-x: 3px;
     --bs-navbar-toggler-focus-width: 3px;
@@ -416,7 +416,7 @@
   .navbar-nav {
     font-size: var(--ht-text-sm);
     --bs-nav-link-color: var(--color-neutral-900);
-    --bs-nav-link-hover-color: var(--color-primary-500);
+    --bs-nav-link-hover-color: var(--color-primary-600);
     --bs-nav-link-font-weight: var(--headings-font-weight);
     --bs-nav-link-padding-x: 16px;
     --bs-nav-link-padding-y: 16px;
@@ -477,14 +477,14 @@
     a.nav-link {
       font-weight: 800;
       &.search-active {
-        color: var(--color-primary-500);
+        color: var(--color-primary-600);
       }
     }
     a:hover {
       text-decoration: none;
     }
     i {
-      color: var(--color-primary-500);
+      color: var(--color-primary-600);
     }
     .needs-hover-state:hover {
       text-decoration: underline;
@@ -493,7 +493,7 @@
   .nav-link {
     &:hover,
     &:focus {
-      color: var(--color-primary-500);
+      color: var(--color-primary-600);
     }
   }
   #my-account a span.account-icon {
@@ -511,7 +511,7 @@
     &::after {
       content: '';
       position: absolute;
-      background: var(--color-primary-500);
+      background: var(--color-primary-600);
       width: 10px;
       height: 10px;
       border-radius: 50%;
@@ -524,7 +524,7 @@
     &::after {
       content: '';
       position: absolute;
-      background: var(--color-primary-500);
+      background: var(--color-primary-600);
       width: 10px;
       height: 10px;
       border-radius: 50%;
