@@ -77,7 +77,7 @@
     let _selectValue = 'library';
     let _inputValue = '';
     if ( location && location.href ) {
-      let searchParams = new URLSearchParams(location.search);
+      let searchParams = new URLSearchParams(location.search.replace(/;/g, '&'));
 
       switch(location.pathname) {
         case '/cgi/ls':
@@ -88,7 +88,7 @@
           _inputValue = searchParams.get('q1');
           break;
         case '/Search/Home':
-        case '/Search/Record':
+        case '/Record':
           _searchtypeValue = searchParams.get('searchtype') || 'all';
           _selectValue = 'library';
           _inputValue = searchParams.get('lookfor');

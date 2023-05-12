@@ -1,5 +1,6 @@
 import docCookies from './cookies';
 import cookies from './cookies';
+import { stageLinks } from './staging';
 
 function isObject(item) {
   return (item && typeof item === 'object' && !Array.isArray(item));
@@ -87,6 +88,10 @@ function setupHTEnv() {
   };
 
   HT.cookieJar = docCookies;
+
+  if ( HT.is_dev ) {
+    stageLinks();
+  }
 }
 
 export { mergeDeep, setDomains, setupHTEnv };

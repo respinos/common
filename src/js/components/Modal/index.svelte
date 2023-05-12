@@ -43,7 +43,7 @@
   <link rel="stylesheet" href="https://unpkg.com/open-props" />
 </svelte:head>
 
-<dialog bind:this={dialog} inert={!isOpen} aria-hidden={!isOpen}>
+<dialog bind:this={dialog} inert={isOpen ? null : true} aria-hidden={!isOpen}>
   <div class="modal show" aria-labelledby="{id}-label" style="display: block;">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content" style:height={height != 'auto' && height}>
@@ -54,6 +54,7 @@
           <button
             type="button"
             class="btn-close"
+            aria-label="Close Modal"
             data-bs-dismiss="modal"
             on:click={() => {
               hide();

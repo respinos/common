@@ -3,27 +3,28 @@
   import { onMount } from 'svelte';
   import menuData from '../../../assets/menuData.json';
   import LoginFormModal from '../LoginFormModal';
+  import FeedbackFormModal from '../FeedbackFormModal';
   import NotificationsModal from '../NotificationsModal';
 
   import NotificationsManager from '../../lib/notifications';
 
   let HT = window.HT || {};
   let modal;
+  let feedbackModal;
+  let form = 'basic';
+  let location = '';
 
   let notificationsModal;
   let notificationsManager = new NotificationsManager({
-    cookieJar: HT.cookieJar
+    cookieJar: HT.cookieJar,
   });
-
-  //eventually, the loggedIn variable needs to reflect
-  // HT.login_status.logged_in = true;
 
   export let loggedIn = HT.login_status.logged_in;
   export let hasNotification = false;
   export let searchOpen = true;
   export let searchState;
 
-  const switchableRoles = [ 'enhancedTextProxy', 'totalAccess' ];
+  const switchableRoles = ['enhancedTextProxy', 'totalAccess'];
   const switchableRolesLabels = {};
   switchableRolesLabels['enhancedTextProxy'] = 'ATRS';
   switchableRolesLabels['totalAccess'] = 'CAA';
@@ -43,16 +44,26 @@
     }
   }
 
+  function openFeedback() {
+    // ask Roger how to best identify which domain
+    if (location == 'catalogRecord') {
+      form == 'catalog';
+    } else if (location == 'pageTurner') {
+      form == 'content';
+    }
+    feedbackModal.show();
+  }
+
   function checkSwitchableRoles(isLoggedIn) {
-    if ( HT.login_status.r ) {
-      for(const i in switchableRoles) {
+    if (HT.login_status.r) {
+      for (const i in switchableRoles) {
         let role = switchableRoles[i];
-        if ( HT.login_status.r.hasOwnProperty(role) ) {
-          return { 
-            status: true, 
+        if (HT.login_status.r.hasOwnProperty(role)) {
+          return {
+            status: true,
             label: switchableRolesLabels[role],
-            activated: HT.login_status.r[role]
-           };
+            activated: HT.login_status.r[role],
+          };
         }
       }
     }
@@ -64,13 +75,14 @@
   $: role = checkSwitchableRoles(loggedIn).label;
 
   onMount(() => {
-    if ( HT.login_status && HT.login_status.notificationData ) {
+    if (HT.login_status && HT.login_status.notificationData) {
       notificationsManager.update(HT.login_status.notificationData);
       hasNotification = notificationsManager.hasNotifications();
     }
-  })
+  });
 </script>
 
+<FeedbackFormModal {form} bind:this={feedbackModal} />
 <nav class="navbar navbar-expand-xl bg-white">
   <div class="container-fluid">
     <div class="ht-logo">
@@ -153,18 +165,18 @@
         <span><i class:hasNotification class="fa-solid fa-bars fa-fw" /></span>
       </button>
       {#if searchState != 'none'}
-      <button
-        class="navbar-toggler border-0 m-0"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#siteSearchDropdown"
-        aria-controls="siteSearchDropdown"
-        aria-expanded="true"
-        aria-label="Toggle search bar"
-        on:click|stopPropagation={toggleSearch}
-      >
-        <span><i class="fa-solid fa-magnifying-glass fa-fw" /></span>
-      </button>
+        <button
+          class="navbar-toggler border-0 m-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#siteSearchDropdown"
+          aria-controls="siteSearchDropdown"
+          aria-expanded="true"
+          aria-label="Toggle search bar"
+          on:click|stopPropagation={toggleSearch}
+        >
+          <span><i class="fa-solid fa-magnifying-glass fa-fw" /></span>
+        </button>
       {/if}
     </div>
     <div
@@ -284,23 +296,57 @@
       </ul>
       <ul class="navbar-nav action-links">
         {#if searchState != 'none'}
-        <li class="nav-item d-none d-xl-block">
-          <a
-            class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
-            class:search-active={searchOpen}
-            href="#"
-            role="button"
-            on:click|preventDefault|stopPropagation={toggleSearch}
-            >Search <i class="fa-solid fa-magnifying-glass fa-fw" /></a
-          >
-        </li>
+          <li class="nav-item d-none d-xl-block">
+            <a
+              class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
+              class:search-active={searchOpen}
+              href="#"
+              role="button"
+              on:click|preventDefault|stopPropagation={toggleSearch}
+              >Search <i class="fa-solid fa-magnifying-glass fa-fw" /></a
+            >
+          </li>
         {/if}
-        <li class="nav-item">
-          <a
-            class="nav-link text-uppercase d-flex flex-row justify-content-between align-items-center"
-            href="#"
-            >Get Help <i class="fa-solid fa-square-arrow-up-right fa-fw" /></a
-          >
+        <li class="nav-item dropdown">
+          <button
+            type="button"
+            aria-expanded="false"
+            class="nav-link btn-link btn dropdown-toggle text-uppercase d-flex flex-row justify-content-between align-items-center gap-2"
+            data-bs-toggle="dropdown"
+            ><span>Get Help</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <div class="d-flex flex-column gap-4">
+              <li class="px-3">
+                <a
+                  href="#"
+                  class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
+                >
+                  <span>Find Help</span>
+                  <i class="fa-solid fa-square-arrow-up-right fa-fw" />
+                </a>
+              </li>
+              <li class="px-3">
+                <a
+                  href="#"
+                  class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
+                  on:click|preventDefault={openFeedback}
+                >
+                  <span>Ask a Question</span>
+                  <i class="fa-regular fa-circle-question" />
+                </a>
+              </li>
+              <li class="px-3">
+                <a
+                  href="#"
+                  class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
+                >
+                  <span>Report a Problem</span>
+                  <i class="fa-solid fa-bug" />
+                </a>
+              </li>
+            </div>
+          </ul>
         </li>
         {#if loggedIn}
           <li id="my-account" class="nav-item dropdown">
@@ -317,9 +363,9 @@
                   class="account-icon me-n1 d-flex align-items-center justify-content-center border border-neutral-300 rounded-circle bg-neutral-100"
                 >
                   {#if hasActivatedRole}
-                  <i class="fa-solid fa-bolt-lightning text-primary-500"></i>
+                    <i class="fa-solid fa-bolt-lightning text-primary-600" />
                   {:else}
-                  <i class="fa-solid fa-user text-neutral-800" />
+                    <i class="fa-solid fa-user text-neutral-800" />
                   {/if}
                 </span>
                 <span class="account-text ms-3">My Account</span>
@@ -328,7 +374,7 @@
             <ul class="dropdown-menu dropdown-menu-end">
               <div class="d-flex flex-column gap-4">
                 <li class="px-3">
-                  <button 
+                  <button
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
                     on:click={notificationsModal.show()}
                     ><span class="needs-hover-state"
@@ -338,21 +384,25 @@
                   </button>
                 </li>
                 {#if hasSwitchableRoles}
-                <li style="margin-bottom: -1rem"><h6 class="dropdown-header">Current Role: {hasActivatedRole ? role : 'Member'}</h6></li>
-                <li class="px-3">
-                  <a
-                    class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
-                    href="//{HT.service_domain}/cgi/ping/switch"
-                    role="button"><span class="needs-hover-state">
-                      {#if hasActivatedRole}
-                      Switch Role: Member
-                      {:else}
-                      Switch Role: {role}
-                      {/if}
-                    </span><i
-                      class="fa-solid fa-bolt-lightning fa-fw"
-                    /></a>
-                </li>
+                  <li style="margin-bottom: -1rem">
+                    <h6 class="dropdown-header">
+                      Current Role: {hasActivatedRole ? role : 'Member'}
+                    </h6>
+                  </li>
+                  <li class="px-3">
+                    <a
+                      class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
+                      href="//{HT.service_domain}/cgi/ping/switch"
+                      role="button"
+                      ><span class="needs-hover-state">
+                        {#if hasActivatedRole}
+                          Switch Role: Member
+                        {:else}
+                          Switch Role: {role}
+                        {/if}
+                      </span><i class="fa-solid fa-bolt-lightning fa-fw" /></a
+                    >
+                  </li>
                 {/if}
                 <li class="px-3">
                   <a
@@ -364,7 +414,9 @@
                     /></a
                   >
                 </li>
-                <li style="margin-top: -1rem; margin-bottom: -1rem;"><hr class="dropdown-divider"></li>
+                <li style="margin-top: -1rem; margin-bottom: -1rem;">
+                  <hr class="dropdown-divider" />
+                </li>
                 <li class="px-3">
                   <a
                     class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
@@ -395,7 +447,10 @@
   </div>
 </nav>
 {#if hasNotification}
-  <NotificationsModal manager={notificationsManager} bind:this={notificationsModal} />
+  <NotificationsModal
+    manager={notificationsManager}
+    bind:this={notificationsModal}
+  />
 {/if}
 
 <style lang="scss">
@@ -408,7 +463,7 @@
     --bs-navbar-color: var(--color-neutral-800);
     --bs-navbar-brand-color: var(--color-neutral-800);
 
-    --bs-navbar-active-color: var(--color-primary-500);
+    --bs-navbar-active-color: var(--color-primary-600);
     --bs-navbar-toggler-padding-y: 3px;
     --bs-navbar-toggler-padding-x: 3px;
     --bs-navbar-toggler-focus-width: 3px;
@@ -416,7 +471,7 @@
   .navbar-nav {
     font-size: var(--ht-text-sm);
     --bs-nav-link-color: var(--color-neutral-900);
-    --bs-nav-link-hover-color: var(--color-primary-500);
+    --bs-nav-link-hover-color: var(--color-primary-600);
     --bs-nav-link-font-weight: var(--headings-font-weight);
     --bs-nav-link-padding-x: 16px;
     --bs-nav-link-padding-y: 16px;
@@ -474,17 +529,18 @@
         border-radius: 0;
       }
     }
-    a.nav-link {
+    a.nav-link,
+    button.nav-link {
       font-weight: 800;
       &.search-active {
-        color: var(--color-primary-500);
+        color: var(--color-primary-600);
       }
     }
     a:hover {
       text-decoration: none;
     }
     i {
-      color: var(--color-primary-500);
+      color: var(--color-primary-600);
     }
     .needs-hover-state:hover {
       text-decoration: underline;
@@ -493,7 +549,7 @@
   .nav-link {
     &:hover,
     &:focus {
-      color: var(--color-primary-500);
+      color: var(--color-primary-600);
     }
   }
   #my-account a span.account-icon {
@@ -511,7 +567,7 @@
     &::after {
       content: '';
       position: absolute;
-      background: var(--color-primary-500);
+      background: var(--color-primary-600);
       width: 10px;
       height: 10px;
       border-radius: 50%;
@@ -524,7 +580,7 @@
     &::after {
       content: '';
       position: absolute;
-      background: var(--color-primary-500);
+      background: var(--color-primary-600);
       width: 10px;
       height: 10px;
       border-radius: 50%;
