@@ -106,6 +106,7 @@ var HT = HT || {};
     HT.service_domain = 'babel.hathitrust.org';
     HT.catalog_domain = 'catalog.hathitrust.org';
     HT.www_domain = 'www.hathitrust.org';
+    HT.cookie_domain = '.hathitrust.org';
 
     // figure out if we're in dev or not
     var hostname = location.hostname;
@@ -117,13 +118,14 @@ var HT = HT || {};
     if ( HT.is_dev ) {
         var prefix = hostname.split(".")[0];
         console.log("-- main setting hostname", prefix, hostname);
-        if ( prefix == 'localhost' ) {
+        if ( prefix == 'localhost' || hostname.indexOf('.local') > -1 ) {
             if ( location.port ) {
               hostname += ':' + location.port;
             }
             HT.service_domain = hostname;
             HT.catalog_domain = hostname;
             HT.www_domain = hostname;
+            HT.cookie_domain = ( prefix == 'localhost' ) ? prefix : hostname;
         } else {
             // make this more robust later
             var babel_prefix = prefix;
@@ -213,7 +215,7 @@ var HT = HT || {};
         try {
             var expires = new Date();
             expires.setDate(expires.getDate() + 90);
-            docCookies.setItem('HT.prefs', JSON.stringify(prefs), expires, '/', '.hathitrust.org', true);
+            docCookies.setItem('HT.prefs', JSON.stringify(prefs), expires, '/', HT.cookie_domain, true);
         } catch(e) {
             // noop
         }
