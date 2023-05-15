@@ -12,7 +12,7 @@
   let modal;
   let feedbackModal;
   let form = 'basic';
-  let location = '';
+  let location = document.documentElement.dataset.app;
 
   let notificationsModal;
   let notificationsManager = new NotificationsManager({
@@ -45,10 +45,9 @@
   }
 
   function openFeedback() {
-    // ask Roger how to best identify which domain
-    if (location == 'catalogRecord') {
+    if (location == 'catalog') {
       form == 'catalog';
-    } else if (location == 'pageTurner') {
+    } else if (location == 'pt') {
       form == 'content';
     }
     feedbackModal.show();
@@ -340,6 +339,7 @@
                 <a
                   href="#"
                   class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
+                  on:click|preventDefault={openFeedback}
                 >
                   <span>Report a Problem</span>
                   <i class="fa-solid fa-bug" />
