@@ -45,10 +45,10 @@
   }
 
   function openFeedback() {
-    if (location == 'catalog') {
-      form == 'catalog';
-    } else if (location == 'pt') {
-      form == 'content';
+    if (location === 'catalog') {
+      form = 'catalog';
+    } else if (location === 'pt') {
+      form = 'content';
     }
     feedbackModal.show();
   }
@@ -329,7 +329,7 @@
                 <a
                   href="#"
                   class="dropdown-item px-0 d-flex flex-row justify-content-between align-items-center"
-                  on:click|preventDefault={openFeedback}
+                  on:click|preventDefault={feedbackModal.show()}
                 >
                   <span>Ask a Question</span>
                   <i class="fa-regular fa-circle-question" />
