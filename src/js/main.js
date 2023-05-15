@@ -108,9 +108,28 @@ document.querySelectorAll('[data-hathi-trigger]').forEach((el) => {
 let btnToggleFilters = document.querySelector('#action-toggle-filters');
 if ( btnToggleFilters ) {
   btnToggleFilters.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     let isExpanded = ! ( btnToggleFilters.getAttribute('aria-expanded') == 'true' );
     btnToggleFilters.setAttribute('aria-expanded', isExpanded );
   })
 }
+
+document.querySelectorAll('[data-action="expand-filter"]').forEach((button) => {
+  button.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    let isExpanded = ! ( button.getAttribute('aria-expanded') == 'true' );
+    button.setAttribute('aria-expanded', isExpanded);
+    let container = button.closest('.accordion-body');
+    container.querySelector('.filter-list').dataset.expanded = isExpanded;
+    if ( ! isExpanded ) {
+      container.closest('.accordion-item').scrollIntoView({behavior: 'auto'});
+    }
+  })
+})
+
 
 export default apps;
