@@ -19541,7 +19541,7 @@ var add_matomo = function add_matomo(profileId) {
   _paq.push(['enableLinkTracking']);
 
   (function () {
-    var u = "//testing.matomo.hathitrust.org/";
+    var u = "//matomo.www.hathitrust.org/";
 
     _paq.push(['setTrackerUrl', u + 'matomo.php']);
 
@@ -19583,7 +19583,7 @@ var add_matomo_tag = function add_matomo_tag(config) {
       g = d.createElement('script'),
       s = d.getElementsByTagName('script')[0];
   g.async = true;
-  g.src = "https://testing.matomo.hathitrust.org/js/container_".concat(profileId, ".js");
+  g.src = "https://matomo.www.hathitrust.org/js/container_".concat(profileId, ".js");
   s.parentNode.insertBefore(g, s);
 };
 
