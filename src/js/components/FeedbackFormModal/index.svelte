@@ -38,6 +38,7 @@
       <svelte:fragment slot="modal-body">
         <FeedbackFormCatalog />
       </svelte:fragment>
+      <svelte:fragment slot="modal-footer" />
     </Modal>
   {:else if form == 'content'}
     <Modal bind:this={modal} scrollable>
@@ -47,6 +48,7 @@
       <svelte:fragment slot="modal-body">
         <FeedbackFormContent />
       </svelte:fragment>
+      <svelte:fragment slot="modal-footer" />
     </Modal>
   {:else}
     <Modal bind:this={modal} scrollable>
@@ -54,6 +56,7 @@
       <svelte:fragment slot="modal-body">
         <FeedbackFormBasic />
       </svelte:fragment>
+      <svelte:fragment slot="modal-footer" />
     </Modal>
   {/if}
 </div>
