@@ -14,6 +14,7 @@ import ResultsToolbar from './components/ResultsToolbar';
 import CollectionsToolbar from './components/CollectionsToolbar';
 import Footer from './components/Footer';
 import AdvancedSearchForm from './components/AdvancedSearchForm';
+import AcceptableUseBanner from './components/AcceptableUseBanner';
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -46,6 +47,7 @@ apps['hathi-results-toolbar'] = ResultsToolbar;
 apps['hathi-collections-toolbar'] = CollectionsToolbar;
 apps['hathi-website-footer'] = Footer;
 apps['hathi-advanced-search-form'] = AdvancedSearchForm;
+apps['hathi-acceptable-use-banner'] = AcceptableUseBanner;
 
 // configure the HT global
 setupHTEnv();
