@@ -1,0 +1,375 @@
+// Import all of Bootstrap's CSS
+@use 'sass:map';
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap');
+
+// Toggle global options
+$enable-gradients: false;
+$enable-shadows: true;
+$enable-negative-margins: true;
+$enable-grid-classes: true;
+$enable-cssgrid: true;
+
+$offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+
+// // Customize some defaults
+// $body-color: #333;
+// $body-bg: #fff;
+
+$ht-color-neutral-50: #f8f8f8;
+$ht-color-neutral-100: #f2f2f2;
+$ht-color-neutral-200: #e4e4e4;
+$ht-color-neutral-300: #cfd0d1;
+$ht-color-neutral-400: #a9acac;
+$ht-color-neutral-500: #6e7375;
+$ht-color-neutral-600: #505759;
+$ht-color-neutral-700: #333739;
+$ht-color-neutral-800: #242828;
+$ht-color-neutral-900: #0f1010;
+
+$ht-color-primary-50: #fef9f4;
+$ht-color-primary-100: #fbeadd;
+$ht-color-primary-200: #f8d5bb;
+$ht-color-primary-300: #f3b688;
+$ht-color-primary-400: #ed9655;
+$ht-color-primary-500: #ec7217;
+$ht-color-primary-600: #c35400;
+$ht-color-primary-700: #a14e11;
+$ht-color-primary-800: #783b0d;
+$ht-color-primary-900: #502708;
+
+$ht-color-shades-0: #ffffff;
+$ht-color-shades-100: #000000;
+
+$gray-100: $ht-color-neutral-100;
+$gray-200: $ht-color-neutral-200;
+$gray-300: $ht-color-neutral-300;
+$gray-400: $ht-color-neutral-400;
+$gray-500: $ht-color-neutral-500;
+$gray-600: $ht-color-neutral-600;
+$gray-700: $ht-color-neutral-700;
+$gray-800: $ht-color-neutral-800;
+$gray-900: $ht-color-neutral-900;
+
+$primary: $ht-color-primary-600;
+$secondary: $ht-color-neutral-600;
+
+$font-family-sans-serif: Mulish, Helvetica, Arial, system-ui;
+
+$font-size-base: 1rem;
+$h1-font-size: $font-size-base * 2;
+$h2-font-size: $font-size-base * 1.75;
+$h3-font-size: $font-size-base * 1.125;
+$h4-font-size: $font-size-base * 1;
+$h5-font-size: $font-size-base * 1;
+$h6-font-size: $font-size-base * 1;
+$ht-text-sm: $font-size-base * 0.875;
+$ht-text-lg: $font-size-base;
+
+$headings-font-weight: 700;
+$btn-font-weight: 700;
+$form-label-font-weight: 400;
+
+// Required
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+$font-sizes: map.set($font-sizes, 7, $font-size-base * 0.875);
+
+$btn-close-bg: '#fff';
+$btn-close-hover-opacity: 1;
+$btn-close-opacity: 1;
+
+@import '~bootstrap/scss/maps';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/root';
+@import '~bootstrap/scss/reboot';
+
+@import '~bootstrap/scss/type';
+@import '~bootstrap/scss/images';
+@import '~bootstrap/scss/containers';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/tables';
+@import '~bootstrap/scss/forms';
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/transitions';
+@import '~bootstrap/scss/dropdown';
+@import '~bootstrap/scss/button-group';
+@import '~bootstrap/scss/nav';
+@import '~bootstrap/scss/navbar'; // Requires nav
+@import '~bootstrap/scss/card';
+// @import "~bootstrap/scss/breadcrumb";
+@import '~bootstrap/scss/accordion';
+// @import "~bootstrap/scss/pagination";
+@import '~bootstrap/scss/badge';
+@import '~bootstrap/scss/alert';
+@import '~bootstrap/scss/progress';
+@import '~bootstrap/scss/list-group';
+@import '~bootstrap/scss/close';
+// @import "~bootstrap/scss/toasts";
+@import '~bootstrap/scss/modal'; // Requires transitions
+@import '~bootstrap/scss/tooltip';
+@import '~bootstrap/scss/popover';
+// @import "~bootstrap/scss/carousel";
+@import '~bootstrap/scss/spinners';
+@import '~bootstrap/scss/offcanvas'; // Requires transitions
+@import '~bootstrap/scss/placeholders';
+
+// Helpers
+@import '~bootstrap/scss/helpers';
+
+// extend utility classes
+$utilities: map-merge(
+  $utilities,
+  (
+    'color': (
+      property: color,
+      class: text,
+      local-vars: (
+        'text-opacity': 1,
+      ),
+      values:
+        map-merge(
+          $utilities-text-colors,
+          (
+            'neutral-100': $ht-color-neutral-100,
+            'neutral-200': $ht-color-neutral-200,
+            'neutral-800': $ht-color-neutral-800,
+            'neutral-900': $ht-color-neutral-900,
+            'muted': $text-muted,
+            // deprecated
+            'black-50': rgba($black, 0.5),
+            // deprecated
+            'white-50': rgba($white, 0.5),
+            // deprecated
+            'body-secondary': var(--#{$prefix}secondary-color),
+            'body-tertiary': var(--#{$prefix}tertiary-color),
+            'body-emphasis': var(--#{$prefix}emphasis-color),
+            'reset': inherit,
+          )
+        ),
+    ),
+    'background-color': (
+      property: background-color,
+      class: bg,
+      local-vars: (
+        'bg-opacity': 1,
+      ),
+      values:
+        map-merge(
+          $utilities-bg-colors,
+          (
+            'neutral-50': $ht-color-neutral-50,
+            'neutral-100': $ht-color-neutral-100,
+            'neutral-200': $ht-color-neutral-200,
+            'transparent': transparent,
+            'body-secondary':
+              rgba(
+                var(--#{$prefix}secondary-bg-rgb),
+                var(--#{$prefix}bg-opacity)
+              ),
+            'body-tertiary':
+              rgba(
+                var(--#{$prefix}tertiary-bg-rgb),
+                var(--#{$prefix}bg-opacity)
+              ),
+            'body-emphasis':
+              rgba(
+                var(--#{$prefix}emphasis-bg-rgb),
+                var(--#{$prefix}bg-opacity)
+              ),
+          )
+        ),
+    ),
+    'border-color': (
+      property: border-color,
+      class: border,
+      local-vars: (
+        'border-opacity': 1,
+      ),
+      values:
+        map-merge(
+          $utilities-border-colors,
+          (
+            'neutral-200': $ht-color-neutral-200,
+            'neutral-300': $ht-color-neutral-300,
+          )
+        ),
+    ),
+  )
+);
+
+$utilities: map-merge(
+  $utilities,
+  (
+    'width':
+      map-merge(
+        map-get($utilities, 'width'),
+        (
+          responsive: true,
+        )
+      ),
+  )
+);
+
+@include media-breakpoint-up('xs') {
+  $infix: breakpoint-infix('xs', $grid-breakpoints);
+  .list-group-vertical#{$infix} {
+    flex-direction: column;
+  }
+}
+
+// Utilities
+@import '~bootstrap/scss/utilities/api';
+
+// define design tokens which may be used in application stylesheets
+:root {
+  --color-neutral-50: #{$ht-color-neutral-50};
+  --color-neutral-100: #{$ht-color-neutral-100};
+  --color-neutral-200: #{$ht-color-neutral-200};
+  --color-neutral-300: #{$ht-color-neutral-300};
+  --color-neutral-400: #{$ht-color-neutral-400};
+  --color-neutral-500: #{$ht-color-neutral-500};
+  --color-neutral-600: #{$ht-color-neutral-600};
+  --color-neutral-700: #{$ht-color-neutral-700};
+  --color-neutral-800: #{$ht-color-neutral-800};
+  --color-neutral-900: #{$ht-color-neutral-900};
+
+  --color-primary-50: #{$ht-color-primary-50};
+  --color-primary-100: #{$ht-color-primary-100};
+  --color-primary-200: #{$ht-color-primary-200};
+  --color-primary-300: #{$ht-color-primary-300};
+  --color-primary-400: #{$ht-color-primary-400};
+  --color-primary-500: #{$ht-color-primary-500};
+  --color-primary-600: #{$ht-color-primary-600};
+  --color-primary-700: #{$ht-color-primary-700};
+  --color-primary-800: #{$ht-color-primary-800};
+  --color-primary-900: #{$ht-color-primary-900};
+
+  --color-shades-0: #{$ht-color-shades-0};
+  --color-shades-100: #{$ht-color-shades-100};
+
+  --ht-text-sm: #{$ht-text-sm};
+  --ht-text-lg: #{$ht-text-lg};
+
+  --headings-font-weight: #{$headings-font-weight};
+  --form-label-font-weight: #{$form-label-font-weight};
+  --btn-font-weight: #{$btn-font-weight};
+
+  --bs-font-sans-serif: Mulish, Helvetica, Arial, system-ui;
+  --bs-link-color: var(--color-primary-600);
+}
+
+// Further refine some bootstrap styles
+
+// bootstrap's contrast functions pair black text on our primary background
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-active-border-color: var(--color-primary-700);
+  --bs-btn-hover-border-color: var(--color-primary-900);
+  --bs-btn-border-color: var(--color-primary-700);
+
+  &:hover,
+  &:active {
+    --bs-btn-hover-color: #fff;
+    background-color: var(--color-primary-700);
+  }
+}
+
+input.form-control[type],
+textarea.form-control {
+  background-color: var(--color-neutral-50);
+  border-radius: var(--bs-border-radius) !important;
+}
+
+.input-group-text + input.form-control[type] {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.input-group-text {
+  border-top-left-radius: var(--bs-border-radius) !important;
+  border-bottom-left-radius: var(--bs-border-radius) !important;
+}
+
+a:not(.btn):has(i[aria-hidden]) {
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: center;
+  text-decoration: none;
+
+  i[aria-hidden] {
+    text-decoration: none;
+  }
+
+  & > * {
+    text-decoration: underline;
+  }
+}
+
+//modal styles
+.modal {
+  --bs-modal-width: 34rem;
+  --bs-modal-padding-width: 1.875rem;
+  --bs-modal-header-padding: 1rem var(--bs-modal-padding-width) 0;
+  --bs-modal-footer-padding: 1rem var(--bs-modal-padding-width) 0;
+  --bs-modal-padding: 1rem 1.875rem;
+  --bs-modal-header-border-width: 0;
+}
+
+.modal-content {
+  // height: 90vh;
+  max-height: 45rem !important;
+}
+
+.modal-body {
+  // overflow: hidden !important;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+}
+
+.modal-footer {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.px-modal {
+  padding-left: var(--bs-modal-padding-width) !important;
+  padding-right: var(--bs-modal-padding-width) !important;
+}
+
+.accordion {
+  --bs-accordion-active-bg: transparent;
+  --bs-accordion-active-color: var(--color-neutral-700);
+  --bs-accordion-body-padding-x: 1rem;
+  --bs-accordion-body-padding-y: 1rem;
+
+  .accordion-header {
+    --bs-accordion-border-color: transparent;
+  }
+
+  .accordion-button {
+    // padding: 1rem 1rem 0.25rem;
+    padding-left: 1rem;
+  }
+
+  .accordion-body:has(.list-group) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+// // EVALUATE
+// .accordion-item:not(:last-of-type) {
+//   border-bottom-color: var(--color-neutral-900);
+// }
+
+@import 'apps';

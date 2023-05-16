@@ -1,0 +1,30 @@
+<script>
+  window.global = window;
+
+  // // mock location
+  // window.location = {
+  //   href: 'https://hathi/mb',
+  //   assign: function(href) {
+  //     window.location.href = href;
+  //   }
+  // };
+
+  window.HT = {};
+  window.HT.get_pong_target = function(href ) { return href; }
+  window.HT.login_status = {};
+  window.HT.prefs = { set: function() {}, get: function() { return {} } };
+
+  function fakeIdpUrl(sdrinst) {
+    return `https://hathi/Login?entityID=urn:institution:${sdrinst}&target=___TARGET___`;
+  }
+  window.HT.login_status.idp_list = [
+    { name: 'University of Moosylvania', sdrinst: 'moos', idp_url: fakeIdpUrl('moos') },
+    { name: 'Moosylvania State', sdrinst: 'state', idp_url: fakeIdpUrl('state') },
+    { name: 'Central Moosylvania University', sdrinst: 'central', idp_url: fakeIdpUrl('central') },
+    { name: 'Eastern Moosylvania University', sdrinst: 'eastern', idp_url: fakeIdpUrl('eastern') },
+  ]
+</script>
+<script
+  src="https://kit.fontawesome.com/1c6c3b2b35.js"
+  crossorigin="anonymous"
+></script>

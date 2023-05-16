@@ -1,0 +1,87 @@
+{
+  "about": [
+    {
+      "title": "Welcome to HathiTrust",
+      "link": "https://www.hathitrust.org/about"
+    },
+    {
+      "title": "Our Mission & History",
+      "link": "https://www.hathitrust.org/about/our-mission-and-history"
+    },
+    {
+      "title": "HathiTrust Research Center (HTRC)",
+      "link": "https://www.hathitrust.org/about/hathitrust-research-center"
+    },
+    {
+      "title": "Our Team",
+      "link": "https://www.hathitrust.org/about/our-team"
+    }
+  ],
+  "collection": [
+    {
+      "title": "About the Collection",
+      "link": "https://www.hathitrust.org/the-collection"
+    },
+    {
+      "title": "How to Search & Access",
+      "link": "https://www.hathitrust.org/the-collection"
+    },
+    {
+      "title": "Preservation",
+      "link": "https://www.hathitrust.org/the-collection"
+    },
+    {
+      "title": "Terms & Conditions",
+      "link": "https://www.hathitrust.org/the-collection"
+    }
+  ],
+  "join": [],
+  "memberLibraries": [
+    {
+      "title": "Member Library Overview",
+      "link": "https://www.hathitrust.org/member-libraries"
+    },
+    {
+      "title": "Member List",
+      "link": "https://www.hathitrust.org/member-libraries"
+    },
+    {
+      "title": "Services & Programs",
+      "link": "https://www.hathitrust.org/member-libraries"
+    },
+    {
+      "title": "Resources for Librarians",
+      "link": "https://www.hathitrust.org/member-libraries"
+    },
+    {
+      "title": "Contribute Content",
+      "link": "https://www.hathitrust.org/member-libraries"
+    },
+    {
+      "title": "Get Involved",
+      "link": "https://www.hathitrust.org/member-libraries"
+    },
+    {
+      "title": "Governance & Groups",
+      "link": "https://www.hathitrust.org/member-libraries"
+    }
+  ],
+  "newsEvents": [
+    {
+      "title": "Newsletters",
+      "link": "https://www.hathitrust.org/news"
+    },
+    {
+      "title": "Blog",
+      "link": "https://www.hathitrust.org/news"
+    },
+    {
+      "title": "Events & Webinars",
+      "link": "https://www.hathitrust.org/news"
+    },
+    {
+      "title": "Press",
+      "link": "https://www.hathitrust.org/news"
+    }
+  ]
+}
